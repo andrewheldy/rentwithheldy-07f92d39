@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Star, MapPin, Check, Phone, Calendar } from "lucide-react";
 import Header from "@/components/Header";
+import PhotoGallery from "@/components/PhotoGallery";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { vehicles } from "@/data/vehicles";
 
 const VehicleDetail = () => {
@@ -44,15 +44,12 @@ const VehicleDetail = () => {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Image Section */}
+          {/* Photo Gallery Section */}
           <div className="space-y-4">
-            <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-card-hover">
-              <img
-                src={vehicle.images[0]}
-                alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <PhotoGallery 
+              images={vehicle.images} 
+              alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} 
+            />
           </div>
 
           {/* Details Section */}
