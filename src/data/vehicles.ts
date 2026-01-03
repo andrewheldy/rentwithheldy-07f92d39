@@ -9,6 +9,15 @@ import suburban2017 from "@/assets/vehicles/2017_SUBURBAN.avif";
 import renegade2018 from "@/assets/vehicles/2018_Jeep_Renegade.avif";
 import jettaBlue2019 from "@/assets/vehicles/2019_BLUE_JETTA.avif";
 import jettaRed2019 from "@/assets/vehicles/2019_RED_JETTA.avif";
+import crv2019 from "@/assets/vehicles/2019_HONDA_CRV.avif";
+import equinoxBlack2020 from "@/assets/vehicles/2020_EQUINOX_BLACK.avif";
+import equinoxWhite2020 from "@/assets/vehicles/2020_EQUINOX_WHITE.avif";
+import corolla2020 from "@/assets/vehicles/2020_TOYOTA_COROLLA.avif";
+import soul2021 from "@/assets/vehicles/2021_KIA_SOUL.avif";
+import taos2023 from "@/assets/vehicles/2023_VW_TAOS.avif";
+import audiA42022 from "@/assets/vehicles/Audi_A4_2022.avif";
+import audiQ52019 from "@/assets/vehicles/Audi_Q5_2019.avif";
+import edge2017 from "@/assets/vehicles/FORD_EDGE_2017.avif";
 
 export interface Vehicle {
   id: string;
@@ -55,10 +64,7 @@ export const vehicles: Vehicle[] = [
     trips: 7,
     hostType: "All-Star Host",
     dailyRate: 55,
-    images: [
-      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&h=600&fit=crop"
-    ],
+    images: [equinoxWhite2020],
     description: "Spacious SUV ideal for family trips and adventures around South Florida.",
     features: ["Spacious Interior", "Safety Features", "Apple CarPlay", "All-Wheel Drive"]
   },
@@ -72,10 +78,7 @@ export const vehicles: Vehicle[] = [
     trips: 6,
     hostType: "All-Star Host",
     dailyRate: 42,
-    images: [
-      "https://images.unsplash.com/photo-1623869675781-80aa31012ca1?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800&h=600&fit=crop"
-    ],
+    images: [corolla2020],
     description: "Reliable and economical compact car with excellent fuel efficiency.",
     features: ["Excellent MPG", "Lane Departure Warning", "Pre-Collision System", "Toyota Safety Sense"]
   },
@@ -117,10 +120,7 @@ export const vehicles: Vehicle[] = [
     trips: 14,
     hostType: "All-Star Host",
     dailyRate: 75,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop"
-    ],
+    images: [audiA42022],
     description: "Luxury sedan with cutting-edge technology and premium comfort features.",
     features: ["Luxury Interior", "Quattro AWD", "Virtual Cockpit", "Premium Sound"]
   },
@@ -162,9 +162,7 @@ export const vehicles: Vehicle[] = [
     trips: 9,
     hostType: "All-Star Host",
     dailyRate: 50,
-    images: [
-      "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=600&fit=crop"
-    ],
+    images: [soul2021],
     description: "Unique and fun crossover with distinctive styling and practical features.",
     features: ["Unique Design", "Spacious Interior", "Tech Features", "Great Visibility"]
   },
@@ -223,9 +221,7 @@ export const vehicles: Vehicle[] = [
     trips: 42,
     hostType: "All-Star Host",
     dailyRate: 58,
-    images: [
-      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&h=600&fit=crop"
-    ],
+    images: [taos2023],
     description: "Compact SUV with modern design and versatile capabilities for any adventure.",
     features: ["Compact SUV", "Modern Design", "Versatile", "Good Value"]
   },
@@ -239,9 +235,7 @@ export const vehicles: Vehicle[] = [
     trips: 33,
     hostType: "All-Star Host",
     dailyRate: 52,
-    images: [
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&h=600&fit=crop"
-    ],
+    images: [edge2017],
     description: "Midsize SUV with bold styling and comfortable seating for all passengers.",
     features: ["Midsize SUV", "Comfortable Seating", "Bold Styling", "Good Performance"]
   },
@@ -283,10 +277,7 @@ export const vehicles: Vehicle[] = [
     trips: 17,
     hostType: "All-Star Host",
     dailyRate: 80,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop"
-    ],
+    images: [audiQ52019],
     description: "Premium luxury SUV combining performance, comfort, and advanced technology.",
     features: ["Premium Luxury", "Performance", "Advanced Tech", "Comfort"]
   },
@@ -303,5 +294,33 @@ export const vehicles: Vehicle[] = [
     images: [renegade2018],
     description: "Fun and capable compact SUV with iconic Jeep styling and off-road capability.",
     features: ["Compact SUV", "Off-Road Capable", "Iconic Styling", "Fun to Drive"]
+  },
+  {
+    id: "honda-crv-2019",
+    make: "Honda",
+    model: "CR-V",
+    year: 2019,
+    color: "Gray",
+    rating: 4.9,
+    trips: 0,
+    hostType: "All-Star Host",
+    dailyRate: 55,
+    images: [crv2019],
+    description: "Popular compact SUV with spacious interior, excellent reliability, and Honda Sensing safety features.",
+    features: ["Honda Sensing", "Spacious Interior", "AWD Available", "Excellent Reliability"]
+  },
+  {
+    id: "chevrolet-equinox-2020-black",
+    make: "Chevrolet",
+    model: "Equinox",
+    year: 2020,
+    color: "Black",
+    rating: 4.9,
+    trips: 0,
+    hostType: "All-Star Host",
+    dailyRate: 55,
+    images: [equinoxBlack2020],
+    description: "Stylish black SUV ideal for family trips and adventures around South Florida.",
+    features: ["Spacious Interior", "Safety Features", "Apple CarPlay", "All-Wheel Drive"]
   }
 ];
