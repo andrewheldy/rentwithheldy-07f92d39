@@ -1,3 +1,15 @@
+// Vehicle image imports
+import audi2014 from "@/assets/vehicles/2014_AUDI_A4.png";
+import accord2014 from "@/assets/vehicles/2014_HONDA_ACCORD.avif";
+import fit2015 from "@/assets/vehicles/2015_HONDA_FIT.avif";
+import merc2015 from "@/assets/vehicles/2015_MERC_E350.avif";
+import jetta2015 from "@/assets/vehicles/2015_VW_JETTA.avif";
+import forester2017 from "@/assets/vehicles/2017_SUBARU_FORESTER.avif";
+import suburban2017 from "@/assets/vehicles/2017_SUBURBAN.avif";
+import renegade2018 from "@/assets/vehicles/2018_Jeep_Renegade.avif";
+import jettaBlue2019 from "@/assets/vehicles/2019_BLUE_JETTA.avif";
+import jettaRed2019 from "@/assets/vehicles/2019_RED_JETTA.avif";
+
 export interface Vehicle {
   id: string;
   make: string;
@@ -24,16 +36,12 @@ export const vehicles: Vehicle[] = [
     make: "Volkswagen",
     model: "Jetta",
     year: 2019,
-    color: "Gray",
+    color: "Blue",
     rating: 5.0,
     trips: 4,
     hostType: "All-Star Host",
     dailyRate: 45,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&h=600&fit=crop"
-    ],
+    images: [jettaBlue2019],
     description: "Comfortable and fuel-efficient sedan perfect for city driving and short trips.",
     features: ["Fuel Efficient", "Bluetooth", "Air Conditioning", "Backup Camera"]
   },
@@ -81,10 +89,7 @@ export const vehicles: Vehicle[] = [
     trips: 1,
     hostType: "All-Star Host",
     dailyRate: 85,
-    images: [
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop"
-    ],
+    images: [suburban2017],
     description: "Large SUV perfect for group travel and special occasions with premium comfort.",
     features: ["Seats 8", "Premium Sound", "Third Row Seating", "Towing Capacity"]
   },
@@ -98,9 +103,7 @@ export const vehicles: Vehicle[] = [
     trips: 12,
     hostType: "All-Star Host",
     dailyRate: 40,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop"
-    ],
+    images: [jetta2015],
     description: "Well-maintained sedan with German engineering and reliability.",
     features: ["German Engineering", "Comfortable Seating", "Good Trunk Space", "Manual Transmission"]
   },
@@ -131,9 +134,7 @@ export const vehicles: Vehicle[] = [
     trips: 3,
     hostType: "All-Star Host",
     dailyRate: 38,
-    images: [
-      "https://images.unsplash.com/photo-1606016559308-d86b6ea2bda7?w=800&h=600&fit=crop"
-    ],
+    images: [fit2015],
     description: "Compact and versatile hatchback perfect for navigating Miami's busy streets.",
     features: ["Compact Size", "Great for City", "Versatile Storage", "Easy Parking"]
   },
@@ -147,9 +148,7 @@ export const vehicles: Vehicle[] = [
     trips: 13,
     hostType: "All-Star Host",
     dailyRate: 45,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop"
-    ],
+    images: [jettaRed2019],
     description: "Sporty red Jetta with modern features and comfortable interior.",
     features: ["Sporty Design", "Modern Tech", "Comfortable Interior", "Great Value"]
   },
@@ -170,19 +169,16 @@ export const vehicles: Vehicle[] = [
     features: ["Unique Design", "Spacious Interior", "Tech Features", "Great Visibility"]
   },
   {
-    id: "mercedes-eclass-2018",
+    id: "mercedes-e350-2015",
     make: "Mercedes-Benz",
-    model: "E-Class",
-    year: 2018,
+    model: "E350",
+    year: 2015,
     color: "Black",
     rating: 4.67,
     trips: 4,
     hostType: "All-Star Host",
     dailyRate: 90,
-    images: [
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=600&fit=crop"
-    ],
+    images: [merc2015],
     description: "Premium luxury sedan with sophisticated styling and advanced technology.",
     features: ["Luxury Comfort", "Advanced Safety", "Premium Materials", "Smooth Ride"]
   },
@@ -196,9 +192,7 @@ export const vehicles: Vehicle[] = [
     trips: 5,
     hostType: "All-Star Host",
     dailyRate: 48,
-    images: [
-      "https://images.unsplash.com/photo-1606016559308-d86b6ea2bda7?w=800&h=600&fit=crop"
-    ],
+    images: [accord2014],
     description: "Reliable midsize sedan known for Honda's quality and dependability.",
     features: ["Honda Reliability", "Spacious Cabin", "Good Fuel Economy", "Proven Performance"]
   },
@@ -261,9 +255,7 @@ export const vehicles: Vehicle[] = [
     trips: 39,
     hostType: "All-Star Host",
     dailyRate: 65,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop"
-    ],
+    images: [audi2014],
     description: "Well-maintained luxury sedan with timeless German engineering excellence.",
     features: ["German Luxury", "Timeless Design", "Well Maintained", "Proven Reliability"]
   },
@@ -277,9 +269,7 @@ export const vehicles: Vehicle[] = [
     trips: 28,
     hostType: "All-Star Host",
     dailyRate: 55,
-    images: [
-      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&h=600&fit=crop"
-    ],
+    images: [forester2017],
     description: "Adventure-ready SUV with all-wheel drive and excellent safety ratings.",
     features: ["All-Wheel Drive", "Adventure Ready", "Excellent Safety", "Reliable"]
   },
@@ -299,5 +289,19 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Premium luxury SUV combining performance, comfort, and advanced technology.",
     features: ["Premium Luxury", "Performance", "Advanced Tech", "Comfort"]
+  },
+  {
+    id: "jeep-renegade-2018",
+    make: "Jeep",
+    model: "Renegade",
+    year: 2018,
+    color: "Orange",
+    rating: 4.8,
+    trips: 0,
+    hostType: "All-Star Host",
+    dailyRate: 48,
+    images: [renegade2018],
+    description: "Fun and capable compact SUV with iconic Jeep styling and off-road capability.",
+    features: ["Compact SUV", "Off-Road Capable", "Iconic Styling", "Fun to Drive"]
   }
 ];
