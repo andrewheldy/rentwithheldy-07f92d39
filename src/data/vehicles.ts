@@ -17,6 +17,7 @@ import soul2021 from "@/assets/vehicles/2021_KIA_SOUL.avif";
 import taos2023 from "@/assets/vehicles/2023_VW_TAOS.avif";
 import audiA42022 from "@/assets/vehicles/Audi_A4_2022.avif";
 import audiQ52019 from "@/assets/vehicles/Audi_Q5_2019.avif";
+import audiQ52024 from "@/assets/vehicles/2024_AUDI_Q5.avif";
 import edge2017 from "@/assets/vehicles/FORD_EDGE_2017.avif";
 
 export interface Vehicle {
@@ -204,10 +205,7 @@ export const vehicles: Vehicle[] = [
     trips: 19,
     hostType: "All-Star Host",
     dailyRate: 95,
-    images: [
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop"
-    ],
+    images: [audiQ52024],
     description: "Latest luxury SUV with cutting-edge technology and premium performance.",
     features: ["Latest Tech", "Luxury SUV", "Quattro AWD", "Premium Interior"]
   },
