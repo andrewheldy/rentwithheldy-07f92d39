@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import { Car, Shield, Star, MapPin, Clock, ArrowRight, Phone } from "lucide-react";
+import { Car, Star, MapPin, ArrowRight, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import VehicleCard from "@/components/VehicleCard";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { vehicles } from "@/data/vehicles";
+import { useVehicles } from "@/hooks/useVehicles";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Index = () => {
+  const { data: vehicles = [], isLoading } = useVehicles();
   const featuredVehicles = vehicles.slice(0, 6);
 
   return (
@@ -49,7 +50,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Premium Fleet</h3>
                 <p className="text-muted-foreground">
-                  Choose from 17 carefully maintained vehicles, from economy cars to luxury SUVs.
+                  Choose from {vehicles.length} carefully maintained vehicles, from economy cars to luxury SUVs.
                 </p>
               </CardContent>
             </Card>
@@ -89,11 +90,26 @@ const Index = () => {
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredVehicles.map(vehicle => (
-              <VehicleCard key={vehicle.id} vehicle={vehicle} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="overflow-hidden">
+                  <Skeleton className="h-48 w-full" />
+                  <CardContent className="p-4 space-y-2">
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-4 w-1/2" />
+                    <Skeleton className="h-4 w-1/4" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredVehicles.map(vehicle => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

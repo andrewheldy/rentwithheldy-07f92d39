@@ -14,16 +14,175 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      booking_inquiries: {
+        Row: {
+          created_at: string | null
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date: string
+          id: string
+          message: string | null
+          start_date: string
+          status: string | null
+          vehicle_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date: string
+          id?: string
+          message?: string | null
+          start_date: string
+          status?: string | null
+          vehicle_id: string
+        }
+        Update: {
+          created_at?: string | null
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          end_date?: string
+          id?: string
+          message?: string | null
+          start_date?: string
+          status?: string | null
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_inquiries_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vehicle_images: {
+        Row: {
+          created_at: string | null
+          id: string
+          image_url: string
+          is_primary: boolean | null
+          vehicle_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          image_url: string
+          is_primary?: boolean | null
+          vehicle_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          image_url?: string
+          is_primary?: boolean | null
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_images_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vehicles: {
+        Row: {
+          color: string
+          created_at: string | null
+          daily_rate: number
+          date_added: string | null
+          description: string
+          features: string[] | null
+          host_type: string | null
+          id: string
+          initial_mileage: number | null
+          license_plate: string | null
+          make: string
+          model: string
+          rating: number | null
+          trips: number | null
+          vin: string | null
+          year: number
+        }
+        Insert: {
+          color: string
+          created_at?: string | null
+          daily_rate: number
+          date_added?: string | null
+          description: string
+          features?: string[] | null
+          host_type?: string | null
+          id?: string
+          initial_mileage?: number | null
+          license_plate?: string | null
+          make: string
+          model: string
+          rating?: number | null
+          trips?: number | null
+          vin?: string | null
+          year: number
+        }
+        Update: {
+          color?: string
+          created_at?: string | null
+          daily_rate?: number
+          date_added?: string | null
+          description?: string
+          features?: string[] | null
+          host_type?: string | null
+          id?: string
+          initial_mileage?: number | null
+          license_plate?: string | null
+          make?: string
+          model?: string
+          rating?: number | null
+          trips?: number | null
+          vin?: string | null
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +309,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
