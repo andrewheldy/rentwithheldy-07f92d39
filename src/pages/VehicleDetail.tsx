@@ -1,15 +1,29 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Star, MapPin, Check, Phone, Calendar } from "lucide-react";
+import { ArrowLeft, Star, MapPin, Check, Phone, Calendar, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import PhotoGallery from "@/components/PhotoGallery";
+import BookingDialog from "@/components/BookingDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { vehicles } from "@/data/vehicles";
+import { useVehicle } from "@/hooks/useVehicles";
 
 const VehicleDetail = () => {
   const { id } = useParams();
-  const vehicle = vehicles.find(v => v.id === id);
+  const { data: vehicle, isLoading } = useVehicle(id || "");
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   if (!vehicle) {
     return (
@@ -28,6 +42,8 @@ const VehicleDetail = () => {
       </div>
     );
   }
+
+  const vehicleName = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,7 +64,7 @@ const VehicleDetail = () => {
           <div className="space-y-4">
             <PhotoGallery 
               images={vehicle.images} 
-              alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} 
+              alt={vehicleName} 
             />
           </div>
 
@@ -67,7 +83,7 @@ const VehicleDetail = () => {
               </div>
               
               <h1 className="text-3xl font-bold text-foreground mb-2">
-                {vehicle.year} {vehicle.make} {vehicle.model}
+                {vehicleName}
               </h1>
               
               <div className="flex items-center space-x-4 text-muted-foreground mb-4">
@@ -119,10 +135,16 @@ const VehicleDetail = () => {
 
             {/* Booking Actions */}
             <div className="space-y-4">
-              <Button className="w-full bg-gradient-tropical text-white text-lg py-6 shadow-tropical hover:opacity-90">
-                <Calendar className="h-5 w-5 mr-2" />
-                Book This Vehicle
-              </Button>
+              <BookingDialog
+                vehicleId={vehicle.id}
+                vehicleName={vehicleName}
+                dailyRate={vehicle.dailyRate}
+              >
+                <Button className="w-full bg-gradient-tropical text-white text-lg py-6 shadow-tropical hover:opacity-90">
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Book This Vehicle
+                </Button>
+              </BookingDialog>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">

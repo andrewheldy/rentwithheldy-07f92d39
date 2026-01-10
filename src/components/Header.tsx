@@ -1,10 +1,18 @@
-import { Link, useLocation } from "react-router-dom";
-import { Car, MapPin, Phone } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Phone, LogIn, LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAdmin, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
 
   return (
     <header className="bg-card border-b border-border shadow-sm">
@@ -49,14 +57,50 @@ const Header = () => {
             >
               About
             </Link>
+            {isAdmin && (
+              <Link 
+                to="/addcars" 
+                className={`font-medium transition-colors hover:text-primary flex items-center gap-1 ${
+                  location.pathname === "/addcars" ? "text-primary" : "text-foreground"
+                }`}
+              >
+                <Settings className="h-4 w-4" />
+                Manage Fleet
+              </Link>
+            )}
           </nav>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info & Auth */}
           <div className="flex items-center space-x-4">
             <div className="hidden lg:flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
               <span>(305) 555-RENT</span>
             </div>
+            
+            {user ? (
+              <div className="flex items-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sign Out</span>
+                </Button>
+              </div>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate("/auth")}
+                className="flex items-center gap-2"
+              >
+                <LogIn className="h-4 w-4" />
+                <span className="hidden sm:inline">Admin</span>
+              </Button>
+            )}
+            
             <Button className="bg-gradient-tropical text-white hover:opacity-90 shadow-tropical">
               Book Now
             </Button>
