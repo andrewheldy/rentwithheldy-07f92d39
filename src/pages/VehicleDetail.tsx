@@ -165,7 +165,7 @@ const VehicleDetail = () => {
                 </p>
                 <div className="flex items-center space-x-2 text-sm">
                   <Phone className="h-4 w-4 text-primary" />
-                  <span className="font-medium">(305) 555-RENT</span>
+                  <span className="font-medium">(561) 519-8958</span>
                 </div>
               </CardContent>
             </Card>

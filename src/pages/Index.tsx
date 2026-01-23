@@ -144,7 +144,7 @@ const Index = () => {
               className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-3"
             >
               <Phone className="h-5 w-5 mr-2" />
-              (305) 555-RENT
+              (561) 519-8958
             </Button>
           </div>
         </div>

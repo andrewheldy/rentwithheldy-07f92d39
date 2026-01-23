@@ -96,14 +96,14 @@ const About = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">(305) 555-RENT</p>
+                    <p className="font-medium">(561) 519-8958</p>
                     <p className="text-sm text-muted-foreground">Available 7 days a week</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">info@rentwithheldy.com</p>
+                    <p className="font-medium">rentwithheldy@gmail.com</p>
                     <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
                   </div>
                 </div>
