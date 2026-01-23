@@ -42,7 +42,7 @@ const About = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2">Premium Quality</h3>
               <p className="text-muted-foreground">
-                Carefully maintained fleet of 17 vehicles ranging from economy to luxury.
+                Carefully maintained fleet of 25 vehicles ranging from economy to luxury.
               </p>
             </CardContent>
           </Card>
@@ -69,7 +69,7 @@ const About = () => {
                 Founded with a passion for hospitality and a love for South Florida, 
                 Rent with Heldy has been serving travelers and locals alike with premium 
                 car rental services. What started as a small operation has grown into 
-                a trusted fleet of 17 carefully selected vehicles.
+                a trusted fleet of 25 carefully selected vehicles.
               </p>
               <p className="mb-4">
                 Our commitment to excellence has earned us All-Star Host status, 

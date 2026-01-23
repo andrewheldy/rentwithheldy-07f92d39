@@ -31,7 +31,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center space-x-2 text-lg">
               <Car className="h-5 w-5 text-yellow-200" />
-              <span>17 Premium Vehicles</span>
+              <span>25 Premium Vehicles</span>
             </div>
             <div className="flex items-center space-x-2 text-lg">
               <Star className="h-5 w-5 fill-yellow-200 text-yellow-200" />
