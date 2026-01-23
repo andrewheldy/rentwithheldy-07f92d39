@@ -238,7 +238,7 @@ const BookingDialog = ({
               <Input
                 id="phone"
                 type="tel"
-                placeholder="(305) 555-1234"
+                placeholder="(561) 555-1234"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
