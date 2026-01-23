@@ -38,7 +38,7 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
         </div>
         
         <p className="text-muted-foreground mb-3">
-          {vehicle.color} • {vehicle.trips} trips
+          {vehicle.color}
         </p>
         
         <div className="flex items-center space-x-2 mb-3">
