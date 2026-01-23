@@ -78,7 +78,6 @@ const VehicleDetail = () => {
                 <div className="flex items-center space-x-1">
                   <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-medium">{vehicle.rating}</span>
-                  <span className="text-muted-foreground">({vehicle.trips} trips)</span>
                 </div>
               </div>
               
