@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
               Your trusted partner for premium car rentals in Miami and Fort Lauderdale. 
-              All-Star Host with 17 quality vehicles ready for your next adventure.
+              All-Star Host with 25 quality vehicles ready for your next adventure.
             </p>
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-1">
