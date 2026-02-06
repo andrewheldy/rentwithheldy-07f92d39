@@ -42,9 +42,9 @@ const Header = () => {
               Home
             </Link>
             <Link 
-              to="/vehicles" 
+              to="/categories" 
               className={`font-medium transition-colors hover:text-primary ${
-                location.pathname === "/vehicles" ? "text-primary" : "text-foreground"
+                location.pathname === "/categories" ? "text-primary" : "text-foreground"
               }`}
             >
               Our Fleet
@@ -101,9 +101,11 @@ const Header = () => {
               </Button>
             )}
             
-            <Button className="bg-gradient-tropical text-white hover:opacity-90 shadow-tropical">
-              Book Now
-            </Button>
+            <Link to="/categories">
+              <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">
+                Book Now
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
