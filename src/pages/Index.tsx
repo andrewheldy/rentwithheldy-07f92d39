@@ -2,22 +2,30 @@ import { Link } from "react-router-dom";
 import { Car, Star, MapPin, ArrowRight, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import VehicleCard from "@/components/VehicleCard";
+import CategoryCard from "@/components/CategoryCard";
+import BookingSearchForm from "@/components/BookingSearchForm";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useVehicles } from "@/hooks/useVehicles";
+import { useCategories } from "@/hooks/useCategories";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Index = () => {
-  const { data: vehicles = [], isLoading } = useVehicles();
-  const featuredVehicles = vehicles.slice(0, 6);
+  const { data: categories = [], isLoading } = useCategories();
+  const featuredCategories = categories.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
       
+      {/* Booking Search Widget */}
+      <section className="py-8 -mt-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <BookingSearchForm />
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 bg-secondary">
         <div className="container mx-auto px-4">
@@ -34,7 +42,7 @@ const Index = () => {
             <Card className="text-center border-none shadow-card-hover">
               <CardContent className="pt-8">
                 <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="h-8 w-8 text-white" />
+                  <Star className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">All-Star Quality</h3>
                 <p className="text-muted-foreground">
@@ -46,11 +54,11 @@ const Index = () => {
             <Card className="text-center border-none shadow-card-hover">
               <CardContent className="pt-8">
                 <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Car className="h-8 w-8 text-white" />
+                  <Car className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Premium Fleet</h3>
                 <p className="text-muted-foreground">
-                  Choose from {vehicles.length} carefully maintained vehicles, from economy cars to luxury SUVs.
+                  Choose from {categories.length} vehicle classes, from economy cars to luxury SUVs.
                 </p>
               </CardContent>
             </Card>
@@ -58,7 +66,7 @@ const Index = () => {
             <Card className="text-center border-none shadow-card-hover">
               <CardContent className="pt-8">
                 <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="h-8 w-8 text-white" />
+                  <MapPin className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Local Expertise</h3>
                 <p className="text-muted-foreground">
@@ -70,21 +78,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Vehicles */}
+      {/* Featured Categories */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                Featured Vehicles
+                Our Vehicle Classes
               </h2>
               <p className="text-xl text-muted-foreground">
-                Popular choices from our premium fleet
+                Select your category – your vehicle is assigned at pickup
               </p>
             </div>
-            <Link to="/vehicles">
-              <Button className="bg-gradient-tropical text-white hover:opacity-90">
-                View All Vehicles
+            <Link to="/categories">
+              <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90">
+                View All Classes
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </Link>
@@ -105,8 +113,8 @@ const Index = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredVehicles.map(vehicle => (
-                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              {featuredCategories.map(category => (
+                <CategoryCard key={category.id} category={category} />
               ))}
             </div>
           )}
@@ -121,19 +129,19 @@ const Index = () => {
             backgroundImage: 'url(https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&h=600&fit=crop)'
           }}
         />
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+        <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
           <h2 className="text-4xl font-bold mb-4">
             Ready to Explore South Florida?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Book your perfect vehicle today and discover the beauty of Miami and Fort Lauderdale 
             with the freedom and comfort you deserve.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/vehicles">
+            <Link to="/categories">
               <Button 
                 size="lg" 
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-3 shadow-tropical"
+                className="bg-card text-primary hover:bg-card/90 text-lg px-8 py-3 shadow-tropical"
               >
                 Browse Fleet
               </Button>
@@ -141,7 +149,7 @@ const Index = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-3"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-3"
             >
               <Phone className="h-5 w-5 mr-2" />
               (561) 519-8958
