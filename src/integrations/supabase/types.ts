@@ -61,6 +61,69 @@ export type Database = {
           },
         ]
       }
+      reservations: {
+        Row: {
+          category_id: string
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          dropoff_location: string
+          end_date: string
+          id: string
+          payment_status: string
+          pickup_location: string
+          start_date: string
+          status: string
+          vehicle_id: string | null
+        }
+        Insert: {
+          category_id: string
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          dropoff_location: string
+          end_date: string
+          id?: string
+          payment_status?: string
+          pickup_location: string
+          start_date: string
+          status?: string
+          vehicle_id?: string | null
+        }
+        Update: {
+          category_id?: string
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          dropoff_location?: string
+          end_date?: string
+          id?: string
+          payment_status?: string
+          pickup_location?: string
+          start_date?: string
+          status?: string
+          vehicle_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reservations_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "vehicle_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reservations_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           id: string
@@ -76,6 +139,48 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      vehicle_categories: {
+        Row: {
+          active: boolean
+          bag_capacity: number
+          created_at: string
+          description: string | null
+          hero_image: string | null
+          id: string
+          name: string
+          passenger_capacity: number
+          price_per_day: number
+          price_per_week: number | null
+          slug: string
+        }
+        Insert: {
+          active?: boolean
+          bag_capacity?: number
+          created_at?: string
+          description?: string | null
+          hero_image?: string | null
+          id?: string
+          name: string
+          passenger_capacity?: number
+          price_per_day: number
+          price_per_week?: number | null
+          slug: string
+        }
+        Update: {
+          active?: boolean
+          bag_capacity?: number
+          created_at?: string
+          description?: string | null
+          hero_image?: string | null
+          id?: string
+          name?: string
+          passenger_capacity?: number
+          price_per_day?: number
+          price_per_week?: number | null
+          slug?: string
         }
         Relationships: []
       }
@@ -113,6 +218,7 @@ export type Database = {
       }
       vehicles: {
         Row: {
+          category_id: string | null
           color: string
           created_at: string | null
           daily_rate: number
@@ -123,14 +229,17 @@ export type Database = {
           id: string
           initial_mileage: number | null
           license_plate: string | null
+          location: string | null
           make: string
           model: string
           rating: number | null
+          status: string
           trips: number | null
           vin: string | null
           year: number
         }
         Insert: {
+          category_id?: string | null
           color: string
           created_at?: string | null
           daily_rate: number
@@ -141,14 +250,17 @@ export type Database = {
           id?: string
           initial_mileage?: number | null
           license_plate?: string | null
+          location?: string | null
           make: string
           model: string
           rating?: number | null
+          status?: string
           trips?: number | null
           vin?: string | null
           year: number
         }
         Update: {
+          category_id?: string | null
           color?: string
           created_at?: string | null
           daily_rate?: number
@@ -159,14 +271,24 @@ export type Database = {
           id?: string
           initial_mileage?: number | null
           license_plate?: string | null
+          location?: string | null
           make?: string
           model?: string
           rating?: number | null
+          status?: string
           trips?: number | null
           vin?: string | null
           year?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "vehicles_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "vehicle_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
