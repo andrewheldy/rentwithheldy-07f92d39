@@ -70,36 +70,12 @@ const Header = () => {
             )}
           </nav>
 
-          {/* Contact Info & Auth */}
+          {/* Contact Info */}
           <div className="flex items-center space-x-4">
             <div className="hidden lg:flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
               <span>(561) 519-8958</span>
             </div>
-            
-            {user ? (
-              <div className="flex items-center space-x-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sign Out</span>
-                </Button>
-              </div>
-            ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate("/auth")}
-                className="flex items-center gap-2"
-              >
-                <LogIn className="h-4 w-4" />
-                <span className="hidden sm:inline">Admin</span>
-              </Button>
-            )}
             
             <Link to="/book">
               <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">

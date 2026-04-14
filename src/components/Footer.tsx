@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Star } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const { user, isAdmin, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
@@ -22,7 +32,7 @@ const Footer = () => {
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
               Your trusted partner for premium car rentals in Miami and Fort Lauderdale. 
-              All-Star Host with 25 quality vehicles ready for your next adventure.
+              All-Star Host with 34+ quality vehicles ready for your next adventure.
             </p>
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-1">
@@ -42,19 +52,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/vehicles" className="text-muted-foreground hover:text-primary transition-colors">
-                  Our Fleet
+                <Link to="/book" className="text-muted-foreground hover:text-primary transition-colors">
+                  Book Now
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About Us
                 </Link>
-              </li>
-              <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </a>
               </li>
             </ul>
           </div>
@@ -82,10 +87,32 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center">
+        <div className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 Rent with Heldy. All rights reserved. Premium car rentals in Miami and Fort Lauderdale.
+            © 2024 Rent with Heldy. All rights reserved.
           </p>
+          <div className="flex items-center gap-3">
+            {isAdmin && (
+              <Link to="/addcars" className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                <Settings className="h-3 w-3" />
+                Manage Fleet
+              </Link>
+            )}
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                <LogOut className="h-3 w-3" />
+                Sign Out
+              </button>
+            ) : (
+              <Link to="/auth" className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                <LogIn className="h-3 w-3" />
+                Admin
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </footer>
