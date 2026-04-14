@@ -20,8 +20,8 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Discover Miami and Fort Lauderdale with our premium fleet of vehicles. 
-            Trusted by travelers, loved by locals.
+            Discover Miami and Fort Lauderdale with our fleet of quality vehicles. 
+            Search dates and book the exact car you want.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -31,31 +31,22 @@ const Hero = () => {
             </div>
             <div className="flex items-center space-x-2 text-lg">
               <Car className="h-5 w-5 text-yellow-200" />
-              <span>25 Premium Vehicles</span>
+              <span>34+ Vehicles</span>
             </div>
             <div className="flex items-center space-x-2 text-lg">
               <Star className="h-5 w-5 fill-yellow-200 text-yellow-200" />
-              <span>All-Star Hosts</span>
+              <span>All-Star Host</span>
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/vehicles">
-              <Button 
-                size="lg" 
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-3 shadow-tropical"
-              >
-                View Our Fleet
-              </Button>
-            </Link>
+          <Link to="/book">
             <Button 
               size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-3"
+              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-3 shadow-tropical"
             >
-              Book Now
+              Search Available Vehicles
             </Button>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
