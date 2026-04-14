@@ -42,12 +42,12 @@ const Header = () => {
               Home
             </Link>
             <Link 
-              to="/categories" 
+              to="/book" 
               className={`font-medium transition-colors hover:text-primary ${
-                location.pathname === "/categories" ? "text-primary" : "text-foreground"
+                location.pathname === "/book" ? "text-primary" : "text-foreground"
               }`}
             >
-              Our Fleet
+              Book Now
             </Link>
             <Link 
               to="/about" 
@@ -101,7 +101,7 @@ const Header = () => {
               </Button>
             )}
             
-            <Link to="/categories">
+            <Link to="/book">
               <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">
                 Book Now
               </Button>
