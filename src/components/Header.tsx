@@ -49,17 +49,6 @@ const Header = () => {
             >
               About
             </Link>
-            {isAdmin && (
-              <Link 
-                to="/addcars" 
-                className={`font-medium transition-colors hover:text-primary flex items-center gap-1 ${
-                  location.pathname === "/addcars" ? "text-primary" : "text-foreground"
-                }`}
-              >
-                <Settings className="h-4 w-4" />
-                Manage Fleet
-              </Link>
-            )}
           </nav>
 
           {/* Contact Info */}
