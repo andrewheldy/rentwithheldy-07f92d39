@@ -1,15 +1,8 @@
-import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WheelbaseWidget from "@/components/WheelbaseWidget";
 
 const Book = () => {
-  useEffect(() => {
-    // Re-initialize Wheelbase widget if script already loaded
-    if (typeof (window as any).Outdoorsy !== "undefined" && (window as any).Outdoorsy.init) {
-      (window as any).Outdoorsy.init();
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -24,13 +17,8 @@ const Book = () => {
           </p>
         </div>
 
-        {/* Wheelbase Booking Widget */}
         <div className="max-w-4xl mx-auto">
-          <div
-            id="outdoorsy-book-now-container"
-            data-owner="4913818"
-            data-color="000000"
-          />
+          <WheelbaseWidget />
         </div>
       </main>
 
