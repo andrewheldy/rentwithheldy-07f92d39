@@ -1,12 +1,21 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Car, Star, MapPin, ArrowRight, Phone } from "lucide-react";
+import { Car, Star, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
+  useEffect(() => {
+    if (typeof (window as any).Outdoorsy !== "undefined" && (window as any).Outdoorsy.init) {
+      (window as any).Outdoorsy.init();
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -64,25 +73,25 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Book Now CTA */}
+      {/* Booking Widget */}
       <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Find Your Perfect Ride
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Search available dates and browse our full fleet of quality vehicles. 
-            Book online in minutes.
-          </p>
-          <Link to="/book">
-            <Button 
-              size="lg" 
-              className="bg-gradient-tropical text-primary-foreground hover:opacity-90 text-lg px-10 py-4 shadow-tropical"
-            >
-              Search Available Vehicles
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-          </Link>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Find Your Perfect Ride
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Search available dates and browse our full fleet of quality vehicles.
+              Book online in minutes.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div
+              id="outdoorsy-book-now-container"
+              data-owner="4913818"
+              data-color="000000"
+            />
+          </div>
         </div>
       </section>
 
