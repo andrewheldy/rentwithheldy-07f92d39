@@ -6,8 +6,6 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
   useEffect(() => {
