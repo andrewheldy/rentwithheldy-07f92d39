@@ -1,19 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Car, Star, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import WheelbaseWidget from "@/components/WheelbaseWidget";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
-  useEffect(() => {
-    if (typeof (window as any).Outdoorsy !== "undefined" && (window as any).Outdoorsy.init) {
-      (window as any).Outdoorsy.init();
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -84,11 +78,7 @@ const Index = () => {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <div
-              id="outdoorsy-book-now-container"
-              data-owner="4913818"
-              data-color="000000"
-            />
+            <WheelbaseWidget />
           </div>
         </div>
       </section>
