@@ -1,18 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Phone, LogIn, LogOut, Settings } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, isAdmin, signOut } = useAuth();
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate("/");
-  };
 
   return (
     <header className="bg-card border-b border-border shadow-sm">
