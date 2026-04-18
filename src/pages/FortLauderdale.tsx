@@ -51,7 +51,7 @@ const FortLauderdale = () => (
         ],
         bullets: [
           "All-Star Host status with consistently high ratings across hundreds of trips.",
-          "Real-person communication — message Heldy directly before, during, and after your trip.",
+          "Real-person communication — message our team directly before, during, and after your trip.",
           "Transparent online booking with the actual vehicle you'll be driving.",
           "Convenient pickup across Fort Lauderdale, Miami, and FLL airport.",
           "Premium and practical options without luxury-counter pricing.",
