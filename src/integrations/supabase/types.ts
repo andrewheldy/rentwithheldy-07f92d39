@@ -236,6 +236,8 @@ export type Database = {
           status: string
           trips: number | null
           vin: string | null
+          weekday_rate: number | null
+          weekend_rate: number | null
           year: number
         }
         Insert: {
@@ -257,6 +259,8 @@ export type Database = {
           status?: string
           trips?: number | null
           vin?: string | null
+          weekday_rate?: number | null
+          weekend_rate?: number | null
           year: number
         }
         Update: {
@@ -278,6 +282,8 @@ export type Database = {
           status?: string
           trips?: number | null
           vin?: string | null
+          weekday_rate?: number | null
+          weekend_rate?: number | null
           year?: number
         }
         Relationships: [
