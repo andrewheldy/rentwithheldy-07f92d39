@@ -33,9 +33,6 @@ interface DatabaseVehicle {
   daily_rate: number;
   description: string;
   features: string[] | null;
-  vin: string | null;
-  license_plate: string | null;
-  initial_mileage: number | null;
   date_added: string | null;
   vehicle_images: { image_url: string; is_primary: boolean }[];
 }
@@ -55,11 +52,17 @@ const transformDatabaseVehicle = (dbVehicle: DatabaseVehicle): Vehicle => ({
   images: dbVehicle.vehicle_images
     .sort((a, b) => (b.is_primary ? 1 : 0) - (a.is_primary ? 1 : 0))
     .map((img) => img.image_url),
-  vin: dbVehicle.vin ?? undefined,
-  licensePlate: dbVehicle.license_plate ?? undefined,
-  initialMileage: dbVehicle.initial_mileage ?? undefined,
   dateAdded: dbVehicle.date_added ?? undefined,
 });
+
+// Public-safe columns only — VIN, license_plate, and initial_mileage are admin-only
+// and must NEVER be selected from public-facing queries.
+const PUBLIC_VEHICLE_COLUMNS = `
+  id, make, model, year, color, rating, trips,
+  host_type, daily_rate, description, features,
+  date_added, created_at,
+  vehicle_images ( image_url, is_primary )
+`;
 
 export const useVehicles = () => {
   return useQuery({
@@ -67,13 +70,7 @@ export const useVehicles = () => {
     queryFn: async (): Promise<Vehicle[]> => {
       const { data, error } = await supabase
         .from("vehicles")
-        .select(`
-          *,
-          vehicle_images (
-            image_url,
-            is_primary
-          )
-        `)
+        .select(PUBLIC_VEHICLE_COLUMNS)
         .order("created_at", { ascending: false });
 
       if (error) {
@@ -98,13 +95,7 @@ export const useVehicle = (id: string) => {
     queryFn: async (): Promise<Vehicle | null> => {
       const { data, error } = await supabase
         .from("vehicles")
-        .select(`
-          *,
-          vehicle_images (
-            image_url,
-            is_primary
-          )
-        `)
+        .select(PUBLIC_VEHICLE_COLUMNS)
         .eq("id", id)
         .maybeSingle();
 
