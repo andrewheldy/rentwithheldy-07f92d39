@@ -70,13 +70,7 @@ export const useVehicles = () => {
     queryFn: async (): Promise<Vehicle[]> => {
       const { data, error } = await supabase
         .from("vehicles")
-        .select(`
-          *,
-          vehicle_images (
-            image_url,
-            is_primary
-          )
-        `)
+        .select(PUBLIC_VEHICLE_COLUMNS)
         .order("created_at", { ascending: false });
 
       if (error) {
