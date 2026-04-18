@@ -33,9 +33,6 @@ interface DatabaseVehicle {
   daily_rate: number;
   description: string;
   features: string[] | null;
-  vin: string | null;
-  license_plate: string | null;
-  initial_mileage: number | null;
   date_added: string | null;
   vehicle_images: { image_url: string; is_primary: boolean }[];
 }
