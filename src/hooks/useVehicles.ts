@@ -95,13 +95,7 @@ export const useVehicle = (id: string) => {
     queryFn: async (): Promise<Vehicle | null> => {
       const { data, error } = await supabase
         .from("vehicles")
-        .select(`
-          *,
-          vehicle_images (
-            image_url,
-            is_primary
-          )
-        `)
+        .select(PUBLIC_VEHICLE_COLUMNS)
         .eq("id", id)
         .maybeSingle();
 
