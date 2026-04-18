@@ -188,7 +188,7 @@ const LocationPageLayout = ({
               </li>
               <li>
                 <Link to="/contact" className="text-primary hover:underline">
-                  → Contact Heldy directly
+                  → Contact our team directly
                 </Link>
               </li>
             </ul>
