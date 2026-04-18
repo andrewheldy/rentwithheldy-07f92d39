@@ -52,11 +52,17 @@ const transformDatabaseVehicle = (dbVehicle: DatabaseVehicle): Vehicle => ({
   images: dbVehicle.vehicle_images
     .sort((a, b) => (b.is_primary ? 1 : 0) - (a.is_primary ? 1 : 0))
     .map((img) => img.image_url),
-  vin: dbVehicle.vin ?? undefined,
-  licensePlate: dbVehicle.license_plate ?? undefined,
-  initialMileage: dbVehicle.initial_mileage ?? undefined,
   dateAdded: dbVehicle.date_added ?? undefined,
 });
+
+// Public-safe columns only — VIN, license_plate, and initial_mileage are admin-only
+// and must NEVER be selected from public-facing queries.
+const PUBLIC_VEHICLE_COLUMNS = `
+  id, make, model, year, color, rating, trips,
+  host_type, daily_rate, description, features,
+  date_added, created_at,
+  vehicle_images ( image_url, is_primary )
+`;
 
 export const useVehicles = () => {
   return useQuery({
