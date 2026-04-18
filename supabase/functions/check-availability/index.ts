@@ -6,19 +6,57 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+function isValidIsoDate(s: unknown): s is string {
+  if (typeof s !== "string" || !ISO_DATE.test(s)) return false;
+  const d = new Date(s + "T00:00:00Z");
+  return !isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s;
+}
+
+function isSafeShortString(s: unknown, max = 200): s is string {
+  return typeof s === "string" && s.length > 0 && s.length <= max;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { start_date, end_date, location } = await req.json();
-
-    if (!start_date || !end_date) {
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object") {
       return new Response(
-        JSON.stringify({ error: "start_date and end_date are required" }),
+        JSON.stringify({ error: "Invalid request body" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
+    }
+
+    const { start_date, end_date, location } = body as Record<string, unknown>;
+
+    if (!isValidIsoDate(start_date) || !isValidIsoDate(end_date)) {
+      return new Response(
+        JSON.stringify({ error: "start_date and end_date must be valid ISO dates (YYYY-MM-DD)" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (end_date < start_date) {
+      return new Response(
+        JSON.stringify({ error: "end_date must be greater than or equal to start_date" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    let safeLocation: string | undefined;
+    if (location !== undefined && location !== null && location !== "") {
+      if (!isSafeShortString(location, 200)) {
+        return new Response(
+          JSON.stringify({ error: "Invalid location" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      safeLocation = location as string;
     }
 
     const supabase = createClient(
@@ -48,8 +86,8 @@ Deno.serve(async (req) => {
         .eq("status", "available");
 
       // Filter by location if provided
-      if (location) {
-        vehicleQuery = vehicleQuery.eq("location", location);
+      if (safeLocation) {
+        vehicleQuery = vehicleQuery.eq("location", safeLocation);
       }
 
       const { data: vehicles, error: vehError } = await vehicleQuery;
@@ -66,14 +104,15 @@ Deno.serve(async (req) => {
       // Check which vehicles are NOT already reserved for overlapping dates
       const vehicleIds = vehicles.map((v) => v.id);
 
+      // Use chained filters instead of string interpolation in .or() to prevent
+      // PostgREST filter injection via user-supplied dates.
       const { data: reservations, error: resError } = await supabase
         .from("reservations")
         .select("vehicle_id")
         .in("vehicle_id", vehicleIds)
-        .not("status", "eq", "cancelled")
-        .or(
-          `and(start_date.lte.${end_date},end_date.gte.${start_date})`
-        );
+        .neq("status", "cancelled")
+        .lte("start_date", end_date)
+        .gte("end_date", start_date);
 
       if (resError) {
         console.error("Error fetching reservations:", resError);
@@ -103,9 +142,9 @@ Deno.serve(async (req) => {
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error:", error);
+    console.error("check-availability error:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An unexpected error occurred. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
