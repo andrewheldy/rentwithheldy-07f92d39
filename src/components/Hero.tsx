@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { MapPin, Star, Car, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-miami-skyline.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-[78vh] flex items-center justify-center bg-gradient-hero overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&h=900&fit=crop)",
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{ backgroundImage: `url(${heroImage})` }}
         aria-hidden
       />
+      <div className="absolute inset-0 bg-primary/40" aria-hidden />
 
       <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground py-16">
         <div className="max-w-4xl mx-auto">
