@@ -29,8 +29,38 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
       {list.map((v) => {
         const title = `${v.year} ${v.make} ${v.model}`;
         const image = v.images[0];
+        const productSchema = {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: title,
+          ...(image ? { image } : {}),
+          brand: { "@type": "Brand", name: v.make },
+          description: v.description,
+          category: "Car Rental",
+          offers: {
+            "@type": "Offer",
+            price: v.dailyRate,
+            priceCurrency: "USD",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: v.dailyRate,
+              priceCurrency: "USD",
+              unitCode: "DAY",
+            },
+            availability: "https://schema.org/InStock",
+            url: "https://rentwithheldy.com/book",
+            seller: {
+              "@type": "AutoRental",
+              name: "Rent With Heldy",
+            },
+          },
+        };
         return (
           <article key={v.id}>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+            />
             <Card className="overflow-hidden shadow-card-hover border-none h-full flex flex-col">
               <div className="relative aspect-[4/3] bg-muted">
                 {image ? (
