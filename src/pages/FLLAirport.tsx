@@ -51,7 +51,7 @@ const FLLAirport = () => (
           "All-Star Host with hundreds of five-star trips.",
           "Live online booking — what you see is what you drive.",
           "No surprise fees at return. The booking total is the total.",
-          "Direct line to Heldy throughout your trip — not a 1-800 number.",
+          "Direct line to our team throughout your trip — not a 1-800 number.",
           "Flexible on timing for early arrivals, delays, and late returns within reason.",
         ],
       },
