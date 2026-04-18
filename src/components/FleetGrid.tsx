@@ -103,9 +103,6 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                     <span className="flex items-center gap-1">
                       <Briefcase className="h-3.5 w-3.5" /> Bags
                     </span>
-                    <span className="ml-auto font-semibold text-foreground">
-                      ${v.dailyRate}/day
-                    </span>
                   </div>
                   <Link to="/book" className="mt-auto">
                     <Button className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90">
