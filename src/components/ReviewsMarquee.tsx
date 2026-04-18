@@ -1,43 +1,73 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Placeholder review cards — swap with real Turo screenshots/quotes provided by host.
+// Real Turo reviews from Rent With Heldy guests.
 const PLACEHOLDER_REVIEWS = [
   {
-    name: "Sample review",
-    location: "Fort Lauderdale, FL",
+    name: "Devario",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Heldy made the whole rental process effortless. Pickup was on time and the car was spotless. Will book again!",
+    text: "Amazing car! Great host. Will continue to rent from them each trip!",
   },
   {
-    name: "Sample review",
-    location: "Miami, FL",
+    name: "Amari",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Smooth communication, easy handoff at FLL, and a great-looking SUV for our beach week. Highly recommend.",
+    text: "Gary was an excellent host! Clean car and very responsive, definitely will book again!",
   },
   {
-    name: "Sample review",
-    location: "Aventura, FL",
+    name: "Susan",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Professional, responsive, and flexible with timing. The car drove perfectly. Five stars across the board.",
+    text: "Awesome! Thanks, great specific directions. No issues. Appreciate the tip about the gas station for refueling.",
   },
   {
-    name: "Sample review",
-    location: "Fort Lauderdale, FL",
+    name: "Madisol",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Booked last-minute for a business trip. Heldy got me on the road in under an hour. Excellent service.",
+    text: "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
   },
   {
-    name: "Sample review",
-    location: "Miami Beach, FL",
+    name: "Christopher",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Clean car, fair pricing, and zero stress. Exactly what you want from a private rental.",
+    text: "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
   },
   {
-    name: "Sample review",
-    location: "Hollywood, FL",
+    name: "Queen",
+    location: "Verified Turo guest",
     rating: 5,
-    text: "Top-tier All-Star Host. Communication was instant and the vehicle was as advertised.",
+    text: "Good host!! Great car, very clean!",
+  },
+  {
+    name: "Todd",
+    location: "Verified Turo guest",
+    rating: 5,
+    text: "Cool vehicle. Pleasure to drive. Thanks!",
+  },
+  {
+    name: "George",
+    location: "Verified Turo guest",
+    rating: 5,
+    text: "Amazing car and host!",
+  },
+  {
+    name: "Monique",
+    location: "Verified Turo guest",
+    rating: 5,
+    text: "Great customer service, even after dealing with some complications.",
+  },
+  {
+    name: "Reinah",
+    location: "Verified Turo guest",
+    rating: 5,
+    text: "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
+  },
+  {
+    name: "Ace",
+    location: "Verified Turo guest",
+    rating: 5,
+    text: "Great car will rent again next time I'm in Miami! Easy!",
   },
 ];
 
