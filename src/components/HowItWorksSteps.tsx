@@ -19,7 +19,7 @@ const STEPS = [
   {
     icon: ShieldCheck,
     title: "4. Drive supported",
-    body: "Direct line to Heldy the whole rental. Easy returns, clear communication, no surprises.",
+    body: "Direct line to our team the whole rental. Easy returns, clear communication, no surprises.",
   },
 ];
 

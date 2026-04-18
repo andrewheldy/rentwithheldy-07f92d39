@@ -25,7 +25,7 @@ const FAQS = [
   {
     question: "What happens after I book?",
     answer:
-      "Heldy will reach out to coordinate pickup details — exact location, time, and any vehicle prep notes. You'll have a direct line throughout your rental.",
+      "Our team will reach out to coordinate pickup details — exact location, time, and any vehicle prep notes. You'll have a direct line throughout your rental.",
   },
   {
     question: "What do I need to bring to pickup?",
@@ -116,10 +116,10 @@ const HowItWorks = () => {
 
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              3. Coordinate pickup with Heldy
+              3. Coordinate pickup with our team
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              After booking, Heldy will reach out directly to confirm pickup
+              After booking, our team will reach out directly to confirm pickup
               location and timing. We meet at convenient spots in Fort
               Lauderdale, Miami, or near FLL airport. If you're flying in,
               share your flight number and we'll plan around your arrival —
@@ -134,7 +134,7 @@ const HowItWorks = () => {
             <p className="text-muted-foreground leading-relaxed">
               At pickup we verify your license, walk the car together, hand
               over the keys, and you're on your way. Most handoffs take just
-              a few minutes. You'll have Heldy's direct number for the entire
+              a few minutes. You'll have our team's direct number for the entire
               rental — no 1-800 lines, no script-reading agents.
             </p>
           </div>
