@@ -25,9 +25,14 @@ const Footer = () => {
   const navigate = useNavigate();
   const { user, isAdmin, signOut } = useAuth();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleSignOut = async () => {
     await signOut();
     navigate("/");
+    scrollToTop();
   };
 
   return (
@@ -67,6 +72,7 @@ const Footer = () => {
                 <li key={l.to}>
                   <Link
                     to={l.to}
+                    onClick={scrollToTop}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {l.label}
@@ -84,6 +90,7 @@ const Footer = () => {
                 <li key={l.to}>
                   <Link
                     to={l.to}
+                    onClick={scrollToTop}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {l.label}
@@ -144,12 +151,14 @@ const Footer = () => {
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link
               to="/privacy"
+              onClick={scrollToTop}
               className="text-xs text-muted-foreground hover:text-primary"
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms"
+              onClick={scrollToTop}
               className="text-xs text-muted-foreground hover:text-primary"
             >
               Terms
@@ -157,6 +166,7 @@ const Footer = () => {
             {isAdmin && (
               <Link
                 to="/addcars"
+                onClick={scrollToTop}
                 className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1"
               >
                 <Settings className="h-3 w-3" />
@@ -174,6 +184,7 @@ const Footer = () => {
             ) : (
               <Link
                 to="/auth"
+                onClick={scrollToTop}
                 className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1"
               >
                 <LogIn className="h-3 w-3" />
