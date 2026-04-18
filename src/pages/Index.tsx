@@ -97,7 +97,19 @@ const Index = () => {
                 Loading fleet…
               </div>
             ) : (
-              <FleetGrid vehicles={featuredVehicles} limit={5} />
+              <>
+                <FleetGrid vehicles={featuredVehicles} limit={6} />
+                <div className="text-center mt-10">
+                  <Link to="/fleet">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                    >
+                      See More
+                    </Button>
+                  </Link>
+                </div>
+              </>
             )}
           </div>
         </section>
