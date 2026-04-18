@@ -25,9 +25,14 @@ const Footer = () => {
   const navigate = useNavigate();
   const { user, isAdmin, signOut } = useAuth();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleSignOut = async () => {
     await signOut();
     navigate("/");
+    scrollToTop();
   };
 
   return (
