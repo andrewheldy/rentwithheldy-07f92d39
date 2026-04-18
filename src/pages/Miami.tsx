@@ -41,7 +41,7 @@ const Miami = () => (
       {
         heading: "Pickup, delivery, and how we operate in Miami",
         paragraphs: [
-          "We coordinate pickup at a convenient meeting point. Once your reservation is confirmed, you get a direct line to Heldy to lock the exact spot and time. Most handoffs take just a few minutes — quick walk around the car, license check, keys, and you're driving.",
+          "We coordinate pickup at a convenient meeting point. Once your reservation is confirmed, you get a direct line to our team to lock the exact spot and time. Most handoffs take just a few minutes — quick walk around the car, license check, keys, and you're driving.",
           "If you're flying into FLL and driving down, or arriving at MIA, let us know your flight details after booking and we'll align timing. For multi-day Miami stays, we're flexible on returns within reason, and same-day extensions are usually possible if the car isn't already booked next.",
         ],
       },
