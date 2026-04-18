@@ -14,7 +14,7 @@ import {
 const FAQ = () => (
   <div className="min-h-screen bg-background">
     <SEO
-      title="Car Rental FAQs | Booking, Pickup & Requirements | Rent With Heldy"
+      title="Car Rental FAQs | Booking & Pickup | Rent With Heldy"
       description="Answers to common questions about renting a car with Rent With Heldy in Fort Lauderdale, Miami, and South Florida. Booking, pickup, requirements, and more."
       path="/faq"
       jsonLd={[
