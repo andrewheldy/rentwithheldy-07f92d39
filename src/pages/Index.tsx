@@ -49,6 +49,7 @@ const FEATURED_VEHICLE_IDS = [
   "673e22bd-8c1a-4885-bced-b767c95a8f26", // 2019 Audi Q5
   "5e6b4878-8651-4e13-92db-3a49935c5f30", // 2017 Chevrolet Suburban
   "a07cc53e-c6ba-4a96-9c1b-3bab668cbb5c", // 2015 Mercedes-Benz E350
+  "508c69ca-e2e7-4816-915b-45ea2a573bff", // 2019 Volkswagen Jetta (Red)
 ];
 
 const Index = () => {
@@ -96,7 +97,19 @@ const Index = () => {
                 Loading fleet…
               </div>
             ) : (
-              <FleetGrid vehicles={featuredVehicles} limit={5} />
+              <>
+                <FleetGrid vehicles={featuredVehicles} limit={6} />
+                <div className="text-center mt-10">
+                  <Link to="/fleet">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                    >
+                      See More
+                    </Button>
+                  </Link>
+                </div>
+              </>
             )}
           </div>
         </section>
