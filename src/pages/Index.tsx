@@ -96,7 +96,7 @@ const Index = () => {
                 Loading fleet…
               </div>
             ) : (
-              <FleetGrid vehicles={vehicles} limit={6} />
+              <FleetGrid vehicles={featuredVehicles} limit={5} />
             )}
           </div>
         </section>
