@@ -42,8 +42,20 @@ const WHY_US = [
   },
 ];
 
+// Hand-picked vehicle IDs to showcase on the homepage
+const FEATURED_VEHICLE_IDS = [
+  "044005d2-bb28-488d-95c9-53eedcfa53d3", // 2024 Audi Q5
+  "048ae247-6ce5-4d2a-bfc8-cf106afe78d5", // 2022 Audi A4
+  "673e22bd-8c1a-4885-bced-b767c95a8f26", // 2019 Audi Q5
+  "5e6b4878-8651-4e13-92db-3a49935c5f30", // 2017 Chevrolet Suburban
+  "a07cc53e-c6ba-4a96-9c1b-3bab668cbb5c", // 2015 Mercedes-Benz E350
+];
+
 const Index = () => {
   const { data: vehicles = [], isLoading } = useVehicles();
+  const featuredVehicles = FEATURED_VEHICLE_IDS
+    .map((id) => vehicles.find((v) => v.id === id))
+    .filter((v): v is NonNullable<typeof v> => Boolean(v));
   const faqPreview = GENERAL_FAQS.slice(0, 5);
 
   return (
