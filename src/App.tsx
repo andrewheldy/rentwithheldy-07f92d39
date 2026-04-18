@@ -10,6 +10,13 @@ import Confirmation from "./pages/Confirmation";
 import About from "./pages/About";
 import AddCar from "./pages/AddCar";
 import Auth from "./pages/Auth";
+import Fleet from "./pages/Fleet";
+import FortLauderdale from "./pages/FortLauderdale";
+import Miami from "./pages/Miami";
+import FLLAirport from "./pages/FLLAirport";
+import HowItWorks from "./pages/HowItWorks";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -25,21 +32,40 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/book" element={<Book />} />
-            <Route path="/confirmation/:reservationId" element={<Confirmation />} />
+            <Route path="/fleet" element={<Fleet />} />
+            <Route
+              path="/car-rental-fort-lauderdale"
+              element={<FortLauderdale />}
+            />
+            <Route path="/car-rental-miami" element={<Miami />} />
+            <Route
+              path="/fort-lauderdale-airport-car-rental"
+              element={<FLLAirport />}
+            />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/confirmation/:reservationId"
+              element={<Confirmation />}
+            />
             <Route path="/about" element={<About />} />
             <Route path="/auth" element={<Auth />} />
             {/* Redirect old routes */}
-            <Route path="/categories" element={<Navigate to="/book" replace />} />
-            <Route path="/reserve/:categorySlug" element={<Navigate to="/book" replace />} />
-            <Route path="/vehicles" element={<Navigate to="/book" replace />} />
-            <Route path="/vehicle/:id" element={<Navigate to="/book" replace />} />
-            <Route 
-              path="/addcars" 
+            <Route path="/categories" element={<Navigate to="/fleet" replace />} />
+            <Route
+              path="/reserve/:categorySlug"
+              element={<Navigate to="/book" replace />}
+            />
+            <Route path="/vehicles" element={<Navigate to="/fleet" replace />} />
+            <Route path="/vehicle/:id" element={<Navigate to="/fleet" replace />} />
+            <Route
+              path="/addcars"
               element={
                 <ProtectedRoute requireAdmin>
                   <AddCar />
                 </ProtectedRoute>
-              } 
+              }
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,125 +1,233 @@
 import { Link } from "react-router-dom";
-import { Car, Star, MapPin, Phone } from "lucide-react";
+import { Phone, ShieldCheck, Sparkles, Clock, MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import WheelbaseWidget from "@/components/WheelbaseWidget";
+import FleetGrid from "@/components/FleetGrid";
+import HowItWorksSteps from "@/components/HowItWorksSteps";
+import ServiceAreasGrid from "@/components/ServiceAreasGrid";
+import ReviewsMarquee from "@/components/ReviewsMarquee";
+import FAQAccordion from "@/components/FAQAccordion";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useVehicles } from "@/hooks/useVehicles";
+import { GENERAL_FAQS } from "@/data/faqs";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  localBusinessSchema,
+} from "@/lib/seo-schemas";
+
+const WHY_US = [
+  {
+    icon: ShieldCheck,
+    title: "Trusted local host",
+    body: "5-star All-Star Host with hundreds of trips across South Florida. Reliable cars, real support.",
+  },
+  {
+    icon: Sparkles,
+    title: "Curated premium fleet",
+    body: "Hand-picked sedans, SUVs, and luxury vehicles — clean, well-maintained, and trip-ready.",
+  },
+  {
+    icon: Clock,
+    title: "Easy, fast booking",
+    body: "Pick dates, see what's available, and confirm online in minutes. No counter, no surprises.",
+  },
+  {
+    icon: MapPin,
+    title: "Flexible pickup",
+    body: "Fort Lauderdale, Miami, and FLL airport. We coordinate the handoff around your schedule.",
+  },
+];
 
 const Index = () => {
+  const { data: vehicles = [], isLoading } = useVehicles();
+  const faqPreview = GENERAL_FAQS.slice(0, 5);
+
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Private Car Rental Fort Lauderdale & Miami | Rent With Heldy"
+        description="Book a private car rental in Fort Lauderdale, Miami, and South Florida. All-Star Host, premium fleet, FLL airport pickup. Easy online booking with Rent With Heldy."
+        path="/"
+        jsonLd={[
+          localBusinessSchema,
+          buildBreadcrumbSchema([{ name: "Home", path: "/" }]),
+          buildFaqSchema(faqPreview),
+        ]}
+      />
       <Header />
-      <Hero />
+      <main>
+        <Hero />
 
-      {/* Features Section */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Why Choose Rent with Heldy?
+        {/* Fleet preview */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+              <div>
+                <h2 className="text-3xl font-bold text-foreground mb-2">
+                  Featured vehicles
+                </h2>
+                <p className="text-muted-foreground max-w-xl">
+                  A peek at our most-booked rides. See live availability and the
+                  full fleet anytime.
+                </p>
+              </div>
+              <Link to="/fleet">
+                <Button variant="outline">View full fleet</Button>
+              </Link>
+            </div>
+            {isLoading ? (
+              <div className="text-center text-muted-foreground py-12">
+                Loading fleet…
+              </div>
+            ) : (
+              <FleetGrid vehicles={vehicles} limit={6} />
+            )}
+          </div>
+        </section>
+
+        {/* Why us */}
+        <section className="py-16 sm:py-20 bg-secondary">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                Why rent with Heldy
+              </h2>
+              <p className="text-muted-foreground">
+                Built for travelers and locals who want a smooth, premium
+                rental without the rental-counter hassle.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {WHY_US.map((w) => (
+                <Card key={w.title} className="border-none shadow-card-hover">
+                  <CardContent className="p-6">
+                    <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                      <w.icon className="h-6 w-6 text-primary-foreground" />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">{w.title}</h3>
+                    <p className="text-sm text-muted-foreground">{w.body}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                How it works
+              </h2>
+              <p className="text-muted-foreground">
+                Four simple steps from search to keys in hand.
+              </p>
+            </div>
+            <HowItWorksSteps />
+            <div className="text-center mt-10">
+              <Link to="/how-it-works">
+                <Button variant="outline">See full process</Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Service areas */}
+        <section className="py-16 sm:py-20 bg-secondary">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                Where we serve
+              </h2>
+              <p className="text-muted-foreground">
+                Local pickup across Fort Lauderdale, Miami, and Fort
+                Lauderdale-Hollywood International Airport.
+              </p>
+            </div>
+            <ServiceAreasGrid />
+          </div>
+        </section>
+
+        {/* Reviews marquee */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                What renters say
+              </h2>
+              <p className="text-muted-foreground">
+                Real feedback from travelers and locals across South Florida.
+              </p>
+            </div>
+          </div>
+          <ReviewsMarquee />
+        </section>
+
+        {/* FAQ preview */}
+        <section className="py-16 sm:py-20 bg-secondary">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                Frequently asked questions
+              </h2>
+              <p className="text-muted-foreground">
+                Quick answers to the most common rental questions.
+              </p>
+            </div>
+            <FAQAccordion items={faqPreview} />
+            <div className="text-center mt-8">
+              <Link to="/faq">
+                <Button variant="outline">See all FAQs</Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-16 sm:py-20 bg-gradient-hero relative overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-15"
+            style={{
+              backgroundImage:
+                "url(https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1600&h=800&fit=crop)",
+            }}
+            aria-hidden
+          />
+          <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to book your South Florida rental?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experience the difference with our premium car rental service
+            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+              Search live availability, lock in your dates, and meet your car
+              wherever works best.
             </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link to="/book">
+                <Button
+                  size="lg"
+                  className="bg-card text-primary hover:bg-card/90 text-base px-8 shadow-tropical"
+                >
+                  Book Now
+                </Button>
+              </Link>
+              <a href="tel:+15615198958">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                >
+                  <Phone className="h-5 w-5 mr-2" /> (561) 519-8958
+                </Button>
+              </a>
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center border-none shadow-card-hover">
-              <CardContent className="pt-8">
-                <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="h-8 w-8 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">All-Star Quality</h3>
-                <p className="text-muted-foreground">
-                  5-star rated vehicles with exceptional customer service and reliability you can trust.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-none shadow-card-hover">
-              <CardContent className="pt-8">
-                <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Car className="h-8 w-8 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">34+ Vehicles</h3>
-                <p className="text-muted-foreground">
-                  Choose from sedans, SUVs, luxury cars, and more — see exactly what's available for your dates.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-none shadow-card-hover">
-              <CardContent className="pt-8">
-                <div className="bg-gradient-tropical w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="h-8 w-8 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Local Expertise</h3>
-                <p className="text-muted-foreground">
-                  Based in South Florida with insider knowledge of Miami and Fort Lauderdale.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Widget */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Find Your Perfect Ride
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Search available dates and browse our full fleet of quality vehicles.
-              Book online in minutes.
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <WheelbaseWidget />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-hero relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&h=600&fit=crop)'
-          }}
-        />
-        <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
-          <h2 className="text-4xl font-bold mb-4">
-            Ready to Explore South Florida?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Book your perfect vehicle today and discover the beauty of Miami and Fort Lauderdale 
-            with the freedom and comfort you deserve.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/book">
-              <Button 
-                size="lg" 
-                className="bg-card text-primary hover:bg-card/90 text-lg px-8 py-3 shadow-tropical"
-              >
-                Browse Fleet
-              </Button>
-            </Link>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-3"
-            >
-              <Phone className="h-5 w-5 mr-2" />
-              (561) 519-8958
-            </Button>
-          </div>
-        </div>
-      </section>
-
+        </section>
+      </main>
       <Footer />
     </div>
   );
