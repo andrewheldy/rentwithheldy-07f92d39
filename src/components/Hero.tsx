@@ -1,52 +1,69 @@
 import { Link } from "react-router-dom";
-import { MapPin, Star, Car } from "lucide-react";
+import { MapPin, Star, Car, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-hero">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+    <section className="relative min-h-[78vh] flex items-center justify-center bg-gradient-hero overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&h=800&fit=crop)'
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&h=900&fit=crop)",
         }}
+        aria-hidden
       />
-      
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+
+      <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Premium Car Rentals in 
-            <span className="block text-yellow-200">South Florida</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Discover Miami and Fort Lauderdale with our fleet of quality vehicles. 
-            Search dates and book the exact car you want.
+          <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wide uppercase bg-primary-foreground/15 backdrop-blur px-3 py-1.5 rounded-full mb-6">
+            <Star className="h-3.5 w-3.5 fill-current" /> All-Star Host • 34+ Vehicles
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <div className="flex items-center space-x-2 text-lg">
-              <MapPin className="h-5 w-5 text-yellow-200" />
-              <span>Miami • Fort Lauderdale</span>
-            </div>
-            <div className="flex items-center space-x-2 text-lg">
-              <Car className="h-5 w-5 text-yellow-200" />
-              <span>34+ Vehicles</span>
-            </div>
-            <div className="flex items-center space-x-2 text-lg">
-              <Star className="h-5 w-5 fill-yellow-200 text-yellow-200" />
-              <span>All-Star Host</span>
-            </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Private Car Rentals in
+            <span className="block text-primary-foreground/90">
+              Fort Lauderdale &amp; Miami
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
+            Skip the rental counter. Book a hand-picked vehicle online in
+            minutes — flexible pickup, airport-friendly, and trusted across
+            South Florida.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+            <Link to="/book">
+              <Button
+                size="lg"
+                className="bg-card text-primary hover:bg-card/90 text-base px-8 shadow-tropical"
+              >
+                Book Now
+              </Button>
+            </Link>
+            <Link to="/fleet">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary text-base px-8"
+              >
+                View Fleet
+              </Button>
+            </Link>
           </div>
-          
-          <Link to="/book">
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-3 shadow-tropical"
-            >
-              Search Available Vehicles
-            </Button>
-          </Link>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/85">
+            <span className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" /> Miami • Fort Lauderdale
+            </span>
+            <span className="flex items-center gap-2">
+              <Plane className="h-4 w-4" /> FLL airport pickup
+            </span>
+            <span className="flex items-center gap-2">
+              <Car className="h-4 w-4" /> Curated premium fleet
+            </span>
+          </div>
         </div>
       </div>
     </section>
