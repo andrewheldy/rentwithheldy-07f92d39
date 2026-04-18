@@ -2,7 +2,7 @@ import LocationPageLayout from "@/components/LocationPageLayout";
 
 const FortLauderdale = () => (
   <LocationPageLayout
-    metaTitle="Car Rental Fort Lauderdale | Private Vehicle Rentals | Heldy"
+    metaTitle="Car Rental Fort Lauderdale | Rent With Heldy"
     metaDescription="Private car rental in Fort Lauderdale, FL. Premium fleet, easy online booking, flexible pickup. Trusted All-Star Host serving Broward County and beyond."
     path="/car-rental-fort-lauderdale"
     crumbLabel="Fort Lauderdale"

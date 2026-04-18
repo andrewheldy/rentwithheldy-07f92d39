@@ -26,7 +26,7 @@ const Fleet = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Our Fleet | Car & SUV Rentals in Fort Lauderdale and Miami"
-        description="Browse the Rent With Heldy fleet of sedans, SUVs, and premium vehicles available across Fort Lauderdale, Miami, and South Florida. See live options and book online."
+        description="Browse our sedans, SUVs, and premium vehicles for rent in Fort Lauderdale, Miami, and South Florida. See live availability and book online."
         path="/fleet"
         jsonLd={[
           localBusinessSchema,

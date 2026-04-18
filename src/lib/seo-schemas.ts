@@ -10,6 +10,9 @@ export const localBusinessSchema = {
   telephone: "+1-561-519-8958",
   email: "rentwithheldy@gmail.com",
   priceRange: "$$",
+  image:
+    "https://storage.googleapis.com/gpt-engineer-file-uploads/CSzZLopKzRX2s7Gn49LVhaLvLQH2/social-images/social-1770324920970-Share_image_website.PNG",
+  logo: "https://storage.googleapis.com/gpt-engineer-file-uploads/CSzZLopKzRX2s7Gn49LVhaLvLQH2/uploads/1770324874493-Vibrant_Miami_Car_Rental_Logo.png",
   areaServed: [
     { "@type": "City", name: "Fort Lauderdale" },
     { "@type": "City", name: "Miami" },

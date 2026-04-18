@@ -2,7 +2,7 @@ import LocationPageLayout from "@/components/LocationPageLayout";
 
 const Miami = () => (
   <LocationPageLayout
-    metaTitle="Car Rental Miami | Private & Premium Vehicle Rentals | Heldy"
+    metaTitle="Car Rental Miami | Premium Rentals | Rent With Heldy"
     metaDescription="Private car rental in Miami, FL. Sedans, SUVs, and premium vehicles for city driving, beach days, and business travel. Easy online booking with Rent With Heldy."
     path="/car-rental-miami"
     crumbLabel="Miami"

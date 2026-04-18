@@ -1,22 +1,41 @@
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Shield, MapPin, Clock, Phone, Mail } from "lucide-react";
+import {
+  buildBreadcrumbSchema,
+  localBusinessSchema,
+} from "@/lib/seo-schemas";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="About Rent With Heldy | South Florida Car Rentals"
+        description="Learn about Rent With Heldy — an All-Star Host providing premium private car rentals in Fort Lauderdale, Miami, and across South Florida."
+        path="/about"
+        jsonLd={[
+          localBusinessSchema,
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
+      />
       <Header />
-      
-      <main className="container mx-auto px-4 py-8">
+
+      <main className="flex-1 container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            About Rent with Heldy
+            About Rent With Heldy
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Your trusted partner for premium car rentals in South Florida. 
-            We're committed to providing exceptional service and quality vehicles 
+            Your trusted partner for premium car rentals in South Florida.
+            We're committed to providing exceptional service and quality vehicles
             for all your transportation needs.
           </p>
         </div>
@@ -26,9 +45,9 @@ const About = () => {
           <Card className="text-center">
             <CardContent className="pt-6">
               <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-6 w-6 text-white" />
+                <Shield className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Trusted & Reliable</h3>
+              <h2 className="font-semibold text-lg mb-2">Trusted & Reliable</h2>
               <p className="text-muted-foreground">
                 All-Star Host status with consistently high ratings from satisfied customers.
               </p>
@@ -38,11 +57,11 @@ const About = () => {
           <Card className="text-center">
             <CardContent className="pt-6">
               <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-white" />
+                <Star className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Premium Quality</h3>
+              <h2 className="font-semibold text-lg mb-2">Premium Quality</h2>
               <p className="text-muted-foreground">
-                Carefully maintained fleet of 25 vehicles ranging from economy to luxury.
+                Carefully maintained fleet of vehicles ranging from economy to luxury.
               </p>
             </CardContent>
           </Card>
@@ -50,9 +69,9 @@ const About = () => {
           <Card className="text-center">
             <CardContent className="pt-6">
               <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-6 w-6 text-white" />
+                <MapPin className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Local Expertise</h3>
+              <h2 className="font-semibold text-lg mb-2">Local Expertise</h2>
               <p className="text-muted-foreground">
                 Based in South Florida, we know the area and provide insider tips.
               </p>
@@ -66,21 +85,21 @@ const About = () => {
             <h2 className="text-3xl font-bold text-center mb-6">Our Story</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-4">
-                Founded with a passion for hospitality and a love for South Florida, 
-                Rent with Heldy has been serving travelers and locals alike with premium 
-                car rental services. What started as a small operation has grown into 
-                a trusted fleet of 25 carefully selected vehicles.
+                Founded with a passion for hospitality and a love for South Florida,
+                Rent With Heldy has been serving travelers and locals alike with premium
+                car rental services. What started as a small operation has grown into
+                a trusted fleet of carefully selected vehicles.
               </p>
               <p className="mb-4">
-                Our commitment to excellence has earned us All-Star Host status, 
-                reflecting our dedication to providing exceptional customer service 
-                and maintaining our vehicles to the highest standards. Whether you're 
-                visiting Miami's vibrant beaches or exploring Fort Lauderdale's canals, 
+                Our commitment to excellence has earned us All-Star Host status,
+                reflecting our dedication to providing exceptional customer service
+                and maintaining our vehicles to the highest standards. Whether you're
+                visiting Miami's vibrant beaches or exploring Fort Lauderdale's canals,
                 we have the perfect vehicle for your journey.
               </p>
               <p>
-                Every vehicle in our fleet is personally inspected and maintained to 
-                ensure your safety and comfort. We believe that your transportation 
+                Every vehicle in our fleet is personally inspected and maintained to
+                ensure your safety and comfort. We believe that your transportation
                 should be as memorable as your destination.
               </p>
             </div>
@@ -91,7 +110,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
+              <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
@@ -120,7 +139,7 @@ const About = () => {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-2xl font-bold mb-4">Service Areas</h3>
+              <h2 className="text-2xl font-bold mb-4">Service Areas</h2>
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5" />
@@ -141,14 +160,18 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              
-              <Button className="w-full mt-6 bg-gradient-tropical text-white">
-                Book Your Rental Today
-              </Button>
+
+              <Link to="/book" className="block mt-6">
+                <Button className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">
+                  Book Your Rental Today
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
