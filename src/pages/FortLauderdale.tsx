@@ -40,7 +40,7 @@ const FortLauderdale = () => (
       {
         heading: "Pickup, drop-off, and how we work in Fort Lauderdale",
         paragraphs: [
-          "We coordinate pickup at a convenient meeting point in the Fort Lauderdale area, including locations near the airport, Port Everglades, and major hotel zones. Once your reservation is confirmed, you'll get a direct line to Heldy to lock in the exact spot and time. Most handoffs take just a few minutes — verify the license, walk the car, get the keys, and you're driving.",
+          "We coordinate pickup at a convenient meeting point in the Fort Lauderdale area, including locations near the airport, Port Everglades, and major hotel zones. Once your reservation is confirmed, you'll get a direct line to our team to lock in the exact spot and time. Most handoffs take just a few minutes — verify the license, walk the car, get the keys, and you're driving.",
           "Returns work the same way in reverse. We're flexible on timing within reason, and if your plans shift mid-trip, message us early and we'll do our best to extend or adjust without drama.",
         ],
       },
