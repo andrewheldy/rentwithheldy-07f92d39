@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Car } from "lucide-react";
+import { Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
 
@@ -15,17 +15,19 @@ const Hero = () => {
             loading="eager"
           />
 
-          {/* Overlay CTAs positioned over the banner's text area */}
-          <div className="absolute inset-0 flex items-end sm:items-center">
-            <div className="w-full sm:w-1/2 sm:ml-[28%] px-4 pb-6 sm:pb-0 sm:pt-[18%] flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
-              <Link to="/book">
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-tropical text-base px-6"
-                >
-                  <Calendar className="h-5 w-5" /> Book Your Ride
-                </Button>
-              </Link>
+          {/*
+            Clickable hotspot over the "Book Your Ride" button printed in the
+            banner image. Positioned roughly where the button sits in the art.
+          */}
+          <Link
+            to="/book"
+            aria-label="Book Your Ride"
+            className="absolute left-[31%] top-[68%] w-[22%] h-[12%] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+          />
+
+          {/* Secondary CTA overlay */}
+          <div className="absolute inset-0 flex items-end justify-center sm:items-end sm:justify-start">
+            <div className="px-4 pb-4 sm:pb-6 sm:pl-[31%]">
               <Link to="/fleet">
                 <Button
                   size="lg"
