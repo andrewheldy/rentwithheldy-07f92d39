@@ -15,19 +15,9 @@ const Hero = () => {
             loading="eager"
           />
 
-          {/*
-            Clickable hotspot over the "Book Your Ride" button printed in the
-            banner image. Positioned roughly where the button sits in the art.
-          */}
-          <Link
-            to="/book"
-            aria-label="Book Your Ride"
-            className="absolute left-[31%] top-[68%] w-[22%] h-[12%] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
-          />
-
-          {/* Secondary CTA overlay */}
-          <div className="absolute inset-0 flex items-end justify-center sm:items-end sm:justify-start">
-            <div className="px-4 pb-4 sm:pb-6 sm:pl-[31%]">
+          {/* Secondary CTA overlay - pointer-events-none on wrapper so it doesn't block the hotspot */}
+          <div className="pointer-events-none absolute inset-0 flex items-end justify-center sm:items-end sm:justify-start">
+            <div className="pointer-events-auto px-4 pb-4 sm:pb-6 sm:pl-[31%]">
               <Link to="/fleet">
                 <Button
                   size="lg"
@@ -39,6 +29,16 @@ const Hero = () => {
               </Link>
             </div>
           </div>
+
+          {/*
+            Clickable hotspot over the "Book Your Ride" button printed in the
+            banner image. Rendered last so it sits on top of other overlays.
+          */}
+          <Link
+            to="/book"
+            aria-label="Book Your Ride"
+            className="absolute left-[31%] top-[68%] w-[22%] h-[12%] rounded-full z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+          />
         </div>
       </div>
     </section>
