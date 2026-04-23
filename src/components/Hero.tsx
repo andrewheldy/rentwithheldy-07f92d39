@@ -1,44 +1,40 @@
 import { Link } from "react-router-dom";
-import { Car } from "lucide-react";
+import { Car, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
 
 const Hero = () => {
   return (
     <section className="relative bg-background">
-      <div className="container mx-auto px-4 py-6 sm:py-10">
-        <div className="relative rounded-2xl overflow-hidden shadow-card-hover">
-          <img
-            src={heroBanner}
-            alt="Rent With Heldy — affordable car rentals in Miami and Fort Lauderdale"
-            className="w-full h-auto block"
-            loading="eager"
-          />
+      <div className="relative w-full overflow-hidden">
+        <img
+          src={heroBanner}
+          alt="Rent With Heldy — premium car rentals in Miami and Fort Lauderdale"
+          className="w-full h-auto block"
+          loading="eager"
+        />
 
-          {/* Secondary CTA overlay - pointer-events-none on wrapper so it doesn't block the hotspot */}
-          <div className="pointer-events-none absolute inset-0 flex items-end justify-center sm:items-end sm:justify-start">
-            <div className="pointer-events-auto px-4 pb-4 sm:pb-6 sm:pl-[31%]">
-              <Link to="/fleet">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-card/90 backdrop-blur border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base px-6"
-                >
-                  <Car className="h-5 w-5" /> View Fleet
-                </Button>
-              </Link>
-            </div>
+        {/* CTA buttons positioned under the central headline text */}
+        <div className="absolute inset-0 pointer-events-none flex">
+          <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 sm:left-[42%] sm:translate-x-0 top-[55%] sm:top-[58%] flex flex-col items-center sm:items-start gap-2 sm:gap-3">
+            <Link to="/book">
+              <Button
+                size="lg"
+                className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base px-5 sm:px-8 h-9 sm:h-11"
+              >
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Book Now
+              </Button>
+            </Link>
+            <Link to="/fleet">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-card/90 backdrop-blur border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm sm:text-base px-5 sm:px-8 h-9 sm:h-11"
+              >
+                <Car className="h-4 w-4 sm:h-5 sm:w-5" /> View Fleet
+              </Button>
+            </Link>
           </div>
-
-          {/*
-            Clickable hotspot over the "Book Your Ride" button printed in the
-            banner image. Rendered last so it sits on top of other overlays.
-          */}
-          <Link
-            to="/book"
-            aria-label="Book Your Ride"
-            className="absolute left-[31%] top-[68%] w-[22%] h-[12%] rounded-full z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
-          />
         </div>
       </div>
     </section>
