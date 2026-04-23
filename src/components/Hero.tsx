@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
 
       {/* CTA buttons below the hero image */}
-      <div className="container mx-auto px-4 pt-4 sm:pt-6">
+      <div className="container mx-auto px-4 pt-4 pb-0">
         <div className="flex flex-row items-center justify-center gap-3 sm:gap-4">
           <Link to="/book">
             <Button
