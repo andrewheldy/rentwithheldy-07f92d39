@@ -69,6 +69,7 @@ const ServicePageLayout = ({
   h1,
   intro,
   serviceContext,
+  verticalPath,
   defaultPassengerType,
   valueProps,
   coverageAreas = DEFAULT_COVERAGE,
