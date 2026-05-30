@@ -148,7 +148,7 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} defaultPassengerType={defaultPassengerType} />
+                <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
               </div>
             </div>
           </div>
