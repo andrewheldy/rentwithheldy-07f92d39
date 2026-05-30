@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
@@ -81,6 +81,31 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Service Areas</h4>
             <ul className="space-y-2">
               {locationLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Specialized Services */}
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">
+              Specialized Services
+            </h4>
+            <ul className="space-y-2">
+              {[
+                { to: "/insurance-replacement", label: "Insurance Replacement" },
+                { to: "/body-shop-delivery", label: "Body Shop Delivery" },
+                { to: "/cruise-port-delivery", label: "Cruise Port Delivery" },
+                { to: "/hotel-concierge-rentals", label: "Hotel Concierge Rentals" },
+                { to: "/loss-of-use-claims", label: "Loss of Use Claims" },
+              ].map((l) => (
                 <li key={l.to}>
                   <Link
                     to={l.to}

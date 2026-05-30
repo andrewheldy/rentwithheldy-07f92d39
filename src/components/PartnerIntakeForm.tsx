@@ -1,0 +1,132 @@
+import { useState } from "react";
+import { z } from "zod";
+import { Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
+
+const schema = z.object({
+  name: z.string().trim().min(2, "Enter your name").max(80),
+  company: z.string().trim().min(2, "Enter your company or firm").max(120),
+  claim: z.string().trim().max(80).optional(),
+  phone: z.string().trim().min(7, "Enter a valid phone").max(20),
+  location: z.string().trim().min(2, "Where do we deliver?").max(160),
+});
+
+interface PartnerIntakeFormProps {
+  serviceContext: string;
+  heading?: string;
+  subheading?: string;
+}
+
+const PartnerIntakeForm = ({
+  serviceContext,
+  heading = "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
+  subheading = "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
+}: PartnerIntakeFormProps) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const parsed = schema.safeParse({
+      name: fd.get("name"),
+      company: fd.get("company"),
+      claim: fd.get("claim") ?? "",
+      phone: fd.get("phone"),
+      location: fd.get("location"),
+    });
+    if (!parsed.success) {
+      toast({
+        title: "Please check your details",
+        description: parsed.error.issues[0]?.message ?? "Invalid input",
+        variant: "destructive",
+      });
+      return;
+    }
+    setSubmitting(true);
+    const { name, company, claim, phone, location } = parsed.data;
+    const subject = `Partner Intake — ${serviceContext}`;
+    const body = `Service: ${serviceContext}\nContact: ${name}\nCompany/Firm: ${company}\nClient Claim #: ${claim ?? ""}\nPhone: ${phone}\nDelivery Location: ${location}`;
+    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    toast({
+      title: "Opening your email",
+      description: "We'll confirm partner setup the same business day.",
+    });
+    setTimeout(() => setSubmitting(false), 1500);
+  };
+
+  return (
+    <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
+      <div className="px-6 py-5 border-b border-border flex items-start gap-3">
+        <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <Briefcase className="h-5 w-5 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg md:text-xl font-bold text-foreground">
+            {heading}
+          </h3>
+          <p className="text-sm text-muted-foreground mt-1">{subheading}</p>
+        </div>
+      </div>
+      <form
+        onSubmit={onSubmit}
+        className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4"
+      >
+        <div className="space-y-1.5">
+          <Label htmlFor="pi-name">Your Name</Label>
+          <Input id="pi-name" name="name" required maxLength={80} autoComplete="name" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="pi-company">Company / Firm</Label>
+          <Input
+            id="pi-company"
+            name="company"
+            required
+            maxLength={120}
+            autoComplete="organization"
+          />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="pi-claim">Client Claim # (optional)</Label>
+          <Input id="pi-claim" name="claim" maxLength={80} />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="pi-phone">Phone</Label>
+          <Input
+            id="pi-phone"
+            name="phone"
+            required
+            type="tel"
+            maxLength={20}
+            autoComplete="tel"
+            inputMode="tel"
+          />
+        </div>
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="pi-location">Delivery Location</Label>
+          <Input
+            id="pi-location"
+            name="location"
+            required
+            maxLength={160}
+            placeholder="Body shop, hotel, port, or address…"
+          />
+        </div>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={submitting}
+          className="sm:col-span-2 bg-primary text-primary-foreground hover:bg-primary/90"
+        >
+          {submitting ? "Opening…" : "Submit Partner Request"}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
+export default PartnerIntakeForm;
