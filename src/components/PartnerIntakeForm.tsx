@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(80),
@@ -16,18 +17,23 @@ const schema = z.object({
 
 interface PartnerIntakeFormProps {
   serviceContext: string;
+  verticalPath?: string;
   heading?: string;
   subheading?: string;
 }
 
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 const PartnerIntakeForm = ({
   serviceContext,
+  verticalPath,
   heading = "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
   subheading = "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
 }: PartnerIntakeFormProps) => {
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const parsed = schema.safeParse({
@@ -47,13 +53,39 @@ const PartnerIntakeForm = ({
     }
     setSubmitting(true);
     const { name, company, claim, phone, location } = parsed.data;
+    const path = verticalPath ?? slugify(serviceContext);
+
+    const { error: insertError } = await supabase.from("leads").insert({
+      form_type: "partner_intake",
+      vertical_path: path,
+      service_context: serviceContext,
+      name,
+      phone,
+      company,
+      claim_number: claim || null,
+      location,
+      user_agent:
+        typeof navigator !== "undefined" ? navigator.userAgent : null,
+    });
+
+    if (insertError) {
+      console.error("Partner lead insert failed", insertError);
+      toast({
+        title: "Couldn't save your request",
+        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        variant: "destructive",
+      });
+      setSubmitting(false);
+      return;
+    }
+
     const subject = `Partner Intake — ${serviceContext}`;
     const body = `Service: ${serviceContext}\nContact: ${name}\nCompany/Firm: ${company}\nClient Claim #: ${claim ?? ""}\nPhone: ${phone}\nDelivery Location: ${location}`;
     window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
     toast({
-      title: "Opening your email",
+      title: "Partner request logged",
       description: "We'll confirm partner setup the same business day.",
     });
     setTimeout(() => setSubmitting(false), 1500);
@@ -122,7 +154,7 @@ const PartnerIntakeForm = ({
           disabled={submitting}
           className="sm:col-span-2 bg-primary text-primary-foreground hover:bg-primary/90"
         >
-          {submitting ? "Opening…" : "Submit Partner Request"}
+          {submitting ? "Sending…" : "Submit Partner Request"}
         </Button>
       </form>
     </div>
