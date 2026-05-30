@@ -26,6 +26,7 @@ export type Database = {
           start_date: string
           status: string | null
           vehicle_id: string
+          vertical_path: string | null
         }
         Insert: {
           created_at?: string | null
@@ -38,6 +39,7 @@ export type Database = {
           start_date: string
           status?: string | null
           vehicle_id: string
+          vertical_path?: string | null
         }
         Update: {
           created_at?: string | null
@@ -50,6 +52,7 @@ export type Database = {
           start_date?: string
           status?: string | null
           vehicle_id?: string
+          vertical_path?: string | null
         }
         Relationships: [
           {
@@ -60,6 +63,105 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      event_logs: {
+        Row: {
+          created_at: string
+          entity_id: string | null
+          entity_type: string | null
+          event_type: string
+          id: string
+          message: string | null
+          metadata: Json
+          severity: string
+          vertical_path: string | null
+        }
+        Insert: {
+          created_at?: string
+          entity_id?: string | null
+          entity_type?: string | null
+          event_type: string
+          id?: string
+          message?: string | null
+          metadata?: Json
+          severity?: string
+          vertical_path?: string | null
+        }
+        Update: {
+          created_at?: string
+          entity_id?: string | null
+          entity_type?: string | null
+          event_type?: string
+          id?: string
+          message?: string | null
+          metadata?: Json
+          severity?: string
+          vertical_path?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          claim_number: string | null
+          company: string | null
+          created_at: string
+          email: string | null
+          form_type: string
+          id: string
+          location: string | null
+          name: string
+          needed_when: string | null
+          notes: string | null
+          passenger_type: string | null
+          phone: string
+          referred_by: string | null
+          service_context: string | null
+          status: string
+          updated_at: string
+          user_agent: string | null
+          vertical_path: string | null
+        }
+        Insert: {
+          claim_number?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          form_type: string
+          id?: string
+          location?: string | null
+          name: string
+          needed_when?: string | null
+          notes?: string | null
+          passenger_type?: string | null
+          phone: string
+          referred_by?: string | null
+          service_context?: string | null
+          status?: string
+          updated_at?: string
+          user_agent?: string | null
+          vertical_path?: string | null
+        }
+        Update: {
+          claim_number?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          form_type?: string
+          id?: string
+          location?: string | null
+          name?: string
+          needed_when?: string | null
+          notes?: string | null
+          passenger_type?: string | null
+          phone?: string
+          referred_by?: string | null
+          service_context?: string | null
+          status?: string
+          updated_at?: string
+          user_agent?: string | null
+          vertical_path?: string | null
+        }
+        Relationships: []
       }
       reservations: {
         Row: {
@@ -76,6 +178,7 @@ export type Database = {
           start_date: string
           status: string
           vehicle_id: string | null
+          vertical_path: string | null
         }
         Insert: {
           category_id: string
@@ -91,6 +194,7 @@ export type Database = {
           start_date: string
           status?: string
           vehicle_id?: string | null
+          vertical_path?: string | null
         }
         Update: {
           category_id?: string
@@ -106,6 +210,7 @@ export type Database = {
           start_date?: string
           status?: string
           vehicle_id?: string | null
+          vertical_path?: string | null
         }
         Relationships: [
           {

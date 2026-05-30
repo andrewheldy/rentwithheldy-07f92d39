@@ -11,6 +11,7 @@ const CruisePortDelivery = () => (
     h1="Curb-side Rentals at Port Everglades & PortMiami."
     intro="Step off your ship and into your car. We meet premium cruise travelers curb-side at the port with a clean, fully-prepped vehicle — no shuttle, no counter, no wasted vacation hours."
     serviceContext="Cruise Port Delivery"
+    verticalPath="cruise-port"
     defaultPassengerType="Cruise Passenger"
     valueProps={[
       {

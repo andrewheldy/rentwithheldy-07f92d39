@@ -94,6 +94,7 @@ const BookingDialog = ({
           start_date: format(startDate, "yyyy-MM-dd"),
           end_date: format(endDate, "yyyy-MM-dd"),
           message: message || null,
+          vertical_path: "vehicle-inquiry",
         });
 
       if (error) throw error;

@@ -29,6 +29,8 @@ interface ServicePageLayoutProps {
   intro: string;
   /** Service name used inside intake forms' subject lines */
   serviceContext: string;
+  /** Stable slug used in backend logs/leads (e.g. "body-shop", "cruise-port") */
+  verticalPath?: string;
   /** Pre-selected passenger type for the onboarding form on this page */
   defaultPassengerType?:
     | "Airport Traveler"
@@ -67,6 +69,7 @@ const ServicePageLayout = ({
   h1,
   intro,
   serviceContext,
+  verticalPath,
   defaultPassengerType,
   valueProps,
   coverageAreas = DEFAULT_COVERAGE,
@@ -145,7 +148,7 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} defaultPassengerType={defaultPassengerType} />
+                <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
               </div>
             </div>
           </div>
@@ -224,6 +227,7 @@ const ServicePageLayout = ({
           <div className="max-w-3xl mx-auto">
             <PartnerIntakeForm
               serviceContext={serviceContext}
+              verticalPath={verticalPath}
               heading={partnerHeading}
               subheading={partnerSubheading}
             />

@@ -9,6 +9,7 @@ import Book from "./pages/Book";
 import Confirmation from "./pages/Confirmation";
 import About from "./pages/About";
 import AddCar from "./pages/AddCar";
+import AdminLeads from "./pages/AdminLeads";
 import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
@@ -80,6 +81,14 @@ const App = () => (
               element={
                 <ProtectedRoute requireAdmin>
                   <AddCar />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/leads"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminLeads />
                 </ProtectedRoute>
               }
             />

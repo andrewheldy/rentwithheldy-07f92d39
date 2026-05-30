@@ -21,6 +21,35 @@ function isStr(s: unknown, min: number, max: number): s is string {
   return typeof s === "string" && s.trim().length >= min && s.length <= max;
 }
 
+const admin = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+async function logEvent(params: {
+  event_type: string;
+  entity_type?: string;
+  entity_id?: string | null;
+  vertical_path?: string | null;
+  severity?: "info" | "warn" | "error";
+  message?: string;
+  metadata?: Record<string, unknown>;
+}) {
+  try {
+    await admin.from("event_logs").insert({
+      event_type: params.event_type,
+      entity_type: params.entity_type ?? "reservation",
+      entity_id: params.entity_id ?? null,
+      vertical_path: params.vertical_path ?? null,
+      severity: params.severity ?? "info",
+      message: params.message ?? null,
+      metadata: params.metadata ?? {},
+    });
+  } catch (e) {
+    console.error("event_logs insert failed", e);
+  }
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -29,6 +58,11 @@ Deno.serve(async (req) => {
   try {
     const body = await req.json().catch(() => null);
     if (!body || typeof body !== "object") {
+      await logEvent({
+        event_type: "reservation.invalid_body",
+        severity: "warn",
+        message: "Invalid JSON body",
+      });
       return new Response(
         JSON.stringify({ error: "Invalid request body" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -44,9 +78,14 @@ Deno.serve(async (req) => {
       customer_name,
       customer_email,
       customer_phone,
+      vertical_path: rawVertical,
     } = body as Record<string, unknown>;
 
-    // Validate all inputs strictly
+    const vertical_path =
+      typeof rawVertical === "string" && rawVertical.length <= 60
+        ? rawVertical
+        : "direct";
+
     const errors: string[] = [];
     if (typeof category_id !== "string" || !UUID_RE.test(category_id)) errors.push("category_id");
     if (!isValidIsoDate(start_date)) errors.push("start_date");
@@ -58,6 +97,13 @@ Deno.serve(async (req) => {
     if (typeof customer_phone !== "string" || !PHONE_RE.test(customer_phone)) errors.push("customer_phone");
 
     if (errors.length > 0) {
+      await logEvent({
+        event_type: "reservation.validation_failed",
+        vertical_path,
+        severity: "warn",
+        message: `Invalid fields: ${errors.join(", ")}`,
+        metadata: { fields: errors },
+      });
       return new Response(
         JSON.stringify({ error: `Invalid or missing fields: ${errors.join(", ")}` }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -65,6 +111,13 @@ Deno.serve(async (req) => {
     }
 
     if ((end_date as string) < (start_date as string)) {
+      await logEvent({
+        event_type: "reservation.invalid_date_range",
+        vertical_path,
+        severity: "warn",
+        message: "end_date < start_date",
+        metadata: { start_date, end_date },
+      });
       return new Response(
         JSON.stringify({ error: "end_date must be greater than or equal to start_date" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -80,13 +133,7 @@ Deno.serve(async (req) => {
     const cemail = (customer_email as string).trim();
     const cphone = (customer_phone as string).trim();
 
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-    );
-
-    // Verify category exists and is active
-    const { data: category, error: catError } = await supabase
+    const { data: category, error: catError } = await admin
       .from("vehicle_categories")
       .select("*")
       .eq("id", cid)
@@ -94,25 +141,36 @@ Deno.serve(async (req) => {
       .single();
 
     if (catError || !category) {
+      await logEvent({
+        event_type: "reservation.invalid_category",
+        vertical_path,
+        severity: "warn",
+        message: "Category not found or inactive",
+        metadata: { category_id: cid },
+      });
       return new Response(
         JSON.stringify({ error: "Invalid or inactive category" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // Check availability for this category
-    const { data: vehicles, error: vehError } = await supabase
+    const { data: vehicles, error: vehError } = await admin
       .from("vehicles")
       .select("id")
       .eq("category_id", cid)
       .eq("status", "available")
       .eq("location", pickup);
 
-    if (vehError) {
-      throw vehError;
-    }
+    if (vehError) throw vehError;
 
     if (!vehicles || vehicles.length === 0) {
+      await logEvent({
+        event_type: "reservation.no_inventory",
+        vertical_path,
+        severity: "warn",
+        message: "No vehicles in category at location",
+        metadata: { category_id: cid, pickup },
+      });
       return new Response(
         JSON.stringify({ error: "No vehicles available in this category at this location" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -121,8 +179,7 @@ Deno.serve(async (req) => {
 
     const vehicleIds = vehicles.map((v) => v.id);
 
-    // Use chained filters to prevent PostgREST filter injection
-    const { data: reservations, error: resError } = await supabase
+    const { data: reservations, error: resError } = await admin
       .from("reservations")
       .select("vehicle_id")
       .in("vehicle_id", vehicleIds)
@@ -130,9 +187,7 @@ Deno.serve(async (req) => {
       .lte("start_date", ed)
       .gte("end_date", sd);
 
-    if (resError) {
-      throw resError;
-    }
+    if (resError) throw resError;
 
     const reservedVehicleIds = new Set(
       (reservations || []).map((r) => r.vehicle_id).filter(Boolean)
@@ -143,6 +198,13 @@ Deno.serve(async (req) => {
     );
 
     if (availableVehicleIds.length === 0) {
+      await logEvent({
+        event_type: "reservation.dates_unavailable",
+        vertical_path,
+        severity: "warn",
+        message: "All vehicles in category booked for dates",
+        metadata: { category_id: cid, start_date: sd, end_date: ed },
+      });
       return new Response(
         JSON.stringify({ error: "No vehicles available for the selected dates" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -151,7 +213,7 @@ Deno.serve(async (req) => {
 
     const assignedVehicleId = availableVehicleIds[0];
 
-    const { data: reservation, error: insertError } = await supabase
+    const { data: reservation, error: insertError } = await admin
       .from("reservations")
       .insert({
         category_id: cid,
@@ -165,15 +227,13 @@ Deno.serve(async (req) => {
         customer_phone: cphone,
         status: "confirmed",
         payment_status: "pending",
+        vertical_path,
       })
       .select()
       .single();
 
-    if (insertError) {
-      throw insertError;
-    }
+    if (insertError) throw insertError;
 
-    // Calculate price
     const startDateObj = new Date(sd);
     const endDateObj = new Date(ed);
     const days = Math.ceil(
@@ -190,6 +250,20 @@ Deno.serve(async (req) => {
       totalPrice = days * category.price_per_day;
     }
 
+    await logEvent({
+      event_type: "reservation.created",
+      entity_id: reservation.id,
+      vertical_path,
+      severity: "info",
+      message: `Reservation ${reservation.id} confirmed`,
+      metadata: {
+        category_id: cid,
+        vehicle_id: assignedVehicleId,
+        days,
+        total_price: totalPrice,
+      },
+    });
+
     return new Response(
       JSON.stringify({
         reservation,
@@ -201,6 +275,11 @@ Deno.serve(async (req) => {
     );
   } catch (error) {
     console.error("create-reservation error:", error);
+    await logEvent({
+      event_type: "reservation.exception",
+      severity: "error",
+      message: error instanceof Error ? error.message : String(error),
+    });
     return new Response(
       JSON.stringify({ error: "An unexpected error occurred. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }

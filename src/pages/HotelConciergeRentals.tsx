@@ -11,6 +11,7 @@ const HotelConciergeRentals = () => (
     h1="Premium Rentals, Delivered Right to Your Hotel."
     intro="Stay at the property. Skip the airport detour. We coordinate with your hotel valet for a smooth, white-glove rental hand-off — perfect for guests at Miami Beach, Brickell, Las Olas, and the Fort Lauderdale beachfront."
     serviceContext="Hotel Concierge Rental"
+    verticalPath="hotel"
     defaultPassengerType="Hotel Guest"
     valueProps={[
       {
