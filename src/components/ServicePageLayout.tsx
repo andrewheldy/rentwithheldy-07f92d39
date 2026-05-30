@@ -29,6 +29,15 @@ interface ServicePageLayoutProps {
   intro: string;
   /** Service name used inside intake forms' subject lines */
   serviceContext: string;
+  /** Pre-selected passenger type for the onboarding form on this page */
+  defaultPassengerType?:
+    | "Airport Traveler"
+    | "Cruise Passenger"
+    | "Hotel Guest"
+    | "Body Shop / Repair Customer"
+    | "Loss of Use / Legal Claim"
+    | "Local Resident"
+    | "Other";
   valueProps: ValueProp[];
   coverageAreas?: string[];
   partnerHeading?: string;
@@ -58,6 +67,7 @@ const ServicePageLayout = ({
   h1,
   intro,
   serviceContext,
+  defaultPassengerType,
   valueProps,
   coverageAreas = DEFAULT_COVERAGE,
   partnerHeading,
@@ -135,7 +145,7 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} />
+                <QuickQuoteForm serviceContext={serviceContext} defaultPassengerType={defaultPassengerType} />
               </div>
             </div>
           </div>
