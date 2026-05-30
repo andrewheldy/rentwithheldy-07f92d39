@@ -67,6 +67,7 @@ const ServicePageLayout = ({
   h1,
   intro,
   serviceContext,
+  defaultPassengerType,
   valueProps,
   coverageAreas = DEFAULT_COVERAGE,
   partnerHeading,
@@ -144,7 +145,7 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} />
+                <QuickQuoteForm serviceContext={serviceContext} defaultPassengerType={defaultPassengerType} />
               </div>
             </div>
           </div>
