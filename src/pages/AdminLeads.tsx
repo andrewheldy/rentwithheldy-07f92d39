@@ -229,7 +229,7 @@ const AdminLeads = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Admin · Leads & Inquiries" path="/admin/leads" />
+      <SEO title="Admin · Leads & Inquiries" description="Internal admin dashboard for leads, booking inquiries, and event logs." path="/admin/leads" />
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
