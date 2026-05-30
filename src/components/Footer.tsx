@@ -93,6 +93,31 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Specialized Services */}
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">
+              Specialized Services
+            </h4>
+            <ul className="space-y-2">
+              {[
+                { to: "/insurance-replacement", label: "Insurance Replacement" },
+                { to: "/body-shop-delivery", label: "Body Shop Delivery" },
+                { to: "/cruise-port-delivery", label: "Cruise Port Delivery" },
+                { to: "/hotel-concierge-rentals", label: "Hotel Concierge Rentals" },
+                { to: "/loss-of-use-claims", label: "Loss of Use Claims" },
+              ].map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact */}
           <div>
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
