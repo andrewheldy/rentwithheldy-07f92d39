@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const PASSENGER_TYPES = [
   "Airport Traveler",
@@ -37,20 +38,20 @@ const schema = z.object({
 });
 
 interface QuickQuoteFormProps {
-  /** Where the form is shown (used in the email subject) */
   serviceContext: string;
-  /** Heading shown above the form */
+  verticalPath?: string;
   title?: string;
-  /** Sub-heading shown above the form */
   subtitle?: string;
-  /** Button label */
   ctaLabel?: string;
-  /** Pre-selected passenger type for service-specific onboarding */
   defaultPassengerType?: (typeof PASSENGER_TYPES)[number];
 }
 
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 const QuickQuoteForm = ({
   serviceContext,
+  verticalPath,
   title = "Start Your Booking",
   subtitle = "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
   ctaLabel = "Get My Quick Quote",
@@ -61,7 +62,7 @@ const QuickQuoteForm = ({
     defaultPassengerType ?? ""
   );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const parsed = schema.safeParse({
@@ -83,14 +84,42 @@ const QuickQuoteForm = ({
     }
     setSubmitting(true);
     const { name, phone, location, when, notes, referredBy } = parsed.data;
+    const path = verticalPath ?? slugify(serviceContext);
+
+    const { error: insertError } = await supabase.from("leads").insert({
+      form_type: "quick_quote",
+      vertical_path: path,
+      service_context: serviceContext,
+      passenger_type: parsed.data.passengerType,
+      name,
+      phone,
+      location,
+      needed_when: when,
+      referred_by: referredBy || null,
+      notes: notes || null,
+      user_agent:
+        typeof navigator !== "undefined" ? navigator.userAgent : null,
+    });
+
+    if (insertError) {
+      console.error("Lead insert failed", insertError);
+      toast({
+        title: "Couldn't save your request",
+        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        variant: "destructive",
+      });
+      setSubmitting(false);
+      return;
+    }
+
     const subject = `Quick Quote — ${serviceContext} (${parsed.data.passengerType})`;
     const body = `Service: ${serviceContext}\nPassenger Type: ${parsed.data.passengerType}\nName: ${name}\nPhone: ${phone}\nDelivery Location: ${location}\nWhen: ${when}\nReferred By: ${referredBy ?? ""}\nNotes: ${notes ?? ""}`;
     window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
     toast({
-      title: "Opening your email",
-      description: "Send the message and we'll respond within minutes.",
+      title: "Got it — we've logged your request",
+      description: "We'll respond within minutes. Email draft opened as a backup.",
     });
     setTimeout(() => setSubmitting(false), 1500);
   };
@@ -106,10 +135,7 @@ const QuickQuoteForm = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5 sm:col-span-2">
             <Label htmlFor="qq-passenger">I am a…</Label>
-            <Select
-              value={passengerType}
-              onValueChange={setPassengerType}
-            >
+            <Select value={passengerType} onValueChange={setPassengerType}>
               <SelectTrigger id="qq-passenger" className="h-10">
                 <SelectValue placeholder="Select passenger type" />
               </SelectTrigger>
@@ -184,7 +210,7 @@ const QuickQuoteForm = ({
           disabled={submitting}
           className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
         >
-          {submitting ? "Opening…" : ctaLabel}
+          {submitting ? "Sending…" : ctaLabel}
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
