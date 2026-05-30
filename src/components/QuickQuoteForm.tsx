@@ -5,17 +5,34 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
+
+const PASSENGER_TYPES = [
+  "Airport Traveler",
+  "Cruise Passenger",
+  "Hotel Guest",
+  "Body Shop / Repair Customer",
+  "Loss of Use / Legal Claim",
+  "Local Resident",
+  "Other",
+] as const;
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(80),
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Enter a valid phone")
-    .max(20),
+  phone: z.string().trim().min(7, "Enter a valid phone").max(20),
+  passengerType: z.enum(PASSENGER_TYPES, {
+    errorMap: () => ({ message: "Select your passenger type" }),
+  }),
   location: z.string().trim().min(2, "Where should we deliver?").max(120),
   when: z.string().trim().min(2, "When do you need it?").max(80),
+  referredBy: z.string().trim().max(120).optional(),
   notes: z.string().trim().max(500).optional(),
 });
 
@@ -28,15 +45,21 @@ interface QuickQuoteFormProps {
   subtitle?: string;
   /** Button label */
   ctaLabel?: string;
+  /** Pre-selected passenger type for service-specific onboarding */
+  defaultPassengerType?: (typeof PASSENGER_TYPES)[number];
 }
 
 const QuickQuoteForm = ({
   serviceContext,
-  title = "Request Immediate Delivery",
-  subtitle = "Tell us where and when. We'll text you back fast with a quote.",
+  title = "Start Your Booking",
+  subtitle = "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
   ctaLabel = "Get My Quick Quote",
+  defaultPassengerType,
 }: QuickQuoteFormProps) => {
   const [submitting, setSubmitting] = useState(false);
+  const [passengerType, setPassengerType] = useState<string>(
+    defaultPassengerType ?? ""
+  );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,8 +67,10 @@ const QuickQuoteForm = ({
     const parsed = schema.safeParse({
       name: fd.get("name"),
       phone: fd.get("phone"),
+      passengerType,
       location: fd.get("location"),
       when: fd.get("when"),
+      referredBy: fd.get("referredBy") ?? "",
       notes: fd.get("notes") ?? "",
     });
     if (!parsed.success) {
@@ -57,9 +82,9 @@ const QuickQuoteForm = ({
       return;
     }
     setSubmitting(true);
-    const { name, phone, location, when, notes } = parsed.data;
-    const subject = `Quick Quote — ${serviceContext}`;
-    const body = `Service: ${serviceContext}\nName: ${name}\nPhone: ${phone}\nDelivery Location: ${location}\nWhen: ${when}\nNotes: ${notes ?? ""}`;
+    const { name, phone, location, when, notes, referredBy } = parsed.data;
+    const subject = `Quick Quote — ${serviceContext} (${parsed.data.passengerType})`;
+    const body = `Service: ${serviceContext}\nPassenger Type: ${parsed.data.passengerType}\nName: ${name}\nPhone: ${phone}\nDelivery Location: ${location}\nWhen: ${when}\nReferred By: ${referredBy ?? ""}\nNotes: ${notes ?? ""}`;
     window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -79,6 +104,24 @@ const QuickQuoteForm = ({
       <form onSubmit={onSubmit} className="p-6 space-y-4">
         <p className="text-sm text-muted-foreground">{subtitle}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1.5 sm:col-span-2">
+            <Label htmlFor="qq-passenger">I am a…</Label>
+            <Select
+              value={passengerType}
+              onValueChange={setPassengerType}
+            >
+              <SelectTrigger id="qq-passenger" className="h-10">
+                <SelectValue placeholder="Select passenger type" />
+              </SelectTrigger>
+              <SelectContent>
+                {PASSENGER_TYPES.map((p) => (
+                  <SelectItem key={p} value={p}>
+                    {p}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <div className="space-y-1.5">
             <Label htmlFor="qq-name">Full Name</Label>
             <Input id="qq-name" name="name" required maxLength={80} autoComplete="name" />
@@ -113,6 +156,15 @@ const QuickQuoteForm = ({
               required
               maxLength={80}
               placeholder="ASAP, today 4pm, Sat 6/14 morning…"
+            />
+          </div>
+          <div className="space-y-1.5 sm:col-span-2">
+            <Label htmlFor="qq-referredBy">Referred by (optional)</Label>
+            <Input
+              id="qq-referredBy"
+              name="referredBy"
+              maxLength={120}
+              placeholder="Hotel, body shop, attorney, friend, agent…"
             />
           </div>
           <div className="space-y-1.5 sm:col-span-2">

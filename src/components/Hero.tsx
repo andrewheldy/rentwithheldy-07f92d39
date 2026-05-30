@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
-import { Car, Calendar } from "lucide-react";
+import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
+
+const VERTICALS = [
+  { to: "/fort-lauderdale-airport-car-rental", label: "Airport", icon: Plane },
+  { to: "/cruise-port-delivery", label: "Cruise Port", icon: Anchor },
+  { to: "/hotel-concierge-rentals", label: "Hotel", icon: BedDouble },
+  { to: "/body-shop-delivery", label: "Body Shop", icon: Wrench },
+  { to: "/loss-of-use-claims", label: "Loss of Use", icon: FileText },
+];
 
 const Hero = () => {
   return (
@@ -36,6 +44,30 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
+
+        {/* Vertical service shortcuts */}
+        <nav
+          aria-label="Specialized services"
+          className="mt-6 sm:mt-8"
+        >
+          <ul className="grid grid-cols-5 gap-2 sm:gap-4 max-w-3xl mx-auto">
+            {VERTICALS.map(({ to, label, icon: Icon }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className="group flex flex-col items-center justify-start gap-2 rounded-xl border border-border bg-card p-2 sm:p-4 text-center transition-all hover:border-primary/60 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-tropical flex items-center justify-center shadow-tropical transition-transform group-hover:scale-105">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                  </span>
+                  <span className="text-[11px] sm:text-sm font-medium text-foreground leading-tight">
+                    {label}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   );

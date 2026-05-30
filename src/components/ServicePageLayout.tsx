@@ -29,6 +29,15 @@ interface ServicePageLayoutProps {
   intro: string;
   /** Service name used inside intake forms' subject lines */
   serviceContext: string;
+  /** Pre-selected passenger type for the onboarding form on this page */
+  defaultPassengerType?:
+    | "Airport Traveler"
+    | "Cruise Passenger"
+    | "Hotel Guest"
+    | "Body Shop / Repair Customer"
+    | "Loss of Use / Legal Claim"
+    | "Local Resident"
+    | "Other";
   valueProps: ValueProp[];
   coverageAreas?: string[];
   partnerHeading?: string;
