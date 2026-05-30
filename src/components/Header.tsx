@@ -22,9 +22,9 @@ const navItems = [
 
 const specializedServices = [
   {
-    to: "/insurance-replacement",
-    label: "Insurance Replacement",
-    description: "Car in the shop? Get a replacement delivered.",
+    to: "/fort-lauderdale-airport-car-rental",
+    label: "Airport Pickup (FLL)",
+    description: "Skip the counter — meet your car at the airport.",
   },
   {
     to: "/body-shop-delivery",

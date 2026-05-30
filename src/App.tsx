@@ -19,7 +19,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
-import InsuranceReplacement from "./pages/InsuranceReplacement";
+
 import BodyShopDelivery from "./pages/BodyShopDelivery";
 import CruisePortDelivery from "./pages/CruisePortDelivery";
 import HotelConciergeRentals from "./pages/HotelConciergeRentals";
@@ -56,7 +56,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/insurance-replacement" element={<InsuranceReplacement />} />
+            <Route path="/insurance-replacement" element={<Navigate to="/body-shop-delivery" replace />} />
             <Route path="/body-shop-delivery" element={<BodyShopDelivery />} />
             <Route path="/cruise-port-delivery" element={<CruisePortDelivery />} />
             <Route path="/hotel-concierge-rentals" element={<HotelConciergeRentals />} />

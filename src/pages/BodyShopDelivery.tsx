@@ -11,6 +11,7 @@ const BodyShopDelivery = () => (
     h1="Dropping Off at the Body Shop? We Meet You There With Your Rental."
     intro="Don't waste a half-day rideshare-ing to the airport for a counter rental. We'll meet you at the collision center with a clean, ready-to-drive replacement so you can hand off your car and keep going."
     serviceContext="Body Shop Delivery"
+    defaultPassengerType="Body Shop / Repair Customer"
     valueProps={[
       {
         icon: Truck,

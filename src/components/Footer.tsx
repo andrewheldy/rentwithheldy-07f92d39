@@ -100,7 +100,7 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               {[
-                { to: "/insurance-replacement", label: "Insurance Replacement" },
+                { to: "/fort-lauderdale-airport-car-rental", label: "Airport Pickup (FLL)" },
                 { to: "/body-shop-delivery", label: "Body Shop Delivery" },
                 { to: "/cruise-port-delivery", label: "Cruise Port Delivery" },
                 { to: "/hotel-concierge-rentals", label: "Hotel Concierge Rentals" },

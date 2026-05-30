@@ -11,6 +11,7 @@ const LossOfUseClaims = () => (
     h1="Loss of Use Rentals & Documentation for PI Attorneys."
     intro="A resource for personal injury attorneys, paralegals, and claimants navigating loss of use damages in South Florida. Fair daily rates, clean invoicing, and a real human on the phone when you need documentation."
     serviceContext="Loss of Use Claim"
+    defaultPassengerType="Loss of Use / Legal Claim"
     valueProps={[
       {
         icon: Scale,
