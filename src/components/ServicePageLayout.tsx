@@ -227,6 +227,7 @@ const ServicePageLayout = ({
           <div className="max-w-3xl mx-auto">
             <PartnerIntakeForm
               serviceContext={serviceContext}
+              verticalPath={verticalPath}
               heading={partnerHeading}
               subheading={partnerSubheading}
             />
