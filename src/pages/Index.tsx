@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, ShieldCheck, Sparkles, Clock, MapPin } from "lucide-react";
+import { Phone, ShieldCheck, Sparkles, Clock, MapPin, Key, ArrowRight, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
