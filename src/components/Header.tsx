@@ -69,33 +69,6 @@ const Header = () => {
                 {item.label}
               </NavLink>
             ))}
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className="text-sm font-medium text-foreground hover:text-primary transition-colors inline-flex items-center gap-1 outline-none focus-visible:text-primary">
-                Specialized Services
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-72 p-1"
-              >
-                {specializedServices.map((s) => (
-                  <DropdownMenuItem key={s.to} asChild>
-                    <Link
-                      to={s.to}
-                      className="flex flex-col items-start gap-0.5 px-3 py-2.5 cursor-pointer rounded-md"
-                    >
-                      <span className="text-sm font-medium text-foreground">
-                        {s.label}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {s.description}
-                      </span>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
           </nav>
 
           {/* CTAs */}
