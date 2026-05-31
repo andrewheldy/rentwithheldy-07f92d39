@@ -69,6 +69,26 @@ const RentToOwn = () => {
           </div>
         </section>
 
+        <section className="container mx-auto px-4 pt-12 md:pt-16 max-w-6xl">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Your journey to ownership
+            </h2>
+            <p className="text-muted-foreground">
+              Every qualifying payment builds equity and brings you closer to
+              owning your vehicle.
+            </p>
+          </div>
+          <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
+            <img
+              src={journeyImg}
+              alt="Drive-to-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
         <section className="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
