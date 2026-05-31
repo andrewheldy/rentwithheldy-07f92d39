@@ -119,27 +119,6 @@ const Header = () => {
                 </NavLink>
               ))}
 
-              <div className="mt-2 px-3 pt-3 border-t border-border">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                  Specialized Services
-                </p>
-                {specializedServices.map((s) => (
-                  <NavLink
-                    key={s.to}
-                    to={s.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-0 py-2 text-sm font-medium transition-colors ${
-                        isActive
-                          ? "text-primary"
-                          : "text-foreground hover:text-primary"
-                      }`
-                    }
-                  >
-                    {s.label}
-                  </NavLink>
-                ))}
-              </div>
 
               <a
                 href="tel:+15615198958"
