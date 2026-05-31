@@ -15,6 +15,7 @@ import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import LocalCarRentals from "./pages/LocalCarRentals";
 import RentToOwn from "./pages/RentToOwn";
+import DriveToOwn from "./pages/DriveToOwn";
 import FLLAirport from "./pages/FLLAirport";
 import HowItWorks from "./pages/HowItWorks";
 import FAQ from "./pages/FAQ";
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/local-car-rentals" element={<LocalCarRentals />} />
             <Route path="/car-rental-miami" element={<Navigate to="/local-car-rentals" replace />} />
             <Route path="/rent-to-own" element={<RentToOwn />} />
+            <Route path="/drive-to-own" element={<DriveToOwn />} />
             <Route
               path="/fort-lauderdale-airport-car-rental"
               element={<FLLAirport />}
