@@ -1,4 +1,5 @@
 import { useState } from "react";
+import journeyImg from "@/assets/journey-to-ownership.png";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
