@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import journeyImg from "@/assets/journey-to-ownership.png";
 
 const PLATFORMS = ["Uber", "Lyft", "Empower", "Uber Eats", "DoorDash"];
 
