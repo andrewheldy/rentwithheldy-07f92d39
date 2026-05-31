@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import journeyImg from "@/assets/journey-to-ownership.png";
 
 const PLATFORMS = ["Uber", "Lyft", "Empower", "Uber Eats", "DoorDash"];
 
@@ -65,6 +66,26 @@ const RentToOwn = () => {
               A new program built for Uber, Lyft, Empower, Uber Eats, and DoorDash
               drivers in South Florida. Drive it. Earn with it. Own it.
             </p>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 pt-12 md:pt-16 max-w-6xl">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Your journey to ownership
+            </h2>
+            <p className="text-muted-foreground">
+              Every qualifying payment builds equity and brings you closer to
+              owning your vehicle.
+            </p>
+          </div>
+          <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
+            <img
+              src={journeyImg}
+              alt="Drive-to-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
+              className="w-full h-auto block"
+              loading="lazy"
+            />
           </div>
         </section>
 
