@@ -213,6 +213,64 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Drive-to-Own teaser */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <Card className="border-none shadow-card-hover overflow-hidden bg-gradient-tropical">
+              <CardContent className="p-8 md:p-12 text-primary-foreground">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                      <Key className="h-3.5 w-3.5" /> Drive-to-Own Program
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
+                      Drive Today. Own Tomorrow.
+                    </h2>
+                    <p className="text-base md:text-lg text-primary-foreground/90 mb-6">
+                      For Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers.
+                      Every qualifying payment builds toward owning the vehicle
+                      you use to earn.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link to="/drive-to-own">
+                        <Button
+                          size="lg"
+                          className="bg-card text-primary hover:bg-card/90 shadow-tropical px-6"
+                        >
+                          Apply for Drive-to-Own
+                          <ArrowRight className="h-4 w-4 ml-1" />
+                        </Button>
+                      </Link>
+                      <Link to="/drive-to-own#how-it-works">
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                        >
+                          Learn How It Works
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                  <ul className="space-y-3 bg-primary-foreground/10 backdrop-blur rounded-xl p-6">
+                    {[
+                      "No large down payment",
+                      "Built for gig workers",
+                      "Track ownership progress",
+                      "Reliable maintenance support",
+                    ].map((t) => (
+                      <li key={t} className="flex items-center gap-3">
+                        <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                        <span className="text-sm md:text-base">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="py-16 sm:py-20 bg-gradient-hero relative overflow-hidden">
           <div
