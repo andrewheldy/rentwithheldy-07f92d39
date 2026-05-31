@@ -13,6 +13,8 @@ import logo from "@/assets/rent-with-heldy-logo.png";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/fleet", label: "Fleet" },
+  { to: "/fort-lauderdale-airport-car-rental", label: "Airport Rentals" },
+  { to: "/drive-to-own", label: "Drive-to-Own" },
   { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
   { to: "/local-car-rentals", label: "Local Rentals" },
   { to: "/how-it-works", label: "How It Works" },
