@@ -14,7 +14,7 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/fleet", label: "Fleet" },
   { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
-  { to: "/car-rental-miami", label: "Miami" },
+  { to: "/local-car-rentals", label: "Local Rentals" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
@@ -33,8 +33,8 @@ const specializedServices = [
   },
   {
     to: "/cruise-port-delivery",
-    label: "Cruise Port Delivery",
-    description: "Curb-side rentals at Port Everglades & PortMiami.",
+    label: "Cruise Port Pickup & Delivery",
+    description: "Curb-side rentals at Port Everglades & PortMiami (fee applies).",
   },
   {
     to: "/hotel-concierge-rentals",
@@ -45,6 +45,11 @@ const specializedServices = [
     to: "/loss-of-use-claims",
     label: "Loss of Use Claims",
     description: "Documentation for PI attorneys & paralegals.",
+  },
+  {
+    to: "/rent-to-own",
+    label: "Rent-to-Own (Coming Soon)",
+    description: "For Uber, Lyft, Empower, Uber Eats & DoorDash drivers.",
   },
 ];
 
