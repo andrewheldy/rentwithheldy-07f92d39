@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import logo from "@/assets/rent-with-heldy-logo.png";
 
 const navItems = [
@@ -15,44 +9,10 @@ const navItems = [
   { to: "/fleet", label: "Fleet" },
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport Rentals" },
   { to: "/drive-to-own", label: "Drive-to-Own" },
-  { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
   { to: "/local-car-rentals", label: "Local Rentals" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
-];
-
-const specializedServices = [
-  {
-    to: "/fort-lauderdale-airport-car-rental",
-    label: "Airport Pickup (FLL)",
-    description: "Skip the counter — meet your car at the airport.",
-  },
-  {
-    to: "/body-shop-delivery",
-    label: "Body Shop Delivery",
-    description: "We meet you at the collision center.",
-  },
-  {
-    to: "/cruise-port-delivery",
-    label: "Cruise Port Pickup & Delivery",
-    description: "Curb-side rentals at Port Everglades & PortMiami (fee applies).",
-  },
-  {
-    to: "/hotel-concierge-rentals",
-    label: "Hotel Concierge Rentals",
-    description: "Premium delivery to your hotel valet.",
-  },
-  {
-    to: "/loss-of-use-claims",
-    label: "Loss of Use Claims",
-    description: "Documentation for PI attorneys & paralegals.",
-  },
-  {
-    to: "/rent-to-own",
-    label: "Rent-to-Own (Coming Soon)",
-    description: "For Uber, Lyft, Empower, Uber Eats & DoorDash drivers.",
-  },
 ];
 
 const Header = () => {
