@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import logo from "@/assets/rent-with-heldy-logo.png";
 
 const navItems = [
@@ -15,44 +9,10 @@ const navItems = [
   { to: "/fleet", label: "Fleet" },
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport Rentals" },
   { to: "/drive-to-own", label: "Drive-to-Own" },
-  { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
   { to: "/local-car-rentals", label: "Local Rentals" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
-];
-
-const specializedServices = [
-  {
-    to: "/fort-lauderdale-airport-car-rental",
-    label: "Airport Pickup (FLL)",
-    description: "Skip the counter — meet your car at the airport.",
-  },
-  {
-    to: "/body-shop-delivery",
-    label: "Body Shop Delivery",
-    description: "We meet you at the collision center.",
-  },
-  {
-    to: "/cruise-port-delivery",
-    label: "Cruise Port Pickup & Delivery",
-    description: "Curb-side rentals at Port Everglades & PortMiami (fee applies).",
-  },
-  {
-    to: "/hotel-concierge-rentals",
-    label: "Hotel Concierge Rentals",
-    description: "Premium delivery to your hotel valet.",
-  },
-  {
-    to: "/loss-of-use-claims",
-    label: "Loss of Use Claims",
-    description: "Documentation for PI attorneys & paralegals.",
-  },
-  {
-    to: "/rent-to-own",
-    label: "Rent-to-Own (Coming Soon)",
-    description: "For Uber, Lyft, Empower, Uber Eats & DoorDash drivers.",
-  },
 ];
 
 const Header = () => {
@@ -109,33 +69,6 @@ const Header = () => {
                 {item.label}
               </NavLink>
             ))}
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className="text-sm font-medium text-foreground hover:text-primary transition-colors inline-flex items-center gap-1 outline-none focus-visible:text-primary">
-                Specialized Services
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-72 p-1"
-              >
-                {specializedServices.map((s) => (
-                  <DropdownMenuItem key={s.to} asChild>
-                    <Link
-                      to={s.to}
-                      className="flex flex-col items-start gap-0.5 px-3 py-2.5 cursor-pointer rounded-md"
-                    >
-                      <span className="text-sm font-medium text-foreground">
-                        {s.label}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {s.description}
-                      </span>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
           </nav>
 
           {/* CTAs */}
@@ -186,27 +119,6 @@ const Header = () => {
                 </NavLink>
               ))}
 
-              <div className="mt-2 px-3 pt-3 border-t border-border">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                  Specialized Services
-                </p>
-                {specializedServices.map((s) => (
-                  <NavLink
-                    key={s.to}
-                    to={s.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-0 py-2 text-sm font-medium transition-colors ${
-                        isActive
-                          ? "text-primary"
-                          : "text-foreground hover:text-primary"
-                      }`
-                    }
-                  >
-                    {s.label}
-                  </NavLink>
-                ))}
-              </div>
 
               <a
                 href="tel:+15615198958"

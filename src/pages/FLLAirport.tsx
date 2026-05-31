@@ -2,18 +2,25 @@ import LocationPageLayout from "@/components/LocationPageLayout";
 
 const FLLAirport = () => (
   <LocationPageLayout
-    metaTitle="Fort Lauderdale Airport Car Rental (FLL) | Rent With Heldy"
-    metaDescription="Skip the FLL rental counters. Fast, friendly Fort Lauderdale-Hollywood International Airport pickup with a premium private fleet. Book online today."
+    metaTitle="Airport Car Rentals: FLL & Miami International (MIA) | Rent With Heldy"
+    metaDescription="Skip the rental counters at Fort Lauderdale-Hollywood (FLL) and Miami International (MIA). Fast, friendly airport pickup with a premium private fleet."
     path="/fort-lauderdale-airport-car-rental"
-    crumbLabel="FLL Airport"
-    h1="Fort Lauderdale Airport (FLL) Car Rental"
-    intro="A faster, friendlier alternative to the airport rental counters at Fort Lauderdale-Hollywood International. Reserve online, message us your flight, and meet your car within minutes of landing."
+    crumbLabel="Airport Rentals"
+    h1="Airport Car Rentals — FLL & Miami International (MIA)"
+    intro="A faster, friendlier alternative to the airport rental counters at Fort Lauderdale-Hollywood International (FLL) and Miami International (MIA). Reserve online, message us your flight, and meet your car within minutes of landing."
     sections={[
       {
-        heading: "Skip the FLL counter line. Get on the road faster.",
+        heading: "Serving both FLL and Miami International (MIA)",
         paragraphs: [
-          "If you've ever landed at Fort Lauderdale-Hollywood International Airport (FLL) on a Friday afternoon, you know the routine: grab your bag, hike out to the rental center, queue behind 40 other travelers, listen to upsell pitches you didn't ask for, and finally get a car that may or may not match what you booked. Rent With Heldy is a cleaner option.",
-          "We're a private host serving travelers flying into FLL. You book online with a real vehicle and a real price, message us your flight details, and meet your car at a convenient pickup spot near the airport. No counter, no upsell, no surprise fees at return.",
+          "Whether you're landing at Fort Lauderdale-Hollywood International (FLL) or Miami International Airport (MIA), we coordinate a smooth meet-and-greet near the terminal so you can skip the rental counter entirely. Same price, same fleet, same direct line to our team — just pick the airport that fits your flight.",
+          "For MIA arrivals, we typically meet just off-airport for a quick handoff, then you're straight onto 836, 95, or the Dolphin. For FLL arrivals, pickup is right by the airport with easy access to I-95, 595, and Port Everglades.",
+        ],
+      },
+      {
+        heading: "Skip the airport counter line. Get on the road faster.",
+        paragraphs: [
+          "If you've ever landed at FLL or MIA on a Friday afternoon, you know the routine: grab your bag, hike out to the rental center, queue behind 40 other travelers, listen to upsell pitches you didn't ask for, and finally get a car that may or may not match what you booked. Rent With Heldy is a cleaner option.",
+          "We're a private host serving travelers flying into South Florida. You book online with a real vehicle and a real price, message us your flight details, and meet your car at a convenient pickup spot near the airport. No counter, no upsell, no surprise fees at return.",
         ],
       },
       {

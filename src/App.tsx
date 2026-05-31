@@ -13,6 +13,7 @@ import AdminLeads from "./pages/AdminLeads";
 import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
+import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
 import RentToOwn from "./pages/RentToOwn";
 import DriveToOwn from "./pages/DriveToOwn";
@@ -50,7 +51,7 @@ const App = () => (
               element={<FortLauderdale />}
             />
             <Route path="/local-car-rentals" element={<LocalCarRentals />} />
-            <Route path="/car-rental-miami" element={<Navigate to="/local-car-rentals" replace />} />
+            <Route path="/car-rental-miami" element={<Miami />} />
             <Route path="/rent-to-own" element={<RentToOwn />} />
             <Route path="/drive-to-own" element={<DriveToOwn />} />
             <Route

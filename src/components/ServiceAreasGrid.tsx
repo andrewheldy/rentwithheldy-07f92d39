@@ -10,6 +10,12 @@ const AREAS = [
     body: "Beach trips, business travel, and local errands across Broward County. Easy pickup, dependable cars.",
   },
   {
+    to: "/car-rental-miami",
+    icon: MapPin,
+    title: "Car Rental Miami",
+    body: "Serving Miami-Dade with a premium private fleet — beaches, downtown, Brickell, Aventura, and everywhere between.",
+  },
+  {
     to: "/local-car-rentals",
     icon: Briefcase,
     title: "Local Car Rentals",
