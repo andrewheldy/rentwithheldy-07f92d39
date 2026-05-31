@@ -105,6 +105,7 @@ const Footer = () => {
                 { to: "/cruise-port-delivery", label: "Cruise Port Pickup & Delivery" },
                 { to: "/hotel-concierge-rentals", label: "Hotel Concierge Rentals" },
                 { to: "/loss-of-use-claims", label: "Loss of Use Claims" },
+                { to: "/drive-to-own", label: "Drive-to-Own Program" },
                 { to: "/rent-to-own", label: "Rent-to-Own (Coming Soon)" },
               ].map((l) => (
                 <li key={l.to}>
