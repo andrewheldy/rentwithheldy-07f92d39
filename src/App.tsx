@@ -52,6 +52,7 @@ const App = () => (
             <Route path="/local-car-rentals" element={<LocalCarRentals />} />
             <Route path="/car-rental-miami" element={<Navigate to="/local-car-rentals" replace />} />
             <Route path="/rent-to-own" element={<RentToOwn />} />
+            <Route path="/drive-to-own" element={<DriveToOwn />} />
             <Route
               path="/fort-lauderdale-airport-car-rental"
               element={<FLLAirport />}
