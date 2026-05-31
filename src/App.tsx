@@ -13,6 +13,7 @@ import AdminLeads from "./pages/AdminLeads";
 import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
+import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
 import RentToOwn from "./pages/RentToOwn";
 import DriveToOwn from "./pages/DriveToOwn";
