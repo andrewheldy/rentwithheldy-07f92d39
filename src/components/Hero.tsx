@@ -37,8 +37,7 @@ const Hero = () => {
           <Link to="/fleet">
             <Button
               size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-11"
+              className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-11"
             >
               <Car className="h-4 w-4 sm:h-5 sm:w-5" /> View Fleet
             </Button>
