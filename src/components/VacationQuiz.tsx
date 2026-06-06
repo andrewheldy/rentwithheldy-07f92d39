@@ -29,8 +29,9 @@ const TIERS: Record<SizeTier["key"], SizeTier> = {
 // Heuristic classifier — keeps logic in the frontend
 const classify = (v: Vehicle): SizeTier["key"] => {
   const m = `${v.make} ${v.model}`.toLowerCase();
-  if (/(suburban|tahoe|expedition|yukon|sequoia|pilot|highlander|telluride|palisade|atlas|traverse)/.test(m)) return "fullsuv";
-  if (/(q5|q7|crv|cr-v|rav4|edge|equinox|forester|renegade|taos|tucson|escape|cherokee)/.test(m) || /suv/.test(v.description?.toLowerCase() || "")) return "suv";
+  // Q7 is a 3-row full-size SUV
+  if (/(suburban|tahoe|expedition|yukon|sequoia|pilot|highlander|telluride|palisade|atlas|traverse|q7|navigator|escalade|armada)/.test(m)) return "fullsuv";
+  if (/(q5|crv|cr-v|rav4|edge|equinox|forester|renegade|taos|tucson|escape|cherokee)/.test(m) || /suv/.test(v.description?.toLowerCase() || "")) return "suv";
   if (/(fit|soul|corolla|civic|jetta|sentra|versa)/.test(m)) return "compact";
   return "midsize";
 };
@@ -68,6 +69,8 @@ const VacationQuiz = () => {
   const matches = useMemo(() => {
     if (!tierKey) return [];
     const exact = vehicles.filter((v) => classify(v) === tierKey);
+    // For 7+ travelers, never downgrade — only show full-size SUVs (Suburban, Tahoe, Yukon, Atlas, etc.)
+    if (tierKey === "fullsuv") return exact.slice(0, 6);
     if (exact.length >= 3) return exact.slice(0, 6);
     // widen to adjacent tiers if thin
     const order: SizeTier["key"][] = ["compact", "midsize", "suv", "fullsuv"];
