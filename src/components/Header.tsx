@@ -8,6 +8,7 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/fleet", label: "Fleet" },
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport Rentals" },
+  { to: "/trip-planner", label: "Trip Planner" },
   { to: "/drive-to-own", label: "Drive-to-Own" },
   { to: "/local-car-rentals", label: "Local Rentals" },
   { to: "/how-it-works", label: "How It Works" },

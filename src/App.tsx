@@ -17,6 +17,7 @@ import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
 import RentToOwn from "./pages/RentToOwn";
 import DriveToOwn from "./pages/DriveToOwn";
+import TripPlanner from "./pages/TripPlanner";
 import FLLAirport from "./pages/FLLAirport";
 import HowItWorks from "./pages/HowItWorks";
 import FAQ from "./pages/FAQ";
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/rent-to-own" element={<RentToOwn />} />
             <Route path="/drive-to-own" element={<DriveToOwn />} />
             <Route path="/chariot" element={<DriveToOwn />} />
+            <Route path="/trip-planner" element={<TripPlanner />} />
             <Route
               path="/fort-lauderdale-airport-car-rental"
               element={<FLLAirport />}
