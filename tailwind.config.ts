@@ -76,6 +76,7 @@ export default {
 			boxShadow: {
 				'tropical': 'var(--shadow-tropical)',
 				'card-hover': 'var(--shadow-card)',
+				'complementary': 'var(--shadow-complementary)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
