@@ -69,6 +69,8 @@ const VacationQuiz = () => {
   const matches = useMemo(() => {
     if (!tierKey) return [];
     const exact = vehicles.filter((v) => classify(v) === tierKey);
+    // For 7+ travelers, never downgrade — only show full-size SUVs (Suburban, Tahoe, Yukon, Atlas, etc.)
+    if (tierKey === "fullsuv") return exact.slice(0, 6);
     if (exact.length >= 3) return exact.slice(0, 6);
     // widen to adjacent tiers if thin
     const order: SizeTier["key"][] = ["compact", "midsize", "suv", "fullsuv"];
