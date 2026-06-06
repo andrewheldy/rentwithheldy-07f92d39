@@ -41,6 +41,12 @@ All colors MUST be HSL.
     --brand-secondary: 42 100% 97%;
     --brand-accent: 35 75% 85%;
     
+    /* Complementary coral/sunset for high-contrast CTAs */
+    --complementary: 15 85% 55%;
+    --complementary-foreground: 0 0% 100%;
+    --gradient-complementary: linear-gradient(135deg, hsl(15 85% 55%), hsl(25 90% 60%));
+    --shadow-complementary: 0 10px 40px -10px hsl(15 85% 55% / 0.35);
+    
     /* Gradients */
     --gradient-tropical: linear-gradient(135deg, hsl(180 85% 45%), hsl(170 80% 50%));
     --gradient-hero: linear-gradient(135deg, hsl(180 85% 45% / 0.95), hsl(170 80% 50% / 0.95));
