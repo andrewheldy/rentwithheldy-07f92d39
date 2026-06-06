@@ -213,6 +213,52 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Trip planner teaser */}
+        <section className="py-16 sm:py-20">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <Card className="border-none shadow-card-hover overflow-hidden">
+              <CardContent className="p-8 md:p-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                      <Sparkles className="h-3.5 w-3.5" /> Trip Planner
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
+                      Traveling? We'll match the right car.
+                    </h2>
+                    <p className="text-base md:text-lg text-muted-foreground mb-6">
+                      Tell us how many people, how much luggage, and your trip
+                      vibe — we'll recommend the right size and show you what's
+                      available in our fleet.
+                    </p>
+                    <Link to="/trip-planner">
+                      <Button
+                        size="lg"
+                        className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                      >
+                        Find My Car <ArrowRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </Link>
+                  </div>
+                  <ul className="space-y-3 bg-secondary rounded-xl p-6">
+                    {[
+                      "Sized for your party and luggage",
+                      "Filtered to vehicles we actually have",
+                      "Takes under 30 seconds",
+                      "No account required",
+                    ].map((t) => (
+                      <li key={t} className="flex items-center gap-3">
+                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-sm md:text-base text-foreground">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* Drive-to-Own teaser */}
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4 max-w-6xl">
