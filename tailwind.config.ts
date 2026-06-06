@@ -57,6 +57,10 @@ export default {
 					secondary: 'hsl(var(--brand-secondary))',
 					accent: 'hsl(var(--brand-accent))'
 				},
+				complementary: {
+					DEFAULT: 'hsl(var(--complementary))',
+					foreground: 'hsl(var(--complementary-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
