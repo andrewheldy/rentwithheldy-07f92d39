@@ -10,6 +10,7 @@ import Confirmation from "./pages/Confirmation";
 import About from "./pages/About";
 import AddCar from "./pages/AddCar";
 import AdminLeads from "./pages/AdminLeads";
+import AdminPhotos from "./pages/AdminPhotos";
 import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
@@ -98,6 +99,14 @@ const App = () => (
               element={
                 <ProtectedRoute requireAdmin>
                   <AdminLeads />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/photos"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminPhotos />
                 </ProtectedRoute>
               }
             />
