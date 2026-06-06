@@ -126,7 +126,7 @@ const DriveToOwn = () => {
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
       passenger_type: "Rideshare / Delivery Driver",
-      message: `Drive-to-Own application. Platforms: ${
+      notes: `Drive-to-Own application. Platforms: ${
         platforms.join(", ") || "Not specified"
       }. Notes: ${String(fd.get("notes") || "")}`,
     };
