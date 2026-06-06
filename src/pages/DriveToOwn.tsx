@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DriveToOwnQuiz from "@/components/DriveToOwnQuiz";
 import journeyImg from "@/assets/journey-to-ownership.png";
 import { Link } from "react-router-dom";
 import {
@@ -179,12 +180,12 @@ const DriveToOwn = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-              <a href="#apply">
+              <a href="#quiz">
                 <Button
                   size="lg"
                   className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
                 >
-                  Apply for Drive-to-Own
+                  Find My Match
                   <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </a>
@@ -215,8 +216,13 @@ const DriveToOwn = () => {
           </div>
         </section>
 
+        {/* QUIZ */}
+        <section id="quiz" className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
+          <DriveToOwnQuiz />
+        </section>
+
         {/* JOURNEY TO OWNERSHIP */}
-        <section className="container mx-auto px-4 py-12 md:py-16 max-w-6xl">
+        <section className="container mx-auto px-4 pb-12 md:pb-16 max-w-6xl">
           <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
             <img
               src={journeyImg}
