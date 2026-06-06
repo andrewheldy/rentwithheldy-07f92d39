@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText } from "lucide-react";
+import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText, Key } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
 
@@ -66,6 +66,20 @@ const Hero = () => {
               </li>
             ))}
           </ul>
+
+          {/* Rent to Own CTA for rideshare & delivery drivers */}
+          <div className="mt-4 sm:mt-6 flex justify-center">
+            <Link to="/drive-to-own" className="w-full max-w-3xl">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full border-primary/40 bg-card hover:bg-gradient-tropical hover:text-primary-foreground hover:border-transparent transition-all shadow-card-hover h-12 sm:h-14 text-sm sm:text-base font-semibold"
+              >
+                <Key className="h-4 w-4 sm:h-5 sm:w-5" />
+                Rent to Own — For Rideshare & Delivery Drivers
+              </Button>
+            </Link>
+          </div>
         </nav>
       </div>
     </section>
