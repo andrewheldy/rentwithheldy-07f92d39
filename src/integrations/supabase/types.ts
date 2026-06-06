@@ -326,13 +326,19 @@ export type Database = {
           category_id: string | null
           color: string
           created_at: string | null
+          current_mileage: number | null
           daily_rate: number
           date_added: string | null
+          delivery_fee_fll_airport: number | null
+          delivery_fee_mia_airport: number | null
+          delivery_fee_port_everglades: number | null
+          delivery_fee_port_miami: number | null
           description: string
           features: string[] | null
           host_type: string | null
           id: string
           initial_mileage: number | null
+          last_oil_change_date: string | null
           license_plate: string | null
           location: string | null
           make: string
@@ -349,13 +355,19 @@ export type Database = {
           category_id?: string | null
           color: string
           created_at?: string | null
+          current_mileage?: number | null
           daily_rate: number
           date_added?: string | null
+          delivery_fee_fll_airport?: number | null
+          delivery_fee_mia_airport?: number | null
+          delivery_fee_port_everglades?: number | null
+          delivery_fee_port_miami?: number | null
           description: string
           features?: string[] | null
           host_type?: string | null
           id?: string
           initial_mileage?: number | null
+          last_oil_change_date?: string | null
           license_plate?: string | null
           location?: string | null
           make: string
@@ -372,13 +384,19 @@ export type Database = {
           category_id?: string | null
           color?: string
           created_at?: string | null
+          current_mileage?: number | null
           daily_rate?: number
           date_added?: string | null
+          delivery_fee_fll_airport?: number | null
+          delivery_fee_mia_airport?: number | null
+          delivery_fee_port_everglades?: number | null
+          delivery_fee_port_miami?: number | null
           description?: string
           features?: string[] | null
           host_type?: string | null
           id?: string
           initial_mileage?: number | null
+          last_oil_change_date?: string | null
           license_plate?: string | null
           location?: string | null
           make?: string
