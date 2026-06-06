@@ -180,12 +180,12 @@ const DriveToOwn = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-              <a href="#apply">
+              <a href="#quiz">
                 <Button
                   size="lg"
                   className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
                 >
-                  Apply for Drive-to-Own
+                  Find My Match
                   <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </a>
