@@ -216,8 +216,13 @@ const DriveToOwn = () => {
           </div>
         </section>
 
+        {/* QUIZ */}
+        <section id="quiz" className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
+          <DriveToOwnQuiz />
+        </section>
+
         {/* JOURNEY TO OWNERSHIP */}
-        <section className="container mx-auto px-4 py-12 md:py-16 max-w-6xl">
+        <section className="container mx-auto px-4 pb-12 md:pb-16 max-w-6xl">
           <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
             <img
               src={journeyImg}
