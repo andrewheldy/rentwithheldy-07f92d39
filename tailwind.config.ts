@@ -71,6 +71,7 @@ export default {
 			backgroundImage: {
 				'gradient-tropical': 'var(--gradient-tropical)',
 				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-complementary': 'var(--gradient-complementary)',
 			},
 			boxShadow: {
 				'tropical': 'var(--shadow-tropical)',
