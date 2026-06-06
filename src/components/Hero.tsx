@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText, Key } from "lucide-react";
+import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText, Key, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
 
@@ -34,12 +34,12 @@ const Hero = () => {
               <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Book Now
             </Button>
           </Link>
-          <Link to="/drive-to-own">
+          <Link to="/trip-planner">
             <Button
               size="lg"
               className="bg-gradient-complementary text-complementary-foreground hover:opacity-90 shadow-complementary text-sm sm:text-base px-5 sm:px-8 h-10 sm:h-11"
             >
-              <Key className="h-4 w-4 sm:h-5 sm:w-5" /> Rent to Own
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5" /> What Car Fits My Trip?
             </Button>
           </Link>
           <Link to="/fleet">
