@@ -16,8 +16,8 @@ const locationLinks = [
   { to: "/car-rental-fort-lauderdale", label: "Car Rental Fort Lauderdale" },
   { to: "/local-car-rentals", label: "Local Car Rentals" },
   {
-    to: "/fort-lauderdale-airport-car-rental",
-    label: "Fort Lauderdale Airport (FLL) Rentals",
+    to: "/airport-trips",
+    label: "Fort Lauderdale Airport (FLL) Trips",
   },
 ];
 
@@ -100,13 +100,12 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               {[
-                { to: "/fort-lauderdale-airport-car-rental", label: "Airport Pickup (FLL)" },
+                { to: "/airport-trips", label: "Airport Trips (FLL)" },
                 { to: "/body-shop-delivery", label: "Body Shop Delivery" },
                 { to: "/cruise-port-delivery", label: "Cruise Port Pickup & Delivery" },
                 { to: "/hotel-concierge-rentals", label: "Hotel Concierge Rentals" },
                 { to: "/loss-of-use-claims", label: "Loss of Use Claims" },
-                { to: "/drive-to-own", label: "Drive-to-Own Program" },
-                { to: "/rent-to-own", label: "Rent-to-Own (Coming Soon)" },
+                { to: "/rent-to-own", label: "Rent-To-Own Program" },
               ].map((l) => (
                 <li key={l.to}>
                   <Link

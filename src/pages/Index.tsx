@@ -259,7 +259,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Drive-to-Own teaser */}
+        {/* Rent-To-Own teaser */}
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4 max-w-6xl">
             <Card className="border-none shadow-card-hover overflow-hidden bg-gradient-tropical">
@@ -267,7 +267,7 @@ const Index = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   <div>
                     <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-                      <Key className="h-3.5 w-3.5" /> Drive-to-Own Program
+                      <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
                       Drive Today. Own Tomorrow.
@@ -278,16 +278,16 @@ const Index = () => {
                       you use to earn.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Link to="/drive-to-own">
+                      <Link to="/rent-to-own">
                         <Button
                           size="lg"
                           className="bg-card text-primary hover:bg-card/90 shadow-tropical px-6"
                         >
-                          Apply for Drive-to-Own
+                          Apply for Rent-To-Own
                           <ArrowRight className="h-4 w-4 ml-1" />
                         </Button>
                       </Link>
-                      <Link to="/drive-to-own#how-it-works">
+                      <Link to="/rent-to-own#how-it-works">
                         <Button
                           size="lg"
                           variant="outline"

@@ -479,7 +479,7 @@ const DriveToOwnQuiz = () => {
                 </h4>
                 <p className="text-muted-foreground max-w-md mx-auto mb-6">
                   We saved your <strong>{rec.category}</strong> match. Our team
-                  will reach out with next steps and Drive-to-Own program
+                  will reach out with next steps and Rent-To-Own program
                   details.
                 </p>
                 <Button variant="outline" onClick={reset}>

@@ -78,7 +78,7 @@ const Hero = () => {
 
           {/* Rent to Own CTA for rideshare & delivery drivers */}
           <div className="mt-4 sm:mt-6 flex justify-center">
-            <Link to="/drive-to-own" className="w-full max-w-3xl">
+            <Link to="/rent-to-own" className="w-full max-w-3xl">
               <Button
                 size="lg"
                 variant="outline"

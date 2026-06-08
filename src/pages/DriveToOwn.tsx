@@ -82,7 +82,7 @@ const FAQS = [
   {
     question: "Can I drive for Uber?",
     answer:
-      "Yes. Our Drive-to-Own vehicles meet Uber's vehicle requirements for South Florida markets.",
+      "Yes. Our Rent-To-Own vehicles meet Uber's vehicle requirements for South Florida markets.",
   },
   {
     question: "Can I drive for Lyft?",
@@ -127,7 +127,7 @@ const DriveToOwn = () => {
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
       passenger_type: "Rideshare / Delivery Driver",
-      notes: `Drive-to-Own application. Platforms: ${
+      notes: `Rent-To-Own application. Platforms: ${
         platforms.join(", ") || "Not specified"
       }. Notes: ${String(fd.get("notes") || "")}`,
     };
@@ -153,9 +153,9 @@ const DriveToOwn = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="Drive-to-Own Program for Rideshare & Delivery Drivers | Rent With Heldy"
-        description="Drive today, own tomorrow. Rent With Heldy's Drive-to-Own program helps Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers build vehicle ownership while earning."
-        path="/drive-to-own"
+        title="Rent-To-Own Program for Rideshare & Delivery Drivers | Rent With Heldy"
+        description="Drive today, own tomorrow. Rent With Heldy's Rent-To-Own program helps Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers build vehicle ownership while earning."
+        path="/rent-to-own"
       />
       <Header />
 
@@ -164,7 +164,7 @@ const DriveToOwn = () => {
         <section className="bg-gradient-tropical">
           <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl text-center text-primary-foreground">
             <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
-              <Key className="h-3.5 w-3.5" /> Drive-to-Own Program
+              <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
             </div>
             <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
               Drive Today. Own Tomorrow.
@@ -226,7 +226,7 @@ const DriveToOwn = () => {
           <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
             <img
               src={journeyImg}
-              alt="Drive-to-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
+              alt="Rent-To-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
               className="w-full h-auto block"
               loading="lazy"
             />
@@ -307,7 +307,7 @@ const DriveToOwn = () => {
               <Card className="border-none shadow-tropical ring-2 ring-primary/20">
                 <CardContent className="p-6 md:p-8">
                   <h3 className="text-lg font-semibold mb-4 text-primary">
-                    Drive-to-Own
+                    Rent-To-Own
                   </h3>
                   <ul className="space-y-3">
                     {[
@@ -415,7 +415,7 @@ const DriveToOwn = () => {
                 Frequently asked questions
               </h2>
               <p className="text-muted-foreground">
-                Everything you need to know about the Drive-to-Own program.
+                Everything you need to know about the Rent-To-Own program.
               </p>
             </div>
             <FAQAccordion items={FAQS} />
@@ -429,7 +429,7 @@ const DriveToOwn = () => {
               <CardContent className="p-6 md:p-8">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                    Apply for Drive-to-Own
+                    Apply for Rent-To-Own
                   </h2>
                   <p className="text-muted-foreground">
                     Tell us a bit about yourself and our team will reach out to
@@ -525,7 +525,7 @@ const DriveToOwn = () => {
               The vehicle that helps you earn should help you build a future too.
             </h2>
             <p className="text-lg mb-8 opacity-90">
-              Join the Rent With Heldy Drive-to-Own Program and start working
+              Join the Rent With Heldy Rent-To-Own Program and start working
               toward vehicle ownership while earning income.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
