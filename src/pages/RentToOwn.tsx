@@ -82,7 +82,7 @@ const RentToOwn = () => {
           <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
             <img
               src={journeyImg}
-              alt="Drive-to-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
+              alt="Rent-To-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
               className="w-full h-auto block"
               loading="lazy"
             />

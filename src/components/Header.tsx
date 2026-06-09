@@ -6,11 +6,8 @@ import logo from "@/assets/rent-with-heldy-logo.png";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/fleet", label: "Fleet" },
-  { to: "/fort-lauderdale-airport-car-rental", label: "Airport Rentals" },
-  { to: "/trip-planner", label: "Trip Planner" },
-  { to: "/drive-to-own", label: "Drive-to-Own" },
-  { to: "/local-car-rentals", label: "Local Rentals" },
+  { to: "/airport-trips", label: "Airport Trips" },
+  { to: "/rent-to-own", label: "Rent-To-Own" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },

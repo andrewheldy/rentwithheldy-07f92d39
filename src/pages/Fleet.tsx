@@ -95,7 +95,7 @@ const Fleet = () => {
                 <Button variant="outline">Miami rentals</Button>
               </Link>
               <Link to="/fort-lauderdale-airport-car-rental">
-                <Button variant="outline">FLL airport rentals</Button>
+                <Button variant="outline">FLL airport trips</Button>
               </Link>
             </div>
           </div>

@@ -2,11 +2,11 @@ import LocationPageLayout from "@/components/LocationPageLayout";
 
 const FLLAirport = () => (
   <LocationPageLayout
-    metaTitle="Airport Car Rentals: FLL & Miami International (MIA) | Rent With Heldy"
+    metaTitle="Airport Trips: FLL & Miami International (MIA) | Rent With Heldy"
     metaDescription="Skip the rental counters at Fort Lauderdale-Hollywood (FLL) and Miami International (MIA). Fast, friendly airport pickup with a premium private fleet."
-    path="/fort-lauderdale-airport-car-rental"
-    crumbLabel="Airport Rentals"
-    h1="Airport Car Rentals — FLL & Miami International (MIA)"
+    path="/airport-trips"
+    crumbLabel="Airport Trips"
+    h1="Airport Trips — FLL & Miami International (MIA)"
     intro="A faster, friendlier alternative to the airport rental counters at Fort Lauderdale-Hollywood International (FLL) and Miami International (MIA). Reserve online, message us your flight, and meet your car within minutes of landing."
     sections={[
       {
