@@ -21,7 +21,6 @@ const PASSENGER_TYPES = [
   "Cruise Passenger",
   "Hotel Guest",
   "Body Shop / Repair Customer",
-  "Loss of Use / Legal Claim",
   "Local Resident",
   "Other",
 ] as const;

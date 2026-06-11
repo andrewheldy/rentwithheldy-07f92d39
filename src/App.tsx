@@ -29,7 +29,6 @@ import Terms from "./pages/Terms";
 import BodyShopDelivery from "./pages/BodyShopDelivery";
 import CruisePortDelivery from "./pages/CruisePortDelivery";
 import HotelConciergeRentals from "./pages/HotelConciergeRentals";
-import LossOfUseClaims from "./pages/LossOfUseClaims";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
@@ -73,7 +72,6 @@ const App = () => (
             <Route path="/body-shop-delivery" element={<BodyShopDelivery />} />
             <Route path="/cruise-port-delivery" element={<CruisePortDelivery />} />
             <Route path="/hotel-concierge-rentals" element={<HotelConciergeRentals />} />
-            <Route path="/loss-of-use-claims" element={<LossOfUseClaims />} />
             <Route
               path="/confirmation/:reservationId"
               element={<Confirmation />}

@@ -37,7 +37,6 @@ interface ServicePageLayoutProps {
     | "Cruise Passenger"
     | "Hotel Guest"
     | "Body Shop / Repair Customer"
-    | "Loss of Use / Legal Claim"
     | "Local Resident"
     | "Other";
   valueProps: ValueProp[];

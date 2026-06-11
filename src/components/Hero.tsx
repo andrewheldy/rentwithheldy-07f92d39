@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText, Key, MapPin } from "lucide-react";
+import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, Key, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.png";
 
@@ -8,7 +8,6 @@ const VERTICALS = [
   { to: "/cruise-port-delivery", label: "Cruise Port", icon: Anchor },
   { to: "/hotel-concierge-rentals", label: "Hotel", icon: BedDouble },
   { to: "/body-shop-delivery", label: "Body Shop / Mechanic", icon: Wrench },
-  { to: "/loss-of-use-claims", label: "Loss of Use", icon: FileText },
 ];
 
 const Hero = () => {
@@ -58,7 +57,7 @@ const Hero = () => {
           aria-label="Specialized services"
           className="mt-6 sm:mt-8"
         >
-          <ul className="grid grid-cols-5 gap-2 sm:gap-4 max-w-3xl mx-auto">
+          <ul className="grid grid-cols-4 gap-2 sm:gap-4 max-w-3xl mx-auto">
             {VERTICALS.map(({ to, label, icon: Icon }) => (
               <li key={to}>
                 <Link

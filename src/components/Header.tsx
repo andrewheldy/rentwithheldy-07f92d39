@@ -7,6 +7,9 @@ import logo from "@/assets/rent-with-heldy-logo.png";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/airport-trips", label: "Airport Trips" },
+  { to: "/cruise-port-delivery", label: "Cruise Port" },
+  { to: "/hotel-concierge-rentals", label: "Hotel" },
+  { to: "/body-shop-delivery", label: "Body Shop / Repair" },
   { to: "/rent-to-own", label: "Rent-To-Own" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/faq", label: "FAQ" },
