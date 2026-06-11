@@ -7,7 +7,7 @@ const VERTICALS = [
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport", icon: Plane },
   { to: "/cruise-port-delivery", label: "Cruise Port", icon: Anchor },
   { to: "/hotel-concierge-rentals", label: "Hotel", icon: BedDouble },
-  { to: "/body-shop-delivery", label: "Body Shop", icon: Wrench },
+  { to: "/body-shop-delivery", label: "Body Shop / Mechanic", icon: Wrench },
   { to: "/loss-of-use-claims", label: "Loss of Use", icon: FileText },
 ];
 
@@ -31,7 +31,7 @@ const Hero = () => {
               size="lg"
               className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base h-11"
             >
-              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Book Now
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Check Our Availability
             </Button>
           </Link>
           <Link to="/trip-planner" className="w-full">

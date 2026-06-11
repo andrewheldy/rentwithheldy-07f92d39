@@ -47,6 +47,8 @@ interface ServicePageLayoutProps {
   faqs: FAQItem[];
   /** Optional long-form body content rendered above the FAQ section */
   body?: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+  /** Custom form to render in the hero slot instead of the default QuickQuoteForm */
+  formSlot?: React.ReactNode;
 }
 
 const DEFAULT_COVERAGE = [
@@ -77,6 +79,7 @@ const ServicePageLayout = ({
   partnerSubheading,
   faqs,
   body,
+  formSlot,
 }: ServicePageLayoutProps) => {
   const jsonLd = [
     localBusinessSchema,
@@ -148,7 +151,9 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
+                {formSlot ?? (
+                  <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
+                )}
               </div>
             </div>
           </div>
