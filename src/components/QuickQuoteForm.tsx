@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -57,8 +58,8 @@ const QuickQuoteForm = ({
   ctaLabel = "Check Our Availability",
   defaultPassengerType,
 }: QuickQuoteFormProps) => {
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [passengerType, setPassengerType] = useState<string>(
     defaultPassengerType ?? ""
@@ -125,34 +126,18 @@ const QuickQuoteForm = ({
         }),
       });
       if (!res.ok) throw new Error(await res.text());
-      setSubmitted(true);
+      navigate("/book");
     } catch (err) {
       console.error("Email send failed", err);
       if (insertError) {
         setSubmitError(true);
       } else {
-        setSubmitted(true);
+        navigate("/book");
       }
     }
 
     setSubmitting(false);
   };
-
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
-        <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
-          <Zap className="h-5 w-5 text-primary-foreground" />
-          <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
-        </div>
-        <div className="p-6 text-center">
-          <p className="text-foreground font-medium">
-            Thanks! We're checking availability and will text you back shortly.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   if (submitError) {
     return (

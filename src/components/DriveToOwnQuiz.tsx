@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -124,6 +125,7 @@ const DriveToOwnQuiz = () => {
   const [platforms, setPlatforms] = useState<string[]>([]);
   const [rideTier, setRideTier] = useState<RideTier | null>(null);
   const [hours, setHours] = useState<Hours | null>(null);
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -212,7 +214,7 @@ const DriveToOwnQuiz = () => {
       });
       return;
     }
-    setSubmitted(true);
+    navigate("/book");
   };
 
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { format, differenceInDays } from "date-fns";
 import { Calendar as CalendarIcon, Loader2, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -36,6 +37,7 @@ const BookingDialog = ({
   dailyRate,
   children,
 }: BookingDialogProps) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
@@ -116,12 +118,9 @@ const BookingDialog = ({
 
       if (!emailRes.ok) throw new Error(await emailRes.text());
 
-      toast({
-        title: "Thanks! We're checking availability and will text you back shortly.",
-      });
-
       resetForm();
       setOpen(false);
+      navigate("/book");
     } catch (error) {
       console.error("Error submitting inquiry:", error);
       toast({

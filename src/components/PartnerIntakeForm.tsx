@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,8 +32,8 @@ const PartnerIntakeForm = ({
   heading = "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
   subheading = "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
 }: PartnerIntakeFormProps) => {
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -89,38 +90,18 @@ const PartnerIntakeForm = ({
         }),
       });
       if (!res.ok) throw new Error(await res.text());
-      setSubmitted(true);
+      navigate("/book");
     } catch (err) {
       console.error("Email send failed", err);
       if (insertError) {
         setSubmitError(true);
       } else {
-        setSubmitted(true);
+        navigate("/book");
       }
     }
 
     setSubmitting(false);
   };
-
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
-        <div className="px-6 py-5 border-b border-border flex items-start gap-3">
-          <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <Briefcase className="h-5 w-5 text-primary" />
-          </div>
-          <div>
-            <h3 className="text-lg md:text-xl font-bold text-foreground">{heading}</h3>
-          </div>
-        </div>
-        <div className="p-6 text-center">
-          <p className="text-foreground font-medium">
-            Thanks! We're checking availability and will text you back shortly.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   if (submitError) {
     return (
