@@ -54,10 +54,12 @@ const QuickQuoteForm = ({
   verticalPath,
   title = "Start Your Booking",
   subtitle = "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
-  ctaLabel = "Get My Quick Quote",
+  ctaLabel = "Check Our Availability",
   defaultPassengerType,
 }: QuickQuoteFormProps) => {
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [passengerType, setPassengerType] = useState<string>(
     defaultPassengerType ?? ""
   );
@@ -83,6 +85,7 @@ const QuickQuoteForm = ({
       return;
     }
     setSubmitting(true);
+    setSubmitError(false);
     const { name, phone, location, when, notes, referredBy } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
 
@@ -103,26 +106,70 @@ const QuickQuoteForm = ({
 
     if (insertError) {
       console.error("Lead insert failed", insertError);
-      toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
-        variant: "destructive",
-      });
-      setSubmitting(false);
-      return;
     }
 
-    const subject = `Quick Quote — ${serviceContext} (${parsed.data.passengerType})`;
-    const body = `Service: ${serviceContext}\nPassenger Type: ${parsed.data.passengerType}\nName: ${name}\nPhone: ${phone}\nDelivery Location: ${location}\nWhen: ${when}\nReferred By: ${referredBy ?? ""}\nNotes: ${notes ?? ""}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Got it — we've logged your request",
-      description: "We'll respond within minutes. Email draft opened as a backup.",
-    });
-    setTimeout(() => setSubmitting(false), 1500);
+    try {
+      const res = await supabase.functions.invoke("send-booking-email", {
+        body: {
+          source: path,
+          formType: "quick_quote",
+          passengerType: parsed.data.passengerType,
+          name,
+          phone,
+          location,
+          when,
+          referredBy: referredBy || undefined,
+          notes: notes || undefined,
+        },
+      });
+      if (res.error) throw res.error;
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Email send failed", err);
+      if (insertError) {
+        setSubmitError(true);
+      } else {
+        setSubmitted(true);
+      }
+    }
+
+    setSubmitting(false);
   };
+
+  if (submitted) {
+    return (
+      <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
+        <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
+          <Zap className="h-5 w-5 text-primary-foreground" />
+          <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
+        </div>
+        <div className="p-6 text-center">
+          <p className="text-foreground font-medium">
+            Thanks! We're checking availability and will text you back shortly.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (submitError) {
+    return (
+      <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
+        <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
+          <Zap className="h-5 w-5 text-primary-foreground" />
+          <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
+        </div>
+        <div className="p-6 text-center">
+          <p className="text-destructive font-medium">
+            Something went wrong. Please call or text us directly.
+          </p>
+          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
+            (561) 519-8958
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">

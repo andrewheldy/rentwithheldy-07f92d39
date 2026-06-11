@@ -84,7 +84,7 @@ const BookingDialog = ({
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
+      const { error: dbError } = await supabase
         .from("booking_inquiries")
         .insert({
           vehicle_id: vehicleId,
@@ -97,11 +97,25 @@ const BookingDialog = ({
           vertical_path: "vehicle-inquiry",
         });
 
-      if (error) throw error;
+      if (dbError) console.error("DB insert error:", dbError);
+
+      const emailRes = await supabase.functions.invoke("send-booking-email", {
+        body: {
+          source: "vehicle-inquiry",
+          formType: "vehicle_inquiry",
+          name,
+          phone,
+          email,
+          startDate: format(startDate, "yyyy-MM-dd"),
+          endDate: format(endDate, "yyyy-MM-dd"),
+          notes: message || undefined,
+        },
+      });
+
+      if (emailRes.error) throw emailRes.error;
 
       toast({
-        title: "Inquiry Sent! 🎉",
-        description: "We'll contact you shortly to finalize your booking.",
+        title: "Thanks! We're checking availability and will text you back shortly.",
       });
 
       resetForm();
@@ -109,8 +123,7 @@ const BookingDialog = ({
     } catch (error) {
       console.error("Error submitting inquiry:", error);
       toast({
-        title: "Error",
-        description: "Failed to submit inquiry. Please try again.",
+        title: "Something went wrong. Please call or text us directly.",
         variant: "destructive",
       });
     } finally {
@@ -269,13 +282,10 @@ const BookingDialog = ({
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Sending Inquiry...
+                Sending…
               </>
             ) : (
-              <>
-                <Send className="mr-2 h-4 w-4" />
-                Send Booking Inquiry
-              </>
+              "Check Our Availability"
             )}
           </Button>
         </form>

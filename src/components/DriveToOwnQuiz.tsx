@@ -182,21 +182,35 @@ const DriveToOwnQuiz = () => {
         .join(" "),
     };
 
-    const { error } = await supabase.from("leads").insert(payload);
+    const { error: dbError } = await supabase.from("leads").insert(payload);
+    if (dbError) console.error("DB insert failed", dbError);
+
+    try {
+      const res = await supabase.functions.invoke("send-booking-email", {
+        body: {
+          source: "drive-to-own",
+          formType: "drive_to_own",
+          passengerType: "Rideshare / Delivery Driver",
+          name: payload.name,
+          phone: payload.phone,
+          email: payload.email,
+          notes: payload.notes,
+        },
+      });
+      if (res.error) throw res.error;
+    } catch (err) {
+      console.error("Email send failed", err);
+    }
+
     setSubmitting(false);
-    if (error) {
+    if (dbError) {
       toast({
-        title: "Something went wrong",
-        description: error.message,
+        title: "Something went wrong. Please call or text us directly.",
         variant: "destructive",
       });
       return;
     }
     setSubmitted(true);
-    toast({
-      title: "Match saved",
-      description: "Our team will reach out with next steps for your match.",
-    });
   };
 
   return (
@@ -460,7 +474,7 @@ const DriveToOwnQuiz = () => {
                       disabled={submitting}
                       className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                     >
-                      {submitting ? "Saving…" : "Claim my match"}
+                      {submitting ? "Sending…" : "Check Our Availability"}
                       <ArrowRight className="h-4 w-4 ml-1" />
                     </Button>
                     <p className="text-xs text-muted-foreground text-center mt-3">
@@ -478,9 +492,7 @@ const DriveToOwnQuiz = () => {
                   You're matched
                 </h4>
                 <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                  We saved your <strong>{rec.category}</strong> match. Our team
-                  will reach out with next steps and Rent-To-Own program
-                  details.
+                  Thanks! We're checking availability and will text you back shortly.
                 </p>
                 <Button variant="outline" onClick={reset}>
                   Retake the quiz
