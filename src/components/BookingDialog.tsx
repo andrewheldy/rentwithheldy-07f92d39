@@ -99,8 +99,10 @@ const BookingDialog = ({
 
       if (dbError) console.error("DB insert error:", dbError);
 
-      const emailRes = await supabase.functions.invoke("send-booking-email", {
-        body: {
+      const emailRes = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           source: "vehicle-inquiry",
           formType: "vehicle_inquiry",
           name,
@@ -109,10 +111,10 @@ const BookingDialog = ({
           startDate: format(startDate, "yyyy-MM-dd"),
           endDate: format(endDate, "yyyy-MM-dd"),
           notes: message || undefined,
-        },
+        }),
       });
 
-      if (emailRes.error) throw emailRes.error;
+      if (!emailRes.ok) throw new Error(await emailRes.text());
 
       toast({
         title: "Thanks! We're checking availability and will text you back shortly.",

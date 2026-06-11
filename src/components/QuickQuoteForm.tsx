@@ -109,8 +109,10 @@ const QuickQuoteForm = ({
     }
 
     try {
-      const res = await supabase.functions.invoke("send-booking-email", {
-        body: {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           source: path,
           formType: "quick_quote",
           passengerType: parsed.data.passengerType,
@@ -120,9 +122,9 @@ const QuickQuoteForm = ({
           when,
           referredBy: referredBy || undefined,
           notes: notes || undefined,
-        },
+        }),
       });
-      if (res.error) throw res.error;
+      if (!res.ok) throw new Error(await res.text());
       setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);

@@ -75,8 +75,10 @@ const PartnerIntakeForm = ({
     }
 
     try {
-      const res = await supabase.functions.invoke("send-booking-email", {
-        body: {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           source: "partner-intake",
           formType: "partner_intake",
           name,
@@ -84,9 +86,9 @@ const PartnerIntakeForm = ({
           company,
           claimNumber: claim || undefined,
           location,
-        },
+        }),
       });
-      if (res.error) throw res.error;
+      if (!res.ok) throw new Error(await res.text());
       setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);

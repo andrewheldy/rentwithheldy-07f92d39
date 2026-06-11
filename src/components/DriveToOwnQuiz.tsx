@@ -186,8 +186,10 @@ const DriveToOwnQuiz = () => {
     if (dbError) console.error("DB insert failed", dbError);
 
     try {
-      const res = await supabase.functions.invoke("send-booking-email", {
-        body: {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           source: "drive-to-own",
           formType: "drive_to_own",
           passengerType: "Rideshare / Delivery Driver",
@@ -195,9 +197,9 @@ const DriveToOwnQuiz = () => {
           phone: payload.phone,
           email: payload.email,
           notes: payload.notes,
-        },
+        }),
       });
-      if (res.error) throw res.error;
+      if (!res.ok) throw new Error(await res.text());
     } catch (err) {
       console.error("Email send failed", err);
     }
