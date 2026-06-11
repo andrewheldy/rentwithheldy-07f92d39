@@ -1,4 +1,5 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
+import BodyShopQuoteForm from "@/components/BodyShopQuoteForm";
 import { Truck, Wrench, Clock, Handshake } from "lucide-react";
 
 const BodyShopDelivery = () => (
@@ -13,6 +14,7 @@ const BodyShopDelivery = () => (
     serviceContext="Body Shop Delivery"
     verticalPath="body-shop"
     defaultPassengerType="Body Shop / Repair Customer"
+    customForm={<BodyShopQuoteForm />}
     valueProps={[
       {
         icon: Truck,

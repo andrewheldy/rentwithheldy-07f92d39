@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, CheckCircle2, MapPin, Phone, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
@@ -47,6 +48,8 @@ interface ServicePageLayoutProps {
   faqs: FAQItem[];
   /** Optional long-form body content rendered above the FAQ section */
   body?: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+  /** Optional custom form to replace the default QuickQuoteForm */
+  customForm?: ReactNode;
 }
 
 const DEFAULT_COVERAGE = [
@@ -77,6 +80,7 @@ const ServicePageLayout = ({
   partnerSubheading,
   faqs,
   body,
+  customForm,
 }: ServicePageLayoutProps) => {
   const jsonLd = [
     localBusinessSchema,
@@ -148,7 +152,9 @@ const ServicePageLayout = ({
               </div>
 
               <div id="quick-quote" className="scroll-mt-24">
-                <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
+                {customForm ?? (
+                  <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
+                )}
               </div>
             </div>
           </div>
