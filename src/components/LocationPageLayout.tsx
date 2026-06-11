@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
@@ -37,6 +38,8 @@ interface LocationPageLayoutProps {
   /** Optional final CTA copy override */
   ctaHeadline?: string;
   ctaSubhead?: string;
+  /** Optional form rendered in the hero section */
+  heroForm?: ReactNode;
 }
 
 const LocationPageLayout = ({
@@ -50,6 +53,7 @@ const LocationPageLayout = ({
   faqs,
   ctaHeadline = "Ready to book your South Florida rental?",
   ctaSubhead = "Reserve in minutes. Premium fleet. Friendly, hands-on service from pickup to return.",
+  heroForm,
 }: LocationPageLayoutProps) => {
   const jsonLd = [
     localBusinessSchema,
@@ -73,7 +77,7 @@ const LocationPageLayout = ({
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-gradient-subtle border-b border-border">
-          <div className="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+          <div className={`container mx-auto px-4 py-12 md:py-16 ${heroForm ? "max-w-6xl" : "max-w-4xl"}`}>
             {/* Breadcrumb */}
             <nav
               aria-label="Breadcrumb"
@@ -86,26 +90,35 @@ const LocationPageLayout = ({
               <span className="text-foreground">{crumbLabel}</span>
             </nav>
 
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
-              {h1}
-            </h1>
-            <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
-              {intro}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/book">
-                <Button
-                  size="lg"
-                  className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                >
-                  Book Now
-                </Button>
-              </Link>
-              <Link to="/fleet">
-                <Button size="lg" variant="outline">
-                  View Fleet
-                </Button>
-              </Link>
+            <div className={heroForm ? "grid grid-cols-1 lg:grid-cols-2 gap-10 items-start" : undefined}>
+              <div>
+                <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+                  {h1}
+                </h1>
+                <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
+                  {intro}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/book">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                    >
+                      Book Now
+                    </Button>
+                  </Link>
+                  <Link to="/fleet">
+                    <Button size="lg" variant="outline">
+                      View Fleet
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              {heroForm && (
+                <div id="quick-quote" className="scroll-mt-24">
+                  {heroForm}
+                </div>
+              )}
             </div>
           </div>
         </section>

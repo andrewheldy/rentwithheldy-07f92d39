@@ -1,4 +1,5 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
+import HotelQuoteForm from "@/components/HotelQuoteForm";
 import { BellRing, Sparkles, Bus, Receipt } from "lucide-react";
 
 const HotelConciergeRentals = () => (
@@ -13,6 +14,7 @@ const HotelConciergeRentals = () => (
     serviceContext="Hotel Concierge Rental"
     verticalPath="hotel"
     defaultPassengerType="Hotel Guest"
+    customForm={<HotelQuoteForm />}
     valueProps={[
       {
         icon: BellRing,

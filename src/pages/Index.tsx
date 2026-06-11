@@ -9,6 +9,7 @@ import ServiceAreasGrid from "@/components/ServiceAreasGrid";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
 import FAQAccordion from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
+import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useVehicles } from "@/hooks/useVehicles";
@@ -74,6 +75,26 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+
+        {/* Quick Quote */}
+        <section className="py-12 sm:py-16 bg-secondary">
+          <div className="container mx-auto px-4 max-w-2xl">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Get a fast quote
+              </h2>
+              <p className="text-muted-foreground">
+                Tell us what you need and we'll text you back with options in minutes.
+              </p>
+            </div>
+            <QuickQuoteForm
+              serviceContext="Home Page Quote"
+              verticalPath="home"
+              title="Start Your Booking"
+              ctaLabel="Get My Quick Quote"
+            />
+          </div>
+        </section>
 
         {/* Fleet preview */}
         <section className="py-16 sm:py-20">

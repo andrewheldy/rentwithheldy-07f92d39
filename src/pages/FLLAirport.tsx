@@ -1,7 +1,9 @@
 import LocationPageLayout from "@/components/LocationPageLayout";
+import AirportQuoteForm from "@/components/AirportQuoteForm";
 
 const FLLAirport = () => (
   <LocationPageLayout
+    heroForm={<AirportQuoteForm />}
     metaTitle="Airport Trips: FLL & Miami International (MIA) | Rent With Heldy"
     metaDescription="Skip the rental counters at Fort Lauderdale-Hollywood (FLL) and Miami International (MIA). Fast, friendly airport pickup with a premium private fleet."
     path="/airport-trips"
