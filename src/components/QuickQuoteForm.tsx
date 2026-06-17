@@ -17,29 +17,33 @@ import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const PASSENGER_TYPES = [
-  "Airport Traveler",
-  "Cruise Passenger",
   "Hotel Guest",
+  "Airport Traveler",
   "Body Shop / Repair Customer",
-  "Loss of Use / Legal Claim",
-  "Local Resident",
+  "Local Rental",
   "Other",
 ] as const;
+
+const DATE_RANGE_HINTS: Record<string, string> = {
+  "Body Shop / Repair Customer": "Estimated dates are okay.",
+  "Hotel Guest": "Please enter exact pickup and return dates.",
+  "Airport Traveler": "Please enter exact pickup and return dates, plus flight details.",
+};
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(80),
   phone: z.string().trim().min(7, "Enter a valid phone").max(20),
   passengerType: z.enum(PASSENGER_TYPES, {
-    errorMap: () => ({ message: "Select your passenger type" }),
+    errorMap: () => ({ message: "Select your customer type" }),
   }),
   location: z.string().trim().min(2, "Where should we deliver?").max(120),
-  when: z.string().trim().min(2, "When do you need it?").max(80),
+  dateRange: z.string().trim().min(2, "Enter your rental date range").max(120),
   referredBy: z.string().trim().max(120).optional(),
   notes: z.string().trim().max(500).optional(),
 });
 
 interface QuickQuoteFormProps {
-  serviceContext: string;
+  serviceContext?: string;
   verticalPath?: string;
   title?: string;
   subtitle?: string;
@@ -51,7 +55,7 @@ const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const QuickQuoteForm = ({
-  serviceContext,
+  serviceContext = "Quick Quote",
   verticalPath,
   title = "Start Your Booking",
   subtitle = "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
@@ -65,6 +69,8 @@ const QuickQuoteForm = ({
     defaultPassengerType ?? ""
   );
 
+  const dateRangeHint = DATE_RANGE_HINTS[passengerType] ?? "";
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
@@ -73,7 +79,7 @@ const QuickQuoteForm = ({
       phone: fd.get("phone"),
       passengerType,
       location: fd.get("location"),
-      when: fd.get("when"),
+      dateRange: fd.get("dateRange"),
       referredBy: fd.get("referredBy") ?? "",
       notes: fd.get("notes") ?? "",
     });
@@ -89,6 +95,14 @@ const QuickQuoteForm = ({
     setSubmitError(false);
     const { name, phone, location, when, notes, referredBy } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
+    const pageSource = "home";
+
+    const notesWithMeta = [
+      notes,
+      `[Source: ${pageSource}]`,
+      `[Lead Type: ${parsed.data.passengerType}]`,
+      `[Submitted: ${new Date().toISOString()}]`,
+    ].filter(Boolean).join(" | ");
 
     const { error: insertError } = await supabase.from("leads").insert({
       form_type: "quick_quote",
@@ -98,11 +112,10 @@ const QuickQuoteForm = ({
       name,
       phone,
       location,
-      needed_when: when,
+      needed_when: dateRange,
       referred_by: referredBy || null,
-      notes: notes || null,
-      user_agent:
-        typeof navigator !== "undefined" ? navigator.userAgent : null,
+      notes: notesWithMeta,
+      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
     });
 
     if (insertError) {
@@ -171,7 +184,7 @@ const QuickQuoteForm = ({
             <Label htmlFor="qq-passenger">I am a…</Label>
             <Select value={passengerType} onValueChange={setPassengerType}>
               <SelectTrigger id="qq-passenger" className="h-10">
-                <SelectValue placeholder="Select passenger type" />
+                <SelectValue placeholder="Select customer type" />
               </SelectTrigger>
               <SelectContent>
                 {PASSENGER_TYPES.map((p) => (
@@ -209,14 +222,17 @@ const QuickQuoteForm = ({
             />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-when">When do you need the car?</Label>
+            <Label htmlFor="qq-dateRange">Rental Date Range</Label>
             <Input
-              id="qq-when"
-              name="when"
+              id="qq-dateRange"
+              name="dateRange"
               required
-              maxLength={80}
-              placeholder="ASAP, today 4pm, Sat 6/14 morning…"
+              maxLength={120}
+              placeholder="e.g. June 20 – June 25, or ASAP for ~1 week"
             />
+            {dateRangeHint && (
+              <p className="text-xs text-muted-foreground">{dateRangeHint}</p>
+            )}
           </div>
           <div className="space-y-1.5 sm:col-span-2">
             <Label htmlFor="qq-referredBy">Referred by (optional)</Label>

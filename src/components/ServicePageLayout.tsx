@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, CheckCircle2, MapPin, Phone, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
