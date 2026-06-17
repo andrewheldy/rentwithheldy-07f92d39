@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,9 @@ const PartnerIntakeForm = ({
   heading = "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
   subheading = "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
 }: PartnerIntakeFormProps) => {
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,26 +73,58 @@ const PartnerIntakeForm = ({
 
     if (insertError) {
       console.error("Partner lead insert failed", insertError);
-      toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
-        variant: "destructive",
-      });
-      setSubmitting(false);
-      return;
     }
 
-    const subject = `Partner Intake — ${serviceContext}`;
-    const body = `Service: ${serviceContext}\nContact: ${name}\nCompany/Firm: ${company}\nClient Claim #: ${claim ?? ""}\nPhone: ${phone}\nDelivery Location: ${location}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Partner request logged",
-      description: "We'll confirm partner setup the same business day.",
-    });
-    setTimeout(() => setSubmitting(false), 1500);
+    try {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "partner-intake",
+          formType: "partner_intake",
+          name,
+          phone,
+          company,
+          claimNumber: claim || undefined,
+          location,
+        }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      navigate("/book");
+    } catch (err) {
+      console.error("Email send failed", err);
+      if (insertError) {
+        setSubmitError(true);
+      } else {
+        navigate("/book");
+      }
+    }
+
+    setSubmitting(false);
   };
+
+  if (submitError) {
+    return (
+      <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
+        <div className="px-6 py-5 border-b border-border flex items-start gap-3">
+          <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <Briefcase className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="text-lg md:text-xl font-bold text-foreground">{heading}</h3>
+          </div>
+        </div>
+        <div className="p-6 text-center">
+          <p className="text-destructive font-medium">
+            Something went wrong. Please call or text us directly.
+          </p>
+          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
+            (561) 519-8958
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
@@ -154,7 +189,7 @@ const PartnerIntakeForm = ({
           disabled={submitting}
           className="sm:col-span-2 bg-primary text-primary-foreground hover:bg-primary/90"
         >
-          {submitting ? "Sending…" : "Submit Partner Request"}
+          {submitting ? "Sending…" : "Check Our Availability"}
         </Button>
       </form>
     </div>
