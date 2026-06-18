@@ -175,7 +175,7 @@ const Confirmation = () => {
                   <li>• A confirmation email has been sent to {reservation.customer_email}</li>
                   <li>• Please bring a valid driver's license and credit card at pickup</li>
                   <li>• Your specific vehicle will be assigned when you arrive</li>
-                  <li>• Contact us at (561) 519-8958 for any questions</li>
+                  <li>• Contact us at 786-505-9330 for any questions</li>
                 </ul>
               </div>
             </CardContent>

@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const PASSENGER_TYPES = [
   "Hotel Guest",
@@ -64,7 +64,6 @@ const QuickQuoteForm = ({
 }: QuickQuoteFormProps) => {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
   const [passengerType, setPassengerType] = useState<string>(
     defaultPassengerType ?? ""
   );
@@ -92,84 +91,32 @@ const QuickQuoteForm = ({
       return;
     }
     setSubmitting(true);
-    setSubmitError(false);
-    const { name, phone, location, when, notes, referredBy } = parsed.data;
+    const { name, phone, location, dateRange, notes, referredBy } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
-    const pageSource = "home";
-
-    const notesWithMeta = [
-      notes,
-      `[Source: ${pageSource}]`,
-      `[Lead Type: ${parsed.data.passengerType}]`,
-      `[Submitted: ${new Date().toISOString()}]`,
-    ].filter(Boolean).join(" | ");
-
-    const { error: insertError } = await supabase.from("leads").insert({
-      form_type: "quick_quote",
-      vertical_path: path,
-      service_context: serviceContext,
-      passenger_type: parsed.data.passengerType,
-      name,
-      phone,
-      location,
-      needed_when: dateRange,
-      referred_by: referredBy || null,
-      notes: notesWithMeta,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (insertError) {
-      console.error("Lead insert failed", insertError);
-    }
 
     try {
-      const res = await fetch("/api/send-booking-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: path,
-          formType: "quick_quote",
-          passengerType: parsed.data.passengerType,
-          name,
-          phone,
-          location,
-          when,
-          referredBy: referredBy || undefined,
-          notes: notes || undefined,
-        }),
+      await submitQuote({
+        source: path,
+        formType: "quick_quote",
+        passengerType: parsed.data.passengerType,
+        name,
+        phone,
+        location,
+        when: dateRange,
+        referredBy: referredBy || undefined,
+        notes: notes || undefined,
       });
-      if (!res.ok) throw new Error(await res.text());
       navigate("/book");
-    } catch (err) {
-      console.error("Email send failed", err);
-      if (insertError) {
-        setSubmitError(true);
-      } else {
-        navigate("/book");
-      }
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please call 786-505-9330 and we'll help you directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
-
-  if (submitError) {
-    return (
-      <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
-        <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
-          <Zap className="h-5 w-5 text-primary-foreground" />
-          <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
-        </div>
-        <div className="p-6 text-center">
-          <p className="text-destructive font-medium">
-            Something went wrong. Please call or text us directly.
-          </p>
-          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
-            (561) 519-8958
-          </a>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
@@ -264,8 +211,8 @@ const QuickQuoteForm = ({
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">
-            (561) 519-8958
+          <a href="tel:+17865059330" className="text-primary hover:underline">
+            786-505-9330
           </a>
         </p>
       </form>

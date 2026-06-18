@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(80),
@@ -58,49 +58,22 @@ const PartnerIntakeForm = ({
     const { name, company, claim, phone, location } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
 
-    const { error: insertError } = await supabase.from("leads").insert({
-      form_type: "partner_intake",
-      vertical_path: path,
-      service_context: serviceContext,
-      name,
-      phone,
-      company,
-      claim_number: claim || null,
-      location,
-      user_agent:
-        typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (insertError) {
-      console.error("Partner lead insert failed", insertError);
-    }
-
     try {
-      const res = await fetch("/api/send-booking-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "partner-intake",
-          formType: "partner_intake",
-          name,
-          phone,
-          company,
-          claimNumber: claim || undefined,
-          location,
-        }),
+      await submitQuote({
+        source: "partner-intake",
+        formType: "partner_intake",
+        name,
+        phone,
+        company,
+        claimNumber: claim || undefined,
+        location,
       });
-      if (!res.ok) throw new Error(await res.text());
       navigate("/book");
-    } catch (err) {
-      console.error("Email send failed", err);
-      if (insertError) {
-        setSubmitError(true);
-      } else {
-        navigate("/book");
-      }
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
 
   if (submitError) {
@@ -118,8 +91,8 @@ const PartnerIntakeForm = ({
           <p className="text-destructive font-medium">
             Something went wrong. Please call or text us directly.
           </p>
-          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
-            (561) 519-8958
+          <a href="tel:+17865059330" className="text-primary hover:underline text-sm mt-2 block">
+            786-505-9330
           </a>
         </div>
       </div>

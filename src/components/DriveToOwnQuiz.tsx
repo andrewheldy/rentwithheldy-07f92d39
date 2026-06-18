@@ -16,7 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 import { toast } from "@/hooks/use-toast";
 
 type GigType = "rideshare" | "delivery" | "both";
@@ -166,55 +166,38 @@ const DriveToOwnQuiz = () => {
     if (!rec) return;
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
-    const payload = {
-      form_type: "quick_quote" as const,
-      vertical_path: "drive-to-own",
-      passenger_type: "Rideshare / Delivery Driver",
-      name: String(fd.get("name") || ""),
-      phone: String(fd.get("phone") || ""),
-      email: String(fd.get("email") || ""),
-      notes: [
-        `Chariot Quiz match: ${rec.tier} — ${rec.category} ($${rec.weekly}/wk).`,
-        `Gig type: ${gig}.`,
-        showRideTierStep ? `Ride tier: ${rideTier ?? "standard"}.` : null,
-        `Hours: ${hours}.`,
-        `Platforms: ${platforms.join(", ") || "Not specified"}.`,
-      ]
-        .filter(Boolean)
-        .join(" "),
-    };
-
-    const { error: dbError } = await supabase.from("leads").insert(payload);
-    if (dbError) console.error("DB insert failed", dbError);
+    const name = String(fd.get("name") || "");
+    const phone = String(fd.get("phone") || "");
+    const email = String(fd.get("email") || "");
+    const notes = [
+      `Chariot Quiz match: ${rec.tier} — ${rec.category} ($${rec.weekly}/wk).`,
+      `Gig type: ${gig}.`,
+      showRideTierStep ? `Ride tier: ${rideTier ?? "standard"}.` : null,
+      `Hours: ${hours}.`,
+      `Platforms: ${platforms.join(", ") || "Not specified"}.`,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     try {
-      const res = await fetch("/api/send-booking-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "drive-to-own",
-          formType: "drive_to_own",
-          passengerType: "Rideshare / Delivery Driver",
-          name: payload.name,
-          phone: payload.phone,
-          email: payload.email,
-          notes: payload.notes,
-        }),
+      await submitQuote({
+        source: "drive-to-own",
+        formType: "drive_to_own",
+        passengerType: "Rideshare / Delivery Driver",
+        name,
+        phone,
+        email: email || undefined,
+        notes,
       });
-      if (!res.ok) throw new Error(await res.text());
-    } catch (err) {
-      console.error("Email send failed", err);
-    }
-
-    setSubmitting(false);
-    if (dbError) {
+      navigate("/book");
+    } catch {
       toast({
         title: "Something went wrong. Please call or text us directly.",
         variant: "destructive",
       });
-      return;
+    } finally {
+      setSubmitting(false);
     }
-    navigate("/book");
   };
 
   return (

@@ -125,8 +125,8 @@ const Terms = () => (
               rentwithheldy@gmail.com
             </a>{" "}
             or{" "}
-            <a href="tel:+15615198958" className="text-primary underline">
-              (561) 519-8958
+            <a href="tel:+17865059330" className="text-primary underline">
+              786-505-9330
             </a>
             .
           </p>

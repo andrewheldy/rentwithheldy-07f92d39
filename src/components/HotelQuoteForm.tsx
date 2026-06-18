@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const HotelQuoteForm = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -33,48 +33,33 @@ const HotelQuoteForm = () => {
 
     setSubmitting(true);
 
-    const notesComposed = [
-      hotelAddress ? `Hotel Address: ${hotelAddress}` : null,
-      notes ? `Additional: ${notes}` : null,
-      `[Source: hotel-concierge-rentals]`,
-      `[Lead Type: Hotel Guest]`,
-      `[Submitted: ${new Date().toISOString()}]`,
-    ].filter(Boolean).join(" | ");
-
-    const { error } = await supabase.from("leads").insert({
-      form_type: "hotel_quote",
-      vertical_path: "hotel",
-      service_context: "Hotel Concierge Rental",
-      passenger_type: "Hotel Guest",
-      name,
-      phone,
-      company: hotelName,
-      location: hotelAddress || hotelName,
-      needed_when: `Pickup: ${pickupDateTime} | Return: ${returnDateTime}`,
-      referred_by: referredBy || null,
-      notes: notesComposed,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (error) {
-      console.error("Lead insert failed", error);
+    try {
+      await submitQuote({
+        source: "hotel-guest",
+        formType: "hotel_quote",
+        passengerType: "Hotel Guest",
+        name,
+        phone,
+        company: hotelName,
+        location: hotelAddress || hotelName,
+        when: `Pickup: ${pickupDateTime} | Return: ${returnDateTime}`,
+        referredBy: referredBy || undefined,
+        notes: notes || undefined,
+      });
       toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        title: "Got it — we've received your request!",
+        description: "We'll reach out within minutes to arrange your hotel delivery.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } catch {
+      toast({
+        title: "Couldn't send your request",
+        description: "Please call 786-505-9330 and we'll handle it directly.",
         variant: "destructive",
       });
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    const subject = `Hotel Delivery Quote — ${hotelName}`;
-    const body = `Source: hotel-concierge-rentals\nLead Type: Hotel Guest\nName: ${name}\nPhone: ${phone}\nHotel: ${hotelName}\nHotel Address: ${hotelAddress}\nPickup: ${pickupDateTime}\nReturn: ${returnDateTime}\nReferred By: ${referredBy}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Got it — we've logged your request",
-      description: "We'll respond within minutes. Email draft opened as a backup.",
-    });
-    setTimeout(() => setSubmitting(false), 1500);
   };
 
   return (
@@ -132,7 +117,7 @@ const HotelQuoteForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+          <a href="tel:+17865059330" className="text-primary hover:underline">786-505-9330</a>
         </p>
       </form>
     </div>

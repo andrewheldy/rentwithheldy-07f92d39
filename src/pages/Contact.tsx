@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 import {
   buildBreadcrumbSchema,
   localBusinessSchema,
@@ -56,47 +56,31 @@ const Contact = () => {
 
     setSubmitting(true);
 
-    const notesComposed = [
-      `Reason: ${reason}`,
-      `Message: ${message}`,
-      `[Source: contact]`,
-      `[Lead Type: Contact]`,
-      `[Submitted: ${new Date().toISOString()}]`,
-    ].join(" | ");
-
-    const { error } = await supabase.from("leads").insert({
-      form_type: "contact",
-      vertical_path: "contact",
-      service_context: reason,
-      passenger_type: "Other",
-      name,
-      phone,
-      email: email || null,
-      notes: notesComposed,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (error) {
-      console.error("Contact insert failed", error);
+    try {
+      await submitQuote({
+        source: "contact",
+        formType: "contact",
+        passengerType: "Other",
+        name,
+        phone,
+        email: email || undefined,
+        notes: `Reason: ${reason} | Message: ${message}`,
+      });
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      (e.target as HTMLFormElement).reset();
+      setReason("");
+    } catch {
       toast({
         title: "Couldn't send your message",
-        description: "Please call (561) 519-8958 directly.",
+        description: "Please call 786-505-9330 directly.",
         variant: "destructive",
       });
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    const subject = `Contact Form — ${reason}`;
-    const body = `Source: contact\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nReason: ${reason}\nMessage: ${message}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    (e.target as HTMLFormElement).reset();
-    setReason("");
-    setTimeout(() => setSubmitting(false), 1500);
   };
 
   return (
@@ -133,10 +117,10 @@ const Contact = () => {
                 <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h2 className="text-lg font-semibold mb-1">Call us</h2>
                 <a
-                  href="tel:+15615198958"
+                  href="tel:+17865059330"
                   className="text-primary font-medium hover:underline"
                 >
-                  (561) 519-8958
+                  786-505-9330
                 </a>
                 <p className="text-xs text-muted-foreground mt-2">Fastest response</p>
               </CardContent>
@@ -213,7 +197,7 @@ const Contact = () => {
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   Prefer to talk? Call{" "}
-                  <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+                  <a href="tel:+17865059330" className="text-primary hover:underline">786-505-9330</a>
                 </p>
               </form>
             </div>

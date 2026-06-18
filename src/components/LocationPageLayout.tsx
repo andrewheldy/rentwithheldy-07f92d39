@@ -235,13 +235,13 @@ const LocationPageLayout = ({
                   Book Now
                 </Button>
               </Link>
-              <a href="tel:+15615198958">
+              <a href="tel:+17865059330">
                 <Button
                   size="lg"
                   variant="outline"
                   className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
                 >
-                  Call (561) 519-8958
+                  Call 786-505-9330
                 </Button>
               </a>
             </div>

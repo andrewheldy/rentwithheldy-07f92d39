@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const BodyShopQuoteForm = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -36,47 +36,37 @@ const BodyShopQuoteForm = () => {
 
     const notesComposed = [
       insuranceCarrier ? `Insurance Carrier: ${insuranceCarrier}` : null,
-      notes ? `Additional: ${notes}` : null,
-      `[Source: body-shop-delivery]`,
-      `[Lead Type: Body Shop / Repair Customer]`,
-      `[Submitted: ${new Date().toISOString()}]`,
+      notes || null,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
-      form_type: "body_shop_quote",
-      vertical_path: "body-shop",
-      service_context: "Body Shop Delivery",
-      passenger_type: "Body Shop / Repair Customer",
-      name,
-      phone,
-      company: shopName,
-      location: shopAddress,
-      needed_when: dateRange,
-      claim_number: claimNumber || null,
-      referred_by: referredBy || null,
-      notes: notesComposed,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (error) {
-      console.error("Lead insert failed", error);
+    try {
+      await submitQuote({
+        source: "body-shop-delivery",
+        formType: "body_shop_quote",
+        passengerType: "Body Shop / Repair Customer",
+        name,
+        phone,
+        company: shopName,
+        location: shopAddress,
+        when: dateRange,
+        claimNumber: claimNumber || undefined,
+        referredBy: referredBy || undefined,
+        notes: notesComposed || undefined,
+      });
       toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        title: "Got it — we've received your request!",
+        description: "We'll reach out within minutes to coordinate your repair rental.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } catch {
+      toast({
+        title: "Couldn't send your request",
+        description: "Please call 786-505-9330 and we'll handle it directly.",
         variant: "destructive",
       });
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    const subject = `Body Shop Quote — ${shopName}`;
-    const body = `Source: body-shop-delivery\nLead Type: Body Shop / Repair Customer\nName: ${name}\nPhone: ${phone}\nBody Shop: ${shopName}\nShop Address: ${shopAddress}\nDate Range: ${dateRange}\nInsurance Carrier: ${insuranceCarrier}\nClaim #: ${claimNumber}\nReferred By: ${referredBy}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Got it — we've logged your request",
-      description: "We'll respond within minutes. Email draft opened as a backup.",
-    });
-    setTimeout(() => setSubmitting(false), 1500);
   };
 
   return (
@@ -138,7 +128,7 @@ const BodyShopQuoteForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+          <a href="tel:+17865059330" className="text-primary hover:underline">786-505-9330</a>
         </p>
       </form>
     </div>

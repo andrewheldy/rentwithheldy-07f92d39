@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const AIRPORTS = ["FLL — Fort Lauderdale", "MIA — Miami International", "PBI — Palm Beach", "Other"] as const;
 
@@ -44,48 +44,38 @@ const AirportQuoteForm = () => {
     setSubmitting(true);
 
     const notesComposed = [
-      `Airport: ${airport}`,
       airline ? `Airline: ${airline}` : null,
       flightNumber ? `Flight #: ${flightNumber}` : null,
       pickupNotes ? `Pickup Notes: ${pickupNotes}` : null,
-      notes ? `Additional: ${notes}` : null,
-      `[Source: airport-trips]`,
-      `[Lead Type: Airport Traveler]`,
-      `[Submitted: ${new Date().toISOString()}]`,
+      notes || null,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
-      form_type: "airport_quote",
-      vertical_path: "airport",
-      service_context: "Airport Rental",
-      passenger_type: "Airport Traveler",
-      name,
-      phone,
-      location: airport,
-      needed_when: `Arrival: ${arrivalDateTime} | Return: ${returnDateTime}`,
-      notes: notesComposed,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    if (error) {
-      console.error("Lead insert failed", error);
+    try {
+      await submitQuote({
+        source: "airport-trip",
+        formType: "airport_quote",
+        passengerType: "Airport Traveler",
+        name,
+        phone,
+        location: airport,
+        when: `Arrival: ${arrivalDateTime} | Return: ${returnDateTime}`,
+        notes: notesComposed || undefined,
+      });
       toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        title: "Got it — we've received your request!",
+        description: "We'll reach out within minutes to confirm your airport rental.",
+      });
+      (e.target as HTMLFormElement).reset();
+      setAirport("");
+    } catch {
+      toast({
+        title: "Couldn't send your request",
+        description: "Please call 786-505-9330 and we'll handle it directly.",
         variant: "destructive",
       });
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    const subject = `Airport Quote — ${airport}${airline ? ` / ${airline} ${flightNumber}` : ""}`;
-    const body = `Source: airport-trips\nLead Type: Airport Traveler\nName: ${name}\nPhone: ${phone}\nAirport: ${airport}\nAirline: ${airline}\nFlight #: ${flightNumber}\nArrival: ${arrivalDateTime}\nReturn: ${returnDateTime}\nPickup Notes: ${pickupNotes}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Got it — we've logged your request",
-      description: "We'll respond within minutes. Email draft opened as a backup.",
-    });
-    setTimeout(() => setSubmitting(false), 1500);
   };
 
   return (
@@ -156,7 +146,7 @@ const AirportQuoteForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+          <a href="tel:+17865059330" className="text-primary hover:underline">786-505-9330</a>
         </p>
       </form>
     </div>

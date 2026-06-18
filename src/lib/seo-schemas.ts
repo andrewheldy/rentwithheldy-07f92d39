@@ -7,7 +7,7 @@ export const localBusinessSchema = {
   description:
     "Private car rental serving Fort Lauderdale, Miami, and South Florida. Premium fleet, easy booking, airport pickup available.",
   url: "https://rentwithheldy.com",
-  telephone: "+1-561-519-8958",
+  telephone: "+1-786-505-9330",
   email: "rentwithheldy@gmail.com",
   priceRange: "$$",
   image:

@@ -115,7 +115,7 @@ const About = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">(561) 519-8958</p>
+                    <p className="font-medium">786-505-9330</p>
                     <p className="text-sm text-muted-foreground">Available 7 days a week</p>
                   </div>
                 </div>

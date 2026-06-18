@@ -365,13 +365,13 @@ const Index = () => {
                   Book Now
                 </Button>
               </Link>
-              <a href="tel:+15615198958">
+              <a href="tel:+17865059330">
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 >
-                  <Phone className="h-5 w-5 mr-2" /> (561) 519-8958
+                  <Phone className="h-5 w-5 mr-2" /> 786-505-9330
                 </Button>
               </a>
             </div>

@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 import { toast } from "@/hooks/use-toast";
 import journeyImg from "@/assets/journey-to-ownership.png";
 
@@ -60,45 +60,35 @@ const RentToOwn = () => {
       `Platforms: ${platforms.join(", ")}`,
       `Valid Driver's License: ${hasLicense}`,
       `Personal Auto Insurance: ${hasInsurance}`,
-      `Timeline: ${timeline}`,
       notes ? `Additional: ${notes}` : null,
-      `[Source: rent-to-own]`,
-      `[Lead Type: Rideshare / Delivery Driver]`,
-      `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
-      form_type: "rent_to_own",
-      vertical_path: "rent-to-own",
-      service_context: "Rent-To-Own Application",
-      passenger_type: "Rideshare / Delivery Driver",
-      name,
-      phone,
-      email: email || null,
-      location: city,
-      needed_when: timeline,
-      notes: notesComposed,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
-    setSubmitting(false);
-    if (error) {
-      toast({ title: "Something went wrong", description: error.message, variant: "destructive" });
-      return;
+    try {
+      await submitQuote({
+        source: "rent-to-own",
+        formType: "rent_to_own",
+        passengerType: "Rideshare / Delivery Driver",
+        name,
+        phone,
+        email: email || undefined,
+        location: city,
+        when: timeline,
+        notes: notesComposed,
+      });
+      toast({
+        title: "Application submitted!",
+        description: "We'll reach out to discuss your options.",
+      });
+      (e.target as HTMLFormElement).reset();
+      setPlatforms([]);
+      setHasLicense("");
+      setHasInsurance("");
+      setTimeline("");
+    } catch {
+      toast({ title: "Something went wrong", description: "Please call 786-505-9330 and we'll help you directly.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
     }
-
-    const subject = `Rent-To-Own Application — ${name}`;
-    const body = `Source: rent-to-own\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nCity: ${city}\nPlatforms: ${platforms.join(", ")}\nValid License: ${hasLicense}\nPersonal Insurance: ${hasInsurance}\nTimeline: ${timeline}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast({
-      title: "Application submitted!",
-      description: "We'll reach out to discuss your options.",
-    });
-    (e.target as HTMLFormElement).reset();
-    setPlatforms([]);
-    setHasLicense("");
-    setHasInsurance("");
-    setTimeline("");
   };
 
   return (
@@ -280,7 +270,7 @@ const RentToOwn = () => {
                   </Button>
                   <p className="text-xs text-muted-foreground text-center mt-3">
                     Prefer to talk? Call{" "}
-                    <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+                    <a href="tel:+17865059330" className="text-primary hover:underline">786-505-9330</a>
                   </p>
                 </div>
               </form>

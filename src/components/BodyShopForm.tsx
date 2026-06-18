@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { submitQuote } from "@/lib/submitQuote";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your name").max(80),
@@ -60,43 +60,29 @@ const BodyShopForm = () => {
       notes || null,
     ].filter(Boolean).join(" | ");
 
-    await supabase.from("leads").insert({
-      form_type: "quick_quote",
-      vertical_path: "body-shop-delivery",
-      service_context: "Body Shop / Mechanic Delivery",
-      passenger_type: "Body Shop / Repair Customer",
-      name,
-      phone,
-      location,
-      needed_when: dateRange,
-      referred_by: referredBy || null,
-      notes: fullNotes || null,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-    });
-
     try {
-      const res = await fetch("/api/send-booking-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "body-shop-delivery",
-          formType: "quick_quote",
-          passengerType: "Body Shop / Repair Customer",
-          name,
-          phone,
-          location,
-          when: dateRange,
-          referredBy: referredBy || undefined,
-          notes: fullNotes || undefined,
-        }),
+      await submitQuote({
+        source: "body-shop-delivery",
+        formType: "quick_quote",
+        passengerType: "Body Shop / Repair Customer",
+        name,
+        phone,
+        location,
+        when: dateRange,
+        claimNumber: claimNumber || undefined,
+        referredBy: referredBy || undefined,
+        notes: fullNotes || undefined,
       });
-      if (!res.ok) console.error("Email send failed", await res.text());
-    } catch (err) {
-      console.error("Email send failed", err);
+      navigate("/book");
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please call 786-505-9330 and we'll help you directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
-    navigate("/book");
   };
 
   return (
@@ -195,8 +181,8 @@ const BodyShopForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">
-            (561) 519-8958
+          <a href="tel:+17865059330" className="text-primary hover:underline">
+            786-505-9330
           </a>
         </p>
       </form>
