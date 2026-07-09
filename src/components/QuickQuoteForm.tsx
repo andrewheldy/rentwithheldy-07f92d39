@@ -93,7 +93,7 @@ const QuickQuoteForm = ({
     }
     setSubmitting(true);
     setSubmitError(false);
-    const { name, phone, location, when, notes, referredBy } = parsed.data;
+    const { name, phone, location, dateRange, notes, referredBy } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
     const pageSource = "home";
 
@@ -133,7 +133,7 @@ const QuickQuoteForm = ({
           name,
           phone,
           location,
-          when,
+          when: dateRange,
           referredBy: referredBy || undefined,
           notes: notes || undefined,
         }),
@@ -183,7 +183,7 @@ const QuickQuoteForm = ({
           <div className="space-y-1.5 sm:col-span-2">
             <Label htmlFor="qq-passenger">I am a…</Label>
             <Select value={passengerType} onValueChange={setPassengerType}>
-              <SelectTrigger id="qq-passenger" className="h-10">
+              <SelectTrigger id="qq-passenger">
                 <SelectValue placeholder="Select customer type" />
               </SelectTrigger>
               <SelectContent>
@@ -258,7 +258,7 @@ const QuickQuoteForm = ({
           type="submit"
           size="lg"
           disabled={submitting}
-          className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+          className="w-full"
         >
           {submitting ? "Sending…" : ctaLabel}
         </Button>

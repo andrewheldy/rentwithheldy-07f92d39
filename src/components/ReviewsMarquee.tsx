@@ -104,14 +104,15 @@ const ReviewsMarquee = () => {
 
   return (
     <div
-      className="relative overflow-hidden"
+      className="group relative overflow-hidden"
       aria-label="Customer reviews carousel"
     >
       {/* Edge fade */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
 
-      <div className="flex gap-4 animate-marquee will-change-transform py-2">
+      {/* Pauses on hover/focus so readers can stop and read a review */}
+      <div className="flex gap-4 animate-marquee will-change-transform py-2 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
         {loop.map((r, i) => (
           <ReviewCard key={i} review={r} />
         ))}

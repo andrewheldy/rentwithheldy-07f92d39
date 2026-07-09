@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
-import { Phone, ShieldCheck, Sparkles, Clock, MapPin, Key, ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  Phone, Mail, ArrowRight, MapPin, Plane, BedDouble, Wrench, Anchor,
+  FileText, Key, Truck, MessageCircle, Users, Clock, Sparkles, Star,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
-import ServiceAreasGrid from "@/components/ServiceAreasGrid";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
 import FAQAccordion from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 import { useVehicles } from "@/hooks/useVehicles";
 import { GENERAL_FAQS } from "@/data/faqs";
 import {
@@ -20,27 +23,27 @@ import {
   localBusinessSchema,
 } from "@/lib/seo-schemas";
 
-const WHY_US = [
-  {
-    icon: ShieldCheck,
-    title: "Trusted local host",
-    body: "5-star All-Star Host with hundreds of trips across South Florida. Reliable cars, real support.",
-  },
-  {
-    icon: Sparkles,
-    title: "Curated premium fleet",
-    body: "Hand-picked sedans, SUVs, and luxury vehicles — clean, well-maintained, and trip-ready.",
-  },
-  {
-    icon: Clock,
-    title: "Easy, fast booking",
-    body: "Pick dates, see what's available, and confirm online in minutes. No counter, no surprises.",
-  },
-  {
-    icon: MapPin,
-    title: "Flexible pickup",
-    body: "Fort Lauderdale, Miami, and FLL airport. We coordinate the handoff around your schedule.",
-  },
+const SERVICES = [
+  { to: "/fort-lauderdale-airport-car-rental", icon: Plane, title: "Airport Delivery", body: "Meet your car at FLL arrivals — no shuttle bus, no rental counter." },
+  { to: "/hotel-concierge-rentals", icon: BedDouble, title: "Hotel Delivery", body: "We deliver straight to your hotel or resort lobby, on your schedule." },
+  { to: "/body-shop-delivery", icon: Wrench, title: "Body Shop Delivery", body: "A dependable car while yours is in the shop — dropped right at the shop." },
+  { to: "/cruise-port-delivery", icon: Anchor, title: "Cruise Port", body: "Pickup and delivery to Port Everglades and PortMiami for a smooth sail." },
+  { to: "/loss-of-use-claims", icon: FileText, title: "Loss of Use Claims", body: "Insurance replacement rentals handled simply while your claim is open." },
+  { to: "/rent-to-own", icon: Key, title: "Rent-To-Own", body: "For rideshare and delivery drivers — every payment builds toward owning." },
+];
+
+const LOCATIONS = [
+  { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
+  { to: "/car-rental-miami", label: "Miami" },
+  { to: "/local-car-rentals", label: "Local Rentals" },
+  { to: "/fort-lauderdale-airport-car-rental", label: "FLL Airport" },
+];
+
+const WHY = [
+  { icon: Truck, title: "Delivered, not a counter", body: "We bring the car to your terminal, hotel, or door. No lines, no shuttle bus, no rental desk." },
+  { icon: MessageCircle, title: "A real local owner", body: "Text or call one number and reach the people who run the fleet — not an overseas call center." },
+  { icon: Users, title: "Family-owned & bilingual", body: "A South Florida family business that treats you like a guest. Hablamos Español." },
+  { icon: Clock, title: "Flexible & transparent", body: "Straightforward rates, flexible pickup, and a clean, well-maintained private fleet." },
 ];
 
 // Hand-picked vehicle IDs to showcase on the homepage
@@ -76,58 +79,187 @@ const Index = () => {
       <main>
         <Hero />
 
-        {/* Quick Quote */}
-        <section className="py-12 sm:py-16 bg-secondary">
-          <div className="container mx-auto px-4 max-w-2xl">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                Get a fast quote
-              </h2>
-              <p className="text-muted-foreground">
-                Tell us what you need and we'll text you back with options in minutes.
+        {/* Trust strip */}
+        <section className="border-y border-border bg-card">
+          <div className="container mx-auto py-5">
+            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
+              {[
+                { icon: Star, label: "All-Star Host on Turo" },
+                { icon: Users, label: "Family-owned" },
+                { icon: MessageCircle, label: "Hablamos Español" },
+                { icon: Truck, label: "Delivered to you" },
+                { icon: Clock, label: "Open 7 days a week" },
+              ].map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-primary" />
+                  <span className="font-medium text-foreground/80">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Services — what we do */}
+        <section className="py-16 sm:py-24">
+          <div className="container mx-auto">
+            <Reveal className="max-w-2xl mb-12">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                What we do
               </p>
+              <h2 className="text-heading font-bold text-ink mb-4">
+                One local team for every kind of South Florida trip.
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Whatever brought you here — a flight, a hotel stay, a car in the
+                shop, or a plan to drive for a living — there's a Rent With Heldy
+                option built for it.
+              </p>
+            </Reveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SERVICES.map((s, i) => (
+                <Reveal key={s.to} delay={i * 60}>
+                  <Link to={s.to} className="group block h-full">
+                    <Card className="h-full hover:shadow-card-hover hover:-translate-y-0.5">
+                      <CardContent className="p-6">
+                        <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
+                          <s.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-ink mb-2">{s.title}</h3>
+                        <p className="text-sm leading-relaxed text-muted-foreground mb-4">{s.body}</p>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                          Learn more
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </Reveal>
+              ))}
             </div>
-            <QuickQuoteForm
-              serviceContext="Home Page Quote"
-              verticalPath="home"
-              title="Start Your Booking"
-              ctaLabel="Get My Quick Quote"
-            />
+
+            {/* Locations */}
+            <Reveal className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+              <span className="flex items-center gap-1.5 font-medium text-foreground/70">
+                <MapPin className="h-4 w-4 text-primary" /> Serving
+              </span>
+              {LOCATIONS.map((l, i) => (
+                <span key={l.to} className="flex items-center gap-3">
+                  <Link to={l.to} className="font-medium text-foreground/80 hover:text-primary transition-colors">
+                    {l.label}
+                  </Link>
+                  {i < LOCATIONS.length - 1 && <span className="text-border">•</span>}
+                </span>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Why Rent With Heldy — differentiation */}
+        <section className="py-16 sm:py-24 bg-secondary">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              <Reveal>
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                  Why Rent With Heldy
+                </p>
+                <h2 className="text-heading font-bold text-ink mb-5">
+                  Big rental brands make you come to them. We come to you.
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Enterprise, Hertz, and the airport counters mean lines, shuttle
+                  buses, and fine print. A peer-to-peer app means a different
+                  stranger every time. We're the middle ground travelers actually
+                  want: a real, local, family-run fleet that shows up where you are.
+                </p>
+                <Link to="/book">
+                  <Button size="lg">
+                    Book Now <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </Reveal>
+
+              <div className="space-y-4">
+                {WHY.map((w, i) => (
+                  <Reveal key={w.title} delay={i * 70}>
+                    <div className="flex gap-4 rounded-card border border-border bg-card p-5 shadow-card">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary/10">
+                        <w.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-ink mb-1">{w.title}</h3>
+                        <p className="text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="py-16 sm:py-24">
+          <div className="container mx-auto">
+            <Reveal className="max-w-2xl mb-12">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                How it works
+              </p>
+              <h2 className="text-heading font-bold text-ink mb-4">
+                From search to keys in four simple steps.
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                No counter, no surprises — just a quick, friendly handoff wherever
+                works best for you.
+              </p>
+            </Reveal>
+            <HowItWorksSteps />
+            <div className="mt-10">
+              <Link to="/book">
+                <Button size="lg">
+                  Book Now <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* Fleet preview */}
-        <section className="py-16 sm:py-20">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-2">
-                  Featured vehicles
+        <section className="py-16 sm:py-24 bg-secondary">
+          <div className="container mx-auto">
+            <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div className="max-w-xl">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                  The fleet
+                </p>
+                <h2 className="text-heading font-bold text-ink mb-4">
+                  Clean, reliable cars for every South Florida plan.
                 </h2>
-                <p className="text-muted-foreground max-w-xl">
+                <p className="text-lg text-muted-foreground">
                   A peek at our most-booked rides. See live availability and the
                   full fleet anytime.
                 </p>
               </div>
               <Link to="/fleet">
-                <Button variant="outline">View full fleet</Button>
+                <Button variant="outline">View Full Fleet</Button>
               </Link>
-            </div>
+            </Reveal>
+
             {isLoading ? (
-              <div className="text-center text-muted-foreground py-12">
-                Loading fleet…
-              </div>
+              <div className="text-center text-muted-foreground py-12">Loading fleet…</div>
             ) : (
               <>
                 <FleetGrid vehicles={featuredVehicles} limit={6} />
-                <div className="text-center mt-10">
+                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
                   <Link to="/fleet">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                    >
-                      See More
-                    </Button>
+                    <Button size="lg">View Full Fleet</Button>
+                  </Link>
+                  <Link
+                    to="/trip-planner"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                  >
+                    <Sparkles className="h-4 w-4 text-primary" />
+                    Not sure what fits your trip? Try the Trip Planner
                   </Link>
                 </div>
               </>
@@ -135,97 +267,39 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Why us */}
-        <section className="py-16 sm:py-20 bg-secondary">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
-                Why rent with Heldy
-              </h2>
-              <p className="text-muted-foreground">
-                Built for travelers and locals who want a smooth, premium
-                rental without the rental-counter hassle.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {WHY_US.map((w) => (
-                <Card key={w.title} className="border-none shadow-card-hover">
-                  <CardContent className="p-6">
-                    <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                      <w.icon className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">{w.title}</h3>
-                    <p className="text-sm text-muted-foreground">{w.body}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section className="py-16 sm:py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
-                How it works
-              </h2>
-              <p className="text-muted-foreground">
-                Four simple steps from search to keys in hand.
-              </p>
-            </div>
-            <HowItWorksSteps />
-            <div className="text-center mt-10">
-              <Link to="/how-it-works">
-                <Button variant="outline">See full process</Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Service areas */}
-        <section className="py-16 sm:py-20 bg-secondary">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
-                Where we serve
-              </h2>
-              <p className="text-muted-foreground">
-                Local pickup across Fort Lauderdale, Miami, and Fort
-                Lauderdale-Hollywood International Airport.
-              </p>
-            </div>
-            <ServiceAreasGrid />
-          </div>
-        </section>
-
-        {/* Reviews marquee */}
-        <section className="py-16 sm:py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+        {/* Reviews */}
+        <section className="py-16 sm:py-24">
+          <div className="container mx-auto">
+            <Reveal className="max-w-2xl mb-10">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
                 What renters say
-              </h2>
-              <p className="text-muted-foreground">
-                Real feedback from travelers and locals across South Florida.
               </p>
-            </div>
+              <h2 className="text-heading font-bold text-ink mb-4">
+                Real reviews from Turo guests across South Florida.
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                The reason we earned All-Star Host status — clean cars, clear
+                communication, and an easy handoff, trip after trip.
+              </p>
+            </Reveal>
           </div>
           <ReviewsMarquee />
         </section>
 
-        {/* FAQ preview */}
-        <section className="py-16 sm:py-20 bg-secondary">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
-                Frequently asked questions
+        {/* FAQ — reassurance */}
+        <section className="py-16 sm:py-24 bg-secondary">
+          <div className="container mx-auto max-w-3xl">
+            <Reveal className="text-center mb-10">
+              <h2 className="text-heading font-bold text-ink mb-4">
+                Questions, answered.
               </h2>
-              <p className="text-muted-foreground">
-                Quick answers to the most common rental questions.
+              <p className="text-lg text-muted-foreground">
+                A few of the things renters ask us most. More on the full FAQ.
               </p>
-            </div>
-            <FAQAccordion items={faqPreview} />
+            </Reveal>
+            <Reveal>
+              <FAQAccordion items={faqPreview} />
+            </Reveal>
             <div className="text-center mt-8">
               <Link to="/faq">
                 <Button variant="outline">See all FAQs</Button>
@@ -234,146 +308,73 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Trip planner teaser */}
-        <section className="py-16 sm:py-20">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <Card className="border-none shadow-card-hover overflow-hidden">
-              <CardContent className="p-8 md:p-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-                      <Sparkles className="h-3.5 w-3.5" /> Trip Planner
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
-                      Traveling? We'll match the right car.
-                    </h2>
-                    <p className="text-base md:text-lg text-muted-foreground mb-6">
-                      Tell us how many people, how much luggage, and your trip
-                      vibe — we'll recommend the right size and show you what's
-                      available in our fleet.
-                    </p>
-                    <Link to="/trip-planner">
-                      <Button
-                        size="lg"
-                        className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                      >
-                        Find My Car <ArrowRight className="h-4 w-4 ml-1" />
-                      </Button>
-                    </Link>
-                  </div>
-                  <ul className="space-y-3 bg-secondary rounded-xl p-6">
-                    {[
-                      "Sized for your party and luggage",
-                      "Filtered to vehicles we actually have",
-                      "Takes under 30 seconds",
-                      "No account required",
-                    ].map((t) => (
-                      <li key={t} className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                        <span className="text-sm md:text-base text-foreground">{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        {/* Contact + Quote close */}
+        <section id="quote" className="scroll-mt-24 py-16 sm:py-24 bg-secondary">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+              <Reveal>
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                  Get started
+                </p>
+                <h2 className="text-heading font-bold text-ink mb-4">
+                  Tell us your trip. We'll text you back fast.
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Share a few details and we'll follow up with options — usually
+                  the same day. Prefer to talk? Reach a real person below.
+                </p>
 
-        {/* Rent-To-Own teaser */}
-        <section className="py-16 sm:py-20">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <Card className="border-none shadow-card-hover overflow-hidden bg-gradient-tropical">
-              <CardContent className="p-8 md:p-12 text-primary-foreground">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-                      <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
-                      Drive Today. Own Tomorrow.
-                    </h2>
-                    <p className="text-base md:text-lg text-primary-foreground/90 mb-6">
-                      For Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers.
-                      Every qualifying payment builds toward owning the vehicle
-                      you use to earn.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link to="/rent-to-own">
-                        <Button
-                          size="lg"
-                          className="bg-card text-primary hover:bg-card/90 shadow-tropical px-6"
-                        >
-                          Apply for Rent-To-Own
-                          <ArrowRight className="h-4 w-4 ml-1" />
-                        </Button>
-                      </Link>
-                      <Link to="/rent-to-own#how-it-works">
-                        <Button
-                          size="lg"
-                          variant="outline"
-                          className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                        >
-                          Learn How It Works
-                        </Button>
-                      </Link>
-                    </div>
+                <div className="space-y-4">
+                  <a href="tel:+15615198958" className="flex items-center gap-3 group">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
+                      <Phone className="h-5 w-5 text-primary" />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                        (561) 519-8958
+                      </span>
+                      <span className="block text-sm text-muted-foreground">Call or text, 7 days a week</span>
+                    </span>
+                  </a>
+                  <a href="mailto:rentwithheldy@gmail.com" className="flex items-center gap-3 group">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
+                      <Mail className="h-5 w-5 text-primary" />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                        rentwithheldy@gmail.com
+                      </span>
+                      <span className="block text-sm text-muted-foreground">We reply the same day</span>
+                    </span>
+                  </a>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block font-semibold text-ink">Fort Lauderdale &amp; Miami</span>
+                      <span className="block text-sm text-muted-foreground">Broward &amp; Miami-Dade delivery</span>
+                    </span>
                   </div>
-                  <ul className="space-y-3 bg-primary-foreground/10 backdrop-blur rounded-xl p-6">
-                    {[
-                      "No large down payment",
-                      "Built for gig workers",
-                      "Track ownership progress",
-                      "Reliable maintenance support",
-                    ].map((t) => (
-                      <li key={t} className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                        <span className="text-sm md:text-base">{t}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
 
-        {/* Final CTA */}
-        <section className="py-16 sm:py-20 bg-gradient-hero relative overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-15"
-            style={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1600&h=800&fit=crop)",
-            }}
-            aria-hidden
-          />
-          <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to book your South Florida rental?
-            </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-              Search live availability, lock in your dates, and meet your car
-              wherever works best.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link to="/book">
-                <Button
-                  size="lg"
-                  className="bg-card text-primary hover:bg-card/90 text-base px-8 shadow-tropical"
-                >
-                  Book Now
-                </Button>
-              </Link>
-              <a href="tel:+15615198958">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                >
-                  <Phone className="h-5 w-5 mr-2" /> (561) 519-8958
-                </Button>
-              </a>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link to="/book">
+                    <Button size="lg" className="w-full sm:w-auto">
+                      Book Now <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <QuickQuoteForm
+                  serviceContext="Home Page Quote"
+                  verticalPath="home"
+                  title="Get a Quote"
+                  ctaLabel="Get My Quote"
+                />
+              </Reveal>
             </div>
           </div>
         </section>

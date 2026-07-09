@@ -2,29 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* =========================================================================
+   Rent With Heldy — Global Design System
+   All colors MUST be HSL. Tokens defined here; consumed via Tailwind.
+   ========================================================================= */
+
+/* ---- Self-hosted variable fonts (latin subset, OFL) --------------------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  font-optical-sizing: auto;
+  src: url("/fonts/bricolage-latin-var.woff2") format("woff2");
+}
 
 @layer base {
   :root {
     --background: 42 100% 97%;
-    --foreground: 200 25% 15%;
+    --foreground: 210 30% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 200 25% 15%;
+    --card-foreground: 210 30% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 200 25% 15%;
+    --popover-foreground: 210 30% 14%;
 
     --primary: 180 85% 45%;
     --primary-foreground: 0 0% 100%;
+    /* Darker teal for solid-button hover — replaces cheap opacity fades */
+    --primary-hover: 180 85% 38%;
 
     --secondary: 42 45% 92%;
-    --secondary-foreground: 200 25% 15%;
+    --secondary-foreground: 210 30% 14%;
 
     --muted: 42 30% 95%;
-    --muted-foreground: 200 15% 55%;
+    --muted-foreground: 210 15% 42%;
 
     --accent: 180 85% 45%;
     --accent-foreground: 0 0% 100%;
@@ -36,41 +57,54 @@ All colors MUST be HSL.
     --input: 42 25% 85%;
     --ring: 180 85% 45%;
 
+    /* Ink navy — anchors headings & footer, gives depth vs. flat teal */
+    --ink: 210 30% 12%;
+    --ink-foreground: 0 0% 100%;
+
     /* Custom brand colors */
     --brand-primary: 180 85% 45%;
     --brand-secondary: 42 100% 97%;
     --brand-accent: 35 75% 85%;
-    
-    /* Complementary coral/sunset for high-contrast CTAs */
+
+    /* Complementary coral/sunset — reserved for quote/secondary accents */
     --complementary: 15 85% 55%;
     --complementary-foreground: 0 0% 100%;
     --gradient-complementary: linear-gradient(135deg, hsl(15 85% 55%), hsl(25 90% 60%));
-    --shadow-complementary: 0 10px 40px -10px hsl(15 85% 55% / 0.35);
-    
-    /* Gradients */
+    --shadow-complementary: 0 10px 40px -12px hsl(15 85% 55% / 0.35);
+
+    /* Gradients — reserved for 1–2 full-bleed CTA bands per page */
     --gradient-tropical: linear-gradient(135deg, hsl(180 85% 45%), hsl(170 80% 50%));
     --gradient-hero: linear-gradient(135deg, hsl(180 85% 45% / 0.95), hsl(170 80% 50% / 0.95));
-    
-    /* Shadows */
-    --shadow-tropical: 0 10px 40px -10px hsl(180 85% 45% / 0.3);
-    --shadow-card: 0 4px 20px -5px hsl(180 85% 45% / 0.15);
+    /* Was referenced in 3 layouts but never defined (rendered transparent) */
+    --gradient-subtle: linear-gradient(180deg, hsl(42 100% 98%), hsl(42 45% 93%));
 
-    --radius: 0.5rem;
+    /* Elevation — neutral ink at low opacity (premium, not teal candy) */
+    --shadow-sm: 0 1px 2px hsl(210 30% 12% / 0.06);
+    --shadow-card: 0 1px 3px hsl(210 30% 12% / 0.06);
+    --shadow-card-hover: 0 12px 32px -12px hsl(210 30% 12% / 0.18);
+    --shadow-lg: 0 24px 60px -20px hsl(210 30% 12% / 0.22);
+    /* Kept for the 1–2 teal CTA bands only */
+    --shadow-tropical: 0 12px 40px -14px hsl(180 85% 45% / 0.35);
+
+    /* Two-tier radius */
+    --radius: 0.625rem;        /* 10px — controls (buttons, inputs) */
+    --radius-card: 1rem;       /* 16px — cards, surfaces */
+    --radius-control: 0.625rem;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 150ms;
+    --dur-base: 220ms;
+    --dur-reveal: 520ms;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -86,6 +120,7 @@ All colors MUST be HSL.
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-hover: 210 40% 90%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -102,6 +137,12 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --ink: 210 40% 98%;
+    --ink-foreground: 222.2 47.4% 11.2%;
+
+    --gradient-subtle: linear-gradient(180deg, hsl(222.2 84% 6%), hsl(222.2 84% 4.9%));
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -120,5 +161,50 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display typeface anchors every heading site-wide */
+  h1, h2, h3, h4, .font-heading {
+    font-family: "Bricolage Grotesque", "Inter", ui-sans-serif, system-ui,
+      sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ---- Motion primitives -------------------------------------------------- */
+@layer utilities {
+  /* Scroll-reveal (consumed by <Reveal/>) — CSS only, no JS animation lib */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--dur-reveal) var(--ease-out),
+      transform var(--dur-reveal) var(--ease-out);
+    will-change: opacity, transform;
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Accessibility: honor reduced-motion globally ----------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

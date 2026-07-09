@@ -1,95 +1,103 @@
 import { Link } from "react-router-dom";
-import { Car, Calendar, Plane, Anchor, BedDouble, Wrench, FileText, Key, MapPin } from "lucide-react";
+import { Star, Phone, ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBanner from "@/assets/hero-banner.png";
+// Temporary licensed placeholder (Miami skyline, self-hosted & optimized).
+// Swap for real Rent With Heldy photography (key handoff / fleet curbside) when available.
+import heroImage from "@/assets/hero-south-florida.jpg";
 
-const VERTICALS = [
-  { to: "/fort-lauderdale-airport-car-rental", label: "Airport", icon: Plane },
-  { to: "/cruise-port-delivery", label: "Cruise Port", icon: Anchor },
-  { to: "/hotel-concierge-rentals", label: "Hotel", icon: BedDouble },
-  { to: "/body-shop-delivery", label: "Body Shop / Mechanic", icon: Wrench },
-  { to: "/loss-of-use-claims", label: "Loss of Use", icon: FileText },
+const TRUST = [
+  "Family-owned",
+  "Hablamos Español",
+  "Delivered to your door",
+  "Open 7 days",
 ];
 
 const Hero = () => {
   return (
-    <section className="relative bg-background">
-      <div className="relative w-full overflow-hidden">
-        <img
-          src={heroBanner}
-          alt="Rent With Heldy — premium car rentals in Miami and Fort Lauderdale"
-          className="w-full h-auto block"
-          loading="eager"
-        />
-      </div>
+    <section className="relative overflow-hidden bg-gradient-subtle">
+      <div className="container mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center py-14 sm:py-20 lg:py-24">
+          {/* Copy */}
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1.5 text-sm font-medium text-primary">
+              <Star className="h-4 w-4 fill-primary text-primary" />
+              All-Star Host on Turo
+            </div>
 
-      {/* CTA buttons below the hero image */}
-      <div className="container mx-auto px-4 pt-4 pb-0">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 max-w-3xl mx-auto">
-          <Link to="/book" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base h-11"
+            <h1 className="mt-5 text-display-lg text-ink">
+              South Florida car rentals, delivered to you.
+            </h1>
+
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              A family-owned private fleet across Fort Lauderdale, Miami, and
+              FLL airport. Skip the rental counter — we bring the car to your
+              hotel, terminal, or doorstep.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Link to="/book">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Book Now <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <a href="#quote">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                  Get a Quote
+                </Button>
+              </a>
+            </div>
+
+            <a
+              href="tel:+15615198958"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
-              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Check Our Availability
-            </Button>
-          </Link>
-          <Link to="/trip-planner" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-complementary text-complementary-foreground hover:opacity-90 shadow-complementary text-sm sm:text-base h-11"
-            >
-              <MapPin className="h-4 w-4 sm:h-5 sm:w-5" /> What Car Fits My Trip?
-            </Button>
-          </Link>
-          <Link to="/fleet" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base h-11"
-            >
-              <Car className="h-4 w-4 sm:h-5 sm:w-5" /> View Fleet
-            </Button>
-          </Link>
-        </div>
+              <Phone className="h-4 w-4 text-primary" />
+              Call or Text (561) 519-8958
+            </a>
 
-
-        {/* Vertical service shortcuts */}
-        <nav
-          aria-label="Specialized services"
-          className="mt-6 sm:mt-8"
-        >
-          <ul className="grid grid-cols-5 gap-2 sm:gap-4 max-w-3xl mx-auto">
-            {VERTICALS.map(({ to, label, icon: Icon }) => (
-              <li key={to}>
-                <Link
-                  to={to}
-                  className="group flex flex-col items-center justify-start gap-2 rounded-xl border border-border bg-card p-2 sm:p-4 text-center transition-all hover:border-primary/60 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <span className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-tropical flex items-center justify-center shadow-tropical transition-transform group-hover:scale-105">
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
-                  </span>
-                  <span className="text-[11px] sm:text-sm font-medium text-foreground leading-tight">
-                    {label}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Rent to Own CTA for rideshare & delivery drivers */}
-          <div className="mt-4 sm:mt-6 flex justify-center">
-            <Link to="/rent-to-own" className="w-full max-w-3xl">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full border-primary/40 bg-card hover:bg-gradient-tropical hover:text-primary-foreground hover:border-transparent transition-all shadow-card-hover h-12 sm:h-14 text-sm sm:text-base font-semibold"
-              >
-                <Key className="h-4 w-4 sm:h-5 sm:w-5" />
-                Rent to Own — For Rideshare & Delivery Drivers
-              </Button>
-            </Link>
+            {/* Trust row */}
+            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
+              {TRUST.map((t) => (
+                <li key={t} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
-        </nav>
+
+          {/* Image */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-card shadow-elevated ring-1 ring-black/5 aspect-[16/11] lg:aspect-auto lg:h-[540px]">
+              <img
+                src={heroImage}
+                alt="Sunset over the Miami skyline and Biscayne Bay in South Florida"
+                className="absolute inset-0 h-full w-full object-cover object-[center_62%] motion-safe:animate-ken-burns"
+                fetchPriority="high"
+                decoding="async"
+                width={1300}
+                height={1950}
+              />
+              {/* Subtle bottom scrim for the location tag legibility */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/35 to-transparent" aria-hidden />
+              <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-black/35 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
+                <MapPin className="h-4 w-4" />
+                Serving Fort Lauderdale &amp; Miami
+              </div>
+            </div>
+
+            {/* Floating trust card */}
+            <div className="absolute -bottom-5 right-4 sm:right-6 hidden sm:flex items-center gap-3 rounded-card border border-border bg-card px-4 py-3 shadow-card-hover">
+              <div className="flex h-10 w-10 items-center justify-center rounded-control bg-primary/10">
+                <Star className="h-5 w-5 fill-primary text-primary" />
+              </div>
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-ink">All-Star Host</p>
+                <p className="text-xs text-muted-foreground">Rated by real Turo guests</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
