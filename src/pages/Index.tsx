@@ -12,6 +12,7 @@ import SEO from "@/components/SEO";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 import { useVehicles } from "@/hooks/useVehicles";
 import { GENERAL_FAQS } from "@/data/faqs";
 import {
@@ -79,14 +80,14 @@ const Index = () => {
         {/* Quick Quote */}
         <section className="py-12 sm:py-16 bg-secondary">
           <div className="container mx-auto px-4 max-w-2xl">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <Reveal className="text-center mb-8">
+              <h2 className="text-heading font-bold text-ink mb-2">
                 Get a fast quote
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Tell us what you need and we'll text you back with options in minutes.
               </p>
-            </div>
+            </Reveal>
             <QuickQuoteForm
               serviceContext="Home Page Quote"
               verticalPath="home"
@@ -99,20 +100,20 @@ const Index = () => {
         {/* Fleet preview */}
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-2">
+                <h2 className="text-heading font-bold text-ink mb-2">
                   Featured vehicles
                 </h2>
-                <p className="text-muted-foreground max-w-xl">
+                <p className="text-muted-foreground text-lg max-w-xl">
                   A peek at our most-booked rides. See live availability and the
                   full fleet anytime.
                 </p>
               </div>
               <Link to="/fleet">
-                <Button variant="outline">View full fleet</Button>
+                <Button variant="outline">View Full Fleet</Button>
               </Link>
-            </div>
+            </Reveal>
             {isLoading ? (
               <div className="text-center text-muted-foreground py-12">
                 Loading fleet…
@@ -122,12 +123,7 @@ const Index = () => {
                 <FleetGrid vehicles={featuredVehicles} limit={6} />
                 <div className="text-center mt-10">
                   <Link to="/fleet">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                    >
-                      See More
-                    </Button>
+                    <Button size="lg">View Full Fleet</Button>
                   </Link>
                 </div>
               </>
@@ -138,26 +134,28 @@ const Index = () => {
         {/* Why us */}
         <section className="py-16 sm:py-20 bg-secondary">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+            <Reveal className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-heading font-bold text-ink mb-3">
                 Why rent with Heldy
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Built for travelers and locals who want a smooth, premium
                 rental without the rental-counter hassle.
               </p>
-            </div>
+            </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {WHY_US.map((w) => (
-                <Card key={w.title} className="border-none shadow-card-hover">
-                  <CardContent className="p-6">
-                    <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                      <w.icon className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">{w.title}</h3>
-                    <p className="text-sm text-muted-foreground">{w.body}</p>
-                  </CardContent>
-                </Card>
+              {WHY_US.map((w, i) => (
+                <Reveal key={w.title} delay={i * 70}>
+                  <Card className="h-full hover:shadow-card-hover hover:-translate-y-0.5">
+                    <CardContent className="p-6">
+                      <div className="bg-primary/10 w-11 h-11 rounded-control flex items-center justify-center mb-4">
+                        <w.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">{w.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{w.body}</p>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -166,14 +164,14 @@ const Index = () => {
         {/* How it works */}
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+            <Reveal className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-heading font-bold text-ink mb-3">
                 How it works
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Four simple steps from search to keys in hand.
               </p>
-            </div>
+            </Reveal>
             <HowItWorksSteps />
             <div className="text-center mt-10">
               <Link to="/how-it-works">
@@ -186,15 +184,15 @@ const Index = () => {
         {/* Service areas */}
         <section className="py-16 sm:py-20 bg-secondary">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+            <Reveal className="text-center mb-12 max-w-2xl mx-auto">
+              <h2 className="text-heading font-bold text-ink mb-3">
                 Where we serve
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Local pickup across Fort Lauderdale, Miami, and Fort
                 Lauderdale-Hollywood International Airport.
               </p>
-            </div>
+            </Reveal>
             <ServiceAreasGrid />
           </div>
         </section>
@@ -202,14 +200,14 @@ const Index = () => {
         {/* Reviews marquee */}
         <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-10 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+            <Reveal className="text-center mb-10 max-w-2xl mx-auto">
+              <h2 className="text-heading font-bold text-ink mb-3">
                 What renters say
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Real feedback from travelers and locals across South Florida.
               </p>
-            </div>
+            </Reveal>
           </div>
           <ReviewsMarquee />
         </section>
@@ -217,14 +215,14 @@ const Index = () => {
         {/* FAQ preview */}
         <section className="py-16 sm:py-20 bg-secondary">
           <div className="container mx-auto px-4 max-w-3xl">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
+            <Reveal className="text-center mb-10">
+              <h2 className="text-heading font-bold text-ink mb-3">
                 Frequently asked questions
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-lg">
                 Quick answers to the most common rental questions.
               </p>
-            </div>
+            </Reveal>
             <FAQAccordion items={faqPreview} />
             <div className="text-center mt-8">
               <Link to="/faq">
@@ -244,7 +242,7 @@ const Index = () => {
                     <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
                       <Sparkles className="h-3.5 w-3.5" /> Trip Planner
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
+                    <h2 className="text-display text-ink mb-3">
                       Traveling? We'll match the right car.
                     </h2>
                     <p className="text-base md:text-lg text-muted-foreground mb-6">
@@ -253,10 +251,7 @@ const Index = () => {
                       available in our fleet.
                     </p>
                     <Link to="/trip-planner">
-                      <Button
-                        size="lg"
-                        className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                      >
+                      <Button size="lg">
                         Find My Car <ArrowRight className="h-4 w-4 ml-1" />
                       </Button>
                     </Link>
@@ -290,7 +285,7 @@ const Index = () => {
                     <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
                       <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">
+                    <h2 className="text-display mb-3">
                       Drive Today. Own Tomorrow.
                     </h2>
                     <p className="text-base md:text-lg text-primary-foreground/90 mb-6">
@@ -349,7 +344,7 @@ const Index = () => {
             aria-hidden
           />
           <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-display mb-4">
               Ready to book your South Florida rental?
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
@@ -360,7 +355,7 @@ const Index = () => {
               <Link to="/book">
                 <Button
                   size="lg"
-                  className="bg-card text-primary hover:bg-card/90 text-base px-8 shadow-tropical"
+                  className="bg-card text-primary hover:bg-card/90 hover:text-primary"
                 >
                   Book Now
                 </Button>
@@ -371,7 +366,7 @@ const Index = () => {
                   variant="outline"
                   className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 >
-                  <Phone className="h-5 w-5 mr-2" /> (561) 519-8958
+                  <Phone className="h-5 w-5 mr-2" /> Call or Text (561) 519-8958
                 </Button>
               </a>
             </div>

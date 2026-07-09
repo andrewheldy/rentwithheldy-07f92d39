@@ -27,26 +27,17 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-4 pb-0">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 max-w-3xl mx-auto">
           <Link to="/book" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base h-11"
-            >
-              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Check Our Availability
+            <Button size="lg" className="w-full">
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" /> Book Now
             </Button>
           </Link>
           <Link to="/trip-planner" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-complementary text-complementary-foreground hover:opacity-90 shadow-complementary text-sm sm:text-base h-11"
-            >
+            <Button variant="outline" size="lg" className="w-full">
               <MapPin className="h-4 w-4 sm:h-5 sm:w-5" /> What Car Fits My Trip?
             </Button>
           </Link>
           <Link to="/fleet" className="w-full">
-            <Button
-              size="lg"
-              className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical text-sm sm:text-base h-11"
-            >
+            <Button variant="outline" size="lg" className="w-full">
               <Car className="h-4 w-4 sm:h-5 sm:w-5" /> View Fleet
             </Button>
           </Link>
@@ -63,10 +54,10 @@ const Hero = () => {
               <li key={to}>
                 <Link
                   to={to}
-                  className="group flex flex-col items-center justify-start gap-2 rounded-xl border border-border bg-card p-2 sm:p-4 text-center transition-all hover:border-primary/60 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group flex flex-col items-center justify-start gap-2 rounded-card border border-border bg-card p-2 sm:p-4 text-center transition-all duration-200 ease-out-expo hover:border-primary/50 hover:shadow-card-hover hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <span className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-tropical flex items-center justify-center shadow-tropical transition-transform group-hover:scale-105">
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                  <span className="h-10 w-10 sm:h-12 sm:w-12 rounded-control bg-primary/10 flex items-center justify-center transition-colors group-hover:bg-primary/15">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </span>
                   <span className="text-[11px] sm:text-sm font-medium text-foreground leading-tight">
                     {label}
@@ -82,7 +73,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-primary/40 bg-card hover:bg-gradient-tropical hover:text-primary-foreground hover:border-transparent transition-all shadow-card-hover h-12 sm:h-14 text-sm sm:text-base font-semibold"
+                className="w-full h-12 sm:h-14 text-sm sm:text-base"
               >
                 <Key className="h-4 w-4 sm:h-5 sm:w-5" />
                 Rent to Own — For Rideshare & Delivery Drivers

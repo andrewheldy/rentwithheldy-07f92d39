@@ -12,12 +12,23 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1.5rem',
 			screens: {
-				'2xl': '1400px'
+				'2xl': '1280px'
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				heading: ['"Bricolage Grotesque"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			},
+			fontSize: {
+				// Fluid display scale — clamp(min, preferred, max)
+				'display-lg': ['clamp(2.5rem, 1.4rem + 4.6vw, 4rem)', { lineHeight: '1.04', letterSpacing: '-0.02em' }],
+				'display': ['clamp(2rem, 1.4rem + 2.6vw, 3rem)', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
+				'heading': ['clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
+				'subheading': ['clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +72,10 @@ export default {
 					DEFAULT: 'hsl(var(--complementary))',
 					foreground: 'hsl(var(--complementary-foreground))'
 				},
+				ink: {
+					DEFAULT: 'hsl(var(--ink))',
+					foreground: 'hsl(var(--ink-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -76,16 +91,26 @@ export default {
 				'gradient-tropical': 'var(--gradient-tropical)',
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-complementary': 'var(--gradient-complementary)',
+				'gradient-subtle': 'var(--gradient-subtle)',
 			},
 			boxShadow: {
+				'sm': 'var(--shadow-sm)',
+				'card': 'var(--shadow-card)',
+				'card-hover': 'var(--shadow-card-hover)',
+				'elevated': 'var(--shadow-lg)',
 				'tropical': 'var(--shadow-tropical)',
-				'card-hover': 'var(--shadow-card)',
 				'complementary': 'var(--shadow-complementary)',
 			},
 			borderRadius: {
+				card: 'var(--radius-card)',
+				control: 'var(--radius-control)',
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			transitionTimingFunction: {
+				'out-expo': 'var(--ease-out)',
+				'in-out-quad': 'var(--ease-in-out)',
 			},
 			keyframes: {
 				'accordion-down': {

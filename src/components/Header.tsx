@@ -77,12 +77,7 @@ const Header = () => {
               </Button>
             </Link>
             <Link to="/book">
-              <Button
-                size="sm"
-                className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-              >
-                Book Now
-              </Button>
+              <Button size="sm">Book Now</Button>
             </Link>
             <button
               type="button"
