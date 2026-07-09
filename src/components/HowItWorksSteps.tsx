@@ -28,10 +28,10 @@ const HowItWorksSteps = () => (
     {STEPS.map((s) => (
       <div
         key={s.title}
-        className="bg-card border border-border rounded-xl p-6 shadow-card-hover"
+        className="bg-card border border-border rounded-card p-6 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
       >
-        <div className="bg-gradient-tropical w-12 h-12 rounded-full flex items-center justify-center mb-4">
-          <s.icon className="h-6 w-6 text-primary-foreground" />
+        <div className="bg-primary/10 w-11 h-11 rounded-control flex items-center justify-center mb-4">
+          <s.icon className="h-5 w-5 text-primary" />
         </div>
         <h3
           className="text-lg font-semibold text-foreground mb-2"
