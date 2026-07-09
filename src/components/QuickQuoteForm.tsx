@@ -93,7 +93,7 @@ const QuickQuoteForm = ({
     }
     setSubmitting(true);
     setSubmitError(false);
-    const { name, phone, location, when, notes, referredBy } = parsed.data;
+    const { name, phone, location, dateRange, notes, referredBy } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
     const pageSource = "home";
 
@@ -133,7 +133,7 @@ const QuickQuoteForm = ({
           name,
           phone,
           location,
-          when,
+          when: dateRange,
           referredBy: referredBy || undefined,
           notes: notes || undefined,
         }),
