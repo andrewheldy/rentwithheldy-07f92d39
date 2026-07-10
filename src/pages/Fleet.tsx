@@ -3,32 +3,31 @@ import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
-import FAQAccordion from "@/components/FAQAccordion";
+import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useVehicles } from "@/hooks/useVehicles";
-import { GENERAL_FAQS } from "@/data/faqs";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
 
-const FLEET_FAQS = GENERAL_FAQS.filter((f) =>
-  ["What types of vehicles are available?", "How do I book a car?", "What documents do I need?", "Is there a minimum age requirement?"].includes(
-    f.question
-  )
-);
+// Fleet/booking-relevant subset of the shared FAQ set (vehicles, booking,
+// documents, minimum age), by index into faq.items so it stays translatable.
+const FLEET_FAQ_INDICES = [4, 0, 5, 8];
 
 const Fleet = () => {
-  const { t } = useTranslation(["fleet", "common"]);
+  const { t } = useTranslation(["fleet", "common", "faq"]);
   const { data: vehicles = [], isLoading } = useVehicles();
+  const allFaqs = t("faq:items", { returnObjects: true }) as FAQItem[];
+  const fleetFaqs = FLEET_FAQ_INDICES.map((i) => allFaqs[i]).filter(Boolean);
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Our Fleet | Car & SUV Rentals in Fort Lauderdale and Miami"
-        description="Browse our sedans, SUVs, and premium vehicles for rent in Fort Lauderdale, Miami, and South Florida. See live availability and book online."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/fleet"
         jsonLd={[
           localBusinessSchema,
@@ -36,7 +35,7 @@ const Fleet = () => {
             { name: "Home", path: "/" },
             { name: "Fleet", path: "/fleet" },
           ]),
-          buildFaqSchema(FLEET_FAQS),
+          buildFaqSchema(fleetFaqs),
         ]}
       />
       <Header />
@@ -106,7 +105,7 @@ const Fleet = () => {
             <h2 className="text-2xl font-bold text-center mb-8">
               {t("faqSection.title")}
             </h2>
-            <FAQAccordion items={FLEET_FAQS} />
+            <FAQAccordion items={fleetFaqs} />
           </div>
         </section>
       </main>

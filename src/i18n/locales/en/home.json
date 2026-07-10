@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Car Rental Fort Lauderdale & Miami | Rent With Heldy",
+    "description": "Family-owned car rental in Fort Lauderdale, Miami, and South Florida. 1,400+ five-star reviews, contactless pickup, hotel and airport delivery. Book online in minutes."
+  },
   "hero": {
     "eyebrow": "Fort Lauderdale · Miami · FLL",
     "title": "Skip the rental counter.",
@@ -9,21 +13,24 @@
       "cruisePorts": "Cruise ports",
       "repairShops": "Repair shops"
     },
-    "primaryCta": "Book Your Rental",
-    "secondaryCta": "Browse Fleet",
+    "primaryCta": "Book Now",
+    "secondaryCta": "View the Fleet",
     "trust": {
-      "allStar": "All-Star Host on Turo",
-      "familyOwned": "Family-owned",
-      "espanol": "Hablamos Español",
-      "open7": "Open 7 days"
+      "reviews": "1,400+ Five-Star Reviews",
+      "allStar": "All-Star Host",
+      "delivery": "Hotel & Airport Delivery",
+      "contactless": "Contactless Pickup",
+      "language": "Message Us in Your Preferred Language",
+      "familyOwned": "Family-Owned"
     }
   },
   "trustStrip": {
-    "allStar": "All-Star Host on Turo",
-    "familyOwned": "Family-owned",
-    "espanol": "Hablamos Español",
-    "delivered": "Delivered to you",
-    "open7": "Open 7 days a week"
+    "reviews": "1,400+ Five-Star Reviews",
+    "allStar": "All-Star Host",
+    "delivery": "Hotel & Airport Delivery",
+    "contactless": "Contactless Pickup",
+    "language": "Message Us in Your Preferred Language",
+    "familyOwned": "Family-Owned"
   },
   "destinations": {
     "eyebrow": "Delivery, not a counter",
@@ -33,20 +40,20 @@
     "cards": {
       "airport": {
         "title": "Airport",
-        "description": "Flying into FLL or Miami? We'll help make the handoff simple, so you can skip the rental counter and start your trip.",
-        "ctaLabel": "Airport delivery",
+        "description": "Flying into FLL or Miami? We'll coordinate the most convenient pickup based on your arrival, so you can skip the rental counter and start your trip.",
+        "ctaLabel": "Airport pickup",
         "alt": "An SUV on a South Florida causeway with a plane descending toward the Miami skyline at sunset"
       },
       "hotel": {
         "title": "Hotel",
-        "description": "Staying nearby? We can arrange delivery to your hotel, resort, or vacation rental across South Florida.",
+        "description": "Staying nearby? We can deliver directly to your hotel, resort, or vacation rental across South Florida. Delivery fees vary by location.",
         "ctaLabel": "Hotel delivery",
         "alt": "An SUV parked under a hotel porte-cochère at dusk with the Miami skyline across the water"
       },
       "cruise": {
         "title": "Cruise Port",
-        "description": "Heading to PortMiami or Port Everglades? Start or finish your cruise with a rental arranged around your trip.",
-        "ctaLabel": "Cruise port delivery",
+        "description": "Heading to PortMiami or Port Everglades? Start or finish your cruise with a rental coordinated around your ship and schedule.",
+        "ctaLabel": "Cruise port pickup",
         "alt": "An SUV on a causeway passing a docked cruise ship near the Miami skyline at sunset"
       },
       "bodyShop": {
@@ -77,12 +84,12 @@
         "body": "Text or call one number and reach the people who run the fleet — not an overseas call center."
       },
       "familyBilingual": {
-        "title": "Family-owned & bilingual",
-        "body": "A South Florida family business that treats you like a guest. Hablamos Español."
+        "title": "Family-owned & personal",
+        "body": "A South Florida family business that treats you like a guest. Message us in your preferred language."
       },
       "flexible": {
-        "title": "Flexible & transparent",
-        "body": "Straightforward rates, flexible pickup, and a clean, well-maintained private fleet."
+        "title": "Contactless & convenient",
+        "body": "Contactless pickup is available on every rental with secure lockbox access — pick up on your schedule."
       }
     }
   },
@@ -94,24 +101,29 @@
   "fleet": {
     "eyebrow": "The fleet",
     "title": "Clean, reliable cars for every South Florida plan.",
-    "description": "A peek at our most-booked rides. See live availability and the full fleet anytime.",
+    "description": "A peek at our most-booked rides — practical economy options and newer premium ones, all carefully maintained. See live availability and the full fleet anytime.",
     "tripPlannerPrompt": "Not sure what fits your trip? Try the Trip Planner"
   },
   "reviews": {
-    "eyebrow": "What renters say",
-    "title": "Real reviews from Turo guests across South Florida.",
-    "description": "The reason we earned All-Star Host status — clean cars, clear communication, and an easy handoff, trip after trip."
+    "eyebrow": "What guests say",
+    "title": "1,400+ five-star reviews from Turo guests across South Florida.",
+    "description": "The reason we earned All-Star Host status — clean cars, clear communication, and an easy handoff, trip after trip.",
+    "ariaLabel": "Five-star guest reviews from Turo",
+    "altPattern": "Five-star Turo review from {{name}} for the {{vehicle}}"
   },
   "faqPreview": {
     "title": "Questions, answered.",
-    "description": "A few of the things renters ask us most. More on the full FAQ."
+    "description": "A few of the things guests ask us most. More on the full FAQ."
+  },
+  "quoteForm": {
+    "title": "Tell us about your trip"
   },
   "contactClose": {
     "eyebrow": "Get started",
-    "title": "Tell us your trip. We'll text you back fast.",
-    "description": "Share a few details and we'll follow up with options — usually the same day. Prefer to talk? Reach a real person below.",
+    "title": "Tell us about your trip.",
+    "description": "Share a few details and a member of our team will reach out as soon as possible. Prefer to talk? Reach a real person below.",
     "phoneLabel": "Call or text, 7 days a week",
-    "emailLabel": "We reply the same day",
+    "emailLabel": "We'll reply as soon as possible",
     "locationTitle": "Fort Lauderdale & Miami",
     "locationSub": "Broward & Miami-Dade delivery"
   }

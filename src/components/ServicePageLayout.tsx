@@ -236,7 +236,7 @@ const ServicePageLayout = ({
                         size="lg"
                         className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                       >
-                        {t("common:actions.bookInstantly")}
+                        {t("common:actions.bookNow")}
                       </Button>
                     </Link>
                     <a href="#quick-quote" className="w-full sm:w-auto">
@@ -461,7 +461,7 @@ const ServicePageLayout = ({
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/book">
                 <Button size="lg" variant="secondary" className="font-semibold">
-                  {t("common:actions.bookInstantly")}
+                  {t("common:actions.bookNow")}
                 </Button>
               </Link>
               <a href="#quick-quote">

@@ -1,33 +1,37 @@
 {
   "about": {
+    "meta": {
+      "title": "About Rent With Heldy | South Florida Car Rentals",
+      "description": "Meet Rent With Heldy — a family-owned South Florida car rental company built around one idea: renting a car should feel easy. 1,400+ five-star reviews, real people to help."
+    },
     "hero": {
-      "title": "About Rent With Heldy",
-      "subtitle": "Your trusted partner for premium car rentals in South Florida. We're committed to providing exceptional service and quality vehicles for all your transportation needs."
+      "title": "A family-owned car rental built around easy",
+      "subtitle": "Rent With Heldy is a family-owned South Florida car rental company built around one simple idea: renting a car should feel easy. We help guests coordinate the right vehicle, the easiest pickup, and the support they need throughout the trip."
     },
     "values": {
       "trusted": {
-        "title": "Trusted & Reliable",
-        "description": "All-Star Host status with consistently high ratings from satisfied customers."
+        "title": "1,400+ Five-Star Reviews",
+        "description": "An All-Star Host on Turo, earned trip after trip with clean cars and clear communication."
       },
       "quality": {
-        "title": "Premium Quality",
-        "description": "Carefully maintained fleet of vehicles ranging from economy to luxury."
+        "title": "Meticulously Maintained",
+        "description": "Every vehicle is professionally cleaned, detailed, and inspected before each rental — economy through newer premium options."
       },
       "local": {
-        "title": "Local Expertise",
-        "description": "Based in South Florida, we know the area and provide insider tips."
+        "title": "Family-Owned & Local",
+        "description": "A South Florida family that coordinates your pickup personally — hotel, airport, or cruise port."
       }
     },
     "story": {
       "heading": "Our Story",
-      "p1": "Founded with a passion for hospitality and a love for South Florida, Rent With Heldy has been serving travelers and locals alike with premium car rental services. What started as a small operation has grown into a trusted fleet of carefully selected vehicles.",
-      "p2": "Our commitment to excellence has earned us All-Star Host status, reflecting our dedication to providing exceptional customer service and maintaining our vehicles to the highest standards. Whether you're visiting Miami's vibrant beaches or exploring Fort Lauderdale's canals, we have the perfect vehicle for your journey.",
-      "p3": "Every vehicle in our fleet is personally inspected and maintained to ensure your safety and comfort. We believe that your transportation should be as memorable as your destination."
+      "p1": "We're a family-owned car rental based in South Florida, built around a simple belief: renting a car should feel easy, personal, and genuinely helpful. We treat every renter like a guest — not a transaction.",
+      "p2": "Instead of counters, lines, and upsells, we bring the experience to you. We coordinate the right vehicle for your trip, the easiest pickup — hotel, airport, cruise port, or body shop — and contactless access so you can get moving on your schedule. There's always a real person to reach when you need help.",
+      "p3": "Our fleet runs from practical economy cars to newer premium options, and every vehicle is professionally cleaned, detailed, and inspected before each rental. It's the reason we've earned 1,400+ five-star reviews and All-Star Host status across South Florida."
     },
     "getInTouch": {
       "heading": "Get in Touch",
-      "phoneNote": "Available 7 days a week",
-      "emailNote": "We'll respond within 24 hours",
+      "phoneNote": "Call or text, 7 days a week",
+      "emailNote": "We'll reply as soon as possible",
       "hoursLabel": "Business Hours",
       "hoursValue": "Mon-Sun: 8:00 AM - 8:00 PM"
     },
@@ -41,10 +45,14 @@
         "title": "Broward County",
         "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie, and surrounding areas"
       },
-      "cta": "Book Your Rental Today"
+      "cta": "Book Now"
     }
   },
   "privacy": {
+    "meta": {
+      "title": "Privacy Policy | Rent With Heldy",
+      "description": "How Rent With Heldy collects, uses, and protects your personal information when you book a car rental in Fort Lauderdale, Miami, or South Florida."
+    },
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: {{date}}",
     "overview": {
@@ -100,6 +108,10 @@
     }
   },
   "terms": {
+    "meta": {
+      "title": "Terms of Service | Rent With Heldy",
+      "description": "Terms governing reservations, rentals, and use of the Rent With Heldy website and car rental service in Fort Lauderdale, Miami, and South Florida."
+    },
     "title": "Terms of Service",
     "lastUpdated": "Last updated: {{date}}",
     "acceptance": {

@@ -6,7 +6,7 @@ export const localBusinessSchema = {
   "@type": "AutoRental",
   name: "Rent With Heldy",
   description:
-    "Private car rental serving Fort Lauderdale, Miami, and South Florida. Premium fleet, easy booking, airport pickup available.",
+    "Family-owned car rental serving Fort Lauderdale, Miami, and South Florida. Economy through newer premium vehicles, contactless pickup, and hotel, airport, and cruise coordination.",
   url: "https://rentwithheldy.com",
   telephone: CONTACT_PHONE_SCHEMA,
   email: "rentwithheldy@gmail.com",

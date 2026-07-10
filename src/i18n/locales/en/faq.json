@@ -6,5 +6,47 @@
   "hero": {
     "title": "Frequently asked questions",
     "subtitle": "Everything you need to know about renting with Heldy in South Florida."
-  }
+  },
+  "items": [
+    {
+      "question": "How do I book a car?",
+      "answer": "Click Book Now anywhere on the site to open our live booking widget. Choose your dates, select an available vehicle, and confirm online. You'll receive an instant confirmation by email."
+    },
+    {
+      "question": "Do you offer airport pickup?",
+      "answer": "Yes. We coordinate the most convenient airport pickup based on your arrival, destination, and schedule near Fort Lauderdale-Hollywood International (FLL) and Miami International (MIA). Share your flight details after booking and we'll confirm the plan before you land."
+    },
+    {
+      "question": "Is contactless pickup available?",
+      "answer": "Yes. Contactless pickup is available on every rental using secure lockbox access, so you can pick up your vehicle on your own schedule."
+    },
+    {
+      "question": "What areas do you serve?",
+      "answer": "We serve Fort Lauderdale, Miami, Hollywood, Aventura, and most of South Florida. If your destination isn't listed, contact us — we likely cover it."
+    },
+    {
+      "question": "What types of vehicles are available?",
+      "answer": "Our fleet ranges from practical economy cars and sedans to SUVs and newer premium options. Every vehicle is professionally cleaned, detailed, and inspected before each rental. Browse the live Fleet page to see what's currently available."
+    },
+    {
+      "question": "What documents do I need?",
+      "answer": "A valid driver's license, a credit card in the renter's name, and proof of insurance or an active protection plan through the booking platform. International renters are welcome with a valid license and passport."
+    },
+    {
+      "question": "How do tolls work?",
+      "answer": "Tolls are billed at the end of your trip with no additional fees. You'll only pay for the tolls incurred during your rental."
+    },
+    {
+      "question": "Are same-day rentals available?",
+      "answer": "Yes. Same-day rentals are available, subject to vehicle availability. Call or text us as early as you can and we'll do our best to get you on the road."
+    },
+    {
+      "question": "Is there a minimum age requirement?",
+      "answer": "Yes. Renters typically need to be 21 or older. Some premium vehicles may require a minimum age of 25. The booking widget will reflect any age restrictions."
+    },
+    {
+      "question": "What happens if I need to extend my rental?",
+      "answer": "Just message us before your scheduled return. As long as the vehicle is available, we'll extend your trip and update your reservation."
+    }
+  ]
 }

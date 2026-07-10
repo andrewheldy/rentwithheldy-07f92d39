@@ -1,120 +1,101 @@
-import { Star } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
+import { useReducedMotion } from "motion/react";
 
-// Real Turo reviews from Rent With Heldy guests.
-const PLACEHOLDER_REVIEWS = [
-  {
-    name: "Devario",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Amazing car! Great host. Will continue to rent from them each trip!",
-  },
-  {
-    name: "Amari",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Gary was an excellent host! Clean car and very responsive, definitely will book again!",
-  },
-  {
-    name: "Susan",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Awesome! Thanks, great specific directions. No issues. Appreciate the tip about the gas station for refueling.",
-  },
-  {
-    name: "Madisol",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
-  },
-  {
-    name: "Christopher",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
-  },
-  {
-    name: "Queen",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Good host!! Great car, very clean!",
-  },
-  {
-    name: "Todd",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Cool vehicle. Pleasure to drive. Thanks!",
-  },
-  {
-    name: "George",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Amazing car and host!",
-  },
-  {
-    name: "Monique",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Great customer service, even after dealing with some complications.",
-  },
-  {
-    name: "Reinah",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
-  },
-  {
-    name: "Ace",
-    location: "Verified Turo guest",
-    rating: 5,
-    text: "Great car will rent again next time I'm in Miami! Easy!",
-  },
+// Ten authentic five-star Turo review screenshots from Rent With Heldy guests.
+// Files live in src/assets/testimonials and are shown verbatim — never cropped
+// so the guest name, star rating, date, vehicle, and text stay readable
+// (object-contain, not cover). Order interleaves short/medium/long reviews and
+// alternates vehicles/names for visual variety.
+import t01 from "@/assets/testimonials/TESTIMONIALS_01.png";
+import t02 from "@/assets/testimonials/TESTIMONIALS_02.png";
+import t03 from "@/assets/testimonials/TESTIMONIALS_03.png";
+import t04 from "@/assets/testimonials/TESTIMONIALS_04.png";
+import t05 from "@/assets/testimonials/TESTIMONIALS_05.png";
+import t06 from "@/assets/testimonials/TESTIMONIALS_06.png";
+import t07 from "@/assets/testimonials/TESTIMONIALS_07.png";
+import t08 from "@/assets/testimonials/TESTIMONIALS_08.png";
+import t09 from "@/assets/testimonials/TESTIMONIALS_09.png";
+import t10 from "@/assets/testimonials/TESTIMONIALS_10.png";
+
+// Guest name + vehicle drive only the alt text. Proper nouns (names, makes,
+// models) are intentionally NOT translated.
+type Review = { src: string; name: string; vehicle: string };
+
+const REVIEWS: Review[] = [
+  { src: t08, name: "Farah", vehicle: "Audi Q5" },
+  { src: t01, name: "Emily", vehicle: "Audi Q5" },
+  { src: t05, name: "Sophia", vehicle: "Volkswagen Taos" },
+  { src: t02, name: "Steven Vincent", vehicle: "Audi Q5" },
+  { src: t09, name: "Christopher", vehicle: "Volkswagen Taos" },
+  { src: t04, name: "Domique", vehicle: "Audi Q5" },
+  { src: t06, name: "Roy", vehicle: "Volkswagen Taos" },
+  { src: t03, name: "Brandon", vehicle: "Audi Q5" },
+  { src: t10, name: "Guillaume", vehicle: "Audi Q5" },
+  { src: t07, name: "Lawrence", vehicle: "Volkswagen Taos" },
 ];
 
-const ReviewCard = ({
-  review,
-}: {
-  review: (typeof PLACEHOLDER_REVIEWS)[number];
-}) => (
-  <Card className="w-[300px] sm:w-[340px] shrink-0 shadow-card-hover border-none">
-    <CardContent className="p-6">
-      <div className="flex items-center gap-1 mb-3">
-        {Array.from({ length: review.rating }).map((_, i) => (
-          <Star
-            key={i}
-            className="h-4 w-4 fill-primary text-primary"
-            aria-hidden
-          />
-        ))}
-      </div>
-      <p className="text-sm text-foreground leading-relaxed mb-4">
-        &ldquo;{review.text}&rdquo;
-      </p>
-      <div className="text-xs">
-        <p className="font-semibold text-foreground">{review.name}</p>
-        <p className="text-muted-foreground">{review.location}</p>
-      </div>
-    </CardContent>
-  </Card>
+const Screenshot = ({ review, alt }: { review: Review; alt: string }) => (
+  <div className="h-[220px] shrink-0 overflow-hidden rounded-card border border-border bg-white shadow-card sm:h-[260px]">
+    <img
+      src={review.src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className="h-full w-auto max-w-none object-contain"
+    />
+  </div>
 );
 
 const ReviewsMarquee = () => {
-  // Duplicate list so the marquee loops seamlessly
-  const loop = [...PLACEHOLDER_REVIEWS, ...PLACEHOLDER_REVIEWS];
+  const { t } = useTranslation(["home"]);
+  const reduce = useReducedMotion();
+
+  const altFor = (r: Review) =>
+    t("reviews.altPattern", { name: r.name, vehicle: r.vehicle });
+
+  // Reduced-motion / no-autoplay: a single static row the user scrolls by hand.
+  if (reduce) {
+    return (
+      <div
+        className="flex gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:thin]"
+        role="region"
+        aria-label={t("reviews.ariaLabel")}
+        tabIndex={0}
+      >
+        {REVIEWS.map((r, i) => (
+          <Screenshot key={i} review={r} alt={altFor(r)} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div
       className="group relative overflow-hidden"
-      aria-label="Customer reviews carousel"
+      role="region"
+      aria-label={t("reviews.ariaLabel")}
     >
-      {/* Edge fade */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
+      {/* Edge fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
 
-      {/* Pauses on hover/focus so readers can stop and read a review */}
-      <div className="flex gap-4 animate-marquee will-change-transform py-2 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
-        {loop.map((r, i) => (
-          <ReviewCard key={i} review={r} />
+      {/* One track holding two identical sets. The animation shifts it -50% so
+          the second set slides exactly into the first's place — no jump, no gap.
+          Pauses on hover and keyboard focus so a screenshot can be read. */}
+      <div
+        className="flex w-max gap-4 py-2 animate-marquee will-change-transform group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
+        style={{ animationDuration: "80s" }}
+      >
+        {/* Real set — announced to assistive tech */}
+        {REVIEWS.map((r, i) => (
+          <Screenshot key={`a-${i}`} review={r} alt={altFor(r)} />
+        ))}
+        {/* Visual duplicate for the seamless loop — hidden from screen readers
+            so reviews aren't announced twice. */}
+        {REVIEWS.map((r, i) => (
+          <div key={`b-${i}`} aria-hidden="true">
+            <Screenshot review={r} alt="" />
+          </div>
         ))}
       </div>
     </div>

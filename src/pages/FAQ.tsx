@@ -1,11 +1,10 @@
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FAQAccordion from "@/components/FAQAccordion";
+import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GENERAL_FAQS } from "@/data/faqs";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -14,6 +13,7 @@ import {
 
 const FAQ = () => {
   const { t } = useTranslation(["faq", "common"]);
+  const items = t("items", { returnObjects: true }) as FAQItem[];
 
   return (
     <div className="min-h-screen bg-background">
@@ -27,7 +27,7 @@ const FAQ = () => {
             { name: "Home", path: "/" },
             { name: "FAQ", path: "/faq" },
           ]),
-          buildFaqSchema(GENERAL_FAQS),
+          buildFaqSchema(items),
         ]}
       />
       <Header />
@@ -44,7 +44,7 @@ const FAQ = () => {
         </section>
         <section className="py-14">
           <div className="container mx-auto px-4 max-w-3xl">
-            <FAQAccordion items={GENERAL_FAQS} />
+            <FAQAccordion items={items} />
             <div className="text-center mt-10">
               <Link to="/book">
                 <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">

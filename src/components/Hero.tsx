@@ -15,7 +15,14 @@ import heroSunsetAvif from "@/assets/hero_sunset.avif";
 import heroSunsetWebp from "@/assets/hero_sunset.webp";
 
 const DESTINATION_KEYS = ["airports", "hotels", "cruisePorts", "repairShops"] as const;
-const TRUST_KEYS = ["allStar", "familyOwned", "espanol", "open7"] as const;
+const TRUST_KEYS = [
+  "reviews",
+  "allStar",
+  "delivery",
+  "contactless",
+  "language",
+  "familyOwned",
+] as const;
 
 const Hero = () => {
   const reduce = useReducedMotion();

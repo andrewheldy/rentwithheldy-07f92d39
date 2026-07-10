@@ -1,16 +1,18 @@
 {
   "brand": {
-    "tagline": "Premium private car rentals",
+    "tagline": "Family-owned South Florida car rentals",
     "locations": "Fort Lauderdale • Miami"
   },
   "actions": {
     "bookNow": "Book Now",
-    "bookInstantly": "Book Instantly",
+    "checkAvailability": "Check Availability",
+    "findMyMatch": "Find My Match",
     "callOrText": "Call or Text",
-    "getMyQuote": "Get My Quote",
-    "getAQuote": "Get a Quote",
     "viewFullFleet": "View Full Fleet",
+    "viewFleet": "View the Fleet",
     "seeAllFaqs": "See all FAQs",
+    "seeHowItWorks": "See How It Works",
+    "contactTeam": "Contact Our Team",
     "requestDelivery": "Request Delivery",
     "requestDirectDelivery": "Request Direct Delivery",
     "learnMore": "Learn More"
