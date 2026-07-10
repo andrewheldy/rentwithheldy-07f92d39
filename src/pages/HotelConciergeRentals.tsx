@@ -1,20 +1,42 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import HotelQuoteForm from "@/components/HotelQuoteForm";
 import { BellRing, Sparkles, Bus, Receipt } from "lucide-react";
+import hotelDelivery from "@/assets/categories/hotel-delivery.jpg";
 
 const HotelConciergeRentals = () => (
   <ServicePageLayout
-    metaTitle="Hotel Concierge Car Rental Delivery | Rent With Heldy"
+    metaTitle="Hotel Car Rental Delivery in South Florida | Rent With Heldy"
     metaDescription="Upscale rental cars delivered to your Miami or Fort Lauderdale hotel. Valet hand-off, transparent pricing, white-glove service for premium travelers."
     path="/hotel-concierge-rentals"
     crumbLabel="Hotel Concierge Rentals"
-    eyebrow="Hotel Concierge"
-    h1="Premium Rentals, Delivered Right to Your Hotel."
-    intro="Stay at the property. Skip the airport detour. We coordinate with your hotel valet for a smooth, white-glove rental hand-off — perfect for guests at Miami Beach, Brickell, Las Olas, and the Fort Lauderdale beachfront."
+    eyebrow="Hotel delivery"
+    h1="Your rental, arranged around your stay"
+    intro="Staying at a hotel, resort, or vacation rental? We can coordinate vehicle delivery around your plans so you can spend less time arranging transportation."
     serviceContext="Hotel Concierge Rental"
     verticalPath="hotel"
     defaultPassengerType="Hotel Guest"
-    customForm={<HotelQuoteForm />}
+    formSlot={<HotelQuoteForm />}
+    heroImage={hotelDelivery}
+    heroImageAlt="Dark crossover arriving at a modern South Florida hotel at sunset"
+    primaryCta={{ label: "View available vehicles", href: "/fleet" }}
+    secondaryCta={{ label: "Explore hotel delivery", href: "#how-it-works" }}
+    highlights={[
+      "Hotels and resorts",
+      "Vacation rentals",
+      "Concierge coordination",
+      "Flexible delivery planning across the service area",
+    ]}
+    steps={[
+      "Choose a vehicle.",
+      "Tell us where you're staying.",
+      "Confirm a delivery plan with our team.",
+      "Meet us for the handoff and begin your trip.",
+    ]}
+    testimonial={{
+      quote: "Great customer service, even after dealing with some complications.",
+      name: "Monique",
+      location: "Verified Turo guest",
+    }}
     valueProps={[
       {
         icon: BellRing,

@@ -1,18 +1,41 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import { Anchor, Sparkles, Bus, Receipt } from "lucide-react";
+import cruisePortDelivery from "@/assets/categories/cruise-port-delivery.jpg";
 
 const CruisePortDelivery = () => (
   <ServicePageLayout
-    metaTitle="Cruise Port Car Rental Delivery | Rent With Heldy"
+    metaTitle="Cruise Port Car Rental Delivery in Miami & Fort Lauderdale | Rent With Heldy"
     metaDescription="Curb-side rental car delivery to Port Everglades and PortMiami. Skip the shuttles, sail in style. White-glove valet hand-off for cruise passengers."
     path="/cruise-port-delivery"
     crumbLabel="Cruise Port Delivery"
-    eyebrow="Cruise Port Delivery"
-    h1="Curb-side Rentals at Port Everglades & PortMiami."
-    intro="Step off your ship and into your car. We meet premium cruise travelers curb-side at the port with a clean, fully-prepped vehicle — no shuttle, no counter, no wasted vacation hours."
+    eyebrow="Cruise port delivery"
+    h1="An easier connection between your cruise and South Florida"
+    intro="Sailing through PortMiami or Port Everglades? We'll help coordinate your rental around your cruise schedule, whether you're exploring before departure or staying after you return."
     serviceContext="Cruise Port Delivery"
     verticalPath="cruise-port"
     defaultPassengerType="Cruise Passenger"
+    heroImage={cruisePortDelivery}
+    heroImageAlt="Dark crossover approaching PortMiami with a cruise ship and skyline ahead"
+    primaryCta={{ label: "View available vehicles", href: "/fleet" }}
+    secondaryCta={{ label: "Plan cruise port delivery", href: "#quick-quote" }}
+    highlights={[
+      "PortMiami",
+      "Port Everglades",
+      "Pre-cruise and post-cruise rentals",
+      "Clear coordination around arrival or departure timing",
+    ]}
+    steps={[
+      "Choose your vehicle and dates.",
+      "Share your cruise itinerary.",
+      "Confirm the handoff plan before your sailing date.",
+      "Continue your trip without making an unnecessary airport detour.",
+    ]}
+    testimonial={{
+      quote:
+        "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
+      name: "Christopher",
+      location: "Verified Turo guest",
+    }}
     valueProps={[
       {
         icon: Anchor,

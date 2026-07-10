@@ -1,20 +1,44 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import BodyShopForm from "@/components/BodyShopForm";
 import { Truck, Wrench, Clock, Handshake } from "lucide-react";
+import bodyShopDelivery from "@/assets/categories/body-shop-delivery.jpg";
 
 const BodyShopDelivery = () => (
   <ServicePageLayout
-    metaTitle="Body Shop & Mechanic Rental Car Delivery | Rent With Heldy"
+    metaTitle="Body Shop Replacement Car Rentals in South Florida | Rent With Heldy"
     metaDescription="Dropping off at a body shop or mechanic? We deliver your rental directly to the shop in Fort Lauderdale, Miami, and South Florida. Fast, flexible, no airport detour."
     path="/body-shop-delivery"
     crumbLabel="Body Shop & Mechanic Delivery"
-    eyebrow="Body Shop & Mechanic Delivery"
-    h1="Dropping Off at the Body Shop or Mechanic? We Meet You There With Your Rental."
-    intro="Don't waste a half-day rideshare-ing to the airport for a counter rental. We'll meet you at the body shop or mechanic with a clean, ready-to-drive replacement so you can hand off your car and keep going."
+    eyebrow="Replacement rentals"
+    h1="Stay mobile while your vehicle is being repaired"
+    intro="If your car is in a body shop or repair facility, we can help arrange a replacement rental and coordinate delivery around the repair process."
     serviceContext="Body Shop / Mechanic Delivery"
     verticalPath="body-shop-delivery"
     defaultPassengerType="Body Shop / Repair Customer"
     formSlot={<BodyShopForm />}
+    heroImage={bodyShopDelivery}
+    heroImageAlt="Dark crossover outside a modern South Florida body shop at sunset"
+    primaryCta={{ label: "Request a replacement rental", href: "#quick-quote" }}
+    secondaryCta={{ label: "How replacement rentals work", href: "#how-it-works" }}
+    highlights={[
+      "Collision centers",
+      "Body shops",
+      "Repair facilities",
+      "Direct coordination with the customer and facility where appropriate",
+    ]}
+    steps={[
+      "Tell us where your vehicle is being repaired.",
+      "Share the expected repair dates.",
+      "Choose an available replacement vehicle.",
+      "Confirm delivery and return details directly with our team.",
+    ]}
+    disclaimer="Insurance reimbursement depends on the customer's policy and claim. We can provide rental documentation when needed."
+    testimonial={{
+      quote:
+        "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
+      name: "Madisol",
+      location: "Verified Turo guest",
+    }}
     valueProps={[
       {
         icon: Truck,

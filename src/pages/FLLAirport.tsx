@@ -1,16 +1,70 @@
-import LocationPageLayout from "@/components/LocationPageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import AirportQuoteForm from "@/components/AirportQuoteForm";
+import { Plane, Navigation, MessageCircle, Clock } from "lucide-react";
+import airportDelivery from "@/assets/categories/airport-delivery.jpg";
 
 const FLLAirport = () => (
-  <LocationPageLayout
-    heroForm={<AirportQuoteForm />}
-    metaTitle="Airport Trips: FLL & Miami International (MIA) | Rent With Heldy"
+  <ServicePageLayout
+    metaTitle="Airport Car Rental Delivery in Miami & Fort Lauderdale | Rent With Heldy"
     metaDescription="Skip the rental counters at Fort Lauderdale-Hollywood (FLL) and Miami International (MIA). Fast, friendly airport pickup with a premium private fleet."
-    path="/airport-trips"
-    crumbLabel="Airport Trips"
-    h1="Airport Trips — FLL & Miami International (MIA)"
-    intro="A faster, friendlier alternative to the airport rental counters at Fort Lauderdale-Hollywood International (FLL) and Miami International (MIA). Reserve online, message us your flight, and meet your car within minutes of landing."
-    sections={[
+    path="/fort-lauderdale-airport-car-rental"
+    crumbLabel="Airport Delivery"
+    eyebrow="Airport delivery"
+    h1="Start your South Florida trip without the rental counter"
+    intro="Flying into Miami or Fort Lauderdale? We'll help arrange a simple vehicle handoff around your arrival so you can get on the road with less hassle."
+    serviceContext="Airport Delivery"
+    verticalPath="airport"
+    defaultPassengerType="Airport Traveler"
+    formSlot={<AirportQuoteForm />}
+    heroImage={airportDelivery}
+    heroImageAlt="Dark crossover driving toward the Miami skyline as a passenger jet descends"
+    primaryCta={{ label: "View available vehicles", href: "/fleet" }}
+    secondaryCta={{ label: "How airport delivery works", href: "#how-it-works" }}
+    highlights={[
+      "Service for MIA and FLL travelers",
+      "Clear pickup instructions",
+      "Direct communication with a local team",
+      "Return guidance provided before the end of the trip",
+    ]}
+    steps={[
+      "Choose your vehicle and travel dates.",
+      "Share your flight and arrival details.",
+      "Receive clear handoff instructions before landing.",
+      "Start your trip and contact us directly if you need help.",
+    ]}
+    testimonial={{
+      quote:
+        "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
+      name: "Reinah",
+      location: "Verified Turo guest",
+    }}
+    valueProps={[
+      {
+        icon: Plane,
+        title: "MIA & FLL travelers",
+        description:
+          "Serving both major South Florida airports with the same fleet and team.",
+      },
+      {
+        icon: Navigation,
+        title: "Clear pickup instructions",
+        description:
+          "You'll know exactly where to go and what to expect before you land.",
+      },
+      {
+        icon: MessageCircle,
+        title: "A local team, not a call center",
+        description:
+          "Direct line to the people who run the fleet, not an overseas hotline.",
+      },
+      {
+        icon: Clock,
+        title: "Return guidance up front",
+        description:
+          "We'll walk you through return timing before your trip even starts.",
+      },
+    ]}
+    body={[
       {
         heading: "Serving both FLL and Miami International (MIA)",
         paragraphs: [
@@ -26,20 +80,7 @@ const FLLAirport = () => (
         ],
       },
       {
-        heading: "How FLL airport pickup works",
-        paragraphs: [
-          "We've made the airport pickup flow as boring and predictable as possible — which, when you've just gotten off a flight, is exactly what you want.",
-        ],
-        bullets: [
-          "Reserve your dates and vehicle online. You'll see live availability and the actual car you're booking.",
-          "After confirmation, message us your flight number and arrival time so we can plan around delays.",
-          "When you land, text us as you head to baggage claim.",
-          "Meet at the agreed pickup spot near FLL — quick license check, walk the car, keys, and you're driving.",
-          "Return is the same in reverse: confirm a return time, meet at the spot, hand back the keys.",
-        ],
-      },
-      {
-        heading: "Built for FLL travelers",
+        heading: "Built for FLL and MIA travelers",
         paragraphs: [
           "Most of our airport renters fall into a few clear groups, and the fleet is set up to fit each.",
         ],
@@ -52,37 +93,20 @@ const FLLAirport = () => (
         ],
       },
       {
-        heading: "Why this beats the airport counters",
-        paragraphs: [
-          "FLL counters are designed to maximize throughput, not your experience. We're designed around the renter — one host, one fleet, one phone number, and consistent pricing that doesn't change between booking and pickup.",
-        ],
-        bullets: [
-          "All-Star Host with hundreds of five-star trips.",
-          "Live online booking — what you see is what you drive.",
-          "No surprise fees at return. The booking total is the total.",
-          "Direct line to our team throughout your trip — not a 1-800 number.",
-          "Flexible on timing for early arrivals, delays, and late returns within reason.",
-        ],
-      },
-      {
-        heading: "Where Heldy renters go after FLL",
+        heading: "Where Heldy renters go after landing",
         paragraphs: [
           "Once you're in the car, the rest of South Florida is yours. Most of our airport renters head to Fort Lauderdale Beach, downtown Fort Lauderdale, Hollywood, Aventura, or straight down I-95 into Miami. Some are catching cruises out of Port Everglades. Others are heading north to Boca, Delray, or West Palm.",
           "Whatever the destination, we make sure the car is ready, fueled, and clean. If you're planning a longer trip — for example, FLL to the Keys or up to Orlando — let us know when you book so we can confirm the vehicle and mileage expectations.",
         ],
       },
-      {
-        heading: "Reserve your FLL airport rental",
-        paragraphs: [
-          "Reservations take a couple of minutes. Pick your dates, choose your car from live availability, and confirm online. You'll get an instant email confirmation, and we'll coordinate the airport pickup details from there.",
-        ],
-      },
     ]}
+    partnerHeading="Travel agent or corporate travel coordinator?"
+    partnerSubheading="Arrange airport delivery for clients or employees flying into South Florida. We coordinate directly with you."
     faqs={[
       {
-        question: "Do you pick up directly at FLL airport?",
+        question: "Do you pick up directly at FLL or MIA airport?",
         answer:
-          "We coordinate pickup at a convenient spot right by Fort Lauderdale-Hollywood International Airport. After booking, share your flight details and we'll confirm the exact meeting point.",
+          "We coordinate pickup at a convenient spot near Fort Lauderdale-Hollywood International Airport or Miami International Airport. After booking, share your flight details and we'll confirm the exact meeting point.",
       },
       {
         question: "What if my flight is delayed?",
@@ -90,17 +114,17 @@ const FLLAirport = () => (
           "Just text us. We track your flight number once you share it and adjust pickup timing for delays — no extra fees for normal travel changes.",
       },
       {
-        question: "Can I drop the car back at FLL for an early flight?",
+        question: "Can I drop the car back at the airport for an early flight?",
         answer:
           "Yes. We'll arrange a return time that fits your departure and meet you at the same convenient spot near the airport.",
       },
       {
-        question: "Do you offer SUVs at FLL for families and groups?",
+        question: "Do you offer SUVs at the airport for families and groups?",
         answer:
-          "Yes. Our fleet includes SUVs and larger vehicles ideal for families and groups landing at FLL. Filter the live fleet by vehicle type when booking.",
+          "Yes. Our fleet includes SUVs and larger vehicles ideal for families and groups. Filter the live fleet by vehicle type when booking.",
       },
       {
-        question: "Is FLL airport pickup more expensive?",
+        question: "Is airport delivery more expensive?",
         answer:
           "No. We don't charge airport surcharges. The price you see in the booking widget is the price you pay.",
       },

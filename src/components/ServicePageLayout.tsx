@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, CheckCircle2, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { ChevronRight, CheckCircle2, MapPin, Phone, Star, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -18,6 +18,17 @@ export interface ValueProp {
   icon: LucideIcon;
   title: string;
   description: string;
+}
+
+interface CtaLink {
+  label: string;
+  href: string;
+}
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  location?: string;
 }
 
 interface ServicePageLayoutProps {
@@ -48,8 +59,24 @@ interface ServicePageLayoutProps {
   faqs: FAQItem[];
   /** Optional long-form body content rendered above the FAQ section */
   body?: { heading: string; paragraphs: string[]; bullets?: string[] }[];
-  /** Custom form to render in the hero slot instead of the default QuickQuoteForm */
-  formSlot?: React.ReactNode;
+  /** Custom form to render in the quote slot instead of the default QuickQuoteForm */
+  formSlot?: ReactNode;
+
+  /** Destination portrait photo — when set, the hero switches to the
+   *  split copy/photo layout and the quote form moves to its own section. */
+  heroImage?: string;
+  heroImageAlt?: string;
+  /** CSS object-position override for the hero image; defaults to "center" */
+  heroImagePosition?: string;
+  primaryCta?: CtaLink;
+  secondaryCta?: CtaLink;
+  /** "What guests should expect" bullet list */
+  highlights?: string[];
+  /** "How it works" numbered steps */
+  steps?: string[];
+  testimonial?: Testimonial;
+  /** Small print shown near the steps (e.g. insurance-reimbursement caveat) */
+  disclaimer?: string;
 }
 
 const DEFAULT_COVERAGE = [
@@ -81,6 +108,15 @@ const ServicePageLayout = ({
   faqs,
   body,
   formSlot,
+  heroImage,
+  heroImageAlt,
+  heroImagePosition,
+  primaryCta,
+  secondaryCta,
+  highlights,
+  steps,
+  testimonial,
+  disclaimer,
 }: ServicePageLayoutProps) => {
   const jsonLd = [
     localBusinessSchema,
@@ -90,6 +126,27 @@ const ServicePageLayout = ({
     ]),
     buildFaqSchema(faqs),
   ];
+
+  const quoteForm = formSlot ?? (
+    <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
+  );
+
+  const renderCta = (cta: CtaLink, variant: "default" | "outline") => {
+    const button = (
+      <Button size="lg" variant={variant} className="w-full sm:w-auto">
+        {cta.label}
+      </Button>
+    );
+    return cta.href.startsWith("#") ? (
+      <a href={cta.href} className="w-full sm:w-auto">
+        {button}
+      </a>
+    ) : (
+      <Link to={cta.href} className="w-full sm:w-auto">
+        {button}
+      </Link>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -116,49 +173,97 @@ const ServicePageLayout = ({
               <span className="text-foreground">{crumbLabel}</span>
             </nav>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-              <div>
-                <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
-                  {eyebrow}
-                </span>
-                <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
-                  {h1}
-                </h1>
-                <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
-                  {intro}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/book" className="w-full sm:w-auto">
-                    <Button
-                      size="lg"
-                      className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                    >
-                      Book Instantly
-                    </Button>
-                  </Link>
-                  <a href="#quick-quote" className="w-full sm:w-auto">
-                    <Button size="lg" variant="outline" className="w-full">
-                      Request Direct Delivery
-                    </Button>
+            {heroImage ? (
+              <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                <div>
+                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+                    {eyebrow}
+                  </span>
+                  <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+                    {h1}
+                  </h1>
+                  <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
+                    {intro}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    {primaryCta && renderCta(primaryCta, "default")}
+                    {secondaryCta && renderCta(secondaryCta, "outline")}
+                  </div>
+                  <a
+                    href="tel:+15615198958"
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+                  >
+                    <Phone className="h-4 w-4" />
+                    Talk to a real person: (561) 519-8958
                   </a>
                 </div>
-                <a
-                  href="tel:+15615198958"
-                  className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
-                >
-                  <Phone className="h-4 w-4" />
-                  Talk to a real person: (561) 519-8958
-                </a>
-              </div>
 
-              <div id="quick-quote" className="scroll-mt-24">
-                {formSlot ?? (
-                  <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
-                )}
+                <div className="mx-auto w-full max-w-sm lg:max-w-none">
+                  <div className="relative aspect-[3/5] overflow-hidden rounded-card border border-border shadow-card">
+                    <img
+                      src={heroImage}
+                      alt={heroImageAlt ?? ""}
+                      style={{ objectPosition: heroImagePosition ?? "center" }}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      width={700}
+                      height={1167}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <div>
+                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+                    {eyebrow}
+                  </span>
+                  <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+                    {h1}
+                  </h1>
+                  <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
+                    {intro}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link to="/book" className="w-full sm:w-auto">
+                      <Button
+                        size="lg"
+                        className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                      >
+                        Book Instantly
+                      </Button>
+                    </Link>
+                    <a href="#quick-quote" className="w-full sm:w-auto">
+                      <Button size="lg" variant="outline" className="w-full">
+                        Request Direct Delivery
+                      </Button>
+                    </a>
+                  </div>
+                  <a
+                    href="tel:+15615198958"
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+                  >
+                    <Phone className="h-4 w-4" />
+                    Talk to a real person: (561) 519-8958
+                  </a>
+                </div>
+
+                <div id="quick-quote" className="scroll-mt-24">
+                  {quoteForm}
+                </div>
+              </div>
+            )}
           </div>
         </section>
+
+        {/* Quote form — its own section when the hero is photo-led */}
+        {heroImage && (
+          <section id="quick-quote" className="scroll-mt-24 border-b border-border bg-secondary/20 py-12 md:py-16">
+            <div className="container mx-auto max-w-xl px-4">{quoteForm}</div>
+          </section>
+        )}
 
         {/* Value props */}
         <section className="container mx-auto px-4 py-12 md:py-16">
@@ -194,7 +299,52 @@ const ServicePageLayout = ({
           </div>
         </section>
 
-        {/* Optional body content */}
+        {/* How it works */}
+        {steps && steps.length > 0 && (
+          <section id="how-it-works" className="scroll-mt-24 bg-secondary/30 border-y border-border">
+            <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                How it works
+              </h2>
+              <ol className="space-y-5">
+                {steps.map((s, i) => (
+                  <li key={i} className="flex gap-4">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 font-heading font-bold text-primary">
+                      {i + 1}
+                    </span>
+                    <p className="pt-1.5 text-base text-muted-foreground leading-relaxed">
+                      {s}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+              {disclaimer && (
+                <p className="mt-8 text-xs text-muted-foreground leading-relaxed">
+                  {disclaimer}
+                </p>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* What guests should expect */}
+        {highlights && highlights.length > 0 && (
+          <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+              What to expect
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {highlights.map((h, i) => (
+                <li key={i} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground leading-relaxed">{h}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* Optional long-form body content */}
         {body && body.length > 0 && (
           <section className="bg-secondary/30 border-y border-border">
             <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl space-y-10">
@@ -274,6 +424,26 @@ const ServicePageLayout = ({
             </div>
           </div>
         </section>
+
+        {/* Testimonial */}
+        {testimonial && (
+          <section className="container mx-auto px-4 py-12 md:py-16 max-w-2xl">
+            <div className="rounded-card border border-border bg-card p-6 md:p-8 shadow-card text-center">
+              <div className="mb-3 flex justify-center gap-1" aria-hidden>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <p className="text-lg italic leading-relaxed text-foreground">
+                &ldquo;{testimonial.quote}&rdquo;
+              </p>
+              <p className="mt-4 text-sm font-semibold text-muted-foreground">
+                {testimonial.name}
+                {testimonial.location ? `, ${testimonial.location}` : ""}
+              </p>
+            </div>
+          </section>
+        )}
 
         {/* FAQ */}
         <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
