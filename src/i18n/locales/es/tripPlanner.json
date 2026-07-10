@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "Planificador de viajes | Encuentra el auto ideal | Rent With Heldy",
+    "description": "Cuéntanos sobre tu viaje — viajeros, equipaje y estilo — y te recomendaremos el auto de alquiler adecuado de nuestra flota del sur de Florida."
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "tripPlanner": "Planificador de viajes"
+  },
+  "hero": {
+    "title": "Planifica tu viaje por el sur de Florida",
+    "subtitle": "Tres preguntas rápidas. Te encontraremos el vehículo adecuado de nuestra flota."
+  },
+  "quiz": {
+    "eyebrow": "Planificador de viajes",
+    "stepOf": "Paso {{current}} de {{total}}",
+    "title": "Encuentra el auto adecuado para tu viaje",
+    "subtitle": "Responde 3 preguntas rápidas y te mostraremos vehículos de nuestra flota.",
+    "progressLabel": "Progreso del planificador de viajes",
+    "back": "Atrás"
+  },
+  "questions": {
+    "party": {
+      "title": "¿Cuántas personas viajan?",
+      "option": "{{count}} personas"
+    },
+    "luggage": {
+      "title": "¿Cuánto equipaje llevan?",
+      "options": {
+        "light": { "label": "Ligero", "description": "Solo equipaje de mano" },
+        "standard": { "label": "Estándar", "description": "1 maleta facturada por persona" },
+        "heavy": { "label": "Abundante", "description": "Muchas maletas o equipo" }
+      }
+    },
+    "style": {
+      "title": "¿Qué estilo de viaje buscas?",
+      "options": {
+        "city": { "label": "Ciudad y aeropuerto", "description": "Principalmente por la ciudad" },
+        "beach": { "label": "Playa y familia", "description": "Neveras, toallas y equipo de playa" },
+        "road": { "label": "Viaje por carretera", "description": "Muchos kilómetros y carga completa" }
+      }
+    }
+  },
+  "tiers": {
+    "compact": {
+      "label": "Compacto / Económico",
+      "bags": "2–3 maletas",
+      "description": "Fácil de estacionar y muy eficiente en combustible — perfecto para parejas o viajes en solitario."
+    },
+    "midsize": {
+      "label": "Sedán mediano",
+      "bags": "3–4 maletas",
+      "description": "Cabina cómoda y espacio de maletero para familias pequeñas o viajes de negocios."
+    },
+    "suv": {
+      "label": "SUV mediano",
+      "bags": "4–5 maletas",
+      "description": "Más espacio de carga y una posición elevada — ideal para días de playa y viajes activos."
+    },
+    "fullsuv": {
+      "label": "SUV grande / 3 filas",
+      "bags": "6+ maletas",
+      "description": "Máximo espacio para grupos grandes, equipo y viajes largos por carretera."
+    }
+  },
+  "result": {
+    "recommended": "Recomendado para tu viaje",
+    "fits": "Capacidad aproximada: {{seats}}",
+    "available": "Disponible en nuestra flota",
+    "checkFullFleet": "Consulta nuestra flota completa",
+    "startOver": "Empezar de nuevo",
+    "loading": "Cargando la flota…",
+    "empty": "Explora nuestra flota completa para ver qué está disponible en tus fechas.",
+    "vehicleImageAlt": "{{title}} disponible en la flota de Rent With Heldy",
+    "priceFrom": "desde",
+    "pricePerDay": "/día",
+    "checkAvailability": "Ver disponibilidad",
+    "seeFullFleet": "Ver flota completa"
+  }
+}

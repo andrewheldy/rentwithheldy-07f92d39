@@ -1,1 +1,52 @@
-{}
+{
+  "meta": {
+    "title": "Preguntas frecuentes sobre alquiler de autos | Reservas y recogida | Rent With Heldy",
+    "description": "Respuestas a las preguntas más comunes sobre alquilar un auto con Rent With Heldy en Fort Lauderdale, Miami y el sur de Florida. Reservas, recogida, requisitos y más."
+  },
+  "hero": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre alquilar con Heldy en el sur de Florida."
+  },
+  "items": [
+    {
+      "question": "¿Cómo reservo un auto?",
+      "answer": "Haz clic en Reservar ahora en cualquier parte del sitio para abrir nuestro sistema de reserva en tiempo real. Elige tus fechas, selecciona un vehículo disponible y confirma en línea. Recibirás una confirmación instantánea por correo."
+    },
+    {
+      "question": "¿Ofrecen recogida en el aeropuerto?",
+      "answer": "Sí. Coordinamos la recogida más conveniente según tu llegada, destino y horario cerca de Fort Lauderdale-Hollywood International (FLL) y Miami International (MIA). Comparte los datos de tu vuelo después de reservar y confirmaremos el plan antes de que aterrices."
+    },
+    {
+      "question": "¿Está disponible la recogida sin contacto?",
+      "answer": "Sí. La recogida sin contacto está disponible en cada alquiler mediante acceso seguro a una caja de seguridad, para que puedas recoger tu vehículo en tu propio horario."
+    },
+    {
+      "question": "¿Qué zonas cubren?",
+      "answer": "Atendemos Fort Lauderdale, Miami, Hollywood, Aventura y la mayor parte del sur de Florida. Si tu destino no aparece, contáctanos: es probable que lo cubramos."
+    },
+    {
+      "question": "¿Qué tipos de vehículos hay disponibles?",
+      "answer": "Nuestra flota va desde autos económicos prácticos y sedanes hasta SUV y opciones premium más nuevas. Cada vehículo se limpia, detalla e inspecciona profesionalmente antes de cada alquiler. Consulta la página de la flota en tiempo real para ver lo que hay disponible."
+    },
+    {
+      "question": "¿Qué documentos necesito?",
+      "answer": "Una licencia de conducir válida, una tarjeta de crédito a nombre del conductor y comprobante de seguro o un plan de protección activo a través de la plataforma de reserva. Los conductores internacionales son bienvenidos con una licencia válida y pasaporte."
+    },
+    {
+      "question": "¿Cómo funcionan los peajes?",
+      "answer": "Los peajes se facturan al final de tu viaje sin cargos adicionales. Solo pagas los peajes que uses durante tu alquiler."
+    },
+    {
+      "question": "¿Hay alquileres para el mismo día?",
+      "answer": "Sí. Los alquileres para el mismo día están disponibles, según la disponibilidad de vehículos. Llámanos o escríbenos con la mayor anticipación posible y haremos todo lo posible por ponerte en marcha."
+    },
+    {
+      "question": "¿Hay un requisito de edad mínima?",
+      "answer": "Sí. Por lo general, los conductores deben tener 21 años o más. Algunos vehículos premium pueden requerir una edad mínima de 25. El sistema de reserva reflejará cualquier restricción de edad."
+    },
+    {
+      "question": "¿Qué pasa si necesito extender mi alquiler?",
+      "answer": "Solo escríbenos antes de la devolución programada. Mientras el vehículo esté disponible, extenderemos tu viaje y actualizaremos tu reserva."
+    }
+  ]
+}

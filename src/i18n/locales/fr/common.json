@@ -1,1 +1,31 @@
-{}
+{
+  "brand": {
+    "tagline": "Location de voitures familiale en Floride du Sud",
+    "locations": "Fort Lauderdale • Miami"
+  },
+  "actions": {
+    "bookNow": "Réserver",
+    "checkAvailability": "Voir les disponibilités",
+    "findMyMatch": "Trouver mon option",
+    "callOrText": "Appeler ou écrire",
+    "viewFullFleet": "Voir toute la flotte",
+    "viewFleet": "Voir la flotte",
+    "seeAllFaqs": "Voir toutes les questions",
+    "seeHowItWorks": "Voir comment ça marche",
+    "contactTeam": "Contacter notre équipe",
+    "requestDelivery": "Demander une livraison",
+    "requestDirectDelivery": "Demander une livraison directe",
+    "learnMore": "En savoir plus"
+  },
+  "languageSelector": {
+    "label": "Changer de langue"
+  },
+  "states": {
+    "loadingFleet": "Chargement de la flotte…"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oups ! Page introuvable",
+    "returnHome": "Retour à l'accueil"
+  }
+}

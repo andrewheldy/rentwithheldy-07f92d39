@@ -1,1 +1,50 @@
-{}
+{
+  "cta": {
+    "heading": "מתי שרק תרצו.",
+    "subheading": "הזמינו אונליין תוך דקות, או דברו עם בן אדם אמיתי 7 ימים בשבוע."
+  },
+  "brand": {
+    "tagline": "השכרת רכב משפחתית בדרום פלורידה",
+    "badge": "All-Star Host ב-Turo",
+    "description": "צי משפחתי שמביא רכבים נקיים ואמינים ב-Fort Lauderdale, ב-Miami ובכל דרום פלורידה — בדיוק היכן שאתם צריכים."
+  },
+  "columns": {
+    "services": "שירותים",
+    "locations": "אזורי שירות",
+    "company": "החברה",
+    "contact": "צור קשר"
+  },
+  "services": {
+    "airport": "מסירה בשדה התעופה (FLL)",
+    "hotel": "מסירה למלון",
+    "bodyShop": "מסירה למוסך",
+    "cruise": "מסירה בנמל השיוט",
+    "lossOfUse": "אובדן שימוש",
+    "rentToOwn": "תוכנית שכירות לבעלות"
+  },
+  "locations": {
+    "fortLauderdale": "Fort Lauderdale",
+    "miami": "Miami",
+    "local": "השכרת רכב מקומית",
+    "fllAirport": "שדה התעופה FLL"
+  },
+  "company": {
+    "fleet": "הצי",
+    "howItWorks": "איך זה עובד",
+    "about": "עלינו",
+    "faq": "שאלות נפוצות",
+    "contact": "צור קשר"
+  },
+  "contact": {
+    "location": "Fort Lauderdale ו-Miami, FL"
+  },
+  "seoParagraph": "Rent With Heldy הוא שירות השכרת רכב פרטי מבוסס בדרום פלורידה, המשרת מטיילים ותושבים ב-Fort Lauderdale, ב-Miami, ב-Hollywood, ב-Aventura ובשדה התעופה הבינלאומי Fort Lauderdale-Hollywood (FLL). הצי הנבחר שלנו כולל רכבים חסכוניים, רכבי שטח (SUV), רכבים משפחתיים ואפשרויות פרימיום — בהזמנה אונליין תוך דקות, עם איסוף גמיש ותמיכה אמינה.",
+  "legal": {
+    "rights": "© {{year}} Rent With Heldy. כל הזכויות שמורות.",
+    "privacy": "מדיניות פרטיות",
+    "terms": "תנאים",
+    "manageFleet": "ניהול הצי",
+    "signOut": "התנתקות",
+    "admin": "ניהול"
+  }
+}

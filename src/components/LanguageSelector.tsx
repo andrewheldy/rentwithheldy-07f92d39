@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LANGUAGES } from "@/i18n/languages";
 import { normalizeLocale } from "@/i18n/config";
+import { loadLocale } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 interface LanguageSelectorProps {
@@ -31,8 +32,13 @@ const LanguageSelector = ({
   const activeOption =
     LANGUAGES.find((l) => l.code === active) ?? LANGUAGES[0];
 
-  const change = (code: string) => {
-    if (code !== active) void i18n.changeLanguage(code);
+  const change = async (code: (typeof LANGUAGES)[number]["code"]) => {
+    if (code !== active) {
+      // Load before switching so translated content and Helmet metadata update
+      // atomically instead of briefly committing English fallback strings.
+      await loadLocale(code);
+      await i18n.changeLanguage(code);
+    }
   };
 
   return (
@@ -61,7 +67,7 @@ const LanguageSelector = ({
           return (
             <DropdownMenuItem
               key={l.code}
-              onSelect={() => change(l.code)}
+              onSelect={() => void change(l.code)}
               aria-current={isActive ? "true" : undefined}
               className="flex cursor-pointer items-center justify-between gap-3 rounded-control py-2.5"
             >

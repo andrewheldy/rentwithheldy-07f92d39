@@ -1,1 +1,244 @@
-{}
+{
+  "meta": {
+    "title": "Alquiler con opción a compra para conductores de apps | Rent With Heldy",
+    "description": "Un camino de alquiler con opción a compra pensado para conductores de Uber, Lyft, DoorDash, Uber Eats e Instacart. Comienza con un Período de Calificación de 90 días. Programas personalizados según el vehículo y tu situación."
+  },
+  "hero": {
+    "imageAlt": "Dos SUV estacionados junto al paseo marítimo de Miami al atardecer, con el horizonte del centro y palmeras al fondo",
+    "badge": "Programa de alquiler con opción a compra",
+    "title": "Conduce hoy. Sé dueño mañana.",
+    "subtitle": "Accede a un vehículo confiable para Uber, Lyft, DoorDash y más mientras avanzas hacia la propiedad del vehículo del que dependes.",
+    "tagline": "Un camino práctico para ganar ahora y avanzar hacia el auto con el que te ganas la vida.",
+    "findMatch": "Encuentra tu opción",
+    "seeHowItWorks": "Ver cómo funciona",
+    "builtForDriversOn": "Hecho para conductores de"
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Un camino claro pensado según tu horario como conductor, que comienza con un Período de Calificación de 90 días.",
+    "stepLabel": "Paso {{number}}",
+    "steps": {
+      "getApproved": {
+        "title": "Comienza tu Período de Calificación",
+        "body": "Completa una solicitud rápida. Cada conductor comienza con un Período de Calificación de 90 días diseñado para confirmar ingresos constantes y el programa adecuado."
+      },
+      "startDriving": {
+        "title": "Empieza a conducir",
+        "body": "Te emparejamos con un vehículo para tus plataformas y empiezas a ganar de inmediato."
+      },
+      "buildOwnership": {
+        "title": "Demuestra constancia",
+        "body": "Durante el Período de Calificación, los conductores demuestran ingresos constantes y un uso responsable del vehículo."
+      },
+      "ownVehicle": {
+        "title": "Camino hacia la propiedad",
+        "body": "A partir de ahí, nuestro equipo trabaja contigo en el programa adecuado a largo plazo y tu camino hacia la propiedad."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Por qué les encanta a los conductores",
+    "subtitle": "Un programa diseñado para construir tu futuro, no solo cubrir tu próximo turno.",
+    "traditional": {
+      "title": "Alquileres tradicionales",
+      "items": [
+        "Pagos interminables",
+        "Sin propiedad",
+        "Sin valor a largo plazo",
+        "Empezar de cero cada vez"
+      ]
+    },
+    "rentToOwn": {
+      "title": "Alquiler con opción a compra",
+      "items": [
+        "Un camino hacia la propiedad",
+        "Acceso a un vehículo confiable",
+        "Hecho para trabajadores de apps",
+        "Beneficio financiero a largo plazo"
+      ]
+    }
+  },
+  "features": {
+    "title": "Lo que obtienes",
+    "subtitle": "Pensado para la realidad de conducir para ganarte la vida.",
+    "items": {
+      "noDownPayment": {
+        "title": "Sin gran pago inicial",
+        "body": "Comienza sin los grandes costos iniciales del financiamiento tradicional."
+      },
+      "flexibleGig": {
+        "title": "Flexible para el trabajo de apps",
+        "body": "Hecho específicamente para conductores de transporte y entregas."
+      },
+      "progressTracking": {
+        "title": "Un camino claro del programa",
+        "body": "Sabes en qué punto estás desde el Período de Calificación en adelante."
+      },
+      "reliableSupport": {
+        "title": "Soporte confiable",
+        "body": "Orientación de mantenimiento y apoyo cuando lo necesites."
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre el programa de alquiler con opción a compra.",
+    "items": [
+      {
+        "question": "¿Para quién es el programa?",
+        "answer": "Está hecho para conductores de apps y entregas: Uber, Lyft, Empower, DoorDash, Uber Eats, Instacart y plataformas similares. Si conduces para ganarte la vida y quieres un vehículo confiable, es para ti."
+      },
+      {
+        "question": "¿Puedo conducir para Uber, Lyft o apps de entrega?",
+        "answer": "Sí. Nuestros vehículos de alquiler con opción a compra se eligen para cumplir los requisitos de las principales plataformas de transporte y entregas en el sur de Florida, incluidas Uber, Lyft, DoorDash, Uber Eats e Instacart."
+      },
+      {
+        "question": "¿Cómo funciona el Período de Calificación?",
+        "answer": "Cada solicitante comienza con un Período de Calificación de 90 días diseñado para confirmar ingresos constantes y determinar el programa adecuado a largo plazo. Durante el Período de Calificación, los conductores demuestran ingresos constantes y un uso responsable del vehículo."
+      },
+      {
+        "question": "¿Necesito un crédito perfecto?",
+        "answer": "No. El programa está diseñado para trabajadores de apps y se enfoca en el historial de conducción y la constancia de ingresos, más que solo en la calificación crediticia tradicional."
+      },
+      {
+        "question": "¿Cuánto cuesta?",
+        "answer": "Los programas se personalizan según el vehículo y tu situación individual, así que no hay un precio semanal único para todos. Cuéntanos cómo conduces y nuestro equipo armará la estructura adecuada para ti."
+      },
+      {
+        "question": "¿Cómo funciona el camino hacia la propiedad?",
+        "answer": "Después del Período de Calificación, nuestro equipo trabaja contigo en el programa adecuado a largo plazo y el camino hacia la propiedad. Los detalles varían según el vehículo y tu situación, y te los explicamos directamente."
+      },
+      {
+        "question": "¿Qué pasa si dejo de participar?",
+        "answer": "Puedes devolver el vehículo. Te explicaremos tus opciones y los siguientes pasos según el punto del programa en el que estés."
+      }
+    ]
+  },
+  "apply": {
+    "title": "Encuentra tu opción de alquiler con opción a compra",
+    "subtitle": "Cuéntanos un poco sobre ti y un miembro de nuestro equipo te contactará para guiarte en los siguientes pasos.",
+    "fields": {
+      "name": "Nombre completo",
+      "namePlaceholder": "Tu nombre",
+      "phone": "Teléfono",
+      "phonePlaceholder": "(555) 555-5555",
+      "email": "Correo",
+      "emailPlaceholder": "you@email.com",
+      "platforms": "¿Para qué plataformas conducirás?",
+      "notes": "¿Algo más? (opcional)",
+      "notesPlaceholder": "Cuéntanos sobre tu experiencia conduciendo o cualquier pregunta."
+    },
+    "submit": "Encuentra tu opción",
+    "submitting": "Enviando…",
+    "disclaimer": "Sin compromiso. Los programas se personalizan según el vehículo y tu situación.",
+    "toast": {
+      "errorTitle": "Algo salió mal",
+      "successTitle": "Solicitud recibida",
+      "successDesc": "¡Gracias! Un miembro de nuestro equipo te contactará lo antes posible para guiarte en los siguientes pasos."
+    }
+  },
+  "finalCta": {
+    "title": "El vehículo que te ayuda a ganar también debería ayudarte a construir un futuro.",
+    "subtitle": "Únete al programa de alquiler con opción a compra de Rent With Heldy y empieza a avanzar hacia la propiedad del vehículo mientras generas ingresos.",
+    "apply": "Encuentra tu opción",
+    "scheduleCall": "Agenda una llamada",
+    "browsePrompt": "¿Prefieres ver los alquileres primero?",
+    "seeFleet": "Ver nuestra flota"
+  },
+  "quiz": {
+    "header": {
+      "title": "Encuentra tu opción en 60 segundos",
+      "stepOf": "Paso {{current}} de {{total}}"
+    },
+    "intro": {
+      "body": "Responde algunas preguntas rápidas y te recomendaremos el vehículo adecuado para tus objetivos.",
+      "start": "Comenzar el cuestionario"
+    },
+    "gig": {
+      "question": "¿Qué tipo de trabajo de apps?",
+      "help": "Elige la opción que mejor se ajuste a cómo usarás el vehículo.",
+      "options": {
+        "rideshare": {
+          "label": "Transporte de pasajeros",
+          "desc": "Uber, Lyft, Empower"
+        },
+        "delivery": {
+          "label": "Entregas",
+          "desc": "DoorDash, Uber Eats, Instacart"
+        },
+        "both": {
+          "label": "Ambos",
+          "desc": "Mezcla de transporte + entregas"
+        }
+      }
+    },
+    "platforms": {
+      "question": "¿Para qué plataformas conducirás?",
+      "help": "Selecciona todas las que apliquen."
+    },
+    "hours": {
+      "question": "¿Cuántas horas por semana?",
+      "help": "Nos ayuda a emparejar un vehículo que aguante tu carga de turnos.",
+      "options": {
+        "part": {
+          "label": "Medio tiempo",
+          "desc": "Menos de 20 h / semana"
+        },
+        "full": {
+          "label": "Tiempo completo",
+          "desc": "20 – 40 h / semana"
+        },
+        "heavy": {
+          "label": "Intenso",
+          "desc": "Más de 40 h / semana"
+        }
+      }
+    },
+    "rideTier": {
+      "question": "¿Qué categoría de transporte quieres apuntar?",
+      "help": "Las categorías premium ganan más por viaje, pero requieren un vehículo que califique.",
+      "options": {
+        "standard": {
+          "label": "Estándar",
+          "desc": "Uber X, Lyft, Empower"
+        },
+        "comfort": {
+          "label": "Comfort / Premium",
+          "desc": "Uber Comfort, Lyft Preferred"
+        },
+        "xl": {
+          "label": "XL / Grupo",
+          "desc": "Uber XL, Lyft XL — 6+ pasajeros"
+        }
+      }
+    },
+    "result": {
+      "yourMatch": "Tu opción",
+      "goodFitFor": "Ideal para",
+      "fields": {
+        "name": "Nombre completo",
+        "namePlaceholder": "Tu nombre",
+        "phone": "Teléfono",
+        "phonePlaceholder": "(555) 555-5555",
+        "email": "Correo",
+        "emailPlaceholder": "you@email.com"
+      },
+      "submit": "Encuentra tu opción",
+      "submitting": "Enviando…",
+      "disclaimer": "Sin compromiso. Los programas se personalizan según el vehículo y tu situación."
+    },
+    "submitted": {
+      "title": "Tienes una opción",
+      "body": "¡Gracias! Un miembro de nuestro equipo te contactará lo antes posible.",
+      "retake": "Repetir el cuestionario"
+    },
+    "nav": {
+      "back": "Atrás",
+      "next": "Siguiente",
+      "seeMatch": "Ver mi opción"
+    },
+    "toast": {
+      "error": "Algo salió mal. Por favor, llámanos o escríbenos directamente."
+    }
+  }
+}

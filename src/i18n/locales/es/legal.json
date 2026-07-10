@@ -1,1 +1,73 @@
-{}
+{
+  "about": {
+    "meta": {
+      "title": "Sobre Rent With Heldy | Alquiler de autos en el sur de Florida",
+      "description": "Conoce a Rent With Heldy, una empresa familiar de alquiler de autos del sur de Florida construida en torno a una idea: alquilar un auto debería ser fácil. Más de 1,400 reseñas de cinco estrellas, personas reales para ayudarte."
+    },
+    "hero": {
+      "title": "Un alquiler de autos familiar construido en torno a lo fácil",
+      "subtitle": "Rent With Heldy es una empresa familiar de alquiler de autos del sur de Florida construida en torno a una idea simple: alquilar un auto debería ser fácil. Ayudamos a los huéspedes a coordinar el vehículo adecuado, la recogida más fácil y el apoyo que necesitan durante todo el viaje."
+    },
+    "values": {
+      "trusted": {
+        "title": "Más de 1,400 reseñas de cinco estrellas",
+        "description": "Un All-Star Host en Turo, ganado viaje tras viaje con autos limpios y comunicación clara."
+      },
+      "quality": {
+        "title": "Meticulosamente mantenidos",
+        "description": "Cada vehículo se limpia, detalla e inspecciona profesionalmente antes de cada alquiler, desde económicos hasta opciones premium más nuevas."
+      },
+      "local": {
+        "title": "Familiar y local",
+        "description": "Una familia del sur de Florida que coordina tu recogida personalmente: hotel, aeropuerto o puerto de cruceros."
+      }
+    },
+    "story": {
+      "heading": "Nuestra historia",
+      "p1": "Somos un alquiler de autos familiar con base en el sur de Florida, construido en torno a una creencia simple: alquilar un auto debería ser fácil, personal y genuinamente útil. Tratamos a cada persona que alquila como a un huésped, no como una transacción.",
+      "p2": "En lugar de mostradores, filas y ventas insistentes, te llevamos la experiencia a ti. Coordinamos el vehículo adecuado para tu viaje, la recogida más fácil —hotel, aeropuerto, puerto de cruceros o taller— y acceso sin contacto para que te pongas en marcha en tu horario. Siempre hay una persona real disponible cuando necesitas ayuda.",
+      "p3": "Nuestra flota va desde autos económicos prácticos hasta opciones premium más nuevas, y cada vehículo se limpia, detalla e inspecciona profesionalmente antes de cada alquiler. Es la razón por la que hemos ganado más de 1,400 reseñas de cinco estrellas y el estatus de All-Star Host en todo el sur de Florida."
+    },
+    "getInTouch": {
+      "heading": "Ponte en contacto",
+      "phoneNote": "Llama o escribe, los 7 días de la semana",
+      "emailNote": "Responderemos lo antes posible",
+      "hoursLabel": "Horario de atención",
+      "hoursValue": "Lun-Dom: 8:00 a. m. - 8:00 p. m."
+    },
+    "serviceAreas": {
+      "heading": "Zonas de servicio",
+      "miamiDade": {
+        "title": "Condado de Miami-Dade",
+        "description": "Miami Beach, el centro de Miami, Coral Gables, Aventura y zonas aledañas"
+      },
+      "broward": {
+        "title": "Condado de Broward",
+        "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie y zonas aledañas"
+      },
+      "cta": "Reservar ahora"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Política de Privacidad | Rent With Heldy",
+      "description": "Cómo Rent With Heldy recopila, usa y protege tu información personal cuando reservas un alquiler de auto en Fort Lauderdale, Miami o el sur de Florida."
+    },
+    "title": "Política de Privacidad",
+    "lastUpdated": "Fecha de vigencia: {{date}}",
+    "effectiveDate": "10 de julio de 2026"
+  },
+  "terms": {
+    "meta": {
+      "title": "Términos de Servicio | Rent With Heldy",
+      "description": "Términos que rigen las reservas, los alquileres y el uso del sitio web y el servicio de alquiler de autos de Rent With Heldy en Fort Lauderdale, Miami y el sur de Florida."
+    },
+    "title": "Términos de Servicio",
+    "lastUpdated": "Fecha de vigencia: {{date}}",
+    "effectiveDate": "10 de julio de 2026"
+  },
+  "englishNotice": {
+    "heading": "Información legal",
+    "body": "La siguiente información legal se presenta en inglés para preservar su significado legal original. Si necesitas ayuda para entender cualquier parte, nuestro equipo estará encantado de ayudarte."
+  }
+}

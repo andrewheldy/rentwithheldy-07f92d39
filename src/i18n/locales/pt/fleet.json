@@ -1,1 +1,88 @@
-{}
+{
+  "meta": {
+    "title": "Nossa frota | Aluguel de carros e SUVs em Fort Lauderdale e Miami",
+    "description": "Conheça carros econômicos até opções premium mais novas e SUVs para alugar em Fort Lauderdale, Miami e no Sul da Flórida. Cada veículo é limpo e inspecionado antes da sua viagem. Reserve on-line."
+  },
+  "hero": {
+    "title": "Nossa frota de aluguel no Sul da Flórida",
+    "subtitle": "Escolha entre veículos econômicos práticos e opções premium mais novas — todos de propriedade particular, limpos, detalhados e inspecionados por profissionais antes da sua viagem, e escolhidos para dirigir de verdade no Sul da Flórida.",
+    "checkAvailability": "Ver disponibilidade em tempo real",
+    "howBookingWorks": "Como funciona a reserva"
+  },
+  "areaLinks": {
+    "title": "Vai alugar em uma região específica?",
+    "subtitle": "Veja detalhes de retirada por região, sugestões de veículos e ideias de passeios locais.",
+    "fortLauderdale": "Aluguéis em Fort Lauderdale",
+    "miami": "Aluguéis em Miami",
+    "fllAirport": "Viagens pelo aeroporto FLL"
+  },
+  "faqSection": {
+    "title": "Dúvidas sobre a frota e a reserva"
+  },
+  "grid": {
+    "empty": "Estamos atualizando nossa disponibilidade em tempo real. Volte em breve ou",
+    "emptySearchLink": "buscar disponibilidade",
+    "photoComingSoon": "Foto a caminho",
+    "imageAlt": "{{title}} disponível para aluguel no Sul da Flórida",
+    "seats": "{{seats}} lugares",
+    "bags": "Malas"
+  },
+  "vehicleCopy": {
+    "fallbackDescription": "Um veículo limpo e bem conservado, pronto para a sua viagem pelo Sul da Flórida.",
+    "colors": {
+      "blue": "Azul",
+      "white": "Branco",
+      "black": "Preto",
+      "silver": "Prata",
+      "gray": "Cinza",
+      "red": "Vermelho",
+      "burgundy": "Bordô",
+      "orange": "Laranja",
+      "beige": "Bege",
+      "brown": "Marrom"
+    },
+    "descriptions": {
+      "2019-volkswagen-jetta-blue": "Sedã confortável e econômico, perfeito para dirigir na cidade e fazer viagens curtas.",
+      "2020-chevrolet-equinox-white": "SUV espaçoso, ideal para viagens em família e aventuras pelo Sul da Flórida.",
+      "2020-toyota-corolla-blue": "Carro compacto confiável e econômico, com excelente eficiência de combustível.",
+      "2017-chevrolet-suburban-black": "SUV grande, perfeito para viagens em grupo e ocasiões especiais, com conforto premium.",
+      "2015-volkswagen-jetta-silver": "Sedã bem conservado, com engenharia alemã e confiabilidade.",
+      "2022-audi-a4-black": "Sedã de luxo com tecnologia de ponta e recursos de conforto premium.",
+      "2015-honda-fit-gray": "Hatch compacto e versátil, perfeito para circular pelas ruas movimentadas de Miami.",
+      "2019-volkswagen-jetta-red": "Jetta vermelho esportivo, com recursos modernos e interior confortável.",
+      "2021-kia-soul-blue": "Crossover único e divertido, com estilo marcante e recursos práticos.",
+      "2015-mercedes-benz-e350-black": "Sedã de luxo premium com estilo sofisticado e tecnologia avançada.",
+      "2014-honda-accord-silver": "Sedã médio confiável, conhecido pela qualidade e durabilidade da Honda.",
+      "2024-audi-q5-gray": "SUV de luxo de última geração, com tecnologia de ponta e desempenho premium.",
+      "2023-volkswagen-taos-blue": "SUV compacto com design moderno e versatilidade para qualquer aventura.",
+      "2017-ford-edge-burgundy": "SUV médio com estilo marcante e assentos confortáveis para todos os passageiros.",
+      "2014-audi-a4-black": "Sedã de luxo bem conservado, com a excelência atemporal da engenharia alemã.",
+      "2017-subaru-forester-white": "SUV pronto para aventuras, com tração integral e excelentes avaliações de segurança.",
+      "2019-audi-q5-silver": "SUV de luxo premium que combina desempenho, conforto e tecnologia avançada.",
+      "2018-jeep-renegade-orange": "SUV compacto divertido e capaz, com o estilo icônico da Jeep e capacidade off-road.",
+      "2019-honda-cr-v-gray": "SUV compacto popular, com interior espaçoso, excelente confiabilidade e recursos de segurança Honda Sensing.",
+      "2020-chevrolet-equinox-black": "SUV preto elegante, ideal para viagens em família e aventuras pelo Sul da Flórida.",
+      "2015-mazda-cx5-gray": "SUV econômico, fácil de dirigir e perfeito para explorar o Sul da Flórida. O Mazda CX-5 oferece assentos confortáveis, amplo espaço de carga e uma condução suave, sendo uma ótima opção para praia, aeroporto e aventuras do dia a dia.",
+      "2018-chevrolet-tahoe-beige": "SUV grande e espaçoso, com três fileiras, ideal para grupos grandes e viagens de carro.",
+      "2018-honda-pilot-white": "SUV familiar com três fileiras, assentos versáteis e excelentes avaliações de segurança.",
+      "2019-chevrolet-express-white": "Van de passageiros robusta, perfeita para grupos, equipamentos e turmas grandes.",
+      "2019-volkswagen-atlas-blue": "SUV familiar de três fileiras, com refinamento europeu e muito espaço.",
+      "2022-honda-odyssey-white": "Minivan familiar com capacidade para 7 ou 8 pessoas e comodidades premium.",
+      "2022-kia-soul-red": "Compacto divertido e quadrado, com espaço surpreendente e tecnologia moderna.",
+      "2015-mercedes-benz-e350-gray": "Sedã de luxo premium com condução refinada e estilo elegante.",
+      "2017-kia-optima-gray": "Sedã médio elegante, com recursos modernos e interior confortável.",
+      "2020-chevrolet-equinox-silver": "SUV compacto confortável, com tecnologia moderna e ótima economia de combustível.",
+      "2020-infiniti-qx60-brown": "SUV de luxo com três fileiras, interior premium e condução suave.",
+      "2020-toyota-corolla-black": "Sedã compacto confiável, com excelente economia de combustível.",
+      "2023-chevrolet-equinox-black": "SUV compacto moderno, com ótima tecnologia, conforto e eficiência.",
+      "2023-volkswagen-tiguan-black": "SUV compacto refinado, com estilo europeu e terceira fileira opcional.",
+      "2015-kia-optima-silver": "Sedã médio confortável, com ótima economia de combustível para dirigir na cidade.",
+      "2016-toyota-camry-silver": "Sedã médio confiável, com condução suave e ótima economia de combustível.",
+      "2018-gmc-yukon-white": "SUV grande premium com três fileiras e amplo espaço de carga."
+    }
+  },
+  "card": {
+    "pricePerDay": "${{price}}/dia",
+    "viewDetails": "Ver detalhes"
+  }
+}

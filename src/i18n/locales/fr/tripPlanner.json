@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "Planificateur de trajet | Trouvez la bonne voiture | Rent With Heldy",
+    "description": "Parlez-nous de votre trajet — voyageurs, bagages et style — et nous vous conseillerons la voiture de location adaptée dans notre flotte de Floride du Sud."
+  },
+  "breadcrumb": {
+    "home": "Accueil",
+    "tripPlanner": "Planificateur de trajet"
+  },
+  "hero": {
+    "title": "Planifiez votre séjour en Floride du Sud",
+    "subtitle": "Trois questions rapides. Nous vous proposerons le véhicule adapté dans notre flotte."
+  },
+  "quiz": {
+    "eyebrow": "Planificateur de trajet",
+    "stepOf": "Étape {{current}} sur {{total}}",
+    "title": "Trouvez la bonne voiture pour votre trajet",
+    "subtitle": "Répondez à 3 questions rapides et nous vous proposerons des véhicules de notre flotte.",
+    "progressLabel": "Progression du planificateur de trajet",
+    "back": "Retour"
+  },
+  "questions": {
+    "party": {
+      "title": "Combien de voyageurs ?",
+      "option": "{{count}} personnes"
+    },
+    "luggage": {
+      "title": "Combien de bagages ?",
+      "options": {
+        "light": { "label": "Légers", "description": "Bagages cabine uniquement" },
+        "standard": { "label": "Standard", "description": "1 bagage en soute par personne" },
+        "heavy": { "label": "Nombreux", "description": "Beaucoup de bagages ou d'équipement" }
+      }
+    },
+    "style": {
+      "title": "Quel est le style du trajet ?",
+      "options": {
+        "city": { "label": "Ville et aéroport", "description": "Principalement en ville" },
+        "beach": { "label": "Plage et famille", "description": "Glacières, serviettes et affaires de plage" },
+        "road": { "label": "Voyage sur la route", "description": "Longues distances et coffre bien rempli" }
+      }
+    }
+  },
+  "tiers": {
+    "compact": {
+      "label": "Compacte / Économique",
+      "bags": "2–3 bagages",
+      "description": "Facile à garer et très économe — parfaite pour les couples ou les voyages en solo."
+    },
+    "midsize": {
+      "label": "Berline intermédiaire",
+      "bags": "3–4 bagages",
+      "description": "Habitacle confortable et coffre adapté aux petites familles ou aux déplacements professionnels."
+    },
+    "suv": {
+      "label": "SUV intermédiaire",
+      "bags": "4–5 bagages",
+      "description": "Plus de place pour les bagages et une position surélevée — idéal pour la plage et les séjours actifs."
+    },
+    "fullsuv": {
+      "label": "Grand SUV / 3 rangées",
+      "bags": "6+ bagages",
+      "description": "Un maximum d'espace pour les grands groupes, l'équipement et les longs trajets."
+    }
+  },
+  "result": {
+    "recommended": "Recommandé pour votre trajet",
+    "fits": "Environ {{seats}} places",
+    "available": "Disponible dans notre flotte",
+    "checkFullFleet": "Consultez toute notre flotte",
+    "startOver": "Recommencer",
+    "loading": "Chargement de la flotte…",
+    "empty": "Parcourez toute notre flotte pour voir les disponibilités à vos dates.",
+    "vehicleImageAlt": "{{title}} disponible dans la flotte Rent With Heldy",
+    "priceFrom": "à partir de",
+    "pricePerDay": "/jour",
+    "checkAvailability": "Voir les disponibilités",
+    "seeFullFleet": "Voir toute la flotte"
+  }
+}

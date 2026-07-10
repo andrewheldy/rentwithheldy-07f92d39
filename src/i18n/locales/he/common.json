@@ -1,1 +1,31 @@
-{}
+{
+  "brand": {
+    "tagline": "השכרת רכב משפחתית בדרום פלורידה",
+    "locations": "Fort Lauderdale • Miami"
+  },
+  "actions": {
+    "bookNow": "להזמנה",
+    "checkAvailability": "בדיקת זמינות",
+    "findMyMatch": "מצאו את ההתאמה שלכם",
+    "callOrText": "התקשרו או שלחו הודעה",
+    "viewFullFleet": "לצפייה בכל הצי",
+    "viewFleet": "לצפייה בצי",
+    "seeAllFaqs": "לכל השאלות הנפוצות",
+    "seeHowItWorks": "איך זה עובד",
+    "contactTeam": "צרו קשר עם הצוות",
+    "requestDelivery": "בקשת מסירה",
+    "requestDirectDelivery": "בקשת מסירה ישירה",
+    "learnMore": "מידע נוסף"
+  },
+  "languageSelector": {
+    "label": "שינוי שפה"
+  },
+  "states": {
+    "loadingFleet": "טוען את הצי…"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "אופס! העמוד לא נמצא",
+    "returnHome": "חזרה לדף הבית"
+  }
+}

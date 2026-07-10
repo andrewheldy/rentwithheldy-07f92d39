@@ -37,21 +37,32 @@ for (const [path, mod] of Object.entries(enModules)) {
 }
 
 const loadedLocales = new Set<Locale>(["en"]);
+const loadingLocales = new Map<Locale, Promise<void>>();
 
 /** Lazily import and register every namespace bundle for a locale. */
 export async function loadLocale(locale: Locale): Promise<void> {
   if (loadedLocales.has(locale)) return;
-  const entries = Object.entries(lazyModules).filter(([p]) =>
-    p.includes(`/locales/${locale}/`),
-  );
-  await Promise.all(
-    entries.map(async ([path, importer]) => {
-      const mod = (await importer()) as { default: Record<string, unknown> };
-      // deep + overwrite so a partial translation merges over English fallback
-      i18n.addResourceBundle(locale, nsFromPath(path), mod.default, true, true);
-    }),
-  );
-  loadedLocales.add(locale);
+  const inFlight = loadingLocales.get(locale);
+  if (inFlight) return inFlight;
+
+  const load = (async () => {
+    const entries = Object.entries(lazyModules).filter(([p]) =>
+      p.includes(`/locales/${locale}/`),
+    );
+    await Promise.all(
+      entries.map(async ([path, importer]) => {
+        const mod = (await importer()) as { default: Record<string, unknown> };
+        // deep + overwrite so a partial translation merges over English fallback
+        i18n.addResourceBundle(locale, nsFromPath(path), mod.default, true, true);
+      }),
+    );
+    loadedLocales.add(locale);
+  })().finally(() => {
+    loadingLocales.delete(locale);
+  });
+
+  loadingLocales.set(locale, load);
+  return load;
 }
 
 /**
@@ -75,7 +86,7 @@ const initialLocale = detectInitialLocale();
 // Paint <html lang/dir> correctly from the very first frame (no RTL flash).
 applyDocumentDirection(initialLocale);
 
-void i18n
+const initialization = i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
@@ -96,7 +107,16 @@ void i18n
       lookupLocalStorage: LOCALE_STORAGE_KEY,
       caches: ["localStorage"], // persists a manual selection
     },
-    react: { useSuspense: false }, // en is ready synchronously; no suspense
+    react: {
+      useSuspense: false, // en is ready synchronously; no suspense
+      // Non-English namespaces load lazily via addResourceBundle — after the
+      // first paint on initial load, and again after a runtime language switch.
+      // Re-render subscribed components when those bundles arrive so the
+      // translations actually appear; without this a lazily-loaded locale stays
+      // on the English fallback until the next unrelated re-render. English is
+      // unaffected: it is bundled eagerly and emits no "added" events.
+      bindI18nStore: "added",
+    },
   });
 
 // Keep <html lang/dir> in sync and ensure the active locale's bundles exist.
@@ -106,7 +126,16 @@ i18n.on("languageChanged", (lng) => {
   void loadLocale(locale);
 });
 
-// Preload bundles for a non-English initial locale (fire-and-forget).
-if (initialLocale !== "en") void loadLocale(initialLocale);
+/**
+ * Initial rendering waits only for the selected locale. English remains fully
+ * eager, while each non-English locale is still code-split and fetched only
+ * when selected. This prevents an English fallback frame (including Helmet
+ * metadata) from being committed before the active locale is ready.
+ */
+export const i18nReady = initialization.then(async () => {
+  await loadLocale(initialLocale);
+  applyDocumentDirection(initialLocale);
+  return i18n;
+});
 
 export default i18n;

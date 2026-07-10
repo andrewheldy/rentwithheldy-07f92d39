@@ -1,1 +1,257 @@
-{}
+{
+  "layout": {
+    "breadcrumbLabel": "Fil d’Ariane",
+    "breadcrumbHome": "Accueil",
+    "talkToPerson": "Parlez à une vraie personne :",
+    "valueProps": {
+      "title": "Conçu pour la façon dont vous avez vraiment besoin d'une voiture",
+      "subtitle": "Des avantages pensés pour {{context}} — pas une simple checklist de comptoir d'aéroport."
+    },
+    "howItWorks": "Comment ça marche",
+    "whatToExpect": "À quoi s'attendre",
+    "coverage": {
+      "title": "Où nous livrons",
+      "subtitle": "Nos principales zones de livraison en Floride du Sud. La vôtre n'y est pas ? Demandez-nous, on vous fait un devis."
+    },
+    "faqHeading": "Questions fréquentes",
+    "finalCta": {
+      "title": "Besoin d'une voiture dès aujourd'hui ?",
+      "subtitle": "Réservez en ligne en quelques minutes ou envoyez-nous une demande rapide : un membre de notre équipe vous répondra dès que possible et vous rejoindra où que vous soyez."
+    }
+  },
+  "airport": {
+    "meta": {
+      "title": "Prise en charge de location à l'aéroport | Fort Lauderdale et Miami",
+      "description": "Vous atterrissez à FLL ou MIA ? Nous organisons la prise en charge la plus pratique selon votre arrivée, avec un accès sans contact et une flotte familiale et propre."
+    },
+    "crumbLabel": "Prise en charge à l'aéroport",
+    "eyebrow": "Prise en charge à l'aéroport",
+    "h1": "Commencez votre séjour en Floride du Sud sans le comptoir de location",
+    "intro": "Vous atterrissez à Miami ou à Fort Lauderdale ? Nous organisons l'option de prise en charge la plus pratique selon votre arrivée, votre destination et votre horaire — pour que vous preniez la route avec moins de tracas. La prise en charge sans contact est disponible.",
+    "heroImageAlt": "Un crossover sombre roulant vers la silhouette de Miami tandis qu'un avion de ligne descend",
+    "primaryCta": "Voir les véhicules disponibles",
+    "secondaryCta": "Comment fonctionne la livraison à l'aéroport",
+    "highlights": [
+      "Service pour les voyageurs de MIA et FLL",
+      "Instructions de prise en charge claires",
+      "Communication directe avec une équipe locale",
+      "Consignes de restitution avant la fin du trajet"
+    ],
+    "steps": [
+      "Choisissez votre véhicule et vos dates de voyage.",
+      "Partagez les détails de votre vol et de votre arrivée.",
+      "Recevez des instructions de remise claires avant d'atterrir.",
+      "Commencez votre trajet et contactez-nous directement en cas de besoin."
+    ],
+    "testimonial": {
+      "quote": "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
+      "name": "Reinah",
+      "location": "Client Turo vérifié"
+    },
+    "valueProps": [
+      { "title": "Voyageurs de MIA et FLL", "description": "Nous desservons les deux grands aéroports de Floride du Sud avec la même flotte et la même équipe." },
+      { "title": "Instructions de prise en charge claires", "description": "Vous saurez exactement où aller et à quoi vous attendre avant d'atterrir." },
+      { "title": "Une équipe locale, pas un centre d'appels", "description": "Ligne directe avec les personnes qui gèrent la flotte, pas une hotline à l'étranger." },
+      { "title": "Consignes de restitution dès le départ", "description": "Nous vous expliquons les horaires de restitution avant même le début de votre trajet." }
+    ],
+    "body": [
+      {
+        "heading": "Nous desservons FLL et Miami International (MIA)",
+        "paragraphs": [
+          "Que vous atterrissiez à Fort Lauderdale-Hollywood International (FLL) ou à l'aéroport international de Miami (MIA), nous organiserons la prise en charge la plus pratique selon votre arrivée, votre destination et votre horaire — pour que vous évitiez totalement le comptoir de location. La même flotte, la même ligne directe avec notre équipe.",
+          "Selon votre aéroport et vos horaires, cela peut signifier une prise en charge dans une zone de stationnement de l'aéroport (où des frais de stationnement peuvent s'appliquer), ou un court trajet en VTC — généralement à quelques kilomètres de l'aéroport — jusqu'à un point de prise en charge proche. Nous confirmerons le plan exact et enverrons des instructions claires avant votre arrivée, et la prise en charge sans contact est disponible."
+        ]
+      },
+      {
+        "heading": "Évitez la file du comptoir de l'aéroport. Prenez la route plus vite.",
+        "paragraphs": [
+          "Si vous avez déjà atterri à FLL ou MIA un vendredi après-midi, vous connaissez la routine : vous prenez votre bagage, marchez jusqu'au centre de location, faites la queue derrière 40 autres voyageurs, écoutez des offres que vous n'avez pas demandées et obtenez enfin une voiture qui correspond ou non à ce que vous aviez réservé. Rent With Heldy est une option plus nette.",
+          "Nous sommes un hôte familial au service des voyageurs qui arrivent en Floride du Sud. Vous réservez en ligne avec un vrai véhicule et un vrai prix, vous nous envoyez les détails de votre vol, et nous organisons la prise en charge la plus pratique selon votre arrivée. Pas de comptoir, pas d'offres insistantes, pas de frais surprise à la restitution."
+        ]
+      },
+      {
+        "heading": "Conçu pour les voyageurs de FLL et MIA",
+        "paragraphs": [
+          "La plupart de nos clients d'aéroport appartiennent à quelques groupes clairs, et la flotte est prête pour chacun."
+        ],
+        "bullets": [
+          "Voyageurs d'affaires qui viennent pour une à trois nuits et veulent une berline propre et zéro friction.",
+          "Familles qui atterrissent pour une semaine de plage, une virée dans les parcs à thème ou une croisière — à la recherche d'un SUV spacieux avec de la place pour les bagages.",
+          "Passagers de croisière qui partent de Port Everglades et ont besoin d'une location courte de part et d'autre de leur traversée.",
+          "Visiteurs qui se rendent à Miami, Aventura ou Hollywood et préfèrent conduire plutôt que prendre un VTC.",
+          "Clients fidèles qui nous connaissent déjà d'un précédent voyage et veulent simplement la même voiture."
+        ]
+      },
+      {
+        "heading": "Où vont les clients de Heldy après l'atterrissage",
+        "paragraphs": [
+          "Une fois dans la voiture, tout le reste de la Floride du Sud est à vous. La plupart de nos clients d'aéroport se dirigent vers Fort Lauderdale Beach, le centre-ville de Fort Lauderdale, Hollywood, Aventura ou directement par la I-95 jusqu'à Miami. Certains embarquent sur des croisières au départ de Port Everglades. D'autres montent vers le nord, à Boca, Delray ou West Palm.",
+          "Quelle que soit la destination, nous veillons à ce que la voiture soit prête, faite le plein et propre. Si vous prévoyez un trajet plus long — par exemple de FLL aux Keys ou jusqu'à Orlando — dites-le-nous à la réservation pour confirmer le véhicule et les attentes de kilométrage."
+        ]
+      }
+    ],
+    "partnerHeading": "Agent de voyages ou coordinateur de voyages d'affaires ?",
+    "partnerSubheading": "Organisez la livraison à l'aéroport pour des clients ou des employés qui arrivent en Floride du Sud. Nous coordonnons directement avec vous.",
+    "faqs": [
+      { "question": "Comment fonctionne la prise en charge à l'aéroport à FLL ou MIA ?", "answer": "Nous organiserons la prise en charge la plus pratique selon votre arrivée. Selon votre aéroport et vos horaires, ce peut être une zone de stationnement de l'aéroport (où des frais de stationnement peuvent s'appliquer) ou un point de prise en charge proche, à un court trajet en VTC. Après la réservation, partagez les détails de votre vol et nous confirmerons le plan exact et les instructions avant votre atterrissage. La prise en charge sans contact est disponible." },
+      { "question": "Que se passe-t-il si mon vol est retardé ?", "answer": "Écrivez-nous simplement. Nous suivons votre numéro de vol une fois que vous le partagez et adaptons l'heure de prise en charge aux retards — sans frais supplémentaires pour les aléas de voyage habituels." },
+      { "question": "Puis-je restituer la voiture près de l'aéroport pour un vol matinal ?", "answer": "Oui. Nous conviendrons d'une heure et d'un lieu de restitution adaptés à votre départ et coordonnerons les détails avec vous à l'avance." },
+      { "question": "Proposez-vous des SUV à l'aéroport pour les familles et les groupes ?", "answer": "Oui. Notre flotte comprend des SUV et des véhicules plus grands, idéaux pour les familles et les groupes. Filtrez la flotte en temps réel par type de véhicule lors de la réservation." },
+      { "question": "Y a-t-il des surcharges aéroport ?", "answer": "Non. Nous ne facturons pas de surcharges aéroport. Si votre prise en charge utilise une zone de stationnement de l'aéroport, des frais de stationnement standard peuvent s'appliquer — nous vous prévenons toujours à l'avance." }
+    ]
+  },
+  "hotel": {
+    "meta": {
+      "title": "Livraison de location à l'hôtel | Floride du Sud",
+      "description": "Voitures de location livrées directement à votre hôtel de Miami ou Fort Lauderdale. Les frais de livraison varient selon le lieu, prise en charge sans contact disponible, de vraies personnes pour vous aider."
+    },
+    "crumbLabel": "Livraison à l'hôtel",
+    "eyebrow": "Livraison à l'hôtel",
+    "h1": "Votre location, livrée à votre hôtel",
+    "intro": "Vous séjournez dans un hôtel, un resort ou une location de vacances ? Nous organiserons la livraison directement à votre hôtel pour que vous passiez moins de temps à organiser vos déplacements. Les frais de livraison varient selon le lieu, et la prise en charge sans contact est disponible.",
+    "heroImageAlt": "Un crossover sombre arrivant à un hôtel moderne de Floride du Sud au coucher du soleil",
+    "primaryCta": "Voir les véhicules disponibles",
+    "secondaryCta": "Découvrir la livraison à l'hôtel",
+    "highlights": [
+      "Hôtels et resorts",
+      "Locations de vacances",
+      "Prise en charge sans contact disponible",
+      "Organisation de livraison flexible dans toute la zone de service"
+    ],
+    "steps": [
+      "Choisissez un véhicule.",
+      "Dites-nous où vous séjournez.",
+      "Confirmez un plan de livraison et un tarif avec notre équipe.",
+      "Retrouvez-nous pour la remise et commencez votre trajet."
+    ],
+    "testimonial": {
+      "quote": "Great customer service, even after dealing with some complications.",
+      "name": "Monique",
+      "location": "Client Turo vérifié"
+    },
+    "valueProps": [
+      { "title": "Livré à votre hôtel", "description": "Nous organiserons la livraison directement à votre hôtel, votre resort ou votre location de vacances. Les frais de livraison varient selon le lieu." },
+      { "title": "Prise en charge sans contact", "description": "Récupérez votre véhicule à votre rythme avec un accès sécurisé par boîte à clés — sans attente." },
+      { "title": "Évitez les navettes de l'aéroport", "description": "Atterrissez, rejoignez votre hôtel et ayez la voiture prête quand vous voulez explorer." },
+      { "title": "Les péages, tout simplement", "description": "Les péages sont facturés à la fin du trajet, sans frais supplémentaires. Une facturation claire." }
+    ],
+    "partnerHeading": "Concierge ou directeur d'hôtel ?",
+    "partnerSubheading": "Offrez à vos clients une option de location simple, sans les tracas de l'aéroport. Nous soutenons les partenariats récurrents.",
+    "faqs": [
+      { "question": "Comment fonctionne la livraison à l'hôtel ?", "answer": "Après la réservation, envoyez-nous le nom de l'hôtel, le nom du client et l'heure de prise en charge souhaitée. Nous organiserons la livraison directement à votre hôtel et confirmerons les détails avec vous. Les frais de livraison varient selon le lieu, et la prise en charge sans contact est disponible." },
+      { "question": "À quels hôtels livrez-vous ?", "answer": "Nous livrons à la plupart des grands hôtels de Miami Beach, Brickell, Downtown Miami, Aventura, Sunny Isles, Hollywood, Fort Lauderdale Beach et Las Olas. Dites-nous où vous séjournez et nous confirmerons." },
+      { "question": "Combien coûte la livraison à l'hôtel ?", "answer": "Les frais de livraison varient selon la distance depuis l'aéroport de Fort Lauderdale. Une fois votre hôtel connu, nous confirmerons les frais de livraison à l'avance — aucune surprise." },
+      { "question": "Que se passe-t-il si mon vol est retardé ?", "answer": "Écrivez-nous simplement. Nous maintenons le créneau de livraison pour les arrivées tardives, sans frais supplémentaires, tant que nous sommes prévenus à l'avance." },
+      { "question": "Proposez-vous des véhicules premium ou spéciaux récents ?", "answer": "Oui. Nous avons des SUV et berlines premium récents à côté de nos options économiques — un bon choix pour les anniversaires, les voyages d'affaires et les week-ends spéciaux." }
+    ]
+  },
+  "bodyShop": {
+    "meta": {
+      "title": "Véhicules de remplacement pour garage | Floride du Sud",
+      "description": "Vous déposez votre voiture dans un garage ou chez un mécanicien ? Nous livrons votre location directement au garage à Fort Lauderdale, Miami et en Floride du Sud. Flexible, sans détour par l'aéroport."
+    },
+    "crumbLabel": "Livraison garage et mécanicien",
+    "eyebrow": "Véhicules de remplacement",
+    "h1": "Restez mobile pendant la réparation de votre véhicule",
+    "intro": "Si votre voiture est dans un garage de carrosserie ou un centre de réparation, nous pouvons vous aider à organiser un véhicule de remplacement et coordonner la livraison autour du processus de réparation.",
+    "heroImageAlt": "Un crossover sombre devant un garage moderne de Floride du Sud au coucher du soleil",
+    "primaryCta": "Demander un véhicule de remplacement",
+    "secondaryCta": "Comment fonctionnent les véhicules de remplacement",
+    "highlights": [
+      "Centres de carrosserie",
+      "Garages",
+      "Centres de réparation",
+      "Coordination directe avec le client et l'atelier le cas échéant"
+    ],
+    "steps": [
+      "Dites-nous où votre véhicule est réparé.",
+      "Partagez les dates de réparation prévues.",
+      "Choisissez un véhicule de remplacement disponible.",
+      "Confirmez les détails de livraison et de restitution directement avec notre équipe."
+    ],
+    "disclaimer": "Le remboursement de l'assurance dépend de la police et du dossier du client. Nous pouvons fournir la documentation de location au besoin.",
+    "testimonial": {
+      "quote": "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
+      "name": "Madisol",
+      "location": "Client Turo vérifié"
+    },
+    "valueProps": [
+      { "title": "Remise sur place", "description": "Nous arrivons au garage ou chez le mécanicien avec la location prête. Vérification rapide du permis, signature, et en route." },
+      { "title": "Coordonné avec l'atelier", "description": "Nous synchronisons les horaires avec le conseiller service ou le mécanicien pour que vous n'attendiez pas." },
+      { "title": "Locations le jour même", "description": "Les locations le jour même sont possibles, selon la disponibilité des véhicules, dans Broward et Miami-Dade." },
+      { "title": "Restitution flexible", "description": "Une fois les réparations terminées, restituez la location au même atelier — nous coordonnons la récupération." }
+    ],
+    "partnerHeading": "Vous gérez un garage de carrosserie ou de mécanique ? Faites de nous votre partenaire de livraison.",
+    "partnerSubheading": "Nous livrons et récupérons à votre établissement pour que vos clients ne repartent jamais sans véhicule.",
+    "faqs": [
+      { "question": "Comment fonctionne concrètement la livraison au garage ou chez le mécanicien ?", "answer": "Vous nous indiquez l'atelier, le jour et l'heure approximative de dépôt. Nous coordonnons avec le conseiller service ou le mécanicien et vous retrouvons sur place avec les clés de la location lorsque vous déposez votre voiture." },
+      { "question": "À quels ateliers livrez-vous ?", "answer": "À tout centre de carrosserie ou atelier de mécanique réputé de Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura et Pompano. Nous avons livré à la plupart des grandes chaînes et des ateliers indépendants de la région." },
+      { "question": "Dois-je réserver à l'avance ?", "answer": "Réserver plus tôt est toujours préférable, mais les locations le jour même sont possibles, selon la disponibilité des véhicules. Écrivez ou appelez dès que vous connaissez votre rendez-vous à l'atelier." },
+      { "question": "L'atelier peut-il organiser la location pour moi ?", "answer": "Oui. Les conseillers service, mécaniciens et responsables peuvent demander la livraison au nom d'un client via notre formulaire partenaire sur cette page." },
+      { "question": "Que faire si ma voiture est prête plus tôt que prévu ?", "answer": "Écrivez-nous simplement. Nous organiserons la récupération à l'atelier et clôturerons la location — sans pénalité pour une restitution anticipée dans la période réservée." }
+    ]
+  },
+  "cruise": {
+    "meta": {
+      "title": "Livraison de location au port de croisière | Miami et Fort Lauderdale",
+      "description": "Voitures de location organisées autour de votre croisière à PortMiami et Port Everglades. Nous organiserons la prise en charge ou la restitution la plus simple pour votre navire et votre horaire."
+    },
+    "crumbLabel": "Livraison au port de croisière",
+    "eyebrow": "Livraison au port de croisière",
+    "h1": "Une liaison plus simple entre votre croisière et la Floride du Sud",
+    "intro": "Vous partez de PortMiami ou de Port Everglades ? Nous organiserons la prise en charge ou la restitution la plus simple selon votre navire, votre horaire et votre terminal — que vous exploriez avant le départ ou restiez après votre retour. La prise en charge sans contact est disponible.",
+    "heroImageAlt": "Un crossover sombre s'approchant de PortMiami avec un navire de croisière et la silhouette de la ville devant",
+    "primaryCta": "Voir les véhicules disponibles",
+    "secondaryCta": "Planifier la livraison au port de croisière",
+    "highlights": [
+      "PortMiami",
+      "Port Everglades",
+      "Locations avant et après la croisière",
+      "Coordination claire selon les horaires d'arrivée ou de départ"
+    ],
+    "steps": [
+      "Choisissez votre véhicule et vos dates.",
+      "Partagez votre itinéraire de croisière.",
+      "Confirmez le plan de remise avant la date de votre traversée.",
+      "Poursuivez votre trajet sans détour inutile par l'aéroport."
+    ],
+    "testimonial": {
+      "quote": "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
+      "name": "Christopher",
+      "location": "Client Turo vérifié"
+    },
+    "valueProps": [
+      { "title": "Organisé autour de votre navire", "description": "Nous organiserons la prise en charge ou la restitution la plus simple selon votre navire, votre horaire et votre terminal — sans file d'attente au comptoir en tongs." },
+      { "title": "Évitez les navettes de l'aéroport", "description": "Pas de détour par FLL ou MIA. Nous vous retrouvons près du port pour que vous puissiez démarrer." },
+      { "title": "Prise en charge sans contact", "description": "Récupérez votre véhicule à votre rythme avec un accès sécurisé par boîte à clés — calé sur votre traversée." },
+      { "title": "Les péages, tout simplement", "description": "Les péages sont facturés à la fin du trajet, sans frais supplémentaires. Vous ne payez que les péages que vous utilisez." }
+    ],
+    "partnerHeading": "Agent de voyages ou concierge de croisière ?",
+    "partnerSubheading": "Ajoutez une location facile côté port à l'itinéraire de vos clients. Nous coordonnons directement avec vous.",
+    "faqs": [
+      { "question": "Comment fonctionne la prise en charge au port de croisière ?", "answer": "Après votre réservation, envoyez-nous le nom de votre navire et l'heure d'arrivée. Selon les horaires et les conditions du port, nous organiserons l'option la plus simple — au terminal, dans une zone de stationnement de croisière ou dans une zone de prise en charge désignée à Port Everglades ou PortMiami — et confirmerons le plan avec vous à l'avance." },
+      { "question": "Puis-je déposer la location à l'aéroport après ma croisière ?", "answer": "Oui — nous proposons une coordination de restitution à FLL et MIA après votre croisière pour que vous puissiez rouler directement du port à votre vol de retour." },
+      { "question": "Et la prise en charge à l'hôtel avant la croisière ?", "answer": "Beaucoup de croisiéristes passent une nuit à Fort Lauderdale ou Miami avant de partir. Nous pouvons livrer à votre hôtel d'avant-croisière et organiser la prise en charge près du port lorsque vous embarquez." },
+      { "question": "Comment fonctionnent les péages ?", "answer": "Nos véhicules sont équipés de transpondeurs activés. Les péages sont facturés à la fin du trajet, sans frais supplémentaires — vous ne payez que les péages engagés pendant votre location." },
+      { "question": "Quelles compagnies de croisière et terminaux desservez-vous ?", "answer": "Tous les terminaux de Port Everglades (Fort Lauderdale) et de PortMiami, dont Royal Caribbean, Carnival, Celebrity, MSC, Norwegian, Princess et Virgin Voyages." }
+    ]
+  },
+  "lossOfUse": {
+    "meta": {
+      "title": "Locations pour perte d'usage | Rent With Heldy",
+      "description": "Documentation de location pour perte d'usage destinée aux avocats en dommages corporels et aux assistants juridiques en Floride du Sud. Facturation claire, coordination directe des dossiers et tarifs journaliers justes."
+    },
+    "crumbLabel": "Perte d'usage",
+    "eyebrow": "Perte d'usage",
+    "h1": "Locations et documentation pour perte d'usage à destination des avocats en dommages corporels",
+    "intro": "Une ressource pour les avocats en dommages corporels, les assistants juridiques et les demandeurs qui gèrent des préjudices de perte d'usage en Floride du Sud. Tarifs journaliers justes, facturation claire et une vraie personne au téléphone quand vous avez besoin de documentation.",
+    "valueProps": [
+      { "title": "Facturation prête pour les dossiers", "description": "Des factures journalières détaillées avec la catégorie du véhicule, les dates et le détail des tarifs, prêtes pour le dossier de réclamation." },
+      { "title": "Appui documentaire", "description": "Attestations, appui aux mises en demeure et historiques de location pour vos dossiers contentieux." },
+      { "title": "Traitement rapide", "description": "La plupart des demandes de documentation sont traitées sous un jour ouvré pour les dossiers en cours." },
+      { "title": "Tarifs journaliers justes et défendables", "description": "Des tarifs au prix du marché, sans surcoût de gamme superflu." }
+    ],
+    "partnerHeading": "Avocat en dommages corporels ou assistant juridique ? Organisez la location pour votre client.",
+    "partnerSubheading": "Envoyez-nous les informations du dossier de votre client : nous nous occupons de la location et des documents."
+  }
+}

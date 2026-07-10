@@ -1,1 +1,58 @@
-{}
+{
+  "meta": {
+    "title": "Contacter Rent With Heldy | Location de voitures à Fort Lauderdale et Miami",
+    "description": "Contactez Rent With Heldy pour une assistance rapide et personnalisée sur votre location de voiture à Fort Lauderdale, Miami et en Floride du Sud. Appelez, écrivez ou réservez en ligne dès aujourd'hui."
+  },
+  "hero": {
+    "title": "Contacter Rent With Heldy",
+    "subtitle": "Le moyen le plus rapide de prendre la route. Appelez directement ou envoyez-nous un message, et un membre de notre équipe vous répondra dès que possible."
+  },
+  "cards": {
+    "call": {
+      "title": "Appelez-nous",
+      "note": "Parlez à une vraie personne"
+    },
+    "email": {
+      "title": "E-mail",
+      "note": "Nous répondrons dès que possible"
+    },
+    "serviceArea": {
+      "title": "Zone de service",
+      "value": "Fort Lauderdale • Miami • Floride du Sud"
+    }
+  },
+  "form": {
+    "heading": "Contacter Rent With Heldy",
+    "reasonPlaceholder": "Sélectionnez un motif",
+    "reasons": {
+      "book": "Réserver une location",
+      "existingBooking": "Question sur une réservation existante",
+      "bodyShop": "Location garage / assurance",
+      "hotelDelivery": "Livraison à l'hôtel",
+      "airportPickup": "Prise en charge à l'aéroport",
+      "rentToOwn": "Demande location avec option d'achat",
+      "partner": "Demande partenaire / entreprise",
+      "other": "Autre"
+    },
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Téléphone mobile",
+      "email": "E-mail (facultatif)",
+      "emailPlaceholder": "you@email.com",
+      "reason": "Motif du contact",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous comment nous pouvons vous aider…"
+    },
+    "submit": "Envoyer le message",
+    "sending": "Envoi…",
+    "preferToTalk": "Vous préférez parler ? Appelez"
+  },
+  "toast": {
+    "checkDetailsTitle": "Vérifiez vos informations",
+    "checkDetailsDesc": "Le nom, le téléphone, le motif et le message sont obligatoires.",
+    "errorTitle": "Impossible d'envoyer votre message",
+    "errorDesc": "Veuillez appeler directement le {{phone}}.",
+    "successTitle": "Message envoyé !",
+    "successDesc": "Nous vous répondrons dès que possible."
+  }
+}

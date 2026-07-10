@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import EnglishLegalNotice from "@/components/legal/EnglishLegalNotice";
+import EnglishLegalContent from "@/components/legal/EnglishLegalContent";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const Privacy = () => {
@@ -21,11 +23,16 @@ const Privacy = () => {
       </h1>
       <p className="text-sm text-muted-foreground mb-8">
         {t("privacy.lastUpdated", {
-          date: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+          date: t("privacy.effectiveDate"),
         })}
       </p>
 
-      <div className="space-y-8 text-muted-foreground leading-relaxed">
+      {/* Substantive legal body is English-only (see useEnglishT policy): a
+          localized notice precedes it, and the document itself stays LTR even
+          in RTL locales. */}
+      <EnglishLegalNotice className="mb-8" />
+
+      <EnglishLegalContent className="space-y-8 text-muted-foreground leading-relaxed">
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-2">{t("privacy.overview.heading")}</h2>
           <p>
@@ -121,7 +128,7 @@ const Privacy = () => {
             </a>
           </p>
         </section>
-      </div>
+      </EnglishLegalContent>
     </main>
     <Footer />
   </div>

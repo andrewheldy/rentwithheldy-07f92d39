@@ -1,1 +1,244 @@
-{}
+{
+  "meta": {
+    "title": "Location avec option d'achat pour chauffeurs VTC et livraison | Rent With Heldy",
+    "description": "Une formule de location avec option d'achat conçue pour les chauffeurs Uber, Lyft, DoorDash, Uber Eats et Instacart. Commencez par une période de qualification de 90 jours. Programmes personnalisés selon le véhicule et votre situation."
+  },
+  "hero": {
+    "imageAlt": "Deux SUV garés au bord de l'eau à Miami à l'heure dorée, avec la silhouette du centre-ville et des palmiers en arrière-plan",
+    "badge": "Programme location avec option d'achat",
+    "title": "Roulez aujourd'hui. Devenez propriétaire demain.",
+    "subtitle": "Accédez à un véhicule fiable pour Uber, Lyft, DoorDash et plus encore tout en avançant vers la propriété du véhicule dont vous dépendez.",
+    "tagline": "Un chemin concret pour gagner votre vie maintenant et progresser vers la voiture qui vous fait vivre.",
+    "findMatch": "Trouver mon option",
+    "seeHowItWorks": "Voir comment ça marche",
+    "builtForDriversOn": "Conçu pour les chauffeurs de"
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Un parcours clair conçu autour de votre emploi du temps de chauffeur, qui commence par une période de qualification de 90 jours.",
+    "stepLabel": "Étape {{number}}",
+    "steps": {
+      "getApproved": {
+        "title": "Commencez votre période de qualification",
+        "body": "Remplissez une demande rapide. Chaque chauffeur commence par une période de qualification de 90 jours conçue pour confirmer un revenu régulier et le programme le mieux adapté."
+      },
+      "startDriving": {
+        "title": "Commencez à rouler",
+        "body": "On vous associe à un véhicule pour vos plateformes et vous commencez à gagner de l'argent tout de suite."
+      },
+      "buildOwnership": {
+        "title": "Montrez votre régularité",
+        "body": "Pendant la période de qualification, les chauffeurs démontrent un revenu régulier et une utilisation responsable du véhicule."
+      },
+      "ownVehicle": {
+        "title": "Chemin vers la propriété",
+        "body": "Ensuite, notre équipe travaille avec vous sur le bon programme à long terme et votre chemin vers la propriété."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Pourquoi les chauffeurs adorent",
+    "subtitle": "Un programme conçu pour bâtir votre avenir, pas seulement couvrir votre prochain service.",
+    "traditional": {
+      "title": "Locations classiques",
+      "items": [
+        "Des paiements sans fin",
+        "Aucune propriété",
+        "Aucune valeur à long terme",
+        "Repartir de zéro à chaque fois"
+      ]
+    },
+    "rentToOwn": {
+      "title": "Location avec option d'achat",
+      "items": [
+        "Un chemin vers la propriété",
+        "Accès à un véhicule fiable",
+        "Conçu pour les travailleurs des plateformes",
+        "Un avantage financier à long terme"
+      ]
+    }
+  },
+  "features": {
+    "title": "Ce que vous obtenez",
+    "subtitle": "Conçu pour la réalité de ceux qui roulent pour gagner leur vie.",
+    "items": {
+      "noDownPayment": {
+        "title": "Pas de gros acompte",
+        "body": "Démarrez sans les coûts initiaux élevés du financement classique."
+      },
+      "flexibleGig": {
+        "title": "Flexible pour le travail des plateformes",
+        "body": "Conçu spécialement pour les chauffeurs VTC et de livraison."
+      },
+      "progressTracking": {
+        "title": "Un parcours de programme clair",
+        "body": "Vous savez où vous en êtes, dès la période de qualification."
+      },
+      "reliableSupport": {
+        "title": "Un accompagnement fiable",
+        "body": "Des conseils d'entretien et un soutien quand il le faut."
+      }
+    }
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur le programme location avec option d'achat.",
+    "items": [
+      {
+        "question": "À qui s'adresse le programme ?",
+        "answer": "Il est conçu pour les chauffeurs VTC et de livraison — Uber, Lyft, Empower, DoorDash, Uber Eats, Instacart et plateformes similaires. Si vous roulez pour gagner votre vie et voulez un véhicule fiable, il est fait pour vous."
+      },
+      {
+        "question": "Puis-je rouler pour Uber, Lyft ou des applis de livraison ?",
+        "answer": "Oui. Nos véhicules en location avec option d'achat sont choisis pour répondre aux exigences des grandes plateformes VTC et de livraison de Floride du Sud, dont Uber, Lyft, DoorDash, Uber Eats et Instacart."
+      },
+      {
+        "question": "Comment fonctionne la période de qualification ?",
+        "answer": "Chaque candidat commence par une période de qualification de 90 jours conçue pour confirmer un revenu régulier et déterminer le bon programme à long terme. Pendant cette période, les chauffeurs démontrent un revenu régulier et une utilisation responsable du véhicule."
+      },
+      {
+        "question": "Ai-je besoin d'un crédit parfait ?",
+        "answer": "Non. Le programme est conçu pour les travailleurs des plateformes et met l'accent sur l'historique de conduite et la régularité des revenus, plutôt que sur le seul score de crédit classique."
+      },
+      {
+        "question": "Combien ça coûte ?",
+        "answer": "Les programmes sont personnalisés selon le véhicule et votre situation individuelle ; il n'y a donc pas de tarif hebdomadaire unique. Dites-nous comment vous roulez et notre équipe montera la structure qui vous convient."
+      },
+      {
+        "question": "Comment fonctionne le chemin vers la propriété ?",
+        "answer": "Après la période de qualification, notre équipe travaille avec vous sur le bon programme à long terme et le chemin vers la propriété. Les détails varient selon le véhicule et votre situation, et nous vous les expliquons directement."
+      },
+      {
+        "question": "Que se passe-t-il si j'arrête de participer ?",
+        "answer": "Vous pouvez rendre le véhicule. Nous vous expliquons vos options et les prochaines étapes selon l'endroit où vous en êtes dans le programme."
+      }
+    ]
+  },
+  "apply": {
+    "title": "Trouvez votre formule location avec option d'achat",
+    "subtitle": "Parlez-nous un peu de vous et un membre de notre équipe vous contactera pour vous accompagner dans les prochaines étapes.",
+    "fields": {
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "phone": "Téléphone",
+      "phonePlaceholder": "(555) 555-5555",
+      "email": "E-mail",
+      "emailPlaceholder": "you@email.com",
+      "platforms": "Pour quelles plateformes allez-vous rouler ?",
+      "notes": "Autre chose ? (facultatif)",
+      "notesPlaceholder": "Parlez-nous de votre expérience de conduite ou de vos questions."
+    },
+    "submit": "Trouver mon option",
+    "submitting": "Envoi…",
+    "disclaimer": "Sans engagement. Les programmes sont personnalisés selon le véhicule et votre situation.",
+    "toast": {
+      "errorTitle": "Une erreur s'est produite",
+      "successTitle": "Demande reçue",
+      "successDesc": "Merci ! Un membre de notre équipe vous contactera dès que possible pour vous accompagner dans les prochaines étapes."
+    }
+  },
+  "finalCta": {
+    "title": "Le véhicule qui vous aide à gagner votre vie devrait aussi vous aider à bâtir votre avenir.",
+    "subtitle": "Rejoignez le programme location avec option d'achat de Rent With Heldy et commencez à avancer vers la propriété du véhicule tout en générant des revenus.",
+    "apply": "Trouver mon option",
+    "scheduleCall": "Planifier un appel",
+    "browsePrompt": "Vous préférez d'abord parcourir les locations ?",
+    "seeFleet": "Voir notre flotte"
+  },
+  "quiz": {
+    "header": {
+      "title": "Trouvez votre option en 60 secondes",
+      "stepOf": "Étape {{current}} sur {{total}}"
+    },
+    "intro": {
+      "body": "Répondez à quelques questions rapides et nous vous recommanderons le véhicule adapté à vos objectifs.",
+      "start": "Commencer le questionnaire"
+    },
+    "gig": {
+      "question": "Quel type de travail de plateforme ?",
+      "help": "Choisissez l'option qui correspond le mieux à votre usage du véhicule.",
+      "options": {
+        "rideshare": {
+          "label": "VTC",
+          "desc": "Uber, Lyft, Empower"
+        },
+        "delivery": {
+          "label": "Livraison",
+          "desc": "DoorDash, Uber Eats, Instacart"
+        },
+        "both": {
+          "label": "Les deux",
+          "desc": "Mélange de VTC et de livraison"
+        }
+      }
+    },
+    "platforms": {
+      "question": "Pour quelles plateformes allez-vous rouler ?",
+      "help": "Sélectionnez tout ce qui s'applique."
+    },
+    "hours": {
+      "question": "Combien d'heures par semaine ?",
+      "help": "Nous aide à choisir un véhicule qui tient le rythme de vos services.",
+      "options": {
+        "part": {
+          "label": "Temps partiel",
+          "desc": "Moins de 20 h / semaine"
+        },
+        "full": {
+          "label": "Temps plein",
+          "desc": "20 – 40 h / semaine"
+        },
+        "heavy": {
+          "label": "Intensif",
+          "desc": "Plus de 40 h / semaine"
+        }
+      }
+    },
+    "rideTier": {
+      "question": "Quelle catégorie VTC voulez-vous viser ?",
+      "help": "Les catégories premium rapportent plus par course mais exigent un véhicule éligible.",
+      "options": {
+        "standard": {
+          "label": "Standard",
+          "desc": "Uber X, Lyft, Empower"
+        },
+        "comfort": {
+          "label": "Comfort / Premium",
+          "desc": "Uber Comfort, Lyft Preferred"
+        },
+        "xl": {
+          "label": "XL / Groupe",
+          "desc": "Uber XL, Lyft XL — 6+ passagers"
+        }
+      }
+    },
+    "result": {
+      "yourMatch": "Votre option",
+      "goodFitFor": "Idéal pour",
+      "fields": {
+        "name": "Nom complet",
+        "namePlaceholder": "Votre nom",
+        "phone": "Téléphone",
+        "phonePlaceholder": "(555) 555-5555",
+        "email": "E-mail",
+        "emailPlaceholder": "you@email.com"
+      },
+      "submit": "Trouver mon option",
+      "submitting": "Envoi…",
+      "disclaimer": "Sans engagement. Les programmes sont personnalisés selon le véhicule et votre situation."
+    },
+    "submitted": {
+      "title": "Vous avez une option",
+      "body": "Merci ! Un membre de notre équipe vous contactera dès que possible.",
+      "retake": "Refaire le questionnaire"
+    },
+    "nav": {
+      "back": "Retour",
+      "next": "Suivant",
+      "seeMatch": "Voir mon option"
+    },
+    "toast": {
+      "error": "Une erreur s'est produite. Veuillez nous appeler ou nous écrire directement."
+    }
+  }
+}

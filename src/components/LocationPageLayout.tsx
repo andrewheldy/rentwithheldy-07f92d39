@@ -85,7 +85,7 @@ const LocationPageLayout = ({
           <div className={`container mx-auto px-4 py-12 md:py-16 ${heroForm ? "max-w-6xl" : "max-w-4xl"}`}>
             {/* Breadcrumb */}
             <nav
-              aria-label="Breadcrumb"
+              aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
               <Link to="/" className="hover:text-primary">
@@ -146,7 +146,7 @@ const LocationPageLayout = ({
                     </p>
                   ))}
                   {s.bullets && (
-                    <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                    <ul className="list-disc ps-6 space-y-2 text-muted-foreground">
                       {s.bullets.map((b, i) => (
                         <li key={i} className="leading-relaxed">
                           {b}

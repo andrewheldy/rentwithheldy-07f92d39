@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "Trip Planner | Find the Right Rental Car | Rent With Heldy",
+    "description": "Tell us about your trip — travelers, luggage, and vibe — and we'll recommend the right rental car from our South Florida fleet."
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "tripPlanner": "Trip Planner"
+  },
+  "hero": {
+    "title": "Plan your South Florida trip",
+    "subtitle": "Three quick questions. We'll match you to the right vehicle in our fleet."
+  },
+  "quiz": {
+    "eyebrow": "Trip Planner",
+    "stepOf": "Step {{current}} of {{total}}",
+    "title": "Find the right car for your trip",
+    "subtitle": "Answer 3 quick questions and we'll match you to vehicles in our fleet.",
+    "progressLabel": "Trip Planner progress",
+    "back": "Back"
+  },
+  "questions": {
+    "party": {
+      "title": "How many travelers?",
+      "option": "{{count}} people"
+    },
+    "luggage": {
+      "title": "How much luggage?",
+      "options": {
+        "light": { "label": "Light", "description": "Carry-ons only" },
+        "standard": { "label": "Standard", "description": "1 checked bag each" },
+        "heavy": { "label": "Heavy", "description": "Lots of bags or gear" }
+      }
+    },
+    "style": {
+      "title": "What's the trip vibe?",
+      "options": {
+        "city": { "label": "City & Airport", "description": "Mostly around town" },
+        "beach": { "label": "Beach & Family", "description": "Coolers, towels, beach gear" },
+        "road": { "label": "Road Trip", "description": "Long miles, full cargo" }
+      }
+    }
+  },
+  "tiers": {
+    "compact": {
+      "label": "Compact / Economy",
+      "bags": "2–3 bags",
+      "description": "Easy parking, great fuel economy — perfect for couples or solo trips."
+    },
+    "midsize": {
+      "label": "Mid-Size Sedan",
+      "bags": "3–4 bags",
+      "description": "Comfortable cabin and trunk space for small families or business travel."
+    },
+    "suv": {
+      "label": "Mid-Size SUV",
+      "bags": "4–5 bags",
+      "description": "Extra cargo room and elevated ride — ideal for beach days and active trips."
+    },
+    "fullsuv": {
+      "label": "Full-Size SUV / 3-Row",
+      "bags": "6+ bags",
+      "description": "Maximum space for big groups, gear, and long road trips."
+    }
+  },
+  "result": {
+    "recommended": "Recommended for your trip",
+    "fits": "Fits about {{seats}}",
+    "available": "Available in our fleet",
+    "checkFullFleet": "Check our full fleet",
+    "startOver": "Start over",
+    "loading": "Loading fleet…",
+    "empty": "Browse our full fleet to see what's available for your dates.",
+    "vehicleImageAlt": "{{title}} available in the Rent With Heldy fleet",
+    "priceFrom": "from",
+    "pricePerDay": "/day",
+    "checkAvailability": "Check Availability",
+    "seeFullFleet": "See Full Fleet"
+  }
+}

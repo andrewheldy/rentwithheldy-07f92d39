@@ -1,1 +1,163 @@
-{}
+{
+  "quickQuote": {
+    "title": "התחילו את ההזמנה",
+    "subtitle": "ספרו לנו מי אתם ואיפה אתם צריכים את הרכב, וחבר מהצוות שלנו יחזור אליכם בהקדם.",
+    "cta": "בדיקת זמינות",
+    "sending": "שולח…",
+    "passengerTypeLabel": "אני…",
+    "passengerTypePlaceholder": "בחרו סוג לקוח",
+    "passengerTypes": {
+      "hotelGuest": "אורח מלון",
+      "airportTraveler": "נוסע משדה התעופה",
+      "bodyShop": "לקוח מוסך / תיקונים",
+      "localRental": "השכרה מקומית",
+      "other": "אחר"
+    },
+    "fields": {
+      "name": "שם מלא",
+      "phone": "טלפון נייד",
+      "location": "מקום המסירה",
+      "locationPlaceholder": "מלון, מוסך, נמל, כתובת…",
+      "dateRange": "טווח תאריכי ההשכרה",
+      "dateRangePlaceholder": "לדוגמה 20 ביוני – 25 ביוני, או בהקדם ל-כ-שבוע",
+      "referredBy": "הופניתם על ידי (אופציונלי)",
+      "referredByPlaceholder": "מלון, מוסך, עורך דין, חבר, סוכן…",
+      "notes": "עוד משהו? (אופציונלי)",
+      "notesPlaceholder": "סוג רכב, חברת ביטוח, מס׳ תביעה, טיסה…"
+    },
+    "hints": {
+      "bodyShop": "תאריכים משוערים זה בסדר.",
+      "hotelGuest": "הזינו את תאריכי האיסוף וההחזרה המדויקים.",
+      "airportTraveler": "הזינו את תאריכי האיסוף וההחזרה המדויקים, וגם את פרטי הטיסה."
+    },
+    "validation": {
+      "name": "הזינו את שמכם",
+      "phone": "הזינו טלפון תקין",
+      "passengerType": "בחרו את סוג הלקוח שלכם",
+      "location": "לאן להביא?",
+      "dateRange": "הזינו את טווח תאריכי ההשכרה"
+    },
+    "toastTitle": "בדקו את הפרטים שלכם",
+    "toastInvalid": "קלט לא תקין",
+    "errorRetry": "משהו השתבש. אנא התקשרו או שלחו לנו הודעה ישירות.",
+    "preferToTalk": "מעדיפים לדבר? התקשרו"
+  },
+  "partnerIntake": {
+    "heading": "אתם מנהל מוסך, שמאי ביטוח או עוזר משפטי?",
+    "subheading": "הגדירו מסירה ישירה עבור הלקוח שלכם. נתאם איתכם את החיוב והניירת.",
+    "cta": "בדיקת זמינות",
+    "sending": "שולח…",
+    "errorRetry": "משהו השתבש. אנא התקשרו או שלחו לנו הודעה ישירות.",
+    "fields": {
+      "name": "השם שלכם",
+      "company": "חברה / משרד",
+      "claim": "מס׳ תביעה של הלקוח (אופציונלי)",
+      "phone": "טלפון",
+      "location": "מקום המסירה",
+      "locationPlaceholder": "מוסך, מלון, נמל או כתובת…"
+    },
+    "validation": {
+      "name": "הזינו את שמכם",
+      "company": "הזינו את החברה או המשרד שלכם",
+      "phone": "הזינו טלפון תקין",
+      "location": "לאן להביא?"
+    },
+    "toastTitle": "בדקו את הפרטים שלכם",
+    "toastInvalid": "קלט לא תקין"
+  },
+  "shared": {
+    "sending": "שולח…",
+    "preferToTalk": "מעדיפים לדבר? התקשרו",
+    "toastCheckDetails": "בדקו את הפרטים שלכם",
+    "toastInvalid": "קלט לא תקין",
+    "savedTitle": "קיבלנו — רשמנו את הבקשה שלכם",
+    "savedDesc": "חבר מהצוות שלנו יחזור אליכם בהקדם.",
+    "saveErrorTitle": "לא ניתן היה לשמור את הבקשה שלכם",
+    "saveErrorDesc": "אנא התקשרו למספר {{phone}} ונטפל בזה ישירות."
+  },
+  "airportQuote": {
+    "title": "הזמינו את ההשכרה שלכם בשדה התעופה",
+    "subtitle": "שתפו את פרטי הטיסה שלכם ונתאם את האיסוף הנוח ביותר לפי ההגעה שלכם. איסוף ללא מגע זמין.",
+    "requiredFields": "שם, טלפון, שדה תעופה ותאריכים הם שדות חובה.",
+    "cta": "בדיקת זמינות",
+    "airports": {
+      "fll": "FLL — Fort Lauderdale",
+      "mia": "MIA — Miami International",
+      "pbi": "PBI — Palm Beach",
+      "other": "אחר"
+    },
+    "fields": {
+      "name": "שם מלא",
+      "phone": "טלפון נייד",
+      "airport": "שדה תעופה",
+      "airportPlaceholder": "בחרו שדה תעופה",
+      "airline": "חברת תעופה",
+      "airlinePlaceholder": "לדוגמה American Airlines",
+      "flightNumber": "מספר טיסה",
+      "flightNumberPlaceholder": "לדוגמה AA 2341",
+      "arrival": "תאריך ושעת הגעה",
+      "arrivalPlaceholder": "לדוגמה 20 ביוני בשעה 15:45",
+      "arrivalHint": "הזינו את תאריכי האיסוף וההחזרה המדויקים, וגם את פרטי הטיסה.",
+      "return": "תאריך ושעת החזרה",
+      "returnPlaceholder": "לדוגמה 25 ביוני בשעה 11:00",
+      "pickupNotes": "הערות מסירה / איסוף (אופציונלי)",
+      "pickupNotesPlaceholder": "טרמינל, שפת מדרכה, כתובת המלון אחרי הנחיתה…",
+      "notes": "עוד משהו? (אופציונלי)",
+      "notesPlaceholder": "העדפת רכב, גודל הקבוצה, מטען…"
+    }
+  },
+  "hotelQuote": {
+    "title": "קבלו השכרה עד המלון שלכם",
+    "subtitle": "נתאם מסירה ישירות למלון שלכם. עלויות המסירה משתנות לפי המיקום, ואיסוף ללא מגע זמין.",
+    "requiredFields": "שם, טלפון, מלון ותאריכים הם שדות חובה.",
+    "cta": "בדיקת זמינות",
+    "fields": {
+      "name": "שם מלא",
+      "phone": "טלפון נייד",
+      "hotelName": "שם המלון",
+      "hotelNamePlaceholder": "לדוגמה Marriott Fort Lauderdale Beach",
+      "hotelAddress": "כתובת המלון (אופציונלי)",
+      "hotelAddressPlaceholder": "כתובת, אם ידועה",
+      "pickup": "תאריך ושעת איסוף מדויקים",
+      "pickupPlaceholder": "לדוגמה 20 ביוני בשעה 10:00",
+      "pickupHint": "הזינו את תאריכי האיסוף וההחזרה המדויקים.",
+      "return": "תאריך ושעת החזרה מדויקים",
+      "returnPlaceholder": "לדוגמה 25 ביוני בשעה 12:00",
+      "referredBy": "הופניתם על ידי (אופציונלי)",
+      "referredByPlaceholder": "קונסיירז׳, חבר, סוכן נסיעות…",
+      "notes": "עוד משהו? (אופציונלי)",
+      "notesPlaceholder": "העדפת רכב, מספר אורחים, אירוע מיוחד…"
+    }
+  },
+  "bodyShopForm": {
+    "title": "בקשו מסירה למוסך שלכם",
+    "subtitle": "ניפגש אתכם במרכז הפחחות כדי שתמסרו את הרכב ותמשיכו הלאה.",
+    "cta": "בדיקת זמינות",
+    "hint": "תאריכים משוערים זה בסדר.",
+    "validation": {
+      "name": "הזינו את שמכם",
+      "phone": "הזינו מספר טלפון תקין",
+      "shopName": "הזינו את שם המוסך",
+      "shopAddress": "הזינו את כתובת המוסך",
+      "dateRange": "הזינו את תאריכי ההשכרה המשוערים"
+    },
+    "fields": {
+      "name": "שם מלא",
+      "phone": "טלפון נייד",
+      "shopName": "שם המוסך",
+      "shopNamePlaceholder": "לדוגמה Maaco Fort Lauderdale",
+      "shopAddress": "כתובת המוסך",
+      "shopAddressPlaceholder": "כתובת",
+      "dateRange": "טווח תאריכי השכרה משוער",
+      "dateRangePlaceholder": "לדוגמה 20 ביוני – 28 ביוני, או כ-שבוע החל מיום שני",
+      "insurance": "חברת ביטוח (אופציונלי)",
+      "insurancePlaceholder": "לדוגמה State Farm",
+      "claimNumber": "מספר תביעה (אופציונלי)",
+      "claimNumberPlaceholder": "לדוגמה CLM-123456",
+      "referredBy": "הופניתם על ידי (אופציונלי)",
+      "referredByPlaceholder": "מוסך, עורך דין, סוכן ביטוח…",
+      "notes": "עוד משהו? (אופציונלי)",
+      "notesPlaceholder": "העדפת רכב, לוח זמנים לתיקון, צרכים מיוחדים…"
+    }
+  }
+}

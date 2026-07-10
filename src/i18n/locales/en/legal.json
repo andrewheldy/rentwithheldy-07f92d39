@@ -54,7 +54,8 @@
       "description": "How Rent With Heldy collects, uses, and protects your personal information when you book a car rental in Fort Lauderdale, Miami, or South Florida."
     },
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: {{date}}",
+    "lastUpdated": "Effective date: {{date}}",
+    "effectiveDate": "July 10, 2026",
     "overview": {
       "heading": "Overview",
       "body": "Rent With Heldy (\"we\", \"us\") respects your privacy. This policy explains what information we collect when you visit rentwithheldy.com or book a vehicle with us, how we use it, and the choices you have."
@@ -113,7 +114,8 @@
       "description": "Terms governing reservations, rentals, and use of the Rent With Heldy website and car rental service in Fort Lauderdale, Miami, and South Florida."
     },
     "title": "Terms of Service",
-    "lastUpdated": "Last updated: {{date}}",
+    "lastUpdated": "Effective date: {{date}}",
+    "effectiveDate": "July 10, 2026",
     "acceptance": {
       "heading": "Acceptance of terms",
       "body": "By accessing rentwithheldy.com or booking a vehicle with Rent With Heldy, you agree to these terms. If you do not agree, do not use the site or book a vehicle."
@@ -156,5 +158,9 @@
       "text": "Questions about these terms? Reach us at",
       "or": "or"
     }
+  },
+  "englishNotice": {
+    "heading": "Legal Information",
+    "body": "The following legal information is provided in English to preserve its original legal meaning. If you need assistance understanding any part of it, our team will be happy to help."
   }
 }

@@ -1,11 +1,20 @@
 import { useTranslation } from "react-i18next";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import { useEnglishT } from "@/i18n/useEnglishT";
 import { Scale, FileText, Clock, ShieldCheck } from "lucide-react";
 
 const VP_ICONS = [Scale, FileText, Clock, ShieldCheck];
 
 const LossOfUseClaims = () => {
+  // Marketing chrome (meta, hero, value props, partner section) localizes
+  // normally…
   const { t } = useTranslation("services");
+  // …but the substantive legal body and the attorney-facing legal FAQs are read
+  // from the single English source of truth and never translated, to preserve
+  // their original legal meaning. ServicePageLayout renders them behind a
+  // translated notice and pins them to LTR (see `legalContent` + useEnglishT).
+  const enT = useEnglishT("services");
+
   const valueProps = (
     t("lossOfUse.valueProps", { returnObjects: true }) as {
       title: string;
@@ -28,15 +37,16 @@ const LossOfUseClaims = () => {
       valueProps={valueProps}
       partnerHeading={t("lossOfUse.partnerHeading")}
       partnerSubheading={t("lossOfUse.partnerSubheading")}
+      legalContent
       body={
-        t("lossOfUse.body", { returnObjects: true }) as {
+        enT("lossOfUse.body", { returnObjects: true }) as {
           heading: string;
           paragraphs: string[];
           bullets?: string[];
         }[]
       }
       faqs={
-        t("lossOfUse.faqs", { returnObjects: true }) as {
+        enT("lossOfUse.faqs", { returnObjects: true }) as {
           question: string;
           answer: string;
         }[]

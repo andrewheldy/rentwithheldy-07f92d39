@@ -18,7 +18,7 @@ const FAQAccordion = ({ items }: FAQAccordionProps) => (
   <Accordion type="single" collapsible className="w-full">
     {items.map((item, idx) => (
       <AccordionItem key={idx} value={`item-${idx}`}>
-        <AccordionTrigger className="text-left text-base font-semibold">
+        <AccordionTrigger className="text-start text-base font-semibold">
           {item.question}
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground leading-relaxed">

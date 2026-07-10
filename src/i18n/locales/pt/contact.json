@@ -1,1 +1,58 @@
-{}
+{
+  "meta": {
+    "title": "Fale com a Rent With Heldy | Aluguel de carros em Fort Lauderdale e Miami",
+    "description": "Fale com a Rent With Heldy para ter suporte rápido e pessoal no aluguel do seu carro em Fort Lauderdale, Miami e no Sul da Flórida. Ligue, escreva ou reserve on-line hoje mesmo."
+  },
+  "hero": {
+    "title": "Fale com a Rent With Heldy",
+    "subtitle": "O jeito mais rápido de pegar a estrada. Ligue direto ou mande uma mensagem, e um membro da nossa equipe vai entrar em contato o quanto antes."
+  },
+  "cards": {
+    "call": {
+      "title": "Ligue para nós",
+      "note": "Fale com uma pessoa de verdade"
+    },
+    "email": {
+      "title": "E-mail",
+      "note": "Responderemos o quanto antes"
+    },
+    "serviceArea": {
+      "title": "Área de atendimento",
+      "value": "Fort Lauderdale • Miami • Sul da Flórida"
+    }
+  },
+  "form": {
+    "heading": "Fale com a Rent With Heldy",
+    "reasonPlaceholder": "Selecione um motivo",
+    "reasons": {
+      "book": "Reservar um aluguel",
+      "existingBooking": "Dúvida sobre uma reserva existente",
+      "bodyShop": "Aluguel por oficina / seguro",
+      "hotelDelivery": "Entrega no hotel",
+      "airportPickup": "Retirada no aeroporto",
+      "rentToOwn": "Dúvida sobre aluguel com opção de compra",
+      "partner": "Contato de parceiro / empresa",
+      "other": "Outro"
+    },
+    "fields": {
+      "name": "Nome completo",
+      "phone": "Celular",
+      "email": "E-mail (opcional)",
+      "emailPlaceholder": "you@email.com",
+      "reason": "Motivo do contato",
+      "message": "Mensagem",
+      "messagePlaceholder": "Conte como podemos ajudar…"
+    },
+    "submit": "Enviar mensagem",
+    "sending": "Enviando…",
+    "preferToTalk": "Prefere conversar? Ligue"
+  },
+  "toast": {
+    "checkDetailsTitle": "Confira seus dados",
+    "checkDetailsDesc": "Nome, telefone, motivo e mensagem são obrigatórios.",
+    "errorTitle": "Não foi possível enviar sua mensagem",
+    "errorDesc": "Ligue diretamente para {{phone}}.",
+    "successTitle": "Mensagem enviada!",
+    "successDesc": "Retornaremos o quanto antes."
+  }
+}

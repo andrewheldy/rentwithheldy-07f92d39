@@ -1,1 +1,31 @@
-{}
+{
+  "brand": {
+    "tagline": "Aluguel de carros familiar no Sul da Flórida",
+    "locations": "Fort Lauderdale • Miami"
+  },
+  "actions": {
+    "bookNow": "Reservar agora",
+    "checkAvailability": "Ver disponibilidade",
+    "findMyMatch": "Encontre sua opção ideal",
+    "callOrText": "Ligue ou mande mensagem",
+    "viewFullFleet": "Ver toda a frota",
+    "viewFleet": "Ver a frota",
+    "seeAllFaqs": "Ver todas as perguntas",
+    "seeHowItWorks": "Ver como funciona",
+    "contactTeam": "Fale com nossa equipe",
+    "requestDelivery": "Solicitar entrega",
+    "requestDirectDelivery": "Solicitar entrega direta",
+    "learnMore": "Saiba mais"
+  },
+  "languageSelector": {
+    "label": "Alterar idioma"
+  },
+  "states": {
+    "loadingFleet": "Carregando a frota…"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ops! Página não encontrada",
+    "returnHome": "Voltar ao início"
+  }
+}

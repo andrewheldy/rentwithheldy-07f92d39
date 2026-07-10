@@ -1,1 +1,83 @@
-{}
+{
+  "steps": {
+    "step1": {
+      "title": "1. Choisissez vos dates",
+      "body": "Dites-nous quand vous avez besoin de la voiture et où, en Floride du Sud, vous la récupérerez."
+    },
+    "step2": {
+      "title": "2. Choisissez votre véhicule",
+      "body": "Parcourez notre flotte en temps réel et réservez la voiture exacte qui convient à votre trajet et à votre budget."
+    },
+    "step3": {
+      "title": "3. Récupérez et roulez",
+      "body": "On se retrouve à votre point de rendez-vous : Fort Lauderdale, Miami ou l'aéroport FLL. Remise rapide, plein fait."
+    },
+    "step4": {
+      "title": "4. Roulez accompagné",
+      "body": "Ligne directe avec notre équipe pendant toute la location. Restitutions faciles, communication claire, aucune surprise."
+    }
+  },
+  "meta": {
+    "title": "Comment ça marche | Réservation de voiture simple | Rent With Heldy",
+    "description": "Découvrez comment fonctionne la location d'une voiture avec Rent With Heldy : consultez les disponibilités, choisissez votre véhicule, confirmez en ligne et retrouvez-nous pour la prise en charge à Fort Lauderdale ou Miami."
+  },
+  "hero": {
+    "title": "Comment réserver avec Heldy",
+    "subtitle": "Un processus de location simple et transparent, de la recherche à la restitution. Conçu pour les visiteurs et les résidents de Floride du Sud qui veulent une vraie alternative aux comptoirs de location traditionnels.",
+    "cta": "Commencer la réservation"
+  },
+  "walkthrough": {
+    "step1": {
+      "heading": "1. Trouvez vos dates et votre véhicule",
+      "body": "Touchez <strong>Réserver</strong> n'importe où sur le site pour ouvrir l'outil de réservation en temps réel. Sélectionnez vos dates de prise en charge et de restitution, et vous verrez exactement quels véhicules sont disponibles — avec de vraies photos, de vraies catégories et le prix réel de votre trajet. Pas d'appât ni de surprise « ou similaire »."
+    },
+    "step2": {
+      "heading": "2. Réservez en quelques minutes",
+      "body": "Choisissez la voiture que vous voulez et finalisez le paiement. Les réservations sont confirmées instantanément — vous recevrez tout de suite un e-mail avec les détails de votre réservation. Le véhicule est alors réservé exclusivement pour vos dates."
+    },
+    "step3": {
+      "heading": "3. Organisez la prise en charge avec notre équipe",
+      "body": "Après la réservation, notre équipe vous contacte directement pour confirmer le lieu et l'heure de prise en charge. On se retrouve à des endroits pratiques à Fort Lauderdale, Miami ou près de l'aéroport FLL. Si vous arrivez en avion, partagez votre numéro de vol et nous nous adapterons à votre arrivée — y compris les retards."
+    },
+    "step4": {
+      "heading": "4. Remise rapide et vous roulez",
+      "body": "À la prise en charge, nous vérifions votre permis, faisons le tour de la voiture ensemble, vous remettons les clés et vous voilà parti. La plupart des remises ne prennent que quelques minutes. Vous aurez le numéro direct de notre équipe pendant toute la location — pas de numéro surtaxé, pas d'agents qui lisent un script."
+    },
+    "step5": {
+      "heading": "5. Restitution facile",
+      "body": "Restituez le véhicule à l'heure et à l'endroit convenus. Nous sommes flexibles, dans la limite du raisonnable, pour les restitutions en avance ou en retard — prévenez-nous simplement. Besoin de prolonger ? Écrivez-nous tôt ; si la voiture n'est pas déjà réservée ensuite, nous vous la laissons."
+    }
+  },
+  "pickup": {
+    "heading": "Ce qu'il vous faut à la prise en charge",
+    "items": [
+      "Un permis de conduire valide (les permis internationaux sont acceptés avec un passeport).",
+      "Une carte de crédit au nom du conducteur.",
+      "Une preuve d'assurance ou un plan de protection actif via la plateforme de réservation.",
+      "Âge minimum de 21 ans (certains véhicules premium exigent 25 ans et plus)."
+    ]
+  },
+  "faqHeading": "Questions fréquentes",
+  "faqs": [
+    {
+      "question": "Combien de temps prend la réservation ?",
+      "answer": "La plupart des réservations se font en moins de trois minutes. Vous choisissez vos dates, sélectionnez votre véhicule parmi les disponibilités en temps réel et confirmez en ligne. Vous recevrez une confirmation par e-mail immédiatement."
+    },
+    {
+      "question": "Quand ma réservation est-elle réellement confirmée ?",
+      "answer": "Votre réservation est confirmée dès que vous finalisez le paiement dans l'outil de réservation. Le véhicule est réservé pour vos dates et vous recevrez un e-mail de confirmation immédiat."
+    },
+    {
+      "question": "Que se passe-t-il après ma réservation ?",
+      "answer": "Un membre de notre équipe vous contacte pour organiser les détails de la prise en charge — lieu exact, heure et éventuelles notes de préparation du véhicule. La prise en charge sans contact est disponible, et vous aurez une ligne directe pendant toute votre location."
+    },
+    {
+      "question": "Puis-je modifier ou annuler ma réservation ?",
+      "answer": "Écrivez-nous le plus tôt possible. Nous sommes flexibles dans la limite du raisonnable, et les conditions d'annulation et de modification suivent la politique de la plateforme de réservation par laquelle vous avez réservé."
+    }
+  ],
+  "finalCta": {
+    "title": "Prêt à réserver votre location en Floride du Sud ?",
+    "subtitle": "Réservez en quelques minutes. Un service humain de la prise en charge à la restitution."
+  }
+}

@@ -1,1 +1,282 @@
-{}
+{
+  "layout": {
+    "breadcrumbLabel": "Trilha de navegação",
+    "breadcrumbHome": "Início",
+    "viewFleet": "Ver a frota",
+    "exploreMore": {
+      "title": "Explore mais",
+      "links": {
+        "fleet": "Explore nossa frota completa",
+        "howItWorks": "Como funciona a reserva",
+        "fortLauderdale": "Aluguel de carros em Fort Lauderdale",
+        "miami": "Aluguel de carros em Miami",
+        "airport": "Aluguéis no Aeroporto de Fort Lauderdale (FLL)",
+        "contact": "Fale direto com nossa equipe"
+      }
+    },
+    "faqHeading": "Perguntas frequentes",
+    "callCta": "Ligar",
+    "finalCta": {
+      "title": "Pronto para reservar seu aluguel no Sul da Flórida?",
+      "subtitle": "Reserve em minutos. Do econômico às opções premium mais novas. Atendimento simpático e próximo, da retirada à devolução."
+    }
+  },
+  "fortLauderdale": {
+    "metaTitle": "Aluguel de carros em Fort Lauderdale | Rent With Heldy",
+    "metaDescription": "Aluguel de carros particular em Fort Lauderdale, FL. Do econômico às opções premium mais novas, reserva on-line fácil, retirada sem contato. All-Star Host com mais de 1.400 avaliações cinco estrelas.",
+    "crumbLabel": "Fort Lauderdale",
+    "h1": "Aluguel de carros em Fort Lauderdale, FL",
+    "intro": "Uma experiência de aluguel de carros particular e próxima, feita para visitantes, viajantes a negócios e moradores de Fort Lauderdale. Frota selecionada, reserva fácil e retirada flexível por todo o condado de Broward.",
+    "sections": [
+      {
+        "heading": "Um jeito mais simpático de alugar um carro em Fort Lauderdale",
+        "paragraphs": [
+          "Fort Lauderdale é agitada. Entre a praia, o centro, o aeroporto, o porto de cruzeiros e o fluxo constante de visitantes de fora, a última coisa que você quer é passar sua primeira hora na cidade em uma fila de balcão de aluguel. A Rent With Heldy oferece uma alternativa particular e mais pessoal — uma frota selecionada de carros bem conservados, reserva on-line transparente e comunicação direta com quem de fato entrega as chaves para você.",
+          "Somos um All-Star Host nos principais marketplaces de aluguel, com mais de 1.400 avaliações cinco estrelas e um histórico de clientes que voltam. Isso importa porque em Fort Lauderdale, onde todo fim de semana traz uma onda de viajantes, constância e agilidade não são extras — são o ponto principal."
+        ]
+      },
+      {
+        "heading": "Quem aluga com a gente em Fort Lauderdale",
+        "paragraphs": [
+          "Nossos clientes se encaixam em alguns grupos claros, e moldamos o fluxo de reserva em torno do que cada um realmente precisa."
+        ],
+        "bullets": [
+          "Viajantes de praia e de fim de semana que vão para Fort Lauderdale Beach, Las Olas ou Hollywood e querem um carro confortável por alguns dias sem a dor de cabeça do balcão do aeroporto.",
+          "Viajantes a negócios que chegam ao FLL e precisam de um sedã ou SUV limpo esperando na chegada, com retirada simples e diária fixa.",
+          "Passageiros de cruzeiro que usam o Port Everglades e querem um aluguel curto antes e depois da viagem.",
+          "Moradores cujo próprio carro está na oficina, que estão visitando a família ou que só precisam de um veículo extra por alguns dias.",
+          "Visitantes de outros estados hospedados em Aventura, Hollywood, Pompano ou no centro de Fort Lauderdale que querem um veículo entregue perto da hospedagem."
+        ]
+      },
+      {
+        "heading": "Veículos feitos para o jeito que Fort Lauderdale realmente dirige",
+        "paragraphs": [
+          "Fort Lauderdale não é um só tipo de viagem. Você pode estar fazendo trechos pela I-95 até Miami num dia, descendo a A1A no outro, e então enchendo o carro com a família para uma ida às compras no Sawgrass Mills. Nossa frota reflete essa variedade.",
+          "Temos sedãs práticos e econômicos para viajantes sozinhos e casais; SUVs espaçosos para famílias e grupos indo à praia ou aos Everglades; e um pequeno conjunto de opções premium para visitantes que querem algo um pouco mais requintado para um fim de semana especial, uma viagem de aniversário ou uma reunião de negócios. Cada veículo é detalhado entre aluguéis, mantido mecanicamente e anunciado com fotos reais para não haver surpresas na retirada.",
+          "Você pode navegar pela frota completa em tempo real a qualquer momento e ver exatamente o que está disponível para as suas datas."
+        ]
+      },
+      {
+        "heading": "Retirada, devolução e como trabalhamos em Fort Lauderdale",
+        "paragraphs": [
+          "Coordenamos a retirada em um ponto de encontro conveniente na região de Fort Lauderdale, incluindo locais perto do aeroporto, do Port Everglades e das principais áreas de hotéis. Assim que sua reserva é confirmada, você terá uma linha direta com nossa equipe para acertar o local e o horário exatos. A maioria das entregas leva só alguns minutos: conferir a carteira, revisar o carro, pegar as chaves e dirigir.",
+          "As devoluções funcionam da mesma forma, ao contrário. Somos flexíveis com os horários dentro do razoável, e se seus planos mudarem no meio da viagem, mande mensagem cedo e faremos o possível para prorrogar ou ajustar sem drama."
+        ]
+      },
+      {
+        "heading": "Por que os clientes escolhem a Rent With Heldy em vez dos grandes balcões",
+        "paragraphs": [
+          "Os balcões das grandes marcas no FLL têm sua função, mas são feitos para volume. Isso significa filas, ofertas insistentes, taxas surpresa na devolução e um atendente diferente a cada vez. Nós somos o oposto: um host, uma frota, um número de telefone e preços que você realmente consegue prever."
+        ],
+        "bullets": [
+          "Status de All-Star Host com mais de 1.400 avaliações cinco estrelas.",
+          "Comunicação com pessoas de verdade — fale com nossa equipe direto antes, durante e depois da sua viagem.",
+          "Reserva on-line transparente com o veículo real que você vai dirigir.",
+          "Retirada conveniente em Fort Lauderdale, Miami e no aeroporto FLL.",
+          "Opções econômicas e premium mais novas sem preços de balcão de luxo."
+        ]
+      },
+      {
+        "heading": "Reservando seu aluguel em Fort Lauderdale",
+        "paragraphs": [
+          "Reservar leva alguns minutos. Escolha suas datas, selecione um veículo na disponibilidade em tempo real, confirme on-line e você receberá uma confirmação instantânea por e-mail. A partir daí, coordenamos os detalhes da retirada diretamente. Sem idas e vindas de orçamento, sem jogos de estoque escondido — o que você vê no sistema de reserva é o que está disponível.",
+          "Se você não tem certeza de qual veículo combina com sua viagem, ligue ou mande mensagem que a gente indica a melhor opção conforme o número de passageiros, a bagagem e a distância que você pretende dirigir."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Onde vocês fazem a retirada e a devolução em Fort Lauderdale?",
+        "answer": "Coordenamos a retirada em um local conveniente na região de Fort Lauderdale, incluindo pontos perto do aeroporto FLL, do Port Everglades e das principais áreas de hotéis. O ponto de encontro exato é confirmado por mensagem após a reserva."
+      },
+      {
+        "question": "Posso alugar um carro em Fort Lauderdale por apenas um dia?",
+        "answer": "Sim. Aceitamos aluguéis curtos conforme a disponibilidade. As diárias aparecem em tempo real no sistema de reserva quando você seleciona suas datas."
+      },
+      {
+        "question": "Vocês oferecem SUVs e aluguéis para família em Fort Lauderdale?",
+        "answer": "Sim. Nossa frota de Fort Lauderdale inclui SUVs e veículos mais espaçosos para famílias, grupos e viagens à praia. Você pode filtrar a frota em tempo real por tipo de veículo."
+      },
+      {
+        "question": "Os aluguéis de vocês em Fort Lauderdale estão disponíveis para passageiros de cruzeiro?",
+        "answer": "Com certeza. Muitos dos nossos clientes nos usam antes ou depois de cruzeiros que saem do Port Everglades. Conte os detalhes da sua viagem e coordenamos a retirada conforme necessário."
+      },
+      {
+        "question": "Como prorrogo meu aluguel em Fort Lauderdale?",
+        "answer": "Mande mensagem antes da devolução programada. Enquanto o carro não estiver reservado logo em seguida, prorrogamos sua viagem e atualizamos a reserva."
+      }
+    ]
+  },
+  "miami": {
+    "metaTitle": "Aluguel de carros em Miami | Aluguéis premium | Rent With Heldy",
+    "metaDescription": "Aluguel de carros particular em Miami, FL. Sedãs, SUVs e veículos premium para dirigir pela cidade, dias de praia e viagens a negócios. Reserva on-line fácil com a Rent With Heldy.",
+    "crumbLabel": "Miami",
+    "h1": "Aluguel de carros em Miami, FL",
+    "intro": "Um aluguel de carros particular e premium feito para o jeito que as pessoas realmente dirigem Miami. Frota selecionada, preços transparentes e uma pessoa de verdade do outro lado de cada reserva.",
+    "sections": [
+      {
+        "heading": "Alugar um carro em Miami sem a dor de cabeça do balcão",
+        "paragraphs": [
+          "Miami é uma cidade para dirigir. Seja pulando entre reuniões em Brickell, descendo para jantar em Wynwood, cruzando a A1A ou fazendo o trajeto até os Keys, ter o veículo certo muda a viagem inteira. A Rent With Heldy dá aos visitantes e moradores de Miami uma alternativa particular e bem conservada aos balcões das grandes marcas — mesma praticidade, atendimento mais pessoal, muitas vezes carros melhores.",
+          "Somos um All-Star Host com mais de 1.400 avaliações cinco estrelas em todo o Sul da Flórida. Essa reputação é construída no básico que de fato importa: carros limpos, retiradas no horário, preços justos e um host que atende o telefone."
+        ]
+      },
+      {
+        "heading": "Quem reserva aluguéis em Miami com a gente",
+        "paragraphs": [
+          "Os clientes de Miami estão entre os mais variados do país, e nossa frota e nosso processo são feitos para se adaptar a isso."
+        ],
+        "bullets": [
+          "Visitantes que chegam ao MIA ou vêm dirigindo do FLL e querem um veículo pronto sem enfrentar fila de balcão.",
+          "Viajantes a negócios que vão a eventos em Brickell, Downtown Miami, Coral Gables ou Aventura e precisam de um carro limpo e de aparência profissional.",
+          "Casais e grupos planejando dias em Miami Beach, South Beach, Coconut Grove ou Bayside.",
+          "Famílias que precisam de um SUV espaçoso para uma semana de cidade, praia e parques temáticos.",
+          "Passageiros de cruzeiro saindo do PortMiami que querem um aluguel para os dias em torno da viagem.",
+          "Moradores entre carros que precisam de algo confiável por alguns dias ou semanas."
+        ]
+      },
+      {
+        "heading": "Uma frota de Miami feita para dirigir na cidade e escapadas de fim de semana",
+        "paragraphs": [
+          "Dirigir em Miami exige um tipo específico de carro. Você quer algo ágil o suficiente para as garagens apertadas de Brickell, confortável o suficiente para a batalha do ar-condicionado num dia de 32 graus, e grande o suficiente para dar conta de bagagem, coisas de praia ou uma ida ao Costco quando o fim de semana pede.",
+          "Nossa frota cobre exatamente essa variedade. Sedãs econômicos para motoristas sozinhos e uso na cidade, SUVs espaçosos para famílias e viagens em grupo, e um pequeno conjunto de veículos premium para visitantes que querem algo um pouco mais bacana para um fim de semana em Miami, uma estadia de negócios ou uma ocasião especial. Cada carro é fotografado com precisão, detalhado entre aluguéis e mantido mecanicamente.",
+          "Navegue pela frota em tempo real para ver o que está de fato disponível nas suas datas — sem enganação, sem \"ou similar\"."
+        ]
+      },
+      {
+        "heading": "Retirada, entrega e como operamos em Miami",
+        "paragraphs": [
+          "Coordenamos a retirada em um ponto de encontro conveniente. Assim que sua reserva é confirmada, você recebe uma linha direta com nossa equipe para acertar o local e o horário exatos. A maioria das entregas leva só alguns minutos: uma volta rápida no carro, conferência da carteira, chaves e você dirige.",
+          "Se você chega ao FLL e desce dirigindo, ou chega ao MIA, conte os detalhes do seu voo após a reserva e ajustamos os horários. Para estadias de vários dias em Miami, somos flexíveis com as devoluções dentro do razoável, e prorrogações no mesmo dia costumam ser possíveis se o carro não estiver reservado logo em seguida."
+        ]
+      },
+      {
+        "heading": "Por que os clientes de Miami escolhem a Rent With Heldy",
+        "paragraphs": [
+          "Os balcões corporativos no MIA existem para girar volume. Isso significa preços que sobem em fins de semana cheios, adicionais surpresa na devolução e um atendente diferente a cada vez. Nós somos diferentes."
+        ],
+        "bullets": [
+          "All-Star Host com mais de 1.400 avaliações cinco estrelas em todo o Sul da Flórida.",
+          "Um host, uma frota, um número — fale com a gente direto antes, durante e depois.",
+          "Preços transparentes em tempo real no sistema de reserva — o preço que você vê é o que você paga.",
+          "Opções econômicas e premium mais novas sem as margens de balcão de luxo.",
+          "Retirada conveniente para visitantes de Miami, estadias de negócios e viagens saindo do PortMiami."
+        ]
+      },
+      {
+        "heading": "Como reservar seu aluguel em Miami",
+        "paragraphs": [
+          "Escolha suas datas, selecione um veículo na disponibilidade em tempo real e confirme on-line. Você recebe uma confirmação instantânea por e-mail e fazemos o acompanhamento para coordenar os detalhes da retirada. Sem orçamento indo e voltando, sem estoque escondido — o que você vê no sistema é o que dá para reservar.",
+          "Não tem certeza de qual veículo é o certo para a sua viagem a Miami? Ligue ou mande mensagem. A gente ajusta o carro à viagem — passageiros, bagagem, quilometragem e situação de estacionamento incluídos."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Vocês entregam aluguéis em hotéis ou hospedagens de curta duração em Miami?",
+        "answer": "Coordenamos pontos de encontro convenientes na região de Miami para a maioria das estadias. Após a reserva, mande seu endereço que confirmamos o ponto de retirada mais próximo."
+      },
+      {
+        "question": "Posso alugar um carro em Miami se eu chegar ao FLL?",
+        "answer": "Sim — muitos dos nossos clientes de Miami chegam a Fort Lauderdale (FLL). Podemos coordenar a retirada perto do FLL para você descer dirigindo direto até Miami, sem transferência."
+      },
+      {
+        "question": "Vocês oferecem aluguéis de carros premium ou de luxo em Miami?",
+        "answer": "Sim. Nossa frota inclui veículos premium selecionados, ideais para viagens a negócios, fins de semana e ocasiões especiais em Miami. A disponibilidade aparece em tempo real no sistema de reserva."
+      },
+      {
+        "question": "Qual é a idade mínima para alugar um carro em Miami?",
+        "answer": "Em geral, os motoristas precisam ter 21 anos ou mais, e alguns veículos premium exigem 25+. O sistema de reserva reflete qualquer restrição de idade em cada veículo."
+      },
+      {
+        "question": "Posso levar o aluguel de Miami até os Keys ou Orlando?",
+        "answer": "Sim, na maioria dos casos — mencione os planos de longa distância ao reservar para confirmarmos o veículo e quaisquer considerações de quilometragem com antecedência."
+      }
+    ]
+  },
+  "local": {
+    "metaTitle": "Aluguéis de carros locais no Sul da Flórida | Aluguéis para trabalho e reparo | Rent With Heldy",
+    "metaDescription": "Aluguéis de carros locais diários, semanais e mensais em Miami e Fort Lauderdale. Carros confiáveis para o trabalho, o deslocamento e enquanto seu carro está na oficina. Reserva fácil, atendimento simpático.",
+    "crumbLabel": "Aluguéis de carros locais",
+    "h1": "Aluguéis de carros locais para o trabalho e enquanto seu carro está na oficina",
+    "intro": "Um aluguel confiável para quem realmente precisa de um carro dia após dia — quem se desloca para o trabalho, prestadores de serviço, profissionais autônomos e motoristas esperando um reparo. Carros limpos, condições flexíveis e uma pessoa de verdade do outro lado de cada reserva.",
+    "sections": [
+      {
+        "heading": "Feito para os moradores do Sul da Flórida que precisam de um carro agora",
+        "paragraphs": [
+          "Nem todo aluguel é para férias. Muitos dos nossos clientes são moradores que simplesmente precisam de um carro — um prestador de serviço cuja van de trabalho está na oficina, um enfermeiro pegando turnos extras, um motorista de app entre carros ou uma família sem veículo depois de uma batidinha. Construímos nosso programa de aluguel local em torno dessas situações exatas.",
+          "Os preços são justos, os carros são limpos e não vamos prender você em regras rígidas de balcão corporativo. Diárias, semanas e meses disponíveis com um único ponto de contato direto do começo ao fim."
+        ]
+      },
+      {
+        "heading": "Quem reserva aluguéis locais com a gente",
+        "paragraphs": [
+          "Se você mora, trabalha ou ficou sem carro no Sul da Flórida, isto é para você."
+        ],
+        "bullets": [
+          "Motoristas cujo carro está na oficina de funilaria ou no mecânico após um acidente ou uma pane.",
+          "Trabalhadores que precisam de um carro confiável para o deslocamento enquanto o veículo do dia a dia está indisponível.",
+          "Prestadores de serviço, corretores de imóveis e profissionais de campo que precisam de um carro limpo e profissional para visitas a clientes.",
+          "Moradores entre carros — vendendo um, esperando o próximo.",
+          "Famílias que precisam de um segundo veículo temporário para levar os filhos à escola, fazer tarefas e cobrir turnos.",
+          "Motoristas de app e de entregas que precisam de um carro de curto prazo enquanto definem planos de mais longo prazo."
+        ]
+      },
+      {
+        "heading": "Diárias, semanas e meses locais",
+        "paragraphs": [
+          "Precisa de um carro por três dias enquanto consertam seu para-choque? Feito. Precisa de algo pelo próximo mês enquanto resolve um carro com perda total com o seguro? Feito também. Os aluguéis locais têm preços que fazem sentido para prazos da vida real, não só para viagens de fim de semana.",
+          "Reservas semanais e mensais têm as melhores tarifas. Se o seu seguro cobre perda de uso, também podemos faturar direto ou fornecer a documentação de que o seu regulador precisa."
+        ]
+      },
+      {
+        "heading": "Retirada, entrega e como funciona",
+        "paragraphs": [
+          "A maioria dos clientes locais encontra a gente em um ponto conveniente em Fort Lauderdale ou Miami. Se o seu carro está sendo consertado, muitas vezes conseguimos encontrar você na oficina para você sair de um carro e entrar em outro — sem Uber no meio.",
+          "Assim que sua reserva é confirmada, você terá uma linha direta para coordenar o horário e o local exatos. As devoluções são flexíveis, e as prorrogações costumam ser fáceis desde que a gente saiba com antecedência."
+        ]
+      },
+      {
+        "heading": "Por que os moradores escolhem a Rent With Heldy",
+        "paragraphs": [
+          "Os balcões das grandes marcas são feitos para turistas e volume. Os clientes locais acabam tratados como algo secundário. Nós somos o oposto."
+        ],
+        "bullets": [
+          "All-Star Host com mais de 1.400 avaliações cinco estrelas em todo o Sul da Flórida.",
+          "Uma pessoa de verdade no telefone — não um call center.",
+          "Amigável a oficinas e seguros: encontramos você, coordenamos e documentamos.",
+          "Tarifas semanais e mensais honestas para aluguéis mais longos.",
+          "Carros limpos e bem conservados — sedãs e SUVs prontos quando você estiver."
+        ]
+      },
+      {
+        "heading": "Como reservar seu aluguel local",
+        "paragraphs": [
+          "Escolha suas datas, selecione um veículo na disponibilidade em tempo real e confirme on-line. Fazemos o acompanhamento para acertar os detalhes da retirada. Se a sua situação é urgente — acidente hoje de manhã, carro guinchado ontem à noite — é só ligar que a gente resolve."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Vocês podem me encontrar na oficina ou na concessionária?",
+        "answer": "Sim. Encontramos clientes regularmente em centros de funilaria, concessionárias e mecânicos para você entregar as chaves e pegar seu aluguel na mesma parada."
+      },
+      {
+        "question": "Vocês oferecem tarifas locais semanais ou mensais?",
+        "answer": "Sim. Reservas semanais e mensais vêm com diárias reduzidas. É só mandar suas datas que enviamos o melhor preço para o período de que você precisa."
+      },
+      {
+        "question": "Meu seguro vai pagar o aluguel?",
+        "answer": "Muitas vezes sim — a maioria das apólices de perda de uso e de cobertura de aluguel reembolsa ou fatura direto. Fornecemos toda a documentação de que o seu regulador precisa."
+      },
+      {
+        "question": "Motoristas de app ou de entregas podem usar esses carros?",
+        "answer": "O uso de curto prazo para apps de transporte pode ser combinado em veículos selecionados — pergunte antes de reservar para combinarmos um carro compatível. Também estamos criando um programa dedicado de aluguel com opção de compra para motoristas de app."
+      },
+      {
+        "question": "Qual é a idade mínima para alugar?",
+        "answer": "Em geral, os motoristas precisam ter 21 anos ou mais. Alguns veículos exigem 25+. O sistema de reserva reflete as restrições de idade por veículo."
+      }
+    ]
+  }
+}

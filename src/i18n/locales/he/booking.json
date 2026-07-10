@@ -1,1 +1,47 @@
-{}
+{
+  "meta": {
+    "title": "הזמנת רכב — זמינות בזמן אמת | Rent With Heldy",
+    "description": "בדקו זמינות בזמן אמת והזמינו את השכרת הרכב שלכם ב-Fort Lauderdale, ב-Miami או ליד שדה התעופה FLL. הזמנה מהירה אונליין עם Rent With Heldy."
+  },
+  "book": {
+    "title": "הזמינו את הרכב שלכם",
+    "subtitle": "בחרו תאריכים ובחרו מתוך הצי שלנו בזמן אמת ב-Fort Lauderdale, ב-Miami ובדרום פלורידה.",
+    "widgetLabel": "זמינות והזמנת רכבים בזמן אמת"
+  },
+  "confirmation": {
+    "notFound": {
+      "title": "ההזמנה לא נמצאה",
+      "description": "לא הצלחנו למצוא את ההזמנה הזו. בדקו את אימייל האישור שלכם.",
+      "browseCategories": "עיון בקטגוריות"
+    },
+    "confirmed": {
+      "title": "ההזמנה אושרה!",
+      "number": "אישור מס׳ {{code}}"
+    },
+    "vehicle": {
+      "fallbackName": "קטגוריית רכב",
+      "fallbackAlt": "רכב",
+      "orSimilar": "או רכב דומה",
+      "assignedAtPickup": "הרכב המדויק שלכם ייקבע באיסוף"
+    },
+    "details": {
+      "rentalPeriod": "תקופת ההשכרה",
+      "pickupLocation": "מקום האיסוף",
+      "dropoffLocation": "מקום ההחזרה"
+    },
+    "renter": {
+      "heading": "פרטי השוכר"
+    },
+    "next": {
+      "heading": "מה הלאה?",
+      "emailSent": "אימייל אישור נשלח אל {{email}}",
+      "bringLicense": "הביאו רישיון נהיגה בתוקף וכרטיס אשראי לאיסוף",
+      "vehicleAssigned": "הרכב הספציפי שלכם ייקבע עם הגעתכם",
+      "contact": "צרו קשר בטלפון {{phone}} לכל שאלה"
+    },
+    "actions": {
+      "returnHome": "חזרה לדף הבית",
+      "bookAnother": "הזמנת רכב נוסף"
+    }
+  }
+}

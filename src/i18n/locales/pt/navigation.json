@@ -1,1 +1,27 @@
-{}
+{
+  "links": {
+    "fleet": "Frota",
+    "rentToOwn": "Alugue e compre",
+    "howItWorks": "Como funciona",
+    "faq": "Perguntas",
+    "contact": "Contato",
+    "services": "Serviços",
+    "more": "Mais"
+  },
+  "services": {
+    "airport": { "label": "Entrega no aeroporto", "desc": "Retirada e devolução no FLL" },
+    "hotel": { "label": "Entrega no hotel", "desc": "Levamos até o seu hotel" },
+    "bodyShop": {
+      "label": "Entrega na oficina",
+      "desc": "Enquanto seu carro está na oficina"
+    },
+    "cruise": { "label": "Porto de cruzeiros", "desc": "Port Everglades e PortMiami" },
+    "lossOfUse": {
+      "label": "Perda de uso",
+      "desc": "Carros reserva pelo seguro"
+    }
+  },
+  "aria": {
+    "openMenu": "Abrir menu"
+  }
+}

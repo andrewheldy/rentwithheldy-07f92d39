@@ -8,6 +8,8 @@ import SEO from "@/components/SEO";
 import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import PartnerIntakeForm from "@/components/PartnerIntakeForm";
+import EnglishLegalNotice from "@/components/legal/EnglishLegalNotice";
+import EnglishLegalContent from "@/components/legal/EnglishLegalContent";
 import { Button } from "@/components/ui/button";
 import {
   buildBreadcrumbSchema,
@@ -59,6 +61,14 @@ interface ServicePageLayoutProps {
   partnerHeading?: string;
   partnerSubheading?: string;
   faqs: FAQItem[];
+  /**
+   * When true, the long-form `body` and `faqs` are treated as substantive
+   * English-only legal content: a translated notice is shown above them and
+   * both are pinned to LTR (readable even in RTL locales). The caller is
+   * responsible for passing English strings for `body`/`faqs` (see
+   * `useEnglishT`). Everything else on the page still localizes normally.
+   */
+  legalContent?: boolean;
   /** Optional long-form body content rendered above the FAQ section */
   body?: { heading: string; paragraphs: string[]; bullets?: string[] }[];
   /** Custom form to render in the quote slot instead of the default QuickQuoteForm */
@@ -108,6 +118,7 @@ const ServicePageLayout = ({
   partnerHeading,
   partnerSubheading,
   faqs,
+  legalContent = false,
   body,
   formSlot,
   heroImage,
@@ -151,6 +162,33 @@ const ServicePageLayout = ({
     );
   };
 
+  const bodyMarkup = body?.map((s) => (
+    <div key={s.heading}>
+      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+        {s.heading}
+      </h2>
+      <div className="space-y-4">
+        {s.paragraphs.map((p, i) => (
+          <p
+            key={i}
+            className="text-base text-muted-foreground leading-relaxed"
+          >
+            {p}
+          </p>
+        ))}
+        {s.bullets && (
+          <ul className="list-disc ps-6 space-y-2 text-muted-foreground">
+            {s.bullets.map((b, i) => (
+              <li key={i} className="leading-relaxed">
+                {b}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  ));
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
@@ -166,13 +204,13 @@ const ServicePageLayout = ({
         <section className="bg-gradient-subtle border-b border-border">
           <div className="container mx-auto px-4 py-10 md:py-14">
             <nav
-              aria-label="Breadcrumb"
+              aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
               <Link to="/" className="hover:text-primary">
                 {t("layout.breadcrumbHome")}
               </Link>
-              <ChevronRight className="h-3 w-3" />
+              <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
               <span className="text-foreground">{crumbLabel}</span>
             </nav>
 
@@ -348,36 +386,20 @@ const ServicePageLayout = ({
           </section>
         )}
 
-        {/* Optional long-form body content */}
+        {/* Optional long-form body content. When `legalContent` is set, this is
+            substantive English-only legal copy: it gets a translated preface
+            and stays LTR even in RTL locales. */}
         {body && body.length > 0 && (
           <section className="bg-secondary/30 border-y border-border">
             <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl space-y-10">
-              {body.map((s) => (
-                <div key={s.heading}>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    {s.heading}
-                  </h2>
-                  <div className="space-y-4">
-                    {s.paragraphs.map((p, i) => (
-                      <p
-                        key={i}
-                        className="text-base text-muted-foreground leading-relaxed"
-                      >
-                        {p}
-                      </p>
-                    ))}
-                    {s.bullets && (
-                      <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                        {s.bullets.map((b, i) => (
-                          <li key={i} className="leading-relaxed">
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-              ))}
+              {legalContent && <EnglishLegalNotice />}
+              {legalContent ? (
+                <EnglishLegalContent className="space-y-10">
+                  {bodyMarkup}
+                </EnglishLegalContent>
+              ) : (
+                bodyMarkup
+              )}
             </div>
           </section>
         )}
@@ -430,23 +452,34 @@ const ServicePageLayout = ({
                   <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-lg italic leading-relaxed text-foreground">
+              <p
+                dir="ltr"
+                lang="en"
+                className="text-lg italic leading-relaxed text-foreground"
+              >
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
               <p className="mt-4 text-sm font-semibold text-muted-foreground">
-                {testimonial.name}
-                {testimonial.location ? `, ${testimonial.location}` : ""}
+                <bdi dir="ltr">{testimonial.name}</bdi>
+                {testimonial.location ? <>, {testimonial.location}</> : null}
               </p>
             </div>
           </section>
         )}
 
-        {/* FAQ */}
+        {/* FAQ. The heading is localized UI chrome; when `legalContent` is set
+            the answers are English-only legal copy, so the list stays LTR. */}
         <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
             {t("layout.faqHeading")}
           </h2>
-          <FAQAccordion items={faqs} />
+          {legalContent ? (
+            <EnglishLegalContent>
+              <FAQAccordion items={faqs} />
+            </EnglishLegalContent>
+          ) : (
+            <FAQAccordion items={faqs} />
+          )}
         </section>
 
         {/* Final CTA */}

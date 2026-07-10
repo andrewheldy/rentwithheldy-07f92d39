@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Vehicle } from "@/data/vehicles";
+import { localizeVehicle } from "@/i18n/vehicleCopy";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
 }
 
 const VehicleCard = ({ vehicle }: VehicleCardProps) => {
-  const { t } = useTranslation(["fleet", "common"]);
+  const { t, i18n } = useTranslation(["fleet", "common"]);
+  const localizedVehicle = localizeVehicle(vehicle, t, i18n.language);
   return (
     <Card className="overflow-hidden hover:shadow-card-hover transition-all duration-300 group">
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -31,19 +33,21 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-2">
           <h3 className="font-semibold text-lg text-foreground">
-            {vehicle.make} {vehicle.model} {vehicle.year}
+            <bdi dir="ltr">
+              {vehicle.make} {vehicle.model} {vehicle.year}
+            </bdi>
           </h3>
-          <div className="flex items-center space-x-1 text-sm">
+          <div className="flex items-center gap-1 text-sm">
             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
             <span className="font-medium">{vehicle.rating}</span>
           </div>
         </div>
         
         <p className="text-muted-foreground mb-3">
-          {vehicle.color}
+          <span dir="auto">{localizedVehicle.color}</span>
         </p>
         
-        <div className="flex items-center space-x-2 mb-3">
+        <div className="flex items-center gap-2 mb-3">
           <Verified className="h-4 w-4 text-primary" />
           <span className="text-sm text-primary font-medium">
             {vehicle.hostType}
@@ -51,7 +55,7 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
         </div>
         
         <p className="text-sm text-muted-foreground line-clamp-2">
-          {vehicle.description}
+          {localizedVehicle.description}
         </p>
       </CardContent>
       

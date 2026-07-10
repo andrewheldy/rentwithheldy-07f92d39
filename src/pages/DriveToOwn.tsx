@@ -115,7 +115,7 @@ const DriveToOwn = () => {
             <source srcSet={heroRentToOwnWebp} type="image/webp" />
             <img
               src={heroRentToOwn}
-              alt="Two SUVs parked along a Miami waterfront at golden hour with the downtown skyline and palm trees in the background"
+              alt={t("hero.imageAlt")}
               className="absolute inset-0 -z-10 hidden h-full w-full object-cover object-[68%_center] lg:block"
               fetchPriority="high"
               decoding="async"
@@ -188,7 +188,7 @@ const DriveToOwn = () => {
                   <source srcSet={heroRentToOwnWebp} type="image/webp" />
                   <img
                     src={heroRentToOwn}
-                    alt="Two SUVs parked along a Miami waterfront at golden hour with the downtown skyline and palm trees in the background"
+                    alt={t("hero.imageAlt")}
                     className="h-56 w-full rounded-2xl object-cover object-[85%_center] sm:h-64"
                     loading="lazy"
                     decoding="async"
