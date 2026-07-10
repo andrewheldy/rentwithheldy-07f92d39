@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import {
-  Phone, Mail, ArrowRight, MapPin, Plane, BedDouble, Wrench, Anchor,
-  FileText, Key, Truck, MessageCircle, Users, Clock, Sparkles, Star,
+  Phone, Mail, ArrowRight, MapPin, Truck, MessageCircle, Users, Clock,
+  Sparkles, Star,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import DeliveryDestinations from "@/components/DeliveryDestinations";
 import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
@@ -13,7 +14,6 @@ import FAQAccordion from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
 import { useVehicles } from "@/hooks/useVehicles";
 import { GENERAL_FAQS } from "@/data/faqs";
@@ -22,22 +22,6 @@ import {
   buildFaqSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
-
-const SERVICES = [
-  { to: "/fort-lauderdale-airport-car-rental", icon: Plane, title: "Airport Delivery", body: "Meet your car at FLL arrivals — no shuttle bus, no rental counter." },
-  { to: "/hotel-concierge-rentals", icon: BedDouble, title: "Hotel Delivery", body: "We deliver straight to your hotel or resort lobby, on your schedule." },
-  { to: "/body-shop-delivery", icon: Wrench, title: "Body Shop Delivery", body: "A dependable car while yours is in the shop — dropped right at the shop." },
-  { to: "/cruise-port-delivery", icon: Anchor, title: "Cruise Port", body: "Pickup and delivery to Port Everglades and PortMiami for a smooth sail." },
-  { to: "/loss-of-use-claims", icon: FileText, title: "Loss of Use Claims", body: "Insurance replacement rentals handled simply while your claim is open." },
-  { to: "/rent-to-own", icon: Key, title: "Rent-To-Own", body: "For rideshare and delivery drivers — every payment builds toward owning." },
-];
-
-const LOCATIONS = [
-  { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
-  { to: "/car-rental-miami", label: "Miami" },
-  { to: "/local-car-rentals", label: "Local Rentals" },
-  { to: "/fort-lauderdale-airport-car-rental", label: "FLL Airport" },
-];
 
 const WHY = [
   { icon: Truck, title: "Delivered, not a counter", body: "We bring the car to your terminal, hotel, or door. No lines, no shuttle bus, no rental desk." },
@@ -99,61 +83,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Services — what we do */}
-        <section className="py-16 sm:py-24">
-          <div className="container mx-auto">
-            <Reveal className="max-w-2xl mb-12">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                What we do
-              </p>
-              <h2 className="text-heading font-bold text-ink mb-4">
-                One local team for every kind of South Florida trip.
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Whatever brought you here — a flight, a hotel stay, a car in the
-                shop, or a plan to drive for a living — there's a Rent With Heldy
-                option built for it.
-              </p>
-            </Reveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.map((s, i) => (
-                <Reveal key={s.to} delay={i * 60}>
-                  <Link to={s.to} className="group block h-full">
-                    <Card className="h-full hover:shadow-card-hover hover:-translate-y-0.5">
-                      <CardContent className="p-6">
-                        <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                          <s.icon className="h-5 w-5 text-primary" />
-                        </div>
-                        <h3 className="text-lg font-semibold text-ink mb-2">{s.title}</h3>
-                        <p className="text-sm leading-relaxed text-muted-foreground mb-4">{s.body}</p>
-                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                          Learn more
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* Locations */}
-            <Reveal className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-              <span className="flex items-center gap-1.5 font-medium text-foreground/70">
-                <MapPin className="h-4 w-4 text-primary" /> Serving
-              </span>
-              {LOCATIONS.map((l, i) => (
-                <span key={l.to} className="flex items-center gap-3">
-                  <Link to={l.to} className="font-medium text-foreground/80 hover:text-primary transition-colors">
-                    {l.label}
-                  </Link>
-                  {i < LOCATIONS.length - 1 && <span className="text-border">•</span>}
-                </span>
-              ))}
-            </Reveal>
-          </div>
-        </section>
+        {/* Where should we deliver your vehicle? */}
+        <DeliveryDestinations />
 
         {/* Why Rent With Heldy — differentiation */}
         <section className="py-16 sm:py-24 bg-secondary">
