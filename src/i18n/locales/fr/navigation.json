@@ -1,1 +1,27 @@
-{}
+{
+  "links": {
+    "fleet": "Flotte",
+    "rentToOwn": "Louer pour acheter",
+    "howItWorks": "Comment ça marche",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "services": "Services",
+    "more": "Plus"
+  },
+  "services": {
+    "airport": { "label": "Livraison à l'aéroport", "desc": "Prise et retour à FLL" },
+    "hotel": { "label": "Livraison à l'hôtel", "desc": "Livrée à votre hôtel" },
+    "bodyShop": {
+      "label": "Livraison au garage",
+      "desc": "Pendant la réparation de votre voiture"
+    },
+    "cruise": { "label": "Port de croisière", "desc": "Port Everglades et PortMiami" },
+    "lossOfUse": {
+      "label": "Perte d'usage",
+      "desc": "Véhicules de remplacement (assurance)"
+    }
+  },
+  "aria": {
+    "openMenu": "Ouvrir le menu"
+  }
+}

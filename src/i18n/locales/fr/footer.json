@@ -1,1 +1,50 @@
-{}
+{
+  "cta": {
+    "heading": "Quand vous voulez.",
+    "subheading": "Réservez en ligne en quelques minutes ou parlez à une vraie personne 7 jours sur 7."
+  },
+  "brand": {
+    "tagline": "Location de voitures familiale en Floride du Sud",
+    "badge": "All-Star Host sur Turo",
+    "description": "Une flotte familiale qui livre des voitures propres et fiables à Fort Lauderdale, Miami et dans toute la Floride du Sud, là où vous en avez besoin."
+  },
+  "columns": {
+    "services": "Services",
+    "locations": "Zones desservies",
+    "company": "Entreprise",
+    "contact": "Contact"
+  },
+  "services": {
+    "airport": "Livraison à l'aéroport (FLL)",
+    "hotel": "Livraison à l'hôtel",
+    "bodyShop": "Livraison au garage",
+    "cruise": "Livraison au port de croisière",
+    "lossOfUse": "Perte d'usage",
+    "rentToOwn": "Programme location avec option d'achat"
+  },
+  "locations": {
+    "fortLauderdale": "Fort Lauderdale",
+    "miami": "Miami",
+    "local": "Location de voitures locale",
+    "fllAirport": "Aéroport FLL"
+  },
+  "company": {
+    "fleet": "Flotte",
+    "howItWorks": "Comment ça marche",
+    "about": "À propos",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "contact": {
+    "location": "Fort Lauderdale et Miami, FL"
+  },
+  "seoParagraph": "Rent With Heldy est un service privé de location de voitures basé en Floride du Sud, au service des voyageurs et des résidents de Fort Lauderdale, Miami, Hollywood, Aventura et de l'aéroport international de Fort Lauderdale-Hollywood (FLL). Notre flotte sélectionnée comprend des voitures économiques, des SUV, des véhicules familiaux et des options premium, réservables en ligne en quelques minutes, avec une prise en charge flexible et un accompagnement fiable.",
+  "legal": {
+    "rights": "© {{year}} Rent With Heldy. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions",
+    "manageFleet": "Gérer la flotte",
+    "signOut": "Se déconnecter",
+    "admin": "Admin"
+  }
+}

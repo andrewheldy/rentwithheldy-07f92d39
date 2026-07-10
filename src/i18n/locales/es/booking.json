@@ -1,1 +1,46 @@
-{}
+{
+  "meta": {
+    "title": "Reserva un auto — Disponibilidad en tiempo real | Rent With Heldy",
+    "description": "Consulta la disponibilidad en tiempo real y reserva tu auto de alquiler en Fort Lauderdale, Miami o cerca del aeropuerto FLL. Reserva rápida en línea con Rent With Heldy."
+  },
+  "book": {
+    "title": "Reserva tu vehículo",
+    "subtitle": "Elige tus fechas y escoge de nuestra flota en tiempo real en Fort Lauderdale, Miami y el sur de Florida."
+  },
+  "confirmation": {
+    "notFound": {
+      "title": "Reserva no encontrada",
+      "description": "No pudimos encontrar esta reserva. Revisa tu correo de confirmación.",
+      "browseCategories": "Ver categorías"
+    },
+    "confirmed": {
+      "title": "¡Reserva confirmada!",
+      "number": "Confirmación n.° {{code}}"
+    },
+    "vehicle": {
+      "fallbackName": "Categoría de vehículo",
+      "fallbackAlt": "Vehículo",
+      "orSimilar": "o un vehículo similar",
+      "assignedAtPickup": "Tu vehículo exacto se asignará en la recogida"
+    },
+    "details": {
+      "rentalPeriod": "Período de alquiler",
+      "pickupLocation": "Lugar de recogida",
+      "dropoffLocation": "Lugar de devolución"
+    },
+    "renter": {
+      "heading": "Información del conductor"
+    },
+    "next": {
+      "heading": "¿Qué sigue?",
+      "emailSent": "Se envió un correo de confirmación a {{email}}",
+      "bringLicense": "Trae una licencia de conducir válida y una tarjeta de crédito en la recogida",
+      "vehicleAssigned": "Tu vehículo específico se asignará cuando llegues",
+      "contact": "Contáctanos al {{phone}} si tienes preguntas"
+    },
+    "actions": {
+      "returnHome": "Volver al inicio",
+      "bookAnother": "Reservar otro vehículo"
+    }
+  }
+}

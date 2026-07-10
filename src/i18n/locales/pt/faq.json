@@ -1,1 +1,52 @@
-{}
+{
+  "meta": {
+    "title": "Perguntas frequentes sobre aluguel de carros | Reserva e retirada | Rent With Heldy",
+    "description": "Respostas às dúvidas mais comuns sobre alugar um carro com a Rent With Heldy em Fort Lauderdale, Miami e no Sul da Flórida. Reserva, retirada, requisitos e mais."
+  },
+  "hero": {
+    "title": "Perguntas frequentes",
+    "subtitle": "Tudo o que você precisa saber sobre alugar com a Heldy no Sul da Flórida."
+  },
+  "items": [
+    {
+      "question": "Como faço para reservar um carro?",
+      "answer": "Clique em Reservar agora em qualquer parte do site para abrir nosso sistema de reserva em tempo real. Escolha suas datas, selecione um veículo disponível e confirme on-line. Você receberá uma confirmação instantânea por e-mail."
+    },
+    {
+      "question": "Vocês oferecem retirada no aeroporto?",
+      "answer": "Sim. Coordenamos a retirada mais conveniente conforme sua chegada, destino e horário perto do Fort Lauderdale-Hollywood International (FLL) e do Miami International (MIA). Compartilhe os dados do seu voo após a reserva e confirmaremos o plano antes de você pousar."
+    },
+    {
+      "question": "A retirada sem contato está disponível?",
+      "answer": "Sim. A retirada sem contato está disponível em todos os aluguéis com acesso seguro por cofre de chaves, para você pegar o veículo no seu próprio horário."
+    },
+    {
+      "question": "Quais regiões vocês atendem?",
+      "answer": "Atendemos Fort Lauderdale, Miami, Hollywood, Aventura e a maior parte do Sul da Flórida. Se o seu destino não estiver na lista, fale com a gente: provavelmente cobrimos."
+    },
+    {
+      "question": "Quais tipos de veículos estão disponíveis?",
+      "answer": "Nossa frota vai de carros econômicos práticos e sedãs a SUVs e opções premium mais novas. Cada veículo é limpo, detalhado e inspecionado por profissionais antes de cada aluguel. Veja a página da frota em tempo real para conferir o que está disponível."
+    },
+    {
+      "question": "Quais documentos eu preciso?",
+      "answer": "Uma carteira de motorista válida, um cartão de crédito no nome do locatário e um comprovante de seguro ou um plano de proteção ativo pela plataforma de reserva. Motoristas internacionais são bem-vindos com uma carteira válida e passaporte."
+    },
+    {
+      "question": "Como funcionam os pedágios?",
+      "answer": "Os pedágios são cobrados no fim da sua viagem, sem taxas adicionais. Você paga apenas os pedágios usados durante o aluguel."
+    },
+    {
+      "question": "Há aluguéis para o mesmo dia?",
+      "answer": "Sim. Aluguéis para o mesmo dia estão disponíveis, conforme a disponibilidade de veículos. Ligue ou mande mensagem com a maior antecedência possível e faremos o possível para você pegar a estrada."
+    },
+    {
+      "question": "Existe uma idade mínima?",
+      "answer": "Sim. Em geral, os motoristas precisam ter 21 anos ou mais. Alguns veículos premium podem exigir idade mínima de 25 anos. O sistema de reserva mostrará quaisquer restrições de idade."
+    },
+    {
+      "question": "O que acontece se eu precisar prorrogar meu aluguel?",
+      "answer": "É só mandar mensagem antes da devolução programada. Enquanto o veículo estiver disponível, prorrogamos sua viagem e atualizamos sua reserva."
+    }
+  ]
+}

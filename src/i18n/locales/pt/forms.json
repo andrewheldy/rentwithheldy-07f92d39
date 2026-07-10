@@ -1,1 +1,163 @@
-{}
+{
+  "quickQuote": {
+    "title": "Comece sua reserva",
+    "subtitle": "Diga quem você é e onde precisa do carro, e um membro da nossa equipe vai entrar em contato o quanto antes.",
+    "cta": "Ver disponibilidade",
+    "sending": "Enviando…",
+    "passengerTypeLabel": "Eu sou…",
+    "passengerTypePlaceholder": "Selecione o tipo de cliente",
+    "passengerTypes": {
+      "hotelGuest": "Hóspede de hotel",
+      "airportTraveler": "Viajante de aeroporto",
+      "bodyShop": "Cliente de oficina / reparo",
+      "localRental": "Aluguel local",
+      "other": "Outro"
+    },
+    "fields": {
+      "name": "Nome completo",
+      "phone": "Celular",
+      "location": "Local de entrega",
+      "locationPlaceholder": "Hotel, oficina, porto, endereço…",
+      "dateRange": "Período do aluguel",
+      "dateRangePlaceholder": "ex. 20 de junho – 25 de junho, ou o quanto antes por ~1 semana",
+      "referredBy": "Indicado por (opcional)",
+      "referredByPlaceholder": "Hotel, oficina, advogado, amigo, agente…",
+      "notes": "Mais alguma coisa? (opcional)",
+      "notesPlaceholder": "Tipo de veículo, seguradora, nº do sinistro, voo…"
+    },
+    "hints": {
+      "bodyShop": "Datas estimadas estão de boa.",
+      "hotelGuest": "Informe as datas exatas de retirada e devolução.",
+      "airportTraveler": "Informe as datas exatas de retirada e devolução, além dos dados do voo."
+    },
+    "validation": {
+      "name": "Informe seu nome",
+      "phone": "Informe um telefone válido",
+      "passengerType": "Selecione seu tipo de cliente",
+      "location": "Onde entregamos?",
+      "dateRange": "Informe o período do seu aluguel"
+    },
+    "toastTitle": "Confira seus dados",
+    "toastInvalid": "Entrada inválida",
+    "errorRetry": "Algo deu errado. Ligue ou mande mensagem para a gente direto.",
+    "preferToTalk": "Prefere conversar? Ligue"
+  },
+  "partnerIntake": {
+    "heading": "Você é gerente de oficina, regulador de sinistros ou assistente jurídico?",
+    "subheading": "Organize uma entrega direta para o seu cliente. Coordenamos o faturamento e a papelada com você.",
+    "cta": "Ver disponibilidade",
+    "sending": "Enviando…",
+    "errorRetry": "Algo deu errado. Ligue ou mande mensagem para a gente direto.",
+    "fields": {
+      "name": "Seu nome",
+      "company": "Empresa / escritório",
+      "claim": "Nº do sinistro do cliente (opcional)",
+      "phone": "Telefone",
+      "location": "Local de entrega",
+      "locationPlaceholder": "Oficina, hotel, porto ou endereço…"
+    },
+    "validation": {
+      "name": "Informe seu nome",
+      "company": "Informe sua empresa ou escritório",
+      "phone": "Informe um telefone válido",
+      "location": "Onde entregamos?"
+    },
+    "toastTitle": "Confira seus dados",
+    "toastInvalid": "Entrada inválida"
+  },
+  "shared": {
+    "sending": "Enviando…",
+    "preferToTalk": "Prefere conversar? Ligue",
+    "toastCheckDetails": "Confira seus dados",
+    "toastInvalid": "Entrada inválida",
+    "savedTitle": "Anotado: registramos sua solicitação",
+    "savedDesc": "Um membro da nossa equipe vai entrar em contato o quanto antes.",
+    "saveErrorTitle": "Não foi possível salvar sua solicitação",
+    "saveErrorDesc": "Ligue para {{phone}} e cuidamos disso diretamente."
+  },
+  "airportQuote": {
+    "title": "Reserve seu aluguel no aeroporto",
+    "subtitle": "Compartilhe os dados do seu voo e coordenaremos a retirada mais conveniente conforme sua chegada. A retirada sem contato está disponível.",
+    "requiredFields": "Nome, telefone, aeroporto e datas são obrigatórios.",
+    "cta": "Ver disponibilidade",
+    "airports": {
+      "fll": "FLL — Fort Lauderdale",
+      "mia": "MIA — Miami Internacional",
+      "pbi": "PBI — Palm Beach",
+      "other": "Outro"
+    },
+    "fields": {
+      "name": "Nome completo",
+      "phone": "Celular",
+      "airport": "Aeroporto",
+      "airportPlaceholder": "Selecione o aeroporto",
+      "airline": "Companhia aérea",
+      "airlinePlaceholder": "ex. American Airlines",
+      "flightNumber": "Número do voo",
+      "flightNumberPlaceholder": "ex. AA 2341",
+      "arrival": "Data e hora de chegada",
+      "arrivalPlaceholder": "ex. 20 de junho às 15h45",
+      "arrivalHint": "Informe as datas exatas de retirada e devolução, além dos dados do voo.",
+      "return": "Data e hora de devolução",
+      "returnPlaceholder": "ex. 25 de junho às 11h00",
+      "pickupNotes": "Observações de entrega / retirada (opcional)",
+      "pickupNotesPlaceholder": "Terminal, meio-fio, endereço do hotel após o pouso…",
+      "notes": "Mais alguma coisa? (opcional)",
+      "notesPlaceholder": "Preferência de veículo, tamanho do grupo, bagagem…"
+    }
+  },
+  "hotelQuote": {
+    "title": "Receba um aluguel no seu hotel",
+    "subtitle": "Coordenaremos a entrega direto no seu hotel. As taxas de entrega variam conforme o local, e a retirada sem contato está disponível.",
+    "requiredFields": "Nome, telefone, hotel e datas são obrigatórios.",
+    "cta": "Ver disponibilidade",
+    "fields": {
+      "name": "Nome completo",
+      "phone": "Celular",
+      "hotelName": "Nome do hotel",
+      "hotelNamePlaceholder": "ex. Marriott Fort Lauderdale Beach",
+      "hotelAddress": "Endereço do hotel (opcional)",
+      "hotelAddressPlaceholder": "Endereço, se souber",
+      "pickup": "Data e hora exatas de retirada",
+      "pickupPlaceholder": "ex. 20 de junho às 10h00",
+      "pickupHint": "Informe as datas exatas de retirada e devolução.",
+      "return": "Data e hora exatas de devolução",
+      "returnPlaceholder": "ex. 25 de junho às 12h00",
+      "referredBy": "Indicado por (opcional)",
+      "referredByPlaceholder": "Concierge, amigo, agente de viagens…",
+      "notes": "Mais alguma coisa? (opcional)",
+      "notesPlaceholder": "Preferência de veículo, número de hóspedes, ocasião especial…"
+    }
+  },
+  "bodyShopForm": {
+    "title": "Solicite a entrega na sua oficina",
+    "subtitle": "A gente encontra você no centro de funilaria para você deixar o carro e seguir em frente.",
+    "cta": "Ver disponibilidade",
+    "hint": "Datas estimadas estão de boa.",
+    "validation": {
+      "name": "Informe seu nome",
+      "phone": "Informe um número de telefone válido",
+      "shopName": "Informe o nome da oficina",
+      "shopAddress": "Informe o endereço da oficina",
+      "dateRange": "Informe as datas estimadas do seu aluguel"
+    },
+    "fields": {
+      "name": "Nome completo",
+      "phone": "Celular",
+      "shopName": "Nome da oficina",
+      "shopNamePlaceholder": "ex. Maaco Fort Lauderdale",
+      "shopAddress": "Endereço da oficina",
+      "shopAddressPlaceholder": "Endereço",
+      "dateRange": "Período estimado do aluguel",
+      "dateRangePlaceholder": "ex. 20 de junho – 28 de junho, ou ~1 semana a partir de segunda",
+      "insurance": "Seguradora (opcional)",
+      "insurancePlaceholder": "ex. State Farm",
+      "claimNumber": "Número do sinistro (opcional)",
+      "claimNumberPlaceholder": "ex. CLM-123456",
+      "referredBy": "Indicado por (opcional)",
+      "referredByPlaceholder": "Oficina, advogado, corretor de seguros…",
+      "notes": "Mais alguma coisa? (opcional)",
+      "notesPlaceholder": "Preferência de veículo, prazo de reparo, necessidades especiais…"
+    }
+  }
+}

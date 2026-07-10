@@ -1,1 +1,27 @@
-{}
+{
+  "links": {
+    "fleet": "הצי",
+    "rentToOwn": "שכירות לבעלות",
+    "howItWorks": "איך זה עובד",
+    "faq": "שאלות נפוצות",
+    "contact": "צור קשר",
+    "services": "שירותים",
+    "more": "עוד"
+  },
+  "services": {
+    "airport": { "label": "מסירה בשדה התעופה", "desc": "איסוף והחזרה ב-FLL" },
+    "hotel": { "label": "מסירה למלון", "desc": "מביאים עד המלון שלכם" },
+    "bodyShop": {
+      "label": "מסירה למוסך",
+      "desc": "בזמן שהרכב שלכם בתיקון"
+    },
+    "cruise": { "label": "נמל שיוט", "desc": "Port Everglades ו-PortMiami" },
+    "lossOfUse": {
+      "label": "אובדן שימוש",
+      "desc": "רכבי חלופה מטעם הביטוח"
+    }
+  },
+  "aria": {
+    "openMenu": "פתיחת תפריט"
+  }
+}

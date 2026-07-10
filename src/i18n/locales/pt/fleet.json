@@ -1,1 +1,33 @@
-{}
+{
+  "meta": {
+    "title": "Nossa frota | Aluguel de carros e SUVs em Fort Lauderdale e Miami",
+    "description": "Conheça carros econômicos até opções premium mais novas e SUVs para alugar em Fort Lauderdale, Miami e no Sul da Flórida. Cada veículo é limpo e inspecionado antes da sua viagem. Reserve on-line."
+  },
+  "hero": {
+    "title": "Nossa frota de aluguel no Sul da Flórida",
+    "subtitle": "Escolha entre veículos econômicos práticos e opções premium mais novas — todos de propriedade particular, limpos, detalhados e inspecionados por profissionais antes da sua viagem, e escolhidos para dirigir de verdade no Sul da Flórida.",
+    "checkAvailability": "Ver disponibilidade em tempo real",
+    "howBookingWorks": "Como funciona a reserva"
+  },
+  "areaLinks": {
+    "title": "Vai alugar em uma região específica?",
+    "subtitle": "Veja detalhes de retirada por região, sugestões de veículos e ideias de passeios locais.",
+    "fortLauderdale": "Aluguéis em Fort Lauderdale",
+    "miami": "Aluguéis em Miami",
+    "fllAirport": "Viagens pelo aeroporto FLL"
+  },
+  "faqSection": {
+    "title": "Dúvidas sobre a frota e a reserva"
+  },
+  "grid": {
+    "empty": "Estamos atualizando nossa disponibilidade em tempo real. Volte em breve ou",
+    "emptySearchLink": "buscar disponibilidade",
+    "photoComingSoon": "Foto a caminho",
+    "seats": "{{seats}} lugares",
+    "bags": "Malas"
+  },
+  "card": {
+    "pricePerDay": "${{price}}/dia",
+    "viewDetails": "Ver detalhes"
+  }
+}

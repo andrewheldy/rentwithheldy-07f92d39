@@ -1,1 +1,71 @@
-{}
+{
+  "about": {
+    "meta": {
+      "title": "Sobre a Rent With Heldy | Aluguel de carros no Sul da Flórida",
+      "description": "Conheça a Rent With Heldy, uma empresa familiar de aluguel de carros do Sul da Flórida construída em torno de uma ideia: alugar um carro deveria ser fácil. Mais de 1.400 avaliações cinco estrelas, pessoas de verdade para ajudar."
+    },
+    "hero": {
+      "title": "Um aluguel de carros familiar construído em torno do fácil",
+      "subtitle": "A Rent With Heldy é uma empresa familiar de aluguel de carros do Sul da Flórida construída em torno de uma ideia simples: alugar um carro deveria ser fácil. Ajudamos os hóspedes a organizar o veículo certo, a retirada mais fácil e o suporte de que precisam ao longo da viagem."
+    },
+    "values": {
+      "trusted": {
+        "title": "Mais de 1.400 avaliações cinco estrelas",
+        "description": "Um All-Star Host no Turo, conquistado viagem após viagem com carros limpos e comunicação clara."
+      },
+      "quality": {
+        "title": "Cuidados com esmero",
+        "description": "Cada veículo é limpo, detalhado e inspecionado por profissionais antes de cada aluguel, do econômico às opções premium mais novas."
+      },
+      "local": {
+        "title": "Familiar e local",
+        "description": "Uma família do Sul da Flórida que coordena sua retirada pessoalmente: hotel, aeroporto ou porto de cruzeiros."
+      }
+    },
+    "story": {
+      "heading": "Nossa história",
+      "p1": "Somos um aluguel de carros familiar com sede no Sul da Flórida, construído em torno de uma crença simples: alugar um carro deveria ser fácil, pessoal e genuinamente útil. Tratamos cada locatário como um hóspede, não como uma transação.",
+      "p2": "Em vez de balcões, filas e ofertas insistentes, levamos a experiência até você. Organizamos o veículo certo para a sua viagem, a retirada mais fácil — hotel, aeroporto, porto de cruzeiros ou oficina — e acesso sem contato para você seguir viagem no seu horário. Sempre há uma pessoa de verdade para atender quando você precisa de ajuda.",
+      "p3": "Nossa frota vai de carros econômicos práticos às opções premium mais novas, e cada veículo é limpo, detalhado e inspecionado por profissionais antes de cada aluguel. É por isso que conquistamos mais de 1.400 avaliações cinco estrelas e o status de All-Star Host em todo o Sul da Flórida."
+    },
+    "getInTouch": {
+      "heading": "Entre em contato",
+      "phoneNote": "Ligue ou mande mensagem, 7 dias por semana",
+      "emailNote": "Responderemos o quanto antes",
+      "hoursLabel": "Horário de atendimento",
+      "hoursValue": "Seg-Dom: 8h00 - 20h00"
+    },
+    "serviceAreas": {
+      "heading": "Áreas de atendimento",
+      "miamiDade": {
+        "title": "Condado de Miami-Dade",
+        "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura e regiões próximas"
+      },
+      "broward": {
+        "title": "Condado de Broward",
+        "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie e regiões próximas"
+      },
+      "cta": "Reservar agora"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Política de Privacidade | Rent With Heldy",
+      "description": "Como a Rent With Heldy coleta, usa e protege suas informações pessoais quando você reserva um aluguel de carro em Fort Lauderdale, Miami ou no Sul da Flórida."
+    },
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: {{date}}"
+  },
+  "terms": {
+    "meta": {
+      "title": "Termos de Serviço | Rent With Heldy",
+      "description": "Termos que regem as reservas, os aluguéis e o uso do site e do serviço de aluguel de carros da Rent With Heldy em Fort Lauderdale, Miami e no Sul da Flórida."
+    },
+    "title": "Termos de Serviço",
+    "lastUpdated": "Última atualização: {{date}}"
+  },
+  "englishNotice": {
+    "heading": "Informações jurídicas",
+    "body": "As informações jurídicas a seguir são fornecidas em inglês para preservar seu significado jurídico original. Se você precisar de ajuda para entender qualquer parte, nossa equipe terá prazer em ajudar."
+  }
+}

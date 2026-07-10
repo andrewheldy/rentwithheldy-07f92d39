@@ -1,1 +1,33 @@
-{}
+{
+  "meta": {
+    "title": "Notre flotte | Location de voitures et SUV à Fort Lauderdale et Miami",
+    "description": "Découvrez des voitures économiques jusqu'aux options premium récentes et des SUV à louer à Fort Lauderdale, Miami et en Floride du Sud. Chaque véhicule est nettoyé et inspecté avant votre trajet. Réservez en ligne."
+  },
+  "hero": {
+    "title": "Notre flotte de location en Floride du Sud",
+    "subtitle": "Choisissez parmi des véhicules économiques pratiques et des options premium récentes — tous détenus par des particuliers, nettoyés, préparés et inspectés par des professionnels avant votre trajet, et choisis pour la conduite réelle en Floride du Sud.",
+    "checkAvailability": "Voir les disponibilités en temps réel",
+    "howBookingWorks": "Comment réserver"
+  },
+  "areaLinks": {
+    "title": "Vous louez dans un secteur précis ?",
+    "subtitle": "Découvrez les détails de prise en charge par secteur, des suggestions de véhicules et des idées de trajets locaux.",
+    "fortLauderdale": "Locations à Fort Lauderdale",
+    "miami": "Locations à Miami",
+    "fllAirport": "Trajets depuis l'aéroport FLL"
+  },
+  "faqSection": {
+    "title": "Questions sur la flotte et la réservation"
+  },
+  "grid": {
+    "empty": "Nous actualisons nos disponibilités en temps réel. Revenez bientôt ou",
+    "emptySearchLink": "rechercher des disponibilités",
+    "photoComingSoon": "Photo à venir",
+    "seats": "{{seats}} places",
+    "bags": "Bagages"
+  },
+  "card": {
+    "pricePerDay": "${{price}}/jour",
+    "viewDetails": "Voir les détails"
+  }
+}

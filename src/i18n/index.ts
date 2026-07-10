@@ -96,7 +96,16 @@ void i18n
       lookupLocalStorage: LOCALE_STORAGE_KEY,
       caches: ["localStorage"], // persists a manual selection
     },
-    react: { useSuspense: false }, // en is ready synchronously; no suspense
+    react: {
+      useSuspense: false, // en is ready synchronously; no suspense
+      // Non-English namespaces load lazily via addResourceBundle — after the
+      // first paint on initial load, and again after a runtime language switch.
+      // Re-render subscribed components when those bundles arrive so the
+      // translations actually appear; without this a lazily-loaded locale stays
+      // on the English fallback until the next unrelated re-render. English is
+      // unaffected: it is bundled eagerly and emits no "added" events.
+      bindI18nStore: "added",
+    },
   });
 
 // Keep <html lang/dir> in sync and ensure the active locale's bundles exist.

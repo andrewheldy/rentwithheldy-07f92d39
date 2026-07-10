@@ -1,1 +1,71 @@
-{}
+{
+  "about": {
+    "meta": {
+      "title": "À propos de Rent With Heldy | Location de voitures en Floride du Sud",
+      "description": "Découvrez Rent With Heldy, une entreprise familiale de location de voitures en Floride du Sud bâtie autour d'une idée : louer une voiture devrait être simple. Plus de 1 400 avis cinq étoiles, de vraies personnes pour vous aider."
+    },
+    "hero": {
+      "title": "Une location de voitures familiale bâtie autour de la simplicité",
+      "subtitle": "Rent With Heldy est une entreprise familiale de location de voitures en Floride du Sud, bâtie autour d'une idée simple : louer une voiture devrait être simple. Nous aidons nos clients à organiser le bon véhicule, la prise en charge la plus facile et le soutien dont ils ont besoin tout au long du trajet."
+    },
+    "values": {
+      "trusted": {
+        "title": "Plus de 1 400 avis cinq étoiles",
+        "description": "Un All-Star Host sur Turo, mérité trajet après trajet avec des voitures propres et une communication claire."
+      },
+      "quality": {
+        "title": "Entretenus avec soin",
+        "description": "Chaque véhicule est nettoyé, préparé et inspecté par des professionnels avant chaque location, de l'économique aux options premium récentes."
+      },
+      "local": {
+        "title": "Familial et local",
+        "description": "Une famille de Floride du Sud qui organise votre prise en charge en personne : hôtel, aéroport ou port de croisière."
+      }
+    },
+    "story": {
+      "heading": "Notre histoire",
+      "p1": "Nous sommes une location de voitures familiale basée en Floride du Sud, bâtie autour d'une conviction simple : louer une voiture devrait être facile, personnel et réellement utile. Nous traitons chaque locataire comme un invité, pas comme une transaction.",
+      "p2": "Au lieu de comptoirs, de files d'attente et d'offres insistantes, nous vous apportons l'expérience. Nous organisons le bon véhicule pour votre trajet, la prise en charge la plus facile — hôtel, aéroport, port de croisière ou garage — et un accès sans contact pour que vous puissiez démarrer à votre rythme. Il y a toujours une vraie personne à joindre quand vous avez besoin d'aide.",
+      "p3": "Notre flotte va des voitures économiques pratiques aux options premium récentes, et chaque véhicule est nettoyé, préparé et inspecté par des professionnels avant chaque location. C'est la raison pour laquelle nous avons obtenu plus de 1 400 avis cinq étoiles et le statut All-Star Host dans toute la Floride du Sud."
+    },
+    "getInTouch": {
+      "heading": "Contactez-nous",
+      "phoneNote": "Appelez ou écrivez, 7 jours sur 7",
+      "emailNote": "Nous répondrons dès que possible",
+      "hoursLabel": "Heures d'ouverture",
+      "hoursValue": "Lun-Dim : 8h00 - 20h00"
+    },
+    "serviceAreas": {
+      "heading": "Zones de service",
+      "miamiDade": {
+        "title": "Comté de Miami-Dade",
+        "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura et les environs"
+      },
+      "broward": {
+        "title": "Comté de Broward",
+        "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie et les environs"
+      },
+      "cta": "Réserver"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Politique de confidentialité | Rent With Heldy",
+      "description": "Comment Rent With Heldy collecte, utilise et protège vos informations personnelles lorsque vous réservez une location de voiture à Fort Lauderdale, Miami ou en Floride du Sud."
+    },
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : {{date}}"
+  },
+  "terms": {
+    "meta": {
+      "title": "Conditions d'utilisation | Rent With Heldy",
+      "description": "Conditions régissant les réservations, les locations et l'utilisation du site web et du service de location de voitures de Rent With Heldy à Fort Lauderdale, Miami et en Floride du Sud."
+    },
+    "title": "Conditions d'utilisation",
+    "lastUpdated": "Dernière mise à jour : {{date}}"
+  },
+  "englishNotice": {
+    "heading": "Informations juridiques",
+    "body": "Les informations juridiques ci-dessous sont fournies en anglais afin d'en préserver le sens juridique d'origine. Si vous avez besoin d'aide pour en comprendre une partie, notre équipe se fera un plaisir de vous aider."
+  }
+}

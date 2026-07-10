@@ -1,1 +1,163 @@
-{}
+{
+  "quickQuote": {
+    "title": "Commencez votre réservation",
+    "subtitle": "Dites-nous qui vous êtes et où vous avez besoin de la voiture, et un membre de notre équipe vous répondra dès que possible.",
+    "cta": "Voir les disponibilités",
+    "sending": "Envoi…",
+    "passengerTypeLabel": "Je suis…",
+    "passengerTypePlaceholder": "Sélectionnez le type de client",
+    "passengerTypes": {
+      "hotelGuest": "Client d'hôtel",
+      "airportTraveler": "Voyageur à l'aéroport",
+      "bodyShop": "Client garage / réparation",
+      "localRental": "Location locale",
+      "other": "Autre"
+    },
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Téléphone mobile",
+      "location": "Lieu de livraison",
+      "locationPlaceholder": "Hôtel, garage, port, adresse…",
+      "dateRange": "Période de location",
+      "dateRangePlaceholder": "ex. 20 juin – 25 juin, ou dès que possible pour ~1 semaine",
+      "referredBy": "Recommandé par (facultatif)",
+      "referredByPlaceholder": "Hôtel, garage, avocat, ami, agent…",
+      "notes": "Autre chose ? (facultatif)",
+      "notesPlaceholder": "Type de véhicule, assureur, n° de dossier, vol…"
+    },
+    "hints": {
+      "bodyShop": "Des dates estimées suffisent.",
+      "hotelGuest": "Indiquez les dates exactes de prise en charge et de restitution.",
+      "airportTraveler": "Indiquez les dates exactes de prise en charge et de restitution, ainsi que les détails du vol."
+    },
+    "validation": {
+      "name": "Indiquez votre nom",
+      "phone": "Indiquez un téléphone valide",
+      "passengerType": "Sélectionnez votre type de client",
+      "location": "Où livrons-nous ?",
+      "dateRange": "Indiquez la période de votre location"
+    },
+    "toastTitle": "Vérifiez vos informations",
+    "toastInvalid": "Saisie non valide",
+    "errorRetry": "Une erreur s'est produite. Veuillez nous appeler ou nous écrire directement.",
+    "preferToTalk": "Vous préférez parler ? Appelez"
+  },
+  "partnerIntake": {
+    "heading": "Vous êtes gérant de garage, expert en sinistres ou assistant juridique ?",
+    "subheading": "Organisez une livraison directe pour votre client. Nous coordonnons la facturation et les documents avec vous.",
+    "cta": "Voir les disponibilités",
+    "sending": "Envoi…",
+    "errorRetry": "Une erreur s'est produite. Veuillez nous appeler ou nous écrire directement.",
+    "fields": {
+      "name": "Votre nom",
+      "company": "Entreprise / cabinet",
+      "claim": "N° de dossier du client (facultatif)",
+      "phone": "Téléphone",
+      "location": "Lieu de livraison",
+      "locationPlaceholder": "Garage, hôtel, port ou adresse…"
+    },
+    "validation": {
+      "name": "Indiquez votre nom",
+      "company": "Indiquez votre entreprise ou cabinet",
+      "phone": "Indiquez un téléphone valide",
+      "location": "Où livrons-nous ?"
+    },
+    "toastTitle": "Vérifiez vos informations",
+    "toastInvalid": "Saisie non valide"
+  },
+  "shared": {
+    "sending": "Envoi…",
+    "preferToTalk": "Vous préférez parler ? Appelez",
+    "toastCheckDetails": "Vérifiez vos informations",
+    "toastInvalid": "Saisie non valide",
+    "savedTitle": "C'est noté : nous avons enregistré votre demande",
+    "savedDesc": "Un membre de notre équipe vous répondra dès que possible.",
+    "saveErrorTitle": "Impossible d'enregistrer votre demande",
+    "saveErrorDesc": "Veuillez appeler le {{phone}} et nous nous en occupons directement."
+  },
+  "airportQuote": {
+    "title": "Réservez votre location à l'aéroport",
+    "subtitle": "Partagez les détails de votre vol et nous organiserons la prise en charge la plus pratique selon votre arrivée. La prise en charge sans contact est disponible.",
+    "requiredFields": "Le nom, le téléphone, l'aéroport et les dates sont obligatoires.",
+    "cta": "Voir les disponibilités",
+    "airports": {
+      "fll": "FLL — Fort Lauderdale",
+      "mia": "MIA — Miami International",
+      "pbi": "PBI — Palm Beach",
+      "other": "Autre"
+    },
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Téléphone mobile",
+      "airport": "Aéroport",
+      "airportPlaceholder": "Sélectionnez l'aéroport",
+      "airline": "Compagnie aérienne",
+      "airlinePlaceholder": "ex. American Airlines",
+      "flightNumber": "Numéro de vol",
+      "flightNumberPlaceholder": "ex. AA 2341",
+      "arrival": "Date et heure d'arrivée",
+      "arrivalPlaceholder": "ex. 20 juin à 15h45",
+      "arrivalHint": "Indiquez les dates exactes de prise en charge et de restitution, ainsi que les détails du vol.",
+      "return": "Date et heure de restitution",
+      "returnPlaceholder": "ex. 25 juin à 11h00",
+      "pickupNotes": "Notes de livraison / prise en charge (facultatif)",
+      "pickupNotesPlaceholder": "Terminal, trottoir, adresse de l'hôtel après l'atterrissage…",
+      "notes": "Autre chose ? (facultatif)",
+      "notesPlaceholder": "Préférence de véhicule, taille du groupe, bagages…"
+    }
+  },
+  "hotelQuote": {
+    "title": "Faites livrer une location à votre hôtel",
+    "subtitle": "Nous organiserons la livraison directement à votre hôtel. Les frais de livraison varient selon le lieu, et la prise en charge sans contact est disponible.",
+    "requiredFields": "Le nom, le téléphone, l'hôtel et les dates sont obligatoires.",
+    "cta": "Voir les disponibilités",
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Téléphone mobile",
+      "hotelName": "Nom de l'hôtel",
+      "hotelNamePlaceholder": "ex. Marriott Fort Lauderdale Beach",
+      "hotelAddress": "Adresse de l'hôtel (facultatif)",
+      "hotelAddressPlaceholder": "Adresse si vous la connaissez",
+      "pickup": "Date et heure exactes de prise en charge",
+      "pickupPlaceholder": "ex. 20 juin à 10h00",
+      "pickupHint": "Indiquez les dates exactes de prise en charge et de restitution.",
+      "return": "Date et heure exactes de restitution",
+      "returnPlaceholder": "ex. 25 juin à 12h00",
+      "referredBy": "Recommandé par (facultatif)",
+      "referredByPlaceholder": "Concierge, ami, agent de voyages…",
+      "notes": "Autre chose ? (facultatif)",
+      "notesPlaceholder": "Préférence de véhicule, nombre de personnes, occasion spéciale…"
+    }
+  },
+  "bodyShopForm": {
+    "title": "Demandez une livraison à votre garage",
+    "subtitle": "Nous vous retrouvons au centre de carrosserie pour que vous déposiez votre voiture et poursuiviez votre route.",
+    "cta": "Voir les disponibilités",
+    "hint": "Des dates estimées suffisent.",
+    "validation": {
+      "name": "Indiquez votre nom",
+      "phone": "Indiquez un numéro de téléphone valide",
+      "shopName": "Indiquez le nom du garage",
+      "shopAddress": "Indiquez l'adresse du garage",
+      "dateRange": "Indiquez les dates estimées de votre location"
+    },
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Téléphone mobile",
+      "shopName": "Nom du garage",
+      "shopNamePlaceholder": "ex. Maaco Fort Lauderdale",
+      "shopAddress": "Adresse du garage",
+      "shopAddressPlaceholder": "Adresse",
+      "dateRange": "Période de location estimée",
+      "dateRangePlaceholder": "ex. 20 juin – 28 juin, ou ~1 semaine à partir de lundi",
+      "insurance": "Assureur (facultatif)",
+      "insurancePlaceholder": "ex. State Farm",
+      "claimNumber": "Numéro de dossier (facultatif)",
+      "claimNumberPlaceholder": "ex. CLM-123456",
+      "referredBy": "Recommandé par (facultatif)",
+      "referredByPlaceholder": "Garage, avocat, agent d'assurance…",
+      "notes": "Autre chose ? (facultatif)",
+      "notesPlaceholder": "Préférence de véhicule, délai de réparation, besoins particuliers…"
+    }
+  }
+}

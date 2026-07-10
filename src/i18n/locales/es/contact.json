@@ -1,1 +1,58 @@
-{}
+{
+  "meta": {
+    "title": "Contacta a Rent With Heldy | Alquiler de autos en Fort Lauderdale y Miami",
+    "description": "Contacta a Rent With Heldy para recibir asistencia rápida y personal con tu alquiler de auto en Fort Lauderdale, Miami y el sur de Florida. Llama, escribe o reserva en línea hoy."
+  },
+  "hero": {
+    "title": "Contacta a Rent With Heldy",
+    "subtitle": "La forma más rápida de ponerte en marcha. Llama directamente o envíanos un mensaje, y un miembro de nuestro equipo te contactará lo antes posible."
+  },
+  "cards": {
+    "call": {
+      "title": "Llámanos",
+      "note": "Habla con una persona real"
+    },
+    "email": {
+      "title": "Correo",
+      "note": "Responderemos lo antes posible"
+    },
+    "serviceArea": {
+      "title": "Zona de servicio",
+      "value": "Fort Lauderdale • Miami • Sur de Florida"
+    }
+  },
+  "form": {
+    "heading": "Contacta a Rent With Heldy",
+    "reasonPlaceholder": "Selecciona un motivo",
+    "reasons": {
+      "book": "Reservar un alquiler",
+      "existingBooking": "Consulta sobre una reserva existente",
+      "bodyShop": "Alquiler por taller / seguro",
+      "hotelDelivery": "Entrega en el hotel",
+      "airportPickup": "Recogida en el aeropuerto",
+      "rentToOwn": "Consulta de alquiler con opción a compra",
+      "partner": "Consulta de socios / empresas",
+      "other": "Otro"
+    },
+    "fields": {
+      "name": "Nombre completo",
+      "phone": "Teléfono móvil",
+      "email": "Correo (opcional)",
+      "emailPlaceholder": "you@email.com",
+      "reason": "Motivo de contacto",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos cómo podemos ayudarte…"
+    },
+    "submit": "Enviar mensaje",
+    "sending": "Enviando…",
+    "preferToTalk": "¿Prefieres hablar? Llama"
+  },
+  "toast": {
+    "checkDetailsTitle": "Revisa tus datos",
+    "checkDetailsDesc": "El nombre, el teléfono, el motivo y el mensaje son obligatorios.",
+    "errorTitle": "No se pudo enviar tu mensaje",
+    "errorDesc": "Por favor, llama directamente al {{phone}}.",
+    "successTitle": "¡Mensaje enviado!",
+    "successDesc": "Te responderemos lo antes posible."
+  }
+}

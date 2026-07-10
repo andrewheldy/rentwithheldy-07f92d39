@@ -1,1 +1,131 @@
-{}
+{
+  "meta": {
+    "title": "Aluguel de carros em Fort Lauderdale e Miami | Rent With Heldy",
+    "description": "Aluguel de carros familiar em Fort Lauderdale, Miami e no Sul da Flórida. Mais de 1.400 avaliações cinco estrelas, retirada sem contato, entrega em hotéis e aeroportos. Reserve on-line em minutos."
+  },
+  "hero": {
+    "eyebrow": "Fort Lauderdale · Miami",
+    "title": "Esqueça o balcão de aluguel.",
+    "descriptionLine1": "Seu carro, entregue quando, onde e como você precisar.",
+    "descriptionLine2": "Uma frota familiar do Sul da Flórida que entrega veículos limpos e confiáveis, com atendimento pessoal em cada etapa.",
+    "destinations": {
+      "airports": "Aeroportos",
+      "hotels": "Hotéis",
+      "cruisePorts": "Portos de cruzeiros",
+      "repairShops": "Oficinas"
+    },
+    "primaryCta": "Reservar agora",
+    "secondaryCta": "Ver a frota",
+    "trust": {
+      "reviews": "Mais de 1.400 avaliações cinco estrelas",
+      "allStar": "All-Star Host",
+      "delivery": "Entrega em hotéis e aeroportos",
+      "contactless": "Retirada sem contato",
+      "language": "Escreva para a gente no seu idioma preferido",
+      "familyOwned": "Empresa familiar"
+    }
+  },
+  "trustStrip": {
+    "reviews": "Mais de 1.400 avaliações cinco estrelas",
+    "allStar": "All-Star Host",
+    "delivery": "Entrega em hotéis e aeroportos",
+    "contactless": "Retirada sem contato",
+    "language": "Escreva para a gente no seu idioma preferido",
+    "familyOwned": "Empresa familiar"
+  },
+  "destinations": {
+    "eyebrow": "Entrega, não um balcão",
+    "title": "Onde entregamos o seu veículo?",
+    "description": "Diga onde você estará — um aeroporto, um hotel, um terminal de cruzeiros ou a oficina — e levamos as chaves até você.",
+    "serving": "Atendemos",
+    "cards": {
+      "airport": {
+        "title": "Aeroporto",
+        "description": "Chegando em FLL ou Miami? Coordenamos a retirada mais conveniente conforme sua chegada, para você pular o balcão de aluguel e começar sua viagem.",
+        "ctaLabel": "Retirada no aeroporto",
+        "alt": "Um SUV em uma via elevada do Sul da Flórida com um avião descendo em direção ao horizonte de Miami ao pôr do sol"
+      },
+      "hotel": {
+        "title": "Hotel",
+        "description": "Hospedado por perto? Podemos entregar direto no seu hotel, resort ou hospedagem de temporada em todo o Sul da Flórida. As taxas de entrega variam conforme o local.",
+        "ctaLabel": "Entrega no hotel",
+        "alt": "Um SUV estacionado sob a marquise de um hotel ao entardecer com o horizonte de Miami do outro lado da água"
+      },
+      "cruise": {
+        "title": "Porto de cruzeiros",
+        "description": "Indo para o PortMiami ou Port Everglades? Comece ou termine seu cruzeiro com um aluguel coordenado conforme seu navio e seu horário.",
+        "ctaLabel": "Retirada no porto de cruzeiros",
+        "alt": "Um SUV em uma via elevada passando por um navio de cruzeiro atracado perto do horizonte de Miami ao pôr do sol"
+      },
+      "bodyShop": {
+        "title": "Oficina",
+        "description": "Carro na oficina? Ajudamos você a seguir em movimento com um veículo reserva entregue na sua oficina de reparos.",
+        "ctaLabel": "Veículos reserva",
+        "alt": "Um SUV estacionado em frente a uma oficina com palmeiras e o horizonte visível ao entardecer"
+      }
+    },
+    "locations": {
+      "fortLauderdale": "Fort Lauderdale",
+      "miami": "Miami",
+      "local": "Aluguéis locais",
+      "fllAirport": "Aeroporto FLL"
+    }
+  },
+  "why": {
+    "eyebrow": "Por que a Rent With Heldy",
+    "title": "As grandes marcas de aluguel fazem você ir até elas. Nós vamos até você.",
+    "description": "Enterprise, Hertz e os balcões de aeroporto significam filas, vans de transferência e letras miúdas. Um app entre particulares significa um estranho diferente a cada vez. Somos o meio-termo que os viajantes realmente querem: uma frota real, local e familiar que aparece onde você está.",
+    "cards": {
+      "delivered": {
+        "title": "Entregue, não um balcão",
+        "body": "Levamos o carro ao seu terminal, hotel ou porta. Sem filas, sem van de transferência, sem balcão de aluguel."
+      },
+      "localOwner": {
+        "title": "Um dono local de verdade",
+        "body": "Mande mensagem ou ligue para um único número e fale com quem cuida da frota, não com um call center no exterior."
+      },
+      "familyBilingual": {
+        "title": "Familiar e pessoal",
+        "body": "Um negócio familiar do Sul da Flórida que trata você como um hóspede. Escreva para a gente no seu idioma preferido."
+      },
+      "flexible": {
+        "title": "Sem contato e prático",
+        "body": "A retirada sem contato está disponível em todos os aluguéis com acesso seguro por cofre de chaves — retire no seu horário."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "Como funciona",
+    "title": "Da busca às chaves em quatro passos simples.",
+    "description": "Sem balcão, sem surpresas — só uma entrega rápida e simpática onde for melhor para você."
+  },
+  "fleet": {
+    "eyebrow": "A frota",
+    "title": "Carros limpos e confiáveis para cada plano no Sul da Flórida.",
+    "description": "Uma prévia dos nossos carros mais reservados — opções econômicas práticas e outras premium mais novas, todas cuidadosamente mantidas. Veja a disponibilidade em tempo real e a frota completa quando quiser.",
+    "tripPlannerPrompt": "Não sabe o que combina com sua viagem? Experimente o Planejador de Viagem"
+  },
+  "reviews": {
+    "eyebrow": "O que os hóspedes dizem",
+    "title": "Mais de 1.400 avaliações cinco estrelas de hóspedes do Turo em todo o Sul da Flórida.",
+    "description": "O motivo de termos conquistado o status de All-Star Host — carros limpos, comunicação clara e uma entrega fácil, viagem após viagem.",
+    "ariaLabel": "Avaliações cinco estrelas de hóspedes do Turo",
+    "altPattern": "Avaliação cinco estrelas no Turo de {{name}} pelo {{vehicle}}"
+  },
+  "faqPreview": {
+    "title": "Dúvidas, respondidas.",
+    "description": "Algumas das coisas que os hóspedes mais perguntam. Tem mais na página de perguntas frequentes."
+  },
+  "quoteForm": {
+    "title": "Conte sobre a sua viagem"
+  },
+  "contactClose": {
+    "eyebrow": "Comece",
+    "title": "Conte sobre a sua viagem.",
+    "description": "Compartilhe alguns detalhes e um membro da nossa equipe vai entrar em contato o quanto antes. Prefere conversar? Fale com uma pessoa de verdade abaixo.",
+    "phoneLabel": "Ligue ou mande mensagem, 7 dias por semana",
+    "emailLabel": "Responderemos o quanto antes",
+    "locationTitle": "Fort Lauderdale e Miami",
+    "locationSub": "Entrega em Broward e Miami-Dade"
+  }
+}

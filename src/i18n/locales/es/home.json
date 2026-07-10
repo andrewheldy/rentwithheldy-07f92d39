@@ -1,1 +1,131 @@
-{}
+{
+  "meta": {
+    "title": "Alquiler de autos en Fort Lauderdale y Miami | Rent With Heldy",
+    "description": "Alquiler de autos familiar en Fort Lauderdale, Miami y el sur de Florida. Más de 1,400 reseñas de cinco estrellas, recogida sin contacto, entrega en hoteles y aeropuertos. Reserva en línea en minutos."
+  },
+  "hero": {
+    "eyebrow": "Fort Lauderdale · Miami",
+    "title": "Olvídate del mostrador de alquiler.",
+    "descriptionLine1": "Tu auto, entregado cuándo, dónde y como lo necesites.",
+    "descriptionLine2": "Una flota familiar del sur de Florida que entrega vehículos limpios y confiables con atención personal en cada paso.",
+    "destinations": {
+      "airports": "Aeropuertos",
+      "hotels": "Hoteles",
+      "cruisePorts": "Puertos de cruceros",
+      "repairShops": "Talleres"
+    },
+    "primaryCta": "Reservar ahora",
+    "secondaryCta": "Ver la flota",
+    "trust": {
+      "reviews": "Más de 1,400 reseñas de cinco estrellas",
+      "allStar": "All-Star Host",
+      "delivery": "Entrega en hoteles y aeropuertos",
+      "contactless": "Recogida sin contacto",
+      "language": "Escríbenos en tu idioma preferido",
+      "familyOwned": "Empresa familiar"
+    }
+  },
+  "trustStrip": {
+    "reviews": "Más de 1,400 reseñas de cinco estrellas",
+    "allStar": "All-Star Host",
+    "delivery": "Entrega en hoteles y aeropuertos",
+    "contactless": "Recogida sin contacto",
+    "language": "Escríbenos en tu idioma preferido",
+    "familyOwned": "Empresa familiar"
+  },
+  "destinations": {
+    "eyebrow": "Entrega, no un mostrador",
+    "title": "¿Dónde te entregamos el vehículo?",
+    "description": "Dinos dónde estarás —un aeropuerto, un hotel, una terminal de cruceros o el taller— y te llevamos las llaves.",
+    "serving": "Atendemos",
+    "cards": {
+      "airport": {
+        "title": "Aeropuerto",
+        "description": "¿Llegas a FLL o a Miami? Coordinamos la recogida más conveniente según tu llegada, para que evites el mostrador de alquiler y empieces tu viaje.",
+        "ctaLabel": "Recogida en el aeropuerto",
+        "alt": "Una SUV en una carretera elevada del sur de Florida con un avión descendiendo hacia el horizonte de Miami al atardecer"
+      },
+      "hotel": {
+        "title": "Hotel",
+        "description": "¿Te hospedas cerca? Podemos entregarlo directamente en tu hotel, resort o alojamiento vacacional en todo el sur de Florida. Las tarifas de entrega varían según la ubicación.",
+        "ctaLabel": "Entrega en el hotel",
+        "alt": "Una SUV estacionada bajo la marquesina de un hotel al anochecer con el horizonte de Miami al otro lado del agua"
+      },
+      "cruise": {
+        "title": "Puerto de cruceros",
+        "description": "¿Vas a PortMiami o a Port Everglades? Empieza o termina tu crucero con un alquiler coordinado según tu barco y tu horario.",
+        "ctaLabel": "Recogida en el puerto de cruceros",
+        "alt": "Una SUV en una carretera elevada pasando junto a un crucero atracado cerca del horizonte de Miami al atardecer"
+      },
+      "bodyShop": {
+        "title": "Taller",
+        "description": "¿Tu auto está en el taller? Te ayudamos a seguir en movimiento con un vehículo de reemplazo entregado en tu centro de reparación.",
+        "ctaLabel": "Vehículos de reemplazo",
+        "alt": "Una SUV estacionada afuera de un taller con palmeras y el horizonte visible al anochecer"
+      }
+    },
+    "locations": {
+      "fortLauderdale": "Fort Lauderdale",
+      "miami": "Miami",
+      "local": "Alquileres locales",
+      "fllAirport": "Aeropuerto FLL"
+    }
+  },
+  "why": {
+    "eyebrow": "Por qué Rent With Heldy",
+    "title": "Las grandes marcas de alquiler te hacen ir hasta ellas. Nosotros vamos hasta ti.",
+    "description": "Enterprise, Hertz y los mostradores del aeropuerto significan filas, buses de enlace y letra pequeña. Una app entre particulares significa un desconocido distinto cada vez. Somos el punto medio que los viajeros realmente quieren: una flota real, local y familiar que llega hasta donde estás.",
+    "cards": {
+      "delivered": {
+        "title": "Entregado, no un mostrador",
+        "body": "Llevamos el auto a tu terminal, hotel o puerta. Sin filas, sin bus de enlace, sin mostrador de alquiler."
+      },
+      "localOwner": {
+        "title": "Un dueño local de verdad",
+        "body": "Escribe o llama a un solo número y comunícate con las personas que manejan la flota, no con un centro de llamadas en el extranjero."
+      },
+      "familyBilingual": {
+        "title": "Familiar y personal",
+        "body": "Un negocio familiar del sur de Florida que te trata como a un huésped. Escríbenos en tu idioma preferido."
+      },
+      "flexible": {
+        "title": "Sin contacto y conveniente",
+        "body": "La recogida sin contacto está disponible en cada alquiler con acceso seguro a una caja de seguridad: recoge en tu horario."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "Cómo funciona",
+    "title": "De la búsqueda a las llaves en cuatro pasos simples.",
+    "description": "Sin mostrador, sin sorpresas: solo una entrega rápida y amable donde mejor te convenga."
+  },
+  "fleet": {
+    "eyebrow": "La flota",
+    "title": "Autos limpios y confiables para cada plan en el sur de Florida.",
+    "description": "Un vistazo a nuestros autos más reservados: opciones económicas prácticas y otras premium más nuevas, todas cuidadosamente mantenidas. Consulta la disponibilidad en tiempo real y la flota completa cuando quieras.",
+    "tripPlannerPrompt": "¿No sabes qué se ajusta a tu viaje? Prueba el Planificador de Viajes"
+  },
+  "reviews": {
+    "eyebrow": "Lo que dicen los huéspedes",
+    "title": "Más de 1,400 reseñas de cinco estrellas de huéspedes de Turo en todo el sur de Florida.",
+    "description": "La razón por la que ganamos el estatus de All-Star Host: autos limpios, comunicación clara y una entrega fácil, viaje tras viaje.",
+    "ariaLabel": "Reseñas de cinco estrellas de huéspedes de Turo",
+    "altPattern": "Reseña de cinco estrellas en Turo de {{name}} por el {{vehicle}}"
+  },
+  "faqPreview": {
+    "title": "Preguntas, respondidas.",
+    "description": "Algunas de las cosas que los huéspedes nos preguntan más. Hay más en la sección de preguntas frecuentes."
+  },
+  "quoteForm": {
+    "title": "Cuéntanos sobre tu viaje"
+  },
+  "contactClose": {
+    "eyebrow": "Comienza",
+    "title": "Cuéntanos sobre tu viaje.",
+    "description": "Comparte algunos detalles y un miembro de nuestro equipo te contactará lo antes posible. ¿Prefieres hablar? Comunícate con una persona real abajo.",
+    "phoneLabel": "Llama o escribe, los 7 días de la semana",
+    "emailLabel": "Responderemos lo antes posible",
+    "locationTitle": "Fort Lauderdale y Miami",
+    "locationSub": "Entrega en Broward y Miami-Dade"
+  }
+}

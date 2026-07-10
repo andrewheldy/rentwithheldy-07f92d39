@@ -1,1 +1,243 @@
-{}
+{
+  "meta": {
+    "title": "Aluguel com opção de compra para motoristas de apps | Rent With Heldy",
+    "description": "Um caminho de aluguel com opção de compra feito para motoristas de Uber, Lyft, DoorDash, Uber Eats e Instacart. Comece com um Período de Qualificação de 90 dias. Programas personalizados conforme o veículo e a sua situação."
+  },
+  "hero": {
+    "badge": "Programa de aluguel com opção de compra",
+    "title": "Dirija hoje. Seja dono amanhã.",
+    "subtitle": "Tenha acesso a um veículo confiável para Uber, Lyft, DoorDash e mais enquanto avança rumo à propriedade do veículo do qual você depende.",
+    "tagline": "Um caminho prático para ganhar agora e avançar rumo ao carro com que você tira o seu sustento.",
+    "findMatch": "Encontre sua opção",
+    "seeHowItWorks": "Ver como funciona",
+    "builtForDriversOn": "Feito para motoristas de"
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Um caminho claro pensado conforme sua rotina de motorista, que começa com um Período de Qualificação de 90 dias.",
+    "stepLabel": "Passo {{number}}",
+    "steps": {
+      "getApproved": {
+        "title": "Comece seu Período de Qualificação",
+        "body": "Faça uma inscrição rápida. Todo motorista começa com um Período de Qualificação de 90 dias, feito para confirmar renda constante e o programa mais adequado."
+      },
+      "startDriving": {
+        "title": "Comece a dirigir",
+        "body": "A gente combina você com um veículo para as suas plataformas e você começa a ganhar na hora."
+      },
+      "buildOwnership": {
+        "title": "Mostre constância",
+        "body": "Durante o Período de Qualificação, os motoristas demonstram renda constante e uso responsável do veículo."
+      },
+      "ownVehicle": {
+        "title": "Caminho rumo à propriedade",
+        "body": "A partir daí, nossa equipe trabalha com você no programa certo de longo prazo e no seu caminho rumo à propriedade."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Por que os motoristas adoram",
+    "subtitle": "Um programa feito para construir o seu futuro, não só cobrir o próximo turno.",
+    "traditional": {
+      "title": "Aluguéis tradicionais",
+      "items": [
+        "Pagamentos sem fim",
+        "Sem propriedade",
+        "Sem valor a longo prazo",
+        "Recomeçar do zero toda vez"
+      ]
+    },
+    "rentToOwn": {
+      "title": "Aluguel com opção de compra",
+      "items": [
+        "Um caminho rumo à propriedade",
+        "Acesso a um veículo confiável",
+        "Feito para trabalhadores de apps",
+        "Benefício financeiro a longo prazo"
+      ]
+    }
+  },
+  "features": {
+    "title": "O que você ganha",
+    "subtitle": "Feito para a realidade de quem dirige para se sustentar.",
+    "items": {
+      "noDownPayment": {
+        "title": "Sem grande entrada",
+        "body": "Comece sem os altos custos iniciais do financiamento tradicional."
+      },
+      "flexibleGig": {
+        "title": "Flexível para o trabalho de apps",
+        "body": "Feito especialmente para motoristas de transporte e entregas."
+      },
+      "progressTracking": {
+        "title": "Um caminho claro do programa",
+        "body": "Você sabe em que ponto está, do Período de Qualificação em diante."
+      },
+      "reliableSupport": {
+        "title": "Suporte confiável",
+        "body": "Orientação de manutenção e apoio quando precisar."
+      }
+    }
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "subtitle": "Tudo o que você precisa saber sobre o programa de aluguel com opção de compra.",
+    "items": [
+      {
+        "question": "Para quem é o programa?",
+        "answer": "É feito para motoristas de apps e entregas — Uber, Lyft, Empower, DoorDash, Uber Eats, Instacart e plataformas parecidas. Se você dirige para se sustentar e quer um veículo confiável, é para você."
+      },
+      {
+        "question": "Posso dirigir para Uber, Lyft ou apps de entrega?",
+        "answer": "Sim. Nossos veículos de aluguel com opção de compra são escolhidos para atender aos requisitos das principais plataformas de transporte e entregas no Sul da Flórida, incluindo Uber, Lyft, DoorDash, Uber Eats e Instacart."
+      },
+      {
+        "question": "Como funciona o Período de Qualificação?",
+        "answer": "Todo candidato começa com um Período de Qualificação de 90 dias, feito para confirmar renda constante e definir o programa certo de longo prazo. Durante o Período de Qualificação, os motoristas demonstram renda constante e uso responsável do veículo."
+      },
+      {
+        "question": "Preciso de crédito perfeito?",
+        "answer": "Não. O programa é feito para trabalhadores de apps e foca no histórico de direção e na constância da renda, mais do que apenas na pontuação de crédito tradicional."
+      },
+      {
+        "question": "Quanto custa?",
+        "answer": "Os programas são personalizados conforme o veículo e a sua situação individual, então não há um preço semanal único para todos. Conte como você dirige e nossa equipe monta a estrutura certa para você."
+      },
+      {
+        "question": "Como funciona o caminho rumo à propriedade?",
+        "answer": "Depois do Período de Qualificação, nossa equipe trabalha com você no programa certo de longo prazo e no caminho rumo à propriedade. Os detalhes variam conforme o veículo e a sua situação, e explicamos tudo diretamente para você."
+      },
+      {
+        "question": "O que acontece se eu parar de participar?",
+        "answer": "Você pode devolver o veículo. Vamos explicar suas opções e os próximos passos conforme o ponto em que você está no programa."
+      }
+    ]
+  },
+  "apply": {
+    "title": "Encontre sua opção de aluguel com opção de compra",
+    "subtitle": "Conte um pouco sobre você e um membro da nossa equipe entrará em contato para orientar os próximos passos.",
+    "fields": {
+      "name": "Nome completo",
+      "namePlaceholder": "Seu nome",
+      "phone": "Telefone",
+      "phonePlaceholder": "(555) 555-5555",
+      "email": "E-mail",
+      "emailPlaceholder": "you@email.com",
+      "platforms": "Para quais plataformas você vai dirigir?",
+      "notes": "Mais alguma coisa? (opcional)",
+      "notesPlaceholder": "Conte sobre sua experiência ao volante ou quaisquer dúvidas."
+    },
+    "submit": "Encontre sua opção",
+    "submitting": "Enviando…",
+    "disclaimer": "Sem compromisso. Os programas são personalizados conforme o veículo e a sua situação.",
+    "toast": {
+      "errorTitle": "Algo deu errado",
+      "successTitle": "Solicitação recebida",
+      "successDesc": "Obrigado! Um membro da nossa equipe vai entrar em contato o quanto antes para orientar os próximos passos."
+    }
+  },
+  "finalCta": {
+    "title": "O veículo que ajuda você a ganhar também deveria ajudar a construir um futuro.",
+    "subtitle": "Participe do programa de aluguel com opção de compra da Rent With Heldy e comece a avançar rumo à propriedade do veículo enquanto gera renda.",
+    "apply": "Encontre sua opção",
+    "scheduleCall": "Agende uma ligação",
+    "browsePrompt": "Prefere ver os aluguéis primeiro?",
+    "seeFleet": "Ver nossa frota"
+  },
+  "quiz": {
+    "header": {
+      "title": "Encontre sua opção em 60 segundos",
+      "stepOf": "Passo {{current}} de {{total}}"
+    },
+    "intro": {
+      "body": "Responda a algumas perguntas rápidas e recomendaremos o veículo certo para os seus objetivos.",
+      "start": "Começar o questionário"
+    },
+    "gig": {
+      "question": "Que tipo de trabalho de app?",
+      "help": "Escolha a opção que melhor combina com o uso que você fará do veículo.",
+      "options": {
+        "rideshare": {
+          "label": "Transporte de passageiros",
+          "desc": "Uber, Lyft, Empower"
+        },
+        "delivery": {
+          "label": "Entregas",
+          "desc": "DoorDash, Uber Eats, Instacart"
+        },
+        "both": {
+          "label": "Os dois",
+          "desc": "Mistura de transporte + entregas"
+        }
+      }
+    },
+    "platforms": {
+      "question": "Para quais plataformas você vai dirigir?",
+      "help": "Selecione todas que se aplicam."
+    },
+    "hours": {
+      "question": "Quantas horas por semana?",
+      "help": "Ajuda a combinar um veículo que aguente sua carga de turnos.",
+      "options": {
+        "part": {
+          "label": "Meio período",
+          "desc": "Menos de 20 h / semana"
+        },
+        "full": {
+          "label": "Período integral",
+          "desc": "20 – 40 h / semana"
+        },
+        "heavy": {
+          "label": "Intenso",
+          "desc": "Mais de 40 h / semana"
+        }
+      }
+    },
+    "rideTier": {
+      "question": "Qual categoria de transporte você quer mirar?",
+      "help": "As categorias premium ganham mais por corrida, mas exigem um veículo qualificado.",
+      "options": {
+        "standard": {
+          "label": "Padrão",
+          "desc": "Uber X, Lyft, Empower"
+        },
+        "comfort": {
+          "label": "Comfort / Premium",
+          "desc": "Uber Comfort, Lyft Preferred"
+        },
+        "xl": {
+          "label": "XL / Grupo",
+          "desc": "Uber XL, Lyft XL — 6+ passageiros"
+        }
+      }
+    },
+    "result": {
+      "yourMatch": "Sua opção",
+      "goodFitFor": "Ideal para",
+      "fields": {
+        "name": "Nome completo",
+        "namePlaceholder": "Seu nome",
+        "phone": "Telefone",
+        "phonePlaceholder": "(555) 555-5555",
+        "email": "E-mail",
+        "emailPlaceholder": "you@email.com"
+      },
+      "submit": "Encontre sua opção",
+      "submitting": "Enviando…",
+      "disclaimer": "Sem compromisso. Os programas são personalizados conforme o veículo e a sua situação."
+    },
+    "submitted": {
+      "title": "Você tem uma opção",
+      "body": "Obrigado! Um membro da nossa equipe vai entrar em contato o quanto antes.",
+      "retake": "Refazer o questionário"
+    },
+    "nav": {
+      "back": "Voltar",
+      "next": "Avançar",
+      "seeMatch": "Ver minha opção"
+    },
+    "toast": {
+      "error": "Algo deu errado. Ligue ou mande mensagem para a gente direto."
+    }
+  }
+}

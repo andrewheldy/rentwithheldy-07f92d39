@@ -1,1 +1,256 @@
-{}
+{
+  "layout": {
+    "breadcrumbHome": "Inicio",
+    "talkToPerson": "Habla con una persona real:",
+    "valueProps": {
+      "title": "Pensado para cómo realmente necesitas un auto",
+      "subtitle": "Ventajas pensadas para {{context}} — no una lista genérica de mostrador de aeropuerto."
+    },
+    "howItWorks": "Cómo funciona",
+    "whatToExpect": "Qué esperar",
+    "coverage": {
+      "title": "Dónde entregamos",
+      "subtitle": "Nuestras principales zonas de entrega en el sur de Florida. ¿No aparece la tuya? Pregúntanos y te la cotizamos."
+    },
+    "faqHeading": "Preguntas frecuentes",
+    "finalCta": {
+      "title": "¿Necesitas un auto hoy mismo?",
+      "subtitle": "Reserva en línea en minutos o envíanos una solicitud rápida: un miembro de nuestro equipo te contactará lo antes posible y te encontrará donde estés."
+    }
+  },
+  "airport": {
+    "meta": {
+      "title": "Recogida de alquiler en el aeropuerto | Fort Lauderdale y Miami",
+      "description": "¿Llegas a FLL o MIA? Coordinamos la recogida más conveniente según tu llegada, con acceso sin contacto y una flota familiar y limpia."
+    },
+    "crumbLabel": "Recogida en el aeropuerto",
+    "eyebrow": "Recogida en el aeropuerto",
+    "h1": "Comienza tu viaje por el sur de Florida sin el mostrador de alquiler",
+    "intro": "¿Llegas a Miami o Fort Lauderdale? Coordinamos la opción de recogida más conveniente según tu llegada, destino y horario, para que salgas a la carretera con menos complicaciones. La recogida sin contacto está disponible.",
+    "heroImageAlt": "Un crossover oscuro conduciendo hacia el horizonte de Miami mientras un avión de pasajeros desciende",
+    "primaryCta": "Ver vehículos disponibles",
+    "secondaryCta": "Cómo funciona la entrega en el aeropuerto",
+    "highlights": [
+      "Servicio para viajeros de MIA y FLL",
+      "Instrucciones de recogida claras",
+      "Comunicación directa con un equipo local",
+      "Orientación de devolución antes del fin del viaje"
+    ],
+    "steps": [
+      "Elige tu vehículo y las fechas del viaje.",
+      "Comparte los datos de tu vuelo y tu llegada.",
+      "Recibe instrucciones claras de entrega antes de aterrizar.",
+      "Comienza tu viaje y contáctanos directamente si necesitas ayuda."
+    ],
+    "testimonial": {
+      "quote": "El proceso fue fácil y conveniente. El auto estaba limpio y bien mantenido. El sistema de transporte fue sencillo, los operadores eran amables y volvería a reservar.",
+      "name": "Reinah",
+      "location": "Huésped verificado de Turo"
+    },
+    "valueProps": [
+      { "title": "Viajeros de MIA y FLL", "description": "Atendemos ambos aeropuertos principales del sur de Florida con la misma flota y el mismo equipo." },
+      { "title": "Instrucciones de recogida claras", "description": "Sabrás exactamente adónde ir y qué esperar antes de aterrizar." },
+      { "title": "Un equipo local, no un centro de llamadas", "description": "Línea directa con las personas que manejan la flota, no una central en el extranjero." },
+      { "title": "Orientación de devolución por adelantado", "description": "Te explicamos los tiempos de devolución antes de que empiece tu viaje." }
+    ],
+    "body": [
+      {
+        "heading": "Atendemos tanto FLL como Miami International (MIA)",
+        "paragraphs": [
+          "Ya sea que aterrices en Fort Lauderdale-Hollywood International (FLL) o en el Aeropuerto Internacional de Miami (MIA), coordinaremos la recogida más conveniente según tu llegada, destino y horario, para que evites por completo el mostrador de alquiler. La misma flota, la misma línea directa con nuestro equipo.",
+          "Según tu aeropuerto y tus horarios, eso puede significar recoger en una zona de estacionamiento del aeropuerto (donde pueden aplicar tarifas de estacionamiento), o tomar un viaje corto en transporte compartido —por lo general a pocas millas del aeropuerto— hasta un punto de recogida cercano. Confirmaremos el plan exacto y te enviaremos instrucciones claras antes de que llegues, y la recogida sin contacto está disponible."
+        ]
+      },
+      {
+        "heading": "Sáltate la fila del mostrador del aeropuerto. Ponte en marcha más rápido.",
+        "paragraphs": [
+          "Si alguna vez aterrizaste en FLL o MIA un viernes por la tarde, conoces la rutina: tomas tu maleta, caminas hasta el centro de alquiler, haces fila detrás de otros 40 viajeros, escuchas ofertas que no pediste y por fin recibes un auto que puede o no coincidir con lo que reservaste. Rent With Heldy es una opción más limpia.",
+          "Somos un host familiar que atiende a viajeros que llegan al sur de Florida. Reservas en línea con un vehículo real y un precio real, nos envías los datos de tu vuelo y coordinamos la recogida más conveniente según tu llegada. Sin mostrador, sin ofertas insistentes, sin cargos sorpresa al devolver."
+        ]
+      },
+      {
+        "heading": "Pensado para viajeros de FLL y MIA",
+        "paragraphs": [
+          "La mayoría de nuestros clientes de aeropuerto pertenecen a unos pocos grupos claros, y la flota está preparada para cada uno."
+        ],
+        "bullets": [
+          "Viajeros de negocios que llegan por una a tres noches y quieren un sedán limpio y cero fricción.",
+          "Familias que aterrizan para una semana de playa, una salida a parques temáticos o un crucero, en busca de una SUV amplia con espacio para el equipaje.",
+          "Pasajeros de crucero que usan Port Everglades y necesitan un alquiler corto a cada lado de su navegación.",
+          "Visitantes que van a Miami, Aventura o Hollywood y prefieren conducir en vez de usar transporte compartido.",
+          "Clientes que regresan y ya nos conocen de un viaje anterior y solo quieren el mismo auto de nuevo."
+        ]
+      },
+      {
+        "heading": "Adónde van los clientes de Heldy después de aterrizar",
+        "paragraphs": [
+          "Una vez que estás en el auto, el resto del sur de Florida es tuyo. La mayoría de nuestros clientes de aeropuerto se dirigen a Fort Lauderdale Beach, el centro de Fort Lauderdale, Hollywood, Aventura o directo por la I-95 hasta Miami. Algunos toman cruceros que salen de Port Everglades. Otros van al norte, a Boca, Delray o West Palm.",
+          "Sea cual sea el destino, nos aseguramos de que el auto esté listo, con combustible y limpio. Si planeas un viaje más largo —por ejemplo, de FLL a los Cayos o hasta Orlando— avísanos al reservar para confirmar el vehículo y las expectativas de millaje."
+        ]
+      }
+    ],
+    "partnerHeading": "¿Agente de viajes o coordinador de viajes corporativos?",
+    "partnerSubheading": "Organiza la entrega en el aeropuerto para clientes o empleados que lleguen al sur de Florida. Coordinamos directamente contigo.",
+    "faqs": [
+      { "question": "¿Cómo funciona la recogida en el aeropuerto en FLL o MIA?", "answer": "Coordinaremos la recogida más conveniente según tu llegada. Según tu aeropuerto y tus horarios, puede ser una zona de estacionamiento del aeropuerto (donde pueden aplicar tarifas de estacionamiento) o un punto de recogida cercano a un viaje corto en transporte compartido. Después de reservar, comparte los datos de tu vuelo y confirmaremos el plan exacto y las instrucciones antes de que aterrices. La recogida sin contacto está disponible." },
+      { "question": "¿Qué pasa si mi vuelo se retrasa?", "answer": "Solo escríbenos. Seguimos tu número de vuelo una vez que lo compartes y ajustamos el horario de recogida por retrasos, sin cargos adicionales por cambios normales de viaje." },
+      { "question": "¿Puedo devolver el auto cerca del aeropuerto para un vuelo temprano?", "answer": "Sí. Coordinaremos una hora y un lugar de devolución que se ajusten a tu salida y organizaremos los detalles contigo por adelantado." },
+      { "question": "¿Ofrecen SUV en el aeropuerto para familias y grupos?", "answer": "Sí. Nuestra flota incluye SUV y vehículos más grandes ideales para familias y grupos. Filtra la flota en tiempo real por tipo de vehículo al reservar." },
+      { "question": "¿Hay recargos de aeropuerto?", "answer": "No. No cobramos recargos de aeropuerto. Si tu recogida usa una zona de estacionamiento del aeropuerto, pueden aplicar las tarifas de estacionamiento estándar; siempre te avisaremos con anticipación." }
+    ]
+  },
+  "hotel": {
+    "meta": {
+      "title": "Entrega de alquiler en el hotel | Sur de Florida",
+      "description": "Autos de alquiler entregados directamente en tu hotel de Miami o Fort Lauderdale. Las tarifas de entrega varían según la ubicación, recogida sin contacto disponible, personas reales para ayudarte."
+    },
+    "crumbLabel": "Entrega en el hotel",
+    "eyebrow": "Entrega en el hotel",
+    "h1": "Tu alquiler, entregado en tu hotel",
+    "intro": "¿Te hospedas en un hotel, resort o alojamiento vacacional? Coordinaremos la entrega directamente en tu hotel para que dediques menos tiempo a organizar el transporte. Las tarifas de entrega varían según la ubicación y la recogida sin contacto está disponible.",
+    "heroImageAlt": "Un crossover oscuro llegando a un hotel moderno del sur de Florida al atardecer",
+    "primaryCta": "Ver vehículos disponibles",
+    "secondaryCta": "Explorar la entrega en el hotel",
+    "highlights": [
+      "Hoteles y resorts",
+      "Alojamientos vacacionales",
+      "Recogida sin contacto disponible",
+      "Planificación de entrega flexible en toda la zona de servicio"
+    ],
+    "steps": [
+      "Elige un vehículo.",
+      "Dinos dónde te hospedas.",
+      "Confirma un plan de entrega y una tarifa con nuestro equipo.",
+      "Reúnete con nosotros para la entrega y empieza tu viaje."
+    ],
+    "testimonial": {
+      "quote": "Excelente servicio al cliente, incluso después de lidiar con algunas complicaciones.",
+      "name": "Monique",
+      "location": "Huésped verificado de Turo"
+    },
+    "valueProps": [
+      { "title": "Entregado en tu hotel", "description": "Coordinaremos la entrega directamente en tu hotel, resort o alojamiento vacacional. Las tarifas de entrega varían según la ubicación." },
+      { "title": "Recogida sin contacto", "description": "Recoge tu vehículo en tu horario con acceso seguro a una caja de seguridad, sin esperas." },
+      { "title": "Olvídate de los transportes del aeropuerto", "description": "Aterriza, llega a tu hotel y ten el auto listo cuando quieras explorar." },
+      { "title": "Peajes sin complicaciones", "description": "Los peajes se facturan al final del viaje sin cargos adicionales. Facturación clara." }
+    ],
+    "partnerHeading": "¿Conserje o gerente de hotel?",
+    "partnerSubheading": "Ofrece a tus huéspedes una opción de alquiler fácil sin la complicación del aeropuerto. Apoyamos alianzas recurrentes.",
+    "faqs": [
+      { "question": "¿Cómo funciona la entrega en el hotel?", "answer": "Después de reservar, envíanos el nombre del hotel, el nombre del huésped y la hora de recogida preferida. Coordinaremos la entrega directamente en tu hotel y confirmaremos los detalles contigo. Las tarifas de entrega varían según la ubicación y la recogida sin contacto está disponible." },
+      { "question": "¿A qué hoteles entregan?", "answer": "Entregamos a la mayoría de los hoteles principales de Miami Beach, Brickell, el centro de Miami, Aventura, Sunny Isles, Hollywood, Fort Lauderdale Beach y Las Olas. Dinos dónde te hospedas y lo confirmamos." },
+      { "question": "¿Cuánto cuesta la entrega en el hotel?", "answer": "Las tarifas de entrega varían según la distancia desde el Aeropuerto de Fort Lauderdale. Una vez que sepamos tu hotel, confirmaremos la tarifa de entrega por adelantado, sin sorpresas." },
+      { "question": "¿Qué pasa si mi vuelo se retrasa?", "answer": "Solo escríbenos. Mantenemos la franja de entrega para llegadas tardías sin costo adicional, siempre que tengamos aviso con anticipación." },
+      { "question": "¿Ofrecen vehículos premium o especiales más nuevos?", "answer": "Sí. Tenemos SUV y sedanes premium más nuevos junto con nuestras opciones económicas, ideales para aniversarios, viajes de negocios y fines de semana especiales." }
+    ]
+  },
+  "bodyShop": {
+    "meta": {
+      "title": "Vehículos de reemplazo por taller | Sur de Florida",
+      "description": "¿Dejas tu auto en un taller o mecánico? Entregamos tu alquiler directamente en el taller en Fort Lauderdale, Miami y el sur de Florida. Flexible, sin desvío al aeropuerto."
+    },
+    "crumbLabel": "Entrega en taller y mecánico",
+    "eyebrow": "Vehículos de reemplazo",
+    "h1": "Mantente en movimiento mientras reparan tu vehículo",
+    "intro": "Si tu auto está en un taller de carrocería o centro de reparación, podemos ayudarte a organizar un vehículo de reemplazo y coordinar la entrega en torno al proceso de reparación.",
+    "heroImageAlt": "Un crossover oscuro afuera de un taller moderno del sur de Florida al atardecer",
+    "primaryCta": "Solicita un vehículo de reemplazo",
+    "secondaryCta": "Cómo funcionan los vehículos de reemplazo",
+    "highlights": [
+      "Centros de colisiones",
+      "Talleres de carrocería",
+      "Centros de reparación",
+      "Coordinación directa con el cliente y el centro cuando corresponde"
+    ],
+    "steps": [
+      "Dinos dónde están reparando tu vehículo.",
+      "Comparte las fechas de reparación previstas.",
+      "Elige un vehículo de reemplazo disponible.",
+      "Confirma los detalles de entrega y devolución directamente con nuestro equipo."
+    ],
+    "disclaimer": "El reembolso del seguro depende de la póliza y el reclamo del cliente. Podemos proporcionar documentación del alquiler cuando sea necesario.",
+    "testimonial": {
+      "quote": "Bueno con la gasolina, cumplió su función, el transporte fue excelente y si solo necesitas un auto sencillo y confiable, este es.",
+      "name": "Madisol",
+      "location": "Huésped verificado de Turo"
+    },
+    "valueProps": [
+      { "title": "Entrega en el lugar", "description": "Llegamos al taller o mecánico con el alquiler listo. Verificación rápida de licencia, firma y a conducir." },
+      { "title": "Coordinado con el taller", "description": "Sincronizamos los tiempos con el asesor de servicio o el mecánico para que no te quedes esperando." },
+      { "title": "Alquileres para el mismo día", "description": "Los alquileres para el mismo día están disponibles, según la disponibilidad de vehículos, en Broward y Miami-Dade." },
+      { "title": "Devolución flexible", "description": "Cuando terminen las reparaciones, devuelve el alquiler en el mismo taller; coordinamos la recogida." }
+    ],
+    "partnerHeading": "¿Tienes un taller de carrocería o mecánico? Haznos tu socio de entrega.",
+    "partnerSubheading": "Entregamos y recogemos en tu ubicación para que tus clientes nunca se queden sin transporte.",
+    "faqs": [
+      { "question": "¿Cómo funciona la entrega en el taller o mecánico?", "answer": "Nos dices el taller, el día y la hora aproximada de entrega. Coordinamos con el asesor de servicio o el mecánico y nos reunimos contigo en el lugar con las llaves del alquiler cuando entregues tu auto." },
+      { "question": "¿A qué talleres entregan?", "answer": "A cualquier centro de colisiones o taller mecánico de buena reputación en Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura y Pompano. Hemos entregado a la mayoría de las grandes cadenas y talleres independientes de la región." },
+      { "question": "¿Necesito reservar con anticipación?", "answer": "Reservar antes siempre es mejor, pero los alquileres para el mismo día están disponibles, según la disponibilidad de vehículos. Escríbenos o llámanos en cuanto sepas tu cita en el taller." },
+      { "question": "¿El taller puede coordinar el alquiler por mí?", "answer": "Sí. Los asesores de servicio, mecánicos y gerentes pueden solicitar la entrega en nombre de un cliente usando nuestro formulario de socios en esta página." },
+      { "question": "¿Qué pasa si mi auto está listo antes de lo previsto?", "answer": "Solo escríbenos. Organizaremos la recogida en el taller y cerraremos el alquiler, sin penalización por devoluciones anticipadas dentro del período reservado." }
+    ]
+  },
+  "cruise": {
+    "meta": {
+      "title": "Entrega de alquiler en el puerto de cruceros | Miami y Fort Lauderdale",
+      "description": "Autos de alquiler coordinados en torno a tu crucero en PortMiami y Port Everglades. Organizamos la recogida o devolución más fácil para tu barco y tu horario."
+    },
+    "crumbLabel": "Entrega en el puerto de cruceros",
+    "eyebrow": "Entrega en el puerto de cruceros",
+    "h1": "Una conexión más fácil entre tu crucero y el sur de Florida",
+    "intro": "¿Navegas por PortMiami o Port Everglades? Coordinaremos la recogida o devolución más fácil según tu barco, tus horarios y tu terminal, ya sea que explores antes de zarpar o te quedes después de regresar. La recogida sin contacto está disponible.",
+    "heroImageAlt": "Un crossover oscuro acercándose a PortMiami con un crucero y el horizonte al frente",
+    "primaryCta": "Ver vehículos disponibles",
+    "secondaryCta": "Planifica la entrega en el puerto de cruceros",
+    "highlights": [
+      "PortMiami",
+      "Port Everglades",
+      "Alquileres antes y después del crucero",
+      "Coordinación clara según los horarios de llegada o salida"
+    ],
+    "steps": [
+      "Elige tu vehículo y tus fechas.",
+      "Comparte el itinerario de tu crucero.",
+      "Confirma el plan de entrega antes de la fecha de tu navegación.",
+      "Continúa tu viaje sin hacer un desvío innecesario al aeropuerto."
+    ],
+    "testimonial": {
+      "quote": "La calidad del auto fue la más limpia de todas, el servicio al cliente fue el mejor de todos. Lo recomiendo mucho. Asegúrate de conocer a este host.",
+      "name": "Christopher",
+      "location": "Huésped verificado de Turo"
+    },
+    "valueProps": [
+      { "title": "Coordinado con tu barco", "description": "Organizaremos la recogida o devolución más fácil según tu barco, tus horarios y tu terminal, sin filas de mostrador en chanclas." },
+      { "title": "Olvídate de los transportes del aeropuerto", "description": "Sin desvío a FLL o MIA. Nos reunimos contigo cerca del puerto para que te pongas en marcha." },
+      { "title": "Recogida sin contacto", "description": "Recoge tu vehículo en tu horario con acceso seguro a una caja de seguridad, ajustado a tu navegación." },
+      { "title": "Peajes sin complicaciones", "description": "Los peajes se facturan al final del viaje sin cargos adicionales. Solo pagas los peajes que uses." }
+    ],
+    "partnerHeading": "¿Agente de viajes o conserje de cruceros?",
+    "partnerSubheading": "Suma un alquiler fácil junto al puerto al itinerario de tus clientes. Coordinamos directamente contigo.",
+    "faqs": [
+      { "question": "¿Cómo funciona la recogida en el puerto de cruceros?", "answer": "Después de reservar, envíanos el nombre de tu barco y la hora de llegada. Según los horarios y las condiciones del puerto, coordinaremos la opción más fácil —en la terminal, en una zona de estacionamiento de cruceros o en una zona de recogida designada en Port Everglades o PortMiami— y confirmaremos el plan contigo con anticipación." },
+      { "question": "¿Puedo dejar el alquiler en el aeropuerto después de mi crucero?", "answer": "Sí, ofrecemos coordinación de devolución en FLL y MIA después de tu crucero para que puedas conducir directo del puerto a tu vuelo de regreso." },
+      { "question": "¿Y la recogida en el hotel antes del crucero?", "answer": "Muchos cruceristas pasan una noche en Fort Lauderdale o Miami antes de zarpar. Podemos entregar en tu hotel previo al crucero y coordinar la recogida cerca del puerto cuando embarques." },
+      { "question": "¿Cómo funcionan los peajes?", "answer": "Nuestros vehículos vienen con transpondedores habilitados. Los peajes se facturan al final del viaje sin cargos adicionales; solo pagas los peajes generados durante tu alquiler." },
+      { "question": "¿A qué líneas de crucero y terminales dan servicio?", "answer": "A todas las terminales de Port Everglades (Fort Lauderdale) y PortMiami, incluidas Royal Caribbean, Carnival, Celebrity, MSC, Norwegian, Princess y Virgin Voyages." }
+    ]
+  },
+  "lossOfUse": {
+    "meta": {
+      "title": "Alquileres por pérdida de uso | Rent With Heldy",
+      "description": "Documentación de alquiler por pérdida de uso para abogados de lesiones personales y asistentes legales en el sur de Florida. Facturación clara, coordinación directa de reclamos y tarifas diarias justas."
+    },
+    "crumbLabel": "Reclamos por pérdida de uso",
+    "eyebrow": "Reclamos por pérdida de uso",
+    "h1": "Alquileres y documentación por pérdida de uso para abogados de lesiones personales",
+    "intro": "Un recurso para abogados de lesiones personales, asistentes legales y reclamantes que gestionan daños por pérdida de uso en el sur de Florida. Tarifas diarias justas, facturación clara y una persona real al teléfono cuando necesitas la documentación.",
+    "valueProps": [
+      { "title": "Facturación lista para reclamos", "description": "Facturas diarias detalladas con clase de vehículo, fechas y desglose de tarifas, listas para el expediente del reclamo." },
+      { "title": "Apoyo con la documentación", "description": "Declaraciones juradas, apoyo para cartas de reclamación y registros del historial de alquiler para los expedientes del caso." },
+      { "title": "Respuesta rápida", "description": "La mayoría de las solicitudes de documentación se resuelven en un día hábil para casos activos." },
+      { "title": "Tarifas diarias justas y defendibles", "description": "Precios acordes al mercado, sin recargos de lujo inflados." }
+    ],
+    "partnerHeading": "¿Abogado de lesiones personales o asistente legal? Prepara el alquiler de tu cliente.",
+    "partnerSubheading": "Envíanos la información del reclamo de tu cliente y nos encargamos del alquiler y del papeleo."
+  }
+}

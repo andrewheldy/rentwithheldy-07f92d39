@@ -1,1 +1,52 @@
-{}
+{
+  "meta": {
+    "title": "FAQ location de voitures | Réservation et prise en charge | Rent With Heldy",
+    "description": "Réponses aux questions courantes sur la location d'une voiture avec Rent With Heldy à Fort Lauderdale, Miami et en Floride du Sud. Réservation, prise en charge, conditions et plus encore."
+  },
+  "hero": {
+    "title": "Questions fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur la location avec Heldy en Floride du Sud."
+  },
+  "items": [
+    {
+      "question": "Comment réserver une voiture ?",
+      "answer": "Cliquez sur Réserver n'importe où sur le site pour ouvrir notre outil de réservation en temps réel. Choisissez vos dates, sélectionnez un véhicule disponible et confirmez en ligne. Vous recevrez une confirmation immédiate par e-mail."
+    },
+    {
+      "question": "Proposez-vous la prise en charge à l'aéroport ?",
+      "answer": "Oui. Nous organisons la prise en charge la plus pratique selon votre arrivée, votre destination et votre horaire, près de Fort Lauderdale-Hollywood International (FLL) et de Miami International (MIA). Partagez les détails de votre vol après la réservation et nous confirmerons le plan avant votre atterrissage."
+    },
+    {
+      "question": "La prise en charge sans contact est-elle possible ?",
+      "answer": "Oui. La prise en charge sans contact est disponible sur chaque location grâce à un accès sécurisé par boîte à clés, pour que vous récupériez votre véhicule à votre rythme."
+    },
+    {
+      "question": "Quels secteurs desservez-vous ?",
+      "answer": "Nous desservons Fort Lauderdale, Miami, Hollywood, Aventura et la majeure partie de la Floride du Sud. Si votre destination n'est pas indiquée, contactez-nous : nous la couvrons probablement."
+    },
+    {
+      "question": "Quels types de véhicules sont disponibles ?",
+      "answer": "Notre flotte va des voitures économiques pratiques et des berlines aux SUV et aux options premium récentes. Chaque véhicule est nettoyé, préparé et inspecté par des professionnels avant chaque location. Consultez la page de la flotte en temps réel pour voir ce qui est disponible."
+    },
+    {
+      "question": "Quels documents me faut-il ?",
+      "answer": "Un permis de conduire valide, une carte de crédit au nom du conducteur et une preuve d'assurance ou un plan de protection actif via la plateforme de réservation. Les conducteurs internationaux sont les bienvenus avec un permis valide et un passeport."
+    },
+    {
+      "question": "Comment fonctionnent les péages ?",
+      "answer": "Les péages sont facturés à la fin de votre trajet, sans frais supplémentaires. Vous ne payez que les péages engagés pendant votre location."
+    },
+    {
+      "question": "Des locations le jour même sont-elles possibles ?",
+      "answer": "Oui. Les locations le jour même sont possibles, selon la disponibilité des véhicules. Appelez-nous ou écrivez-nous le plus tôt possible et nous ferons de notre mieux pour vous mettre en route."
+    },
+    {
+      "question": "Y a-t-il un âge minimum requis ?",
+      "answer": "Oui. Les conducteurs doivent généralement avoir 21 ans ou plus. Certains véhicules premium peuvent exiger un âge minimum de 25 ans. L'outil de réservation indiquera toute restriction d'âge."
+    },
+    {
+      "question": "Que se passe-t-il si je dois prolonger ma location ?",
+      "answer": "Écrivez-nous simplement avant la restitution prévue. Tant que le véhicule est disponible, nous prolongeons votre trajet et mettons à jour votre réservation."
+    }
+  ]
+}

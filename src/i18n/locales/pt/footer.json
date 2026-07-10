@@ -1,1 +1,50 @@
-{}
+{
+  "cta": {
+    "heading": "Quando você quiser.",
+    "subheading": "Reserve on-line em minutos ou fale com uma pessoa de verdade 7 dias por semana."
+  },
+  "brand": {
+    "tagline": "Aluguel de carros familiar no Sul da Flórida",
+    "badge": "All-Star Host no Turo",
+    "description": "Uma frota familiar que entrega carros limpos e confiáveis em Fort Lauderdale, Miami e em todo o Sul da Flórida, bem onde você precisa."
+  },
+  "columns": {
+    "services": "Serviços",
+    "locations": "Regiões",
+    "company": "Empresa",
+    "contact": "Contato"
+  },
+  "services": {
+    "airport": "Entrega no aeroporto (FLL)",
+    "hotel": "Entrega no hotel",
+    "bodyShop": "Entrega na oficina",
+    "cruise": "Entrega no porto de cruzeiros",
+    "lossOfUse": "Perda de uso",
+    "rentToOwn": "Programa de aluguel com opção de compra"
+  },
+  "locations": {
+    "fortLauderdale": "Fort Lauderdale",
+    "miami": "Miami",
+    "local": "Aluguel de carros local",
+    "fllAirport": "Aeroporto FLL"
+  },
+  "company": {
+    "fleet": "Frota",
+    "howItWorks": "Como funciona",
+    "about": "Sobre",
+    "faq": "Perguntas frequentes",
+    "contact": "Contato"
+  },
+  "contact": {
+    "location": "Fort Lauderdale e Miami, FL"
+  },
+  "seoParagraph": "A Rent With Heldy é um serviço particular de aluguel de carros com sede no Sul da Flórida, atendendo viajantes e moradores de Fort Lauderdale, Miami, Hollywood, Aventura e do Aeroporto Internacional de Fort Lauderdale-Hollywood (FLL). Nossa frota selecionada inclui carros econômicos, SUVs, veículos para a família toda e opções premium, com reserva on-line em minutos, retirada flexível e suporte confiável.",
+  "legal": {
+    "rights": "© {{year}} Rent With Heldy. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos",
+    "manageFleet": "Gerenciar frota",
+    "signOut": "Sair",
+    "admin": "Administração"
+  }
+}

@@ -1,1 +1,83 @@
-{}
+{
+  "steps": {
+    "step1": {
+      "title": "1. Escolha suas datas",
+      "body": "Diga quando você precisa do carro e onde, no Sul da Flórida, fará a retirada."
+    },
+    "step2": {
+      "title": "2. Escolha seu veículo",
+      "body": "Navegue pela nossa frota em tempo real e reserve o carro exato que combina com sua viagem e seu orçamento."
+    },
+    "step3": {
+      "title": "3. Retire e dirija",
+      "body": "A gente se encontra no seu ponto: Fort Lauderdale, Miami ou o aeroporto FLL. Entrega rápida, tanque cheio."
+    },
+    "step4": {
+      "title": "4. Dirija com apoio",
+      "body": "Linha direta com nossa equipe durante todo o aluguel. Devoluções fáceis, comunicação clara, sem surpresas."
+    }
+  },
+  "meta": {
+    "title": "Como funciona | Reserva de carro fácil | Rent With Heldy",
+    "description": "Veja como funciona alugar um carro com a Rent With Heldy: consulte a disponibilidade, escolha seu veículo, confirme on-line e encontre a gente para a retirada em Fort Lauderdale ou Miami."
+  },
+  "hero": {
+    "title": "Como reservar com a Heldy funciona",
+    "subtitle": "Um processo de aluguel simples e transparente, da busca à devolução. Feito para visitantes e moradores do Sul da Flórida que querem uma alternativa de verdade aos balcões de aluguel tradicionais.",
+    "cta": "Começar a reservar"
+  },
+  "walkthrough": {
+    "step1": {
+      "heading": "1. Encontre suas datas e seu veículo",
+      "body": "Toque em <strong>Reservar agora</strong> em qualquer parte do site para abrir o sistema de reserva em tempo real. Selecione suas datas de retirada e devolução, e você verá exatamente quais veículos estão disponíveis — com fotos reais, categorias reais e o preço real da sua viagem. Sem enganação, sem surpresas de \"ou similar\"."
+    },
+    "step2": {
+      "heading": "2. Reserve em minutos",
+      "body": "Escolha o carro que você quer e conclua o pagamento. As reservas são confirmadas na hora — você recebe um e-mail com os detalhes da reserva na mesma hora. O veículo fica reservado exclusivamente para as suas datas."
+    },
+    "step3": {
+      "heading": "3. Combine a retirada com nossa equipe",
+      "body": "Depois da reserva, nossa equipe entra em contato direto para confirmar o local e o horário da retirada. A gente se encontra em pontos convenientes em Fort Lauderdale, Miami ou perto do aeroporto FLL. Se você chega de avião, compartilhe o número do voo e nos planejamos conforme sua chegada — incluindo atrasos."
+    },
+    "step4": {
+      "heading": "4. Entrega rápida e você dirige",
+      "body": "Na retirada, verificamos sua carteira, revisamos o carro juntos, entregamos as chaves e você segue viagem. A maioria das entregas leva só alguns minutos. Você terá o número direto da nossa equipe durante todo o aluguel — sem linhas 0800, sem atendentes lendo um roteiro."
+    },
+    "step5": {
+      "heading": "5. Devolução fácil",
+      "body": "Devolva o veículo no horário e local combinados. Somos flexíveis, dentro do razoável, com devoluções antecipadas ou atrasadas — é só avisar. Precisa prorrogar? Mande mensagem cedo; se o carro não estiver reservado logo em seguida, deixamos com você."
+    }
+  },
+  "pickup": {
+    "heading": "O que você vai precisar na retirada",
+    "items": [
+      "Uma carteira de motorista válida (carteiras internacionais são aceitas com passaporte).",
+      "Um cartão de crédito no nome do locatário.",
+      "Comprovante de seguro ou um plano de proteção ativo pela plataforma de reserva.",
+      "Idade mínima de 21 anos (alguns veículos premium exigem 25+)."
+    ]
+  },
+  "faqHeading": "Perguntas frequentes",
+  "faqs": [
+    {
+      "question": "Quanto tempo leva a reserva?",
+      "answer": "A maioria das reservas é feita em menos de três minutos. Você escolhe suas datas, seleciona seu veículo na disponibilidade em tempo real e confirma on-line. Você recebe uma confirmação por e-mail na hora."
+    },
+    {
+      "question": "Quando minha reserva é de fato confirmada?",
+      "answer": "Sua reserva é confirmada no momento em que você conclui o pagamento no sistema de reserva. O veículo fica reservado para suas datas e você recebe um e-mail de confirmação instantâneo."
+    },
+    {
+      "question": "O que acontece depois que eu reservo?",
+      "answer": "Um membro da nossa equipe entra em contato para combinar os detalhes da retirada — local exato, horário e quaisquer observações de preparo do veículo. A retirada sem contato está disponível e você terá uma linha direta durante todo o aluguel."
+    },
+    {
+      "question": "Posso alterar ou cancelar minha reserva?",
+      "answer": "Mande mensagem o quanto antes. Somos flexíveis dentro do razoável, e as condições de cancelamento e alteração seguem a política da plataforma de reserva pela qual você reservou."
+    }
+  ],
+  "finalCta": {
+    "title": "Pronto para reservar seu aluguel no Sul da Flórida?",
+    "subtitle": "Reserve em minutos. Atendimento de pessoas de verdade da retirada à devolução."
+  }
+}

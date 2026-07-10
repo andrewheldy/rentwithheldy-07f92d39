@@ -1,1 +1,131 @@
-{}
+{
+  "meta": {
+    "title": "Location de voitures à Fort Lauderdale et Miami | Rent With Heldy",
+    "description": "Location de voitures familiale à Fort Lauderdale, Miami et en Floride du Sud. Plus de 1 400 avis cinq étoiles, prise en charge sans contact, livraison à l'hôtel et à l'aéroport. Réservez en ligne en quelques minutes."
+  },
+  "hero": {
+    "eyebrow": "Fort Lauderdale · Miami",
+    "title": "Oubliez le comptoir de location.",
+    "descriptionLine1": "Votre voiture, livrée quand, où et comme vous en avez besoin.",
+    "descriptionLine2": "Une flotte familiale de Floride du Sud qui livre des véhicules propres et fiables, avec un service personnalisé à chaque étape.",
+    "destinations": {
+      "airports": "Aéroports",
+      "hotels": "Hôtels",
+      "cruisePorts": "Ports de croisière",
+      "repairShops": "Garages"
+    },
+    "primaryCta": "Réserver",
+    "secondaryCta": "Voir la flotte",
+    "trust": {
+      "reviews": "Plus de 1 400 avis cinq étoiles",
+      "allStar": "All-Star Host",
+      "delivery": "Livraison hôtel et aéroport",
+      "contactless": "Prise en charge sans contact",
+      "language": "Écrivez-nous dans la langue de votre choix",
+      "familyOwned": "Entreprise familiale"
+    }
+  },
+  "trustStrip": {
+    "reviews": "Plus de 1 400 avis cinq étoiles",
+    "allStar": "All-Star Host",
+    "delivery": "Livraison hôtel et aéroport",
+    "contactless": "Prise en charge sans contact",
+    "language": "Écrivez-nous dans la langue de votre choix",
+    "familyOwned": "Entreprise familiale"
+  },
+  "destinations": {
+    "eyebrow": "Une livraison, pas un comptoir",
+    "title": "Où devons-nous livrer votre véhicule ?",
+    "description": "Dites-nous où vous serez — un aéroport, un hôtel, un terminal de croisière ou le garage — et nous vous apportons les clés.",
+    "serving": "Nous desservons",
+    "cards": {
+      "airport": {
+        "title": "Aéroport",
+        "description": "Vous atterrissez à FLL ou à Miami ? Nous organisons la prise en charge la plus pratique selon votre arrivée, pour que vous évitiez le comptoir de location et commenciez votre trajet.",
+        "ctaLabel": "Prise en charge à l'aéroport",
+        "alt": "Un SUV sur une chaussée de Floride du Sud avec un avion qui descend vers la silhouette de Miami au coucher du soleil"
+      },
+      "hotel": {
+        "title": "Hôtel",
+        "description": "Vous séjournez à proximité ? Nous livrons directement à votre hôtel, votre resort ou votre location de vacances dans toute la Floride du Sud. Les frais de livraison varient selon le lieu.",
+        "ctaLabel": "Livraison à l'hôtel",
+        "alt": "Un SUV garé sous le porche d'un hôtel au crépuscule avec la silhouette de Miami de l'autre côté de l'eau"
+      },
+      "cruise": {
+        "title": "Port de croisière",
+        "description": "Vous partez de PortMiami ou de Port Everglades ? Commencez ou terminez votre croisière avec une location organisée autour de votre navire et de votre horaire.",
+        "ctaLabel": "Prise en charge au port de croisière",
+        "alt": "Un SUV sur une chaussée passant devant un navire de croisière à quai près de la silhouette de Miami au coucher du soleil"
+      },
+      "bodyShop": {
+        "title": "Garage",
+        "description": "Votre voiture est au garage ? Nous vous aidons à rester mobile avec un véhicule de remplacement livré à votre atelier de réparation.",
+        "ctaLabel": "Véhicules de remplacement",
+        "alt": "Un SUV garé devant un garage avec des palmiers et la silhouette de la ville visible au crépuscule"
+      }
+    },
+    "locations": {
+      "fortLauderdale": "Fort Lauderdale",
+      "miami": "Miami",
+      "local": "Locations locales",
+      "fllAirport": "Aéroport FLL"
+    }
+  },
+  "why": {
+    "eyebrow": "Pourquoi Rent With Heldy",
+    "title": "Les grandes enseignes de location vous font venir à elles. Nous venons à vous.",
+    "description": "Enterprise, Hertz et les comptoirs d'aéroport, c'est des files d'attente, des navettes et des petits caractères. Une appli entre particuliers, c'est un inconnu différent à chaque fois. Nous sommes le juste milieu que les voyageurs veulent vraiment : une flotte réelle, locale et familiale qui vient là où vous êtes.",
+    "cards": {
+      "delivered": {
+        "title": "Livré, pas un comptoir",
+        "body": "Nous amenons la voiture à votre terminal, votre hôtel ou votre porte. Pas de files, pas de navette, pas de comptoir de location."
+      },
+      "localOwner": {
+        "title": "Un vrai propriétaire local",
+        "body": "Écrivez ou appelez un seul numéro et joignez les personnes qui gèrent la flotte, pas un centre d'appels à l'étranger."
+      },
+      "familyBilingual": {
+        "title": "Familial et personnel",
+        "body": "Une entreprise familiale de Floride du Sud qui vous traite comme un invité. Écrivez-nous dans la langue de votre choix."
+      },
+      "flexible": {
+        "title": "Sans contact et pratique",
+        "body": "La prise en charge sans contact est disponible sur chaque location avec un accès sécurisé par boîte à clés — récupérez à votre rythme."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "Comment ça marche",
+    "title": "De la recherche aux clés en quatre étapes simples.",
+    "description": "Pas de comptoir, pas de surprises — juste une remise rapide et conviviale là où cela vous arrange le mieux."
+  },
+  "fleet": {
+    "eyebrow": "La flotte",
+    "title": "Des voitures propres et fiables pour tous vos projets en Floride du Sud.",
+    "description": "Un aperçu de nos véhicules les plus réservés — des options économiques pratiques et d'autres premium plus récentes, toutes soigneusement entretenues. Consultez les disponibilités en temps réel et toute la flotte à tout moment.",
+    "tripPlannerPrompt": "Vous ne savez pas quoi choisir pour votre trajet ? Essayez le planificateur de trajet"
+  },
+  "reviews": {
+    "eyebrow": "Ce que disent les clients",
+    "title": "Plus de 1 400 avis cinq étoiles de clients Turo dans toute la Floride du Sud.",
+    "description": "La raison pour laquelle nous avons obtenu le statut All-Star Host — des voitures propres, une communication claire et une remise facile, trajet après trajet.",
+    "ariaLabel": "Avis cinq étoiles de clients Turo",
+    "altPattern": "Avis cinq étoiles Turo de {{name}} pour le {{vehicle}}"
+  },
+  "faqPreview": {
+    "title": "Vos questions, nos réponses.",
+    "description": "Quelques-unes des questions que les clients nous posent le plus. Plus encore dans la FAQ complète."
+  },
+  "quoteForm": {
+    "title": "Parlez-nous de votre trajet"
+  },
+  "contactClose": {
+    "eyebrow": "Commencez",
+    "title": "Parlez-nous de votre trajet.",
+    "description": "Partagez quelques détails et un membre de notre équipe vous répondra dès que possible. Vous préférez parler ? Joignez une vraie personne ci-dessous.",
+    "phoneLabel": "Appelez ou écrivez, 7 jours sur 7",
+    "emailLabel": "Nous répondrons dès que possible",
+    "locationTitle": "Fort Lauderdale et Miami",
+    "locationSub": "Livraison à Broward et Miami-Dade"
+  }
+}

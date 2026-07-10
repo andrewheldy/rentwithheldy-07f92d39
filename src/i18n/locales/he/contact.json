@@ -1,1 +1,58 @@
-{}
+{
+  "meta": {
+    "title": "צרו קשר עם Rent With Heldy | השכרת רכב ב-Fort Lauderdale וב-Miami",
+    "description": "צרו קשר עם Rent With Heldy לקבלת תמיכה מהירה ואישית בהשכרת הרכב שלכם ב-Fort Lauderdale, ב-Miami ובדרום פלורידה. התקשרו, שלחו הודעה או הזמינו אונליין עוד היום."
+  },
+  "hero": {
+    "title": "צרו קשר עם Rent With Heldy",
+    "subtitle": "הדרך המהירה ביותר לצאת לדרך. התקשרו ישירות או שלחו לנו הודעה, וחבר מהצוות שלנו יחזור אליכם בהקדם."
+  },
+  "cards": {
+    "call": {
+      "title": "התקשרו אלינו",
+      "note": "דברו עם בן אדם אמיתי"
+    },
+    "email": {
+      "title": "אימייל",
+      "note": "נחזור אליכם בהקדם"
+    },
+    "serviceArea": {
+      "title": "אזור השירות",
+      "value": "Fort Lauderdale • Miami • דרום פלורידה"
+    }
+  },
+  "form": {
+    "heading": "צרו קשר עם Rent With Heldy",
+    "reasonPlaceholder": "בחרו סיבה",
+    "reasons": {
+      "book": "הזמנת השכרה",
+      "existingBooking": "שאלה על הזמנה קיימת",
+      "bodyShop": "השכרה דרך מוסך / ביטוח",
+      "hotelDelivery": "מסירה למלון",
+      "airportPickup": "איסוף בשדה התעופה",
+      "rentToOwn": "פנייה בנושא שכירות לבעלות",
+      "partner": "פנייה של שותף / עסק",
+      "other": "אחר"
+    },
+    "fields": {
+      "name": "שם מלא",
+      "phone": "טלפון נייד",
+      "email": "אימייל (אופציונלי)",
+      "emailPlaceholder": "you@email.com",
+      "reason": "סיבת הפנייה",
+      "message": "הודעה",
+      "messagePlaceholder": "ספרו לנו איך נוכל לעזור…"
+    },
+    "submit": "שליחת הודעה",
+    "sending": "שולח…",
+    "preferToTalk": "מעדיפים לדבר? התקשרו"
+  },
+  "toast": {
+    "checkDetailsTitle": "בדקו את הפרטים שלכם",
+    "checkDetailsDesc": "שם, טלפון, סיבה והודעה הם שדות חובה.",
+    "errorTitle": "לא ניתן היה לשלוח את ההודעה",
+    "errorDesc": "אנא התקשרו ישירות למספר {{phone}}.",
+    "successTitle": "ההודעה נשלחה!",
+    "successDesc": "נחזור אליכם בהקדם."
+  }
+}
