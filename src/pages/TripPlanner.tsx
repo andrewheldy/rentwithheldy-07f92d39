@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -8,17 +9,19 @@ import {
 } from "@/lib/seo-schemas";
 
 const TripPlanner = () => {
+  const { t } = useTranslation("tripPlanner");
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Trip Planner | Find the Right Rental Car | Rent With Heldy"
-        description="Tell us about your trip — travelers, luggage, and vibe — and we'll recommend the right rental car from our South Florida fleet."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/trip-planner"
         jsonLd={[
           localBusinessSchema,
           buildBreadcrumbSchema([
-            { name: "Home", path: "/" },
-            { name: "Trip Planner", path: "/trip-planner" },
+            { name: t("breadcrumb.home"), path: "/" },
+            { name: t("breadcrumb.tripPlanner"), path: "/trip-planner" },
           ]),
         ]}
       />
@@ -27,10 +30,10 @@ const TripPlanner = () => {
         <section className="bg-secondary py-12">
           <div className="container mx-auto px-4 max-w-3xl text-center">
             <h1 className="text-4xl font-bold text-foreground mb-3">
-              Plan your South Florida trip
+              {t("hero.title")}
             </h1>
             <p className="text-lg text-muted-foreground">
-              Three quick questions. We'll match you to the right vehicle in our fleet.
+              {t("hero.subtitle")}
             </p>
           </div>
         </section>

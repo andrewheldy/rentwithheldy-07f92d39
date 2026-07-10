@@ -54,7 +54,8 @@
       "description": "Cómo Rent With Heldy recopila, usa y protege tu información personal cuando reservas un alquiler de auto en Fort Lauderdale, Miami o el sur de Florida."
     },
     "title": "Política de Privacidad",
-    "lastUpdated": "Última actualización: {{date}}"
+    "lastUpdated": "Fecha de vigencia: {{date}}",
+    "effectiveDate": "10 de julio de 2026"
   },
   "terms": {
     "meta": {
@@ -62,7 +63,8 @@
       "description": "Términos que rigen las reservas, los alquileres y el uso del sitio web y el servicio de alquiler de autos de Rent With Heldy en Fort Lauderdale, Miami y el sur de Florida."
     },
     "title": "Términos de Servicio",
-    "lastUpdated": "Última actualización: {{date}}"
+    "lastUpdated": "Fecha de vigencia: {{date}}",
+    "effectiveDate": "10 de julio de 2026"
   },
   "englishNotice": {
     "heading": "Información legal",

@@ -1,5 +1,6 @@
 {
   "layout": {
+    "breadcrumbLabel": "Fil d’Ariane",
     "breadcrumbHome": "Accueil",
     "talkToPerson": "Parlez à une vraie personne :",
     "valueProps": {
@@ -43,7 +44,7 @@
       "Commencez votre trajet et contactez-nous directement en cas de besoin."
     ],
     "testimonial": {
-      "quote": "Le processus était simple et pratique. La voiture était propre et bien entretenue. Le système de navette était facile, les opérateurs étaient aimables et je réserverais à nouveau.",
+      "quote": "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
       "name": "Reinah",
       "location": "Client Turo vérifié"
     },
@@ -124,7 +125,7 @@
       "Retrouvez-nous pour la remise et commencez votre trajet."
     ],
     "testimonial": {
-      "quote": "Excellent service client, même après quelques complications.",
+      "quote": "Great customer service, even after dealing with some complications.",
       "name": "Monique",
       "location": "Client Turo vérifié"
     },
@@ -170,7 +171,7 @@
     ],
     "disclaimer": "Le remboursement de l'assurance dépend de la police et du dossier du client. Nous pouvons fournir la documentation de location au besoin.",
     "testimonial": {
-      "quote": "Économe en carburant, il a fait le travail, la navette était top et si vous avez juste besoin d'une voiture simple et fiable, c'est celle-là.",
+      "quote": "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
       "name": "Madisol",
       "location": "Client Turo vérifié"
     },
@@ -215,7 +216,7 @@
       "Poursuivez votre trajet sans détour inutile par l'aéroport."
     ],
     "testimonial": {
-      "quote": "La voiture était la plus propre que j'aie jamais vue, le service client était le meilleur de tous. Je recommande vivement. Prenez le temps de découvrir cet hôte.",
+      "quote": "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
       "name": "Christopher",
       "location": "Client Turo vérifié"
     },

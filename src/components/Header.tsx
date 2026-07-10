@@ -163,7 +163,7 @@ const Header = () => {
                   <LanguageSelector variant="block" />
                 </div>
 
-                <div className="flex-1 overflow-y-auto p-5">
+                <div className="min-h-0 flex-1 overflow-y-auto p-5">
                   <SheetClose asChild>
                     <Link to="/fleet" className="block py-2.5 text-base font-medium text-foreground">
                       {t("links.fleet")}

@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Users, Briefcase, MapPin, ArrowRight, ArrowLeft, Sparkles, RotateCcw } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Users, Briefcase, MapPin, ArrowRight, ArrowLeft, Sparkles, RotateCcw, type LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -13,17 +14,14 @@ type Style = "city" | "beach" | "road";
 
 interface SizeTier {
   key: "compact" | "midsize" | "suv" | "fullsuv";
-  label: string;
   seats: number;
-  bags: string;
-  blurb: string;
 }
 
 const TIERS: Record<SizeTier["key"], SizeTier> = {
-  compact: { key: "compact", label: "Compact / Economy", seats: 4, bags: "2–3 bags", blurb: "Easy parking, great fuel economy — perfect for couples or solo trips." },
-  midsize: { key: "midsize", label: "Mid-Size Sedan", seats: 5, bags: "3–4 bags", blurb: "Comfortable cabin and trunk space for small families or business travel." },
-  suv: { key: "suv", label: "Mid-Size SUV", seats: 5, bags: "4–5 bags", blurb: "Extra cargo room and elevated ride — ideal for beach days and active trips." },
-  fullsuv: { key: "fullsuv", label: "Full-Size SUV / 3-Row", seats: 7, bags: "6+ bags", blurb: "Maximum space for big groups, gear, and long road trips." },
+  compact: { key: "compact", seats: 4 },
+  midsize: { key: "midsize", seats: 5 },
+  suv: { key: "suv", seats: 5 },
+  fullsuv: { key: "fullsuv", seats: 7 },
 };
 
 // Heuristic classifier — keeps logic in the frontend
@@ -50,6 +48,7 @@ const recommend = (party: Party, luggage: Luggage, style: Style): SizeTier["key"
 };
 
 const VacationQuiz = () => {
+  const { t } = useTranslation("tripPlanner");
   const { data: vehicles = [], isLoading } = useVehicles();
   const [step, setStep] = useState(0);
   const [party, setParty] = useState<Party | null>(null);
@@ -89,11 +88,23 @@ const VacationQuiz = () => {
     setStyle(null);
   };
 
-  const Option = ({ active, onClick, icon: Icon, label, sub }: any) => (
+  const Option = ({
+    active,
+    onClick,
+    icon: Icon,
+    label,
+    sub,
+  }: {
+    active: boolean;
+    onClick: () => void;
+    icon: LucideIcon;
+    label: string;
+    sub?: string;
+  }) => (
     <button
       type="button"
       onClick={onClick}
-      className={`text-left p-5 rounded-xl border-2 transition-all hover:shadow-card-hover ${
+      className={`text-start p-5 rounded-xl border-2 transition-all hover:shadow-card-hover ${
         active
           ? "border-primary bg-primary/5 shadow-tropical"
           : "border-border bg-card hover:border-primary/40"
@@ -112,37 +123,41 @@ const VacationQuiz = () => {
   );
 
   return (
-    <Card className="border-none shadow-card-hover overflow-hidden">
+    <Card data-testid="trip-planner" className="border-none shadow-card-hover overflow-hidden">
       <CardContent className="p-6 md:p-10">
         <div className="flex items-center justify-between mb-2">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> Trip Planner
+            <Sparkles className="h-3.5 w-3.5" /> {t("quiz.eyebrow")}
           </div>
           {step > 0 && step < 3 && (
             <span className="text-xs text-muted-foreground">
-              Step {step + 1} of {totalSteps}
+              {t("quiz.stepOf", { current: step + 1, total: totalSteps })}
             </span>
           )}
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-          Find the right car for your trip
+          {t("quiz.title")}
         </h2>
         <p className="text-muted-foreground mb-6">
-          Answer 3 quick questions and we'll match you to vehicles in our fleet.
+          {t("quiz.subtitle")}
         </p>
 
-        <Progress value={progress} className="mb-8 h-2" />
+        <Progress
+          value={progress}
+          aria-label={t("quiz.progressLabel")}
+          className="mb-8 h-2"
+        />
 
         {/* Step 0: party size */}
         {step === 0 && (
-          <div>
-            <h3 className="font-semibold text-lg mb-4">How many travelers?</h3>
+          <div data-testid="trip-party-step">
+            <h3 className="font-semibold text-lg mb-4">{t("questions.party.title")}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {(["1-2", "3-4", "5-6", "7+"] as Party[]).map((p) => (
                 <Option
                   key={p}
                   icon={Users}
-                  label={`${p} people`}
+                  label={t("questions.party.option", { count: p })}
                   active={party === p}
                   onClick={() => {
                     setParty(p);
@@ -156,27 +171,27 @@ const VacationQuiz = () => {
 
         {/* Step 1: luggage */}
         {step === 1 && (
-          <div>
-            <h3 className="font-semibold text-lg mb-4">How much luggage?</h3>
+          <div data-testid="trip-luggage-step">
+            <h3 className="font-semibold text-lg mb-4">{t("questions.luggage.title")}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Option
                 icon={Briefcase}
-                label="Light"
-                sub="Carry-ons only"
+                label={t("questions.luggage.options.light.label")}
+                sub={t("questions.luggage.options.light.description")}
                 active={luggage === "light"}
                 onClick={() => { setLuggage("light"); setStep(2); }}
               />
               <Option
                 icon={Briefcase}
-                label="Standard"
-                sub="1 checked bag each"
+                label={t("questions.luggage.options.standard.label")}
+                sub={t("questions.luggage.options.standard.description")}
                 active={luggage === "standard"}
                 onClick={() => { setLuggage("standard"); setStep(2); }}
               />
               <Option
                 icon={Briefcase}
-                label="Heavy"
-                sub="Lots of bags or gear"
+                label={t("questions.luggage.options.heavy.label")}
+                sub={t("questions.luggage.options.heavy.description")}
                 active={luggage === "heavy"}
                 onClick={() => { setLuggage("heavy"); setStep(2); }}
               />
@@ -186,27 +201,27 @@ const VacationQuiz = () => {
 
         {/* Step 2: trip style */}
         {step === 2 && (
-          <div>
-            <h3 className="font-semibold text-lg mb-4">What's the trip vibe?</h3>
+          <div data-testid="trip-style-step">
+            <h3 className="font-semibold text-lg mb-4">{t("questions.style.title")}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Option
                 icon={MapPin}
-                label="City & Airport"
-                sub="Mostly around town"
+                label={t("questions.style.options.city.label")}
+                sub={t("questions.style.options.city.description")}
                 active={style === "city"}
                 onClick={() => { setStyle("city"); setStep(3); }}
               />
               <Option
                 icon={MapPin}
-                label="Beach & Family"
-                sub="Coolers, towels, beach gear"
+                label={t("questions.style.options.beach.label")}
+                sub={t("questions.style.options.beach.description")}
                 active={style === "beach"}
                 onClick={() => { setStyle("beach"); setStep(3); }}
               />
               <Option
                 icon={MapPin}
-                label="Road Trip"
-                sub="Long miles, full cargo"
+                label={t("questions.style.options.road.label")}
+                sub={t("questions.style.options.road.description")}
                 active={style === "road"}
                 onClick={() => { setStyle("road"); setStep(3); }}
               />
@@ -216,37 +231,37 @@ const VacationQuiz = () => {
 
         {/* Step 3: result */}
         {step === 3 && tier && (
-          <div className="animate-fade-in">
+          <div data-testid="trip-result" className="animate-fade-in">
             <div className="bg-gradient-tropical rounded-xl p-6 text-primary-foreground mb-6">
               <div className="text-xs uppercase tracking-wider font-semibold opacity-90 mb-2">
-                Recommended for your trip
+                {t("result.recommended")}
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">{tier.label}</h3>
-              <p className="opacity-90 mb-4">{tier.blurb}</p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">{t(`tiers.${tier.key}.label`)}</h3>
+              <p className="opacity-90 mb-4">{t(`tiers.${tier.key}.description`)}</p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary" className="bg-primary-foreground/15 text-primary-foreground border-none">
-                  <Users className="h-3 w-3 mr-1" /> Fits ~{tier.seats}
+                  <Users className="h-3 w-3" /> {t("result.fits", { seats: tier.seats })}
                 </Badge>
                 <Badge variant="secondary" className="bg-primary-foreground/15 text-primary-foreground border-none">
-                  <Briefcase className="h-3 w-3 mr-1" /> {tier.bags}
+                  <Briefcase className="h-3 w-3" /> {t(`tiers.${tier.key}.bags`)}
                 </Badge>
               </div>
             </div>
 
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-semibold text-lg">
-                {matches.length > 0 ? "Available in our fleet" : "Check our full fleet"}
+                {matches.length > 0 ? t("result.available") : t("result.checkFullFleet")}
               </h4>
               <Button variant="ghost" size="sm" onClick={reset}>
-                <RotateCcw className="h-4 w-4 mr-1" /> Start over
+                <RotateCcw className="h-4 w-4" /> {t("result.startOver")}
               </Button>
             </div>
 
             {isLoading ? (
-              <div className="text-muted-foreground py-8 text-center">Loading fleet…</div>
+              <div className="text-muted-foreground py-8 text-center">{t("result.loading")}</div>
             ) : matches.length === 0 ? (
               <p className="text-muted-foreground mb-4">
-                Browse our full fleet to see what's available for your dates.
+                {t("result.empty")}
               </p>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -256,7 +271,9 @@ const VacationQuiz = () => {
                       {v.images[0] && (
                         <img
                           src={v.images[0]}
-                          alt={`${v.year} ${v.make} ${v.model}`}
+                          alt={t("result.vehicleImageAlt", {
+                            title: `${v.year} ${v.make} ${v.model}`,
+                          })}
                           loading="lazy"
                           className="w-full h-full object-cover"
                         />
@@ -264,10 +281,12 @@ const VacationQuiz = () => {
                     </div>
                     <CardContent className="p-4">
                       <div className="font-semibold text-foreground">
-                        {v.year} {v.make} {v.model}
+                        <bdi dir="ltr">{v.year} {v.make} {v.model}</bdi>
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        from ${v.dailyRate}/day
+                        {t("result.priceFrom")} {" "}
+                        <bdi dir="ltr">${v.dailyRate}</bdi>
+                        {t("result.pricePerDay")}
                       </div>
                     </CardContent>
                   </Card>
@@ -281,12 +300,12 @@ const VacationQuiz = () => {
                   size="lg"
                   className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                 >
-                  Check Availability <ArrowRight className="h-4 w-4 ml-1" />
+                  {t("result.checkAvailability")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                 </Button>
               </Link>
               <Link to="/fleet" className="flex-1">
                 <Button size="lg" variant="outline" className="w-full">
-                  See Full Fleet
+                  {t("result.seeFullFleet")}
                 </Button>
               </Link>
             </div>
@@ -297,7 +316,7 @@ const VacationQuiz = () => {
         {step > 0 && step < 3 && (
           <div className="mt-6">
             <Button variant="ghost" size="sm" onClick={() => setStep(step - 1)}>
-              <ArrowLeft className="h-4 w-4 mr-1" /> Back
+              <ArrowLeft className="h-4 w-4 rtl:-scale-x-100" /> {t("quiz.back")}
             </Button>
           </div>
         )}

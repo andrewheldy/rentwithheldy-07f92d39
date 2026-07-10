@@ -1,5 +1,6 @@
 {
   "layout": {
+    "breadcrumbLabel": "Trilha de navegação",
     "breadcrumbHome": "Início",
     "talkToPerson": "Fale com uma pessoa de verdade:",
     "valueProps": {
@@ -43,7 +44,7 @@
       "Comece sua viagem e fale com a gente direto se precisar de ajuda."
     ],
     "testimonial": {
-      "quote": "O processo foi fácil e prático. O carro estava limpo e bem conservado. O sistema de transporte foi simples, os atendentes foram simpáticos e eu reservaria de novo.",
+      "quote": "Process was easy and convenient. The car was clean and well maintained. The shuttle system was easy, operators were friendly and I would book again.",
       "name": "Reinah",
       "location": "Hóspede verificado do Turo"
     },
@@ -124,7 +125,7 @@
       "Encontre a gente para a entrega e comece sua viagem."
     ],
     "testimonial": {
-      "quote": "Ótimo atendimento ao cliente, mesmo depois de lidar com algumas complicações.",
+      "quote": "Great customer service, even after dealing with some complications.",
       "name": "Monique",
       "location": "Hóspede verificado do Turo"
     },
@@ -170,7 +171,7 @@
     ],
     "disclaimer": "O reembolso do seguro depende da apólice e do sinistro do cliente. Podemos fornecer a documentação do aluguel quando necessário.",
     "testimonial": {
-      "quote": "Econômico no combustível, deu conta do recado, o transporte foi ótimo e, se você só precisa de um carro simples e confiável, é esse.",
+      "quote": "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
       "name": "Madisol",
       "location": "Hóspede verificado do Turo"
     },
@@ -215,7 +216,7 @@
       "Continue sua viagem sem fazer um desvio desnecessário ao aeroporto."
     ],
     "testimonial": {
-      "quote": "A qualidade do carro foi a mais limpa de todas, o atendimento foi o melhor de todos. Recomendo muito. Não deixe de conferir esse host.",
+      "quote": "Car quality was cleanest ever, customer service was the best ever. I highly recommend. Please make sure to check out this host.",
       "name": "Christopher",
       "location": "Hóspede verificado do Turo"
     },

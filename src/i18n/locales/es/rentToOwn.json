@@ -4,6 +4,7 @@
     "description": "Un camino de alquiler con opción a compra pensado para conductores de Uber, Lyft, DoorDash, Uber Eats e Instacart. Comienza con un Período de Calificación de 90 días. Programas personalizados según el vehículo y tu situación."
   },
   "hero": {
+    "imageAlt": "Dos SUV estacionados junto al paseo marítimo de Miami al atardecer, con el horizonte del centro y palmeras al fondo",
     "badge": "Programa de alquiler con opción a compra",
     "title": "Conduce hoy. Sé dueño mañana.",
     "subtitle": "Accede a un vehículo confiable para Uber, Lyft, DoorDash y más mientras avanzas hacia la propiedad del vehículo del que dependes.",

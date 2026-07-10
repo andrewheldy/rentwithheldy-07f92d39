@@ -54,7 +54,8 @@
       "description": "כיצד Rent With Heldy אוספת, משתמשת ומגנה על המידע האישי שלכם כשאתם מזמינים השכרת רכב ב-Fort Lauderdale, ב-Miami או בדרום פלורידה."
     },
     "title": "מדיניות פרטיות",
-    "lastUpdated": "עודכן לאחרונה: {{date}}"
+    "lastUpdated": "תאריך כניסה לתוקף: {{date}}",
+    "effectiveDate": "10 ביולי 2026"
   },
   "terms": {
     "meta": {
@@ -62,7 +63,8 @@
       "description": "התנאים החלים על הזמנות, השכרות ושימוש באתר ובשירות השכרת הרכב של Rent With Heldy ב-Fort Lauderdale, ב-Miami ובדרום פלורידה."
     },
     "title": "תנאי שירות",
-    "lastUpdated": "עודכן לאחרונה: {{date}}"
+    "lastUpdated": "תאריך כניסה לתוקף: {{date}}",
+    "effectiveDate": "10 ביולי 2026"
   },
   "englishNotice": {
     "heading": "מידע משפטי",

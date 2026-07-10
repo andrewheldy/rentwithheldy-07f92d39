@@ -38,6 +38,21 @@ const ENGLISH_ONLY = {
   services: ["lossOfUse.body", "lossOfUse.faqs"], // Loss-of-Use legal body + legal FAQs
 };
 
+// Authentic testimonial quotes and customer names must remain verbatim in
+// their source language. Labels such as "Verified Turo guest" still localize.
+const ORIGINAL_LANGUAGE = {
+  services: [
+    "airport.testimonial.quote",
+    "airport.testimonial.name",
+    "hotel.testimonial.quote",
+    "hotel.testimonial.name",
+    "bodyShop.testimonial.quote",
+    "bodyShop.testimonial.name",
+    "cruise.testimonial.quote",
+    "cruise.testimonial.name",
+  ],
+};
+
 // Values that are legitimately identical across every locale (proper nouns,
 // codes, symbols). A translated string equal to one of these is NOT flagged.
 const PROPER_NOUN_VALUES = new Set([
@@ -54,6 +69,10 @@ function isEnglishOnly(ns, key) {
   return (ENGLISH_ONLY[ns] ?? []).some(
     (p) => key === p || key.startsWith(p + "."),
   );
+}
+
+function isOriginalLanguage(ns, key) {
+  return (ORIGINAL_LANGUAGE[ns] ?? []).includes(key);
 }
 
 function markup(str) {
@@ -185,11 +204,21 @@ for (const target of TARGETS) {
         console.error(`✗ ${target}/${ns}: empty value at "${k}"`);
       } else {
         translated++;
+        if (
+          isOriginalLanguage(nsBase, k) &&
+          flat[k] !== enFlat[ns][k]
+        ) {
+          hardErrors++;
+          console.error(
+            `✗ ${target}/${ns}: original-language testimonial changed at "${k}"`,
+          );
+        }
         // English-identical warning (skip legal + proper nouns).
         if (
           typeof flat[k] === "string" &&
           flat[k] === enFlat[ns][k] &&
           !isEnglishOnly(nsBase, k) &&
+          !isOriginalLanguage(nsBase, k) &&
           !PROPER_NOUN_VALUES.has(flat[k])
         ) {
           localeWarnings.push(`${ns} → "${k}" identical to English: "${flat[k]}"`);

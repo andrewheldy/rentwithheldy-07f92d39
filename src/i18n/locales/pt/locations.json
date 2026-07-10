@@ -1,5 +1,6 @@
 {
   "layout": {
+    "breadcrumbLabel": "Trilha de navegação",
     "breadcrumbHome": "Início",
     "viewFleet": "Ver a frota",
     "exploreMore": {

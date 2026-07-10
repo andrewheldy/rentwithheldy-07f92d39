@@ -5,7 +5,8 @@
   },
   "book": {
     "title": "Book your vehicle",
-    "subtitle": "Choose your dates and pick from our live fleet across Fort Lauderdale, Miami, and South Florida."
+    "subtitle": "Choose your dates and pick from our live fleet across Fort Lauderdale, Miami, and South Florida.",
+    "widgetLabel": "Live vehicle availability and booking"
   },
   "confirmation": {
     "notFound": {

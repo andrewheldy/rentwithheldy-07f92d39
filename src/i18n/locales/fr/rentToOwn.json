@@ -4,6 +4,7 @@
     "description": "Une formule de location avec option d'achat conçue pour les chauffeurs Uber, Lyft, DoorDash, Uber Eats et Instacart. Commencez par une période de qualification de 90 jours. Programmes personnalisés selon le véhicule et votre situation."
   },
   "hero": {
+    "imageAlt": "Deux SUV garés au bord de l'eau à Miami à l'heure dorée, avec la silhouette du centre-ville et des palmiers en arrière-plan",
     "badge": "Programme location avec option d'achat",
     "title": "Roulez aujourd'hui. Devenez propriétaire demain.",
     "subtitle": "Accédez à un véhicule fiable pour Uber, Lyft, DoorDash et plus encore tout en avançant vers la propriété du véhicule dont vous dépendez.",

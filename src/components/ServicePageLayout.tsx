@@ -177,7 +177,7 @@ const ServicePageLayout = ({
           </p>
         ))}
         {s.bullets && (
-          <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+          <ul className="list-disc ps-6 space-y-2 text-muted-foreground">
             {s.bullets.map((b, i) => (
               <li key={i} className="leading-relaxed">
                 {b}
@@ -204,13 +204,13 @@ const ServicePageLayout = ({
         <section className="bg-gradient-subtle border-b border-border">
           <div className="container mx-auto px-4 py-10 md:py-14">
             <nav
-              aria-label="Breadcrumb"
+              aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
               <Link to="/" className="hover:text-primary">
                 {t("layout.breadcrumbHome")}
               </Link>
-              <ChevronRight className="h-3 w-3" />
+              <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
               <span className="text-foreground">{crumbLabel}</span>
             </nav>
 
@@ -452,12 +452,16 @@ const ServicePageLayout = ({
                   <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-lg italic leading-relaxed text-foreground">
+              <p
+                dir="ltr"
+                lang="en"
+                className="text-lg italic leading-relaxed text-foreground"
+              >
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
               <p className="mt-4 text-sm font-semibold text-muted-foreground">
-                {testimonial.name}
-                {testimonial.location ? `, ${testimonial.location}` : ""}
+                <bdi dir="ltr">{testimonial.name}</bdi>
+                {testimonial.location ? <>, {testimonial.location}</> : null}
               </p>
             </div>
           </section>

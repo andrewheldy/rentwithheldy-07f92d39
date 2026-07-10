@@ -5,7 +5,8 @@
   },
   "book": {
     "title": "Réservez votre véhicule",
-    "subtitle": "Choisissez vos dates et sélectionnez parmi notre flotte en temps réel à Fort Lauderdale, Miami et en Floride du Sud."
+    "subtitle": "Choisissez vos dates et sélectionnez parmi notre flotte en temps réel à Fort Lauderdale, Miami et en Floride du Sud.",
+    "widgetLabel": "Disponibilités et réservation des véhicules en temps réel"
   },
   "confirmation": {
     "notFound": {

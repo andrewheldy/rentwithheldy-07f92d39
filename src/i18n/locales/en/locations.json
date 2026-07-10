@@ -1,5 +1,6 @@
 {
   "layout": {
+    "breadcrumbLabel": "Breadcrumb",
     "breadcrumbHome": "Home",
     "viewFleet": "View Fleet",
     "exploreMore": {

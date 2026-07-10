@@ -118,7 +118,7 @@ const HowItWorks = () => {
             <h2 className="text-2xl font-bold text-foreground mb-4">
               {t("pickup.heading")}
             </h2>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+            <ul className="list-disc ps-6 space-y-2 text-muted-foreground">
               {(t("pickup.items", { returnObjects: true }) as string[]).map((item, i) => (
                 <li key={i}>{item}</li>
               ))}

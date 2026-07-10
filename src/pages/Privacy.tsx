@@ -23,7 +23,7 @@ const Privacy = () => {
       </h1>
       <p className="text-sm text-muted-foreground mb-8">
         {t("privacy.lastUpdated", {
-          date: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+          date: t("privacy.effectiveDate"),
         })}
       </p>
 

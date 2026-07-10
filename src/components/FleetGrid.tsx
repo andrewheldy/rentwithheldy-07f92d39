@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, Briefcase } from "lucide-react";
 import type { Vehicle } from "@/hooks/useVehicles";
+import { localizeVehicle } from "@/i18n/vehicleCopy";
 
 interface FleetGridProps {
   vehicles: Vehicle[];
@@ -12,8 +13,11 @@ interface FleetGridProps {
 }
 
 const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
-  const { t } = useTranslation(["fleet", "common"]);
-  const list = limit ? vehicles.slice(0, limit) : vehicles;
+  const { t, i18n } = useTranslation(["fleet", "common"]);
+  const sourceList = limit ? vehicles.slice(0, limit) : vehicles;
+  const list = sourceList.map((vehicle) =>
+    localizeVehicle(vehicle, t, i18n.language),
+  );
 
   if (list.length === 0) {
     return (
@@ -78,7 +82,7 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                   {image ? (
                     <img
                       src={image}
-                      alt={`${title} available for rent in South Florida`}
+                      alt={t("grid.imageAlt", { title })}
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -90,10 +94,10 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                 </div>
                 <CardContent className="p-5 flex flex-col flex-1">
                   <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {title}
+                    <bdi dir="ltr">{title}</bdi>
                   </h3>
                   <p className="text-xs uppercase tracking-wide text-primary font-semibold mb-3">
-                    {v.color}
+                    <span dir="auto">{v.color}</span>
                   </p>
                   <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
                     {v.description}

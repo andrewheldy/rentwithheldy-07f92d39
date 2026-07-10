@@ -23,7 +23,7 @@ const Terms = () => {
       </h1>
       <p className="text-sm text-muted-foreground mb-8">
         {t("terms.lastUpdated", {
-          date: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+          date: t("terms.effectiveDate"),
         })}
       </p>
 

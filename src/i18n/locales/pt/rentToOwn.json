@@ -4,6 +4,7 @@
     "description": "Um caminho de aluguel com opção de compra feito para motoristas de Uber, Lyft, DoorDash, Uber Eats e Instacart. Comece com um Período de Qualificação de 90 dias. Programas personalizados conforme o veículo e a sua situação."
   },
   "hero": {
+    "imageAlt": "Dois SUVs estacionados à beira-mar em Miami na hora dourada, com o horizonte do centro e palmeiras ao fundo",
     "badge": "Programa de aluguel com opção de compra",
     "title": "Dirija hoje. Seja dono amanhã.",
     "subtitle": "Tenha acesso a um veículo confiável para Uber, Lyft, DoorDash e mais enquanto avança rumo à propriedade do veículo do qual você depende.",

@@ -55,7 +55,7 @@ const Hero = () => {
         <source srcSet={heroSunsetWebp} type="image/webp" />
         <img
           src={heroSunset}
-          alt="Sunset drive along a South Florida causeway toward the Miami skyline"
+          alt={t("hero.imageAlt")}
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[68%_center] lg:object-center"
           fetchPriority="high"
           decoding="async"

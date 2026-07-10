@@ -4,6 +4,7 @@
     "description": "A Rent-to-Own path built for Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers. Start with a 90-day Qualifying Period. Programs customized to the vehicle and your situation."
   },
   "hero": {
+    "imageAlt": "Two SUVs parked along a Miami waterfront at golden hour with the downtown skyline and palm trees in the background",
     "badge": "Rent-to-Own Program",
     "title": "Drive Today. Own Tomorrow.",
     "subtitle": "Get access to a reliable vehicle for Uber, Lyft, DoorDash, and more while working toward ownership of the vehicle you depend on.",
