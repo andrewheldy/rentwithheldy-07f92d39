@@ -96,12 +96,14 @@ const Hero = () => {
             {t("hero.title")}
           </motion.h1>
 
-          <motion.p
-            variants={item}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
-          >
-            {t("hero.description")}
-          </motion.p>
+          <motion.div variants={item} className="mt-6 max-w-xl space-y-2">
+            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
+              {t("hero.descriptionLine1")}
+            </p>
+            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
+              {t("hero.descriptionLine2")}
+            </p>
+          </motion.div>
 
           <motion.ul
             variants={item}
