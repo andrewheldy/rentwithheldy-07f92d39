@@ -1,18 +1,35 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Star, Phone, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 
 /* ---------------------------------------------------------------------------
    HERO MEDIA — LICENSED PLACEHOLDER, VIDEO-READY
-   V1 ships a self-hosted licensed South Florida golden-hour still (~211 KB).
-   It is a PLACEHOLDER: swap for real Rent With Heldy photography (a key handoff
-   at a hotel porte-cochère, a fleet SUV curbside at FLL arrivals). The still
-   lives in the exact container the future loop will occupy — see HeroMedia
-   below. To move to video later, no layout/scrim/motion changes are needed.
+   V1 ships a THREE-IMAGE time-of-day sequence with the SAME composition (an
+   SUV on a South Florida causeway toward the Miami skyline). The sky quietly
+   progresses golden hour -> sunset -> blue hour via long crossfades, so the
+   hero feels like a living scene, never a slideshow. It is a PLACEHOLDER.
+
+   To move to real footage later, replace ONLY the media stack inside
+   <HeroMedia> with a single looping element, e.g.:
+     <video autoPlay muted loop playsInline poster={goldenHour}
+       className="absolute inset-0 h-full w-full object-cover object-[68%_50%]">
+       <source src="/media/hero-loop.mp4" type="video/mp4" />
+     </video>
+   The parallax wrapper, scrims, grain, drift, copy, CTAs, typography and
+   layout below stay exactly as they are.
 --------------------------------------------------------------------------- */
-import heroPoster from "@/assets/hero-south-florida.jpg";
+import goldenHour from "@/assets/hero-goldenhour.jpg";
+import sunset from "@/assets/hero-sunset.jpg";
+import blueHour from "@/assets/hero-bluehour.jpg";
+
+const SEQUENCE = [
+  { src: goldenHour, alt: "Golden-hour drive along the bay toward the Miami skyline" },
+  { src: sunset, alt: "Sunset over Biscayne Bay as the city lights begin to glow" },
+  { src: blueHour, alt: "Blue-hour skyline drive into a South Florida evening" },
+];
 
 // Floating light-grain tile (adds filmic texture without hurting LCP).
 const GRAIN =
@@ -30,6 +47,10 @@ const TRUST = [
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  // Defer mounting images 2 & 3 until after the first paint so only the
+  // golden-hour frame competes for LCP.
+  const [deferReady, setDeferReady] = useState(false);
 
   // Subtle scroll parallax — the media drifts slower than the copy.
   const { scrollYProgress } = useScroll({
@@ -37,6 +58,37 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
   const mediaY = useTransform(scrollYProgress, [0, 1], ["-3%", "9%"]);
+
+  // Mount the later frames once the page has settled (well before first crossfade).
+  useEffect(() => {
+    if (reduce) return;
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      setDeferReady(true);
+    };
+    if (document.readyState === "complete") {
+      const id = window.setTimeout(go, 800);
+      return () => window.clearTimeout(id);
+    }
+    window.addEventListener("load", go, { once: true });
+    const fallback = window.setTimeout(go, 3000);
+    return () => {
+      window.removeEventListener("load", go);
+      window.clearTimeout(fallback);
+    };
+  }, [reduce]);
+
+  // Advance the sky every ~11s once the frames are ready.
+  useEffect(() => {
+    if (reduce || !deferReady) return;
+    const id = window.setInterval(
+      () => setActive((a) => (a + 1) % SEQUENCE.length),
+      11000,
+    );
+    return () => window.clearInterval(id);
+  }, [reduce, deferReady]);
 
   const rise = reduce ? 0 : 18;
   const container = {
@@ -57,33 +109,44 @@ const Hero = () => {
       ref={sectionRef}
       className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-ink lg:min-h-[calc(100svh-4rem)]"
     >
-      {/* ===== HeroMedia: the swap point (poster today → hero-loop.mp4 later) =====
-          Replace the <motion.img> below with, keeping everything else identical:
-            <video autoPlay muted loop playsInline poster={heroPoster}
-              className="absolute inset-0 h-full w-full object-cover object-[center_55%]">
-              <source src="/media/hero-loop.mp4" type="video/mp4" />
-            </video>
-      ==================================================================== */}
+      {/* Preload only the first frame for LCP */}
+      <Helmet>
+        <link rel="preload" as="image" href={goldenHour} fetchpriority="high" />
+      </Helmet>
+
+      {/* ===== HeroMedia: the swap point (image sequence today → hero-loop.mp4 later) ===== */}
       <motion.div
         style={reduce ? undefined : { y: mediaY }}
         className="absolute inset-x-0 -top-[8%] -z-10 h-[116%]"
       >
-        <motion.img
-          src={heroPoster}
-          alt="Golden-hour light over South Florida — the start of an easy trip"
-          className="h-full w-full object-cover object-[center_55%]"
-          fetchPriority="high"
-          decoding="async"
-          width={1600}
-          height={1067}
-          initial={reduce ? undefined : { scale: 1 }}
-          animate={reduce ? undefined : { scale: 1.03 }}
-          transition={
-            reduce
-              ? undefined
-              : { duration: 20, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
-          }
-        />
+        {SEQUENCE.map((frame, i) => {
+          if (i > 0 && !deferReady) return null;
+          return (
+            <motion.img
+              key={frame.src}
+              src={frame.src}
+              alt={i === 0 ? frame.alt : ""}
+              aria-hidden={i === 0 ? undefined : true}
+              className="absolute inset-0 h-full w-full object-cover object-[68%_50%]"
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding="async"
+              width={1600}
+              height={686}
+              initial={{ opacity: i === 0 ? 1 : 0, scale: 1 }}
+              animate={{
+                opacity: active === i ? 1 : 0,
+                scale: reduce ? 1 : 1.03,
+              }}
+              transition={{
+                opacity: { duration: 2.6, ease: [0.4, 0, 0.2, 1] },
+                scale: reduce
+                  ? { duration: 0 }
+                  : { duration: 20, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
+              }}
+            />
+          );
+        })}
       </motion.div>
 
       {/* Depth layer: slow drifting warm/teal light */}
