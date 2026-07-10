@@ -6,6 +6,7 @@ import BookingDialog from "@/components/BookingDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { CONTACT_PHONE_DISPLAY } from "@/lib/contact";
 import { useVehicle } from "@/hooks/useVehicles";
 
 const VehicleDetail = () => {
@@ -165,7 +166,7 @@ const VehicleDetail = () => {
                 </p>
                 <div className="flex items-center space-x-2 text-sm">
                   <Phone className="h-4 w-4 text-primary" />
-                  <span className="font-medium">(561) 519-8958</span>
+                  <span className="font-medium">{CONTACT_PHONE_DISPLAY}</span>
                 </div>
               </CardContent>
             </Card>

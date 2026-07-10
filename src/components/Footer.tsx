@@ -1,34 +1,37 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const services = [
-  { to: "/fort-lauderdale-airport-car-rental", label: "Airport Delivery (FLL)" },
-  { to: "/hotel-concierge-rentals", label: "Hotel Delivery" },
-  { to: "/body-shop-delivery", label: "Body Shop Delivery" },
-  { to: "/cruise-port-delivery", label: "Cruise Port Delivery" },
-  { to: "/loss-of-use-claims", label: "Loss of Use Claims" },
-  { to: "/rent-to-own", label: "Rent-To-Own Program" },
-];
+  { to: "/fort-lauderdale-airport-car-rental", key: "airport" },
+  { to: "/hotel-concierge-rentals", key: "hotel" },
+  { to: "/body-shop-delivery", key: "bodyShop" },
+  { to: "/cruise-port-delivery", key: "cruise" },
+  { to: "/loss-of-use-claims", key: "lossOfUse" },
+  { to: "/rent-to-own", key: "rentToOwn" },
+] as const;
 
 const locations = [
-  { to: "/car-rental-fort-lauderdale", label: "Fort Lauderdale" },
-  { to: "/car-rental-miami", label: "Miami" },
-  { to: "/local-car-rentals", label: "Local Car Rentals" },
-  { to: "/fort-lauderdale-airport-car-rental", label: "FLL Airport" },
-];
+  { to: "/car-rental-fort-lauderdale", key: "fortLauderdale" },
+  { to: "/car-rental-miami", key: "miami" },
+  { to: "/local-car-rentals", key: "local" },
+  { to: "/fort-lauderdale-airport-car-rental", key: "fllAirport" },
+] as const;
 
 const company = [
-  { to: "/fleet", label: "Fleet" },
-  { to: "/how-it-works", label: "How It Works" },
-  { to: "/about", label: "About" },
-  { to: "/faq", label: "FAQ" },
-  { to: "/contact", label: "Contact" },
-];
+  { to: "/fleet", key: "fleet" },
+  { to: "/how-it-works", key: "howItWorks" },
+  { to: "/about", key: "about" },
+  { to: "/faq", key: "faq" },
+  { to: "/contact", key: "contact" },
+] as const;
 
 const Footer = () => {
+  const { t } = useTranslation(["footer", "common"]);
   const navigate = useNavigate();
   const { user, isAdmin, signOut } = useAuth();
 
@@ -46,21 +49,21 @@ const Footer = () => {
         <div className="container mx-auto py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <h2 className="text-heading font-bold text-ink">
-              Ready when you are.
+              {t("cta.heading")}
             </h2>
             <p className="mt-1 text-muted-foreground">
-              Book online in minutes, or reach a real person 7 days a week.
+              {t("cta.subheading")}
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link to="/book">
               <Button size="lg" className="w-full sm:w-auto">
-                Book Now <ArrowRight className="h-4 w-4" />
+                {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <a href="tel:+15615198958">
+            <a href={CONTACT_PHONE_HREF}>
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                <Phone className="h-4 w-4" /> Call or Text
+                <Phone className="h-4 w-4" /> {t("common:actions.callOrText")}
               </Button>
             </a>
           </div>
@@ -75,66 +78,65 @@ const Footer = () => {
               <img src={logo} alt="Rent With Heldy logo" className="h-10 w-10 object-contain" />
               <div className="leading-tight">
                 <p className="font-heading text-lg font-bold text-ink">Rent With Heldy</p>
-                <p className="text-sm text-muted-foreground">Premium private car rentals</p>
+                <p className="text-sm text-muted-foreground">{t("brand.tagline")}</p>
               </div>
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1 text-sm mb-4">
               <Star className="h-4 w-4 fill-primary text-primary" />
-              <span className="font-medium text-foreground/80">All-Star Host on Turo</span>
+              <span className="font-medium text-foreground/80">{t("brand.badge")}</span>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground max-w-xs">
-              A family-owned fleet delivering clean, reliable cars across Fort
-              Lauderdale, Miami, and South Florida — right where you need them.
+              {t("brand.description")}
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-ink mb-4">Services</h3>
+            <h3 className="font-semibold text-ink mb-4">{t("columns.services")}</h3>
             <ul className="space-y-2.5">
               {services.map((l) => (
-                <li key={l.to}><Link to={l.to} className={linkCls}>{l.label}</Link></li>
+                <li key={l.to}><Link to={l.to} className={linkCls}>{t(`services.${l.key}`)}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Locations */}
           <div>
-            <h3 className="font-semibold text-ink mb-4">Locations</h3>
+            <h3 className="font-semibold text-ink mb-4">{t("columns.locations")}</h3>
             <ul className="space-y-2.5">
               {locations.map((l) => (
-                <li key={l.to}><Link to={l.to} className={linkCls}>{l.label}</Link></li>
+                <li key={l.to}><Link to={l.to} className={linkCls}>{t(`locations.${l.key}`)}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-ink mb-4">Company</h3>
+            <h3 className="font-semibold text-ink mb-4">{t("columns.company")}</h3>
             <ul className="space-y-2.5">
               {company.map((l) => (
-                <li key={l.to}><Link to={l.to} className={linkCls}>{l.label}</Link></li>
+                <li key={l.to}><Link to={l.to} className={linkCls}>{t(`company.${l.key}`)}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-ink mb-4">Contact</h3>
+            <h3 className="font-semibold text-ink mb-4">{t("columns.contact")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+15615198958" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Phone className="h-4 w-4 text-primary shrink-0" /> (561) 519-8958
+                <a href={CONTACT_PHONE_HREF} dir="ltr" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="h-4 w-4 text-primary shrink-0" /> {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
-                <a href="mailto:rentwithheldy@gmail.com" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:rentwithheldy@gmail.com" dir="ltr" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="h-4 w-4 text-primary shrink-0" /> rentwithheldy@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                Fort Lauderdale &amp; Miami, FL
+                {t("contact.location")}
               </li>
             </ul>
           </div>
@@ -143,34 +145,29 @@ const Footer = () => {
         {/* SEO paragraph */}
         <div className="border-t border-border mt-12 pt-6">
           <p className="text-xs leading-relaxed text-muted-foreground max-w-4xl">
-            Rent With Heldy is a private car rental service based in South
-            Florida, serving travelers and locals across Fort Lauderdale, Miami,
-            Hollywood, Aventura, and the Fort Lauderdale-Hollywood International
-            Airport (FLL). Our curated fleet includes economy cars, SUVs,
-            family-friendly vehicles, and premium options — booked online in
-            minutes with flexible pickup and dependable support.
+            {t("seoParagraph")}
           </p>
         </div>
 
         <div className="border-t border-border mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Rent With Heldy. All rights reserved.
+            {t("legal.rights", { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
-            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary">Terms</Link>
+            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary">{t("legal.privacy")}</Link>
+            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary">{t("legal.terms")}</Link>
             {isAdmin && (
               <Link to="/addcars" className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
-                <Settings className="h-3 w-3" /> Manage Fleet
+                <Settings className="h-3 w-3" /> {t("legal.manageFleet")}
               </Link>
             )}
             {user ? (
               <button onClick={handleSignOut} className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
-                <LogOut className="h-3 w-3" /> Sign Out
+                <LogOut className="h-3 w-3" /> {t("legal.signOut")}
               </button>
             ) : (
               <Link to="/auth" className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
-                <LogIn className="h-3 w-3" /> Admin
+                <LogIn className="h-3 w-3" /> {t("legal.admin")}
               </Link>
             )}
           </div>

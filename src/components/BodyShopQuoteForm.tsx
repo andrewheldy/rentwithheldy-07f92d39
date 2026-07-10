@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const BodyShopQuoteForm = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -62,7 +63,7 @@ const BodyShopQuoteForm = () => {
       console.error("Lead insert failed", error);
       toast({
         title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        description: `Please call ${CONTACT_PHONE_DISPLAY} and we'll handle it directly.`,
         variant: "destructive",
       });
       setSubmitting(false);
@@ -138,7 +139,7 @@ const BodyShopQuoteForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+          <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
         </p>
       </form>
     </div>

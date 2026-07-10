@@ -1,49 +1,35 @@
+import { useTranslation } from "react-i18next";
 import { Search, CalendarCheck, KeySquare, ShieldCheck } from "lucide-react";
 
 const STEPS = [
-  {
-    icon: Search,
-    title: "1. Choose your dates",
-    body: "Tell us when you need the car and where in South Florida you'll be picking up.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "2. Pick your vehicle",
-    body: "Browse our live fleet and reserve the exact car that fits your trip and budget.",
-  },
-  {
-    icon: KeySquare,
-    title: "3. Pickup &amp; drive",
-    body: "Meet us at your spot — Fort Lauderdale, Miami, or FLL airport. Quick handoff, full tank ready.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "4. Drive supported",
-    body: "Direct line to our team the whole rental. Easy returns, clear communication, no surprises.",
-  },
-];
+  { icon: Search, key: "step1" },
+  { icon: CalendarCheck, key: "step2" },
+  { icon: KeySquare, key: "step3" },
+  { icon: ShieldCheck, key: "step4" },
+] as const;
 
-const HowItWorksSteps = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {STEPS.map((s) => (
-      <div
-        key={s.title}
-        className="bg-card border border-border rounded-card p-6 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
-      >
-        <div className="bg-primary/10 w-11 h-11 rounded-control flex items-center justify-center mb-4">
-          <s.icon className="h-5 w-5 text-primary" />
+const HowItWorksSteps = () => {
+  const { t } = useTranslation("howItWorks");
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {STEPS.map((s) => (
+        <div
+          key={s.key}
+          className="bg-card border border-border rounded-card p-6 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
+        >
+          <div className="bg-primary/10 w-11 h-11 rounded-control flex items-center justify-center mb-4">
+            <s.icon className="h-5 w-5 text-primary" />
+          </div>
+          <h3 className="text-lg font-semibold text-foreground mb-2">
+            {t(`steps.${s.key}.title`)}
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            {t(`steps.${s.key}.body`)}
+          </p>
         </div>
-        <h3
-          className="text-lg font-semibold text-foreground mb-2"
-          dangerouslySetInnerHTML={{ __html: s.title }}
-        />
-        <p
-          className="text-sm text-muted-foreground"
-          dangerouslySetInnerHTML={{ __html: s.body }}
-        />
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+};
 
 export default HowItWorksSteps;

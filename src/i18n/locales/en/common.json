@@ -1,0 +1,29 @@
+{
+  "brand": {
+    "tagline": "Premium private car rentals",
+    "locations": "Fort Lauderdale • Miami"
+  },
+  "actions": {
+    "bookNow": "Book Now",
+    "bookInstantly": "Book Instantly",
+    "callOrText": "Call or Text",
+    "getMyQuote": "Get My Quote",
+    "getAQuote": "Get a Quote",
+    "viewFullFleet": "View Full Fleet",
+    "seeAllFaqs": "See all FAQs",
+    "requestDelivery": "Request Delivery",
+    "requestDirectDelivery": "Request Direct Delivery",
+    "learnMore": "Learn More"
+  },
+  "languageSelector": {
+    "label": "Change language"
+  },
+  "states": {
+    "loadingFleet": "Loading fleet…"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Contact Rent With Heldy | Car Rentals Fort Lauderdale & Miami",
+    "description": "Contact Rent With Heldy for fast, private car rental support in Fort Lauderdale, Miami, and South Florida. Call, email, or book online today."
+  },
+  "hero": {
+    "title": "Contact Rent With Heldy",
+    "subtitle": "The fastest way to get on the road. Call directly or send us a message — we typically respond the same day."
+  },
+  "cards": {
+    "call": {
+      "title": "Call us",
+      "note": "Fastest response"
+    },
+    "email": {
+      "title": "Email",
+      "note": "Same-day reply"
+    },
+    "serviceArea": {
+      "title": "Service area",
+      "value": "Fort Lauderdale • Miami • South Florida"
+    }
+  },
+  "form": {
+    "heading": "Contact Rent With Heldy",
+    "reasonPlaceholder": "Select a reason",
+    "reasons": {
+      "book": "Book a rental",
+      "existingBooking": "Question about an existing booking",
+      "bodyShop": "Body shop / insurance rental",
+      "hotelDelivery": "Hotel delivery",
+      "airportPickup": "Airport pickup",
+      "rentToOwn": "Rent-To-Own inquiry",
+      "partner": "Partner / business inquiry",
+      "other": "Other"
+    },
+    "fields": {
+      "name": "Full Name",
+      "phone": "Mobile Phone",
+      "email": "Email (optional)",
+      "emailPlaceholder": "you@email.com",
+      "reason": "Reason for Contact",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help…"
+    },
+    "submit": "Send Message",
+    "sending": "Sending…",
+    "preferToTalk": "Prefer to talk? Call"
+  },
+  "toast": {
+    "checkDetailsTitle": "Please check your details",
+    "checkDetailsDesc": "Name, phone, reason, and message are required.",
+    "errorTitle": "Couldn't send your message",
+    "errorDesc": "Please call {{phone}} directly.",
+    "successTitle": "Message sent!",
+    "successDesc": "We'll get back to you as soon as possible."
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plane } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,10 +14,18 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
-const AIRPORTS = ["FLL — Fort Lauderdale", "MIA — Miami International", "PBI — Palm Beach", "Other"] as const;
+// value = stored on the lead (do NOT translate); labelKey = display only.
+const AIRPORTS = [
+  { value: "FLL — Fort Lauderdale", labelKey: "fll" },
+  { value: "MIA — Miami International", labelKey: "mia" },
+  { value: "PBI — Palm Beach", labelKey: "pbi" },
+  { value: "Other", labelKey: "other" },
+] as const;
 
 const AirportQuoteForm = () => {
+  const { t } = useTranslation("forms");
   const [submitting, setSubmitting] = useState(false);
   const [airport, setAirport] = useState("");
 
@@ -34,8 +43,8 @@ const AirportQuoteForm = () => {
 
     if (!name || !phone || !airport || !arrivalDateTime || !returnDateTime) {
       toast({
-        title: "Please check your details",
-        description: "Name, phone, airport, and dates are required.",
+        title: t("shared.toastCheckDetails"),
+        description: t("airportQuote.requiredFields"),
         variant: "destructive",
       });
       return;
@@ -70,8 +79,8 @@ const AirportQuoteForm = () => {
     if (error) {
       console.error("Lead insert failed", error);
       toast({
-        title: "Couldn't save your request",
-        description: "Please call (561) 519-8958 and we'll handle it directly.",
+        title: t("shared.saveErrorTitle"),
+        description: t("shared.saveErrorDesc", { phone: CONTACT_PHONE_DISPLAY }),
         variant: "destructive",
       });
       setSubmitting(false);
@@ -82,8 +91,8 @@ const AirportQuoteForm = () => {
     const body = `Source: airport-trips\nLead Type: Airport Traveler\nName: ${name}\nPhone: ${phone}\nAirport: ${airport}\nAirline: ${airline}\nFlight #: ${flightNumber}\nArrival: ${arrivalDateTime}\nReturn: ${returnDateTime}\nPickup Notes: ${pickupNotes}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
     window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     toast({
-      title: "Got it — we've logged your request",
-      description: "We'll respond within minutes. Email draft opened as a backup.",
+      title: t("shared.savedTitle"),
+      description: t("shared.savedDesc"),
     });
     setTimeout(() => setSubmitting(false), 1500);
   };
@@ -92,58 +101,58 @@ const AirportQuoteForm = () => {
     <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
       <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
         <Plane className="h-5 w-5 text-primary-foreground" />
-        <h3 className="text-lg font-bold text-primary-foreground">Book Your Airport Rental</h3>
+        <h3 className="text-lg font-bold text-primary-foreground">{t("airportQuote.title")}</h3>
       </div>
       <form onSubmit={onSubmit} className="p-6 space-y-4">
         <p className="text-sm text-muted-foreground">
-          Share your flight details and we'll coordinate a smooth pickup near your terminal.
+          {t("airportQuote.subtitle")}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="aq-name">Full Name</Label>
+            <Label htmlFor="aq-name">{t("airportQuote.fields.name")}</Label>
             <Input id="aq-name" name="name" required maxLength={80} autoComplete="name" />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="aq-phone">Mobile Phone</Label>
+            <Label htmlFor="aq-phone">{t("airportQuote.fields.phone")}</Label>
             <Input id="aq-phone" name="phone" required type="tel" maxLength={20} autoComplete="tel" inputMode="tel" />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="aq-airport">Airport</Label>
+            <Label htmlFor="aq-airport">{t("airportQuote.fields.airport")}</Label>
             <Select value={airport} onValueChange={setAirport}>
               <SelectTrigger id="aq-airport" className="h-10">
-                <SelectValue placeholder="Select airport" />
+                <SelectValue placeholder={t("airportQuote.fields.airportPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
                 {AIRPORTS.map((a) => (
-                  <SelectItem key={a} value={a}>{a}</SelectItem>
+                  <SelectItem key={a.value} value={a.value}>{t(`airportQuote.airports.${a.labelKey}`)}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="aq-airline">Airline</Label>
-            <Input id="aq-airline" name="airline" maxLength={60} placeholder="e.g. American Airlines" />
+            <Label htmlFor="aq-airline">{t("airportQuote.fields.airline")}</Label>
+            <Input id="aq-airline" name="airline" maxLength={60} placeholder={t("airportQuote.fields.airlinePlaceholder")} />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="aq-flightNumber">Flight Number</Label>
-            <Input id="aq-flightNumber" name="flightNumber" maxLength={20} placeholder="e.g. AA 2341" />
+            <Label htmlFor="aq-flightNumber">{t("airportQuote.fields.flightNumber")}</Label>
+            <Input id="aq-flightNumber" name="flightNumber" maxLength={20} placeholder={t("airportQuote.fields.flightNumberPlaceholder")} />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="aq-arrivalDateTime">Arrival Date and Time</Label>
-            <Input id="aq-arrivalDateTime" name="arrivalDateTime" required maxLength={60} placeholder="e.g. June 20 at 3:45 PM" />
-            <p className="text-xs text-muted-foreground">Please enter exact pickup and return dates, plus flight details.</p>
+            <Label htmlFor="aq-arrivalDateTime">{t("airportQuote.fields.arrival")}</Label>
+            <Input id="aq-arrivalDateTime" name="arrivalDateTime" required maxLength={60} placeholder={t("airportQuote.fields.arrivalPlaceholder")} />
+            <p className="text-xs text-muted-foreground">{t("airportQuote.fields.arrivalHint")}</p>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="aq-returnDateTime">Return Date and Time</Label>
-            <Input id="aq-returnDateTime" name="returnDateTime" required maxLength={60} placeholder="e.g. June 25 at 11:00 AM" />
+            <Label htmlFor="aq-returnDateTime">{t("airportQuote.fields.return")}</Label>
+            <Input id="aq-returnDateTime" name="returnDateTime" required maxLength={60} placeholder={t("airportQuote.fields.returnPlaceholder")} />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="aq-pickupNotes">Delivery / Pickup Notes (optional)</Label>
-            <Input id="aq-pickupNotes" name="pickupNotes" maxLength={200} placeholder="Terminal, curbside, hotel address after landing…" />
+            <Label htmlFor="aq-pickupNotes">{t("airportQuote.fields.pickupNotes")}</Label>
+            <Input id="aq-pickupNotes" name="pickupNotes" maxLength={200} placeholder={t("airportQuote.fields.pickupNotesPlaceholder")} />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="aq-notes">Anything else? (optional)</Label>
-            <Textarea id="aq-notes" name="notes" maxLength={500} rows={3} placeholder="Vehicle preference, group size, luggage…" />
+            <Label htmlFor="aq-notes">{t("airportQuote.fields.notes")}</Label>
+            <Textarea id="aq-notes" name="notes" maxLength={500} rows={3} placeholder={t("airportQuote.fields.notesPlaceholder")} />
           </div>
         </div>
         <Button
@@ -152,11 +161,11 @@ const AirportQuoteForm = () => {
           disabled={submitting}
           className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
         >
-          {submitting ? "Sending…" : "Get My Airport Quote"}
+          {submitting ? t("shared.sending") : t("airportQuote.cta")}
         </Button>
         <p className="text-xs text-muted-foreground text-center">
-          Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+          {t("shared.preferToTalk")}{" "}
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
         </p>
       </form>
     </div>

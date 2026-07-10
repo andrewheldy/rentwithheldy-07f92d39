@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Our South Florida rental fleet",
+    "subtitle": "Every vehicle in our lineup is privately owned, professionally maintained, and chosen for real South Florida driving — beach runs, city trips, business travel, and airport transfers.",
+    "checkAvailability": "Check live availability",
+    "howBookingWorks": "How booking works"
+  },
+  "areaLinks": {
+    "title": "Renting in a specific area?",
+    "subtitle": "See location-specific pickup details, vehicle suggestions, and local trip ideas.",
+    "fortLauderdale": "Fort Lauderdale rentals",
+    "miami": "Miami rentals",
+    "fllAirport": "FLL airport trips"
+  },
+  "faqSection": {
+    "title": "Fleet & booking questions"
+  },
+  "grid": {
+    "empty": "Our fleet is being updated. Please check back soon or",
+    "emptySearchLink": "search availability",
+    "photoComingSoon": "Photo coming soon",
+    "seats": "{{seats}} seats",
+    "bags": "Bags"
+  },
+  "card": {
+    "pricePerDay": "${{price}}/day",
+    "viewDetails": "View Details"
+  }
+}

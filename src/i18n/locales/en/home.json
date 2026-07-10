@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "eyebrow": "Fort Lauderdale · Miami · FLL",
+    "title": "Skip the rental counter.",
+    "description": "Your car, delivered where you need it. A family-owned South Florida fleet — we meet you and hand over the keys.",
+    "destinations": {
+      "airports": "Airports",
+      "hotels": "Hotels",
+      "cruisePorts": "Cruise ports",
+      "repairShops": "Repair shops"
+    },
+    "primaryCta": "Book Your Rental",
+    "secondaryCta": "Browse Fleet",
+    "trust": {
+      "allStar": "All-Star Host on Turo",
+      "familyOwned": "Family-owned",
+      "espanol": "Hablamos Español",
+      "open7": "Open 7 days"
+    }
+  },
+  "trustStrip": {
+    "allStar": "All-Star Host on Turo",
+    "familyOwned": "Family-owned",
+    "espanol": "Hablamos Español",
+    "delivered": "Delivered to you",
+    "open7": "Open 7 days a week"
+  },
+  "destinations": {
+    "eyebrow": "Delivery, not a counter",
+    "title": "Where should we deliver your vehicle?",
+    "description": "Tell us where you'll be — an airport, a hotel, a cruise terminal, or the body shop — and we'll bring the keys to you.",
+    "serving": "Serving",
+    "cards": {
+      "airport": {
+        "title": "Airport",
+        "description": "Flying into FLL or Miami? We'll help make the handoff simple, so you can skip the rental counter and start your trip.",
+        "ctaLabel": "Airport delivery",
+        "alt": "An SUV on a South Florida causeway with a plane descending toward the Miami skyline at sunset"
+      },
+      "hotel": {
+        "title": "Hotel",
+        "description": "Staying nearby? We can arrange delivery to your hotel, resort, or vacation rental across South Florida.",
+        "ctaLabel": "Hotel delivery",
+        "alt": "An SUV parked under a hotel porte-cochère at dusk with the Miami skyline across the water"
+      },
+      "cruise": {
+        "title": "Cruise Port",
+        "description": "Heading to PortMiami or Port Everglades? Start or finish your cruise with a rental arranged around your trip.",
+        "ctaLabel": "Cruise port delivery",
+        "alt": "An SUV on a causeway passing a docked cruise ship near the Miami skyline at sunset"
+      },
+      "bodyShop": {
+        "title": "Body Shop",
+        "description": "Car in the shop? We'll help keep you moving with a replacement rental delivered to your repair facility.",
+        "ctaLabel": "Replacement rentals",
+        "alt": "An SUV parked outside a body shop with palm trees and the skyline visible at dusk"
+      }
+    },
+    "locations": {
+      "fortLauderdale": "Fort Lauderdale",
+      "miami": "Miami",
+      "local": "Local Rentals",
+      "fllAirport": "FLL Airport"
+    }
+  },
+  "why": {
+    "eyebrow": "Why Rent With Heldy",
+    "title": "Big rental brands make you come to them. We come to you.",
+    "description": "Enterprise, Hertz, and the airport counters mean lines, shuttle buses, and fine print. A peer-to-peer app means a different stranger every time. We're the middle ground travelers actually want: a real, local, family-run fleet that shows up where you are.",
+    "cards": {
+      "delivered": {
+        "title": "Delivered, not a counter",
+        "body": "We bring the car to your terminal, hotel, or door. No lines, no shuttle bus, no rental desk."
+      },
+      "localOwner": {
+        "title": "A real local owner",
+        "body": "Text or call one number and reach the people who run the fleet — not an overseas call center."
+      },
+      "familyBilingual": {
+        "title": "Family-owned & bilingual",
+        "body": "A South Florida family business that treats you like a guest. Hablamos Español."
+      },
+      "flexible": {
+        "title": "Flexible & transparent",
+        "body": "Straightforward rates, flexible pickup, and a clean, well-maintained private fleet."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "title": "From search to keys in four simple steps.",
+    "description": "No counter, no surprises — just a quick, friendly handoff wherever works best for you."
+  },
+  "fleet": {
+    "eyebrow": "The fleet",
+    "title": "Clean, reliable cars for every South Florida plan.",
+    "description": "A peek at our most-booked rides. See live availability and the full fleet anytime.",
+    "tripPlannerPrompt": "Not sure what fits your trip? Try the Trip Planner"
+  },
+  "reviews": {
+    "eyebrow": "What renters say",
+    "title": "Real reviews from Turo guests across South Florida.",
+    "description": "The reason we earned All-Star Host status — clean cars, clear communication, and an easy handoff, trip after trip."
+  },
+  "faqPreview": {
+    "title": "Questions, answered.",
+    "description": "A few of the things renters ask us most. More on the full FAQ."
+  },
+  "contactClose": {
+    "eyebrow": "Get started",
+    "title": "Tell us your trip. We'll text you back fast.",
+    "description": "Share a few details and we'll follow up with options — usually the same day. Prefer to talk? Reach a real person below.",
+    "phoneLabel": "Call or text, 7 days a week",
+    "emailLabel": "We reply the same day",
+    "locationTitle": "Fort Lauderdale & Miami",
+    "locationSub": "Broward & Miami-Dade delivery"
+  }
+}

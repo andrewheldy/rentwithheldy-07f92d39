@@ -1,0 +1,42 @@
+{
+  "book": {
+    "title": "Book your vehicle",
+    "subtitle": "Choose your dates and pick from our live fleet across Fort Lauderdale, Miami, and South Florida."
+  },
+  "confirmation": {
+    "notFound": {
+      "title": "Reservation Not Found",
+      "description": "We couldn't find this reservation. Please check your confirmation email.",
+      "browseCategories": "Browse Categories"
+    },
+    "confirmed": {
+      "title": "Reservation Confirmed!",
+      "number": "Confirmation #{{code}}"
+    },
+    "vehicle": {
+      "fallbackName": "Vehicle Category",
+      "fallbackAlt": "Vehicle",
+      "orSimilar": "or similar vehicle",
+      "assignedAtPickup": "Your exact vehicle will be assigned at pickup"
+    },
+    "details": {
+      "rentalPeriod": "Rental Period",
+      "pickupLocation": "Pickup Location",
+      "dropoffLocation": "Drop-off Location"
+    },
+    "renter": {
+      "heading": "Renter Information"
+    },
+    "next": {
+      "heading": "What's Next?",
+      "emailSent": "A confirmation email has been sent to {{email}}",
+      "bringLicense": "Please bring a valid driver's license and credit card at pickup",
+      "vehicleAssigned": "Your specific vehicle will be assigned when you arrive",
+      "contact": "Contact us at {{phone}} for any questions"
+    },
+    "actions": {
+      "returnHome": "Return to Home",
+      "bookAnother": "Book Another Vehicle"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "links": {
+    "fleet": "Fleet",
+    "rentToOwn": "Rent-To-Own",
+    "howItWorks": "How It Works",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "services": "Services",
+    "more": "More"
+  },
+  "services": {
+    "airport": { "label": "Airport Delivery", "desc": "FLL pickup & drop-off" },
+    "hotel": { "label": "Hotel Delivery", "desc": "Delivered to your hotel" },
+    "bodyShop": {
+      "label": "Body Shop Delivery",
+      "desc": "While your car is in the shop"
+    },
+    "cruise": { "label": "Cruise Port", "desc": "Port Everglades & PortMiami" },
+    "lossOfUse": {
+      "label": "Loss of Use Claims",
+      "desc": "Insurance replacement rentals"
+    }
+  },
+  "aria": {
+    "openMenu": "Open menu"
+  }
+}

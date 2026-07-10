@@ -1,0 +1,163 @@
+{
+  "quickQuote": {
+    "title": "Start Your Booking",
+    "subtitle": "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
+    "cta": "Check Our Availability",
+    "sending": "Sending…",
+    "passengerTypeLabel": "I am a…",
+    "passengerTypePlaceholder": "Select customer type",
+    "passengerTypes": {
+      "hotelGuest": "Hotel Guest",
+      "airportTraveler": "Airport Traveler",
+      "bodyShop": "Body Shop / Repair Customer",
+      "localRental": "Local Rental",
+      "other": "Other"
+    },
+    "fields": {
+      "name": "Full Name",
+      "phone": "Mobile Phone",
+      "location": "Delivery Location",
+      "locationPlaceholder": "Hotel, body shop, port, address…",
+      "dateRange": "Rental Date Range",
+      "dateRangePlaceholder": "e.g. June 20 – June 25, or ASAP for ~1 week",
+      "referredBy": "Referred by (optional)",
+      "referredByPlaceholder": "Hotel, body shop, attorney, friend, agent…",
+      "notes": "Anything else? (optional)",
+      "notesPlaceholder": "Vehicle type, insurance carrier, claim #, flight…"
+    },
+    "hints": {
+      "bodyShop": "Estimated dates are okay.",
+      "hotelGuest": "Please enter exact pickup and return dates.",
+      "airportTraveler": "Please enter exact pickup and return dates, plus flight details."
+    },
+    "validation": {
+      "name": "Enter your name",
+      "phone": "Enter a valid phone",
+      "passengerType": "Select your customer type",
+      "location": "Where should we deliver?",
+      "dateRange": "Enter your rental date range"
+    },
+    "toastTitle": "Please check your details",
+    "toastInvalid": "Invalid input",
+    "errorRetry": "Something went wrong. Please call or text us directly.",
+    "preferToTalk": "Prefer to talk? Call"
+  },
+  "partnerIntake": {
+    "heading": "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
+    "subheading": "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
+    "cta": "Check Our Availability",
+    "sending": "Sending…",
+    "errorRetry": "Something went wrong. Please call or text us directly.",
+    "fields": {
+      "name": "Your Name",
+      "company": "Company / Firm",
+      "claim": "Client Claim # (optional)",
+      "phone": "Phone",
+      "location": "Delivery Location",
+      "locationPlaceholder": "Body shop, hotel, port, or address…"
+    },
+    "validation": {
+      "name": "Enter your name",
+      "company": "Enter your company or firm",
+      "phone": "Enter a valid phone",
+      "location": "Where do we deliver?"
+    },
+    "toastTitle": "Please check your details",
+    "toastInvalid": "Invalid input"
+  },
+  "shared": {
+    "sending": "Sending…",
+    "preferToTalk": "Prefer to talk? Call",
+    "toastCheckDetails": "Please check your details",
+    "toastInvalid": "Invalid input",
+    "savedTitle": "Got it — we've logged your request",
+    "savedDesc": "We'll respond within minutes. Email draft opened as a backup.",
+    "saveErrorTitle": "Couldn't save your request",
+    "saveErrorDesc": "Please call {{phone}} and we'll handle it directly."
+  },
+  "airportQuote": {
+    "title": "Book Your Airport Rental",
+    "subtitle": "Share your flight details and we'll coordinate a smooth pickup near your terminal.",
+    "requiredFields": "Name, phone, airport, and dates are required.",
+    "cta": "Get My Airport Quote",
+    "airports": {
+      "fll": "FLL — Fort Lauderdale",
+      "mia": "MIA — Miami International",
+      "pbi": "PBI — Palm Beach",
+      "other": "Other"
+    },
+    "fields": {
+      "name": "Full Name",
+      "phone": "Mobile Phone",
+      "airport": "Airport",
+      "airportPlaceholder": "Select airport",
+      "airline": "Airline",
+      "airlinePlaceholder": "e.g. American Airlines",
+      "flightNumber": "Flight Number",
+      "flightNumberPlaceholder": "e.g. AA 2341",
+      "arrival": "Arrival Date and Time",
+      "arrivalPlaceholder": "e.g. June 20 at 3:45 PM",
+      "arrivalHint": "Please enter exact pickup and return dates, plus flight details.",
+      "return": "Return Date and Time",
+      "returnPlaceholder": "e.g. June 25 at 11:00 AM",
+      "pickupNotes": "Delivery / Pickup Notes (optional)",
+      "pickupNotesPlaceholder": "Terminal, curbside, hotel address after landing…",
+      "notes": "Anything else? (optional)",
+      "notesPlaceholder": "Vehicle preference, group size, luggage…"
+    }
+  },
+  "hotelQuote": {
+    "title": "Get a Rental Delivered to Your Hotel",
+    "subtitle": "We coordinate with your hotel valet for a smooth, white-glove handoff.",
+    "requiredFields": "Name, phone, hotel, and dates are required.",
+    "cta": "Get My Hotel Delivery Quote",
+    "fields": {
+      "name": "Full Name",
+      "phone": "Mobile Phone",
+      "hotelName": "Hotel Name",
+      "hotelNamePlaceholder": "e.g. Marriott Fort Lauderdale Beach",
+      "hotelAddress": "Hotel Address (optional)",
+      "hotelAddressPlaceholder": "Street address if known",
+      "pickup": "Exact Pickup Date and Time",
+      "pickupPlaceholder": "e.g. June 20 at 10:00 AM",
+      "pickupHint": "Please enter exact pickup and return dates.",
+      "return": "Exact Return Date and Time",
+      "returnPlaceholder": "e.g. June 25 at 12:00 PM",
+      "referredBy": "Referred by (optional)",
+      "referredByPlaceholder": "Concierge, friend, travel agent…",
+      "notes": "Anything else? (optional)",
+      "notesPlaceholder": "Vehicle preference, number of guests, special occasion…"
+    }
+  },
+  "bodyShopForm": {
+    "title": "Request Delivery to Your Shop",
+    "subtitle": "We'll meet you at the collision center so you can hand off your car and keep going.",
+    "cta": "Check Our Availability",
+    "hint": "Estimated dates are okay.",
+    "validation": {
+      "name": "Enter your name",
+      "phone": "Enter a valid phone number",
+      "shopName": "Enter the body shop name",
+      "shopAddress": "Enter the shop address",
+      "dateRange": "Enter your estimated rental dates"
+    },
+    "fields": {
+      "name": "Full Name",
+      "phone": "Mobile Phone",
+      "shopName": "Body Shop Name",
+      "shopNamePlaceholder": "e.g. Maaco Fort Lauderdale",
+      "shopAddress": "Body Shop Address",
+      "shopAddressPlaceholder": "Street address",
+      "dateRange": "Estimated Rental Date Range",
+      "dateRangePlaceholder": "e.g. June 20 – June 28, or ~1 week starting Monday",
+      "insurance": "Insurance Carrier (optional)",
+      "insurancePlaceholder": "e.g. State Farm",
+      "claimNumber": "Claim Number (optional)",
+      "claimNumberPlaceholder": "e.g. CLM-123456",
+      "referredBy": "Referred by (optional)",
+      "referredByPlaceholder": "Body shop, attorney, insurance agent…",
+      "notes": "Anything else? (optional)",
+      "notesPlaceholder": "Vehicle preference, repair timeline, special needs…"
+    }
+  }
+}

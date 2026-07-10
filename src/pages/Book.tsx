@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WheelbaseWidget from "@/components/WheelbaseWidget";
@@ -8,6 +9,8 @@ import {
 } from "@/lib/seo-schemas";
 
 const Book = () => {
+  const { t } = useTranslation(["booking", "common"]);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -27,11 +30,10 @@ const Book = () => {
       <main className="container mx-auto px-4 py-10">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-3">
-            Book your vehicle
+            {t("book.title")}
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose your dates and pick from our live fleet across Fort
-            Lauderdale, Miami, and South Florida.
+            {t("book.subtitle")}
           </p>
         </div>
 

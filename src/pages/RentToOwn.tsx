@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 import {
   Select,
   SelectContent,
@@ -280,7 +281,7 @@ const RentToOwn = () => {
                   </Button>
                   <p className="text-xs text-muted-foreground text-center mt-3">
                     Prefer to talk? Call{" "}
-                    <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+                    <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
                   </p>
                 </div>
               </form>

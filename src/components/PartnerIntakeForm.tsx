@@ -1,20 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Briefcase } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-
-const schema = z.object({
-  name: z.string().trim().min(2, "Enter your name").max(80),
-  company: z.string().trim().min(2, "Enter your company or firm").max(120),
-  claim: z.string().trim().max(80).optional(),
-  phone: z.string().trim().min(7, "Enter a valid phone").max(20),
-  location: z.string().trim().min(2, "Where do we deliver?").max(160),
-});
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 interface PartnerIntakeFormProps {
   serviceContext: string;
@@ -29,12 +23,37 @@ const slugify = (s: string) =>
 const PartnerIntakeForm = ({
   serviceContext,
   verticalPath,
-  heading = "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
-  subheading = "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
+  heading,
+  subheading,
 }: PartnerIntakeFormProps) => {
+  const { t } = useTranslation(["forms", "common"]);
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+
+  // Callers may pass already-translated overrides; otherwise use the defaults.
+  const title = heading ?? t("partnerIntake.heading");
+  const sub = subheading ?? t("partnerIntake.subheading");
+
+  const schema = useMemo(
+    () =>
+      z.object({
+        name: z.string().trim().min(2, t("partnerIntake.validation.name")).max(80),
+        company: z
+          .string()
+          .trim()
+          .min(2, t("partnerIntake.validation.company"))
+          .max(120),
+        claim: z.string().trim().max(80).optional(),
+        phone: z.string().trim().min(7, t("partnerIntake.validation.phone")).max(20),
+        location: z
+          .string()
+          .trim()
+          .min(2, t("partnerIntake.validation.location"))
+          .max(160),
+      }),
+    [t]
+  );
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,8 +67,8 @@ const PartnerIntakeForm = ({
     });
     if (!parsed.success) {
       toast({
-        title: "Please check your details",
-        description: parsed.error.issues[0]?.message ?? "Invalid input",
+        title: t("partnerIntake.toastTitle"),
+        description: parsed.error.issues[0]?.message ?? t("partnerIntake.toastInvalid"),
         variant: "destructive",
       });
       return;
@@ -111,15 +130,15 @@ const PartnerIntakeForm = ({
             <Briefcase className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <h3 className="text-lg md:text-xl font-bold text-foreground">{heading}</h3>
+            <h3 className="text-lg md:text-xl font-bold text-foreground">{title}</h3>
           </div>
         </div>
         <div className="p-6 text-center">
           <p className="text-destructive font-medium">
-            Something went wrong. Please call or text us directly.
+            {t("partnerIntake.errorRetry")}
           </p>
-          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
-            (561) 519-8958
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline text-sm mt-2 block">
+            {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
       </div>
@@ -134,9 +153,9 @@ const PartnerIntakeForm = ({
         </div>
         <div>
           <h3 className="text-lg md:text-xl font-bold text-foreground">
-            {heading}
+            {title}
           </h3>
-          <p className="text-sm text-muted-foreground mt-1">{subheading}</p>
+          <p className="text-sm text-muted-foreground mt-1">{sub}</p>
         </div>
       </div>
       <form
@@ -144,11 +163,11 @@ const PartnerIntakeForm = ({
         className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4"
       >
         <div className="space-y-1.5">
-          <Label htmlFor="pi-name">Your Name</Label>
+          <Label htmlFor="pi-name">{t("partnerIntake.fields.name")}</Label>
           <Input id="pi-name" name="name" required maxLength={80} autoComplete="name" />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="pi-company">Company / Firm</Label>
+          <Label htmlFor="pi-company">{t("partnerIntake.fields.company")}</Label>
           <Input
             id="pi-company"
             name="company"
@@ -158,11 +177,11 @@ const PartnerIntakeForm = ({
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="pi-claim">Client Claim # (optional)</Label>
+          <Label htmlFor="pi-claim">{t("partnerIntake.fields.claim")}</Label>
           <Input id="pi-claim" name="claim" maxLength={80} />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="pi-phone">Phone</Label>
+          <Label htmlFor="pi-phone">{t("partnerIntake.fields.phone")}</Label>
           <Input
             id="pi-phone"
             name="phone"
@@ -174,13 +193,13 @@ const PartnerIntakeForm = ({
           />
         </div>
         <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="pi-location">Delivery Location</Label>
+          <Label htmlFor="pi-location">{t("partnerIntake.fields.location")}</Label>
           <Input
             id="pi-location"
             name="location"
             required
             maxLength={160}
-            placeholder="Body shop, hotel, port, or address…"
+            placeholder={t("partnerIntake.fields.locationPlaceholder")}
           />
         </div>
         <Button
@@ -189,7 +208,7 @@ const PartnerIntakeForm = ({
           disabled={submitting}
           className="sm:col-span-2 bg-primary text-primary-foreground hover:bg-primary/90"
         >
-          {submitting ? "Sending…" : "Check Our Availability"}
+          {submitting ? t("partnerIntake.sending") : t("partnerIntake.cta")}
         </Button>
       </form>
     </div>
