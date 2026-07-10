@@ -1,33 +1,37 @@
 {
+  "meta": {
+    "title": "Rent-to-Own for Rideshare & Delivery Drivers | Rent With Heldy",
+    "description": "A Rent-to-Own path built for Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers. Start with a 90-day Qualifying Period. Programs customized to the vehicle and your situation."
+  },
   "hero": {
-    "badge": "Rent-To-Own Program",
+    "badge": "Rent-to-Own Program",
     "title": "Drive Today. Own Tomorrow.",
-    "subtitle": "Get access to a reliable vehicle for Uber, Lyft, DoorDash, and more while building toward ownership with every qualifying payment.",
-    "tagline": "A practical path to earning now and owning the vehicle you depend on.",
+    "subtitle": "Get access to a reliable vehicle for Uber, Lyft, DoorDash, and more while working toward ownership of the vehicle you depend on.",
+    "tagline": "A practical path to earning now and building toward the car you drive for a living.",
     "findMatch": "Find My Match",
     "seeHowItWorks": "See How It Works",
     "builtForDriversOn": "Built for drivers on"
   },
   "howItWorks": {
     "title": "How it works",
-    "subtitle": "A clear path from approval to ownership — built around your schedule as a driver.",
+    "subtitle": "A clear path built around your schedule as a driver — starting with a 90-day Qualifying Period.",
     "stepLabel": "Step {{number}}",
     "steps": {
       "getApproved": {
-        "title": "Get Approved",
-        "body": "Complete a quick application and verification process."
+        "title": "Start Your Qualifying Period",
+        "body": "Complete a quick application. Every driver begins with a 90-day Qualifying Period designed to confirm consistent income and the right program fit."
       },
       "startDriving": {
         "title": "Start Driving",
-        "body": "Get matched with an approved vehicle and start earning immediately."
+        "body": "Get matched with a vehicle for your platforms and start earning right away."
       },
       "buildOwnership": {
-        "title": "Build Ownership",
-        "body": "A portion of qualifying payments contributes toward vehicle ownership."
+        "title": "Show Consistency",
+        "body": "During the Qualifying Period, drivers demonstrate consistent income and responsible vehicle use."
       },
       "ownVehicle": {
-        "title": "Own Your Vehicle",
-        "body": "Continue making progress until ownership requirements are completed."
+        "title": "Path Toward Ownership",
+        "body": "From there, our team works with you on the right long-term program and your path toward ownership."
       }
     }
   },
@@ -44,11 +48,11 @@
       ]
     },
     "rentToOwn": {
-      "title": "Rent-To-Own",
+      "title": "Rent-to-Own",
       "items": [
-        "Build ownership over time",
+        "A path toward ownership",
         "Reliable vehicle access",
-        "Designed for gig workers",
+        "Built for gig workers",
         "Long-term financial benefit"
       ]
     }
@@ -66,8 +70,8 @@
         "body": "Built specifically for rideshare and delivery drivers."
       },
       "progressTracking": {
-        "title": "Ownership Progress Tracking",
-        "body": "See your progress and stay motivated."
+        "title": "A Clear Program Path",
+        "body": "Know where you stand from the Qualifying Period forward."
       },
       "reliableSupport": {
         "title": "Reliable Support",
@@ -75,57 +79,43 @@
       }
     }
   },
-  "testimonials": {
-    "title": "Driver stories",
-    "subtitle": "Real drivers building toward ownership through the program.",
-    "items": [
-      {
-        "quote": "I needed a vehicle for Uber and wanted more than just another rental. This program gave me a path toward ownership.",
-        "name": "Future Driver Story"
-      },
-      {
-        "quote": "Weekly payments that actually build toward something — that's what was missing from every other rental I tried.",
-        "name": "Future Driver Story"
-      },
-      {
-        "quote": "Reliable vehicle, real support, and progress I can see. Exactly what gig workers need.",
-        "name": "Future Driver Story"
-      }
-    ]
-  },
   "faq": {
     "title": "Frequently asked questions",
-    "subtitle": "Everything you need to know about the Rent-To-Own program.",
+    "subtitle": "Everything you need to know about the Rent-to-Own program.",
     "items": [
       {
-        "question": "Can I drive for Uber?",
-        "answer": "Yes. Our Rent-To-Own vehicles meet Uber's vehicle requirements for South Florida markets."
+        "question": "Who is the program for?",
+        "answer": "It's built for gig and delivery drivers — Uber, Lyft, Empower, DoorDash, Uber Eats, Instacart, and similar platforms. If you drive for a living and want a reliable vehicle, it's for you."
       },
       {
-        "question": "Can I drive for Lyft?",
-        "answer": "Yes. The program supports Lyft drivers and the vehicles qualify for the Lyft platform."
+        "question": "Can I drive for Uber, Lyft, or delivery apps?",
+        "answer": "Yes. Our Rent-to-Own vehicles are chosen to meet the requirements of the major rideshare and delivery platforms in South Florida, including Uber, Lyft, DoorDash, Uber Eats, and Instacart."
       },
       {
-        "question": "Can I use the vehicle for delivery apps?",
-        "answer": "Absolutely. DoorDash, Uber Eats, Instacart, and similar delivery platforms are all welcome."
+        "question": "How does the Qualifying Period work?",
+        "answer": "Every applicant begins with a 90-day Qualifying Period designed to confirm consistent income and determine the right long-term program fit. During the Qualifying Period, drivers demonstrate consistent income and responsible vehicle use."
       },
       {
         "question": "Do I need perfect credit?",
         "answer": "No. The program is designed for gig workers and focuses on driving history and income consistency rather than traditional credit scoring alone."
       },
       {
-        "question": "How does ownership work?",
-        "answer": "A portion of every qualifying payment contributes toward vehicle ownership. You'll see your progress tracked over time until ownership requirements are met."
+        "question": "How much does it cost?",
+        "answer": "Programs are customized based on the vehicle and your individual situation, so there's no one-size-fits-all weekly price. Tell us how you drive and our team will put together the right structure for you."
+      },
+      {
+        "question": "How does the path toward ownership work?",
+        "answer": "After the Qualifying Period, our team works with you on the right long-term program and the path toward ownership. Details vary based on the vehicle and your situation, and we'll walk you through them directly."
       },
       {
         "question": "What happens if I stop participating?",
-        "answer": "You can return the vehicle at any time. We'll walk you through your options and any next steps based on your progress."
+        "answer": "You can return the vehicle. We'll walk you through your options and any next steps based on where you are in the program."
       }
     ]
   },
   "apply": {
-    "title": "Apply for Rent-To-Own",
-    "subtitle": "Tell us a bit about yourself and our team will reach out to walk you through the next steps.",
+    "title": "Find your Rent-to-Own match",
+    "subtitle": "Tell us a bit about yourself and a member of our team will reach out to walk you through the next steps.",
     "fields": {
       "name": "Full name",
       "namePlaceholder": "Your name",
@@ -137,19 +127,19 @@
       "notes": "Anything else? (optional)",
       "notesPlaceholder": "Tell us about your driving experience or any questions."
     },
-    "submit": "Apply Now",
+    "submit": "Find My Match",
     "submitting": "Submitting…",
-    "disclaimer": "No commitment. Approval subject to verification.",
+    "disclaimer": "No commitment. Programs are customized based on the vehicle and your situation.",
     "toast": {
       "errorTitle": "Something went wrong",
-      "successTitle": "Application received",
-      "successDesc": "Thanks! Our team will reach out shortly to walk you through the next steps."
+      "successTitle": "Request received",
+      "successDesc": "Thanks! A member of our team will reach out as soon as possible to walk you through the next steps."
     }
   },
   "finalCta": {
     "title": "The vehicle that helps you earn should help you build a future too.",
-    "subtitle": "Join the Rent With Heldy Rent-To-Own Program and start working toward vehicle ownership while earning income.",
-    "apply": "Apply Now",
+    "subtitle": "Join the Rent With Heldy Rent-to-Own Program and start working toward vehicle ownership while earning income.",
+    "apply": "Find My Match",
     "scheduleCall": "Schedule a Call",
     "browsePrompt": "Prefer to browse rentals first?",
     "seeFleet": "See our fleet"
@@ -160,7 +150,7 @@
       "stepOf": "Step {{current}} of {{total}}"
     },
     "intro": {
-      "body": "Answer a few quick questions and we'll recommend the right vehicle and weekly price point for your goals.",
+      "body": "Answer a few quick questions and we'll recommend the right vehicle for your goals.",
       "start": "Start the questionnaire"
     },
     "gig": {
@@ -223,8 +213,7 @@
     },
     "result": {
       "yourMatch": "Your match",
-      "perWeek": "/ week",
-      "approvedFor": "Approved for",
+      "goodFitFor": "A good fit for",
       "fields": {
         "name": "Full name",
         "namePlaceholder": "Your name",
@@ -233,13 +222,13 @@
         "email": "Email",
         "emailPlaceholder": "you@email.com"
       },
-      "submit": "Check Our Availability",
+      "submit": "Find My Match",
       "submitting": "Sending…",
-      "disclaimer": "No commitment. Approval subject to verification."
+      "disclaimer": "No commitment. Programs are customized based on the vehicle and your situation."
     },
     "submitted": {
       "title": "You're matched",
-      "body": "Thanks! We're checking availability and will text you back shortly.",
+      "body": "Thanks! A member of our team will reach out as soon as possible.",
       "retake": "Retake the quiz"
     },
     "nav": {

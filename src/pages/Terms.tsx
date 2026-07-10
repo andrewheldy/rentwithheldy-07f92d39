@@ -10,8 +10,8 @@ const Terms = () => {
   return (
   <div className="min-h-screen bg-background flex flex-col">
     <SEO
-      title="Terms of Service | Rent With Heldy"
-      description="Terms governing reservations, rentals, and use of the Rent With Heldy website and car rental service in Fort Lauderdale, Miami, and South Florida."
+      title={t("terms.meta.title")}
+      description={t("terms.meta.description")}
       path="/terms"
     />
     <Header />

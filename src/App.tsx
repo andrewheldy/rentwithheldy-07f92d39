@@ -16,7 +16,6 @@ import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
-import RentToOwn from "./pages/RentToOwn";
 import DriveToOwn from "./pages/DriveToOwn";
 import TripPlanner from "./pages/TripPlanner";
 import FLLAirport from "./pages/FLLAirport";

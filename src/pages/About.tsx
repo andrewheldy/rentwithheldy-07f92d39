@@ -18,8 +18,8 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="About Rent With Heldy | South Florida Car Rentals"
-        description="Learn about Rent With Heldy — an All-Star Host providing premium private car rentals in Fort Lauderdale, Miami, and across South Florida."
+        title={t("about.meta.title")}
+        description={t("about.meta.description")}
         path="/about"
         jsonLd={[
           localBusinessSchema,

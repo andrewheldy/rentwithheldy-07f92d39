@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import DriveToOwnQuiz from "@/components/DriveToOwnQuiz";
-import journeyImg from "@/assets/journey-to-ownership.png";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -15,7 +14,6 @@ import {
   Car,
   PiggyBank,
   Key,
-  Star,
   Phone,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -99,8 +97,8 @@ const DriveToOwn = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title="Rent-To-Own Program for Rideshare & Delivery Drivers | Rent With Heldy"
-        description="Drive today, own tomorrow. Rent With Heldy's Rent-To-Own program helps Uber, Lyft, DoorDash, Uber Eats, and Instacart drivers build vehicle ownership while earning."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/rent-to-own"
       />
       <Header />
@@ -206,18 +204,6 @@ const DriveToOwn = () => {
         {/* QUIZ */}
         <section id="quiz" className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
           <DriveToOwnQuiz />
-        </section>
-
-        {/* JOURNEY TO OWNERSHIP */}
-        <section className="container mx-auto px-4 pb-12 md:pb-16 max-w-6xl">
-          <div className="rounded-xl overflow-hidden shadow-card-hover bg-card">
-            <img
-              src={journeyImg}
-              alt="Rent-To-Own journey infographic showing weekly milestones from Week 1 to full ownership with growing equity at each step."
-              className="w-full h-auto block"
-              loading="lazy"
-            />
-          </div>
         </section>
 
         {/* HOW IT WORKS */}
@@ -336,47 +322,6 @@ const DriveToOwn = () => {
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {t(`features.items.${f.key}.body`)}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section className="py-16 sm:py-20 bg-secondary">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-3">
-                {t("testimonials.title")}
-              </h2>
-              <p className="text-muted-foreground">
-                {t("testimonials.subtitle")}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {(
-                t("testimonials.items", { returnObjects: true }) as {
-                  quote: string;
-                  name: string;
-                }[]
-              ).map((item, i) => (
-                <Card key={i} className="border-none shadow-card-hover">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-1 mb-3">
-                      {Array.from({ length: 5 }).map((_, idx) => (
-                        <Star
-                          key={idx}
-                          className="h-4 w-4 fill-primary text-primary"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-sm text-foreground mb-4 leading-relaxed">
-                      "{item.quote}"
-                    </p>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {item.name}
                     </p>
                   </CardContent>
                 </Card>

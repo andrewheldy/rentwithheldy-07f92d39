@@ -53,13 +53,31 @@
     "items": [
       "A valid driver's license (international licenses welcome with passport).",
       "A credit card in the renter's name.",
-      "Proof of insurance or an active protection plan via the booking platform.",
+      "Proof of insurance or an active protection plan through the booking platform.",
       "Minimum age 21 (some premium vehicles require 25+)."
     ]
   },
   "faqHeading": "Frequently asked questions",
+  "faqs": [
+    {
+      "question": "How long does the booking take?",
+      "answer": "Most reservations are completed in under three minutes. You pick your dates, choose your vehicle from live availability, and confirm online. You'll receive an email confirmation immediately."
+    },
+    {
+      "question": "When is my reservation actually confirmed?",
+      "answer": "Your reservation is confirmed the moment you finish checkout in the booking widget. The vehicle is held for your dates and you'll receive an instant confirmation email."
+    },
+    {
+      "question": "What happens after I book?",
+      "answer": "A member of our team will reach out to coordinate pickup details — exact location, time, and any vehicle prep notes. Contactless pickup is available, and you'll have a direct line throughout your rental."
+    },
+    {
+      "question": "Can I change or cancel my reservation?",
+      "answer": "Message us as early as possible. We're flexible within reason, and cancellation and change terms follow the policy of the booking platform you reserved through."
+    }
+  ],
   "finalCta": {
     "title": "Ready to book your South Florida rental?",
-    "subtitle": "Reserve in minutes. Premium fleet. Real-person service from pickup to return."
+    "subtitle": "Reserve in minutes. Real-person service from pickup to return."
   }
 }

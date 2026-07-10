@@ -10,8 +10,8 @@ const Privacy = () => {
   return (
   <div className="min-h-screen bg-background flex flex-col">
     <SEO
-      title="Privacy Policy | Rent With Heldy"
-      description="How Rent With Heldy collects, uses, and protects your personal information when you book a car rental in Fort Lauderdale, Miami, or South Florida."
+      title={t("privacy.meta.title")}
+      description={t("privacy.meta.description")}
       path="/privacy"
     />
     <Header />

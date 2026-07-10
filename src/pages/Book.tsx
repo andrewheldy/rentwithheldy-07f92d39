@@ -14,8 +14,8 @@ const Book = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Book a Car | Live Availability | Rent With Heldy"
-        description="Check live availability and book your private car rental in Fort Lauderdale, Miami, or near FLL airport. Fast online booking with Rent With Heldy."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/book"
         jsonLd={[
           localBusinessSchema,

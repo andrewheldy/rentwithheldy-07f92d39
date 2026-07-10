@@ -5,16 +5,16 @@
   },
   "hero": {
     "title": "Contact Rent With Heldy",
-    "subtitle": "The fastest way to get on the road. Call directly or send us a message — we typically respond the same day."
+    "subtitle": "The fastest way to get on the road. Call directly or send us a message, and a member of our team will reach out as soon as possible."
   },
   "cards": {
     "call": {
       "title": "Call us",
-      "note": "Fastest response"
+      "note": "Talk to a real person"
     },
     "email": {
       "title": "Email",
-      "note": "Same-day reply"
+      "note": "We'll reply as soon as possible"
     },
     "serviceArea": {
       "title": "Service area",
@@ -30,7 +30,7 @@
       "bodyShop": "Body shop / insurance rental",
       "hotelDelivery": "Hotel delivery",
       "airportPickup": "Airport pickup",
-      "rentToOwn": "Rent-To-Own inquiry",
+      "rentToOwn": "Rent-to-Own inquiry",
       "partner": "Partner / business inquiry",
       "other": "Other"
     },

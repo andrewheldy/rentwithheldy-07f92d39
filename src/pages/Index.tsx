@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
-  Phone, Mail, ArrowRight, MapPin, Truck, MessageCircle, Users, Clock,
-  Sparkles, Star,
+  Phone, Mail, ArrowRight, MapPin, Truck, MessageCircle, Users,
+  Sparkles, Star, Award, KeyRound,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
@@ -11,13 +11,12 @@ import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
-import FAQAccordion from "@/components/FAQAccordion";
+import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import SEO from "@/components/SEO";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { useVehicles } from "@/hooks/useVehicles";
-import { GENERAL_FAQS } from "@/data/faqs";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -29,15 +28,16 @@ const WHY = [
   { icon: Truck, key: "delivered" },
   { icon: MessageCircle, key: "localOwner" },
   { icon: Users, key: "familyBilingual" },
-  { icon: Clock, key: "flexible" },
+  { icon: KeyRound, key: "flexible" },
 ] as const;
 
 const TRUST_STRIP = [
-  { icon: Star, key: "allStar" },
+  { icon: Star, key: "reviews" },
+  { icon: Award, key: "allStar" },
+  { icon: Truck, key: "delivery" },
+  { icon: KeyRound, key: "contactless" },
+  { icon: MessageCircle, key: "language" },
   { icon: Users, key: "familyOwned" },
-  { icon: MessageCircle, key: "espanol" },
-  { icon: Truck, key: "delivered" },
-  { icon: Clock, key: "open7" },
 ] as const;
 
 // Hand-picked vehicle IDs to showcase on the homepage
@@ -51,18 +51,18 @@ const FEATURED_VEHICLE_IDS = [
 ];
 
 const Index = () => {
-  const { t } = useTranslation(["home", "common"]);
+  const { t } = useTranslation(["home", "common", "faq"]);
   const { data: vehicles = [], isLoading } = useVehicles();
   const featuredVehicles = FEATURED_VEHICLE_IDS
     .map((id) => vehicles.find((v) => v.id === id))
     .filter((v): v is NonNullable<typeof v> => Boolean(v));
-  const faqPreview = GENERAL_FAQS.slice(0, 5);
+  const faqPreview = (t("faq:items", { returnObjects: true }) as FAQItem[]).slice(0, 5);
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Private Car Rental Fort Lauderdale & Miami | Rent With Heldy"
-        description="Book a private car rental in Fort Lauderdale, Miami, and South Florida. All-Star Host, premium fleet, FLL airport pickup. Easy online booking with Rent With Heldy."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/"
         jsonLd={[
           localBusinessSchema,
@@ -300,8 +300,7 @@ const Index = () => {
                 <QuickQuoteForm
                   serviceContext="Home Page Quote"
                   verticalPath="home"
-                  title={t("common:actions.getAQuote")}
-                  ctaLabel={t("common:actions.getMyQuote")}
+                  title={t("quoteForm.title")}
                 />
               </Reveal>
             </div>

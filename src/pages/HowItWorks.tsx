@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
-import FAQAccordion from "@/components/FAQAccordion";
+import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
 import {
   buildBreadcrumbSchema,
@@ -12,43 +12,16 @@ import {
   localBusinessSchema,
 } from "@/lib/seo-schemas";
 
-const FAQS = [
-  {
-    question: "How long does the booking take?",
-    answer:
-      "Most reservations are completed in under three minutes. You pick your dates, choose your vehicle from live availability, and confirm online. You'll receive an email confirmation immediately.",
-  },
-  {
-    question: "When is my reservation actually confirmed?",
-    answer:
-      "Your reservation is confirmed the moment you finish checkout in the booking widget. The vehicle is held for your dates and you'll receive an instant confirmation email.",
-  },
-  {
-    question: "What happens after I book?",
-    answer:
-      "Our team will reach out to coordinate pickup details — exact location, time, and any vehicle prep notes. You'll have a direct line throughout your rental.",
-  },
-  {
-    question: "What do I need to bring to pickup?",
-    answer:
-      "A valid driver's license, a credit card in the renter's name, and proof of insurance or an active protection plan. International renters: bring your license and passport.",
-  },
-  {
-    question: "Can I change or cancel my reservation?",
-    answer:
-      "Yes — message us as early as possible. We're flexible within reason and will work with you on date changes or cancellations subject to the booking platform's policy.",
-  },
-];
-
 const HowItWorks = () => {
   const { t } = useTranslation(["howItWorks", "common"]);
+  const faqs = t("faqs", { returnObjects: true }) as FAQItem[];
   const jsonLd = [
     localBusinessSchema,
     buildBreadcrumbSchema([
       { name: "Home", path: "/" },
       { name: "How It Works", path: "/how-it-works" },
     ]),
-    buildFaqSchema(FAQS),
+    buildFaqSchema(faqs),
   ];
 
   return (
@@ -158,7 +131,7 @@ const HowItWorks = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
             {t("faqHeading")}
           </h2>
-          <FAQAccordion items={FAQS} />
+          <FAQAccordion items={faqs} />
         </section>
 
         {/* CTA */}

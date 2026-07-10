@@ -1,8 +1,8 @@
 {
   "quickQuote": {
     "title": "Start Your Booking",
-    "subtitle": "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
-    "cta": "Check Our Availability",
+    "subtitle": "Tell us who you are and where you need the car, and a member of our team will reach out as soon as possible.",
+    "cta": "Check Availability",
     "sending": "Sending…",
     "passengerTypeLabel": "I am a…",
     "passengerTypePlaceholder": "Select customer type",
@@ -45,7 +45,7 @@
   "partnerIntake": {
     "heading": "Are you a Body Shop Manager, Claims Adjuster, or Paralegal?",
     "subheading": "Set up a direct delivery for your client. We'll coordinate billing and paperwork with you.",
-    "cta": "Check Our Availability",
+    "cta": "Check Availability",
     "sending": "Sending…",
     "errorRetry": "Something went wrong. Please call or text us directly.",
     "fields": {
@@ -71,15 +71,15 @@
     "toastCheckDetails": "Please check your details",
     "toastInvalid": "Invalid input",
     "savedTitle": "Got it — we've logged your request",
-    "savedDesc": "We'll respond within minutes. Email draft opened as a backup.",
+    "savedDesc": "A member of our team will reach out as soon as possible.",
     "saveErrorTitle": "Couldn't save your request",
     "saveErrorDesc": "Please call {{phone}} and we'll handle it directly."
   },
   "airportQuote": {
     "title": "Book Your Airport Rental",
-    "subtitle": "Share your flight details and we'll coordinate a smooth pickup near your terminal.",
+    "subtitle": "Share your flight details and we'll coordinate the most convenient pickup based on your arrival. Contactless pickup is available.",
     "requiredFields": "Name, phone, airport, and dates are required.",
-    "cta": "Get My Airport Quote",
+    "cta": "Check Availability",
     "airports": {
       "fll": "FLL — Fort Lauderdale",
       "mia": "MIA — Miami International",
@@ -108,9 +108,9 @@
   },
   "hotelQuote": {
     "title": "Get a Rental Delivered to Your Hotel",
-    "subtitle": "We coordinate with your hotel valet for a smooth, white-glove handoff.",
+    "subtitle": "We'll coordinate delivery directly to your hotel. Delivery fees vary by location, and contactless pickup is available.",
     "requiredFields": "Name, phone, hotel, and dates are required.",
-    "cta": "Get My Hotel Delivery Quote",
+    "cta": "Check Availability",
     "fields": {
       "name": "Full Name",
       "phone": "Mobile Phone",
@@ -132,7 +132,7 @@
   "bodyShopForm": {
     "title": "Request Delivery to Your Shop",
     "subtitle": "We'll meet you at the collision center so you can hand off your car and keep going.",
-    "cta": "Check Our Availability",
+    "cta": "Check Availability",
     "hint": "Estimated dates are okay.",
     "validation": {
       "name": "Enter your name",

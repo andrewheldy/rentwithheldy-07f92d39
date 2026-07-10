@@ -36,7 +36,6 @@ const DELIVERY_PLATFORMS = [
 type Recommendation = {
   tier: "Starter" | "Standard" | "Premium" | "Group / XL";
   category: string;
-  weekly: number;
   why: string;
   fits: string[];
 };
@@ -53,7 +52,6 @@ function recommend(args: {
     return {
       tier: "Group / XL",
       category: "Full-Size SUV",
-      weekly: 570,
       why: "Qualifies for Uber XL and large-group rides — higher fares per trip.",
       fits: ["Uber XL", "Lyft XL", "Group airport runs", "7+ passengers"],
     };
@@ -64,7 +62,6 @@ function recommend(args: {
     return {
       tier: "Premium",
       category: "Mid-Size SUV",
-      weekly: 450,
       why: "Roomy, comfortable ride that qualifies for Uber Comfort and premium tiers.",
       fits: ["Uber Comfort", "Lyft Preferred", "Highway-heavy driving"],
     };
@@ -75,7 +72,6 @@ function recommend(args: {
     return {
       tier: "Starter",
       category: "Economy",
-      weekly: 270,
       why: "Best fuel efficiency keeps more of every delivery payout in your pocket.",
       fits: [
         "DoorDash",
@@ -92,7 +88,6 @@ function recommend(args: {
     return {
       tier: "Standard",
       category: "Compact Sedan",
-      weekly: 330,
       why: "Reliable, fuel-smart sedan built for long shifts on Uber, Lyft, and Empower.",
       fits: ["Uber X", "Lyft Standard", "Empower", "Daily drivers"],
     };
@@ -103,7 +98,6 @@ function recommend(args: {
     return {
       tier: "Standard",
       category: "Compact Sedan",
-      weekly: 330,
       why: "Versatile sedan that handles both rideshare passengers and delivery runs.",
       fits: ["Uber / Lyft / Empower", "DoorDash", "Uber Eats", "Instacart"],
     };
@@ -112,8 +106,7 @@ function recommend(args: {
   return {
     tier: "Standard",
     category: "Compact Sedan",
-    weekly: 330,
-    why: "Approved for Uber, Lyft, and Empower with low weekly cost and great reliability.",
+    why: "Qualifies for Uber, Lyft, and Empower with great reliability.",
     fits: ["Uber X", "Lyft Standard", "Empower"],
   };
 }
@@ -176,7 +169,7 @@ const DriveToOwnQuiz = () => {
       phone: String(fd.get("phone") || ""),
       email: String(fd.get("email") || ""),
       notes: [
-        `Chariot Quiz match: ${rec.tier} — ${rec.category} ($${rec.weekly}/wk).`,
+        `Rent-to-Own quiz match: ${rec.tier} — ${rec.category}.`,
         `Gig type: ${gig}.`,
         showRideTierStep ? `Ride tier: ${rideTier ?? "standard"}.` : null,
         `Hours: ${hours}.`,
@@ -419,13 +412,6 @@ const DriveToOwnQuiz = () => {
                   <h4 className="text-2xl font-bold text-foreground">
                     {rec.tier} — {rec.category}
                   </h4>
-                  <div className="mt-2 text-3xl font-bold text-primary">
-                    ${rec.weekly}
-                    <span className="text-sm font-medium text-muted-foreground">
-                      {" "}
-                      {t("quiz.result.perWeek")}
-                    </span>
-                  </div>
                   <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto">
                     {rec.why}
                   </p>
@@ -433,7 +419,7 @@ const DriveToOwnQuiz = () => {
 
                 <div className="bg-secondary rounded-lg p-4 mb-6">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                    {t("quiz.result.approvedFor")}
+                    {t("quiz.result.goodFitFor")}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {rec.fits.map((f) => (
