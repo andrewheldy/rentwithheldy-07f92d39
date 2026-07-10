@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Shield, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { CONTACT_PHONE_DISPLAY } from "@/lib/contact";
 import {
   buildBreadcrumbSchema,
   localBusinessSchema,
@@ -115,7 +116,7 @@ const About = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">(561) 519-8958</p>
+                    <p className="font-medium">{CONTACT_PHONE_DISPLAY}</p>
                     <p className="text-sm text-muted-foreground">Available 7 days a week</p>
                   </div>
                 </div>

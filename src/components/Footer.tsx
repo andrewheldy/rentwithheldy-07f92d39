@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings, ArrowRight } from "
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const services = [
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport Delivery (FLL)" },
@@ -58,7 +59,7 @@ const Footer = () => {
                 Book Now <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <a href="tel:+15615198958">
+            <a href={CONTACT_PHONE_HREF}>
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 <Phone className="h-4 w-4" /> Call or Text
               </Button>
@@ -123,8 +124,8 @@ const Footer = () => {
             <h3 className="font-semibold text-ink mb-4">Contact</h3>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+15615198958" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Phone className="h-4 w-4 text-primary shrink-0" /> (561) 519-8958
+                <a href={CONTACT_PHONE_HREF} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="h-4 w-4 text-primary shrink-0" /> {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
               <li>

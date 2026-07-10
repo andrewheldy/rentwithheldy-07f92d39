@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Star, Phone, ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 // Permanent hero photograph. Licensed placeholder — swap for real Heldy
 // photography when available. Fully static: no crossfade, no zoom, no pan.
@@ -131,11 +132,11 @@ const Hero = () => {
 
           <motion.a
             variants={item}
-            href="tel:+15615198958"
+            href={CONTACT_PHONE_HREF}
             className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
-            Call or Text (561) 519-8958
+            Call or Text {CONTACT_PHONE_DISPLAY}
           </motion.a>
 
           <motion.ul

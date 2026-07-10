@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const Privacy = () => (
   <div className="min-h-screen bg-background flex flex-col">
@@ -115,8 +116,8 @@ const Privacy = () => (
             Rent With Heldy<br />
             Fort Lauderdale &amp; Miami, FL<br />
             Phone:{" "}
-            <a href="tel:+15615198958" className="text-primary underline">
-              (561) 519-8958
+            <a href={CONTACT_PHONE_HREF} className="text-primary underline">
+              {CONTACT_PHONE_DISPLAY}
             </a>
             <br />
             Email:{" "}

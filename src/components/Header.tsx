@@ -15,6 +15,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import logo from "@/assets/rent-with-heldy-logo.png";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const SERVICES = [
   { to: "/fort-lauderdale-airport-car-rental", label: "Airport Delivery", desc: "FLL pickup & drop-off", icon: Plane },
@@ -118,11 +119,11 @@ const Header = () => {
           {/* Right side CTAs */}
           <div className="flex items-center gap-2">
             <a
-              href="tel:+15615198958"
+              href={CONTACT_PHONE_HREF}
               className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4" />
-              (561) 519-8958
+              {CONTACT_PHONE_DISPLAY}
             </a>
             <Link to="/book" className="hidden sm:inline-flex">
               <Button size="sm">Book Now</Button>
@@ -185,10 +186,10 @@ const Header = () => {
                     </Link>
                   </SheetClose>
                   <a
-                    href="tel:+15615198958"
+                    href={CONTACT_PHONE_HREF}
                     className="flex items-center justify-center gap-2 text-sm font-medium text-foreground/80"
                   >
-                    <Phone className="h-4 w-4 text-primary" /> Call or Text (561) 519-8958
+                    <Phone className="h-4 w-4 text-primary" /> Call or Text {CONTACT_PHONE_DISPLAY}
                   </a>
                 </div>
               </SheetContent>

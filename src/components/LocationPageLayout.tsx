@@ -11,6 +11,7 @@ import {
   buildFaqSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 export interface LocationSection {
   heading: string;
@@ -235,13 +236,13 @@ const LocationPageLayout = ({
                   Book Now
                 </Button>
               </Link>
-              <a href="tel:+15615198958">
+              <a href={CONTACT_PHONE_HREF}>
                 <Button
                   size="lg"
                   variant="outline"
                   className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
                 >
-                  Call (561) 519-8958
+                  Call {CONTACT_PHONE_DISPLAY}
                 </Button>
               </a>
             </div>

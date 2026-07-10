@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const PASSENGER_TYPES = [
   "Hotel Guest",
@@ -163,8 +164,8 @@ const QuickQuoteForm = ({
           <p className="text-destructive font-medium">
             Something went wrong. Please call or text us directly.
           </p>
-          <a href="tel:+15615198958" className="text-primary hover:underline text-sm mt-2 block">
-            (561) 519-8958
+          <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline text-sm mt-2 block">
+            {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
       </div>
@@ -264,8 +265,8 @@ const QuickQuoteForm = ({
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           Prefer to talk? Call{" "}
-          <a href="tel:+15615198958" className="text-primary hover:underline">
-            (561) 519-8958
+          <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">
+            {CONTACT_PHONE_DISPLAY}
           </a>
         </p>
       </form>

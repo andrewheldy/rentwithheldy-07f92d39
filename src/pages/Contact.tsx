@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -80,7 +81,7 @@ const Contact = () => {
       console.error("Contact insert failed", error);
       toast({
         title: "Couldn't send your message",
-        description: "Please call (561) 519-8958 directly.",
+        description: `Please call ${CONTACT_PHONE_DISPLAY} directly.`,
         variant: "destructive",
       });
       setSubmitting(false);
@@ -133,10 +134,10 @@ const Contact = () => {
                 <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h2 className="text-lg font-semibold mb-1">Call us</h2>
                 <a
-                  href="tel:+15615198958"
+                  href={CONTACT_PHONE_HREF}
                   className="text-primary font-medium hover:underline"
                 >
-                  (561) 519-8958
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
                 <p className="text-xs text-muted-foreground mt-2">Fastest response</p>
               </CardContent>
@@ -213,7 +214,7 @@ const Contact = () => {
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   Prefer to talk? Call{" "}
-                  <a href="tel:+15615198958" className="text-primary hover:underline">(561) 519-8958</a>
+                  <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
                 </p>
               </form>
             </div>

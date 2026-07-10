@@ -13,6 +13,7 @@ import {
   buildFaqSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 export interface ValueProp {
   icon: LucideIcon;
@@ -190,11 +191,11 @@ const ServicePageLayout = ({
                     {secondaryCta && renderCta(secondaryCta, "outline")}
                   </div>
                   <a
-                    href="tel:+15615198958"
+                    href={CONTACT_PHONE_HREF}
                     className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
                   >
                     <Phone className="h-4 w-4" />
-                    Talk to a real person: (561) 519-8958
+                    Talk to a real person: {CONTACT_PHONE_DISPLAY}
                   </a>
                 </div>
 
@@ -242,11 +243,11 @@ const ServicePageLayout = ({
                     </a>
                   </div>
                   <a
-                    href="tel:+15615198958"
+                    href={CONTACT_PHONE_HREF}
                     className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
                   >
                     <Phone className="h-4 w-4" />
-                    Talk to a real person: (561) 519-8958
+                    Talk to a real person: {CONTACT_PHONE_DISPLAY}
                   </a>
                 </div>
 

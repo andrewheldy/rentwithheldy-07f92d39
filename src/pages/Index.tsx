@@ -22,6 +22,7 @@ import {
   buildFaqSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const WHY = [
   { icon: Truck, title: "Delivered, not a counter", body: "We bring the car to your terminal, hotel, or door. No lines, no shuttle bus, no rental desk." },
@@ -256,13 +257,13 @@ const Index = () => {
                 </p>
 
                 <div className="space-y-4">
-                  <a href="tel:+15615198958" className="flex items-center gap-3 group">
+                  <a href={CONTACT_PHONE_HREF} className="flex items-center gap-3 group">
                     <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
                       <Phone className="h-5 w-5 text-primary" />
                     </span>
                     <span className="leading-tight">
                       <span className="block font-semibold text-ink group-hover:text-primary transition-colors">
-                        (561) 519-8958
+                        {CONTACT_PHONE_DISPLAY}
                       </span>
                       <span className="block text-sm text-muted-foreground">Call or text, 7 days a week</span>
                     </span>

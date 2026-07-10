@@ -29,6 +29,10 @@ import { Progress } from "@/components/ui/progress";
 import FAQAccordion from "@/components/FAQAccordion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
+import heroRentToOwn from "@/assets/hero-rent-to-own.png";
+import heroRentToOwnAvif from "@/assets/hero-rent-to-own.avif";
+import heroRentToOwnWebp from "@/assets/hero-rent-to-own.webp";
 
 const PLATFORMS = ["Uber", "Lyft", "DoorDash", "Uber Eats", "Instacart"];
 
@@ -161,57 +165,101 @@ const DriveToOwn = () => {
 
       <main className="flex-1">
         {/* HERO */}
-        <section className="bg-gradient-tropical">
-          <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl text-center text-primary-foreground">
-            <div className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
-              <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
-            </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-              Drive Today. Own Tomorrow.
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-3">
-              Rent With Heldy helps Uber, Lyft, DoorDash, Uber Eats, and delivery
-              drivers get access to reliable vehicles while building ownership
-              over time.
-            </p>
-            <p className="text-base md:text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              Every qualifying payment helps move drivers closer to owning the
-              vehicle they rely on to earn income.
-            </p>
+        <section className="relative isolate flex min-h-[72svh] items-center overflow-hidden bg-background lg:min-h-[600px]">
+          {/* Full-bleed background photo — desktop only. On mobile the same
+              image runs in-flow below the copy instead (see photo band
+              below), since a full-bleed layer here would sit almost entirely
+              behind the full-width text column and never read as visible. */}
+          <picture className="contents">
+            <source srcSet={heroRentToOwnAvif} type="image/avif" />
+            <source srcSet={heroRentToOwnWebp} type="image/webp" />
+            <img
+              src={heroRentToOwn}
+              alt="Two SUVs parked along a Miami waterfront at golden hour with the downtown skyline and palm trees in the background"
+              className="absolute inset-0 -z-10 hidden h-full w-full object-cover object-[68%_center] lg:block"
+              fetchPriority="high"
+              decoding="async"
+              width={1672}
+              height={941}
+            />
+          </picture>
+          {/* Warm cream wash, left to right, fading to transparent — keeps the
+              text zone quiet without boxing it in. Desktop only, to match the
+              background photo above. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 hidden bg-gradient-to-r from-background via-background/80 to-background/10 lg:block"
+          />
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-              <a href="#quiz">
-                <Button
-                  size="lg"
-                  className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
-                >
-                  Find My Match
-                  <ArrowRight className="h-4 w-4 ml-1" />
-                </Button>
-              </a>
-              <a href="#how-it-works">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                >
-                  Learn How It Works
-                </Button>
-              </a>
-            </div>
+          <div className="container mx-auto py-14 lg:py-0">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+              <div className="max-w-xl">
+                <div className="inline-flex items-center gap-2 rounded-full bg-ink/[0.06] border border-ink/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-ink mb-5">
+                  <Key className="h-3.5 w-3.5" /> Rent-To-Own Program
+                </div>
+                <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-ink">
+                  Drive Today. Own Tomorrow.
+                </h1>
+                <p className="text-lg md:text-xl text-ink/85 max-w-xl mb-3">
+                  Get access to a reliable vehicle for Uber, Lyft, DoorDash, and
+                  more while building toward ownership with every qualifying
+                  payment.
+                </p>
+                <p className="text-base md:text-lg text-ink/75 max-w-xl mb-8">
+                  A practical path to earning now and owning the vehicle you
+                  depend on.
+                </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-              <span className="text-xs uppercase tracking-wider text-primary-foreground/70 w-full sm:w-auto sm:mr-2">
-                Approved for
-              </span>
-              {PLATFORMS.map((p) => (
-                <span
-                  key={p}
-                  className="bg-primary-foreground/15 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium"
-                >
-                  {p}
-                </span>
-              ))}
+                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                  <a href="#quiz" className="w-full sm:w-auto">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto bg-ink text-white hover:bg-ink/90 px-8"
+                    >
+                      Find My Match
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </Button>
+                  </a>
+                  <a href="#how-it-works" className="w-full sm:w-auto">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                      See How It Works
+                    </Button>
+                  </a>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span className="text-xs uppercase tracking-wider text-ink/60 w-full sm:w-auto sm:mr-2">
+                    Built for drivers on
+                  </span>
+                  {PLATFORMS.map((p) => (
+                    <span
+                      key={p}
+                      className="rounded-full border border-ink/10 bg-card/80 px-3 py-1.5 text-sm font-medium text-ink"
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile photo band — in-flow, below the copy, so it's never
+                  covered by text. Hidden on desktop, where the same image
+                  runs full-bleed behind the two-column layout instead. */}
+              <div className="lg:hidden">
+                <picture className="contents">
+                  <source srcSet={heroRentToOwnAvif} type="image/avif" />
+                  <source srcSet={heroRentToOwnWebp} type="image/webp" />
+                  <img
+                    src={heroRentToOwn}
+                    alt="Two SUVs parked along a Miami waterfront at golden hour with the downtown skyline and palm trees in the background"
+                    className="h-56 w-full rounded-2xl object-cover object-[85%_center] sm:h-64"
+                    loading="lazy"
+                    decoding="async"
+                    width={1672}
+                    height={941}
+                  />
+                </picture>
+              </div>
             </div>
           </div>
         </section>
@@ -537,7 +585,7 @@ const DriveToOwn = () => {
                   Apply Now
                 </Button>
               </a>
-              <a href="tel:+15615198958">
+              <a href={CONTACT_PHONE_HREF}>
                 <Button
                   size="lg"
                   variant="outline"
