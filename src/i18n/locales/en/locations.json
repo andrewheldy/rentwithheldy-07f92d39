@@ -1,0 +1,281 @@
+{
+  "layout": {
+    "breadcrumbHome": "Home",
+    "viewFleet": "View Fleet",
+    "exploreMore": {
+      "title": "Explore more",
+      "links": {
+        "fleet": "Browse our full fleet",
+        "howItWorks": "How booking works",
+        "fortLauderdale": "Car rental in Fort Lauderdale",
+        "miami": "Car rental in Miami",
+        "airport": "Fort Lauderdale Airport (FLL) rentals",
+        "contact": "Contact our team directly"
+      }
+    },
+    "faqHeading": "Frequently asked questions",
+    "callCta": "Call",
+    "finalCta": {
+      "title": "Ready to book your South Florida rental?",
+      "subtitle": "Reserve in minutes. Premium fleet. Friendly, hands-on service from pickup to return."
+    }
+  },
+  "fortLauderdale": {
+    "metaTitle": "Car Rental Fort Lauderdale | Rent With Heldy",
+    "metaDescription": "Private car rental in Fort Lauderdale, FL. Premium fleet, easy online booking, flexible pickup. Trusted All-Star Host serving Broward County and beyond.",
+    "crumbLabel": "Fort Lauderdale",
+    "h1": "Car Rental in Fort Lauderdale, FL",
+    "intro": "A private, hands-on car rental experience built for Fort Lauderdale visitors, business travelers, and locals. Curated fleet, easy booking, and flexible pickup across Broward County.",
+    "sections": [
+      {
+        "heading": "A friendlier way to rent a car in Fort Lauderdale",
+        "paragraphs": [
+          "Fort Lauderdale moves fast. Between the beach, downtown, the airport, the cruise port, and the constant flow of out-of-town visitors, the last thing you want is to spend your first hour in town standing in a rental counter line. Rent With Heldy offers a private, more personal alternative — a curated fleet of well-maintained cars, transparent online booking, and direct communication with the person actually handing you the keys.",
+          "We're an All-Star Host on the major rental marketplaces, with hundreds of completed trips and a track record of repeat renters. That matters because in Fort Lauderdale, where every weekend brings a wave of travelers, consistency and responsiveness aren't extras — they're the whole point."
+        ]
+      },
+      {
+        "heading": "Who rents from us in Fort Lauderdale",
+        "paragraphs": [
+          "Our renters fall into a few clear groups, and we've shaped the booking flow around what each of them actually needs."
+        ],
+        "bullets": [
+          "Beach and weekend travelers heading to Fort Lauderdale Beach, Las Olas, or Hollywood who want a comfortable car for a few days without airport-counter hassle.",
+          "Business travelers flying into FLL who need a clean sedan or SUV waiting on arrival, with simple pickup and a fixed daily rate.",
+          "Cruise passengers using Port Everglades who want a short rental on either side of their sailing.",
+          "Locals whose own car is in the shop, who are visiting family, or who just need an extra vehicle for a few days.",
+          "Out-of-state visitors staying in Aventura, Hollywood, Pompano, or downtown Fort Lauderdale who want a vehicle delivered close to their stay."
+        ]
+      },
+      {
+        "heading": "Vehicles built for the way Fort Lauderdale actually drives",
+        "paragraphs": [
+          "Fort Lauderdale isn't one type of trip. You might be doing I-95 runs to Miami one day, sliding down A1A the next, then loading the family up for a Sawgrass Mills shopping run. Our fleet reflects that range.",
+          "We keep practical, fuel-efficient sedans for solo travelers and couples; roomy SUVs for families and groups heading to the beach or the Everglades; and a small set of premium options for visitors who want something a little more polished for a special weekend, anniversary trip, or business meeting. Every vehicle is detailed between rentals, mechanically maintained, and listed with real photos so there are no surprises at pickup.",
+          "You can browse the full live fleet at any time and see exactly what's available for your dates."
+        ]
+      },
+      {
+        "heading": "Pickup, drop-off, and how we work in Fort Lauderdale",
+        "paragraphs": [
+          "We coordinate pickup at a convenient meeting point in the Fort Lauderdale area, including locations near the airport, Port Everglades, and major hotel zones. Once your reservation is confirmed, you'll get a direct line to our team to lock in the exact spot and time. Most handoffs take just a few minutes — verify the license, walk the car, get the keys, and you're driving.",
+          "Returns work the same way in reverse. We're flexible on timing within reason, and if your plans shift mid-trip, message us early and we'll do our best to extend or adjust without drama."
+        ]
+      },
+      {
+        "heading": "Why renters choose Rent With Heldy over big-name counters",
+        "paragraphs": [
+          "The big-name counters at FLL serve a purpose, but they're built for volume. That means lines, upsells, surprise fees at return, and a different agent every time. We're the opposite: one host, one fleet, one phone number, and pricing you can actually predict."
+        ],
+        "bullets": [
+          "All-Star Host status with consistently high ratings across hundreds of trips.",
+          "Real-person communication — message our team directly before, during, and after your trip.",
+          "Transparent online booking with the actual vehicle you'll be driving.",
+          "Convenient pickup across Fort Lauderdale, Miami, and FLL airport.",
+          "Premium and practical options without luxury-counter pricing."
+        ]
+      },
+      {
+        "heading": "Booking your Fort Lauderdale rental",
+        "paragraphs": [
+          "Booking takes a couple of minutes. Pick your dates, choose a vehicle from the live availability, confirm online, and you'll get an instant confirmation by email. From there we'll coordinate pickup details directly. No back-and-forth quoting, no hidden inventory games — what you see in the booking widget is what's available.",
+          "If you're not sure which vehicle fits your trip, call or text us and we'll point you to the right option for the number of passengers, luggage, and how far you plan to drive."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Where do you pick up and drop off in Fort Lauderdale?",
+        "answer": "We coordinate pickup at a convenient location in the Fort Lauderdale area, including spots near FLL airport, Port Everglades, and major hotel zones. Exact meeting point is confirmed by message after booking."
+      },
+      {
+        "question": "Can I rent a car in Fort Lauderdale for just one day?",
+        "answer": "Yes. We accept short rentals subject to availability. Daily rates are shown live in the booking widget when you select your dates."
+      },
+      {
+        "question": "Do you offer SUV and family-sized rentals in Fort Lauderdale?",
+        "answer": "Yes. Our Fort Lauderdale fleet includes SUVs and roomier vehicles for families, groups, and beach trips. You can filter the live fleet by vehicle type."
+      },
+      {
+        "question": "Are your Fort Lauderdale rentals available for cruise passengers?",
+        "answer": "Absolutely. Many of our renters use us before or after cruises out of Port Everglades. Let us know your sailing details and we'll coordinate pickup accordingly."
+      },
+      {
+        "question": "How do I extend my Fort Lauderdale rental?",
+        "answer": "Message us before your scheduled return. As long as the car isn't already booked next, we'll extend your trip and update the reservation."
+      }
+    ]
+  },
+  "miami": {
+    "metaTitle": "Car Rental Miami | Premium Rentals | Rent With Heldy",
+    "metaDescription": "Private car rental in Miami, FL. Sedans, SUVs, and premium vehicles for city driving, beach days, and business travel. Easy online booking with Rent With Heldy.",
+    "crumbLabel": "Miami",
+    "h1": "Car Rental in Miami, FL",
+    "intro": "A premium private car rental built for the way people actually drive Miami. Curated fleet, transparent pricing, and a real person on the other end of every reservation.",
+    "sections": [
+      {
+        "heading": "Renting a car in Miami without the rental-counter headache",
+        "paragraphs": [
+          "Miami is a driving city. Whether you're hopping between Brickell meetings, heading down to Wynwood for dinner, cruising A1A, or making the run to the Keys, having the right vehicle changes the entire trip. Rent With Heldy gives Miami visitors and locals a private, well-maintained alternative to the big-name rental counters — same convenience, more personal service, often better cars.",
+          "We're an All-Star Host with hundreds of completed trips across South Florida. That reputation is built on the boring stuff that actually matters: clean cars, on-time pickups, fair pricing, and a host who answers the phone."
+        ]
+      },
+      {
+        "heading": "Who books Miami rentals with us",
+        "paragraphs": [
+          "Miami renters are some of the most varied in the country, and our fleet and process are built to flex with that."
+        ],
+        "bullets": [
+          "Visitors flying into MIA or driving in from FLL who want a vehicle ready without standing in a counter line.",
+          "Business travelers attending events in Brickell, Downtown Miami, Coral Gables, or Aventura who need a clean, professional-looking car.",
+          "Couples and groups planning Miami Beach, South Beach, Coconut Grove, or Bayside days out.",
+          "Families needing a roomy SUV for a week of city, beach, and theme-park driving.",
+          "Cruise passengers leaving from PortMiami who want a rental for the days around their sailing.",
+          "Locals between cars who need something dependable for a few days or weeks."
+        ]
+      },
+      {
+        "heading": "A Miami fleet built for city driving and weekend escapes",
+        "paragraphs": [
+          "Miami driving demands a specific kind of car. You want something nimble enough for tight Brickell garages, comfortable enough for the AC battle on a 90-degree day, and big enough to handle luggage, beach gear, or a Costco run when the weekend calls for it.",
+          "Our fleet covers exactly that range. Fuel-efficient sedans for solo drivers and city use, roomy SUVs for families and group trips, and a small set of premium vehicles for visitors who want something a little nicer for a Miami weekend, business stay, or special occasion. Every car is photographed accurately, detailed between rentals, and mechanically maintained.",
+          "Browse the live fleet to see what's actually available on your dates — no bait-and-switch, no 'or similar.'"
+        ]
+      },
+      {
+        "heading": "Pickup, delivery, and how we operate in Miami",
+        "paragraphs": [
+          "We coordinate pickup at a convenient meeting point. Once your reservation is confirmed, you get a direct line to our team to lock the exact spot and time. Most handoffs take just a few minutes — quick walk around the car, license check, keys, and you're driving.",
+          "If you're flying into FLL and driving down, or arriving at MIA, let us know your flight details after booking and we'll align timing. For multi-day Miami stays, we're flexible on returns within reason, and same-day extensions are usually possible if the car isn't already booked next."
+        ]
+      },
+      {
+        "heading": "Why Miami renters pick Rent With Heldy",
+        "paragraphs": [
+          "The corporate counters at MIA exist to move volume. That means surge pricing on busy weekends, surprise add-ons at return, and a different agent every time. We're built differently."
+        ],
+        "bullets": [
+          "All-Star Host with hundreds of five-star trips across South Florida.",
+          "One host, one fleet, one number — message us directly before, during, and after.",
+          "Transparent live pricing in the booking widget — the price you see is the price you pay.",
+          "Premium and practical options without luxury-counter markups.",
+          "Pickup convenient to Miami visitors, business stays, and PortMiami sailings."
+        ]
+      },
+      {
+        "heading": "How to book your Miami rental",
+        "paragraphs": [
+          "Pick your dates, choose a vehicle from live availability, and confirm online. You'll get an instant email confirmation, and we'll follow up to coordinate pickup specifics. No quoting back and forth, no hidden inventory — what you see in the widget is what's bookable.",
+          "Not sure which vehicle is right for your Miami trip? Call or text us. We'll match the car to the trip — passengers, luggage, mileage, and parking situation included."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do you deliver rentals to Miami hotels or short-term rentals?",
+        "answer": "We coordinate convenient meeting points in the Miami area for most stays. After booking, message us with your address and we'll confirm the closest pickup spot."
+      },
+      {
+        "question": "Can I rent a car in Miami if I'm flying into FLL?",
+        "answer": "Yes — many of our Miami renters fly into Fort Lauderdale (FLL). We can coordinate pickup near FLL so you can drive straight down to Miami, no transfer required."
+      },
+      {
+        "question": "Do you offer premium or luxury car rentals in Miami?",
+        "answer": "Yes. Our fleet includes select premium vehicles ideal for Miami business trips, weekends, and special occasions. Availability is shown live in the booking widget."
+      },
+      {
+        "question": "What's the minimum age to rent a car in Miami?",
+        "answer": "Renters typically need to be 21 or older, with some premium vehicles requiring 25+. The booking widget reflects any age restrictions on each vehicle."
+      },
+      {
+        "question": "Can I take the rental from Miami to the Keys or Orlando?",
+        "answer": "Yes, in most cases — please mention long-distance plans when you book so we can confirm the vehicle and any mileage considerations up front."
+      }
+    ]
+  },
+  "local": {
+    "metaTitle": "Local Car Rentals South Florida | Work & Repair Rentals | Rent With Heldy",
+    "metaDescription": "Daily, weekly, and monthly local car rentals in Miami & Fort Lauderdale. Reliable rides for work, commuting, and while your car is in the shop. Easy booking, friendly service.",
+    "crumbLabel": "Local Car Rentals",
+    "h1": "Local Car Rentals for Work & While Your Car's in the Shop",
+    "intro": "A dependable rental for the people who actually need a car day in, day out — commuters, contractors, service pros, and drivers waiting on a repair. Clean vehicles, flexible terms, and a real human on the other end of every booking.",
+    "sections": [
+      {
+        "heading": "Built for South Floridians who need a car right now",
+        "paragraphs": [
+          "Not every rental is for a vacation. A lot of our renters are locals who simply need wheels — a contractor whose work van is in the shop, a nurse picking up extra shifts, a rideshare driver between cars, or a family stuck without a vehicle after a fender-bender. We built our local rental program around exactly those situations.",
+          "Pricing is fair, the cars are clean, and we won't lock you into rigid corporate-counter rules. Daily, weekly, and monthly rates available with one direct point of contact from start to finish."
+        ]
+      },
+      {
+        "heading": "Who books local rentals with us",
+        "paragraphs": [
+          "If you live, work, or are stuck without a car in South Florida, this is for you."
+        ],
+        "bullets": [
+          "Drivers whose car is in the body shop or mechanic after an accident or breakdown.",
+          "Workers who need a reliable commuter while their daily driver is unavailable.",
+          "Contractors, real-estate agents, and field service pros who need a clean professional car for client visits.",
+          "Locals between cars — selling one, waiting on the next.",
+          "Families needing a temporary second vehicle for school runs, errands, and shifts.",
+          "Rideshare and delivery drivers needing a short-term car while figuring out longer-term plans."
+        ]
+      },
+      {
+        "heading": "Daily, weekly, and monthly local rates",
+        "paragraphs": [
+          "Need a car for three days while your bumper gets fixed? Done. Need something for the next month while you sort out a totaled vehicle with insurance? Also done. Local rentals are priced to make sense for real-life timelines, not just weekend trips.",
+          "Weekly and monthly bookings get the best rates. If your insurance is covering loss-of-use, we can also bill direct or provide the documentation your adjuster needs."
+        ]
+      },
+      {
+        "heading": "Pickup, delivery, and how it works",
+        "paragraphs": [
+          "Most local renters meet us at a convenient point in Fort Lauderdale or Miami. If your car is being repaired, we can often meet you at the body shop so you walk out of one car and into another — no Uber in between.",
+          "Once your reservation is confirmed, you'll get a direct line to coordinate the exact time and place. Returns are flexible, and extensions are usually easy as long as we know in advance."
+        ]
+      },
+      {
+        "heading": "Why locals choose Rent With Heldy",
+        "paragraphs": [
+          "Big-name rental counters are built for tourists and volume. Local renters get treated like an afterthought. We're the opposite."
+        ],
+        "bullets": [
+          "All-Star Host with hundreds of trips across South Florida.",
+          "Real human on the phone — not a call center.",
+          "Body shop and insurance-friendly: we'll meet you, coordinate, and document.",
+          "Honest weekly and monthly rates for longer rentals.",
+          "Clean, well-maintained cars — sedans and SUVs ready when you are."
+        ]
+      },
+      {
+        "heading": "How to book your local rental",
+        "paragraphs": [
+          "Pick your dates, choose a vehicle from live availability, and confirm online. We'll follow up to lock pickup specifics. If your situation is urgent — accident this morning, car towed last night — just call us and we'll get you handled."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can you meet me at the body shop or dealership?",
+        "answer": "Yes. We regularly meet renters at collision centers, dealerships, and mechanics so you can hand off keys and pick up your rental in the same stop."
+      },
+      {
+        "question": "Do you offer weekly or monthly local rates?",
+        "answer": "We do. Weekly and monthly bookings come with reduced daily rates. Just message us with your dates and we'll send the best price for the length you need."
+      },
+      {
+        "question": "Will my insurance pay for the rental?",
+        "answer": "Often yes — most loss-of-use and rental-coverage policies will reimburse or direct-bill. We provide all documentation your adjuster needs."
+      },
+      {
+        "question": "Can rideshare or delivery drivers use these cars?",
+        "answer": "Short-term rideshare use can be arranged on select vehicles — please ask before booking so we can match you with a compatible car. We're also building a dedicated rent-to-own program for rideshare drivers."
+      },
+      {
+        "question": "What's the minimum age to rent?",
+        "answer": "Renters typically need to be 21 or older. Some vehicles require 25+. The booking widget reflects age restrictions per vehicle."
+      }
+    ]
+  }
+}

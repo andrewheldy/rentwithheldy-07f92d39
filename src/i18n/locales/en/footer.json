@@ -1,0 +1,50 @@
+{
+  "cta": {
+    "heading": "Ready when you are.",
+    "subheading": "Book online in minutes, or reach a real person 7 days a week."
+  },
+  "brand": {
+    "tagline": "Premium private car rentals",
+    "badge": "All-Star Host on Turo",
+    "description": "A family-owned fleet delivering clean, reliable cars across Fort Lauderdale, Miami, and South Florida — right where you need them."
+  },
+  "columns": {
+    "services": "Services",
+    "locations": "Locations",
+    "company": "Company",
+    "contact": "Contact"
+  },
+  "services": {
+    "airport": "Airport Delivery (FLL)",
+    "hotel": "Hotel Delivery",
+    "bodyShop": "Body Shop Delivery",
+    "cruise": "Cruise Port Delivery",
+    "lossOfUse": "Loss of Use Claims",
+    "rentToOwn": "Rent-To-Own Program"
+  },
+  "locations": {
+    "fortLauderdale": "Fort Lauderdale",
+    "miami": "Miami",
+    "local": "Local Car Rentals",
+    "fllAirport": "FLL Airport"
+  },
+  "company": {
+    "fleet": "Fleet",
+    "howItWorks": "How It Works",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "contact": {
+    "location": "Fort Lauderdale & Miami, FL"
+  },
+  "seoParagraph": "Rent With Heldy is a private car rental service based in South Florida, serving travelers and locals across Fort Lauderdale, Miami, Hollywood, Aventura, and the Fort Lauderdale-Hollywood International Airport (FLL). Our curated fleet includes economy cars, SUVs, family-friendly vehicles, and premium options — booked online in minutes with flexible pickup and dependable support.",
+  "legal": {
+    "rights": "© {{year}} Rent With Heldy. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "manageFleet": "Manage Fleet",
+    "signOut": "Sign Out",
+    "admin": "Admin"
+  }
+}

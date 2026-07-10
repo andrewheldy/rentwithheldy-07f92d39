@@ -1,0 +1,148 @@
+{
+  "about": {
+    "hero": {
+      "title": "About Rent With Heldy",
+      "subtitle": "Your trusted partner for premium car rentals in South Florida. We're committed to providing exceptional service and quality vehicles for all your transportation needs."
+    },
+    "values": {
+      "trusted": {
+        "title": "Trusted & Reliable",
+        "description": "All-Star Host status with consistently high ratings from satisfied customers."
+      },
+      "quality": {
+        "title": "Premium Quality",
+        "description": "Carefully maintained fleet of vehicles ranging from economy to luxury."
+      },
+      "local": {
+        "title": "Local Expertise",
+        "description": "Based in South Florida, we know the area and provide insider tips."
+      }
+    },
+    "story": {
+      "heading": "Our Story",
+      "p1": "Founded with a passion for hospitality and a love for South Florida, Rent With Heldy has been serving travelers and locals alike with premium car rental services. What started as a small operation has grown into a trusted fleet of carefully selected vehicles.",
+      "p2": "Our commitment to excellence has earned us All-Star Host status, reflecting our dedication to providing exceptional customer service and maintaining our vehicles to the highest standards. Whether you're visiting Miami's vibrant beaches or exploring Fort Lauderdale's canals, we have the perfect vehicle for your journey.",
+      "p3": "Every vehicle in our fleet is personally inspected and maintained to ensure your safety and comfort. We believe that your transportation should be as memorable as your destination."
+    },
+    "getInTouch": {
+      "heading": "Get in Touch",
+      "phoneNote": "Available 7 days a week",
+      "emailNote": "We'll respond within 24 hours",
+      "hoursLabel": "Business Hours",
+      "hoursValue": "Mon-Sun: 8:00 AM - 8:00 PM"
+    },
+    "serviceAreas": {
+      "heading": "Service Areas",
+      "miamiDade": {
+        "title": "Miami-Dade County",
+        "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura, and surrounding areas"
+      },
+      "broward": {
+        "title": "Broward County",
+        "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie, and surrounding areas"
+      },
+      "cta": "Book Your Rental Today"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {{date}}",
+    "overview": {
+      "heading": "Overview",
+      "body": "Rent With Heldy (\"we\", \"us\") respects your privacy. This policy explains what information we collect when you visit rentwithheldy.com or book a vehicle with us, how we use it, and the choices you have."
+    },
+    "collect": {
+      "heading": "Information we collect",
+      "booking": {
+        "term": "Booking information",
+        "desc": "name, email, phone, and trip dates submitted through our booking widget."
+      },
+      "verification": {
+        "term": "Verification information",
+        "desc": "required by our booking platform (driver's license, payment method) to complete a reservation."
+      },
+      "communication": {
+        "term": "Communication",
+        "desc": "messages, calls, and texts you send us about your reservation."
+      },
+      "siteUsage": {
+        "term": "Site usage",
+        "desc": "basic analytics like pages visited and device type, used to improve the site."
+      }
+    },
+    "use": {
+      "heading": "How we use your information",
+      "items": [
+        "To process and manage your rental reservation.",
+        "To coordinate pickup, return, and support during your trip.",
+        "To respond to questions and provide customer service.",
+        "To improve the website and our service quality.",
+        "To comply with legal and tax obligations."
+      ]
+    },
+    "sharing": {
+      "heading": "Sharing of information",
+      "body": "We do not sell your personal information. We share information only with the booking and payment platforms required to complete your reservation, and with service providers strictly as needed to operate the rental (for example, insurance verification)."
+    },
+    "cookies": {
+      "heading": "Cookies and analytics",
+      "body": "We use minimal cookies for site functionality and aggregated analytics. You can control cookies through your browser settings."
+    },
+    "choices": {
+      "heading": "Your choices",
+      "text": "You may request access to, correction of, or deletion of your personal information by contacting us at"
+    },
+    "contact": {
+      "heading": "Contact",
+      "address": "Fort Lauderdale & Miami, FL",
+      "phoneLabel": "Phone:",
+      "emailLabel": "Email:"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: {{date}}",
+    "acceptance": {
+      "heading": "Acceptance of terms",
+      "body": "By accessing rentwithheldy.com or booking a vehicle with Rent With Heldy, you agree to these terms. If you do not agree, do not use the site or book a vehicle."
+    },
+    "reservations": {
+      "heading": "Reservations",
+      "body": "Reservations are made through our booking platform. The terms, cancellation policies, insurance requirements, and protection plans of that platform apply to every booking in addition to these terms. You are responsible for reviewing them at checkout."
+    },
+    "eligibility": {
+      "heading": "Driver eligibility",
+      "items": [
+        "Renters must be at least 21 (some vehicles require 25+).",
+        "A valid driver's license is required at pickup.",
+        "Only authorized drivers listed on the reservation may operate the vehicle.",
+        "The vehicle may not be used for illegal activity, racing, or off-road driving."
+      ]
+    },
+    "vehicleUse": {
+      "heading": "Vehicle use and condition",
+      "body": "You agree to return the vehicle in the same condition as received, normal wear excepted. Damage, excessive cleaning needs, unauthorized smoking, or pet hair beyond reasonable use may incur fees per the booking platform's policies."
+    },
+    "cancellations": {
+      "heading": "Cancellations and changes",
+      "body": "Cancellation and change policies are governed by the booking platform you reserved through. We do our best to accommodate reasonable changes — message us as early as possible."
+    },
+    "liability": {
+      "heading": "Liability",
+      "body": "Rent With Heldy is not liable for personal items left in the vehicle, third-party traffic violations, tolls, or charges incurred during your rental. Insurance and protection plans are handled through the booking platform."
+    },
+    "website": {
+      "heading": "Website use",
+      "body": "The content on this site is provided for informational purposes. We may update vehicles, pricing, and availability at any time. Live booking availability and pricing in the booking widget takes precedence over any information shown elsewhere on the site."
+    },
+    "governingLaw": {
+      "heading": "Governing law",
+      "body": "These terms are governed by the laws of the State of Florida, without regard to its conflict of law provisions."
+    },
+    "contact": {
+      "heading": "Contact",
+      "text": "Questions about these terms? Reach us at",
+      "or": "or"
+    }
+  }
+}

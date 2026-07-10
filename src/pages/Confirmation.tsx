@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { format, parseISO } from "date-fns";
 import { CheckCircle, Calendar, MapPin, User, Mail, Phone, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
@@ -11,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { supabase } from "@/integrations/supabase/client";
 
 const Confirmation = () => {
+  const { t } = useTranslation(["booking", "common"]);
   const { reservationId } = useParams<{ reservationId: string }>();
 
   const { data: reservation, isLoading } = useQuery({
@@ -56,13 +58,13 @@ const Confirmation = () => {
         <Header />
         <main className="container mx-auto px-4 py-8 text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">
-            Reservation Not Found
+            {t("confirmation.notFound.title")}
           </h1>
           <p className="text-muted-foreground mb-6">
-            We couldn't find this reservation. Please check your confirmation email.
+            {t("confirmation.notFound.description")}
           </p>
           <Link to="/categories">
-            <Button>Browse Categories</Button>
+            <Button>{t("confirmation.notFound.browseCategories")}</Button>
           </Link>
         </main>
       </div>
@@ -85,10 +87,12 @@ const Confirmation = () => {
               <CheckCircle className="h-8 w-8 text-primary-foreground" />
             </div>
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Reservation Confirmed!
+              {t("confirmation.confirmed.title")}
             </h1>
             <p className="text-muted-foreground">
-              Confirmation #{reservation.id.slice(0, 8).toUpperCase()}
+              {t("confirmation.confirmed.number", {
+                code: reservation.id.slice(0, 8).toUpperCase(),
+              })}
             </p>
           </div>
 
@@ -99,18 +103,18 @@ const Confirmation = () => {
               <div className="flex gap-4 mb-6">
                 <img
                   src={heroImage}
-                  alt={category?.name || "Vehicle"}
+                  alt={category?.name || t("confirmation.vehicle.fallbackAlt")}
                   className="w-32 h-24 object-cover rounded-lg"
                 />
                 <div>
                   <h2 className="font-semibold text-lg text-foreground">
-                    {category?.name || "Vehicle Category"}
+                    {category?.name || t("confirmation.vehicle.fallbackName")}
                   </h2>
                   <p className="text-sm text-muted-foreground italic">
-                    or similar vehicle
+                    {t("confirmation.vehicle.orSimilar")}
                   </p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Your exact vehicle will be assigned at pickup
+                    {t("confirmation.vehicle.assignedAtPickup")}
                   </p>
                 </div>
               </div>
@@ -122,7 +126,7 @@ const Confirmation = () => {
                 <div className="flex items-start gap-3">
                   <Calendar className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium text-foreground">Rental Period</p>
+                    <p className="font-medium text-foreground">{t("confirmation.details.rentalPeriod")}</p>
                     <p className="text-sm text-muted-foreground">
                       {format(parseISO(reservation.start_date), "EEEE, MMMM d, yyyy")} – {format(parseISO(reservation.end_date), "EEEE, MMMM d, yyyy")}
                     </p>
@@ -132,7 +136,7 @@ const Confirmation = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium text-foreground">Pickup Location</p>
+                    <p className="font-medium text-foreground">{t("confirmation.details.pickupLocation")}</p>
                     <p className="text-sm text-muted-foreground">{reservation.pickup_location}</p>
                   </div>
                 </div>
@@ -140,7 +144,7 @@ const Confirmation = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium text-foreground">Drop-off Location</p>
+                    <p className="font-medium text-foreground">{t("confirmation.details.dropoffLocation")}</p>
                     <p className="text-sm text-muted-foreground">{reservation.dropoff_location}</p>
                   </div>
                 </div>
@@ -150,7 +154,7 @@ const Confirmation = () => {
 
               {/* Customer Info */}
               <div className="space-y-4">
-                <h3 className="font-medium text-foreground">Renter Information</h3>
+                <h3 className="font-medium text-foreground">{t("confirmation.renter.heading")}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center gap-2">
                     <User className="h-4 w-4 text-muted-foreground" />
@@ -171,12 +175,12 @@ const Confirmation = () => {
 
               {/* Important Info */}
               <div className="bg-secondary p-4 rounded-lg">
-                <h3 className="font-medium text-foreground mb-2">What's Next?</h3>
+                <h3 className="font-medium text-foreground mb-2">{t("confirmation.next.heading")}</h3>
                 <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• A confirmation email has been sent to {reservation.customer_email}</li>
-                  <li>• Please bring a valid driver's license and credit card at pickup</li>
-                  <li>• Your specific vehicle will be assigned when you arrive</li>
-                  <li>• Contact us at {CONTACT_PHONE_DISPLAY} for any questions</li>
+                  <li>• {t("confirmation.next.emailSent", { email: reservation.customer_email })}</li>
+                  <li>• {t("confirmation.next.bringLicense")}</li>
+                  <li>• {t("confirmation.next.vehicleAssigned")}</li>
+                  <li>• {t("confirmation.next.contact", { phone: CONTACT_PHONE_DISPLAY })}</li>
                 </ul>
               </div>
             </CardContent>
@@ -186,13 +190,13 @@ const Confirmation = () => {
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link to="/" className="flex-1">
               <Button variant="outline" className="w-full">
-                Return to Home
+                {t("confirmation.actions.returnHome")}
               </Button>
             </Link>
             <Link to="/categories" className="flex-1">
               <Button className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90">
-                Book Another Vehicle
-                <ArrowRight className="h-4 w-4 ml-2" />
+                {t("confirmation.actions.bookAnother")}
+                <ArrowRight className="h-4 w-4 ms-2 rtl:-scale-x-100" />
               </Button>
             </Link>
           </div>

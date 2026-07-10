@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,31 +18,17 @@ import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
+// `value` is the STABLE string persisted to Supabase / emailed to the team —
+// never translate it. `labelKey`/`hintKey` drive only the visible copy.
 const PASSENGER_TYPES = [
-  "Hotel Guest",
-  "Airport Traveler",
-  "Body Shop / Repair Customer",
-  "Local Rental",
-  "Other",
+  { value: "Hotel Guest", labelKey: "hotelGuest", hintKey: "hotelGuest" },
+  { value: "Airport Traveler", labelKey: "airportTraveler", hintKey: "airportTraveler" },
+  { value: "Body Shop / Repair Customer", labelKey: "bodyShop", hintKey: "bodyShop" },
+  { value: "Local Rental", labelKey: "localRental" },
+  { value: "Other", labelKey: "other" },
 ] as const;
 
-const DATE_RANGE_HINTS: Record<string, string> = {
-  "Body Shop / Repair Customer": "Estimated dates are okay.",
-  "Hotel Guest": "Please enter exact pickup and return dates.",
-  "Airport Traveler": "Please enter exact pickup and return dates, plus flight details.",
-};
-
-const schema = z.object({
-  name: z.string().trim().min(2, "Enter your name").max(80),
-  phone: z.string().trim().min(7, "Enter a valid phone").max(20),
-  passengerType: z.enum(PASSENGER_TYPES, {
-    errorMap: () => ({ message: "Select your customer type" }),
-  }),
-  location: z.string().trim().min(2, "Where should we deliver?").max(120),
-  dateRange: z.string().trim().min(2, "Enter your rental date range").max(120),
-  referredBy: z.string().trim().max(120).optional(),
-  notes: z.string().trim().max(500).optional(),
-});
+const PASSENGER_VALUES = PASSENGER_TYPES.map((p) => p.value) as [string, ...string[]];
 
 interface QuickQuoteFormProps {
   serviceContext?: string;
@@ -49,7 +36,7 @@ interface QuickQuoteFormProps {
   title?: string;
   subtitle?: string;
   ctaLabel?: string;
-  defaultPassengerType?: (typeof PASSENGER_TYPES)[number];
+  defaultPassengerType?: (typeof PASSENGER_TYPES)[number]["value"];
 }
 
 const slugify = (s: string) =>
@@ -58,11 +45,12 @@ const slugify = (s: string) =>
 const QuickQuoteForm = ({
   serviceContext = "Quick Quote",
   verticalPath,
-  title = "Start Your Booking",
-  subtitle = "Tell us who you are and where you need the car. We'll text you back fast with a quote.",
-  ctaLabel = "Check Our Availability",
+  title,
+  subtitle,
+  ctaLabel,
   defaultPassengerType,
 }: QuickQuoteFormProps) => {
+  const { t } = useTranslation(["forms", "common"]);
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
@@ -70,7 +58,41 @@ const QuickQuoteForm = ({
     defaultPassengerType ?? ""
   );
 
-  const dateRangeHint = DATE_RANGE_HINTS[passengerType] ?? "";
+  // Callers may pass already-translated overrides; otherwise use the defaults.
+  const heading = title ?? t("quickQuote.title");
+  const sub = subtitle ?? t("quickQuote.subtitle");
+  const cta = ctaLabel ?? t("quickQuote.cta");
+
+  // Rebuilt when the language changes so validation messages stay localized.
+  const schema = useMemo(
+    () =>
+      z.object({
+        name: z.string().trim().min(2, t("quickQuote.validation.name")).max(80),
+        phone: z.string().trim().min(7, t("quickQuote.validation.phone")).max(20),
+        passengerType: z.enum(PASSENGER_VALUES, {
+          errorMap: () => ({ message: t("quickQuote.validation.passengerType") }),
+        }),
+        location: z
+          .string()
+          .trim()
+          .min(2, t("quickQuote.validation.location"))
+          .max(120),
+        dateRange: z
+          .string()
+          .trim()
+          .min(2, t("quickQuote.validation.dateRange"))
+          .max(120),
+        referredBy: z.string().trim().max(120).optional(),
+        notes: z.string().trim().max(500).optional(),
+      }),
+    [t]
+  );
+
+  const activeType = PASSENGER_TYPES.find((p) => p.value === passengerType);
+  const dateRangeHint =
+    activeType && "hintKey" in activeType
+      ? t(`quickQuote.hints.${activeType.hintKey}`)
+      : "";
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,8 +108,8 @@ const QuickQuoteForm = ({
     });
     if (!parsed.success) {
       toast({
-        title: "Please check your details",
-        description: parsed.error.issues[0]?.message ?? "Invalid input",
+        title: t("quickQuote.toastTitle"),
+        description: parsed.error.issues[0]?.message ?? t("quickQuote.toastInvalid"),
         variant: "destructive",
       });
       return;
@@ -158,13 +180,13 @@ const QuickQuoteForm = ({
       <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
         <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
           <Zap className="h-5 w-5 text-primary-foreground" />
-          <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
+          <h3 className="text-lg font-bold text-primary-foreground">{heading}</h3>
         </div>
         <div className="p-6 text-center">
           <p className="text-destructive font-medium">
-            Something went wrong. Please call or text us directly.
+            {t("quickQuote.errorRetry")}
           </p>
-          <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline text-sm mt-2 block">
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline text-sm mt-2 block">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
@@ -176,32 +198,32 @@ const QuickQuoteForm = ({
     <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
       <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
         <Zap className="h-5 w-5 text-primary-foreground" />
-        <h3 className="text-lg font-bold text-primary-foreground">{title}</h3>
+        <h3 className="text-lg font-bold text-primary-foreground">{heading}</h3>
       </div>
       <form onSubmit={onSubmit} className="p-6 space-y-4">
-        <p className="text-sm text-muted-foreground">{subtitle}</p>
+        <p className="text-sm text-muted-foreground">{sub}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-passenger">I am a…</Label>
+            <Label htmlFor="qq-passenger">{t("quickQuote.passengerTypeLabel")}</Label>
             <Select value={passengerType} onValueChange={setPassengerType}>
               <SelectTrigger id="qq-passenger">
-                <SelectValue placeholder="Select customer type" />
+                <SelectValue placeholder={t("quickQuote.passengerTypePlaceholder")} />
               </SelectTrigger>
               <SelectContent>
                 {PASSENGER_TYPES.map((p) => (
-                  <SelectItem key={p} value={p}>
-                    {p}
+                  <SelectItem key={p.value} value={p.value}>
+                    {t(`quickQuote.passengerTypes.${p.labelKey}`)}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="qq-name">Full Name</Label>
+            <Label htmlFor="qq-name">{t("quickQuote.fields.name")}</Label>
             <Input id="qq-name" name="name" required maxLength={80} autoComplete="name" />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="qq-phone">Mobile Phone</Label>
+            <Label htmlFor="qq-phone">{t("quickQuote.fields.phone")}</Label>
             <Input
               id="qq-phone"
               name="phone"
@@ -213,45 +235,45 @@ const QuickQuoteForm = ({
             />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-location">Delivery Location</Label>
+            <Label htmlFor="qq-location">{t("quickQuote.fields.location")}</Label>
             <Input
               id="qq-location"
               name="location"
               required
               maxLength={120}
-              placeholder="Hotel, body shop, port, address…"
+              placeholder={t("quickQuote.fields.locationPlaceholder")}
             />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-dateRange">Rental Date Range</Label>
+            <Label htmlFor="qq-dateRange">{t("quickQuote.fields.dateRange")}</Label>
             <Input
               id="qq-dateRange"
               name="dateRange"
               required
               maxLength={120}
-              placeholder="e.g. June 20 – June 25, or ASAP for ~1 week"
+              placeholder={t("quickQuote.fields.dateRangePlaceholder")}
             />
             {dateRangeHint && (
               <p className="text-xs text-muted-foreground">{dateRangeHint}</p>
             )}
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-referredBy">Referred by (optional)</Label>
+            <Label htmlFor="qq-referredBy">{t("quickQuote.fields.referredBy")}</Label>
             <Input
               id="qq-referredBy"
               name="referredBy"
               maxLength={120}
-              placeholder="Hotel, body shop, attorney, friend, agent…"
+              placeholder={t("quickQuote.fields.referredByPlaceholder")}
             />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
-            <Label htmlFor="qq-notes">Anything else? (optional)</Label>
+            <Label htmlFor="qq-notes">{t("quickQuote.fields.notes")}</Label>
             <Textarea
               id="qq-notes"
               name="notes"
               maxLength={500}
               rows={3}
-              placeholder="Vehicle type, insurance carrier, claim #, flight…"
+              placeholder={t("quickQuote.fields.notesPlaceholder")}
             />
           </div>
         </div>
@@ -261,11 +283,11 @@ const QuickQuoteForm = ({
           disabled={submitting}
           className="w-full"
         >
-          {submitting ? "Sending…" : ctaLabel}
+          {submitting ? t("quickQuote.sending") : cta}
         </Button>
         <p className="text-xs text-muted-foreground text-center">
-          Prefer to talk? Call{" "}
-          <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">
+          {t("quickQuote.preferToTalk")}{" "}
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </p>

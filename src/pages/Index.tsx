@@ -3,6 +3,7 @@ import {
   Phone, Mail, ArrowRight, MapPin, Truck, MessageCircle, Users, Clock,
   Sparkles, Star,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import DeliveryDestinations from "@/components/DeliveryDestinations";
@@ -25,11 +26,19 @@ import {
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const WHY = [
-  { icon: Truck, title: "Delivered, not a counter", body: "We bring the car to your terminal, hotel, or door. No lines, no shuttle bus, no rental desk." },
-  { icon: MessageCircle, title: "A real local owner", body: "Text or call one number and reach the people who run the fleet — not an overseas call center." },
-  { icon: Users, title: "Family-owned & bilingual", body: "A South Florida family business that treats you like a guest. Hablamos Español." },
-  { icon: Clock, title: "Flexible & transparent", body: "Straightforward rates, flexible pickup, and a clean, well-maintained private fleet." },
-];
+  { icon: Truck, key: "delivered" },
+  { icon: MessageCircle, key: "localOwner" },
+  { icon: Users, key: "familyBilingual" },
+  { icon: Clock, key: "flexible" },
+] as const;
+
+const TRUST_STRIP = [
+  { icon: Star, key: "allStar" },
+  { icon: Users, key: "familyOwned" },
+  { icon: MessageCircle, key: "espanol" },
+  { icon: Truck, key: "delivered" },
+  { icon: Clock, key: "open7" },
+] as const;
 
 // Hand-picked vehicle IDs to showcase on the homepage
 const FEATURED_VEHICLE_IDS = [
@@ -42,6 +51,7 @@ const FEATURED_VEHICLE_IDS = [
 ];
 
 const Index = () => {
+  const { t } = useTranslation(["home", "common"]);
   const { data: vehicles = [], isLoading } = useVehicles();
   const featuredVehicles = FEATURED_VEHICLE_IDS
     .map((id) => vehicles.find((v) => v.id === id))
@@ -68,16 +78,10 @@ const Index = () => {
         <section className="border-y border-border bg-card">
           <div className="container mx-auto py-5">
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
-              {[
-                { icon: Star, label: "All-Star Host on Turo" },
-                { icon: Users, label: "Family-owned" },
-                { icon: MessageCircle, label: "Hablamos Español" },
-                { icon: Truck, label: "Delivered to you" },
-                { icon: Clock, label: "Open 7 days a week" },
-              ].map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-2">
+              {TRUST_STRIP.map(({ icon: Icon, key }) => (
+                <li key={key} className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary" />
-                  <span className="font-medium text-foreground/80">{label}</span>
+                  <span className="font-medium text-foreground/80">{t(`trustStrip.${key}`)}</span>
                 </li>
               ))}
             </ul>
@@ -93,34 +97,31 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <Reveal>
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                  Why Rent With Heldy
+                  {t("why.eyebrow")}
                 </p>
                 <h2 className="text-heading font-bold text-ink mb-5">
-                  Big rental brands make you come to them. We come to you.
+                  {t("why.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Enterprise, Hertz, and the airport counters mean lines, shuttle
-                  buses, and fine print. A peer-to-peer app means a different
-                  stranger every time. We're the middle ground travelers actually
-                  want: a real, local, family-run fleet that shows up where you are.
+                  {t("why.description")}
                 </p>
                 <Link to="/book">
                   <Button size="lg">
-                    Book Now <ArrowRight className="h-4 w-4" />
+                    {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                   </Button>
                 </Link>
               </Reveal>
 
               <div className="space-y-4">
                 {WHY.map((w, i) => (
-                  <Reveal key={w.title} delay={i * 70}>
+                  <Reveal key={w.key} delay={i * 70}>
                     <div className="flex gap-4 rounded-card border border-border bg-card p-5 shadow-card">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary/10">
                         <w.icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-ink mb-1">{w.title}</h3>
-                        <p className="text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+                        <h3 className="font-semibold text-ink mb-1">{t(`why.cards.${w.key}.title`)}</h3>
+                        <p className="text-sm leading-relaxed text-muted-foreground">{t(`why.cards.${w.key}.body`)}</p>
                       </div>
                     </div>
                   </Reveal>
@@ -135,21 +136,20 @@ const Index = () => {
           <div className="container mx-auto">
             <Reveal className="max-w-2xl mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                How it works
+                {t("howItWorks.eyebrow")}
               </p>
               <h2 className="text-heading font-bold text-ink mb-4">
-                From search to keys in four simple steps.
+                {t("howItWorks.title")}
               </h2>
               <p className="text-lg text-muted-foreground">
-                No counter, no surprises — just a quick, friendly handoff wherever
-                works best for you.
+                {t("howItWorks.description")}
               </p>
             </Reveal>
             <HowItWorksSteps />
             <div className="mt-10">
               <Link to="/book">
                 <Button size="lg">
-                  Book Now <ArrowRight className="h-4 w-4" />
+                  {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                 </Button>
               </Link>
             </div>
@@ -162,36 +162,35 @@ const Index = () => {
             <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
               <div className="max-w-xl">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                  The fleet
+                  {t("fleet.eyebrow")}
                 </p>
                 <h2 className="text-heading font-bold text-ink mb-4">
-                  Clean, reliable cars for every South Florida plan.
+                  {t("fleet.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  A peek at our most-booked rides. See live availability and the
-                  full fleet anytime.
+                  {t("fleet.description")}
                 </p>
               </div>
               <Link to="/fleet">
-                <Button variant="outline">View Full Fleet</Button>
+                <Button variant="outline">{t("common:actions.viewFullFleet")}</Button>
               </Link>
             </Reveal>
 
             {isLoading ? (
-              <div className="text-center text-muted-foreground py-12">Loading fleet…</div>
+              <div className="text-center text-muted-foreground py-12">{t("common:states.loadingFleet")}</div>
             ) : (
               <>
                 <FleetGrid vehicles={featuredVehicles} limit={6} />
                 <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
                   <Link to="/fleet">
-                    <Button size="lg">View Full Fleet</Button>
+                    <Button size="lg">{t("common:actions.viewFullFleet")}</Button>
                   </Link>
                   <Link
                     to="/trip-planner"
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
                   >
                     <Sparkles className="h-4 w-4 text-primary" />
-                    Not sure what fits your trip? Try the Trip Planner
+                    {t("fleet.tripPlannerPrompt")}
                   </Link>
                 </div>
               </>
@@ -204,14 +203,13 @@ const Index = () => {
           <div className="container mx-auto">
             <Reveal className="max-w-2xl mb-10">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                What renters say
+                {t("reviews.eyebrow")}
               </p>
               <h2 className="text-heading font-bold text-ink mb-4">
-                Real reviews from Turo guests across South Florida.
+                {t("reviews.title")}
               </h2>
               <p className="text-lg text-muted-foreground">
-                The reason we earned All-Star Host status — clean cars, clear
-                communication, and an easy handoff, trip after trip.
+                {t("reviews.description")}
               </p>
             </Reveal>
           </div>
@@ -223,10 +221,10 @@ const Index = () => {
           <div className="container mx-auto max-w-3xl">
             <Reveal className="text-center mb-10">
               <h2 className="text-heading font-bold text-ink mb-4">
-                Questions, answered.
+                {t("faqPreview.title")}
               </h2>
               <p className="text-lg text-muted-foreground">
-                A few of the things renters ask us most. More on the full FAQ.
+                {t("faqPreview.description")}
               </p>
             </Reveal>
             <Reveal>
@@ -234,7 +232,7 @@ const Index = () => {
             </Reveal>
             <div className="text-center mt-8">
               <Link to="/faq">
-                <Button variant="outline">See all FAQs</Button>
+                <Button variant="outline">{t("common:actions.seeAllFaqs")}</Button>
               </Link>
             </div>
           </div>
@@ -246,14 +244,13 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
               <Reveal>
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                  Get started
+                  {t("contactClose.eyebrow")}
                 </p>
                 <h2 className="text-heading font-bold text-ink mb-4">
-                  Tell us your trip. We'll text you back fast.
+                  {t("contactClose.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Share a few details and we'll follow up with options — usually
-                  the same day. Prefer to talk? Reach a real person below.
+                  {t("contactClose.description")}
                 </p>
 
                 <div className="space-y-4">
@@ -262,10 +259,10 @@ const Index = () => {
                       <Phone className="h-5 w-5 text-primary" />
                     </span>
                     <span className="leading-tight">
-                      <span className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary transition-colors">
                         {CONTACT_PHONE_DISPLAY}
                       </span>
-                      <span className="block text-sm text-muted-foreground">Call or text, 7 days a week</span>
+                      <span className="block text-sm text-muted-foreground">{t("contactClose.phoneLabel")}</span>
                     </span>
                   </a>
                   <a href="mailto:rentwithheldy@gmail.com" className="flex items-center gap-3 group">
@@ -273,10 +270,10 @@ const Index = () => {
                       <Mail className="h-5 w-5 text-primary" />
                     </span>
                     <span className="leading-tight">
-                      <span className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary transition-colors">
                         rentwithheldy@gmail.com
                       </span>
-                      <span className="block text-sm text-muted-foreground">We reply the same day</span>
+                      <span className="block text-sm text-muted-foreground">{t("contactClose.emailLabel")}</span>
                     </span>
                   </a>
                   <div className="flex items-center gap-3">
@@ -284,8 +281,8 @@ const Index = () => {
                       <MapPin className="h-5 w-5 text-primary" />
                     </span>
                     <span className="leading-tight">
-                      <span className="block font-semibold text-ink">Fort Lauderdale &amp; Miami</span>
-                      <span className="block text-sm text-muted-foreground">Broward &amp; Miami-Dade delivery</span>
+                      <span className="block font-semibold text-ink">{t("contactClose.locationTitle")}</span>
+                      <span className="block text-sm text-muted-foreground">{t("contactClose.locationSub")}</span>
                     </span>
                   </div>
                 </div>
@@ -293,7 +290,7 @@ const Index = () => {
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Link to="/book">
                     <Button size="lg" className="w-full sm:w-auto">
-                      Book Now <ArrowRight className="h-4 w-4" />
+                      {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                     </Button>
                   </Link>
                 </div>
@@ -303,8 +300,8 @@ const Index = () => {
                 <QuickQuoteForm
                   serviceContext="Home Page Quote"
                   verticalPath="home"
-                  title="Get a Quote"
-                  ctaLabel="Get My Quote"
+                  title={t("common:actions.getAQuote")}
+                  ctaLabel={t("common:actions.getMyQuote")}
                 />
               </Reveal>
             </div>

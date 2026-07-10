@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, Briefcase } from "lucide-react";
@@ -11,14 +12,15 @@ interface FleetGridProps {
 }
 
 const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
+  const { t } = useTranslation(["fleet", "common"]);
   const list = limit ? vehicles.slice(0, limit) : vehicles;
 
   if (list.length === 0) {
     return (
       <p className="text-center text-muted-foreground py-12">
-        Our fleet is being updated. Please check back soon or{" "}
+        {t("grid.empty")}{" "}
         <Link to="/book" className="text-primary underline">
-          search availability
+          {t("grid.emptySearchLink")}
         </Link>
         .
       </p>
@@ -82,7 +84,7 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                      Photo coming soon
+                      {t("grid.photoComingSoon")}
                     </div>
                   )}
                 </div>
@@ -98,15 +100,15 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                   </p>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
                     <span className="flex items-center gap-1">
-                      <Users className="h-3.5 w-3.5" /> 5 seats
+                      <Users className="h-3.5 w-3.5" /> {t("grid.seats", { seats: 5 })}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Briefcase className="h-3.5 w-3.5" /> Bags
+                      <Briefcase className="h-3.5 w-3.5" /> {t("grid.bags")}
                     </span>
                   </div>
                   <Link to="/book" className="mt-auto">
                     <Button className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90">
-                      Book Now
+                      {t("common:actions.bookNow")}
                     </Button>
                   </Link>
                 </CardContent>

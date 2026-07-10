@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   ArrowLeft,
   ArrowRight,
@@ -120,6 +121,7 @@ function recommend(args: {
 const TOTAL_STEPS = 5;
 
 const DriveToOwnQuiz = () => {
+  const { t } = useTranslation(["rentToOwn", "common"]);
   const [step, setStep] = useState(0); // 0 = intro, 1..4 = questions, 5 = result
   const [gig, setGig] = useState<GigType | null>(null);
   const [platforms, setPlatforms] = useState<string[]>([]);
@@ -209,7 +211,7 @@ const DriveToOwnQuiz = () => {
     setSubmitting(false);
     if (dbError) {
       toast({
-        title: "Something went wrong. Please call or text us directly.",
+        title: t("quiz.toast.error"),
         variant: "destructive",
       });
       return;
@@ -223,11 +225,11 @@ const DriveToOwnQuiz = () => {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5" />
-            <h3 className="text-lg font-semibold">Find your match in 60 seconds</h3>
+            <h3 className="text-lg font-semibold">{t("quiz.header.title")}</h3>
           </div>
           {step > 0 && step <= lastQuestionStep && (
             <span className="text-xs font-semibold uppercase tracking-wider opacity-90">
-              Step {step} of {lastQuestionStep}
+              {t("quiz.header.stepOf", { current: step, total: lastQuestionStep })}
             </span>
           )}
         </div>
@@ -244,15 +246,14 @@ const DriveToOwnQuiz = () => {
         {step === 0 && (
           <div className="text-center">
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-              Answer a few quick questions and we'll recommend the right vehicle
-              and weekly price point for your goals.
+              {t("quiz.intro.body")}
             </p>
             <Button
               size="lg"
               onClick={next}
               className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical px-8"
             >
-              Start the questionnaire <ArrowRight className="h-4 w-4 ml-1" />
+              {t("quiz.intro.start")} <ArrowRight className="h-4 w-4 ms-1 rtl:-scale-x-100" />
             </Button>
           </div>
         )}
@@ -261,16 +262,16 @@ const DriveToOwnQuiz = () => {
         {step === 1 && (
           <div>
             <h4 className="text-xl font-semibold text-foreground mb-1">
-              What kind of gig work?
+              {t("quiz.gig.question")}
             </h4>
             <p className="text-sm text-muted-foreground mb-6">
-              Pick the option that best matches how you'll use the vehicle.
+              {t("quiz.gig.help")}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { key: "rideshare" as const, label: "Rideshare", desc: "Uber, Lyft, Empower", icon: Users },
-                { key: "delivery" as const, label: "Delivery", desc: "DoorDash, Uber Eats, Instacart", icon: Truck },
-                { key: "both" as const, label: "Both", desc: "Mix of rideshare + delivery", icon: Car },
+                { key: "rideshare" as const, icon: Users },
+                { key: "delivery" as const, icon: Truck },
+                { key: "both" as const, icon: Car },
               ].map((opt) => {
                 const active = gig === opt.key;
                 return (
@@ -281,15 +282,15 @@ const DriveToOwnQuiz = () => {
                       setGig(opt.key);
                       if (opt.key === "delivery") setRideTier(null);
                     }}
-                    className={`text-left rounded-xl border-2 p-4 transition-all ${
+                    className={`text-start rounded-xl border-2 p-4 transition-all ${
                       active
                         ? "border-primary bg-primary/5 shadow-card-hover"
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
                     <opt.icon className={`h-6 w-6 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
-                    <div className="font-semibold text-foreground">{opt.label}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{opt.desc}</div>
+                    <div className="font-semibold text-foreground">{t(`quiz.gig.options.${opt.key}.label`)}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{t(`quiz.gig.options.${opt.key}.desc`)}</div>
                   </button>
                 );
               })}
@@ -301,9 +302,9 @@ const DriveToOwnQuiz = () => {
         {step === 2 && (
           <div>
             <h4 className="text-xl font-semibold text-foreground mb-1">
-              Which platforms will you drive for?
+              {t("quiz.platforms.question")}
             </h4>
-            <p className="text-sm text-muted-foreground mb-6">Select all that apply.</p>
+            <p className="text-sm text-muted-foreground mb-6">{t("quiz.platforms.help")}</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {(gig === "delivery"
                 ? DELIVERY_PLATFORMS
@@ -336,16 +337,16 @@ const DriveToOwnQuiz = () => {
         {step === 3 && (
           <div>
             <h4 className="text-xl font-semibold text-foreground mb-1">
-              How many hours per week?
+              {t("quiz.hours.question")}
             </h4>
             <p className="text-sm text-muted-foreground mb-6">
-              Helps us match a vehicle that holds up to your shift load.
+              {t("quiz.hours.help")}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { key: "part" as const, label: "Part-time", desc: "Under 20 hrs / week" },
-                { key: "full" as const, label: "Full-time", desc: "20 – 40 hrs / week" },
-                { key: "heavy" as const, label: "Heavy", desc: "40+ hrs / week" },
+                { key: "part" as const },
+                { key: "full" as const },
+                { key: "heavy" as const },
               ].map((opt) => {
                 const active = hours === opt.key;
                 return (
@@ -353,15 +354,15 @@ const DriveToOwnQuiz = () => {
                     key={opt.key}
                     type="button"
                     onClick={() => setHours(opt.key)}
-                    className={`text-left rounded-xl border-2 p-4 transition-all ${
+                    className={`text-start rounded-xl border-2 p-4 transition-all ${
                       active
                         ? "border-primary bg-primary/5 shadow-card-hover"
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
                     <Clock className={`h-5 w-5 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
-                    <div className="font-semibold text-foreground">{opt.label}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{opt.desc}</div>
+                    <div className="font-semibold text-foreground">{t(`quiz.hours.options.${opt.key}.label`)}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{t(`quiz.hours.options.${opt.key}.desc`)}</div>
                   </button>
                 );
               })}
@@ -373,16 +374,16 @@ const DriveToOwnQuiz = () => {
         {step === 4 && showRideTierStep && (
           <div>
             <h4 className="text-xl font-semibold text-foreground mb-1">
-              Which rideshare tier do you want to target?
+              {t("quiz.rideTier.question")}
             </h4>
             <p className="text-sm text-muted-foreground mb-6">
-              Premium tiers earn more per trip but need a qualifying vehicle.
+              {t("quiz.rideTier.help")}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { key: "standard" as const, label: "Standard", desc: "Uber X, Lyft, Empower" },
-                { key: "comfort" as const, label: "Comfort / Premium", desc: "Uber Comfort, Lyft Preferred" },
-                { key: "xl" as const, label: "XL / Group", desc: "Uber XL, Lyft XL — 6+ riders" },
+                { key: "standard" as const },
+                { key: "comfort" as const },
+                { key: "xl" as const },
               ].map((opt) => {
                 const active = rideTier === opt.key;
                 return (
@@ -390,15 +391,15 @@ const DriveToOwnQuiz = () => {
                     key={opt.key}
                     type="button"
                     onClick={() => setRideTier(opt.key)}
-                    className={`text-left rounded-xl border-2 p-4 transition-all ${
+                    className={`text-start rounded-xl border-2 p-4 transition-all ${
                       active
                         ? "border-primary bg-primary/5 shadow-card-hover"
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
                     <DollarSign className={`h-5 w-5 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
-                    <div className="font-semibold text-foreground">{opt.label}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{opt.desc}</div>
+                    <div className="font-semibold text-foreground">{t(`quiz.rideTier.options.${opt.key}.label`)}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{t(`quiz.rideTier.options.${opt.key}.desc`)}</div>
                   </button>
                 );
               })}
@@ -413,7 +414,7 @@ const DriveToOwnQuiz = () => {
               <>
                 <div className="text-center mb-6">
                   <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
-                    <Sparkles className="h-3.5 w-3.5" /> Your match
+                    <Sparkles className="h-3.5 w-3.5" /> {t("quiz.result.yourMatch")}
                   </span>
                   <h4 className="text-2xl font-bold text-foreground">
                     {rec.tier} — {rec.category}
@@ -422,7 +423,7 @@ const DriveToOwnQuiz = () => {
                     ${rec.weekly}
                     <span className="text-sm font-medium text-muted-foreground">
                       {" "}
-                      / week
+                      {t("quiz.result.perWeek")}
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto">
@@ -432,7 +433,7 @@ const DriveToOwnQuiz = () => {
 
                 <div className="bg-secondary rounded-lg p-4 mb-6">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                    Approved for
+                    {t("quiz.result.approvedFor")}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {rec.fits.map((f) => (
@@ -448,27 +449,27 @@ const DriveToOwnQuiz = () => {
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="quiz-name">Full name</Label>
-                    <Input id="quiz-name" name="name" required placeholder="Your name" />
+                    <Label htmlFor="quiz-name">{t("quiz.result.fields.name")}</Label>
+                    <Input id="quiz-name" name="name" required placeholder={t("quiz.result.fields.namePlaceholder")} />
                   </div>
                   <div>
-                    <Label htmlFor="quiz-phone">Phone</Label>
+                    <Label htmlFor="quiz-phone">{t("quiz.result.fields.phone")}</Label>
                     <Input
                       id="quiz-phone"
                       name="phone"
                       type="tel"
                       required
-                      placeholder="(555) 555-5555"
+                      placeholder={t("quiz.result.fields.phonePlaceholder")}
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <Label htmlFor="quiz-email">Email</Label>
+                    <Label htmlFor="quiz-email">{t("quiz.result.fields.email")}</Label>
                     <Input
                       id="quiz-email"
                       name="email"
                       type="email"
                       required
-                      placeholder="you@email.com"
+                      placeholder={t("quiz.result.fields.emailPlaceholder")}
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -478,11 +479,11 @@ const DriveToOwnQuiz = () => {
                       disabled={submitting}
                       className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                     >
-                      {submitting ? "Sending…" : "Check Our Availability"}
-                      <ArrowRight className="h-4 w-4 ml-1" />
+                      {submitting ? t("quiz.result.submitting") : t("quiz.result.submit")}
+                      <ArrowRight className="h-4 w-4 ms-1 rtl:-scale-x-100" />
                     </Button>
                     <p className="text-xs text-muted-foreground text-center mt-3">
-                      No commitment. Approval subject to verification.
+                      {t("quiz.result.disclaimer")}
                     </p>
                   </div>
                 </form>
@@ -493,13 +494,13 @@ const DriveToOwnQuiz = () => {
                   <CheckCircle2 className="h-8 w-8 text-primary" />
                 </div>
                 <h4 className="text-xl font-bold text-foreground mb-2">
-                  You're matched
+                  {t("quiz.submitted.title")}
                 </h4>
                 <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                  Thanks! We're checking availability and will text you back shortly.
+                  {t("quiz.submitted.body")}
                 </p>
                 <Button variant="outline" onClick={reset}>
-                  Retake the quiz
+                  {t("quiz.submitted.retake")}
                 </Button>
               </div>
             )}
@@ -510,7 +511,7 @@ const DriveToOwnQuiz = () => {
         {step > 0 && step <= lastQuestionStep && (
           <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
             <Button variant="ghost" onClick={back} disabled={step === 1}>
-              <ArrowLeft className="h-4 w-4 mr-1" /> Back
+              <ArrowLeft className="h-4 w-4 me-1 rtl:-scale-x-100" /> {t("quiz.nav.back")}
             </Button>
             <Button
               onClick={() => {
@@ -529,8 +530,8 @@ const DriveToOwnQuiz = () => {
               }
               className="bg-gradient-tropical text-primary-foreground hover:opacity-90"
             >
-              {step === lastQuestionStep ? "See my match" : "Next"}
-              <ArrowRight className="h-4 w-4 ml-1" />
+              {step === lastQuestionStep ? t("quiz.nav.seeMatch") : t("quiz.nav.next")}
+              <ArrowRight className="h-4 w-4 ms-1 rtl:-scale-x-100" />
             </Button>
           </div>
         )}

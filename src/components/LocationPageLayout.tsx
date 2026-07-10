@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -52,10 +53,13 @@ const LocationPageLayout = ({
   crumbLabel,
   sections,
   faqs,
-  ctaHeadline = "Ready to book your South Florida rental?",
-  ctaSubhead = "Reserve in minutes. Premium fleet. Friendly, hands-on service from pickup to return.",
+  ctaHeadline,
+  ctaSubhead,
   heroForm,
 }: LocationPageLayoutProps) => {
+  const { t } = useTranslation(["locations", "common"]);
+  const ctaHeadlineText = ctaHeadline ?? t("layout.finalCta.title");
+  const ctaSubheadText = ctaSubhead ?? t("layout.finalCta.subtitle");
   const jsonLd = [
     localBusinessSchema,
     buildBreadcrumbSchema([
@@ -85,9 +89,9 @@ const LocationPageLayout = ({
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
               <Link to="/" className="hover:text-primary">
-                Home
+                {t("layout.breadcrumbHome")}
               </Link>
-              <ChevronRight className="h-3 w-3" />
+              <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
               <span className="text-foreground">{crumbLabel}</span>
             </nav>
 
@@ -105,12 +109,12 @@ const LocationPageLayout = ({
                       size="lg"
                       className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                     >
-                      Book Now
+                      {t("common:actions.bookNow")}
                     </Button>
                   </Link>
                   <Link to="/fleet">
                     <Button size="lg" variant="outline">
-                      View Fleet
+                      {t("layout.viewFleet")}
                     </Button>
                   </Link>
                 </div>
@@ -160,12 +164,12 @@ const LocationPageLayout = ({
         <section className="bg-secondary/40 border-y border-border">
           <div className="container mx-auto px-4 py-10 max-w-4xl">
             <h2 className="text-xl font-bold text-foreground mb-4">
-              Explore more
+              {t("layout.exploreMore.title")}
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <li>
                 <Link to="/fleet" className="text-primary hover:underline">
-                  → Browse our full fleet
+                  → {t("layout.exploreMore.links.fleet")}
                 </Link>
               </li>
               <li>
@@ -173,7 +177,7 @@ const LocationPageLayout = ({
                   to="/how-it-works"
                   className="text-primary hover:underline"
                 >
-                  → How booking works
+                  → {t("layout.exploreMore.links.howItWorks")}
                 </Link>
               </li>
               <li>
@@ -181,7 +185,7 @@ const LocationPageLayout = ({
                   to="/car-rental-fort-lauderdale"
                   className="text-primary hover:underline"
                 >
-                  → Car rental in Fort Lauderdale
+                  → {t("layout.exploreMore.links.fortLauderdale")}
                 </Link>
               </li>
               <li>
@@ -189,7 +193,7 @@ const LocationPageLayout = ({
                   to="/car-rental-miami"
                   className="text-primary hover:underline"
                 >
-                  → Car rental in Miami
+                  → {t("layout.exploreMore.links.miami")}
                 </Link>
               </li>
               <li>
@@ -197,12 +201,12 @@ const LocationPageLayout = ({
                   to="/fort-lauderdale-airport-car-rental"
                   className="text-primary hover:underline"
                 >
-                  → Fort Lauderdale Airport (FLL) rentals
+                  → {t("layout.exploreMore.links.airport")}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-primary hover:underline">
-                  → Contact our team directly
+                  → {t("layout.exploreMore.links.contact")}
                 </Link>
               </li>
             </ul>
@@ -212,7 +216,7 @@ const LocationPageLayout = ({
         {/* FAQ */}
         <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Frequently asked questions
+            {t("layout.faqHeading")}
           </h2>
           <FAQAccordion items={faqs} />
         </section>
@@ -221,10 +225,10 @@ const LocationPageLayout = ({
         <section className="bg-gradient-tropical">
           <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-              {ctaHeadline}
+              {ctaHeadlineText}
             </h2>
             <p className="text-primary-foreground/90 mb-6 max-w-xl mx-auto">
-              {ctaSubhead}
+              {ctaSubheadText}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/book">
@@ -233,7 +237,7 @@ const LocationPageLayout = ({
                   variant="secondary"
                   className="font-semibold"
                 >
-                  Book Now
+                  {t("common:actions.bookNow")}
                 </Button>
               </Link>
               <a href={CONTACT_PHONE_HREF}>
@@ -242,7 +246,7 @@ const LocationPageLayout = ({
                   variant="outline"
                   className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
                 >
-                  Call {CONTACT_PHONE_DISPLAY}
+                  {t("layout.callCta")} <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
                 </Button>
               </a>
             </div>

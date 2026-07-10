@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Star, MapPin, Verified } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +11,7 @@ interface VehicleCardProps {
 }
 
 const VehicleCard = ({ vehicle }: VehicleCardProps) => {
+  const { t } = useTranslation(["fleet", "common"]);
   return (
     <Card className="overflow-hidden hover:shadow-card-hover transition-all duration-300 group">
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -19,9 +21,9 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
         />
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 start-3">
           <Badge className="bg-gradient-tropical text-white shadow-sm">
-            ${vehicle.dailyRate}/day
+            {t("card.pricePerDay", { price: vehicle.dailyRate })}
           </Badge>
         </div>
       </div>
@@ -55,11 +57,11 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
       
       <CardFooter className="p-4 pt-0">
         <Link to={`/vehicle/${vehicle.id}`} className="w-full">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors"
           >
-            View Details
+            {t("card.viewDetails")}
           </Button>
         </Link>
       </CardFooter>

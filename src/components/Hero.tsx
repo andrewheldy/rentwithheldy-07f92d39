@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Star, Phone, ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
@@ -13,17 +14,12 @@ import heroSunset from "@/assets/hero_sunset.png";
 import heroSunsetAvif from "@/assets/hero_sunset.avif";
 import heroSunsetWebp from "@/assets/hero_sunset.webp";
 
-const DESTINATIONS = ["Airports", "Hotels", "Cruise ports", "Repair shops"];
-
-const TRUST = [
-  "All-Star Host on Turo",
-  "Family-owned",
-  "Hablamos Español",
-  "Open 7 days",
-];
+const DESTINATION_KEYS = ["airports", "hotels", "cruisePorts", "repairShops"] as const;
+const TRUST_KEYS = ["allStar", "familyOwned", "espanol", "open7"] as const;
 
 const Hero = () => {
   const reduce = useReducedMotion();
+  const { t } = useTranslation(["home", "common"]);
 
   const rise = reduce ? 0 : 18;
   const container = {
@@ -61,10 +57,10 @@ const Hero = () => {
         />
       </picture>
 
-      {/* Legibility scrims — left-to-right + bottom, brand ink */}
+      {/* Legibility scrims — start-to-end + bottom, brand ink */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/50 to-ink/10"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/50 to-ink/10 rtl:bg-gradient-to-l"
       />
       <div
         aria-hidden
@@ -83,32 +79,31 @@ const Hero = () => {
             variants={item}
             className="text-sm font-medium uppercase tracking-[0.18em] text-white/70"
           >
-            Fort Lauderdale · Miami · FLL
+            {t("hero.eyebrow")}
           </motion.p>
 
           <motion.h1
             variants={item}
             className="mt-5 font-heading font-bold leading-[1.02] tracking-[-0.02em] text-white text-[clamp(2.75rem,1.1rem+6.2vw,5rem)]"
           >
-            Skip the rental counter.
+            {t("hero.title")}
           </motion.h1>
 
           <motion.p
             variants={item}
             className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
           >
-            Your car, delivered where you need it. A family-owned South Florida
-            fleet — we meet you and hand over the keys.
+            {t("hero.description")}
           </motion.p>
 
           <motion.ul
             variants={item}
             className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-white/70"
           >
-            {DESTINATIONS.map((d, i) => (
+            {DESTINATION_KEYS.map((d, i) => (
               <li key={d} className="flex items-center gap-3">
                 {i > 0 && <span aria-hidden className="h-1 w-1 rounded-full bg-white/40" />}
-                {d}
+                {t(`hero.destinations.${d}`)}
               </li>
             ))}
           </motion.ul>
@@ -116,7 +111,7 @@ const Hero = () => {
           <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link to="/book" className="sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto">
-                Book Your Rental <ArrowRight className="h-4 w-4" />
+                {t("hero.primaryCta")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
               </Button>
             </Link>
             <Link to="/fleet" className="sm:w-auto">
@@ -125,7 +120,7 @@ const Hero = () => {
                 variant="outline"
                 className="w-full border-white/40 bg-white/5 text-white backdrop-blur-sm hover:bg-white/15 hover:text-white sm:w-auto"
               >
-                Browse Fleet
+                {t("hero.secondaryCta")}
               </Button>
             </Link>
           </motion.div>
@@ -136,21 +131,22 @@ const Hero = () => {
             className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
-            Call or Text {CONTACT_PHONE_DISPLAY}
+            <span>{t("common:actions.callOrText")}</span>
+            <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
           </motion.a>
 
           <motion.ul
             variants={item}
             className="mt-9 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/15 pt-6"
           >
-            {TRUST.map((t, i) => (
-              <li key={t} className="flex items-center gap-1.5 text-sm text-white/75">
+            {TRUST_KEYS.map((key, i) => (
+              <li key={key} className="flex items-center gap-1.5 text-sm text-white/75">
                 {i === 0 ? (
                   <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                 ) : (
                   <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary" />
                 )}
-                {t}
+                {t(`hero.trust.${key}`)}
               </li>
             ))}
           </motion.ul>

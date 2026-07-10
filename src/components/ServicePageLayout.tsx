@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ChevronRight, CheckCircle2, Phone, Star, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -119,6 +120,7 @@ const ServicePageLayout = ({
   testimonial,
   disclaimer,
 }: ServicePageLayoutProps) => {
+  const { t } = useTranslation(["services", "common"]);
   const jsonLd = [
     localBusinessSchema,
     buildBreadcrumbSchema([
@@ -168,7 +170,7 @@ const ServicePageLayout = ({
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
               <Link to="/" className="hover:text-primary">
-                Home
+                {t("layout.breadcrumbHome")}
               </Link>
               <ChevronRight className="h-3 w-3" />
               <span className="text-foreground">{crumbLabel}</span>
@@ -195,7 +197,8 @@ const ServicePageLayout = ({
                     className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
                   >
                     <Phone className="h-4 w-4" />
-                    Talk to a real person: {CONTACT_PHONE_DISPLAY}
+                    <span>{t("layout.talkToPerson")}</span>
+                    <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
                   </a>
                 </div>
 
@@ -233,12 +236,12 @@ const ServicePageLayout = ({
                         size="lg"
                         className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                       >
-                        Book Instantly
+                        {t("common:actions.bookInstantly")}
                       </Button>
                     </Link>
                     <a href="#quick-quote" className="w-full sm:w-auto">
                       <Button size="lg" variant="outline" className="w-full">
-                        Request Direct Delivery
+                        {t("common:actions.requestDirectDelivery")}
                       </Button>
                     </a>
                   </div>
@@ -247,7 +250,8 @@ const ServicePageLayout = ({
                     className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
                   >
                     <Phone className="h-4 w-4" />
-                    Talk to a real person: {CONTACT_PHONE_DISPLAY}
+                    <span>{t("layout.talkToPerson")}</span>
+                    <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
                   </a>
                 </div>
 
@@ -270,11 +274,10 @@ const ServicePageLayout = ({
         <section className="container mx-auto px-4 py-12 md:py-16">
           <div className="max-w-2xl mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              Built for the way you actually need a car
+              {t("layout.valueProps.title")}
             </h2>
             <p className="text-muted-foreground">
-              Specialized perks for {crumbLabel.toLowerCase()} renters — not a
-              generic airport counter checklist.
+              {t("layout.valueProps.subtitle", { context: crumbLabel.toLowerCase() })}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -305,7 +308,7 @@ const ServicePageLayout = ({
           <section id="how-it-works" className="scroll-mt-24 bg-secondary/30 border-y border-border">
             <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                How it works
+                {t("layout.howItWorks")}
               </h2>
               <ol className="space-y-5">
                 {steps.map((s, i) => (
@@ -332,7 +335,7 @@ const ServicePageLayout = ({
         {highlights && highlights.length > 0 && (
           <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              What to expect
+              {t("layout.whatToExpect")}
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {highlights.map((h, i) => (
@@ -396,11 +399,10 @@ const ServicePageLayout = ({
           <div className="container mx-auto px-4 py-12 md:py-16">
             <div className="max-w-2xl mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                Where we deliver
+                {t("layout.coverage.title")}
               </h2>
               <p className="text-muted-foreground">
-                Our primary delivery corridors across South Florida. Not on the
-                list? Ask — we'll quote it.
+                {t("layout.coverage.subtitle")}
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -442,7 +444,7 @@ const ServicePageLayout = ({
         {/* FAQ */}
         <section className="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Frequently asked questions
+            {t("layout.faqHeading")}
           </h2>
           <FAQAccordion items={faqs} />
         </section>
@@ -451,16 +453,15 @@ const ServicePageLayout = ({
         <section className="bg-gradient-tropical">
           <div className="container mx-auto px-4 py-12 md:py-16 max-w-3xl text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-              Need a car delivered today?
+              {t("layout.finalCta.title")}
             </h2>
             <p className="text-primary-foreground/90 mb-6 max-w-xl mx-auto">
-              Book online in minutes or send a quick request — we'll respond
-              fast and meet you where you are.
+              {t("layout.finalCta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/book">
                 <Button size="lg" variant="secondary" className="font-semibold">
-                  Book Instantly
+                  {t("common:actions.bookInstantly")}
                 </Button>
               </Link>
               <a href="#quick-quote">
@@ -469,7 +470,7 @@ const ServicePageLayout = ({
                   variant="outline"
                   className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
                 >
-                  Request Delivery
+                  {t("common:actions.requestDelivery")}
                 </Button>
               </a>
             </div>

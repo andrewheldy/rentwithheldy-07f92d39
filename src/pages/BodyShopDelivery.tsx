@@ -1,100 +1,58 @@
+import { useTranslation } from "react-i18next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import BodyShopForm from "@/components/BodyShopForm";
 import { Truck, Wrench, Clock, Handshake } from "lucide-react";
 import bodyShopDelivery from "@/assets/categories/body-shop-delivery.jpg";
 
-const BodyShopDelivery = () => (
-  <ServicePageLayout
-    metaTitle="Body Shop Replacement Car Rentals in South Florida | Rent With Heldy"
-    metaDescription="Dropping off at a body shop or mechanic? We deliver your rental directly to the shop in Fort Lauderdale, Miami, and South Florida. Fast, flexible, no airport detour."
-    path="/body-shop-delivery"
-    crumbLabel="Body Shop & Mechanic Delivery"
-    eyebrow="Replacement rentals"
-    h1="Stay mobile while your vehicle is being repaired"
-    intro="If your car is in a body shop or repair facility, we can help arrange a replacement rental and coordinate delivery around the repair process."
-    serviceContext="Body Shop / Mechanic Delivery"
-    verticalPath="body-shop-delivery"
-    defaultPassengerType="Body Shop / Repair Customer"
-    formSlot={<BodyShopForm />}
-    heroImage={bodyShopDelivery}
-    heroImageAlt="Dark crossover outside a modern South Florida body shop at sunset"
-    primaryCta={{ label: "Request a replacement rental", href: "#quick-quote" }}
-    secondaryCta={{ label: "How replacement rentals work", href: "#how-it-works" }}
-    highlights={[
-      "Collision centers",
-      "Body shops",
-      "Repair facilities",
-      "Direct coordination with the customer and facility where appropriate",
-    ]}
-    steps={[
-      "Tell us where your vehicle is being repaired.",
-      "Share the expected repair dates.",
-      "Choose an available replacement vehicle.",
-      "Confirm delivery and return details directly with our team.",
-    ]}
-    disclaimer="Insurance reimbursement depends on the customer's policy and claim. We can provide rental documentation when needed."
-    testimonial={{
-      quote:
-        "Good on gas, did the job, shuttle was great and if you just need a simple car that is reliable than this is it.",
-      name: "Madisol",
-      location: "Verified Turo guest",
-    }}
-    valueProps={[
-      {
-        icon: Truck,
-        title: "On-Site Hand-off",
-        description:
-          "We arrive at the body shop or mechanic with the rental ready to go. Quick license check, sign, drive.",
-      },
-      {
-        icon: Wrench,
-        title: "Coordinated With the Shop",
-        description:
-          "We sync timing with the service writer or mechanic so you're not stuck waiting around.",
-      },
-      {
-        icon: Clock,
-        title: "Same-Day Availability",
-        description:
-          "Most weekday morning requests are met the same day across Broward and Miami-Dade.",
-      },
-      {
-        icon: Handshake,
-        title: "Flexible Return",
-        description:
-          "When repairs are done, return the rental at the same shop — we coordinate the pickup.",
-      },
-    ]}
-    partnerHeading="Run a body shop or mechanic shop? Make us your delivery partner."
-    partnerSubheading="We deliver and pick up at your location so your customers never leave without a ride."
-    faqs={[
-      {
-        question: "How does body shop or mechanic delivery actually work?",
-        answer:
-          "You tell us the shop, day, and approximate drop-off time. We coordinate with the service writer or mechanic and meet you on-site with the rental keys when your car is being handed in.",
-      },
-      {
-        question: "Which shops do you deliver to?",
-        answer:
-          "Any reputable collision center or mechanic shop across Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura, and Pompano. We've delivered to most of the major chains and independent shops in the region.",
-      },
-      {
-        question: "Do I need to book in advance?",
-        answer:
-          "Booking earlier is always better, but we accept same-day requests when our fleet has availability. Text or call the moment you know your shop appointment.",
-      },
-      {
-        question: "Can the shop coordinate the rental for me?",
-        answer:
-          "Yes. Service writers, mechanics, and managers can request the delivery on behalf of a customer using our partner intake form on this page.",
-      },
-      {
-        question: "What if my car is ready earlier than expected?",
-        answer:
-          "Just message us. We'll arrange pickup at the shop and close out the rental — no penalty for early returns inside the booked window.",
-      },
-    ]}
-  />
-);
+const VP_ICONS = [Truck, Wrench, Clock, Handshake];
+
+const BodyShopDelivery = () => {
+  const { t } = useTranslation("services");
+  const valueProps = (
+    t("bodyShop.valueProps", { returnObjects: true }) as {
+      title: string;
+      description: string;
+    }[]
+  ).map((vp, i) => ({ icon: VP_ICONS[i], ...vp }));
+
+  return (
+    <ServicePageLayout
+      metaTitle={t("bodyShop.meta.title")}
+      metaDescription={t("bodyShop.meta.description")}
+      path="/body-shop-delivery"
+      crumbLabel={t("bodyShop.crumbLabel")}
+      eyebrow={t("bodyShop.eyebrow")}
+      h1={t("bodyShop.h1")}
+      intro={t("bodyShop.intro")}
+      serviceContext="Body Shop / Mechanic Delivery"
+      verticalPath="body-shop-delivery"
+      defaultPassengerType="Body Shop / Repair Customer"
+      formSlot={<BodyShopForm />}
+      heroImage={bodyShopDelivery}
+      heroImageAlt={t("bodyShop.heroImageAlt")}
+      primaryCta={{ label: t("bodyShop.primaryCta"), href: "#quick-quote" }}
+      secondaryCta={{ label: t("bodyShop.secondaryCta"), href: "#how-it-works" }}
+      highlights={t("bodyShop.highlights", { returnObjects: true }) as string[]}
+      steps={t("bodyShop.steps", { returnObjects: true }) as string[]}
+      disclaimer={t("bodyShop.disclaimer")}
+      testimonial={
+        t("bodyShop.testimonial", { returnObjects: true }) as {
+          quote: string;
+          name: string;
+          location: string;
+        }
+      }
+      valueProps={valueProps}
+      partnerHeading={t("bodyShop.partnerHeading")}
+      partnerSubheading={t("bodyShop.partnerSubheading")}
+      faqs={
+        t("bodyShop.faqs", { returnObjects: true }) as {
+          question: string;
+          answer: string;
+        }[]
+      }
+    />
+  );
+};
 
 export default BodyShopDelivery;

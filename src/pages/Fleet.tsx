@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
@@ -20,6 +21,7 @@ const FLEET_FAQS = GENERAL_FAQS.filter((f) =>
 );
 
 const Fleet = () => {
+  const { t } = useTranslation(["fleet", "common"]);
   const { data: vehicles = [], isLoading } = useVehicles();
 
   return (
@@ -44,21 +46,19 @@ const Fleet = () => {
         <section className="bg-secondary py-14">
           <div className="container mx-auto px-4 max-w-3xl text-center">
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              Our South Florida rental fleet
+              {t("hero.title")}
             </h1>
             <p className="text-lg text-muted-foreground mb-6">
-              Every vehicle in our lineup is privately owned, professionally
-              maintained, and chosen for real South Florida driving — beach
-              runs, city trips, business travel, and airport transfers.
+              {t("hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link to="/book">
                 <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">
-                  Check live availability
+                  {t("hero.checkAvailability")}
                 </Button>
               </Link>
               <Link to="/how-it-works">
-                <Button variant="outline">How booking works</Button>
+                <Button variant="outline">{t("hero.howBookingWorks")}</Button>
               </Link>
             </div>
           </div>
@@ -69,7 +69,7 @@ const Fleet = () => {
           <div className="container mx-auto px-4">
             {isLoading ? (
               <p className="text-center text-muted-foreground py-12">
-                Loading fleet…
+                {t("common:states.loadingFleet")}
               </p>
             ) : (
               <FleetGrid vehicles={vehicles} />
@@ -81,21 +81,20 @@ const Fleet = () => {
         <section className="py-14 bg-secondary">
           <div className="container mx-auto px-4 max-w-3xl text-center">
             <h2 className="text-2xl font-bold mb-3">
-              Renting in a specific area?
+              {t("areaLinks.title")}
             </h2>
             <p className="text-muted-foreground mb-6">
-              See location-specific pickup details, vehicle suggestions, and
-              local trip ideas.
+              {t("areaLinks.subtitle")}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link to="/car-rental-fort-lauderdale">
-                <Button variant="outline">Fort Lauderdale rentals</Button>
+                <Button variant="outline">{t("areaLinks.fortLauderdale")}</Button>
               </Link>
               <Link to="/car-rental-miami">
-                <Button variant="outline">Miami rentals</Button>
+                <Button variant="outline">{t("areaLinks.miami")}</Button>
               </Link>
               <Link to="/fort-lauderdale-airport-car-rental">
-                <Button variant="outline">FLL airport trips</Button>
+                <Button variant="outline">{t("areaLinks.fllAirport")}</Button>
               </Link>
             </div>
           </div>
@@ -105,7 +104,7 @@ const Fleet = () => {
         <section className="py-14">
           <div className="container mx-auto px-4 max-w-3xl">
             <h2 className="text-2xl font-bold text-center mb-8">
-              Fleet &amp; booking questions
+              {t("faqSection.title")}
             </h2>
             <FAQAccordion items={FLEET_FAQS} />
           </div>

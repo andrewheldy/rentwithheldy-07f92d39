@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -23,18 +24,21 @@ import {
   localBusinessSchema,
 } from "@/lib/seo-schemas";
 
+// `value` is the STABLE string persisted to Supabase / emailed to the team —
+// never translate it. `key` drives only the visible label.
 const CONTACT_REASONS = [
-  "Book a rental",
-  "Question about an existing booking",
-  "Body shop / insurance rental",
-  "Hotel delivery",
-  "Airport pickup",
-  "Rent-To-Own inquiry",
-  "Partner / business inquiry",
-  "Other",
+  { value: "Book a rental", key: "book" },
+  { value: "Question about an existing booking", key: "existingBooking" },
+  { value: "Body shop / insurance rental", key: "bodyShop" },
+  { value: "Hotel delivery", key: "hotelDelivery" },
+  { value: "Airport pickup", key: "airportPickup" },
+  { value: "Rent-To-Own inquiry", key: "rentToOwn" },
+  { value: "Partner / business inquiry", key: "partner" },
+  { value: "Other", key: "other" },
 ] as const;
 
 const Contact = () => {
+  const { t } = useTranslation(["contact", "common"]);
   const [submitting, setSubmitting] = useState(false);
   const [reason, setReason] = useState("");
 
@@ -48,8 +52,8 @@ const Contact = () => {
 
     if (!name || !phone || !reason || !message) {
       toast({
-        title: "Please check your details",
-        description: "Name, phone, reason, and message are required.",
+        title: t("toast.checkDetailsTitle"),
+        description: t("toast.checkDetailsDesc"),
         variant: "destructive",
       });
       return;
@@ -80,8 +84,8 @@ const Contact = () => {
     if (error) {
       console.error("Contact insert failed", error);
       toast({
-        title: "Couldn't send your message",
-        description: `Please call ${CONTACT_PHONE_DISPLAY} directly.`,
+        title: t("toast.errorTitle"),
+        description: t("toast.errorDesc", { phone: CONTACT_PHONE_DISPLAY }),
         variant: "destructive",
       });
       setSubmitting(false);
@@ -92,8 +96,8 @@ const Contact = () => {
     const body = `Source: contact\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nReason: ${reason}\nMessage: ${message}\nSubmitted: ${new Date().toISOString()}`;
     window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
+      title: t("toast.successTitle"),
+      description: t("toast.successDesc"),
     });
     (e.target as HTMLFormElement).reset();
     setReason("");
@@ -103,8 +107,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Contact Rent With Heldy | Car Rentals Fort Lauderdale & Miami"
-        description="Contact Rent With Heldy for fast, private car rental support in Fort Lauderdale, Miami, and South Florida. Call, email, or book online today."
+        title={t("meta.title")}
+        description={t("meta.description")}
         path="/contact"
         jsonLd={[
           localBusinessSchema,
@@ -119,10 +123,10 @@ const Contact = () => {
         <section className="bg-secondary py-14">
           <div className="container mx-auto px-4 max-w-3xl text-center">
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              Contact Rent With Heldy
+              {t("hero.title")}
             </h1>
             <p className="text-lg text-muted-foreground">
-              The fastest way to get on the road. Call directly or send us a message — we typically respond the same day.
+              {t("hero.subtitle")}
             </p>
           </div>
         </section>
@@ -132,35 +136,37 @@ const Contact = () => {
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h2 className="text-lg font-semibold mb-1">Call us</h2>
+                <h2 className="text-lg font-semibold mb-1">{t("cards.call.title")}</h2>
                 <a
                   href={CONTACT_PHONE_HREF}
+                  dir="ltr"
                   className="text-primary font-medium hover:underline"
                 >
                   {CONTACT_PHONE_DISPLAY}
                 </a>
-                <p className="text-xs text-muted-foreground mt-2">Fastest response</p>
+                <p className="text-xs text-muted-foreground mt-2">{t("cards.call.note")}</p>
               </CardContent>
             </Card>
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h2 className="text-lg font-semibold mb-1">Email</h2>
+                <h2 className="text-lg font-semibold mb-1">{t("cards.email.title")}</h2>
                 <a
                   href="mailto:rentwithheldy@gmail.com"
+                  dir="ltr"
                   className="text-primary font-medium hover:underline break-all"
                 >
                   rentwithheldy@gmail.com
                 </a>
-                <p className="text-xs text-muted-foreground mt-2">Same-day reply</p>
+                <p className="text-xs text-muted-foreground mt-2">{t("cards.email.note")}</p>
               </CardContent>
             </Card>
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
                 <MapPin className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h2 className="text-lg font-semibold mb-1">Service area</h2>
+                <h2 className="text-lg font-semibold mb-1">{t("cards.serviceArea.title")}</h2>
                 <p className="text-sm text-muted-foreground">
-                  Fort Lauderdale • Miami • South Florida
+                  {t("cards.serviceArea.value")}
                 </p>
               </CardContent>
             </Card>
@@ -170,38 +176,38 @@ const Contact = () => {
             <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
               <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
                 <MessageSquare className="h-5 w-5 text-primary-foreground" />
-                <h2 className="text-lg font-bold text-primary-foreground">Contact Rent With Heldy</h2>
+                <h2 className="text-lg font-bold text-primary-foreground">{t("form.heading")}</h2>
               </div>
               <form onSubmit={handleSubmit} className="p-6 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label htmlFor="ct-name">Full Name</Label>
+                    <Label htmlFor="ct-name">{t("form.fields.name")}</Label>
                     <Input id="ct-name" name="name" required maxLength={80} autoComplete="name" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="ct-phone">Mobile Phone</Label>
+                    <Label htmlFor="ct-phone">{t("form.fields.phone")}</Label>
                     <Input id="ct-phone" name="phone" required type="tel" maxLength={20} autoComplete="tel" inputMode="tel" />
                   </div>
                   <div className="space-y-1.5 sm:col-span-2">
-                    <Label htmlFor="ct-email">Email (optional)</Label>
-                    <Input id="ct-email" name="email" type="email" maxLength={120} autoComplete="email" placeholder="you@email.com" />
+                    <Label htmlFor="ct-email">{t("form.fields.email")}</Label>
+                    <Input id="ct-email" name="email" type="email" maxLength={120} autoComplete="email" placeholder={t("form.fields.emailPlaceholder")} />
                   </div>
                   <div className="space-y-1.5 sm:col-span-2">
-                    <Label htmlFor="ct-reason">Reason for Contact</Label>
+                    <Label htmlFor="ct-reason">{t("form.fields.reason")}</Label>
                     <Select value={reason} onValueChange={setReason}>
                       <SelectTrigger id="ct-reason" className="h-10">
-                        <SelectValue placeholder="Select a reason" />
+                        <SelectValue placeholder={t("form.reasonPlaceholder")} />
                       </SelectTrigger>
                       <SelectContent>
                         {CONTACT_REASONS.map((r) => (
-                          <SelectItem key={r} value={r}>{r}</SelectItem>
+                          <SelectItem key={r.value} value={r.value}>{t(`form.reasons.${r.key}`)}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-1.5 sm:col-span-2">
-                    <Label htmlFor="ct-message">Message</Label>
-                    <Textarea id="ct-message" name="message" required maxLength={1000} rows={5} placeholder="Tell us how we can help…" />
+                    <Label htmlFor="ct-message">{t("form.fields.message")}</Label>
+                    <Textarea id="ct-message" name="message" required maxLength={1000} rows={5} placeholder={t("form.fields.messagePlaceholder")} />
                   </div>
                 </div>
                 <Button
@@ -210,11 +216,11 @@ const Contact = () => {
                   disabled={submitting}
                   className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                 >
-                  {submitting ? "Sending…" : "Send Message"}
+                  {submitting ? t("form.sending") : t("form.submit")}
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
-                  Prefer to talk? Call{" "}
-                  <a href={CONTACT_PHONE_HREF} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
+                  {t("form.preferToTalk")}{" "}
+                  <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
                 </p>
               </form>
             </div>

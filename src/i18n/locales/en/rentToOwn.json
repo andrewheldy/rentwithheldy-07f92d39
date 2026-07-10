@@ -1,0 +1,254 @@
+{
+  "hero": {
+    "badge": "Rent-To-Own Program",
+    "title": "Drive Today. Own Tomorrow.",
+    "subtitle": "Get access to a reliable vehicle for Uber, Lyft, DoorDash, and more while building toward ownership with every qualifying payment.",
+    "tagline": "A practical path to earning now and owning the vehicle you depend on.",
+    "findMatch": "Find My Match",
+    "seeHowItWorks": "See How It Works",
+    "builtForDriversOn": "Built for drivers on"
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "A clear path from approval to ownership — built around your schedule as a driver.",
+    "stepLabel": "Step {{number}}",
+    "steps": {
+      "getApproved": {
+        "title": "Get Approved",
+        "body": "Complete a quick application and verification process."
+      },
+      "startDriving": {
+        "title": "Start Driving",
+        "body": "Get matched with an approved vehicle and start earning immediately."
+      },
+      "buildOwnership": {
+        "title": "Build Ownership",
+        "body": "A portion of qualifying payments contributes toward vehicle ownership."
+      },
+      "ownVehicle": {
+        "title": "Own Your Vehicle",
+        "body": "Continue making progress until ownership requirements are completed."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Why drivers love it",
+    "subtitle": "A program designed to grow your future — not just cover your next shift.",
+    "traditional": {
+      "title": "Traditional Rentals",
+      "items": [
+        "Endless payments",
+        "No ownership",
+        "No long-term value",
+        "Start over every time"
+      ]
+    },
+    "rentToOwn": {
+      "title": "Rent-To-Own",
+      "items": [
+        "Build ownership over time",
+        "Reliable vehicle access",
+        "Designed for gig workers",
+        "Long-term financial benefit"
+      ]
+    }
+  },
+  "features": {
+    "title": "What you get",
+    "subtitle": "Built for the realities of driving for a living.",
+    "items": {
+      "noDownPayment": {
+        "title": "No Large Down Payment",
+        "body": "Get started without the large upfront costs of traditional financing."
+      },
+      "flexibleGig": {
+        "title": "Flexible for Gig Work",
+        "body": "Built specifically for rideshare and delivery drivers."
+      },
+      "progressTracking": {
+        "title": "Ownership Progress Tracking",
+        "body": "See your progress and stay motivated."
+      },
+      "reliableSupport": {
+        "title": "Reliable Support",
+        "body": "Maintenance guidance and support when needed."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Driver stories",
+    "subtitle": "Real drivers building toward ownership through the program.",
+    "items": [
+      {
+        "quote": "I needed a vehicle for Uber and wanted more than just another rental. This program gave me a path toward ownership.",
+        "name": "Future Driver Story"
+      },
+      {
+        "quote": "Weekly payments that actually build toward something — that's what was missing from every other rental I tried.",
+        "name": "Future Driver Story"
+      },
+      {
+        "quote": "Reliable vehicle, real support, and progress I can see. Exactly what gig workers need.",
+        "name": "Future Driver Story"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know about the Rent-To-Own program.",
+    "items": [
+      {
+        "question": "Can I drive for Uber?",
+        "answer": "Yes. Our Rent-To-Own vehicles meet Uber's vehicle requirements for South Florida markets."
+      },
+      {
+        "question": "Can I drive for Lyft?",
+        "answer": "Yes. The program supports Lyft drivers and the vehicles qualify for the Lyft platform."
+      },
+      {
+        "question": "Can I use the vehicle for delivery apps?",
+        "answer": "Absolutely. DoorDash, Uber Eats, Instacart, and similar delivery platforms are all welcome."
+      },
+      {
+        "question": "Do I need perfect credit?",
+        "answer": "No. The program is designed for gig workers and focuses on driving history and income consistency rather than traditional credit scoring alone."
+      },
+      {
+        "question": "How does ownership work?",
+        "answer": "A portion of every qualifying payment contributes toward vehicle ownership. You'll see your progress tracked over time until ownership requirements are met."
+      },
+      {
+        "question": "What happens if I stop participating?",
+        "answer": "You can return the vehicle at any time. We'll walk you through your options and any next steps based on your progress."
+      }
+    ]
+  },
+  "apply": {
+    "title": "Apply for Rent-To-Own",
+    "subtitle": "Tell us a bit about yourself and our team will reach out to walk you through the next steps.",
+    "fields": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "phone": "Phone",
+      "phonePlaceholder": "(555) 555-5555",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "platforms": "Which platforms will you drive for?",
+      "notes": "Anything else? (optional)",
+      "notesPlaceholder": "Tell us about your driving experience or any questions."
+    },
+    "submit": "Apply Now",
+    "submitting": "Submitting…",
+    "disclaimer": "No commitment. Approval subject to verification.",
+    "toast": {
+      "errorTitle": "Something went wrong",
+      "successTitle": "Application received",
+      "successDesc": "Thanks! Our team will reach out shortly to walk you through the next steps."
+    }
+  },
+  "finalCta": {
+    "title": "The vehicle that helps you earn should help you build a future too.",
+    "subtitle": "Join the Rent With Heldy Rent-To-Own Program and start working toward vehicle ownership while earning income.",
+    "apply": "Apply Now",
+    "scheduleCall": "Schedule a Call",
+    "browsePrompt": "Prefer to browse rentals first?",
+    "seeFleet": "See our fleet"
+  },
+  "quiz": {
+    "header": {
+      "title": "Find your match in 60 seconds",
+      "stepOf": "Step {{current}} of {{total}}"
+    },
+    "intro": {
+      "body": "Answer a few quick questions and we'll recommend the right vehicle and weekly price point for your goals.",
+      "start": "Start the questionnaire"
+    },
+    "gig": {
+      "question": "What kind of gig work?",
+      "help": "Pick the option that best matches how you'll use the vehicle.",
+      "options": {
+        "rideshare": {
+          "label": "Rideshare",
+          "desc": "Uber, Lyft, Empower"
+        },
+        "delivery": {
+          "label": "Delivery",
+          "desc": "DoorDash, Uber Eats, Instacart"
+        },
+        "both": {
+          "label": "Both",
+          "desc": "Mix of rideshare + delivery"
+        }
+      }
+    },
+    "platforms": {
+      "question": "Which platforms will you drive for?",
+      "help": "Select all that apply."
+    },
+    "hours": {
+      "question": "How many hours per week?",
+      "help": "Helps us match a vehicle that holds up to your shift load.",
+      "options": {
+        "part": {
+          "label": "Part-time",
+          "desc": "Under 20 hrs / week"
+        },
+        "full": {
+          "label": "Full-time",
+          "desc": "20 – 40 hrs / week"
+        },
+        "heavy": {
+          "label": "Heavy",
+          "desc": "40+ hrs / week"
+        }
+      }
+    },
+    "rideTier": {
+      "question": "Which rideshare tier do you want to target?",
+      "help": "Premium tiers earn more per trip but need a qualifying vehicle.",
+      "options": {
+        "standard": {
+          "label": "Standard",
+          "desc": "Uber X, Lyft, Empower"
+        },
+        "comfort": {
+          "label": "Comfort / Premium",
+          "desc": "Uber Comfort, Lyft Preferred"
+        },
+        "xl": {
+          "label": "XL / Group",
+          "desc": "Uber XL, Lyft XL — 6+ riders"
+        }
+      }
+    },
+    "result": {
+      "yourMatch": "Your match",
+      "perWeek": "/ week",
+      "approvedFor": "Approved for",
+      "fields": {
+        "name": "Full name",
+        "namePlaceholder": "Your name",
+        "phone": "Phone",
+        "phonePlaceholder": "(555) 555-5555",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com"
+      },
+      "submit": "Check Our Availability",
+      "submitting": "Sending…",
+      "disclaimer": "No commitment. Approval subject to verification."
+    },
+    "submitted": {
+      "title": "You're matched",
+      "body": "Thanks! We're checking availability and will text you back shortly.",
+      "retake": "Retake the quiz"
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Next",
+      "seeMatch": "See my match"
+    },
+    "toast": {
+      "error": "Something went wrong. Please call or text us directly."
+    }
+  }
+}

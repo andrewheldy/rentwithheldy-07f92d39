@@ -208,3 +208,34 @@
     transform: none !important;
   }
 }
+
+/* =========================================================================
+   RTL support (Hebrew)
+   dir="rtl" on <html> (set by src/i18n/direction.ts) mirrors all flex / grid /
+   gap flow automatically — which covers the bulk of the layout since the UI is
+   gap-based. Prefer logical utilities (ms-/me-/ps-/pe-/start-/end-/text-start)
+   in components over adding physical-direction overrides here.
+   ========================================================================= */
+
+/* The self-hosted display/text webfonts are Latin-only. Give Hebrew a capable
+   fallback stack so glyphs render cleanly. (Phase 2 may self-host a Hebrew
+   webfont for full brand consistency.) */
+:root[lang="he"] body,
+:root[lang="he"] input,
+:root[lang="he"] textarea,
+:root[lang="he"] select,
+:root[lang="he"] button,
+:root[lang="he"] h1,
+:root[lang="he"] h2,
+:root[lang="he"] h3,
+:root[lang="he"] h4,
+:root[lang="he"] .font-heading {
+  font-family: "Assistant", "Rubik", "Arial Hebrew", "Noto Sans Hebrew",
+    "Segoe UI", system-ui, sans-serif;
+}
+
+/* Phone numbers, emails, URLs, airport codes and vehicle names are wrapped in
+   dir="ltr"; isolate them so they read left-to-right inside RTL paragraphs. */
+[dir="rtl"] [dir="ltr"] {
+  unicode-bidi: isolate;
+}
