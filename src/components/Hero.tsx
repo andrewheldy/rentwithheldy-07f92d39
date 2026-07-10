@@ -80,14 +80,28 @@ const Hero = () => {
     };
   }, [reduce]);
 
-  // Advance the sky every ~11s once the frames are ready.
+  // Advance the sky every ~11s once the frames are ready. Paused while the
+  // tab is hidden so the crossfade never runs against an unseen page.
   useEffect(() => {
     if (reduce || !deferReady) return;
-    const id = window.setInterval(
-      () => setActive((a) => (a + 1) % SEQUENCE.length),
-      11000,
-    );
-    return () => window.clearInterval(id);
+    let id: number | undefined;
+    const tick = () => setActive((a) => (a + 1) % SEQUENCE.length);
+    const start = () => {
+      if (id === undefined) id = window.setInterval(tick, 11000);
+    };
+    const stop = () => {
+      if (id !== undefined) {
+        window.clearInterval(id);
+        id = undefined;
+      }
+    };
+    const onVisibility = () => (document.hidden ? stop() : start());
+    start();
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, [reduce, deferReady]);
 
   const rise = reduce ? 0 : 18;
@@ -129,7 +143,6 @@ const Hero = () => {
               aria-hidden={i === 0 ? undefined : true}
               className="absolute inset-0 h-full w-full object-cover object-[68%_50%]"
               loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "low"}
               decoding="async"
               width={1600}
               height={686}

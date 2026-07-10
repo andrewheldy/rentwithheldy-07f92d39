@@ -24,7 +24,7 @@ const SEO = ({ title, description, path, image, noIndex, jsonLd }: SEOProps) => 
     : [];
 
   return (
-    <Helmet>
+    <Helmet defer={false}>
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />

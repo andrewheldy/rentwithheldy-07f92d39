@@ -1,43 +1,68 @@
 import { Link } from "react-router-dom";
 import { Plane, BedDouble, Anchor, Wrench, ArrowRight, MapPin } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
+import airportDelivery from "@/assets/categories/airport-delivery.jpg";
+import hotelDelivery from "@/assets/categories/hotel-delivery.jpg";
+import cruisePortDelivery from "@/assets/categories/cruise-port-delivery.jpg";
+import bodyShopDelivery from "@/assets/categories/body-shop-delivery.jpg";
 
 /* Four delivery destinations. Each card links into its existing vertical page
-   (targeted quote form) — no booking logic here. The media slot is a muted,
-   brand-palette gradient PLACEHOLDER, structured to swap for a real photo:
-   drop an <img> in as the first child of the slot and the scrim/label still work. */
-const DESTINATIONS = [
+   (targeted quote form) — no booking logic here. Photography is real (licensed
+   placeholder, same SUV/skyline world as the hero); the 3:5 region is sized to
+   swap in future Rent With Heldy photography without any layout change. */
+interface Destination {
+  href: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  image: string;
+  alt: string;
+  /** Only set when a card's crop needs to differ from the shared default. */
+  objectPosition?: string;
+}
+
+const DESTINATIONS: Destination[] = [
   {
-    to: "/fort-lauderdale-airport-car-rental",
+    href: "/fort-lauderdale-airport-car-rental",
     icon: Plane,
-    label: "Airport",
-    body: "Flying into FLL or Miami? We'll meet you at arrivals — no shuttle, no counter.",
-    cta: "Airport delivery",
-    tint: "linear-gradient(155deg, hsl(35 80% 66%) 0%, hsl(210 35% 22%) 78%)",
+    title: "Airport",
+    description:
+      "Flying into FLL or Miami? We'll help make the handoff simple, so you can skip the rental counter and start your trip.",
+    ctaLabel: "Airport delivery",
+    image: airportDelivery,
+    alt: "An SUV on a South Florida causeway with a plane descending toward the Miami skyline at sunset",
   },
   {
-    to: "/hotel-concierge-rentals",
+    href: "/hotel-concierge-rentals",
     icon: BedDouble,
-    label: "Hotel",
-    body: "Delivered to your hotel or condo, on your schedule — whenever you land.",
-    cta: "Hotel delivery",
-    tint: "linear-gradient(155deg, hsl(15 72% 62%) 0%, hsl(210 35% 20%) 78%)",
+    title: "Hotel",
+    description:
+      "Staying nearby? We can arrange delivery to your hotel, resort, or vacation rental across South Florida.",
+    ctaLabel: "Hotel delivery",
+    image: hotelDelivery,
+    alt: "An SUV parked under a hotel porte-cochère at dusk with the Miami skyline across the water",
   },
   {
-    to: "/cruise-port-delivery",
+    href: "/cruise-port-delivery",
     icon: Anchor,
-    label: "Cruise port",
-    body: "Sailing from Port Everglades or PortMiami? We handle the drop-off and pickup.",
-    cta: "Cruise port delivery",
-    tint: "linear-gradient(155deg, hsl(192 68% 55%) 0%, hsl(212 45% 18%) 78%)",
+    title: "Cruise Port",
+    description:
+      "Heading to PortMiami or Port Everglades? Start or finish your cruise with a rental arranged around your trip.",
+    ctaLabel: "Cruise port delivery",
+    image: cruisePortDelivery,
+    alt: "An SUV on a causeway passing a docked cruise ship near the Miami skyline at sunset",
   },
   {
-    to: "/body-shop-delivery",
+    href: "/body-shop-delivery",
     icon: Wrench,
-    label: "Repair shop",
-    body: "Car in the shop? We'll drop a dependable replacement right where you are.",
-    cta: "Body shop delivery",
-    tint: "linear-gradient(155deg, hsl(205 18% 52%) 0%, hsl(210 32% 16%) 78%)",
+    title: "Body Shop",
+    description:
+      "Car in the shop? We'll help keep you moving with a replacement rental delivered to your repair facility.",
+    ctaLabel: "Replacement rentals",
+    image: bodyShopDelivery,
+    alt: "An SUV parked outside a body shop with palm trees and the skyline visible at dusk",
   },
 ];
 
@@ -66,37 +91,50 @@ const DeliveryDestinations = () => (
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {DESTINATIONS.map((d, i) => (
-          <Reveal key={d.to} delay={i * 70} className="h-full">
+          <Reveal key={d.href} delay={i * 70} className="h-full">
             <Link
-              to={d.to}
-              className="group flex h-full flex-col overflow-hidden rounded-card border border-border bg-card shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              to={d.href}
+              aria-label={`${d.ctaLabel} — ${d.title}`}
+              className="group flex h-full flex-col overflow-hidden rounded-card border border-border bg-card shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-card-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              {/* Media slot — gradient placeholder, photo-ready */}
-              <div className="relative aspect-[5/6] overflow-hidden">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 transition-transform duration-500 ease-out-expo group-hover:scale-[1.03]"
-                  style={{ backgroundImage: d.tint }}
+              {/* Photographic region — fixed 3:5, identical across every card */}
+              <div className="relative aspect-[3/5] overflow-hidden">
+                <img
+                  src={d.image}
+                  alt={d.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={700}
+                  height={1167}
+                  style={{ objectPosition: d.objectPosition ?? "center" }}
+                  className="absolute inset-0 h-full w-full scale-100 object-cover transition-transform duration-500 ease-out-expo group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
+                {/* Soft bottom scrim — only enough to carry the title, not a full wash */}
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, hsl(var(--ink) / 0.80) 0%, hsl(var(--ink) / 0.32) 32%, transparent 58%)",
+                  }}
                 />
                 <d.icon
                   aria-hidden
                   strokeWidth={1.5}
-                  className="absolute right-5 top-5 h-6 w-6 text-white/80"
+                  className="absolute right-4 top-4 h-5 w-5 text-white drop-shadow-sm"
                 />
                 <h3 className="absolute inset-x-0 bottom-0 p-5 font-heading text-2xl font-semibold text-white">
-                  {d.label}
+                  {d.title}
                 </h3>
               </div>
 
               <div className="flex flex-1 flex-col p-5">
-                <p className="text-sm leading-relaxed text-muted-foreground">{d.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                  {d.cta}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {d.description}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-primary">
+                  {d.ctaLabel}
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" />
                 </span>
               </div>
             </Link>
