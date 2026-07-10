@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, CheckCircle2, MapPin, Phone, Star, type LucideIcon } from "lucide-react";
+import { ChevronRight, CheckCircle2, Phone, Star, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -414,13 +414,6 @@ const ServicePageLayout = ({
                   </span>
                 </div>
               ))}
-            </div>
-            <div className="mt-8 rounded-xl border border-dashed border-border bg-card/60 p-6 flex items-center gap-3 text-sm text-muted-foreground">
-              <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
-              <span>
-                Live coverage map coming soon — for now, message us and we'll
-                confirm your address in minutes.
-              </span>
             </div>
           </div>
         </section>
