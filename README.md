@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+# Rent With Heldy
 
-## Project info
+Marketing and booking website for Rent With Heldy, a family-owned South Florida car rental company.
 
-**URL**: https://lovable.dev/projects/ef73ff74-0d7c-4fdf-81da-98878312b959
+See `CLAUDE.md` for project context, business goals, and operating rules. Design and product source-of-truth documents live in `/docs`.
 
-## How can I edit this code?
+## Stack
 
-There are several ways of editing your application.
+- Vite + React + TypeScript
+- Tailwind CSS + shadcn-ui component primitives
+- React Router
+- i18next (English, Spanish, French, Portuguese, Hebrew)
+- Supabase (auth, database, edge functions)
+- Vercel (hosting + `/api` serverless functions)
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ef73ff74-0d7c-4fdf-81da-98878312b959) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requires Node.js.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Copy `.env.example` to `.env` and fill in the Supabase variables (`VITE_SUPABASE_PROJECT_ID`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_URL`) — never commit real values.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Package manager note:** local development is documented here with npm (`package-lock.json`). `bun.lock` and `bun.lockb` are also present in the repo, and commit history contains conflicting claims about which one Vercel actually uses to deploy. This has not been resolved — check the Vercel project's Install Command / detected framework before assuming either lockfile is authoritative for production deploys.
 
-**Use GitHub Codespaces**
+## Scripts
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local dev server |
+| `npm run build` | Production build |
+| `npm run build:dev` | Development-mode build |
+| `npm run preview` | Preview a production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run the TypeScript compiler in check-only mode |
+| `npm run test` | Run unit tests (Vitest) |
+| `npm run test:watch` | Run unit tests in watch mode |
+| `npm run test:e2e` | Run Playwright end-to-end tests |
+| `npm run i18n:check` | Validate locale files for missing/stale/duplicate keys |
+| `npm run i18n:scaffold` | Scaffold new locale keys from English source |
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/ef73ff74-0d7c-4fdf-81da-98878312b959) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- `src/pages` — routed pages
+- `src/components` — shared and page-specific components (`src/components/ui` holds shadcn primitives)
+- `src/i18n/locales` — translation files per locale
+- `src/integrations/supabase` — Supabase client and generated types
+- `supabase/` — database migrations and edge functions
+- `api/` — Vercel serverless functions
+- `docs/` — design, art direction, copy, and interaction source-of-truth documents
+- `e2e/` — Playwright end-to-end specs

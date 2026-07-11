@@ -174,13 +174,17 @@ Report exact command results. Do not say a check passed unless it was actually r
 
 ## Git and File Safety
 
-- Do not commit `.env` files or secrets.
+- Do not commit `.env` files or secrets. `.env` is gitignored; use `.env.example` as the template for required variable names.
 - Do not expose API keys, tokens, credentials, or private customer data.
 - Do not discard unrelated working-tree changes.
 - Inspect `git status` before and after changes.
 - Keep commits focused and clearly named.
 - `CLAUDE.md` should be tracked in Git.
 - Project-wide documentation belongs in the repository unless it contains secrets or machine-specific information.
+
+## Package Manager
+
+Local development is documented with npm (`package-lock.json`). `bun.lock` and `bun.lockb` also exist in the repository, and commit history contains conflicting claims about which lockfile Vercel actually uses for production deploys. This is unresolved — do not delete either Bun lockfile or assert which package manager is authoritative for deployment without checking the Vercel project's actual Install Command / detected framework first.
 
 ## Completion Standard
 
