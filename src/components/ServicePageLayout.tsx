@@ -147,16 +147,20 @@ const ServicePageLayout = ({
 
   const renderCta = (cta: CtaLink, variant: "default" | "outline") => {
     const button = (
-      <Button size="lg" variant={variant} className="w-full sm:w-auto">
+      <Button
+        size="lg"
+        variant={variant}
+        className="h-auto min-h-12 w-full whitespace-normal py-3"
+      >
         {cta.label}
       </Button>
     );
     return cta.href.startsWith("#") ? (
-      <a href={cta.href} className="w-full sm:w-auto">
+      <a href={cta.href} className="w-full min-w-0">
         {button}
       </a>
     ) : (
-      <Link to={cta.href} className="w-full sm:w-auto">
+      <Link to={cta.href} className="w-full min-w-0">
         {button}
       </Link>
     );
@@ -226,7 +230,7 @@ const ServicePageLayout = ({
                   <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
                     {intro}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex max-w-sm flex-col gap-3">
                     {primaryCta && renderCta(primaryCta, "default")}
                     {secondaryCta && renderCta(secondaryCta, "outline")}
                   </div>
@@ -268,17 +272,21 @@ const ServicePageLayout = ({
                   <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
                     {intro}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Link to="/book" className="w-full sm:w-auto">
+                  <div className="flex max-w-sm flex-col gap-3">
+                    <Link to="/book" className="w-full min-w-0">
                       <Button
                         size="lg"
-                        className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                        className="h-auto min-h-12 w-full whitespace-normal py-3 bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
                       >
                         {t("common:actions.bookNow")}
                       </Button>
                     </Link>
-                    <a href="#quick-quote" className="w-full sm:w-auto">
-                      <Button size="lg" variant="outline" className="w-full">
+                    <a href="#quick-quote" className="w-full min-w-0">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="h-auto min-h-12 w-full whitespace-normal py-3"
+                      >
                         {t("common:actions.requestDirectDelivery")}
                       </Button>
                     </a>
@@ -491,17 +499,21 @@ const ServicePageLayout = ({
             <p className="text-primary-foreground/90 mb-6 max-w-xl mx-auto">
               {t("layout.finalCta.subtitle")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/book">
-                <Button size="lg" variant="secondary" className="font-semibold">
+            <div className="mx-auto flex max-w-sm flex-col gap-3">
+              <Link to="/book" className="w-full min-w-0">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="h-auto min-h-12 w-full whitespace-normal py-3 font-semibold"
+                >
                   {t("common:actions.bookNow")}
                 </Button>
               </Link>
-              <a href="#quick-quote">
+              <a href="#quick-quote" className="w-full min-w-0">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
+                  className="h-auto min-h-12 w-full whitespace-normal py-3 bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
                 >
                   {t("common:actions.requestDelivery")}
                 </Button>
