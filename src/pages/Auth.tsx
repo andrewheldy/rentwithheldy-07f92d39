@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { isSupabaseConfigured } from "@/integrations/supabase/client";
+import AdminNotConfigured from "@/components/admin/AdminNotConfigured";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +19,10 @@ const Auth = () => {
   const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  if (!isSupabaseConfigured) {
+    return <AdminNotConfigured />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

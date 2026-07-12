@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import {
   buildBreadcrumbSchema,
   localBusinessSchema,
@@ -69,7 +69,7 @@ const Contact = () => {
       `[Submitted: ${new Date().toISOString()}]`,
     ].join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
+    const { error } = await insertLead({
       form_type: "contact",
       vertical_path: "contact",
       service_context: reason,

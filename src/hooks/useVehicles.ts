@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import { vehicles as staticVehicles } from "@/data/vehicles";
 
 export interface Vehicle {
@@ -68,23 +68,32 @@ export const useVehicles = () => {
   return useQuery({
     queryKey: ["vehicles"],
     queryFn: async (): Promise<Vehicle[]> => {
-      const { data, error } = await supabase
-        .from("vehicles")
-        .select(PUBLIC_VEHICLE_COLUMNS)
-        .order("created_at", { ascending: false });
+      // Supabase is optional: without it (or on any query failure) the
+      // fleet falls back to the repository-hosted static list below.
+      if (!isSupabaseConfigured) return staticVehicles;
 
-      if (error) {
+      try {
+        const { data, error } = await supabase
+          .from("vehicles")
+          .select(PUBLIC_VEHICLE_COLUMNS)
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Error fetching vehicles:", error);
+          // Fallback to static data if database is empty or error
+          return staticVehicles;
+        }
+
+        // If no vehicles in database, return static data
+        if (!data || data.length === 0) {
+          return staticVehicles;
+        }
+
+        return data.map(transformDatabaseVehicle);
+      } catch (error) {
         console.error("Error fetching vehicles:", error);
-        // Fallback to static data if database is empty or error
         return staticVehicles;
       }
-
-      // If no vehicles in database, return static data
-      if (!data || data.length === 0) {
-        return staticVehicles;
-      }
-
-      return data.map(transformDatabaseVehicle);
     },
   });
 };
@@ -93,24 +102,33 @@ export const useVehicle = (id: string) => {
   return useQuery({
     queryKey: ["vehicle", id],
     queryFn: async (): Promise<Vehicle | null> => {
-      const { data, error } = await supabase
-        .from("vehicles")
-        .select(PUBLIC_VEHICLE_COLUMNS)
-        .eq("id", id)
-        .maybeSingle();
+      if (!isSupabaseConfigured) {
+        return staticVehicles.find((v) => v.id === id) ?? null;
+      }
 
-      if (error) {
+      try {
+        const { data, error } = await supabase
+          .from("vehicles")
+          .select(PUBLIC_VEHICLE_COLUMNS)
+          .eq("id", id)
+          .maybeSingle();
+
+        if (error) {
+          console.error("Error fetching vehicle:", error);
+          // Fallback to static data
+          return staticVehicles.find((v) => v.id === id) ?? null;
+        }
+
+        // If not found in database, check static data
+        if (!data) {
+          return staticVehicles.find((v) => v.id === id) ?? null;
+        }
+
+        return transformDatabaseVehicle(data);
+      } catch (error) {
         console.error("Error fetching vehicle:", error);
-        // Fallback to static data
         return staticVehicles.find((v) => v.id === id) ?? null;
       }
-
-      // If not found in database, check static data
-      if (!data) {
-        return staticVehicles.find((v) => v.id === id) ?? null;
-      }
-
-      return transformDatabaseVehicle(data);
     },
     enabled: !!id,
   });

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const HotelQuoteForm = () => {
@@ -44,7 +44,7 @@ const HotelQuoteForm = () => {
       `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
+    const { error } = await insertLead({
       form_type: "hotel_quote",
       vertical_path: "hotel",
       service_context: "Hotel Concierge Rental",

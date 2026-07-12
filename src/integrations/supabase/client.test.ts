@@ -28,6 +28,16 @@ describe("supabase client configuration guard", () => {
     expect(() => supabase.auth).not.toThrow();
   });
 
+  it("never constructs a real client just from being imported, even when configured", async () => {
+    // Supabase's own createClient() validates the URL and throws
+    // synchronously on a malformed one. If this module called it eagerly at
+    // import time, importing here would throw. It shouldn't — construction
+    // only happens on first property access.
+    await expect(
+      loadClient("not-a-valid-url", "test-anon-key"),
+    ).resolves.toBeDefined();
+  });
+
   it("does not throw at import time and does not create a client when the URL is missing", async () => {
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 

@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,10 +9,6 @@ import Index from "./pages/Index";
 import Book from "./pages/Book";
 import Confirmation from "./pages/Confirmation";
 import About from "./pages/About";
-import AddCar from "./pages/AddCar";
-import AdminLeads from "./pages/AdminLeads";
-import AdminPhotos from "./pages/AdminPhotos";
-import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import Miami from "./pages/Miami";
@@ -32,6 +29,20 @@ import LossOfUseClaims from "./pages/LossOfUseClaims";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
+
+// Supabase-dependent admin tooling — code-split out of the public bundle so
+// its (and its Supabase calls') code never loads until someone actually
+// navigates to one of these routes.
+const Auth = lazy(() => import("./pages/Auth"));
+const AddCar = lazy(() => import("./pages/AddCar"));
+const AdminLeads = lazy(() => import("./pages/AdminLeads"));
+const AdminPhotos = lazy(() => import("./pages/AdminPhotos"));
+
+const AdminRouteFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+  </div>
+);
 
 const queryClient = new QueryClient();
 
@@ -78,7 +89,14 @@ const App = () => (
               element={<Confirmation />}
             />
             <Route path="/about" element={<About />} />
-            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/auth"
+              element={
+                <Suspense fallback={<AdminRouteFallback />}>
+                  <Auth />
+                </Suspense>
+              }
+            />
             {/* Redirect old routes */}
             <Route path="/categories" element={<Navigate to="/fleet" replace />} />
             <Route
@@ -91,7 +109,9 @@ const App = () => (
               path="/addcars"
               element={
                 <ProtectedRoute requireAdmin>
-                  <AddCar />
+                  <Suspense fallback={<AdminRouteFallback />}>
+                    <AddCar />
+                  </Suspense>
                 </ProtectedRoute>
               }
             />
@@ -99,7 +119,9 @@ const App = () => (
               path="/admin/leads"
               element={
                 <ProtectedRoute requireAdmin>
-                  <AdminLeads />
+                  <Suspense fallback={<AdminRouteFallback />}>
+                    <AdminLeads />
+                  </Suspense>
                 </ProtectedRoute>
               }
             />
@@ -107,7 +129,9 @@ const App = () => (
               path="/admin/photos"
               element={
                 <ProtectedRoute requireAdmin>
-                  <AdminPhotos />
+                  <Suspense fallback={<AdminRouteFallback />}>
+                    <AdminPhotos />
+                  </Suspense>
                 </ProtectedRoute>
               }
             />

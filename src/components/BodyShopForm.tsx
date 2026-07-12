@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const BodyShopForm = () => {
@@ -83,7 +83,7 @@ const BodyShopForm = () => {
       notes || null,
     ].filter(Boolean).join(" | ");
 
-    await supabase.from("leads").insert({
+    await insertLead({
       form_type: "quick_quote",
       vertical_path: "body-shop-delivery",
       service_context: "Body Shop / Mechanic Delivery",

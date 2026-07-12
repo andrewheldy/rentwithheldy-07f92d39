@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 // value = stored on the lead (do NOT translate); labelKey = display only.
@@ -63,7 +63,7 @@ const AirportQuoteForm = () => {
       `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
+    const { error } = await insertLead({
       form_type: "airport_quote",
       vertical_path: "airport",
       service_context: "Airport Rental",

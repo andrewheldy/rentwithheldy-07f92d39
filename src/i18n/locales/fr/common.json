@@ -27,10 +27,5 @@
     "title": "404",
     "message": "Oups ! Page introuvable",
     "returnHome": "Retour à l'accueil"
-  },
-  "configError": {
-    "title": "Nous préparons tout",
-    "message": "Cette page ne peut pas se charger pour le moment. Notre équipe a été informée — revenez bientôt, ou contactez-nous directement.",
-    "callUs": "Appelez-nous ou écrivez-nous :"
   }
 }

@@ -26,7 +26,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import FAQAccordion from "@/components/FAQAccordion";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { toast } from "@/hooks/use-toast";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 import heroRentToOwn from "@/assets/hero-rent-to-own.png";
@@ -77,7 +77,7 @@ const DriveToOwn = () => {
       }. Notes: ${String(fd.get("notes") || "")}`,
     };
 
-    const { error } = await supabase.from("leads").insert(payload);
+    const { error } = await insertLead(payload);
     setSubmitting(false);
     if (error) {
       toast({

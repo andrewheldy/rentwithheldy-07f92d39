@@ -17,7 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { toast } from "@/hooks/use-toast";
 
 type GigType = "rideshare" | "delivery" | "both";
@@ -179,7 +179,7 @@ const DriveToOwnQuiz = () => {
         .join(" "),
     };
 
-    const { error: dbError } = await supabase.from("leads").insert(payload);
+    const { error: dbError } = await insertLead(payload);
     if (dbError) console.error("DB insert failed", dbError);
 
     try {

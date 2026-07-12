@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 interface PartnerIntakeFormProps {
@@ -77,7 +77,7 @@ const PartnerIntakeForm = ({
     const { name, company, claim, phone, location } = parsed.data;
     const path = verticalPath ?? slugify(serviceContext);
 
-    const { error: insertError } = await supabase.from("leads").insert({
+    const { error: insertError } = await insertLead({
       form_type: "partner_intake",
       vertical_path: path,
       service_context: serviceContext,

@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { User, Session } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
+
+const NOT_CONFIGURED_ERROR = new Error("Admin authentication is not configured.");
 
 interface AuthContextType {
   user: User | null;
@@ -18,7 +20,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // Nothing to load when Supabase isn't configured — there is no session to fetch.
+  const [isLoading, setIsLoading] = useState(isSupabaseConfigured);
 
   const checkAdminRole = async (userId: string) => {
     try {
@@ -42,6 +45,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
+    // Supabase is optional infrastructure for the public site (admin auth
+    // and lead-capture only) — when it's not configured there is no session
+    // to check, and this must never touch `supabase.auth` (that constructs
+    // a real client and/or throws; see integrations/supabase/client.ts).
+    if (!isSupabaseConfigured) {
+      setIsLoading(false);
+      return;
+    }
+
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -78,6 +90,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signIn = async (email: string, password: string) => {
+    if (!isSupabaseConfigured) return { error: NOT_CONFIGURED_ERROR };
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -86,6 +99,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signUp = async (email: string, password: string) => {
+    if (!isSupabaseConfigured) return { error: NOT_CONFIGURED_ERROR };
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -97,7 +111,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    if (isSupabaseConfigured) await supabase.auth.signOut();
     setUser(null);
     setSession(null);
     setIsAdmin(false);

@@ -1,6 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { isSupabaseConfigured } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
+import AdminNotConfigured from "@/components/admin/AdminNotConfigured";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -9,6 +11,14 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) => {
   const { user, isAdmin, isLoading } = useAuth();
+
+  // Without Supabase there is no session to check, and useAuth() already
+  // reflects that (isLoading=false, user=null) — but this route means "you
+  // were trying to do something admin-only," so it should say so plainly
+  // instead of bouncing to a login form that can never succeed.
+  if (!isSupabaseConfigured) {
+    return <AdminNotConfigured />;
+  }
 
   if (isLoading) {
     return (

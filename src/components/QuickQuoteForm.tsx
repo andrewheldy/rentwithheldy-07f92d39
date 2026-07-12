@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { insertLead } from "@/lib/leads";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 // `value` is the STABLE string persisted to Supabase / emailed to the team —
@@ -127,7 +127,7 @@ const QuickQuoteForm = ({
       `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error: insertError } = await supabase.from("leads").insert({
+    const { error: insertError } = await insertLead({
       form_type: "quick_quote",
       vertical_path: path,
       service_context: serviceContext,
