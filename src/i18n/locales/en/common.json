@@ -27,5 +27,10 @@
     "title": "404",
     "message": "Oops! Page not found",
     "returnHome": "Return to Home"
+  },
+  "configError": {
+    "title": "We're getting things ready",
+    "message": "This page can't load right now. Our team has been notified — please check back shortly, or reach us directly.",
+    "callUs": "Call or text us:"
   }
 }

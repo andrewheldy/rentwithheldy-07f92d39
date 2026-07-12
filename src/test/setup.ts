@@ -21,6 +21,21 @@ if (typeof window !== "undefined" && !window.ResizeObserver) {
     disconnect() {}
   };
 }
+if (typeof window !== "undefined" && !window.matchMedia) {
+  window.matchMedia = (query: string) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => false,
+  }) as unknown as MediaQueryList;
+}
+if (typeof window !== "undefined") {
+  window.scrollTo = (() => {}) as typeof window.scrollTo;
+}
 
 // Unmount React trees and reset locale-related global state between tests.
 afterEach(() => {

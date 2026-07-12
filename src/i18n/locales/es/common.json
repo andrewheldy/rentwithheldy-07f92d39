@@ -27,5 +27,10 @@
     "title": "404",
     "message": "¡Ups! Página no encontrada",
     "returnHome": "Volver al inicio"
+  },
+  "configError": {
+    "title": "Estamos preparando todo",
+    "message": "Esta página no se puede cargar en este momento. Nuestro equipo ya fue notificado — vuelve a intentarlo en breve o contáctanos directamente.",
+    "callUs": "Llámanos o escríbenos:"
   }
 }
