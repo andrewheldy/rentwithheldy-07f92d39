@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Star, Phone, ArrowRight } from "lucide-react";
+import { Star, Phone, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
+import { track } from "@/lib/analytics";
 
 // Permanent hero photograph. Licensed placeholder — swap for real Heldy
 // photography when available. Fully static: no crossfade, no zoom, no pan.
@@ -118,12 +119,24 @@ const Hero = () => {
           </motion.ul>
 
           <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link to="/book" className="sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto">
-                {t("hero.primaryCta")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
+            <Link
+              to="/trip-planner"
+              className="sm:w-auto"
+              onClick={() => track("hero_plan_trip_click")}
+            >
+              <Button
+                size="lg"
+                className="w-full sm:w-auto hover:shadow-tropical focus-visible:shadow-tropical motion-safe:animate-cta-idle-glow motion-safe:active:scale-[0.97]"
+              >
+                <Sparkles className="h-4 w-4" aria-hidden />
+                {t("hero.primaryCta")}
               </Button>
             </Link>
-            <Link to="/fleet" className="sm:w-auto">
+            <Link
+              to="/fleet"
+              className="sm:w-auto"
+              onClick={() => track("hero_view_fleet_click")}
+            >
               <Button
                 size="lg"
                 variant="outline"
@@ -133,6 +146,13 @@ const Hero = () => {
               </Button>
             </Link>
           </motion.div>
+
+          <motion.p
+            variants={item}
+            className="mt-3 max-w-md text-sm leading-relaxed text-white/70"
+          >
+            {t("hero.reassurance")}
+          </motion.p>
 
           <motion.a
             variants={item}

@@ -15,8 +15,9 @@
       "cruisePorts": "Ports de croisière",
       "repairShops": "Garages"
     },
-    "primaryCta": "Réserver",
-    "secondaryCta": "Voir la flotte",
+    "primaryCta": "Planifier mon trajet",
+    "secondaryCta": "Découvrir la flotte",
+    "reassurance": "Répondez à quelques questions rapides et nous vous aiderons à trouver la voiture et l'option de livraison idéales.",
     "trust": {
       "reviews": "Plus de 1 400 avis cinq étoiles",
       "allStar": "All-Star Host",
@@ -104,7 +105,7 @@
     "eyebrow": "La flotte",
     "title": "Des voitures propres et fiables pour tous vos projets en Floride du Sud.",
     "description": "Un aperçu de nos véhicules les plus réservés — des options économiques pratiques et d'autres premium plus récentes, toutes soigneusement entretenues. Consultez les disponibilités en temps réel et toute la flotte à tout moment.",
-    "tripPlannerPrompt": "Vous ne savez pas quoi choisir pour votre trajet ? Essayez le planificateur de trajet"
+    "tripPlannerPrompt": "Vous hésitez encore ? Nous vous aiderons à trouver le véhicule idéal."
   },
   "reviews": {
     "eyebrow": "Ce que disent les clients",

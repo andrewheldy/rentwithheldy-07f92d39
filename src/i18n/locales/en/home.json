@@ -15,8 +15,9 @@
       "cruisePorts": "Cruise ports",
       "repairShops": "Repair shops"
     },
-    "primaryCta": "Book Now",
-    "secondaryCta": "View the Fleet",
+    "primaryCta": "Plan My Trip",
+    "secondaryCta": "Browse the Fleet",
+    "reassurance": "Answer a few quick questions and we'll help you find the right car and delivery option.",
     "trust": {
       "reviews": "1,400+ Five-Star Reviews",
       "allStar": "All-Star Host",
@@ -104,7 +105,7 @@
     "eyebrow": "The fleet",
     "title": "Clean, reliable cars for every South Florida plan.",
     "description": "A peek at our most-booked rides — practical economy options and newer premium ones, all carefully maintained. See live availability and the full fleet anytime.",
-    "tripPlannerPrompt": "Not sure what fits your trip? Try the Trip Planner"
+    "tripPlannerPrompt": "Still deciding? We'll match you with the right ride."
   },
   "reviews": {
     "eyebrow": "What guests say",

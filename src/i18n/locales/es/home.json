@@ -15,8 +15,9 @@
       "cruisePorts": "Puertos de cruceros",
       "repairShops": "Talleres"
     },
-    "primaryCta": "Reservar ahora",
-    "secondaryCta": "Ver la flota",
+    "primaryCta": "Planifica mi viaje",
+    "secondaryCta": "Explorar la flota",
+    "reassurance": "Responde algunas preguntas rápidas y te ayudaremos a encontrar el auto y la opción de entrega ideales.",
     "trust": {
       "reviews": "Más de 1,400 reseñas de cinco estrellas",
       "allStar": "All-Star Host",
@@ -104,7 +105,7 @@
     "eyebrow": "La flota",
     "title": "Autos limpios y confiables para cada plan en el sur de Florida.",
     "description": "Un vistazo a nuestros autos más reservados: opciones económicas prácticas y otras premium más nuevas, todas cuidadosamente mantenidas. Consulta la disponibilidad en tiempo real y la flota completa cuando quieras.",
-    "tripPlannerPrompt": "¿No sabes qué se ajusta a tu viaje? Prueba el Planificador de Viajes"
+    "tripPlannerPrompt": "¿Aún decidiendo? Te ayudamos a encontrar el vehículo ideal."
   },
   "reviews": {
     "eyebrow": "Lo que dicen los huéspedes",

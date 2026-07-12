@@ -134,6 +134,18 @@ export default {
 				'ken-burns': {
 					'0%': { transform: 'scale(1)' },
 					'100%': { transform: 'scale(1.06)' }
+				},
+				// A once-per-cycle soft glow pulse for the hero's primary CTA — the
+				// button rests still for most of the cycle, then breathes gently for
+				// a moment. Deliberately subtle: a concierge cue, not a shimmer sweep.
+				// Uses `filter: drop-shadow(...)`, not `box-shadow` — CSS animations
+				// take exclusive ownership of the properties they animate for their
+				// whole duration (they beat :hover/:focus-visible outright, not just
+				// by specificity), so animating box-shadow here would silently blank
+				// out the hover/focus glow for most of every 7s cycle.
+				'cta-idle-glow': {
+					'0%, 88%, 100%': { filter: 'drop-shadow(0 0 0 hsl(var(--primary) / 0))' },
+					'94%': { filter: 'drop-shadow(0 0 14px hsl(var(--primary) / 0.45))' }
 				}
 			},
 			animation: {
@@ -141,7 +153,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
 				marquee: 'marquee 40s linear infinite',
-				'ken-burns': 'ken-burns 18s ease-out forwards'
+				'ken-burns': 'ken-burns 18s ease-out forwards',
+				'cta-idle-glow': 'cta-idle-glow 7s ease-in-out infinite'
 			}
 		}
 	},
