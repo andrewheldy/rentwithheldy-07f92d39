@@ -173,7 +173,13 @@ for (const [viewportName, viewport] of viewports) {
       }, locale);
 
       const pageErrors: string[] = [];
-      page.on("pageerror", (error) => pageErrors.push(error.message));
+      page.on("pageerror", (error) => {
+        const isWheelbaseLocalProtocolNoise =
+          error.message.includes("checkout.wheelbasepro.com") &&
+          error.message.includes("Blocked a frame") &&
+          error.message.includes('origin "http://127.0.0.1');
+        if (!isWheelbaseLocalProtocolNoise) pageErrors.push(error.message);
+      });
 
       for (const [routeName, path] of routes) {
         await page.goto(path, { waitUntil: "domcontentloaded" });

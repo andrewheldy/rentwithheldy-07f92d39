@@ -1,0 +1,142 @@
+spec_id: ai-systems-section-reveal
+date: "2026-08-12"
+owner: Andrew Heldy
+brief_ref: docs/AI_SYSTEMS_DESIGN_BRIEF.md
+registry_entries_used:
+  - motion-intelligence
+  - emil-design-skills
+objective: >
+  Help a first-time visitor preserve the page's narrative order as dense system
+  diagrams and explanatory sections enter the reading viewport, without delaying
+  access to content or making scrolling itself feel performed.
+semantic_purpose: direct-attention
+surface: marketing
+trigger:
+  interaction: scroll
+  frequency: once-per-session
+  input_methods: [pointer, touch, keyboard, assistive-technology]
+elements:
+  - target: ".ai-reveal"
+    properties: [opacity, transform]
+    role: primary
+spatial_relationship: >
+  Each section begins eight pixels below its stable document position and settles
+  upward in place. Layout space is reserved from first paint, so the reveal never
+  moves surrounding content or changes the reader's scroll position.
+engine: css-transition
+selection_rationale:
+  escalation_reason: >
+    Tier 0 would preserve all information, but the restrained reveal provides a
+    useful attention boundary between unusually dense narrative chapters. No gate
+    above tier 1 is passed: values are known at author time, nothing unmounts or
+    morphs, no gesture drives progress, and scroll position does not scrub motion.
+  rejected_alternatives:
+    - engine: none
+      why_not: >
+        The page alternates editorial text and dense system diagrams; a single,
+        short entrance helps the next chapter register without becoming load-bearing.
+    - engine: waapi
+      why_not: >
+        Values are static and interruption does not need programmatic velocity.
+    - engine: css-scroll-driven
+      why_not: >
+        The effect is triggered by intersection and plays once; it is not scrubbed
+        by scroll progress, and Firefox support would require needless fallback work.
+    - engine: motion-react
+      why_not: >
+        React lifecycle owns none of this effect. The existing package is irrelevant
+        to engine selection, and CSS produces the intended transition at zero bytes.
+  new_dependency: false
+  layer_ownership: >
+    Native CSS owns all Pass 1 showcase motion. No JavaScript animation engine may
+    animate these elements.
+sequence:
+  - step: 1
+    target: ".ai-reveal"
+    change: "opacity 0.01 to 1 and translateY 8px to 0"
+timing:
+  duration_ms: 280
+  delay_ms: 0
+  stagger_ms: 0
+  derivation: >
+    Distance is only eight pixels and the target is a section-level reading boundary,
+    so the effect needs more time than button feedback but less than a large surface
+    transition. It is scroll-triggered once, never awaited, and completes within the
+    interaction guideline's reveal range without slowing keyboard or touch reading.
+easing:
+  kind: cubic-bezier
+  curve: "cubic-bezier(0.23, 1, 0.32, 1)"
+  character: >
+    A strong ease-out establishes the section immediately and lets it settle quietly,
+    matching the brand's calm, non-performative motion language.
+interruption:
+  behavior: ignore-until-complete
+  notes: >
+    The transition may finish after rapid scrolling, but content is already present
+    and interactive. Each element runs only once and the observer disconnects.
+responsive:
+  mobile: >
+    The same eight-pixel distance and 280ms duration apply. Diagrams change layout
+    independently; the reveal never introduces horizontal movement.
+  tablet: "Identical to mobile and desktop."
+  desktop: "Identical, with no additional parallax or stagger."
+  orientation_or_input_notes: >
+    Keyboard scrolling may trigger a section reveal, but no keyboard action on a
+    focused control triggers motion and focus indicators remain instant.
+reduced_motion:
+  strategy: instant-state-change
+  end_state_preserved: true
+  implementation: >
+    The authored default is fully visible and stationary. Motion styles are enabled
+    only when prefers-reduced-motion is no-preference; the observer also reveals
+    immediately when reduce is active and re-checks the media query before observing.
+  vestibular_review: >
+    No parallax, zoom, rotation, peripheral loop, or large-area travel. The eight-pixel
+    transform is removed entirely under reduced motion.
+keyboard_and_focus:
+  runs_on_keyboard_trigger: false
+  focus_behavior: >
+    Focus rings are never animated. All content is in document order and remains
+    focusable before, during, and after its containing section becomes visible.
+  reason_if_animated: "Not applicable; control activation does not trigger this effect."
+ssr:
+  renders_on_server: false
+  hydration_notes: >
+    This repository is a client-rendered Vite SPA, so server rendering and hydration
+    checks do not apply to this route. The authored React state still begins in the
+    stable document layout and only opacity and transform are enhanced after mount.
+  client_boundary: "The route and existing Reveal primitive render on the client."
+cleanup:
+  on_unmount: >
+    The IntersectionObserver disconnects in the React effect cleanup and immediately
+    after the target intersects.
+  listeners_and_observers: >
+    One IntersectionObserver per reveal target, disconnected on reveal or unmount.
+    There are no scroll listeners, resize listeners, or requestAnimationFrame loops.
+  route_change_notes: "All observers disconnect when the route component unmounts."
+performance_budget:
+  compositor_only: true
+  added_bytes_gz: 0
+  target_fps: 60
+  cls_contribution: "None. Elements occupy final layout space before motion begins."
+  inp_notes: >
+    The reveal is not inside an input handler and never delays a state update, link,
+    or Opportunity Finder selection.
+  notes: >
+    Transform and opacity only, no new dependency, no permanent loop, and no pinned
+    or scrubbed scroll work.
+verification:
+  method: playwright-script
+  required_checks: [RM-1, RM-2, A11Y-1, A11Y-2, PERF-1, CON-1, NAV-1, NAV-2, CLEAN-1, CLEAN-2, SCR-1, SCR-2, SCR-3, VP-1, VP-2, VP-3, OVF-1, CLS-1]
+  viewports: ["375x812", "768x1024", "1440x900"]
+  evidence_path: docs/AI_SYSTEMS_PASS1_REVIEW.md
+acceptance_criteria:
+  - Every reveal reaches a fully visible and stationary end state after one intersection.
+  - Reduced-motion emulation shows all content immediately with no translated movement.
+  - The route creates no scroll listeners, animation loops, or new animation bundle bytes.
+  - Focus indicators appear instantly and keyboard activation never triggers a transform.
+  - The page has no layout shift or horizontal overflow attributable to the reveal.
+expected_failure_modes:
+  - JavaScript applying a hidden class before checking reduced-motion preference.
+  - An observer remaining connected after a section has entered the viewport.
+  - Feature-specific styling overriding the stable mobile transform direction.

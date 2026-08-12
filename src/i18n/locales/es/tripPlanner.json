@@ -22,7 +22,7 @@
   "questions": {
     "party": {
       "title": "¿Cuántas personas viajan?",
-      "option": "{{count}} personas"
+      "option": "{{range}} personas"
     },
     "luggage": {
       "title": "¿Cuánto equipaje llevan?",

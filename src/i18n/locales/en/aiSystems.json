@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "title": "AI Systems Inside a Real Business | Rent With Heldy",
+    "description": "A private case study showing how AI, automation, structured data, and better workflows connect across a real operating car rental business."
+  },
+  "hero": {
+    "privateLabel": "Private systems case study",
+    "homeLabel": "Return to the Rent With Heldy home page",
+    "kicker": "A real operating business, mapped",
+    "title": "AI That Actually Runs the Business.",
+    "summary": "See how AI is being integrated across customer service, operations, fleet management, sales, research, marketing, product development, and decision-making inside a real car rental company.",
+    "explore": "Explore the Systems",
+    "build": "Build This for My Business",
+    "proof": "Built inside Rent With Heldy. Applicable far beyond car rentals.",
+    "nodes": {
+      "customers": "Customers",
+      "fleet": "Fleet",
+      "operations": "Operations",
+      "sales": "Sales",
+      "research": "Research",
+      "marketing": "Marketing",
+      "finance": "Finance",
+      "knowledge": "Knowledge",
+      "automation": "Automation"
+    },
+    "core": {
+      "small": "Operating core",
+      "title": "Rent With Heldy",
+      "note": "Real guests. Real vehicles. Real workflows."
+    },
+    "mapCaption": {
+      "one": "One business.",
+      "workflows": "Dozens of workflows.",
+      "ai": "AI woven throughout."
+    }
+  },
+  "business": {
+    "kicker": "The proving ground",
+    "title": "This Started With a Car Rental Company.",
+    "body": "A rental business coordinates people, vehicles, places, timing, information, and exceptions every day. Each function creates repeated work and recurring decisions.",
+    "quote": "The objective was never to use AI. The objective was to build a better business.",
+    "coreLabel": "One operating core",
+    "functionsLabel": "Business functions managed by Rent With Heldy",
+    "functions": {
+      "reservations": "Reservations",
+      "guests": "Guests",
+      "vehicles": "Vehicles",
+      "airports": "Airports",
+      "maintenance": "Maintenance",
+      "utilization": "Fleet utilization",
+      "partnerships": "Partnerships",
+      "marketing": "Marketing",
+      "sales": "Sales",
+      "service": "Customer service",
+      "research": "Research",
+      "documentation": "Documentation",
+      "operations": "Operations",
+      "growth": "Growth"
+    }
+  },
+  "workflow": {
+    "title": "The Business Is a System.",
+    "body": "An ordinary guest question can touch multiple channels, decisions, records, and teams before the trip even begins. Select a step to see what sits underneath it.",
+    "flowLabel": "Customer inquiry workflow",
+    "guidance": "Choose a stage to trace the work that must happen before it.",
+    "detailLabel": "Inside this step",
+    "branchesLabel": "Systems connected after the guest experience",
+    "states": {
+      "prerequisite": "Prerequisite stage",
+      "active": "Selected stage",
+      "downstream": "Downstream stage"
+    },
+    "stages": {
+      "inquiry": { "title": "Customer Inquiry", "detail": "A guest arrives with a goal, partial information, a location, timing, and often a question the business has answered before." },
+      "channels": { "title": "Voice / Website / SMS / Email", "detail": "The same request may begin in several channels. The system should preserve context instead of making the guest repeat it." },
+      "capture": { "title": "Lead Capture", "detail": "Contact details, dates, location, vehicle needs, and source become structured information that the next system can use." },
+      "qualification": { "title": "Qualification", "detail": "AI can interpret the request, identify missing information, retrieve business context, and prepare the next action without reconstructing the situation by hand." },
+      "reservation": { "title": "Reservation", "detail": "Availability, business rules, booking details, and confirmation must line up before a vehicle can be committed." },
+      "experience": { "title": "Guest Experience", "detail": "Arrival instructions, delivery details, trip support, return steps, and follow-up should remain connected to the original booking context." }
+    },
+    "branches": {
+      "operations": "Operations",
+      "fleet": "Fleet",
+      "analytics": "Analytics",
+      "marketing": "Marketing",
+      "followUp": "Follow-Up",
+      "partnerships": "Partnerships",
+      "knowledge": "Knowledge"
+    }
+  },
+  "gallery": {
+    "kicker": "Seven connected systems",
+    "title": "AI Is Not One Tool. It's a Layer Across the Business.",
+    "body": "Each category connects company knowledge, business rules, structured data, and a useful next action.",
+    "indexLabel": "AI system categories",
+    "systemLabel": "Active system",
+    "patternLabel": "Operating pattern",
+    "categories": {
+      "customerExperience": {
+        "title": "Customer Experience",
+        "thesis": "Give guests a relevant answer using reservation context and the procedures the business actually follows.",
+        "examples": ["AI voice agents", "Reservation questions", "Contextual guest communication", "Airport and shuttle instructions", "Return instructions", "Knowledge-grounded support"]
+      },
+      "operations": {
+        "title": "Operations",
+        "thesis": "Turn tribal knowledge into structured operational intelligence that can guide consistent action.",
+        "examples": ["SOP generation and retrieval", "Trip workflows", "License verification workflows", "Maintenance coordination", "Damage reporting", "Internal task routing"],
+        "note": "Documents become structured knowledge. A real operating question can then retrieve the relevant rule, decision tree, and next step."
+      },
+      "fleetIntelligence": {
+        "title": "Fleet Intelligence",
+        "thesis": "Connect vehicle records, trip activity, maintenance history, and normalized data for clearer fleet decisions.",
+        "examples": ["Fleet dashboards", "Utilization", "Revenue per vehicle", "Trip analytics", "Maintenance history", "Lifecycle analysis"],
+        "note": "The interface can compare vehicles and surface patterns without presenting demonstration states as production performance."
+      },
+      "salesGrowth": {
+        "title": "Sales & Growth",
+        "thesis": "Move from a broad prospect list to researched, qualified, relevant outreach and a visible follow-up path.",
+        "examples": ["Hotel and body shop prospecting", "Attorney and rideshare partnerships", "Contact enrichment", "Personalized outreach", "CRM workflows", "Local SEO research"],
+        "note": "Prospects move through research, qualification, enrichment, outreach, follow-up, and CRM without losing the reasoning behind each handoff."
+      },
+      "research": {
+        "title": "Research",
+        "thesis": "Research becomes valuable when sources, evidence, tradeoffs, and risk feed an actual business decision.",
+        "examples": ["Insurance research", "Competitor research", "Pricing and market research", "Regulations", "Vendor evaluation", "Opportunity analysis"],
+        "note": "A useful research system moves from question to sources, evidence, comparison, risks, recommendation, and action plan."
+      },
+      "vehicleAcquisition": {
+        "title": "Vehicle Acquisition",
+        "thesis": "Structure purchase price, mileage, reliability, demand, operating cost, and maintenance risk into decision support.",
+        "examples": ["Purchase price", "Mileage and model year", "Reliability", "Operating cost", "Rental eligibility", "Maintenance risk"]
+      },
+      "productDevelopment": {
+        "title": "Product Development",
+        "thesis": "Use AI not only to automate existing work, but to help shape new products, financial scenarios, and operating models.",
+        "examples": ["Driver economics", "Weekly pricing", "Ownership equity concepts", "Upgrade logic", "Retention modeling", "Application funnels"]
+      }
+    },
+    "caseStudy": {
+      "label": "Mini case study",
+      "title": "Guest Questions at 11:47 PM",
+      "problemLabel": "Problem",
+      "problem": "Guests need operational answers outside normal hours.",
+      "systemLabel": "System",
+      "system": "Reservation context, company SOPs, and AI reasoning.",
+      "resultLabel": "Result",
+      "result": "The correct procedure can be retrieved and turned into a relevant answer or next action."
+    },
+    "acquisition": {
+      "label": "Decision support states",
+      "buy": "BUY",
+      "buyNote": "Inputs support the current criteria.",
+      "investigate": "INVESTIGATE",
+      "investigateNote": "Important evidence is missing or mixed.",
+      "pass": "PASS",
+      "passNote": "The current criteria do not support the candidate.",
+      "disclaimer": "Demonstration logic only. This does not predict investment returns."
+    },
+    "product": {
+      "dashboardLabel": "Conceptual driver dashboard",
+      "metrics": ["Ownership %", "Equity Earned", "Remaining Balance", "Time to Ownership", "Upgrade Eligibility"],
+      "demoNote": "Conceptual dashboard fields. No production driver data is shown."
+    }
+  },
+  "comparison": {
+    "title": "Automation Starts With Understanding the Workflow.",
+    "body": "The first job is not choosing a tool. It is seeing every step, handoff, decision, and exception clearly.",
+    "beforeLabel": "Manual workflow",
+    "afterLabel": "AI-enabled workflow",
+    "before": {
+      "read": "Someone reads the incoming inquiry",
+      "availability": "Checks availability",
+      "information": "Looks through scattered information",
+      "response": "Writes the response",
+      "update": "Updates the system",
+      "reminder": "Creates a reminder",
+      "remember": "Remembers to follow up"
+    },
+    "after": {
+      "context": "Context is collected",
+      "classify": "The request is classified",
+      "retrieve": "Relevant data is retrieved",
+      "prepare": "The next action is prepared",
+      "update": "Systems are updated",
+      "schedule": "Follow-up is scheduled",
+      "exceptions": "Humans handle exceptions and relationships"
+    },
+    "statement": "The goal isn't removing humans. It's removing the work humans shouldn't have to keep repeating."
+  },
+  "artifacts": {
+    "kicker": "Evidence architecture",
+    "title": "Built, Not Theoretical.",
+    "body": "These structures are ready for sanitized screenshots, recordings, and real examples in Pass 3. Nothing below claims a production result.",
+    "demoLabel": "Demonstration structure",
+    "replaceableNote": "Replaceable media slot. No customer or production data shown.",
+    "items": {
+      "voice": { "title": "Voice AI", "description": "A call becomes context, retrieval, and a useful next action.", "flowLabel": "Voice AI artifact flow", "flow": { "call": "Call", "transcript": "Transcript", "knowledge": "Knowledge Retrieval", "action": "Response / Action" } },
+      "fleet": { "title": "Fleet Intelligence", "description": "Vehicle records become a comparable operating view.", "flowLabel": "Fleet intelligence artifact flow", "flow": { "vehicles": "Vehicles", "utilization": "Utilization", "revenue": "Revenue", "performance": "Performance" } },
+      "research": { "title": "AI Research", "description": "Source-backed research is organized around a decision.", "flowLabel": "AI research artifact flow", "flow": { "question": "Question", "sources": "Sources", "synthesis": "Synthesis", "recommendation": "Recommendation" } },
+      "sop": { "title": "SOP Intelligence", "description": "Operational documents become retrievable company knowledge.", "flowLabel": "SOP intelligence artifact flow", "flow": { "documents": "Documents", "knowledge": "Structured Knowledge", "answer": "Operational Answer" } },
+      "partnership": { "title": "Partnership Engine", "description": "Prospecting retains its research, qualification, and follow-up context.", "flowLabel": "Partnership engine artifact flow", "flow": { "prospects": "Prospects", "research": "Research", "qualification": "Qualification", "outreach": "Outreach", "crm": "CRM" } },
+      "acquisition": { "title": "Vehicle Acquisition", "description": "Candidate evidence is structured before a decision is made.", "flowLabel": "Vehicle acquisition artifact flow", "flow": { "candidates": "Candidates", "data": "Data", "analysis": "Analysis", "decision": "Decision" } }
+    }
+  },
+  "industries": {
+    "title": "Car Rental Is Just the Use Case.",
+    "body": "The details change by industry. The underlying pattern of questions, decisions, handoffs, knowledge, and repeated work remains recognizable.",
+    "reveal": "The Industry Changes. The Pattern Doesn't.",
+    "support": "AI becomes useful when it connects workflow, context, data, business rules, and the systems already in use.",
+    "originLabel": "The proving ground",
+    "carRental": "Car rental",
+    "listLabel": "Industries with repeatable operating patterns",
+    "items": {
+      "hotel": "Hotel",
+      "propertyManagement": "Property Management",
+      "homeServices": "Home Services",
+      "restaurant": "Restaurant",
+      "lawFirm": "Law Firm",
+      "automotive": "Automotive",
+      "professionalServices": "Professional Services",
+      "repeatableOperations": "Other Repeatable Operations"
+    },
+    "foundation": ["Questions", "Decisions", "Handoffs", "Knowledge", "Follow-Up", "Reporting", "Scheduling", "Rules"]
+  },
+  "opportunity": {
+    "kicker": "Interactive opportunity map",
+    "title": "Where Is AI Hiding Inside Your Business?",
+    "body": "Choose the kinds of work that consume your team's time. The map uses fixed client-side rules, not an API or an invented assessment.",
+    "prompt": "What consumes your team's time?",
+    "clear": "Clear",
+    "optionsLabel": "Business problems to map",
+    "outputLabel": "Deterministic output",
+    "outputTitle": "AI Opportunity Map",
+    "selectedCount_one": "{{count}} selected",
+    "selectedCount_other": "{{count}} selected",
+    "empty": "Select one or more work patterns to see the systems that may be worth mapping.",
+    "reasonLabel": "Mapped from",
+    "note": "This is a starting map, not an automated business diagnosis.",
+    "problems": {
+      "customerQuestions": "Customer Questions",
+      "research": "Research",
+      "followUp": "Follow-Up",
+      "dataEntry": "Data Entry",
+      "scheduling": "Scheduling",
+      "quoting": "Quoting",
+      "reporting": "Reporting",
+      "training": "Training",
+      "leadGeneration": "Lead Generation",
+      "documentation": "Documentation",
+      "internalSearch": "Internal Search",
+      "repetitiveDecisions": "Repetitive Decisions",
+      "operations": "Operations",
+      "qualityControl": "Quality Control"
+    },
+    "recommendations": {
+      "knowledgeSystem": { "title": "Knowledge System", "body": "Centralize company information and make it retrievable in the context of real work." },
+      "workflowAutomation": { "title": "Workflow Automation", "body": "Move repetitive steps and structured information between systems automatically." },
+      "aiAssistant": { "title": "AI Assistant / Agent", "body": "Handle structured questions or processes using the company's context and rules." },
+      "decisionSupport": { "title": "Decision Support", "body": "Turn scattered business information into structured comparisons and recommendations." },
+      "customerAutomation": { "title": "Customer Automation", "body": "Prepare faster, context-aware responses while preserving escalation to a person." }
+    }
+  },
+  "process": {
+    "title": "AI Systems for Real Businesses.",
+    "body": "The method starts with the work as it exists, then builds only what can connect to the operation around it.",
+    "steps": {
+      "find": { "title": "Find", "body": "Map the workflows where AI or automation can create useful leverage." },
+      "build": { "title": "Build", "body": "Create agents, automations, internal tools, knowledge systems, or decision support." },
+      "integrate": { "title": "Integrate", "body": "Connect the system to the tools and processes the business already uses." },
+      "improve": { "title": "Improve", "body": "Observe friction, learn how the system performs, and keep refining it." }
+    }
+  },
+  "contact": {
+    "kicker": "Map the operation",
+    "title": "Your Business Already Has AI Opportunities.",
+    "body": "You probably don't need another AI tool. You need to identify where information, decisions, and repetitive work can become better systems.",
+    "cta": "Let's Map Your Business",
+    "note": "Built from lessons learned implementing AI inside a real operating business."
+  },
+  "footer": {
+    "back": "Back to the rental site"
+  }
+}

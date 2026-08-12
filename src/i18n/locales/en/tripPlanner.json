@@ -22,7 +22,7 @@
   "questions": {
     "party": {
       "title": "How many travelers?",
-      "option": "{{count}} people"
+      "option": "{{range}} people"
     },
     "luggage": {
       "title": "How much luggage?",

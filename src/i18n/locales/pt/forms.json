@@ -9,7 +9,9 @@
     "passengerTypes": {
       "hotelGuest": "Hóspede de hotel",
       "airportTraveler": "Viajante de aeroporto",
+      "cruisePassenger": "Passageiro de cruzeiro",
       "bodyShop": "Cliente de oficina / reparo",
+      "lossOfUse": "Reclamação legal / perda de uso",
       "localRental": "Aluguel local",
       "other": "Outro"
     },

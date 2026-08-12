@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
-import QuickQuoteForm from "@/components/QuickQuoteForm";
+import QuickQuoteForm, { type QuickQuotePassengerType } from "@/components/QuickQuoteForm";
 import PartnerIntakeForm from "@/components/PartnerIntakeForm";
 import EnglishLegalNotice from "@/components/legal/EnglishLegalNotice";
 import EnglishLegalContent from "@/components/legal/EnglishLegalContent";
@@ -48,14 +48,7 @@ interface ServicePageLayoutProps {
   /** Stable slug used in backend logs/leads (e.g. "body-shop", "cruise-port") */
   verticalPath?: string;
   /** Pre-selected passenger type for the onboarding form on this page */
-  defaultPassengerType?:
-    | "Airport Traveler"
-    | "Cruise Passenger"
-    | "Hotel Guest"
-    | "Body Shop / Repair Customer"
-    | "Loss of Use / Legal Claim"
-    | "Local Resident"
-    | "Other";
+  defaultPassengerType?: QuickQuotePassengerType;
   valueProps: ValueProp[];
   coverageAreas?: string[];
   partnerHeading?: string;

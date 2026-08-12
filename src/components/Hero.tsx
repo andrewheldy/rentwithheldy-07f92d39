@@ -47,7 +47,7 @@ const Hero = () => {
       {/* Preload only the AVIF — the format the <picture> below will pick in
           any browser that supports it, so this never causes a second fetch. */}
       <Helmet>
-        <link rel="preload" as="image" href={heroSunsetAvif} type="image/avif" fetchpriority="high" />
+        <link rel="preload" as="image" href={heroSunsetAvif} type="image/avif" fetchPriority="high" />
       </Helmet>
 
       <picture>

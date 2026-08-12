@@ -24,6 +24,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import AISystems from "./pages/AISystems";
 
 import BodyShopDelivery from "./pages/BodyShopDelivery";
 import CruisePortDelivery from "./pages/CruisePortDelivery";
@@ -68,6 +69,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/ai-systems" element={<AISystems />} />
             <Route path="/insurance-replacement" element={<Navigate to="/body-shop-delivery" replace />} />
             <Route path="/body-shop-delivery" element={<BodyShopDelivery />} />
             <Route path="/cruise-port-delivery" element={<CruisePortDelivery />} />

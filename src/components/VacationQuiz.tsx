@@ -157,7 +157,7 @@ const VacationQuiz = () => {
                 <Option
                   key={p}
                   icon={Users}
-                  label={t("questions.party.option", { count: p })}
+                  label={t("questions.party.option", { range: p })}
                   active={party === p}
                   onClick={() => {
                     setParty(p);

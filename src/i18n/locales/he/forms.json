@@ -9,7 +9,9 @@
     "passengerTypes": {
       "hotelGuest": "אורח מלון",
       "airportTraveler": "נוסע משדה התעופה",
+      "cruisePassenger": "נוסע בקרוז",
       "bodyShop": "לקוח מוסך / תיקונים",
+      "lossOfUse": "תביעה משפטית / אובדן שימוש",
       "localRental": "השכרה מקומית",
       "other": "אחר"
     },

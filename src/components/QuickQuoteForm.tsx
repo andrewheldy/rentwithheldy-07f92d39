@@ -23,10 +23,14 @@ import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 const PASSENGER_TYPES = [
   { value: "Hotel Guest", labelKey: "hotelGuest", hintKey: "hotelGuest" },
   { value: "Airport Traveler", labelKey: "airportTraveler", hintKey: "airportTraveler" },
+  { value: "Cruise Passenger", labelKey: "cruisePassenger" },
   { value: "Body Shop / Repair Customer", labelKey: "bodyShop", hintKey: "bodyShop" },
+  { value: "Loss of Use / Legal Claim", labelKey: "lossOfUse" },
   { value: "Local Rental", labelKey: "localRental" },
   { value: "Other", labelKey: "other" },
 ] as const;
+
+export type QuickQuotePassengerType = (typeof PASSENGER_TYPES)[number]["value"];
 
 const PASSENGER_VALUES = PASSENGER_TYPES.map((p) => p.value) as [string, ...string[]];
 
@@ -36,7 +40,7 @@ interface QuickQuoteFormProps {
   title?: string;
   subtitle?: string;
   ctaLabel?: string;
-  defaultPassengerType?: (typeof PASSENGER_TYPES)[number]["value"];
+  defaultPassengerType?: QuickQuotePassengerType;
 }
 
 const slugify = (s: string) =>

@@ -1,0 +1,147 @@
+spec_id: ai-systems-pass2-causal-feedback
+date: "2026-08-12"
+owner: Andrew Heldy
+brief_ref: docs/AI_SYSTEMS_PASS2_DESIGN_BRIEF.md
+registry_entries_used:
+  - motion-intelligence
+  - emil-design-skills
+objective: >
+  Make two deterministic relationships easier to perceive: the accumulated path
+  leading to a selected workflow stage, and a recommendation newly assembled from
+  selected business problems. Motion is optional feedback around complete DOM states.
+semantic_purpose: reveal-relationship
+surface: marketing
+trigger:
+  interaction: click-or-tap
+  frequency: frequent
+  input_methods: [pointer, touch]
+elements:
+  - target: ".ai-workflow-frame[data-motion='true'] .ai-workflow-step-wrap"
+    properties: [opacity, color]
+    role: primary
+  - target: ".ai-opportunity-output[data-motion='true'] .ai-recommendations article"
+    properties: [opacity, transform]
+    role: supporting
+spatial_relationship: >
+  Workflow state remains in its authored grid or vertical mobile list while connector
+  and stage emphasis accumulates toward the selected step. New recommendation rows
+  begin four pixels below their final reserved position and settle in place; no sibling
+  is animated, reordered, or displaced by the effect.
+engine: css-transition
+selection_rationale:
+  escalation_reason: >
+    Tier 0 remains the semantic baseline, but brief state feedback helps the eye locate
+    a newly completed causal path and a newly introduced result. No higher gate is
+    passed: values are author-time constants, layout is not animated, and React needs
+    no exit choreography or measured reorder information.
+  rejected_alternatives:
+    - engine: none
+      why_not: >
+        The complete state is fully useful without motion, but a short pointer/touch
+        transition makes the changed relationship easier to locate in these dense panels.
+    - engine: waapi
+      why_not: >
+        The effects are discrete, static, and interruptible through ordinary CSS state;
+        imperative playback and cleanup would add complexity without capability.
+    - engine: motion-react
+      why_not: >
+        React owns only the deterministic state and mounted result rows. No exit,
+        reorder, shared-layout, gesture, spring, or measured geometry requires a runtime.
+  new_dependency: false
+  layer_ownership: >
+    React exposes semantic state and whether the current activation came from a pointer.
+    Native CSS owns the brief opacity, transform, and small-area color transitions.
+sequence:
+  - step: 1
+    target: ".ai-workflow-step-wrap"
+    change: "prerequisite, active, and downstream emphasis updates together"
+  - step: 2
+    target: ".ai-recommendations article"
+    change: "newly mounted pointer/touch result settles from opacity 0.01 and translateY 4px"
+timing:
+  duration_ms: 180
+  delay_ms: 0
+  stagger_ms: 0
+  derivation: >
+    Four pixels of optional result travel and small-area state emphasis need only a
+    frequent-control response interval. 180ms is long enough to locate the update and
+    short enough not to slow repeated selection; no stagger delays complete information.
+easing:
+  kind: cubic-bezier
+  curve: "cubic-bezier(0.23, 1, 0.32, 1)"
+  character: >
+    The existing showcase ease establishes the state immediately and settles quietly,
+    maintaining continuity with Pass 1 without introducing a new motion dialect.
+interruption:
+  behavior: retarget-preserving-velocity
+  notes: >
+    CSS transitions retarget from their current computed values during rapid pointer
+    changes. React updates state immediately and never waits for animation completion.
+responsive:
+  mobile: >
+    Workflow emphasis follows the existing vertical sequence. Result travel stays at
+    four pixels and never changes the panel's natural height or page scroll position.
+  tablet: "Identical behavior in the existing responsive grid."
+  desktop: "Identical timing with the workflow in its horizontal grid."
+  orientation_or_input_notes: >
+    Touch receives the same optional feedback as pointer input. Keyboard, programmatic,
+    and assistive-technology activation set the final state instantly.
+reduced_motion:
+  strategy: instant-state-change
+  end_state_preserved: true
+  implementation: >
+    Motion declarations are enabled only inside prefers-reduced-motion: no-preference.
+    The authored default is the complete final state, so reduced motion removes both
+    transition and transform without hiding information.
+  vestibular_review: >
+    No zoom, rotation, parallax, peripheral loop, scroll binding, or large-area travel.
+    The only positional change is four vertical pixels on a newly introduced result row.
+keyboard_and_focus:
+  runs_on_keyboard_trigger: false
+  focus_behavior: >
+    Focus rings and semantic state update instantly. A pointer-intent flag gates all
+    transition selectors and is cleared after each short response interval.
+  reason_if_animated: "Not applicable; keyboard-triggered changes do not animate."
+ssr:
+  renders_on_server: false
+  hydration_notes: >
+    This Vite SPA renders client-side. Initial workflow and empty Opportunity Finder
+    states are stable and complete before any interaction occurs.
+  client_boundary: "The existing showcase components and local state remain client-rendered."
+cleanup:
+  on_unmount: >
+    The shared interaction-motion hook clears its single timeout during unmount.
+  listeners_and_observers: >
+    No global listener, observer, requestAnimationFrame loop, or animation controller
+    is created. Pointer and key handlers remain scoped to the existing controls.
+  route_change_notes: "The timeout is cleared when either owning component unmounts."
+performance_budget:
+  compositor_only: false
+  added_bytes_gz: 0
+  target_fps: 60
+  cls_contribution: "None from motion; all result content participates in normal layout before transition."
+  inp_notes: >
+    State updates happen synchronously in the input handler. Motion never delays the
+    selected state, accessible name, live-region content, or subsequent interaction.
+  notes: >
+    Result entry uses compositor-only opacity and transform. Workflow and selected-input
+    feedback also repaint color on small control and connector areas for 180ms; this is
+    bounded, non-persistent, and does not animate layout or a large surface. There is no
+    dependency, loop, stagger, height animation, measured layout, or scroll handler.
+verification:
+  method: playwright-script
+  required_checks: [RM-1, RM-2, A11Y-1, A11Y-2, PERF-1, CON-1, NAV-1, NAV-2, CLEAN-1, CLEAN-2, SCR-1, SCR-2, SCR-3, VP-1, VP-2, VP-3, OVF-1, CLS-1]
+  viewports: ["375x812", "768x1024", "1440x900"]
+  evidence_path: docs/AI_SYSTEMS_PASS2_REVIEW.md
+acceptance_criteria:
+  - Workflow prerequisite, active, and downstream states remain legible with transitions disabled.
+  - Each recommendation names the selected problems that caused it to appear.
+  - Pointer and touch feedback completes in 180ms and retargets during rapid changes.
+  - Keyboard and programmatic activation produce no transition or translated frame.
+  - Reduced-motion emulation preserves every complete end state with no transform.
+  - Motion adds no bundle dependency, layout shift, scroll listener, or animation loop.
+expected_failure_modes:
+  - A pointer-intent flag remaining active for a later keyboard activation.
+  - A newly mounted result beginning hidden when reduced motion is enabled.
+  - Connector state relying on teal color without structural prerequisite/active labels.
+  - Mobile or RTL connector direction losing the accumulated causal boundary.

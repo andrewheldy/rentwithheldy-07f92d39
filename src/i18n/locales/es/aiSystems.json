@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "title": "Sistemas de IA dentro de un negocio real | Rent With Heldy",
+    "description": "Un caso de estudio privado que muestra cómo la IA, la automatización, los datos estructurados y mejores flujos se conectan en una empresa real de alquiler de autos."
+  },
+  "hero": {
+    "privateLabel": "Caso de estudio privado de sistemas",
+    "homeLabel": "Volver a la página de inicio de Rent With Heldy",
+    "kicker": "Un negocio real, trazado",
+    "title": "IA que realmente hace funcionar el negocio.",
+    "summary": "Descubre cómo integramos IA en atención al cliente, operaciones, gestión de flota, ventas, investigación, marketing, desarrollo de productos y decisiones dentro de una empresa real de alquiler de autos.",
+    "explore": "Explorar los sistemas",
+    "build": "Crear esto para mi negocio",
+    "proof": "Creado dentro de Rent With Heldy. Aplicable mucho más allá del alquiler de autos.",
+    "nodes": { "customers": "Clientes", "fleet": "Flota", "operations": "Operaciones", "sales": "Ventas", "research": "Investigación", "marketing": "Marketing", "finance": "Finanzas", "knowledge": "Conocimiento", "automation": "Automatización" },
+    "core": { "small": "Núcleo operativo", "title": "Rent With Heldy", "note": "Huéspedes reales. Vehículos reales. Flujos reales." },
+    "mapCaption": { "one": "Un negocio.", "workflows": "Decenas de flujos.", "ai": "IA integrada en todo." }
+  },
+  "business": {
+    "kicker": "El campo de prueba",
+    "title": "Esto comenzó con una empresa de alquiler de autos.",
+    "body": "Un negocio de alquiler coordina personas, vehículos, lugares, tiempos, información y excepciones cada día. Cada función crea trabajo repetido y decisiones recurrentes.",
+    "quote": "El objetivo nunca fue usar IA. El objetivo fue construir un negocio mejor.",
+    "coreLabel": "Un núcleo operativo",
+    "functionsLabel": "Funciones del negocio gestionadas por Rent With Heldy",
+    "functions": { "reservations": "Reservas", "guests": "Huéspedes", "vehicles": "Vehículos", "airports": "Aeropuertos", "maintenance": "Mantenimiento", "utilization": "Uso de la flota", "partnerships": "Alianzas", "marketing": "Marketing", "sales": "Ventas", "service": "Atención al cliente", "research": "Investigación", "documentation": "Documentación", "operations": "Operaciones", "growth": "Crecimiento" }
+  },
+  "workflow": {
+    "title": "El negocio es un sistema.",
+    "body": "Una pregunta común de un huésped puede pasar por varios canales, decisiones, registros y equipos antes de que comience el viaje. Selecciona un paso para ver qué contiene.",
+    "flowLabel": "Flujo de consulta del cliente",
+    "guidance": "Elige una etapa para seguir el trabajo que debe ocurrir antes.",
+    "detailLabel": "Dentro de este paso",
+    "branchesLabel": "Sistemas conectados después de la experiencia del huésped",
+    "states": { "prerequisite": "Etapa previa necesaria", "active": "Etapa seleccionada", "downstream": "Etapa posterior" },
+    "stages": {
+      "inquiry": { "title": "Consulta del cliente", "detail": "Un huésped llega con un objetivo, información parcial, una ubicación, fechas y, a menudo, una pregunta que el negocio ya respondió antes." },
+      "channels": { "title": "Voz / Sitio web / SMS / Email", "detail": "La misma solicitud puede comenzar en varios canales. El sistema debe conservar el contexto en lugar de hacer que el huésped lo repita." },
+      "capture": { "title": "Captura del contacto", "detail": "Los datos de contacto, fechas, ubicación, vehículo y origen se convierten en información estructurada que el siguiente sistema puede usar." },
+      "qualification": { "title": "Calificación", "detail": "La IA puede interpretar la solicitud, detectar información faltante, recuperar contexto del negocio y preparar la siguiente acción sin reconstruir la situación a mano." },
+      "reservation": { "title": "Reserva", "detail": "La disponibilidad, las reglas, los detalles de la reserva y la confirmación deben coincidir antes de comprometer un vehículo." },
+      "experience": { "title": "Experiencia del huésped", "detail": "Las instrucciones de llegada, entrega, asistencia durante el viaje, devolución y seguimiento deben seguir conectadas al contexto original." }
+    },
+    "branches": { "operations": "Operaciones", "fleet": "Flota", "analytics": "Analítica", "marketing": "Marketing", "followUp": "Seguimiento", "partnerships": "Alianzas", "knowledge": "Conocimiento" }
+  },
+  "gallery": {
+    "kicker": "Siete sistemas conectados",
+    "title": "La IA no es una sola herramienta. Es una capa en todo el negocio.",
+    "body": "Cada categoría conecta conocimiento de la empresa, reglas, datos estructurados y una siguiente acción útil.",
+    "indexLabel": "Categorías de sistemas de IA",
+    "systemLabel": "Sistema activo",
+    "patternLabel": "Patrón operativo",
+    "categories": {
+      "customerExperience": { "title": "Experiencia del cliente", "thesis": "Dar a los huéspedes una respuesta relevante usando el contexto de la reserva y los procedimientos reales del negocio.", "examples": ["Agentes de voz con IA", "Preguntas sobre reservas", "Comunicación contextual", "Instrucciones de aeropuerto y transporte", "Instrucciones de devolución", "Asistencia basada en conocimiento"] },
+      "operations": { "title": "Operaciones", "thesis": "Convertir el conocimiento informal en inteligencia operativa estructurada que guíe acciones consistentes.", "examples": ["Creación y consulta de SOP", "Flujos de viajes", "Verificación de licencias", "Coordinación de mantenimiento", "Reportes de daños", "Asignación interna de tareas"], "note": "Los documentos se convierten en conocimiento estructurado. Una pregunta operativa puede recuperar la regla, el árbol de decisión y el siguiente paso." },
+      "fleetIntelligence": { "title": "Inteligencia de flota", "thesis": "Conectar registros de vehículos, actividad de viajes, mantenimiento y datos normalizados para tomar decisiones más claras.", "examples": ["Paneles de flota", "Utilización", "Ingresos por vehículo", "Analítica de viajes", "Historial de mantenimiento", "Análisis del ciclo de vida"], "note": "La interfaz puede comparar vehículos y mostrar patrones sin presentar estados de demostración como rendimiento real." },
+      "salesGrowth": { "title": "Ventas y crecimiento", "thesis": "Pasar de una lista amplia de prospectos a contacto investigado, calificado, relevante y con seguimiento visible.", "examples": ["Prospección de hoteles y talleres", "Alianzas con abogados y conductores", "Enriquecimiento de contactos", "Contacto personalizado", "Flujos de CRM", "Investigación SEO local"], "note": "Los prospectos pasan por investigación, calificación, enriquecimiento, contacto, seguimiento y CRM sin perder el razonamiento de cada traspaso." },
+      "research": { "title": "Investigación", "thesis": "La investigación es valiosa cuando las fuentes, pruebas, alternativas y riesgos alimentan una decisión real.", "examples": ["Investigación de seguros", "Competidores", "Precios y mercado", "Regulaciones", "Evaluación de proveedores", "Análisis de oportunidades"], "note": "Un sistema útil avanza de la pregunta a fuentes, pruebas, comparación, riesgos, recomendación y plan de acción." },
+      "vehicleAcquisition": { "title": "Adquisición de vehículos", "thesis": "Estructurar precio, millaje, confiabilidad, demanda, costo operativo y riesgo de mantenimiento como apoyo a decisiones.", "examples": ["Precio de compra", "Millaje y año", "Confiabilidad", "Costo operativo", "Elegibilidad para alquiler", "Riesgo de mantenimiento"] },
+      "productDevelopment": { "title": "Desarrollo de productos", "thesis": "Usar IA no solo para automatizar el trabajo actual, sino para diseñar nuevos productos, escenarios financieros y modelos operativos.", "examples": ["Economía del conductor", "Precio semanal", "Conceptos de capital de propiedad", "Lógica de mejoras", "Modelado de retención", "Embudos de solicitud"] }
+    },
+    "caseStudy": { "label": "Mini caso de estudio", "title": "Preguntas de huéspedes a las 11:47 PM", "problemLabel": "Problema", "problem": "Los huéspedes necesitan respuestas operativas fuera del horario normal.", "systemLabel": "Sistema", "system": "Contexto de reserva, SOP de la empresa y razonamiento con IA.", "resultLabel": "Resultado", "result": "El procedimiento correcto puede recuperarse y convertirse en una respuesta relevante o siguiente acción." },
+    "acquisition": { "label": "Estados de apoyo a decisiones", "buy": "COMPRAR", "buyNote": "Los datos respaldan los criterios actuales.", "investigate": "INVESTIGAR", "investigateNote": "Falta evidencia importante o es contradictoria.", "pass": "PASAR", "passNote": "Los criterios actuales no respaldan al candidato.", "disclaimer": "Solo lógica de demostración. No predice rendimientos de inversión." },
+    "product": { "dashboardLabel": "Panel conceptual del conductor", "metrics": ["% de propiedad", "Capital ganado", "Saldo restante", "Tiempo hasta la propiedad", "Elegibilidad para mejora"], "demoNote": "Campos conceptuales. No se muestran datos reales de conductores." }
+  },
+  "comparison": {
+    "title": "La automatización comienza por entender el flujo.",
+    "body": "El primer trabajo no es elegir una herramienta. Es ver con claridad cada paso, traspaso, decisión y excepción.",
+    "beforeLabel": "Flujo manual",
+    "afterLabel": "Flujo habilitado con IA",
+    "before": { "read": "Alguien lee la consulta", "availability": "Revisa disponibilidad", "information": "Busca información dispersa", "response": "Escribe la respuesta", "update": "Actualiza el sistema", "reminder": "Crea un recordatorio", "remember": "Recuerda hacer seguimiento" },
+    "after": { "context": "Se reúne el contexto", "classify": "Se clasifica la solicitud", "retrieve": "Se recuperan datos relevantes", "prepare": "Se prepara la siguiente acción", "update": "Se actualizan los sistemas", "schedule": "Se programa el seguimiento", "exceptions": "Las personas manejan excepciones y relaciones" },
+    "statement": "El objetivo no es eliminar a las personas. Es eliminar el trabajo que no deberían tener que repetir."
+  },
+  "artifacts": {
+    "kicker": "Arquitectura de evidencia", "title": "Construido, no teórico.", "body": "Estas estructuras están listas para capturas, grabaciones y ejemplos reales saneados en la Fase 3. Nada aquí afirma un resultado de producción.", "demoLabel": "Estructura de demostración", "replaceableNote": "Espacio de medios reemplazable. No contiene datos de clientes ni producción.",
+    "items": {
+      "voice": { "title": "IA de voz", "description": "Una llamada se convierte en contexto, consulta y siguiente acción útil.", "flowLabel": "Flujo del artefacto de voz", "flow": { "call": "Llamada", "transcript": "Transcripción", "knowledge": "Consulta de conocimiento", "action": "Respuesta / Acción" } },
+      "fleet": { "title": "Inteligencia de flota", "description": "Los registros se convierten en una vista operativa comparable.", "flowLabel": "Flujo de inteligencia de flota", "flow": { "vehicles": "Vehículos", "utilization": "Utilización", "revenue": "Ingresos", "performance": "Rendimiento" } },
+      "research": { "title": "Investigación con IA", "description": "La investigación con fuentes se organiza alrededor de una decisión.", "flowLabel": "Flujo de investigación", "flow": { "question": "Pregunta", "sources": "Fuentes", "synthesis": "Síntesis", "recommendation": "Recomendación" } },
+      "sop": { "title": "Inteligencia SOP", "description": "Los documentos operativos se vuelven conocimiento consultable.", "flowLabel": "Flujo de inteligencia SOP", "flow": { "documents": "Documentos", "knowledge": "Conocimiento estructurado", "answer": "Respuesta operativa" } },
+      "partnership": { "title": "Motor de alianzas", "description": "La prospección conserva el contexto de investigación, calificación y seguimiento.", "flowLabel": "Flujo del motor de alianzas", "flow": { "prospects": "Prospectos", "research": "Investigación", "qualification": "Calificación", "outreach": "Contacto", "crm": "CRM" } },
+      "acquisition": { "title": "Adquisición de vehículos", "description": "La evidencia del candidato se estructura antes de decidir.", "flowLabel": "Flujo de adquisición", "flow": { "candidates": "Candidatos", "data": "Datos", "analysis": "Análisis", "decision": "Decisión" } }
+    }
+  },
+  "industries": {
+    "title": "El alquiler de autos es solo el caso de uso.", "body": "Los detalles cambian según la industria. El patrón de preguntas, decisiones, traspasos, conocimiento y trabajo repetido sigue siendo reconocible.", "reveal": "La industria cambia. El patrón no.", "support": "La IA es útil cuando conecta el flujo, el contexto, los datos, las reglas y los sistemas que ya se usan.", "originLabel": "El campo de prueba", "carRental": "Alquiler de autos", "listLabel": "Industrias con patrones operativos repetibles",
+    "items": { "hotel": "Hotel", "propertyManagement": "Administración de propiedades", "homeServices": "Servicios para el hogar", "restaurant": "Restaurante", "lawFirm": "Bufete de abogados", "automotive": "Automotriz", "professionalServices": "Servicios profesionales", "repeatableOperations": "Otras operaciones repetibles" },
+    "foundation": ["Preguntas", "Decisiones", "Traspasos", "Conocimiento", "Seguimiento", "Reportes", "Programación", "Reglas"]
+  },
+  "opportunity": {
+    "kicker": "Mapa interactivo de oportunidades", "title": "¿Dónde se esconde la IA en tu negocio?", "body": "Elige el trabajo que consume el tiempo de tu equipo. El mapa usa reglas fijas en el cliente, no una API ni una evaluación inventada.", "prompt": "¿Qué consume el tiempo de tu equipo?", "clear": "Limpiar", "optionsLabel": "Problemas del negocio para mapear", "outputLabel": "Resultado determinista", "outputTitle": "Mapa de oportunidades de IA", "selectedCount_one": "{{count}} seleccionado", "selectedCount_other": "{{count}} seleccionados", "empty": "Selecciona uno o más patrones de trabajo para ver los sistemas que podría valer la pena mapear.", "reasonLabel": "Mapeado desde", "note": "Este es un mapa inicial, no un diagnóstico automatizado del negocio.",
+    "problems": { "customerQuestions": "Preguntas de clientes", "research": "Investigación", "followUp": "Seguimiento", "dataEntry": "Entrada de datos", "scheduling": "Programación", "quoting": "Cotizaciones", "reporting": "Reportes", "training": "Capacitación", "leadGeneration": "Generación de contactos", "documentation": "Documentación", "internalSearch": "Búsqueda interna", "repetitiveDecisions": "Decisiones repetitivas", "operations": "Operaciones", "qualityControl": "Control de calidad" },
+    "recommendations": {
+      "knowledgeSystem": { "title": "Sistema de conocimiento", "body": "Centraliza la información de la empresa y permite consultarla dentro del trabajo real." },
+      "workflowAutomation": { "title": "Automatización de flujos", "body": "Mueve pasos repetitivos e información estructurada entre sistemas automáticamente." },
+      "aiAssistant": { "title": "Asistente / Agente de IA", "body": "Gestiona preguntas o procesos estructurados con el contexto y las reglas de la empresa." },
+      "decisionSupport": { "title": "Apoyo a decisiones", "body": "Convierte información dispersa en comparaciones y recomendaciones estructuradas." },
+      "customerAutomation": { "title": "Automatización del cliente", "body": "Prepara respuestas más rápidas y contextuales, con posibilidad de escalar a una persona." }
+    }
+  },
+  "process": { "title": "Sistemas de IA para negocios reales.", "body": "El método comienza con el trabajo tal como existe y luego crea solo lo que puede conectarse a la operación.", "steps": { "find": { "title": "Encontrar", "body": "Mapear los flujos donde la IA o la automatización pueden aportar valor útil." }, "build": { "title": "Construir", "body": "Crear agentes, automatizaciones, herramientas internas, conocimiento o apoyo a decisiones." }, "integrate": { "title": "Integrar", "body": "Conectar el sistema con las herramientas y procesos que el negocio ya usa." }, "improve": { "title": "Mejorar", "body": "Observar la fricción, aprender del rendimiento y seguir refinando." } } },
+  "contact": { "kicker": "Mapear la operación", "title": "Tu negocio ya tiene oportunidades de IA.", "body": "Probablemente no necesitas otra herramienta de IA. Necesitas identificar dónde la información, las decisiones y el trabajo repetitivo pueden convertirse en mejores sistemas.", "cta": "Mapeemos tu negocio", "note": "Creado a partir de lecciones aprendidas al implementar IA dentro de un negocio real." },
+  "footer": { "back": "Volver al sitio de alquiler" }
+}
