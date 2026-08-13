@@ -5,12 +5,26 @@ import type { Database } from './types';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
+export const isSupabaseConfigured = Boolean(
+  SUPABASE_URL?.trim() && SUPABASE_PUBLISHABLE_KEY?.trim(),
+);
+
+// Public routes must remain renderable when a deployment is missing backend
+// configuration. The reserved fallback prevents createClient from throwing at
+// module evaluation; AuthProvider avoids starting auth work in this state.
+const clientUrl = isSupabaseConfigured
+  ? SUPABASE_URL
+  : "https://unconfigured.invalid";
+const clientKey = isSupabaseConfigured
+  ? SUPABASE_PUBLISHABLE_KEY
+  : "unconfigured-public-client";
+
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+export const supabase = createClient<Database>(clientUrl, clientKey, {
   auth: {
-    storage: localStorage,
+    storage: typeof window === "undefined" ? undefined : window.localStorage,
     persistSession: true,
     autoRefreshToken: true,
   }
