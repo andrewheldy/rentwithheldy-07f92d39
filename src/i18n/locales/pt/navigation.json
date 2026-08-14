@@ -9,6 +9,7 @@
     "more": "Mais"
   },
   "services": {
+    "passengerVans": { "label": "Vans de passageiros", "desc": "Até 14 passageiros" },
     "airport": { "label": "Entrega no aeroporto", "desc": "Retirada e devolução no FLL" },
     "hotel": { "label": "Entrega no hotel", "desc": "Levamos até o seu hotel" },
     "bodyShop": {

@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Location de van 14 passagers à Miami et Fort Lauderdale | Rent With Heldy",
+    "description": "Louez un Ford Transit 14 passagers à Miami, Fort Lauderdale et dans le sud de la Floride. Idéal pour croisières, équipes, familles, événements et grands groupes."
+  },
+  "breadcrumbs": { "home": "Accueil", "current": "Vans de passagers" },
+  "hero": {
+    "eyebrow": "Location de vans de passagers · Sud de la Floride",
+    "title": "Vans 14 passagers dans le sud de la Floride",
+    "brandLine": "Un van. Tout votre groupe.",
+    "body": "Voyagez ensemble dans des vans spacieux disponibles à Miami, Fort Lauderdale et dans le sud de la Floride. Une solution pratique pour familles, croisières, équipes sportives, événements et week-ends en groupe.",
+    "bookCta": "Réserver un van",
+    "inquiryCta": "Vérifier la disponibilité",
+    "passengerLabel": "places passagers",
+    "imageAlt": "Van noir Ford Transit 350 HD 2024 dans le sud de la Floride",
+    "trust": ["Jusqu’à 14 passagers", "Miami et Fort Lauderdale", "Locations flexibles", "Assistance locale"]
+  },
+  "gallery": { "open": "Ouvrir la galerie photos", "close": "Fermer la galerie photos", "previous": "Photo précédente", "next": "Photo suivante", "thumbnail": "Afficher la photo", "photo": "Photo" },
+  "story": {
+    "eyebrow": "De la place pour vos projets",
+    "title": "Conçus pour voyager ensemble.",
+    "intro": "Un seul véhicule garde les personnes, les horaires et le voyage au même endroit.",
+    "items": {
+      "cruise": { "title": "Groupes de croisière", "body": "Gardez familles et groupes ensemble avant et après les croisières depuis PortMiami et Port Everglades." },
+      "sports_team": { "title": "Équipes sportives", "body": "De la place pour joueurs, entraîneurs, familles et bagages lors des déplacements dans le sud de la Floride." },
+      "vacation": { "title": "Vacances en groupe", "body": "Choisissez un véhicule au lieu de coordonner plusieurs voitures de location et VTC." },
+      "event": { "title": "Événements et week-ends", "body": "Une option pratique pour mariages, réunions, concerts, festivals et week-ends avec tout le groupe." },
+      "concierge": { "title": "Conciergerie et hôtellerie", "body": "Des vans disponibles pour conciergeries, hôtels, gestionnaires de locations saisonnières et partenaires hôteliers." },
+      "professional_driver": { "title": "Chauffeurs professionnels", "body": "Renseignez-vous sur les locations à la semaine ou de plus longue durée pour les chauffeurs professionnels qualifiés." }
+    }
+  },
+  "vehicles": {
+    "eyebrow": "Les véhicules", "title": "Découvrez les vans.", "intro": "Deux vrais Ford Transit, photographiés ici dans le sud de la Floride et prêts pour les projets qui demandent plus d’espace.", "newerOption": "Option plus récente", "capacity": "Jusqu’à {{count}} passagers", "inquiryCta": "Vérifier la disponibilité", "bookCta": "Réserver ce van",
+    "items": {
+      "transit2018": { "description": "Emmenez tout le groupe. Voyagez confortablement dans un Ford Transit 350 spacieux, adapté aux familles, équipes, événements et trajets dans le sud de la Floride.", "highlights": ["Habitacle passagers spacieux", "Transit à toit moyen", "Idéal pour familles et groupes", "Déplacements sportifs et d’équipes", "Événements et trajets dans le sud de la Floride"] },
+      "transit2024": { "description": "Une option plus récente, à toit surélevé et configuration longue, pour grands groupes, longs trajets, événements, clients de conciergerie et équipes.", "highlights": ["Option de van plus récente", "Configuration longue à toit surélevé", "Transport spacieux pour les groupes", "Idéal pour événements et voyages en groupe", "Bien adapté aux trajets plus longs"] }
+    }
+  },
+  "groupVisual": { "eyebrow": "Simplifiez le trajet", "title": "14 personnes. Un véhicule.", "body": "Évitez de coordonner plusieurs voitures et VTC. Gardez le groupe ensemble et facilitez chaque arrivée.", "multipleCars": "Plusieurs voitures. Plusieurs plans.", "oneTransit": "Un Transit. Un trajet." },
+  "tripSelector": {
+    "eyebrow": "Commencez par le projet", "title": "Quel est le motif de votre voyage ?",
+    "options": {
+      "cruise": { "label": "Croisière", "headline": "Gardez le groupe ensemble, du port à la porte.", "body": "Simplifiez le trajet avant ou après la croisière avec de la place pour tous ceux qui voyagent ensemble.", "cta": "Vérifier pour une croisière", "locations": ["PortMiami", "Port Everglades", "Aéroport international de Miami", "Aéroport international de Fort Lauderdale-Hollywood"] },
+      "sports_team": { "label": "Équipe sportive", "headline": "Déplacez l’équipe sans la séparer.", "body": "Réunissez joueurs, entraîneurs et familles dans un seul van pour entraînements, tournois et déplacements.", "cta": "Demander un devis d’équipe", "locations": [] },
+      "event": { "label": "Événement", "headline": "Un point de rendez-vous. Un trajet.", "body": "Simplifiez mariages, réunions, concerts et week-ends de groupe du premier départ au dernier arrêt.", "cta": "Vérifier pour un événement", "locations": [] },
+      "vacation": { "label": "Vacances", "headline": "Profitez du voyage ensemble.", "body": "Donnez à une grande famille ou à un groupe l’espace nécessaire pour parcourir le sud de la Floride sans gérer plusieurs véhicules.", "cta": "Planifier des vacances en groupe", "locations": [] },
+      "concierge": { "label": "Conciergerie", "headline": "Besoin de vans pour vos clients ?", "body": "Parlez-nous de vos besoins récurrents, hôteliers ou de groupes spéciaux et nous vous aiderons à organiser la bonne location.", "cta": "Demander les tarifs partenaires", "locations": [] },
+      "professional_driver": { "label": "Chauffeur professionnel", "headline": "Vous cherchez un accès hebdomadaire ou plus long ?", "body": "Renseignez-vous sur les locations pour chauffeurs professionnels qualifiés. L’admissibilité aux plateformes dépend du véhicule, du marché et des règles en vigueur.", "cta": "Demander une location chauffeur", "locations": [] },
+      "other": { "label": "Autre projet" }
+    }
+  },
+  "coverage": { "title": "De Miami à Fort Lauderdale.", "body": "Les vans sont disponibles dans la zone desservie par Rent With Heldy dans le sud de la Floride, avec des options pratiques de retrait et de livraison selon votre réservation.", "cta": "Dites-nous où vous en avez besoin", "note": "La coordination aux aéroports et aux ports dépend des détails de votre réservation." },
+  "conversion": {
+    "eyebrow": "Réservez ou demandez", "title": "Prêts à faire partir le groupe ?",
+    "book": { "title": "Prêt à réserver ?", "body": "Consultez les disponibilités actuelles et réservez en ligne avec notre partenaire.", "cta": "Réserver", "notes": ["Le parcours de réservation Rent With Heldy existant", "Disponibilité actuelle affichée en ligne", "Une équipe locale quand vous voulez parler à quelqu’un"] },
+    "inquiry": { "title": "Une demande particulière ?", "body": "Parlez-nous du groupe, des dates et de la destination. C’est la meilleure voie pour équipes, conciergeries, événements, locations longues et questions de chauffeurs professionnels." }
+  },
+  "consignment": { "eyebrow": "Vous possédez un van ?", "title": "Faites travailler votre van avec Rent With Heldy.", "body": "Nous travaillons avec certains propriétaires qui souhaitent être accompagnés pour promouvoir et louer leur van via le réseau Rent With Heldy dans le sud de la Floride. Nous gérons l’acquisition de clients et la demande tout en construisant une organisation adaptée avec chaque propriétaire.", "microcopy": "Parlez-nous de votre véhicule et nous verrons s’il correspond à la flotte.", "cta": "Confier votre van", "closeCta": "Masquer le formulaire" },
+  "forms": {
+    "rental": {
+      "fields": { "name": "Nom *", "phone": "Téléphone *", "email": "E-mail *", "startDate": "Date de début *", "endDate": "Date de fin *", "passengers": "Nombre de passagers *", "tripType": "Type de voyage *", "selectTripType": "Choisissez un type de voyage", "preferredVehicle": "Véhicule préféré", "area": "Zone de retrait ou livraison *", "areaPlaceholder": "Ville, aéroport, port ou quartier", "message": "Message ou demandes particulières", "messagePlaceholder": "Bagages, horaires, détails du groupe ou autre information utile" },
+      "vehicles": { "no_preference": "Sans préférence", "2018-transit-350": "Ford Transit 350 de 2018", "2024-transit-350-hd": "Ford Transit 350 HD de 2024" },
+      "cta": "Envoyer une demande", "sending": "Envoi de la demande…", "error": "Vérifiez les champs obligatoires ou appelez/envoyez un SMS au", "successTitle": "Nous avons reçu votre demande.", "successBody": "Merci. L’équipe Rent With Heldy examinera les détails et vous contactera directement."
+    },
+    "consignment": {
+      "title": "Parlez-nous de votre van.", "body": "Partagez les informations essentielles. Nous étudierons le véhicule et vous contacterons s’il peut correspondre.",
+      "fields": { "name": "Nom du propriétaire *", "phone": "Téléphone *", "email": "E-mail *", "year": "Année du véhicule *", "make": "Marque *", "model": "Modèle *", "capacity": "Capacité passagers *", "mileage": "Kilométrage *", "vin": "VIN (facultatif)", "location": "Emplacement actuel *", "condition": "État du véhicule *", "conditionPlaceholder": "Décrivez brièvement l’intérieur, l’extérieur et l’entretien", "notes": "Remarques" },
+      "cta": "Envoyer le véhicule pour examen", "sending": "Envoi du véhicule…", "error": "Vérifiez les champs obligatoires ou appelez/envoyez un SMS au", "photoNote": "Le système actuel ne permet pas l’envoi de photos. Nous vous les demanderons directement si le véhicule est retenu.", "successTitle": "Votre véhicule est en cours d’examen.", "successBody": "Merci. Nous étudierons les informations et vous contacterons si le van peut intégrer la flotte Rent With Heldy."
+    }
+  },
+  "faq": {
+    "eyebrow": "Bon à savoir", "title": "Questions sur les vans",
+    "items": [
+      { "question": "Combien de passagers les vans accueillent-ils ?", "answer": "Jusqu’à 14 passagers, selon la configuration du véhicule." },
+      { "question": "Où les vans sont-ils disponibles ?", "answer": "Dans la zone desservie par Rent With Heldy dans le sud de la Floride, notamment Miami et Fort Lauderdale." },
+      { "question": "Puis-je louer un van pour une croisière ?", "answer": "Oui. Ces vans sont utiles aux grands groupes avant ou après une croisière depuis PortMiami ou Port Everglades." },
+      { "question": "Les équipes sportives peuvent-elles les louer ?", "answer": "Oui. Ils conviennent aux équipes, entraîneurs, familles et organisations qui voyagent ensemble." },
+      { "question": "Puis-je louer plusieurs jours ou plus longtemps ?", "answer": "Oui. Des locations de plusieurs jours, à la semaine ou plus longues peuvent être proposées selon les disponibilités et l’admissibilité." },
+      { "question": "Les chauffeurs professionnels peuvent-ils les louer ?", "answer": "Des locations longues peuvent être proposées aux chauffeurs qualifiés. L’admissibilité dépend de la plateforme, du marché, du véhicule et des exigences actuelles." },
+      { "question": "Travaillez-vous avec des conciergeries ?", "answer": "Oui. Les partenaires hôteliers et conciergeries peuvent nous contacter pour des besoins récurrents ou de transport de groupes." },
+      { "question": "Puis-je confier mon van à Rent With Heldy ?", "answer": "Rent With Heldy travaille avec certains propriétaires. Envoyez le véhicule via le formulaire de dépôt pour examen." }
+    ]
+  },
+  "finalCta": { "title": "Tout votre groupe. Un van.", "body": "Trouvez un van pour votre prochain voyage dans le sud de la Floride.", "bookCta": "Réserver", "inquiryCta": "Vérifier la disponibilité", "consignmentLink": "Vous possédez un van ? Découvrez le dépôt" },
+  "sticky": { "book": "Réserver le van", "inquire": "Demander" }
+}

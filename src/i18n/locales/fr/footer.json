@@ -15,6 +15,7 @@
     "contact": "Contact"
   },
   "services": {
+    "passengerVans": "Vans 14 passagers",
     "airport": "Livraison à l'aéroport (FLL)",
     "hotel": "Livraison à l'hôtel",
     "bodyShop": "Livraison au garage",

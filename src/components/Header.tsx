@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Menu, Phone, ChevronDown, Plane, BedDouble, Wrench, Anchor, FileText } from "lucide-react";
+import { Menu, Phone, ChevronDown, Plane, BedDouble, Wrench, Anchor, FileText, BusFront } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -23,6 +23,7 @@ import { getDirection } from "@/i18n/direction";
 // Structural data (routes + icons) stays here; visible labels come from the
 // `navigation` namespace so only the copy is translated.
 const SERVICES = [
+  { to: "/passenger-vans", key: "passengerVans", icon: BusFront },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport", icon: Plane },
   { to: "/hotel-concierge-rentals", key: "hotel", icon: BedDouble },
   { to: "/body-shop-delivery", key: "bodyShop", icon: Wrench },
@@ -147,7 +148,7 @@ const Header = () => {
                 <button
                   type="button"
                   aria-label={t("aria.openMenu")}
-                  className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-control text-foreground hover:bg-secondary transition-colors"
+                  className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-control text-foreground transition-colors hover:bg-secondary"
                 >
                   <Menu className="h-5 w-5" />
                 </button>

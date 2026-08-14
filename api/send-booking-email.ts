@@ -11,7 +11,17 @@ const SUBJECT_MAP: Record<string, string> = {
   "partner-intake": "New Partner Request",
   "drive-to-own": "New Drive-to-Own Inquiry",
   "vehicle-inquiry": "New Vehicle Booking Inquiry",
+  passenger_vans: "New Passenger Van Inquiry",
+  passenger_van_consignment: "New Passenger Van Consignment Lead",
 };
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -72,14 +82,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ([label, value]) =>
         `<tr>
           <td style="padding:8px 14px;font-weight:600;white-space:nowrap;color:#374151;background:#f9fafb;border-bottom:1px solid #e5e7eb;">${label}</td>
-          <td style="padding:8px 14px;color:#111827;border-bottom:1px solid #e5e7eb;">${value}</td>
+          <td style="padding:8px 14px;color:#111827;border-bottom:1px solid #e5e7eb;">${escapeHtml(value ?? "")}</td>
         </tr>`
     )
     .join("");
 
   const html = `
     <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;">
-      <h2 style="margin:0 0 4px;color:#111827;">${subject}</h2>
+      <h2 style="margin:0 0 4px;color:#111827;">${escapeHtml(subject)}</h2>
       <p style="margin:0 0 20px;color:#6b7280;font-size:14px;">
         New lead submitted via rentwithheldy.com
       </p>

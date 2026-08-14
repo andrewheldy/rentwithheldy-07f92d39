@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "title": "14-Passenger Van Rental Miami & Fort Lauderdale | Rent With Heldy",
+    "description": "Rent a 14-passenger Ford Transit in Miami, Fort Lauderdale and South Florida. Great for cruises, sports teams, family trips, events and large groups."
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "current": "Passenger vans"
+  },
+  "hero": {
+    "eyebrow": "Passenger van rentals · South Florida",
+    "title": "14-Passenger Van Rentals in South Florida",
+    "brandLine": "One van. Your whole crew.",
+    "body": "Travel together with spacious passenger vans available throughout Miami, Fort Lauderdale and South Florida. A practical fit for family trips, cruises, sports teams, events and group weekends.",
+    "bookCta": "Book a Van",
+    "inquiryCta": "Check Availability",
+    "passengerLabel": "passenger seats",
+    "imageAlt": "Black 2024 Ford Transit 350 HD passenger van in South Florida",
+    "trust": [
+      "Up to 14 passengers",
+      "Miami & Fort Lauderdale",
+      "Flexible rentals",
+      "Local support"
+    ]
+  },
+  "gallery": {
+    "open": "Open photo gallery",
+    "close": "Close photo gallery",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "thumbnail": "Show photo",
+    "photo": "Photo"
+  },
+  "story": {
+    "eyebrow": "Room for the plans",
+    "title": "Built for traveling together.",
+    "intro": "One vehicle keeps the people, the timing and the trip in the same place.",
+    "items": {
+      "cruise": {
+        "title": "Cruise groups",
+        "body": "Keep families and groups together before and after cruises from PortMiami and Port Everglades."
+      },
+      "sports_team": {
+        "title": "Sports teams",
+        "body": "Room for players, coaches, families and gear while traveling around South Florida."
+      },
+      "vacation": {
+        "title": "Group vacations",
+        "body": "Choose one vehicle instead of coordinating several rental cars and rideshares."
+      },
+      "event": {
+        "title": "Events & group weekends",
+        "body": "A practical option for weddings, reunions, concerts, festivals and weekends with the whole group."
+      },
+      "concierge": {
+        "title": "Concierge & hospitality",
+        "body": "Passenger-van availability for concierge companies, hotels, vacation rental operators and hospitality partners."
+      },
+      "professional_driver": {
+        "title": "Professional drivers",
+        "body": "Ask about weekly and longer-term passenger-van options for qualified professional drivers."
+      }
+    }
+  },
+  "vehicles": {
+    "eyebrow": "The vehicles",
+    "title": "Meet the vans.",
+    "intro": "Two real Ford Transits, photographed here in South Florida and ready for the plans that need more room.",
+    "newerOption": "Newer option",
+    "capacity": "Up to {{count}} passengers",
+    "inquiryCta": "Check Availability",
+    "bookCta": "Book This Van",
+    "items": {
+      "transit2018": {
+        "description": "Bring the whole crew. Travel together comfortably in a spacious Ford Transit 350 built for families, teams, events and group trips throughout South Florida.",
+        "highlights": [
+          "Spacious passenger cabin",
+          "Medium-roof Transit",
+          "Great for families and groups",
+          "Sports and team travel",
+          "Events and South Florida trips"
+        ]
+      },
+      "transit2024": {
+        "description": "A newer, high-roof and extended passenger-van option for larger groups, longer trips, events, concierge clients and team travel.",
+        "highlights": [
+          "Newer passenger-van option",
+          "High-roof and extended configuration",
+          "Spacious group transportation",
+          "Great for events and group travel",
+          "Well suited to longer group trips"
+        ]
+      }
+    }
+  },
+  "groupVisual": {
+    "eyebrow": "Make the trip simpler",
+    "title": "14 people. One vehicle.",
+    "body": "Skip coordinating multiple rental cars and rideshares. Keep the group together and make every arrival easier.",
+    "multipleCars": "Several cars. Several plans.",
+    "oneTransit": "One Transit. One trip."
+  },
+  "tripSelector": {
+    "eyebrow": "Start with the plan",
+    "title": "What are you traveling for?",
+    "options": {
+      "cruise": {
+        "label": "Cruise",
+        "headline": "Keep the group together, dock to door.",
+        "body": "Make the ride before or after your cruise easier with room for the people traveling together.",
+        "cta": "Check Cruise Availability",
+        "locations": ["PortMiami", "Port Everglades", "Miami International Airport", "Fort Lauderdale-Hollywood International Airport"]
+      },
+      "sports_team": {
+        "label": "Sports Team",
+        "headline": "Move the team without splitting up.",
+        "body": "Bring players, coaches and families together in one passenger van for practices, tournaments and team travel.",
+        "cta": "Get a Team Rental Quote",
+        "locations": []
+      },
+      "event": {
+        "label": "Event",
+        "headline": "One meeting point. One ride.",
+        "body": "Keep weddings, reunions, concerts and group weekends simpler from the first pickup to the last stop.",
+        "cta": "Check Event Availability",
+        "locations": []
+      },
+      "vacation": {
+        "label": "Vacation",
+        "headline": "Spend the trip together.",
+        "body": "Give a large family or group the room to travel South Florida without managing several vehicles.",
+        "cta": "Plan a Group Vacation",
+        "locations": []
+      },
+      "concierge": {
+        "label": "Concierge",
+        "headline": "Need passenger-van inventory for your clients?",
+        "body": "Tell us about recurring, hospitality or special group needs and we’ll help you plan the right rental path.",
+        "cta": "Ask About Partner Rates",
+        "locations": []
+      },
+      "professional_driver": {
+        "label": "Professional Driver",
+        "headline": "Looking for weekly or longer-term access?",
+        "body": "Ask about passenger-van rentals for qualified professional drivers. Platform eligibility depends on current vehicle, market and platform requirements.",
+        "cta": "Ask About Driver Rentals",
+        "locations": []
+      },
+      "other": {
+        "label": "Something else"
+      }
+    }
+  },
+  "coverage": {
+    "title": "From Miami to Fort Lauderdale.",
+    "body": "Passenger vans are available throughout the Rent With Heldy South Florida service area, with convenient pickup and delivery options depending on your reservation.",
+    "cta": "Tell Us Where You Need It",
+    "note": "Airport and port coordination depends on the details of your reservation."
+  },
+  "conversion": {
+    "eyebrow": "Book or ask",
+    "title": "Ready to get the group moving?",
+    "book": {
+      "title": "Ready to book?",
+      "body": "See current availability and reserve online through our booking partner.",
+      "cta": "Book Now",
+      "notes": [
+        "The existing Rent With Heldy booking flow",
+        "Current availability shown online",
+        "Local support when you need a person"
+      ]
+    },
+    "inquiry": {
+      "title": "Have a special request?",
+      "body": "Tell us about your group, dates and destination. This is the best path for teams, concierge bookings, events, longer rentals and professional-driver questions."
+    }
+  },
+  "consignment": {
+    "eyebrow": "Own a passenger van?",
+    "title": "Put your van to work with Rent With Heldy.",
+    "body": "We work with select passenger-van owners who want help marketing and renting their vehicles through Rent With Heldy’s South Florida rental network. We handle customer acquisition and rental demand while building an operating structure around each vehicle with the owner.",
+    "microcopy": "Tell us about your vehicle and we’ll see if it’s a fit for the fleet.",
+    "cta": "Consign Your Van",
+    "closeCta": "Hide Consignment Form"
+  },
+  "forms": {
+    "rental": {
+      "fields": {
+        "name": "Name *",
+        "phone": "Phone *",
+        "email": "Email *",
+        "startDate": "Rental start date *",
+        "endDate": "Rental end date *",
+        "passengers": "Number of passengers *",
+        "tripType": "Trip type *",
+        "selectTripType": "Choose a trip type",
+        "preferredVehicle": "Preferred vehicle",
+        "area": "Pickup or delivery area *",
+        "areaPlaceholder": "City, airport, port or neighborhood",
+        "message": "Message or special requirements",
+        "messagePlaceholder": "Luggage, timing, group details or anything else we should know"
+      },
+      "vehicles": {
+        "no_preference": "No preference",
+        "2018-transit-350": "2018 Ford Transit 350",
+        "2024-transit-350-hd": "2024 Ford Transit 350 HD"
+      },
+      "cta": "Send an Inquiry",
+      "sending": "Sending inquiry…",
+      "error": "Please check the required fields or call/text us at",
+      "successTitle": "We have your van request.",
+      "successBody": "Thanks. The Rent With Heldy team will review the details and follow up with you directly."
+    },
+    "consignment": {
+      "title": "Tell us about your passenger van.",
+      "body": "Share the basics below. We’ll review the vehicle and contact you if it may be a fit.",
+      "fields": {
+        "name": "Owner name *",
+        "phone": "Phone *",
+        "email": "Email *",
+        "year": "Vehicle year *",
+        "make": "Make *",
+        "model": "Model *",
+        "capacity": "Passenger capacity *",
+        "mileage": "Mileage *",
+        "vin": "VIN (optional)",
+        "location": "Current location *",
+        "condition": "Vehicle condition *",
+        "conditionPlaceholder": "Briefly describe the interior, exterior and maintenance condition",
+        "notes": "Notes"
+      },
+      "cta": "Send Vehicle for Review",
+      "sending": "Sending vehicle…",
+      "error": "Please check the required fields or call/text us at",
+      "photoNote": "Photo upload is not available in the current form system. We’ll ask for photos directly if the vehicle moves forward.",
+      "successTitle": "Your vehicle is in review.",
+      "successBody": "Thanks. We’ll look over the information and reach out if the van may fit the Rent With Heldy fleet."
+    }
+  },
+  "faq": {
+    "eyebrow": "Good to know",
+    "title": "Passenger van questions",
+    "items": [
+      {
+        "question": "How many passengers do the vans seat?",
+        "answer": "Up to 14 passengers, depending on the specific vehicle configuration."
+      },
+      {
+        "question": "Where are the vans available?",
+        "answer": "Throughout the Rent With Heldy South Florida service area, including Miami and Fort Lauderdale."
+      },
+      {
+        "question": "Can I rent a van for a cruise trip?",
+        "answer": "Yes. These vans can be useful for large groups traveling before or after cruises from PortMiami and Port Everglades."
+      },
+      {
+        "question": "Can sports teams rent the vans?",
+        "answer": "Yes. Passenger vans are well suited for teams, coaches, families and organizations traveling together."
+      },
+      {
+        "question": "Can I rent for multiple days or longer?",
+        "answer": "Yes. Multi-day, weekly and longer rentals may be available, subject to current availability and qualification."
+      },
+      {
+        "question": "Can professional drivers rent these vans?",
+        "answer": "Longer-term rentals may be available for qualified professional drivers. Platform eligibility depends on the platform, market, vehicle and current requirements."
+      },
+      {
+        "question": "Do you work with concierge companies?",
+        "answer": "Yes. Hospitality and concierge partners can inquire about recurring or group transportation rental needs."
+      },
+      {
+        "question": "Can I consign my passenger van with Rent With Heldy?",
+        "answer": "Rent With Heldy works with select vehicle owners. Submit the vehicle through the consignment inquiry for review."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Your whole group. One van.",
+    "body": "Find a passenger van for your next South Florida trip.",
+    "bookCta": "Book Now",
+    "inquiryCta": "Check Availability",
+    "consignmentLink": "Own a passenger van? Learn about consignment"
+  },
+  "sticky": {
+    "book": "Book Van",
+    "inquire": "Inquire"
+  }
+}

@@ -7,6 +7,7 @@ import logo from "@/assets/rent-with-heldy-logo.png";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const services = [
+  { to: "/passenger-vans", key: "passengerVans" },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport" },
   { to: "/hotel-concierge-rentals", key: "hotel" },
   { to: "/body-shop-delivery", key: "bodyShop" },

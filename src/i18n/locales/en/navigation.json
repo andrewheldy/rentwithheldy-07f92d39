@@ -9,6 +9,7 @@
     "more": "More"
   },
   "services": {
+    "passengerVans": { "label": "Passenger Vans", "desc": "Up to 14 passengers" },
     "airport": { "label": "Airport Delivery", "desc": "FLL pickup & drop-off" },
     "hotel": { "label": "Hotel Delivery", "desc": "Delivered to your hotel" },
     "bodyShop": {

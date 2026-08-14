@@ -9,6 +9,7 @@
     "more": "עוד"
   },
   "services": {
+    "passengerVans": { "label": "ואנים לנוסעים", "desc": "עד 14 נוסעים" },
     "airport": { "label": "מסירה בשדה התעופה", "desc": "איסוף והחזרה ב-FLL" },
     "hotel": { "label": "מסירה למלון", "desc": "מביאים עד המלון שלכם" },
     "bodyShop": {

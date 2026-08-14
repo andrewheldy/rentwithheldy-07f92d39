@@ -14,6 +14,9 @@ dist-ssr
 playwright-report/
 test-results/
 
+# Owner-supplied raw vehicle photos (production derivatives live in src/assets/passenger-vans)
+src/assets/vehicles/Vans/
+
 # Environment files
 .env
 .env.local

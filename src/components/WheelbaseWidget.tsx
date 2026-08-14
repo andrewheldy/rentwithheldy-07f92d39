@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { normalizeLocale, type Locale } from "@/i18n/config";
+import { track } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -39,6 +40,9 @@ const WheelbaseWidget = () => {
     const script = document.createElement("script");
     script.src = "https://d3cuf6g1arkgx6.cloudfront.net/sdk/wheelbase.min.js";
     script.async = true;
+    script.addEventListener("load", () => {
+      track("wheelbase_widget_loaded", { locale });
+    }, { once: true });
     document.body.appendChild(script);
 
     return () => {

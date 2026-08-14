@@ -15,6 +15,7 @@
     "contact": "Contact"
   },
   "services": {
+    "passengerVans": "14-Passenger Vans",
     "airport": "Airport Delivery (FLL)",
     "hotel": "Hotel Delivery",
     "bodyShop": "Body Shop Delivery",

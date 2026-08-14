@@ -16,7 +16,11 @@ const DEFAULT_IMAGE =
 
 const SEO = ({ title, description, path, image, noIndex, jsonLd }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
-  const ogImage = image || DEFAULT_IMAGE;
+  const ogImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${SITE_URL}${image}`
+    : DEFAULT_IMAGE;
   const jsonLdArray = jsonLd
     ? Array.isArray(jsonLd)
       ? jsonLd
