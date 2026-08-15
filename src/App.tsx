@@ -16,7 +16,8 @@ import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
-import DriveToOwn from "./pages/DriveToOwn";
+import DriveForWork from "./pages/DriveForWork";
+import ListYourVehicle from "./pages/ListYourVehicle";
 import TripPlanner from "./pages/TripPlanner";
 import FLLAirport from "./pages/FLLAirport";
 import HowItWorks from "./pages/HowItWorks";
@@ -55,9 +56,11 @@ const App = () => (
             />
             <Route path="/local-car-rentals" element={<LocalCarRentals />} />
             <Route path="/car-rental-miami" element={<Miami />} />
-            <Route path="/rent-to-own" element={<DriveToOwn />} />
-            <Route path="/drive-to-own" element={<Navigate to="/rent-to-own" replace />} />
-            <Route path="/chariot" element={<Navigate to="/rent-to-own" replace />} />
+            <Route path="/drive-for-work" element={<DriveForWork />} />
+            <Route path="/list-your-vehicle" element={<ListYourVehicle />} />
+            <Route path="/rent-to-own" element={<Navigate to="/drive-for-work" replace />} />
+            <Route path="/drive-to-own" element={<Navigate to="/drive-for-work" replace />} />
+            <Route path="/chariot" element={<Navigate to="/drive-for-work" replace />} />
             <Route path="/trip-planner" element={<TripPlanner />} />
             <Route
               path="/fort-lauderdale-airport-car-rental"

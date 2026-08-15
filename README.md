@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Copy `.env.example` to `.env` and fill in the Supabase variables (`VITE_SUPABASE_PROJECT_ID`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_URL`) — never commit real values.
+Copy `.env.example` to `.env` and fill in the public Supabase variables (`VITE_SUPABASE_PROJECT_ID`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_URL`) — never commit real values. Acquisition funnels also require server-only `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `RESEND_API_KEY`, and `RESEND_FROM_EMAIL` variables in Vercel. `VITE_EMPOWER_REFERRAL_URL` is optional until the real Rent With Heldy referral URL is supplied.
 
 **Package manager note:** local development is documented here with npm (`package-lock.json`). `bun.lock` and `bun.lockb` are also present in the repo, and commit history contains conflicting claims about which one Vercel actually uses to deploy. This has not been resolved — check the Vercel project's Install Command / detected framework before assuming either lockfile is authoritative for production deploys.
 

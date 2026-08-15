@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/rent-to-own", "destination": "/drive-for-work", "permanent": true },
+    { "source": "/drive-to-own", "destination": "/drive-for-work", "permanent": true },
+    { "source": "/chariot", "destination": "/drive-for-work", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ]

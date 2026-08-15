@@ -1,15 +1,19 @@
 {
   "links": {
     "fleet": "הצי",
-    "rentToOwn": "שכירות לבעלות",
+    "driveForWork": "נהיגה לעבודה",
     "howItWorks": "איך זה עובד",
     "faq": "שאלות נפוצות",
     "contact": "צור קשר",
     "services": "שירותים",
+    "rentalServices": "שירותי השכרה",
+    "workWithUs": "עובדים איתנו",
+    "browse": "ניווט",
     "more": "עוד"
   },
   "services": {
     "passengerVans": { "label": "ואנים לנוסעים", "desc": "עד 14 נוסעים" },
+    "listVehicle": { "label": "הוספת הרכב שלך", "desc": "בדקו אם הרכב מתאים לצי" },
     "airport": { "label": "מסירה בשדה התעופה", "desc": "איסוף והחזרה ב-FLL" },
     "hotel": { "label": "מסירה למלון", "desc": "מביאים עד המלון שלכם" },
     "bodyShop": {

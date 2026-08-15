@@ -14,6 +14,135 @@ export type Database = {
   }
   public: {
     Tables: {
+      acquisition_leads: {
+        Row: {
+          campaign: string | null
+          created_at: string
+          current_platforms: string[]
+          driver_status: string | null
+          email: string
+          empower_referral_clicked: boolean
+          empower_status: string | null
+          expected_duration: string | null
+          first_name: string
+          id: string
+          landing_page: string
+          last_name: string
+          lead_priority: string | null
+          lead_type: string
+          mileage: number | null
+          ownership_status: string | null
+          passenger_capacity: string | null
+          phone: string
+          photo_references: string[]
+          platform_subtypes: string[]
+          platforms: string[]
+          referrer: string | null
+          source: string
+          status: string
+          strategic_interest: boolean
+          updated_at: string
+          user_agent: string | null
+          vehicle_availability: string | null
+          vehicle_category: string | null
+          vehicle_condition: string | null
+          vehicle_make: string | null
+          vehicle_model: string | null
+          vehicle_trim: string | null
+          vehicle_type: string | null
+          vehicle_year: number | null
+          vin: string | null
+          weekly_budget_max: number | null
+          weekly_budget_min: number | null
+          need_timeline: string | null
+          zip_code: string
+        }
+        Insert: {
+          campaign?: string | null
+          created_at?: string
+          current_platforms?: string[]
+          driver_status?: string | null
+          email: string
+          empower_referral_clicked?: boolean
+          empower_status?: string | null
+          expected_duration?: string | null
+          first_name: string
+          id?: string
+          landing_page: string
+          last_name: string
+          lead_priority?: string | null
+          lead_type: string
+          mileage?: number | null
+          ownership_status?: string | null
+          passenger_capacity?: string | null
+          phone: string
+          photo_references?: string[]
+          platform_subtypes?: string[]
+          platforms?: string[]
+          referrer?: string | null
+          source?: string
+          status?: string
+          strategic_interest?: boolean
+          updated_at?: string
+          user_agent?: string | null
+          vehicle_availability?: string | null
+          vehicle_category?: string | null
+          vehicle_condition?: string | null
+          vehicle_make?: string | null
+          vehicle_model?: string | null
+          vehicle_trim?: string | null
+          vehicle_type?: string | null
+          vehicle_year?: number | null
+          vin?: string | null
+          weekly_budget_max?: number | null
+          weekly_budget_min?: number | null
+          need_timeline?: string | null
+          zip_code: string
+        }
+        Update: {
+          campaign?: string | null
+          created_at?: string
+          current_platforms?: string[]
+          driver_status?: string | null
+          email?: string
+          empower_referral_clicked?: boolean
+          empower_status?: string | null
+          expected_duration?: string | null
+          first_name?: string
+          id?: string
+          landing_page?: string
+          last_name?: string
+          lead_priority?: string | null
+          lead_type?: string
+          mileage?: number | null
+          ownership_status?: string | null
+          passenger_capacity?: string | null
+          phone?: string
+          photo_references?: string[]
+          platform_subtypes?: string[]
+          platforms?: string[]
+          referrer?: string | null
+          source?: string
+          status?: string
+          strategic_interest?: boolean
+          updated_at?: string
+          user_agent?: string | null
+          vehicle_availability?: string | null
+          vehicle_category?: string | null
+          vehicle_condition?: string | null
+          vehicle_make?: string | null
+          vehicle_model?: string | null
+          vehicle_trim?: string | null
+          vehicle_type?: string | null
+          vehicle_year?: number | null
+          vin?: string | null
+          weekly_budget_max?: number | null
+          weekly_budget_min?: number | null
+          need_timeline?: string | null
+          zip_code?: string
+        }
+        Relationships: []
+      }
       booking_inquiries: {
         Row: {
           created_at: string | null

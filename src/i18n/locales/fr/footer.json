@@ -9,7 +9,8 @@
     "description": "Une flotte familiale qui livre des voitures propres et fiables à Fort Lauderdale, Miami et dans toute la Floride du Sud, là où vous en avez besoin."
   },
   "columns": {
-    "services": "Services",
+    "services": "Services de location",
+    "workWithUs": "Travailler avec nous",
     "locations": "Zones desservies",
     "company": "Entreprise",
     "contact": "Contact"
@@ -21,7 +22,8 @@
     "bodyShop": "Livraison au garage",
     "cruise": "Livraison au port de croisière",
     "lossOfUse": "Perte d'usage",
-    "rentToOwn": "Programme location avec option d'achat"
+    "driveForWork": "Conduire pour travailler",
+    "listVehicle": "Proposer votre véhicule"
   },
   "locations": {
     "fortLauderdale": "Fort Lauderdale",

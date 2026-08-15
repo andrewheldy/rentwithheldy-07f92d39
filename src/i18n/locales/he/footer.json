@@ -9,7 +9,8 @@
     "description": "צי משפחתי שמביא רכבים נקיים ואמינים ב-Fort Lauderdale, ב-Miami ובכל דרום פלורידה — בדיוק היכן שאתם צריכים."
   },
   "columns": {
-    "services": "שירותים",
+    "services": "שירותי השכרה",
+    "workWithUs": "עובדים איתנו",
     "locations": "אזורי שירות",
     "company": "החברה",
     "contact": "צור קשר"
@@ -21,7 +22,8 @@
     "bodyShop": "מסירה למוסך",
     "cruise": "מסירה בנמל השיוט",
     "lossOfUse": "אובדן שימוש",
-    "rentToOwn": "תוכנית שכירות לבעלות"
+    "driveForWork": "נהיגה לעבודה",
+    "listVehicle": "הוספת הרכב שלך"
   },
   "locations": {
     "fortLauderdale": "Fort Lauderdale",

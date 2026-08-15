@@ -23,6 +23,8 @@ export default defineConfig({
       VITE_SUPABASE_URL: process.env.VITE_SUPABASE_URL ?? "https://example.supabase.co",
       VITE_SUPABASE_PUBLISHABLE_KEY:
         process.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "playwright-local-verification-key",
+      VITE_EMPOWER_REFERRAL_URL:
+        process.env.VITE_EMPOWER_REFERRAL_URL ?? "https://example.invalid/empower-referral-test",
     },
     reuseExistingServer: true,
     timeout: 120_000,

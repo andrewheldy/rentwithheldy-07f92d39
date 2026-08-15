@@ -1,15 +1,19 @@
 {
   "links": {
     "fleet": "Flota",
-    "rentToOwn": "Alquila y compra",
+    "driveForWork": "Conduce para trabajar",
     "howItWorks": "Cómo funciona",
     "faq": "Preguntas",
     "contact": "Contacto",
     "services": "Servicios",
+    "rentalServices": "Servicios de alquiler",
+    "workWithUs": "Trabaja con nosotros",
+    "browse": "Explorar",
     "more": "Más"
   },
   "services": {
     "passengerVans": { "label": "Vans de pasajeros", "desc": "Hasta 14 pasajeros" },
+    "listVehicle": { "label": "Publica tu vehículo", "desc": "Descubre si encaja en la flota" },
     "airport": { "label": "Entrega en el aeropuerto", "desc": "Recogida y devolución en FLL" },
     "hotel": { "label": "Entrega en el hotel", "desc": "La llevamos a tu hotel" },
     "bodyShop": {

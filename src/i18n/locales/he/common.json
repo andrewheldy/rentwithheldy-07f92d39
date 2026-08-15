@@ -20,6 +20,27 @@
   "languageSelector": {
     "label": "שינוי שפה"
   },
+  "conversionPaths": {
+    "eyebrow": "מתחילים כאן",
+    "heading": "מה מביא אתכם ל-Rent With Heldy?",
+    "description": "הזמינו רכב, מצאו רכב לעבודה או ספרו לנו על רכב שעשוי להתאים לצי.",
+    "mobileHeading": "בחרו את הצעד הבא",
+    "rental": {
+      "title": "הזמנת רכב",
+      "description": "מצאו רכב לנסיעה או לתחבורה מקומית.",
+      "cta": "בדיקת זמינות"
+    },
+    "driver": {
+      "title": "נהיגה לעבודה",
+      "description": "ספרו לנו איזה רכב אתם צריכים לעבודה.",
+      "cta": "מציאת רכב"
+    },
+    "owner": {
+      "title": "הוספת הרכב שלכם",
+      "description": "בדקו אם הרכב עשוי להתאים לצי ההשכרה שלנו.",
+      "cta": "בדיקת התאמה"
+    }
+  },
   "states": {
     "loadingFleet": "טוען את הצי…"
   },
