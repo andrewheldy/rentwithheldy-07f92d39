@@ -21,7 +21,8 @@
     "bodyShop": "מסירה למוסך",
     "cruise": "מסירה בנמל השיוט",
     "lossOfUse": "אובדן שימוש",
-    "rentToOwn": "תוכנית שכירות לבעלות"
+    "driveForWork": "נהיגה לעבודה",
+    "listVehicle": "הוספת הרכב שלך"
   },
   "locations": {
     "fortLauderdale": "Fort Lauderdale",

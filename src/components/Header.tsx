@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Menu, Phone, ChevronDown, Plane, BedDouble, Wrench, Anchor, FileText, BusFront } from "lucide-react";
+import { Menu, Phone, ChevronDown, Plane, BedDouble, Wrench, Anchor, FileText, BusFront, CarFront } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,6 +24,7 @@ import { getDirection } from "@/i18n/direction";
 // `navigation` namespace so only the copy is translated.
 const SERVICES = [
   { to: "/passenger-vans", key: "passengerVans", icon: BusFront },
+  { to: "/list-your-vehicle", key: "listVehicle", icon: CarFront },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport", icon: Plane },
   { to: "/hotel-concierge-rentals", key: "hotel", icon: BedDouble },
   { to: "/body-shop-delivery", key: "bodyShop", icon: Wrench },
@@ -33,7 +34,7 @@ const SERVICES = [
 
 const NAV = [
   { to: "/fleet", key: "fleet" },
-  { to: "/rent-to-own", key: "rentToOwn" },
+  { to: "/drive-for-work", key: "driveForWork" },
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/faq", key: "faq" },
   { to: "/contact", key: "contact" },

@@ -21,7 +21,8 @@
     "bodyShop": "Entrega en el taller",
     "cruise": "Entrega en el puerto de cruceros",
     "lossOfUse": "Reclamos por pérdida de uso",
-    "rentToOwn": "Programa de alquiler con opción a compra"
+    "driveForWork": "Conduce para trabajar",
+    "listVehicle": "Publica tu vehículo"
   },
   "locations": {
     "fortLauderdale": "Fort Lauderdale",

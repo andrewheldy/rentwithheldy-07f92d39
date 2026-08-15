@@ -1,0 +1,76 @@
+{
+  "shared": {
+    "stepOf": "Paso {{current}} de {{total}}",
+    "back": "Atrás",
+    "continue": "Continuar",
+    "submitting": "Enviando…",
+    "privacy": "Al enviar, aceptas que Rent With Heldy se comunique contigo sobre esta solicitud. Consulta nuestra Política de privacidad para más detalles.",
+    "fields": { "firstName": "Nombre", "lastName": "Apellido", "phone": "Teléfono móvil", "email": "Correo electrónico", "zip": "Código postal", "zipPlaceholder": "33301" },
+    "validation": { "review": "Revisa este paso y completa la información requerida.", "submit": "No pudimos enviar tu solicitud. Inténtalo de nuevo." }
+  },
+  "driver": {
+    "meta": { "title": "Alquiler de autos para conductores de apps en el sur de Florida | Rent With Heldy", "description": "¿Buscas un vehículo para viajes compartidos, entregas o conducción profesional en el sur de Florida? Cuéntale a Rent With Heldy qué necesitas y únete a nuestra lista de disponibilidad." },
+    "hero": {
+      "eyebrow": "Conduce para trabajar", "title": "¿Necesitas un auto para ganar?", "subtitle": "Cuéntanos cómo quieres conducir. Te ayudaremos a encontrar el vehículo adecuado.", "body": "Rent With Heldy ofrece opciones de vehículos para conductores calificados de viajes compartidos, entregas y conducción profesional en todo el sur de Florida.", "cta": "Encontrar mi vehículo", "microcopy": "Toma unos 60 segundos.", "panelEyebrow": "Lo que preguntaremos",
+      "panel": { "work": "Cómo piensas generar ingresos", "vehicle": "Qué tipo de vehículo necesitas", "timing": "Tu plazo y presupuesto semanal", "contact": "Dónde enviar posibles opciones" },
+      "panelNote": "Esta es una solicitud de vehículo, no una aprobación ni una promesa de disponibilidad."
+    },
+    "trust": { "honest": "Sin promesas de ingresos ni aprobación", "local": "Enfocado en conductores del sur de Florida", "flexible": "Para viajes compartidos, entregas y conducción profesional" },
+    "funnelEyebrow": "Solicitud de vehículo", "disclaimer": "Tus respuestas nos ayudan a entender qué podría servirte. No son una aprobación ni una promesa de disponibilidad o elegibilidad en plataformas.", "submit": "Unirme a la lista",
+    "steps": {
+      "platforms": { "title": "¿Con qué quieres generar ingresos?", "help": "Elige todas las opciones que estés considerando." },
+      "deliveryPlatforms": { "title": "¿Qué aplicaciones de entrega te interesan?", "help": "Elige todas las que correspondan." },
+      "uberOpportunity": { "title": "¿Qué oportunidad de Uber te interesa?", "help": "Esto nos indica lo que buscas. La elegibilidad del vehículo y la plataforma depende del mercado y los requisitos actuales." },
+      "lyftOpportunity": { "title": "¿Qué oportunidad de Lyft te interesa?", "help": "Esto refleja tu interés, no promete elegibilidad en la plataforma." },
+      "empowerStatus": { "title": "¿Ya eres conductor de Empower?", "help": "Elige la opción que mejor describa tu situación actual." },
+      "vehicleCategory": { "title": "¿Qué estás buscando?", "help": "Elige el tipo de vehículo que quieres que tengamos en cuenta." },
+      "timeline": { "title": "¿Qué tan pronto lo necesitas?", "help": "Esto ayuda a nuestro equipo a priorizar solicitudes urgentes." },
+      "budget": { "title": "¿Qué rango de pago semanal te funciona?", "help": "Esta información es para investigación de mercado. No significa que haya un vehículo disponible en el rango elegido." },
+      "driverStatus": { "title": "¿Ya estás aprobado para conducir?", "help": "Cuéntanos en qué etapa estás." },
+      "currentPlatforms": { "title": "¿Para qué conduces actualmente?", "help": "Elige todas las plataformas o tipos de trabajo que correspondan." },
+      "duration": { "title": "¿Por cuánto tiempo esperas necesitar un vehículo?", "help": "Una estimación está bien." },
+      "location": { "title": "¿Dónde conducirás principalmente?", "help": "Ingresa el código postal de tu zona principal." },
+      "contact": { "title": "¿Dónde debemos enviarte tus opciones?", "help": "Revisaremos tu solicitud y nos comunicaremos cuando una opción pueda encajar." }
+    },
+    "options": {
+      "platforms": {
+        "uber": { "label": "Uber", "description": "Interés en viajes o entregas" }, "lyft": { "label": "Lyft", "description": "Interés en Standard, XL o Premium" }, "empower": { "label": "Empower", "description": "Conductor actual o futuro" }, "delivery_apps": { "label": "Apps de entrega", "description": "Entrega de comida, compras o paquetes" }, "professional_driving": { "label": "Otra conducción profesional", "description": "Otro trabajo de conducción calificado" }, "not_sure": { "label": "Aún no estoy seguro", "description": "Ayúdame a entender mis opciones" }
+      },
+      "deliveryPlatforms": { "uber_eats": { "label": "Uber Eats" }, "doordash": { "label": "DoorDash" }, "instacart": { "label": "Instacart" }, "spark": { "label": "Spark" }, "other_delivery": { "label": "Otra" } },
+      "uberOpportunities": { "uberx": { "label": "UberX" }, "uberxl": { "label": "UberXL" }, "black_premium": { "label": "Black / Premium" }, "large_passenger": { "label": "Pasajeros grandes / tipo Max" }, "delivery": { "label": "Entrega" }, "not_sure": { "label": "No estoy seguro" } },
+      "lyftOpportunities": { "standard": { "label": "Standard" }, "xl": { "label": "XL" }, "premium": { "label": "Premium" }, "not_sure": { "label": "No estoy seguro" } },
+      "empowerStatuses": { "yes": { "label": "Sí" }, "application_pending": { "label": "Solicitud pendiente" }, "no": { "label": "No" } },
+      "vehicleCategories": {
+        "everyday": { "label": "Uso diario", "description": "Vehículo tipo UberX / Lyft / entregas" }, "xl": { "label": "XL", "description": "SUV grande o minivan" }, "premium": { "label": "Premium", "description": "Interés en vehículo tipo Premium / Black" }, "large_passenger": { "label": "Pasajeros grandes", "description": "Van grande / oportunidades tipo Max" }, "delivery": { "label": "Entrega", "description": "Vehículo económico y eficiente" }, "not_sure": { "label": "No estoy seguro", "description": "Ayúdame a decidir" }
+      },
+      "timelines": { "asap": { "label": "Lo antes posible" }, "within_7_days": { "label": "Dentro de 7 días" }, "within_30_days": { "label": "Dentro de 30 días" }, "one_to_three_months": { "label": "1–3 meses" }, "exploring": { "label": "Solo explorando" } },
+      "budgets": { "under_250": { "label": "Menos de $250/semana" }, "250_299": { "label": "$250–$299/semana" }, "300_349": { "label": "$300–$349/semana" }, "350_399": { "label": "$350–$399/semana" }, "400_499": { "label": "$400–$499/semana" }, "500_plus": { "label": "$500+/semana" }, "not_sure": { "label": "No estoy seguro" } },
+      "driverStatuses": { "currently_driving": { "label": "Sí, conduzco actualmente" }, "approved_need_vehicle": { "label": "Aprobado, pero necesito vehículo" }, "application_pending": { "label": "Solicitud pendiente" }, "not_yet": { "label": "Aún no" }, "not_applicable": { "label": "No aplica" } },
+      "durations": { "few_weeks": { "label": "Algunas semanas" }, "one_to_three_months": { "label": "1–3 meses" }, "three_to_six_months": { "label": "3–6 meses" }, "six_to_twelve_months": { "label": "6–12 meses" }, "long_term": { "label": "A largo plazo" }, "not_sure": { "label": "No estoy seguro" } }
+    },
+    "empower": { "title": "¿Quieres conducir con Empower?", "body": "Podemos ayudarte a buscar un vehículo y también puedes comenzar con el enlace de referido de Rent With Heldy.", "cta": "Convertirme en conductor de Empower", "linkPending": "Aún falta configurar el enlace de referido de Empower de Rent With Heldy." },
+    "confirmation": { "eyebrow": "Solicitud recibida", "title": "Ya estás en la lista.", "body": "Recibimos tu solicitud de vehículo. Nuestro equipo revisará lo que buscas y se comunicará cuando tengamos una opción que pueda encajar.", "summary": { "platforms": "Interés en plataformas", "vehicle": "Categoría de vehículo", "timeline": "Plazo", "budget": "Presupuesto semanal" }, "explore": "Explorar Rent With Heldy" }
+  },
+  "supply": {
+    "meta": { "title": "Publica tu auto con Rent With Heldy | Consignación de vehículos en el sur de Florida", "description": "¿Tienes un vehículo que quieres poner a trabajar? Envíalo a Rent With Heldy y descubre si podría encajar en nuestra flota del sur de Florida." },
+    "hero": {
+      "eyebrow": "Publica tu vehículo", "title": "Tu auto podría generar ingresos.", "body": "Incorpora tu vehículo a la flota de Rent With Heldy y deja que nuestro equipo te ayude a convertir el tiempo disponible en oportunidades de alquiler.", "cta": "Ver si mi vehículo califica", "microcopy": "Cuéntanos sobre tu vehículo. Solo toma un par de minutos.", "panelEyebrow": "Lo que revisaremos",
+      "panel": { "vehicle": "El vehículo y su configuración", "condition": "Kilometraje y condición", "availability": "Cuándo podría estar disponible", "review": "Cómo podría encajar en la demanda local" }, "panelNote": "Cada vehículo se revisa individualmente. El envío no garantiza aceptación ni ingresos."
+    },
+    "trust": { "individual": "Cada vehículo se evalúa individualmente", "review": "Sin ingresos garantizados ni reparto universal", "local": "Basado en la demanda de alquiler del sur de Florida" },
+    "funnelEyebrow": "Revisión del vehículo", "disclaimer": "Enviar un vehículo inicia una revisión. No garantiza aceptación en la flota, demanda de alquiler ni ingresos.", "submit": "Enviar mi vehículo",
+    "steps": {
+      "vehicle": { "title": "¿Qué vehículo tienes?", "help": "Cuéntanos lo básico. La versión es opcional." }, "vehicleType": { "title": "¿Qué tipo de vehículo es?", "help": "Elige la opción más cercana." }, "passengerCapacity": { "title": "¿Para cuántos pasajeros tiene asientos?", "help": "Elige la configuración instalada." }, "mileage": { "title": "¿Aproximadamente cuántas millas tiene?", "help": "Una estimación actual está bien." }, "condition": { "title": "¿En qué condición está el vehículo?", "help": "Elige la descripción más precisa." }, "ownership": { "title": "¿Cuál es la situación actual de propiedad?", "help": "Los vehículos financiados no se rechazan automáticamente; revisamos cada caso." }, "availability": { "title": "¿Con qué frecuencia podría estar disponible?", "help": "Elige la estimación más cercana." }, "location": { "title": "¿Dónde se encuentra el vehículo?", "help": "Ingresa su código postal principal." }, "photos": { "title": "Muéstranos el vehículo.", "help": "Las fotos ayudan, pero no son obligatorias para esta primera solicitud." }, "vin": { "title": "VIN", "help": "Opcional por ahora. Puede ayudarnos a evaluar la configuración exacta." }, "contact": { "title": "¿Dónde podemos contactarte?", "help": "Nos comunicaremos si el vehículo parece una posible opción." }
+    },
+    "fields": { "year": "Año", "make": "Marca", "model": "Modelo", "trim": "Versión (opcional)", "mileage": "Millaje actual", "mileagePlaceholder": "45,000", "vin": "VIN (opcional)", "vinPlaceholder": "17 caracteres", "vinHelp": "Tu VIN se guarda como dato vehicular no público y nunca se envía a analítica." },
+    "options": {
+      "vehicleTypes": { "sedan": { "label": "Sedán" }, "suv_crossover": { "label": "SUV / Crossover" }, "minivan": { "label": "Minivan" }, "passenger_van": { "label": "Van de pasajeros" }, "pickup": { "label": "Camioneta pickup" }, "premium_luxury": { "label": "Premium / Lujo" }, "other": { "label": "Otro" } },
+      "passengerCapacities": { "7_8": { "label": "7–8" }, "9_11": { "label": "9–11" }, "12_14": { "label": "12–14" }, "15_plus": { "label": "15+" }, "other": { "label": "Otro" } },
+      "conditions": { "excellent": { "label": "Excelente", "description": "Muy limpio, con desgaste cosmético mínimo." }, "good": { "label": "Bueno", "description": "Desgaste normal, pero bien mantenido." }, "fair": { "label": "Regular", "description": "Necesidades cosméticas o de mantenimiento visibles." }, "needs_work": { "label": "Necesita trabajo", "description": "Requiere reparaciones o atención importante." } },
+      "ownership": { "owned_outright": { "label": "Pagado por completo" }, "financed": { "label": "Actualmente financiado" }, "leased": { "label": "Actualmente en leasing" }, "other_unsure": { "label": "Otro / No estoy seguro" } },
+      "availability": { "full_time": { "label": "Tiempo completo" }, "most_of_month": { "label": "La mayor parte del mes" }, "weekends": { "label": "Fines de semana" }, "part_time": { "label": "Tiempo parcial" }, "seasonal": { "label": "Por temporada" }, "not_sure": { "label": "Aún no estoy seguro" } }
+    },
+    "photos": { "title": "Pediremos fotos durante la revisión.", "body": "El sitio actual no tiene un proceso público seguro para subir archivos, así que puedes completar esta solicitud sin fotos. Si el vehículo puede encajar, nuestro equipo te pedirá directamente imágenes exteriores e interiores." },
+    "confirmation": { "eyebrow": "Vehículo recibido", "title": "Gracias. Lo revisaremos.", "body": "Nuestro equipo revisará tu vehículo, la demanda local y cómo podría encajar en la flota de Rent With Heldy. Nos comunicaremos si parece una buena opción.", "vehicle": "Vehículo", "availability": "Disponibilidad", "explore": "Explorar Rent With Heldy" }
+  }
+}

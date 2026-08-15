@@ -31,6 +31,9 @@ import {
 } from "@/components/ui/table";
 import { toast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
+import type { Database } from "@/integrations/supabase/types";
+
+type AcquisitionLead = Database["public"]["Tables"]["acquisition_leads"]["Row"];
 
 type Lead = {
   id: string;
@@ -129,6 +132,7 @@ const AdminLeads = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [events, setEvents] = useState<EventLog[]>([]);
+  const [acquisitionLeads, setAcquisitionLeads] = useState<AcquisitionLead[]>([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [vertical, setVertical] = useState("all");
@@ -136,7 +140,7 @@ const AdminLeads = () => {
 
   const load = async () => {
     setLoading(true);
-    const [leadsRes, inqRes, evRes] = await Promise.all([
+    const [leadsRes, inqRes, evRes, acquisitionRes] = await Promise.all([
       supabase
         .from("leads")
         .select("*")
@@ -149,6 +153,11 @@ const AdminLeads = () => {
         .limit(500),
       supabase
         .from("event_logs")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(500),
+      supabase
+        .from("acquisition_leads")
         .select("*")
         .order("created_at", { ascending: false })
         .limit(500),
@@ -172,10 +181,17 @@ const AdminLeads = () => {
         description: evRes.error.message,
         variant: "destructive",
       });
+    if (acquisitionRes.error)
+      toast({
+        title: "Acquisition leads load failed",
+        description: acquisitionRes.error.message,
+        variant: "destructive",
+      });
 
     setLeads((leadsRes.data as Lead[]) ?? []);
     setInquiries((inqRes.data as Inquiry[]) ?? []);
     setEvents((evRes.data as EventLog[]) ?? []);
+    setAcquisitionLeads((acquisitionRes.data as AcquisitionLead[]) ?? []);
     setLoading(false);
   };
 
@@ -226,6 +242,28 @@ const AdminLeads = () => {
         .some((v) => String(v).toLowerCase().includes(q));
     });
   }, [events, query, vertical]);
+
+  const filteredAcquisitionLeads = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return acquisitionLeads.filter((lead) => {
+      if (!q) return true;
+      return [
+        lead.first_name,
+        lead.last_name,
+        lead.phone,
+        lead.email,
+        lead.zip_code,
+        lead.lead_type,
+        lead.vehicle_category,
+        lead.vehicle_type,
+        lead.vehicle_make,
+        lead.vehicle_model,
+        lead.platforms.join(" "),
+      ]
+        .filter(Boolean)
+        .some((value) => String(value).toLowerCase().includes(q));
+    });
+  }, [acquisitionLeads, query]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -298,8 +336,11 @@ const AdminLeads = () => {
           </div>
         </Card>
 
-        <Tabs defaultValue="leads">
-          <TabsList>
+        <Tabs defaultValue="acquisition">
+          <TabsList className="h-auto flex-wrap justify-start">
+            <TabsTrigger value="acquisition">
+              Driver & Vehicle ({filteredAcquisitionLeads.length})
+            </TabsTrigger>
             <TabsTrigger value="leads">
               Leads ({filteredLeads.length})
             </TabsTrigger>
@@ -310,6 +351,101 @@ const AdminLeads = () => {
               Event Log ({filteredEvents.length})
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="acquisition">
+            <Card>
+              <div className="flex items-center justify-between gap-3 border-b border-border p-3">
+                <p className="text-sm text-muted-foreground">
+                  Structured demand and supply leads
+                </p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() =>
+                    downloadCSV(
+                      `acquisition-leads-${format(new Date(), "yyyy-MM-dd")}.csv`,
+                      toCSV(filteredAcquisitionLeads as unknown as Record<string, unknown>[]),
+                    )
+                  }
+                >
+                  <Download className="h-4 w-4 mr-2" /> Export CSV
+                </Button>
+              </div>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Created</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Priority</TableHead>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Phone</TableHead>
+                      <TableHead>ZIP</TableHead>
+                      <TableHead>Demand / Vehicle</TableHead>
+                      <TableHead>Timing / Availability</TableHead>
+                      <TableHead>Budget / Mileage</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredAcquisitionLeads.map((lead) => (
+                      <TableRow key={lead.id}>
+                        <TableCell className="whitespace-nowrap text-xs">
+                          {format(new Date(lead.created_at), "MMM d, HH:mm")}
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant={lead.lead_type === "driver_demand" ? "default" : "secondary"}>
+                            {lead.lead_type === "driver_demand" ? "Driver" : "Vehicle"}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          {lead.lead_priority ? <Badge variant="outline">{lead.lead_priority}</Badge> : "—"}
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {lead.first_name} {lead.last_name}
+                        </TableCell>
+                        <TableCell>
+                          <a href={`tel:${lead.phone}`} className="text-primary hover:underline">
+                            {lead.phone}
+                          </a>
+                        </TableCell>
+                        <TableCell>{lead.zip_code}</TableCell>
+                        <TableCell className="max-w-[260px] text-sm">
+                          {lead.lead_type === "driver_demand"
+                            ? `${lead.vehicle_category ?? "—"} · ${lead.platforms.join(", ")}`
+                            : `${lead.vehicle_year ?? ""} ${lead.vehicle_make ?? ""} ${lead.vehicle_model ?? ""}`.trim()}
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {lead.lead_type === "driver_demand"
+                            ? lead.need_timeline ?? "—"
+                            : lead.vehicle_availability ?? "—"}
+                        </TableCell>
+                        <TableCell className="whitespace-nowrap text-sm">
+                          {lead.lead_type === "driver_demand"
+                            ? lead.weekly_budget_min !== null
+                              ? `$${lead.weekly_budget_min}+ / wk`
+                              : lead.weekly_budget_max !== null
+                                ? `Under $${lead.weekly_budget_max + 1} / wk`
+                                : "Not sure"
+                            : lead.mileage !== null
+                              ? `${lead.mileage.toLocaleString()} mi`
+                              : "—"}
+                        </TableCell>
+                        <TableCell><Badge variant="secondary">{lead.status}</Badge></TableCell>
+                      </TableRow>
+                    ))}
+                    {filteredAcquisitionLeads.length === 0 && (
+                      <TableRow>
+                        <TableCell colSpan={10} className="py-8 text-center text-muted-foreground">
+                          No acquisition leads match the current search.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="leads">
             <Card>

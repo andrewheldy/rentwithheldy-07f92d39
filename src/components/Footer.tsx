@@ -8,12 +8,13 @@ import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const services = [
   { to: "/passenger-vans", key: "passengerVans" },
+  { to: "/drive-for-work", key: "driveForWork" },
+  { to: "/list-your-vehicle", key: "listVehicle" },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport" },
   { to: "/hotel-concierge-rentals", key: "hotel" },
   { to: "/body-shop-delivery", key: "bodyShop" },
   { to: "/cruise-port-delivery", key: "cruise" },
   { to: "/loss-of-use-claims", key: "lossOfUse" },
-  { to: "/rent-to-own", key: "rentToOwn" },
 ] as const;
 
 const locations = [
