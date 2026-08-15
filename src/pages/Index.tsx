@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import DeliveryDestinations from "@/components/DeliveryDestinations";
+import ConversionPaths from "@/components/ConversionPaths";
 import Footer from "@/components/Footer";
 import FleetGrid from "@/components/FleetGrid";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
@@ -87,6 +88,9 @@ const Index = () => {
             </ul>
           </div>
         </section>
+
+        {/* Three clear conversion paths: renter, driver, or vehicle owner */}
+        <ConversionPaths />
 
         {/* Where should we deliver your vehicle? */}
         <DeliveryDestinations />

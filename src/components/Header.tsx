@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Menu, Phone, ChevronDown, Plane, BedDouble, Wrench, Anchor, FileText, BusFront, CarFront } from "lucide-react";
+import {
+  Anchor,
+  BedDouble,
+  BriefcaseBusiness,
+  BusFront,
+  CalendarCheck,
+  CarFront,
+  ChevronDown,
+  FileText,
+  Menu,
+  Phone,
+  Plane,
+  Wrench,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,12 +32,12 @@ import LanguageSelector from "@/components/LanguageSelector";
 import logo from "@/assets/rent-with-heldy-logo.png";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 import { getDirection } from "@/i18n/direction";
+import { track } from "@/lib/analytics";
 
 // Structural data (routes + icons) stays here; visible labels come from the
 // `navigation` namespace so only the copy is translated.
-const SERVICES = [
+const RENTAL_SERVICES = [
   { to: "/passenger-vans", key: "passengerVans", icon: BusFront },
-  { to: "/list-your-vehicle", key: "listVehicle", icon: CarFront },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport", icon: Plane },
   { to: "/hotel-concierge-rentals", key: "hotel", icon: BedDouble },
   { to: "/body-shop-delivery", key: "bodyShop", icon: Wrench },
@@ -32,9 +45,18 @@ const SERVICES = [
   { to: "/loss-of-use-claims", key: "lossOfUse", icon: FileText },
 ] as const;
 
-const NAV = [
+const WORK_WITH_US = [
+  { to: "/drive-for-work", key: "driver", icon: BriefcaseBusiness },
+  { to: "/list-your-vehicle", key: "owner", icon: CarFront },
+] as const;
+
+const MOBILE_CONVERSION_PATHS = [
+  { to: "/book", key: "rental", icon: CalendarCheck },
+  ...WORK_WITH_US,
+] as const;
+
+const BROWSE_LINKS = [
   { to: "/fleet", key: "fleet" },
-  { to: "/drive-for-work", key: "driveForWork" },
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/faq", key: "faq" },
   { to: "/contact", key: "contact" },
@@ -62,6 +84,8 @@ const Header = () => {
     `text-sm font-medium transition-colors hover:text-primary ${
       isActive ? "text-primary" : "text-foreground/80"
     }`;
+  const rentalServicesActive = RENTAL_SERVICES.some(({ to }) => location.pathname.startsWith(to));
+  const workWithUsActive = WORK_WITH_US.some(({ to }) => location.pathname.startsWith(to));
 
   return (
     <header
@@ -94,19 +118,23 @@ const Header = () => {
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             <NavLink to="/fleet" className={linkClass}>
               {t("links.fleet")}
             </NavLink>
 
-            {/* Services dropdown */}
+            {/* Rental services dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="group inline-flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary">
-                {t("links.services")}
+              <DropdownMenuTrigger
+                className={`group inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary ${
+                  rentalServicesActive ? "text-primary" : "text-foreground/80"
+                }`}
+              >
+                {t("links.rentalServices")}
                 <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72 p-2">
-                {SERVICES.map((s) => (
+                {RENTAL_SERVICES.map((s) => (
                   <DropdownMenuItem key={s.to} asChild>
                     <Link to={s.to} className="flex items-start gap-3 rounded-control p-2.5 cursor-pointer">
                       <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary/10">
@@ -122,7 +150,47 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {NAV.slice(1).map((item) => (
+            {/* The two acquisition funnels stay together as one clear business intent. */}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={`group inline-flex items-center gap-1 text-sm font-semibold transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary ${
+                  workWithUsActive ? "text-primary" : "text-foreground/90"
+                }`}
+              >
+                {t("links.workWithUs")}
+                <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-80 p-2">
+                {WORK_WITH_US.map((item) => (
+                  <DropdownMenuItem key={item.to} asChild>
+                    <Link
+                      to={item.to}
+                      onClick={() =>
+                        track("conversion_path_selected", {
+                          conversion_intent: item.key,
+                          placement: "desktop_navigation",
+                        })
+                      }
+                      className="flex items-start gap-3 rounded-control p-3 cursor-pointer"
+                    >
+                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-primary/10">
+                        <item.icon className="h-4 w-4 text-primary" />
+                      </span>
+                      <span className="leading-tight">
+                        <span className="block text-sm font-semibold text-foreground">
+                          {t(`common:conversionPaths.${item.key}.title`)}
+                        </span>
+                        <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                          {t(`common:conversionPaths.${item.key}.description`)}
+                        </span>
+                      </span>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {BROWSE_LINKS.slice(1, 3).map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClass}>
                 {t(`links.${item.key}`)}
               </NavLink>
@@ -139,7 +207,16 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               {CONTACT_PHONE_DISPLAY}
             </a>
-            <Link to="/book" className="hidden sm:inline-flex">
+            <Link
+              to="/book"
+              onClick={() =>
+                track("conversion_path_selected", {
+                  conversion_intent: "rental",
+                  placement: "desktop_navigation",
+                })
+              }
+              className="hidden sm:inline-flex"
+            >
               <Button size="sm">{t("common:actions.bookNow")}</Button>
             </Link>
 
@@ -165,17 +242,60 @@ const Header = () => {
                   <LanguageSelector variant="block" />
                 </div>
 
+                {/* Put high-intent destinations before the long browse list. */}
+                <div className="border-b border-border px-5 py-5">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    {t("common:conversionPaths.mobileHeading")}
+                  </p>
+                  <div className="space-y-2">
+                    {MOBILE_CONVERSION_PATHS.map((item, index) => (
+                      <SheetClose asChild key={item.to}>
+                        <Link
+                          to={item.to}
+                          onClick={() =>
+                            track("conversion_path_selected", {
+                              conversion_intent: item.key,
+                              placement: "mobile_navigation",
+                            })
+                          }
+                          className={`flex min-h-14 items-center gap-3 rounded-control border px-3.5 py-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                            index === 0
+                              ? "border-ink bg-ink text-white"
+                              : "border-border bg-card text-foreground hover:bg-secondary"
+                          }`}
+                        >
+                          <span
+                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-control ${
+                              index === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
+                            }`}
+                          >
+                            <item.icon className="h-4 w-4" />
+                          </span>
+                          <span className="font-heading text-base font-bold">
+                            {t(`common:conversionPaths.${item.key}.title`)}
+                          </span>
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="min-h-0 flex-1 overflow-y-auto p-5">
-                  <SheetClose asChild>
-                    <Link to="/fleet" className="block py-2.5 text-base font-medium text-foreground">
-                      {t("links.fleet")}
-                    </Link>
-                  </SheetClose>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    {t("links.browse")}
+                  </p>
+                  {BROWSE_LINKS.map((item) => (
+                    <SheetClose asChild key={item.to}>
+                      <Link to={item.to} className="block py-2.5 text-base font-medium text-foreground">
+                        {t(`links.${item.key}`)}
+                      </Link>
+                    </SheetClose>
+                  ))}
 
                   <p className="mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    {t("links.services")}
+                    {t("links.rentalServices")}
                   </p>
-                  {SERVICES.map((s) => (
+                  {RENTAL_SERVICES.map((s) => (
                     <SheetClose asChild key={s.to}>
                       <Link to={s.to} className="flex items-center gap-3 py-2.5 text-[15px] text-foreground/90">
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary/10">
@@ -186,27 +306,12 @@ const Header = () => {
                     </SheetClose>
                   ))}
 
-                  <p className="mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    {t("links.more")}
-                  </p>
-                  {NAV.slice(1).map((item) => (
-                    <SheetClose asChild key={item.to}>
-                      <Link to={item.to} className="block py-2.5 text-base font-medium text-foreground">
-                        {t(`links.${item.key}`)}
-                      </Link>
-                    </SheetClose>
-                  ))}
                 </div>
 
-                <div className="p-5 border-t border-border space-y-3">
-                  <SheetClose asChild>
-                    <Link to="/book" className="block">
-                      <Button size="lg" className="w-full">{t("common:actions.bookNow")}</Button>
-                    </Link>
-                  </SheetClose>
+                <div className="p-5 border-t border-border">
                   <a
                     href={CONTACT_PHONE_HREF}
-                    className="flex items-center justify-center gap-2 text-sm font-medium text-foreground/80"
+                    className="flex min-h-11 items-center justify-center gap-2 rounded-control border border-border text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary"
                   >
                     <Phone className="h-4 w-4 text-primary" />
                     <span>{t("common:actions.callOrText")}</span>

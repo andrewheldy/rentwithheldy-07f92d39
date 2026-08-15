@@ -1,20 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import ConversionPaths from "@/components/ConversionPaths";
 import logo from "@/assets/rent-with-heldy-logo.png";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 const services = [
   { to: "/passenger-vans", key: "passengerVans" },
-  { to: "/drive-for-work", key: "driveForWork" },
-  { to: "/list-your-vehicle", key: "listVehicle" },
   { to: "/fort-lauderdale-airport-car-rental", key: "airport" },
   { to: "/hotel-concierge-rentals", key: "hotel" },
   { to: "/body-shop-delivery", key: "bodyShop" },
   { to: "/cruise-port-delivery", key: "cruise" },
   { to: "/loss-of-use-claims", key: "lossOfUse" },
+] as const;
+
+const workWithUs = [
+  { to: "/drive-for-work", key: "driveForWork" },
+  { to: "/list-your-vehicle", key: "listVehicle" },
 ] as const;
 
 const locations = [
@@ -46,36 +49,15 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-border bg-card">
-      {/* CTA band */}
+      {/* Closing decision point mirrors the same three intents used in the header and homepage. */}
       <div className="border-b border-border">
-        <div className="container mx-auto py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <h2 className="text-heading font-bold text-ink">
-              {t("cta.heading")}
-            </h2>
-            <p className="mt-1 text-muted-foreground">
-              {t("cta.subheading")}
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link to="/book">
-              <Button size="lg" className="w-full sm:w-auto">
-                {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <a href={CONTACT_PHONE_HREF}>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                <Phone className="h-4 w-4" /> {t("common:actions.callOrText")}
-              </Button>
-            </a>
-          </div>
-        </div>
+        <ConversionPaths variant="footer" />
       </div>
 
       <div className="container mx-auto py-14">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 gap-y-10">
+        <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 lg:grid-cols-[2fr_repeat(5,minmax(0,1fr))]">
           {/* Brand */}
-          <div className="col-span-2">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Rent With Heldy logo" className="h-10 w-10 object-contain" />
               <div className="leading-tight">
@@ -97,6 +79,16 @@ const Footer = () => {
             <h3 className="font-semibold text-ink mb-4">{t("columns.services")}</h3>
             <ul className="space-y-2.5">
               {services.map((l) => (
+                <li key={l.to}><Link to={l.to} className={linkCls}>{t(`services.${l.key}`)}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Acquisition funnels */}
+          <div>
+            <h3 className="font-semibold text-ink mb-4">{t("columns.workWithUs")}</h3>
+            <ul className="space-y-2.5">
+              {workWithUs.map((l) => (
                 <li key={l.to}><Link to={l.to} className={linkCls}>{t(`services.${l.key}`)}</Link></li>
               ))}
             </ul>

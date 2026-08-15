@@ -20,6 +20,27 @@
   "languageSelector": {
     "label": "Change language"
   },
+  "conversionPaths": {
+    "eyebrow": "Start here",
+    "heading": "What brings you to Rent With Heldy?",
+    "description": "Book a rental, find a vehicle for work, or tell us about a vehicle for the fleet.",
+    "mobileHeading": "Choose your next step",
+    "rental": {
+      "title": "Book a Rental",
+      "description": "Find a vehicle for your trip or local transportation.",
+      "cta": "Check availability"
+    },
+    "driver": {
+      "title": "Drive for Work",
+      "description": "Tell us what kind of vehicle you need to work.",
+      "cta": "Find my vehicle"
+    },
+    "owner": {
+      "title": "List Your Vehicle",
+      "description": "See whether your vehicle may fit our rental fleet.",
+      "cta": "See if it qualifies"
+    }
+  },
   "states": {
     "loadingFleet": "Loading fleet…"
   },

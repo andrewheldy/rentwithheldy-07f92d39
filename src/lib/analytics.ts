@@ -1,4 +1,5 @@
 export type AnalyticsEvent =
+  | "conversion_path_selected"
   | "drive_for_work_view"
   | "driver_funnel_started"
   | "driver_platform_selected"

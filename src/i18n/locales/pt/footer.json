@@ -9,7 +9,8 @@
     "description": "Uma frota familiar que entrega carros limpos e confiáveis em Fort Lauderdale, Miami e em todo o Sul da Flórida, bem onde você precisa."
   },
   "columns": {
-    "services": "Serviços",
+    "services": "Serviços de aluguel",
+    "workWithUs": "Trabalhe conosco",
     "locations": "Regiões",
     "company": "Empresa",
     "contact": "Contato"

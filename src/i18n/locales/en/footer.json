@@ -9,7 +9,8 @@
     "description": "A family-owned fleet delivering clean, reliable cars across Fort Lauderdale, Miami, and South Florida — right where you need them."
   },
   "columns": {
-    "services": "Services",
+    "services": "Rental Services",
+    "workWithUs": "Work With Us",
     "locations": "Locations",
     "company": "Company",
     "contact": "Contact"

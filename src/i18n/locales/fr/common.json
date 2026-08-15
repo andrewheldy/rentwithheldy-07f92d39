@@ -20,6 +20,27 @@
   "languageSelector": {
     "label": "Changer de langue"
   },
+  "conversionPaths": {
+    "eyebrow": "Commencez ici",
+    "heading": "Qu’est-ce qui vous amène chez Rent With Heldy ?",
+    "description": "Réservez une voiture, trouvez un véhicule pour travailler ou proposez un véhicule pour la flotte.",
+    "mobileHeading": "Choisissez votre prochaine étape",
+    "rental": {
+      "title": "Réserver une voiture",
+      "description": "Trouvez un véhicule pour votre voyage ou vos déplacements locaux.",
+      "cta": "Voir les disponibilités"
+    },
+    "driver": {
+      "title": "Conduire pour travailler",
+      "description": "Dites-nous quel type de véhicule il vous faut pour travailler.",
+      "cta": "Trouver mon véhicule"
+    },
+    "owner": {
+      "title": "Proposer votre véhicule",
+      "description": "Voyez si votre véhicule pourrait rejoindre notre flotte.",
+      "cta": "Voir s’il convient"
+    }
+  },
   "states": {
     "loadingFleet": "Chargement de la flotte…"
   },
