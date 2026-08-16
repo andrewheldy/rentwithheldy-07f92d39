@@ -15,8 +15,8 @@
       "cruisePorts": "Cruise ports",
       "repairShops": "Repair shops"
     },
-    "primaryCta": "Book Now",
-    "secondaryCta": "View the Fleet",
+    "primaryCta": "Plan My Trip",
+    "secondaryCta": "Browse the Fleet",
     "trust": {
       "reviews": "1,400+ Five-Star Reviews",
       "allStar": "All-Star Host",
@@ -25,6 +25,16 @@
       "language": "Message Us in Your Preferred Language",
       "familyOwned": "Family-Owned"
     }
+  },
+  "bookingWidget": {
+    "eyebrow": "Self-serve booking",
+    "title": "When do you need a car?",
+    "description": "Choose your dates to see what's available.",
+    "button": "Check Availability",
+    "reassurance": "Live availability • Local support • South Florida delivery",
+    "loading": "Loading live availability",
+    "unavailable": "Live date search is temporarily unavailable. You can still continue to booking.",
+    "accessibleLabel": "Check rental availability by date"
   },
   "trustStrip": {
     "reviews": "1,400+ Five-Star Reviews",
@@ -118,12 +128,14 @@
     "description": "A few of the things guests ask us most. More on the full FAQ."
   },
   "quoteForm": {
-    "title": "Tell us about your trip"
+    "title": "Tell us what you need",
+    "subtitle": "Share your dates, delivery details, and any special requests. We'll help coordinate the right option.",
+    "cta": "Ask Heldy's Team"
   },
   "contactClose": {
-    "eyebrow": "Get started",
-    "title": "Tell us about your trip.",
-    "description": "Share a few details and a member of our team will reach out as soon as possible. Prefer to talk? Reach a real person below.",
+    "eyebrow": "Concierge help",
+    "title": "Need a little help?",
+    "description": "Tell us what you need—special delivery, a longer rental, a body-shop situation, or anything unusual—and a real person from Rent With Heldy will help coordinate it.",
     "phoneLabel": "Call or text, 7 days a week",
     "emailLabel": "We'll reply as soon as possible",
     "locationTitle": "Fort Lauderdale & Miami",

@@ -55,9 +55,9 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto py-14">
-        <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 lg:grid-cols-[2fr_repeat(5,minmax(0,1fr))]">
+        <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 xl:grid-cols-[2fr_repeat(5,minmax(0,1fr))]">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+          <div className="col-span-2 md:col-span-3 xl:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Rent With Heldy logo" className="h-10 w-10 object-contain" />
               <div className="leading-tight">

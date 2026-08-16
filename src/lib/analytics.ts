@@ -24,6 +24,11 @@ export type AnalyticsEvent =
   | "passenger_vans_consignment_cta"
   | "passenger_vans_consignment_start"
   | "passenger_vans_consignment_submit"
+  | "home_booking_widget_view"
+  | "home_booking_widget_submit"
+  | "home_plan_trip_click"
+  | "home_browse_fleet_click"
+  | "home_booking_widget_fallback"
   | "wheelbase_widget_loaded";
 
 type AnalyticsValue = string | number | boolean | null | undefined;

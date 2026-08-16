@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { normalizeLocale, type Locale } from "@/i18n/config";
 import { track } from "@/lib/analytics";
+import { getWheelbaseLocale } from "@/lib/wheelbase";
 
 declare global {
   interface Window {
@@ -9,16 +9,10 @@ declare global {
   }
 }
 
-const WHEELBASE_LOCALES: Partial<Record<Locale, string>> = {
-  en: "en-us",
-  es: "es-es",
-  fr: "fr-fr",
-};
-
 const WheelbaseWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t, i18n } = useTranslation("booking");
-  const locale = WHEELBASE_LOCALES[normalizeLocale(i18n.language)] ?? "en-us";
+  const locale = getWheelbaseLocale(i18n.language);
 
   useEffect(() => {
     const container = containerRef.current;

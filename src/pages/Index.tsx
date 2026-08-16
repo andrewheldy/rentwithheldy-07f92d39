@@ -6,6 +6,7 @@ import {
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import HomeBookingWidget from "@/components/HomeBookingWidget";
 import DeliveryDestinations from "@/components/DeliveryDestinations";
 import ConversionPaths from "@/components/ConversionPaths";
 import Footer from "@/components/Footer";
@@ -75,8 +76,11 @@ const Index = () => {
       <main>
         <Hero />
 
+        {/* Self-serve availability: selected dates hand off to the existing /book flow. */}
+        <HomeBookingWidget />
+
         {/* Trust strip */}
-        <section className="border-y border-border bg-card">
+        <section className="border-y border-border bg-card" data-testid="home-trust-strip">
           <div className="container mx-auto py-5">
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
               {TRUST_STRIP.map(({ icon: Icon, key }) => (
@@ -246,7 +250,7 @@ const Index = () => {
         <section id="quote" className="scroll-mt-24 py-16 sm:py-24 bg-secondary">
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-              <Reveal>
+              <Reveal className="min-w-0">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
                   {t("contactClose.eyebrow")}
                 </p>
@@ -300,11 +304,14 @@ const Index = () => {
                 </div>
               </Reveal>
 
-              <Reveal delay={80}>
+              <Reveal className="min-w-0" delay={80}>
                 <QuickQuoteForm
                   serviceContext="Home Page Quote"
                   verticalPath="home"
                   title={t("quoteForm.title")}
+                  subtitle={t("quoteForm.subtitle")}
+                  ctaLabel={t("quoteForm.cta")}
+                  appearance="concierge"
                 />
               </Reveal>
             </div>

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
-import { Zap } from "lucide-react";
+import { MessageCircle, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -41,6 +41,7 @@ interface QuickQuoteFormProps {
   subtitle?: string;
   ctaLabel?: string;
   defaultPassengerType?: QuickQuotePassengerType;
+  appearance?: "default" | "concierge";
 }
 
 const slugify = (s: string) =>
@@ -53,6 +54,7 @@ const QuickQuoteForm = ({
   subtitle,
   ctaLabel,
   defaultPassengerType,
+  appearance = "default",
 }: QuickQuoteFormProps) => {
   const { t } = useTranslation(["forms", "common"]);
   const navigate = useNavigate();
@@ -66,6 +68,17 @@ const QuickQuoteForm = ({
   const heading = title ?? t("quickQuote.title");
   const sub = subtitle ?? t("quickQuote.subtitle");
   const cta = ctaLabel ?? t("quickQuote.cta");
+  const isConcierge = appearance === "concierge";
+  const cardClassName = isConcierge
+    ? "min-w-0 overflow-hidden rounded-card border border-border bg-card shadow-card"
+    : "overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-tropical";
+  const headerClassName = isConcierge
+    ? "flex items-center gap-2 border-b border-border bg-secondary/70 px-6 py-4"
+    : "flex items-center gap-2 bg-gradient-tropical px-6 py-4";
+  const headerTextClassName = isConcierge
+    ? "text-lg font-bold text-ink"
+    : "text-lg font-bold text-primary-foreground";
+  const HeaderIcon = isConcierge ? MessageCircle : Zap;
 
   // Rebuilt when the language changes so validation messages stay localized.
   const schema = useMemo(
@@ -181,10 +194,10 @@ const QuickQuoteForm = ({
 
   if (submitError) {
     return (
-      <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
-        <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
-          <Zap className="h-5 w-5 text-primary-foreground" />
-          <h3 className="text-lg font-bold text-primary-foreground">{heading}</h3>
+      <div className={cardClassName}>
+        <div className={headerClassName}>
+          <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary" : "h-5 w-5 text-primary-foreground"} />
+          <h3 className={headerTextClassName}>{heading}</h3>
         </div>
         <div className="p-6 text-center">
           <p className="text-destructive font-medium">
@@ -199,10 +212,10 @@ const QuickQuoteForm = ({
   }
 
   return (
-    <div className="rounded-2xl border border-primary/20 bg-card shadow-tropical overflow-hidden">
-      <div className="bg-gradient-tropical px-6 py-4 flex items-center gap-2">
-        <Zap className="h-5 w-5 text-primary-foreground" />
-        <h3 className="text-lg font-bold text-primary-foreground">{heading}</h3>
+    <div className={cardClassName}>
+      <div className={headerClassName}>
+        <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary" : "h-5 w-5 text-primary-foreground"} />
+        <h3 className={headerTextClassName}>{heading}</h3>
       </div>
       <form onSubmit={onSubmit} className="p-6 space-y-4">
         <p className="text-sm text-muted-foreground">{sub}</p>
@@ -285,7 +298,7 @@ const QuickQuoteForm = ({
           type="submit"
           size="lg"
           disabled={submitting}
-          className="w-full"
+          className={isConcierge ? "h-auto min-h-12 w-full whitespace-normal py-3" : "w-full"}
         >
           {submitting ? t("quickQuote.sending") : cta}
         </Button>
