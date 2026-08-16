@@ -94,7 +94,7 @@ function notificationRows(submission: AcquisitionSubmission) {
     ["Condition", humanize(submission.vehicleCondition)],
     ["Ownership", humanize(submission.ownershipStatus)],
     ["Availability", humanize(submission.vehicleAvailability)],
-    ["VIN", submission.vin ? "Provided — view securely in Supabase" : "Not provided"],
+    ["VIN", submission.vin ? "Provided (not included in email)" : "Not provided"],
     ["Strategic Passenger Van", submission.vehicleType === "passenger_van" && submission.passengerCapacity === "12_14" ? "Yes" : "No"],
     ["Landing Page", submission.landingPage],
     ["Source", submission.source || "direct"],
@@ -140,6 +140,41 @@ async function sendNotification(submission: AcquisitionSubmission) {
   return { sent: true };
 }
 
+async function storeSubmission(
+  submission: AcquisitionSubmission,
+  userAgent: string | string[] | undefined,
+) {
+  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+  const supabaseKey =
+    process.env.SUPABASE_SECRET_KEY ??
+    process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    return { stored: false, reason: "server-only Supabase configuration is missing" };
+  }
+
+  try {
+    const supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+    const row: Record<string, unknown> = {
+      ...toAcquisitionRow(submission),
+      user_agent: Array.isArray(userAgent) ? userAgent.join(", ") : userAgent ?? null,
+    };
+    const { error } = await supabase.from("acquisition_leads").insert(row);
+
+    if (error) {
+      return { stored: false, reason: `${error.code ?? "database_error"}: ${error.message}` };
+    }
+    return { stored: true };
+  } catch (error) {
+    return {
+      stored: false,
+      reason: error instanceof Error ? error.message : "unknown database error",
+    };
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Cache-Control", "no-store");
 
@@ -174,35 +209,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
-  const supabaseKey =
-    process.env.SUPABASE_SECRET_KEY ??
-    process.env.SUPABASE_SERVICE_ROLE_KEY;
+  // Match the site's established form behavior: database storage and the
+  // operations email are independent capture paths. A temporary failure in one
+  // must not discard a valid lead captured by the other.
+  const [storage, notification] = await Promise.all([
+    storeSubmission(submission, req.headers["user-agent"]),
+    sendNotification(submission).catch((error) => ({
+      sent: false as const,
+      reason: error instanceof Error ? error.message : "unknown email error",
+    })),
+  ]);
 
-  if (!supabaseUrl || !supabaseKey) {
-    console.error("Acquisition lead submission is missing server-only Supabase configuration");
-    return res.status(503).json({ error: "Lead service is temporarily unavailable." });
+  if (!storage.stored) {
+    console.error("Acquisition lead storage failed", storage.reason);
+  }
+  if (!notification.sent) {
+    console.error("Acquisition notification failed", notification.reason);
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
+  if (!storage.stored && !notification.sent) {
+    return res.status(503).json({
+      error: "We couldn't send your request. Please try again or call us directly.",
+    });
+  }
+
+  return res.status(201).json({
+    ok: true,
+    stored: storage.stored,
+    notificationSent: notification.sent,
   });
-  const row = { ...toAcquisitionRow(submission), user_agent: req.headers["user-agent"] ?? null };
-  const { error: insertError } = await supabase.from("acquisition_leads").insert(row);
-
-  if (insertError) {
-    console.error("Acquisition lead insert failed", insertError.code, insertError.message);
-    return res.status(500).json({ error: "We could not save your request. Please try again." });
-  }
-
-  let notificationSent = false;
-  try {
-    const notification = await sendNotification(submission);
-    notificationSent = notification.sent;
-    if (!notification.sent) console.warn("Acquisition notification skipped", notification.reason);
-  } catch (error) {
-    console.error("Acquisition notification failed", error);
-  }
-
-  return res.status(201).json({ ok: true, notificationSent });
 }

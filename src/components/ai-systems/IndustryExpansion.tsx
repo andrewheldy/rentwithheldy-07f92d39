@@ -26,6 +26,12 @@ export function IndustryExpansion() {
             <strong>Rent With Heldy</strong>
             <span>{t("industries.carRental")}</span>
           </div>
+          <span className="ai-industry-connector" aria-hidden="true"><i /></span>
+          <div className="ai-industry-pattern">
+            <small>{t("industries.patternLabel")}</small>
+            <strong>{t("industries.patternTitle")}</strong>
+          </div>
+          <span className="ai-industry-branches" aria-hidden="true"><i /></span>
           <div className="ai-industry-list" aria-label={t("industries.listLabel")}>
             {industries.map((industry) => (
               <span key={industry}>{t(`industries.items.${industry}`)}</span>

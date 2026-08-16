@@ -33,6 +33,11 @@ export function WorkflowComparison() {
             </ol>
           </Reveal>
 
+          <div className="ai-comparison-divider" aria-hidden="true">
+            <span>{t("comparison.transformationLabel")}</span>
+            <i />
+          </div>
+
           <Reveal className="ai-reveal ai-comparison-column ai-after">
             <h3>{t("comparison.afterLabel")}</h3>
             <ol>

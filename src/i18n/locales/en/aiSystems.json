@@ -3,6 +3,17 @@
     "title": "AI Systems Inside a Real Business | Rent With Heldy",
     "description": "A private case study showing how AI, automation, structured data, and better workflows connect across a real operating car rental business."
   },
+  "journey": {
+    "label": "Case study chapters",
+    "chapters": {
+      "business": "The business",
+      "system": "The system",
+      "workflows": "The workflows",
+      "transformation": "The transformation",
+      "pattern": "The pattern",
+      "opportunity": "Your opportunity"
+    }
+  },
   "hero": {
     "privateLabel": "Private systems case study",
     "homeLabel": "Return to the Rent With Heldy home page",
@@ -22,6 +33,12 @@
       "finance": "Finance",
       "knowledge": "Knowledge",
       "automation": "Automation"
+    },
+    "layers": {
+      "operations": "Operations",
+      "communication": "Communication",
+      "data": "Data",
+      "decisions": "AI / decision support"
     },
     "core": {
       "small": "Operating core",
@@ -56,6 +73,14 @@
       "documentation": "Documentation",
       "operations": "Operations",
       "growth": "Growth"
+    },
+    "story": {
+      "start": { "title": "It started with rentals.", "body": "One car rental operation had to coordinate guests, vehicles, places, and timing." },
+      "coordination": { "title": "Growth created coordination.", "body": "More moving parts meant more information had to arrive in the right place at the right time." },
+      "repetition": { "title": "Coordination exposed repetition.", "body": "The same questions, handoffs, updates, and exceptions appeared across daily work." },
+      "workflows": { "title": "Repeated work became workflows.", "body": "Naming the sequence made the work visible enough to improve instead of repeatedly reconstructing it." },
+      "systems": { "title": "Workflows became connected systems.", "body": "Reservations, communication, operations, knowledge, and follow-up began sharing useful context." },
+      "intelligence": { "title": "Connection created intelligence.", "body": "Structured activity made it easier to see patterns, prepare decisions, and direct attention to exceptions." }
     }
   },
   "workflow": {
@@ -167,6 +192,7 @@
     "body": "The first job is not choosing a tool. It is seeing every step, handoff, decision, and exception clearly.",
     "beforeLabel": "Manual workflow",
     "afterLabel": "AI-enabled workflow",
+    "transformationLabel": "Coordinate",
     "before": {
       "read": "Someone reads the incoming inquiry",
       "availability": "Checks availability",
@@ -193,6 +219,8 @@
     "body": "These structures are ready for sanitized screenshots, recordings, and real examples in Pass 3. Nothing below claims a production result.",
     "demoLabel": "Demonstration structure",
     "replaceableNote": "Replaceable media slot. No customer or production data shown.",
+    "inspect": "Inspect artifact",
+    "close": "Close artifact",
     "items": {
       "voice": { "title": "Voice AI", "description": "A call becomes context, retrieval, and a useful next action.", "flowLabel": "Voice AI artifact flow", "flow": { "call": "Call", "transcript": "Transcript", "knowledge": "Knowledge Retrieval", "action": "Response / Action" } },
       "fleet": { "title": "Fleet Intelligence", "description": "Vehicle records become a comparable operating view.", "flowLabel": "Fleet intelligence artifact flow", "flow": { "vehicles": "Vehicles", "utilization": "Utilization", "revenue": "Revenue", "performance": "Performance" } },
@@ -202,6 +230,31 @@
       "acquisition": { "title": "Vehicle Acquisition", "description": "Candidate evidence is structured before a decision is made.", "flowLabel": "Vehicle acquisition artifact flow", "flow": { "candidates": "Candidates", "data": "Data", "analysis": "Analysis", "decision": "Decision" } }
     }
   },
+  "transformation": {
+    "kicker": "From one problem to an operating system",
+    "title": "One Operational Problem Can Grow Into a Business Operating System.",
+    "body": "The system did not appear all at once. Each useful connection created the foundation for the next one.",
+    "stages": {
+      "problem": { "title": "Solve the immediate problem.", "body": "Connect the customer, booking, and vehicle so the next action has context." },
+      "operation": { "title": "Connect the operation around it.", "body": "Communications, marketplaces, direct demand, and fleet work attach to the same operating sequence." },
+      "intelligence": { "title": "Let the operation teach you.", "body": "Calendars, delivery, analytics, and decision support become useful because the underlying work is already connected." }
+    },
+    "nodes": {
+      "customer": "Customer",
+      "booking": "Booking",
+      "vehicle": "Vehicle",
+      "communication": "Communications",
+      "marketplace": "Marketplace",
+      "direct": "Direct",
+      "fleetOps": "Fleet operations",
+      "calendar": "Calendar",
+      "delivery": "Delivery",
+      "analytics": "Analytics",
+      "decisions": "AI / decisions"
+    },
+    "caption": "A booking problem expands into connected communications, operations, measurement, and decision support.",
+    "thesis": "The valuable part is not the car rental software. It is the operating pattern underneath it."
+  },
   "industries": {
     "title": "Car Rental Is Just the Use Case.",
     "body": "The details change by industry. The underlying pattern of questions, decisions, handoffs, knowledge, and repeated work remains recognizable.",
@@ -209,6 +262,8 @@
     "support": "AI becomes useful when it connects workflow, context, data, business rules, and the systems already in use.",
     "originLabel": "The proving ground",
     "carRental": "Car rental",
+    "patternLabel": "Transferable layer",
+    "patternTitle": "Operating pattern",
     "listLabel": "Industries with repeatable operating patterns",
     "items": {
       "hotel": "Hotel",
@@ -231,6 +286,8 @@
     "optionsLabel": "Business problems to map",
     "outputLabel": "Deterministic output",
     "outputTitle": "AI Opportunity Map",
+    "architectureCore": "Operating map",
+    "architectureDescription": "Selected work patterns connect to the recommended systems below. Each recommendation keeps its explicit reasons.",
     "selectedCount_one": "{{count}} selected",
     "selectedCount_other": "{{count}} selected",
     "empty": "Select one or more work patterns to see the systems that may be worth mapping.",

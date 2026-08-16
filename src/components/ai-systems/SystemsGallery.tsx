@@ -4,12 +4,14 @@ import { Check, ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { systemCategories } from "@/data/ai-systems";
 import { SectionIntro } from "./SectionIntro";
+import { usePointerMotion } from "./usePointerMotion";
 
 type SystemCategory = (typeof systemCategories)[number];
 
 export function SystemsGallery() {
   const { t } = useTranslation("aiSystems");
   const [active, setActive] = useState<SystemCategory>("customerExperience");
+  const { motionActive, markPointerIntent, cancelMotion, commitMotion } = usePointerMotion();
 
   return (
     <section className="ai-section ai-gallery" aria-labelledby="ai-gallery-title">
@@ -33,7 +35,15 @@ export function SystemsGallery() {
                     type="button"
                     data-active={active === category}
                     aria-pressed={active === category}
-                    onClick={() => setActive(category)}
+                    aria-controls="ai-gallery-active-detail"
+                    aria-label={`${String(index + 1).padStart(2, "0")} ${t(`gallery.categories.${category}.title`)}`}
+                    onPointerDown={markPointerIntent}
+                    onPointerCancel={cancelMotion}
+                    onKeyDown={cancelMotion}
+                    onClick={() => {
+                      commitMotion();
+                      setActive(category);
+                    }}
                   >
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <strong>{t(`gallery.categories.${category}.title`)}</strong>
@@ -44,19 +54,26 @@ export function SystemsGallery() {
             </div>
           </Reveal>
 
-          <Reveal className="ai-reveal ai-gallery-detail">
-            <p className="ai-detail-label">{t("gallery.systemLabel")}</p>
-            <h3>{t(`gallery.categories.${active}.title`)}</h3>
-            <p className="ai-gallery-thesis">{t(`gallery.categories.${active}.thesis`)}</p>
-            <ul>
-              {(t(`gallery.categories.${active}.examples`, { returnObjects: true }) as string[]).map((item) => (
-                <li key={item}>
-                  <Check aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <CategoryFeature category={active} />
+          <Reveal
+            className="ai-reveal ai-gallery-detail"
+            id="ai-gallery-active-detail"
+            data-motion={motionActive}
+            aria-live="polite"
+          >
+            <div className="ai-gallery-detail-inner" key={active}>
+              <p className="ai-detail-label">{t("gallery.systemLabel")}</p>
+              <h3>{t(`gallery.categories.${active}.title`)}</h3>
+              <p className="ai-gallery-thesis">{t(`gallery.categories.${active}.thesis`)}</p>
+              <ul>
+                {(t(`gallery.categories.${active}.examples`, { returnObjects: true }) as string[]).map((item) => (
+                  <li key={item}>
+                    <Check aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <CategoryFeature category={active} />
+            </div>
           </Reveal>
         </div>
       </div>

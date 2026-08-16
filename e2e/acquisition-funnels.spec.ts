@@ -142,6 +142,7 @@ test("vehicle funnel captures structured supply and keeps VIN out of analytics a
   await next(page);
   await page.locator('input[value="excellent"]').check();
   await next(page);
+  await expect(page.getByText(/supply\.options\.ownership\..*\.description/)).toHaveCount(0);
   await page.locator('input[value="financed"]').check();
   await next(page);
   await page.locator('input[value="most_of_month"]').check();

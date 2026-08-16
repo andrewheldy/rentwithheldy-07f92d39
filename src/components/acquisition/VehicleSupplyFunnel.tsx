@@ -125,13 +125,15 @@ const VehicleSupplyFunnel = () => {
     track("consignment_funnel_started", { step_number: stepIndex + 1 });
   };
 
-  const option = (group: string, value: string): ChoiceOption => ({
-    value,
-    label: t(`supply.options.${group}.${value}.label`),
-    description: t(`supply.options.${group}.${value}.description`, {
-      defaultValue: "",
-    }) || undefined,
-  });
+  const option = (group: string, value: string): ChoiceOption => {
+    const descriptionKey = `supply.options.${group}.${value}.description`;
+    const description = t(descriptionKey, { defaultValue: "" });
+    return {
+      value,
+      label: t(`supply.options.${group}.${value}.label`),
+      description: description && description !== descriptionKey ? description : undefined,
+    };
+  };
 
   const setSingle = (field: keyof SupplyDraft, value: string) => {
     markStarted();

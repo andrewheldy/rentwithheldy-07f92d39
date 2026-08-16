@@ -106,6 +106,31 @@ export function OpportunityFinder() {
               <span>{t("opportunity.selectedCount", { count: selected.length })}</span>
             </div>
 
+            {selected.length ? (
+              <figure className="ai-opportunity-architecture" aria-labelledby="ai-opportunity-architecture-caption">
+                <div className="ai-architecture-sources" aria-hidden="true">
+                  {selected.map((problem) => (
+                    <span key={problem} data-motion-node>{t(`opportunity.problems.${problem}`)}</span>
+                  ))}
+                </div>
+                <span className="ai-architecture-connector" aria-hidden="true"><i /></span>
+                <strong className="ai-architecture-core" aria-hidden="true">
+                  {t("opportunity.architectureCore")}
+                </strong>
+                <span className="ai-architecture-connector" aria-hidden="true"><i /></span>
+                <div className="ai-architecture-systems" aria-hidden="true">
+                  {recommendations.map((recommendation) => (
+                    <span key={recommendation} data-motion-node>
+                      {t(`opportunity.recommendations.${recommendation}.title`)}
+                    </span>
+                  ))}
+                </div>
+                <figcaption id="ai-opportunity-architecture-caption">
+                  {t("opportunity.architectureDescription")}
+                </figcaption>
+              </figure>
+            ) : null}
+
             {recommendations.length ? (
               <div className="ai-recommendations" aria-live="polite" aria-atomic="false">
                 {recommendations.map((recommendation, index) => (

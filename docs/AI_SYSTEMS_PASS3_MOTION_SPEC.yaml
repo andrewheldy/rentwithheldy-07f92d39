@@ -1,0 +1,163 @@
+spec_id: ai-systems-pass3-journey-motion
+date: "2026-08-15"
+owner: Andrew Heldy
+brief_ref: docs/AI_SYSTEMS_PASS3_DESIGN_BRIEF.md
+registry_entries_used:
+  - motion-intelligence
+  - emil-design-skills
+objective: >
+  Preserve orientation through a long case study and explain how manual work,
+  business functions, workflows, and recommendations connect into operating systems.
+semantic_purpose: reveal-relationship
+surface: marketing
+trigger:
+  interaction: scroll
+  frequency: constant
+  input_methods: [pointer, touch, keyboard]
+elements:
+  - target: ".ai-journey-progress-fill"
+    properties: [transform]
+    role: primary
+  - target: ".ai-story-system [data-story-level], .ai-transformation-map [data-level]"
+    properties: [opacity, transform]
+    role: primary
+  - target: ".ai-map-line::after, .ai-shared-connector"
+    properties: [opacity, transform]
+    role: supporting
+  - target: ".ai-opportunity-architecture [data-motion-node]"
+    properties: [opacity, transform]
+    role: supporting
+spatial_relationship: >
+  Teal progress and connector lines advance in authored document order. Story nodes
+  stay in reserved layouts and change emphasis as the observer selects a beat; dynamic
+  Opportunity Finder nodes enter only inside the tool's existing layout.
+engine: css-transition
+selection_rationale:
+  escalation_reason: >
+    No escalation past CSS is needed. IntersectionObserver supplies discrete semantic
+    states, and a passive requestAnimationFrame-coalesced root progress write supplies
+    orientation without scrubbing component geometry or pinning the page.
+  rejected_alternatives:
+    - engine: none
+      why_not: >
+        The static page remains complete, but restrained progress and accumulation reduce
+        re-reading by showing which earlier work produced the currently visible system.
+    - engine: css-scroll-driven
+      why_not: >
+        Firefox support remains limited and the chapter state must update accessibly in
+        every supported browser; IntersectionObserver is the simpler cross-browser fit.
+    - engine: motion-react
+      why_not: >
+        There is no animated unmount, shared layout morph, measured reorder, or gesture
+        spring. React exposes state and native CSS owns presentation.
+    - engine: gsap
+      why_not: >
+        The page uses no scrubbed timeline, SVG path morph, dependent choreography, or
+        mobile pinning. A timeline dependency would add machinery without capability.
+  new_dependency: false
+  layer_ownership: >
+    React and IntersectionObserver own chapter and beat state. CSS owns every timed
+    transition. One coalesced passive scroll listener writes only the overall progress
+    transform and never reads component layout on each frame.
+sequence:
+  - step: 1
+    target: ".ai-system-map"
+    change: "the visible operating core resolves, then surrounding nodes and finite connector pulses settle"
+  - step: 2
+    target: ".ai-story-system"
+    change: "business functions accumulate and organize around the operating core"
+  - step: 3
+    target: ".ai-transformation-map"
+    change: "booking structure expands into communications, operations, analytics, and decision support"
+  - step: 4
+    target: ".ai-opportunity-architecture"
+    change: "selected work patterns connect to the same deterministic recommended systems"
+timing:
+  duration_ms: 360
+  delay_ms: 0
+  stagger_ms: 45
+  derivation: >
+    Narrative nodes travel at most eight pixels and are encountered once while reading,
+    so 280–360ms lets the relationship register without delaying text. The finite hero
+    sequence may use 420–720ms because it is a once-per-load illustration. Frequent UI
+    controls stay at 140–180ms, and keyboard activation remains instant.
+easing:
+  kind: cubic-bezier
+  curve: "cubic-bezier(0.23, 1, 0.32, 1)"
+  character: "fast establishment with a quiet editorial settle and no spring or bounce"
+interruption:
+  behavior: retarget-preserving-velocity
+  notes: >
+    CSS transitions retarget from computed state when observer or pointer state changes.
+    Scroll position and React state update immediately and never await a transition.
+responsive:
+  mobile: >
+    Sticky desktop scenes become normal-flow vertical stories. The hero becomes a labeled
+    vertical architecture, workflows and process become one-column connectors, and the
+    chapter indicator consumes one compact row.
+  tablet: "Story layouts remain in normal flow where sticky composition would crowd content."
+  desktop: "A field-guide rail and semi-sticky story visualizations appear only when space permits."
+  orientation_or_input_notes: >
+    A small landscape viewport receives the mobile normal-flow model. Touch does not
+    require hover or swipe; selectors remain buttons.
+reduced_motion:
+  strategy: instant-state-change
+  end_state_preserved: true
+  implementation: >
+    Motion declarations are opt-in under prefers-reduced-motion: no-preference. The
+    default CSS displays final nodes, full connectors, expanded story end states, and
+    disables smooth scrolling and sticky narrative scenes.
+  vestibular_review: >
+    No parallax, zoom, rotation, scroll hijacking, perpetual animation, or large-area
+    travel is used. The only scroll-linked value is a scale transform on a thin progress
+    line; it is disabled under reduced motion.
+keyboard_and_focus:
+  runs_on_keyboard_trigger: false
+  focus_behavior: >
+    Native anchors and buttons retain instant focus indicators. Chapter anchors focus the
+    destination wrapper without waiting for scroll. Keyboard-triggered state changes set
+    final content immediately and never enable pointer-motion selectors.
+  reason_if_animated: "Not applicable."
+ssr:
+  renders_on_server: false
+  hydration_notes: >
+    This is a Vite SPA. Authored defaults are visible and meaningful before observers run;
+    unsupported or disabled JavaScript leaves all content in document order.
+  client_boundary: "Existing client-rendered route and local component state."
+cleanup:
+  on_unmount: >
+    Every IntersectionObserver disconnects; resize and passive scroll listeners are
+    removed; pending animation frames and pointer-intent timeouts are cancelled.
+  listeners_and_observers: >
+    One chapter observer, one observer per scroll-story component, and one passive root
+    scroll listener coalesced through requestAnimationFrame. No per-node observer or loop.
+  route_change_notes: "SPA navigation cleanup returns active observers and animation frames to baseline."
+performance_budget:
+  compositor_only: false
+  added_bytes_gz: 0
+  target_fps: 60
+  cls_contribution: "None; all story and diagram nodes occupy reserved layout before state emphasis changes."
+  inp_notes: >
+    Controls commit synchronously. Timed transitions use transform and opacity; brief
+    color and border repaints are limited to small controls and connector lines.
+  notes: >
+    No animated width, height, top, left, filter, blur, or box shadow. The progress line
+    uses transform scale only. No permanent will-change or runtime dependency is added.
+verification:
+  method: playwright-script
+  required_checks: [RM-1, RM-2, RM-3, A11Y-1, A11Y-2, A11Y-4, PERF-1, CON-1, LOAD-1, LOAD-2, NAV-1, NAV-2, INT-1, INT-2, SCR-1, SCR-2, VP-1, VP-2, VP-3, OVF-1, CLS-1, CLEAN-1, CLEAN-2]
+  viewports: ["320x568", "375x812", "390x844", "430x932", "768x1024", "1024x768", "1280x800", "1440x900"]
+  evidence_path: docs/AI_SYSTEMS_PASS3_REVIEW.md
+acceptance_criteria:
+  - Chapter state and progress remain correct when scrolling quickly in either direction.
+  - Every complete story and interaction state remains visible with transitions disabled.
+  - Pointer and touch feedback never delays deterministic state or creates layout shift.
+  - Keyboard activation produces no transition and retains a visible focus indicator.
+  - Reduced motion removes line draws, finite pulses, smooth scrolling, and sticky story dependence.
+  - Motion adds no dependency, overflow, residual observer, animation frame loop, or console error.
+expected_failure_modes:
+  - A sticky chapter indicator colliding with translated headings or the site chrome.
+  - Observer thresholds leaving the previous chapter active across a large section boundary.
+  - Dynamic architecture nodes overflowing at 320px or in Hebrew RTL.
+  - A story node remaining muted when reduced motion or JavaScript is disabled.
+  - A finite hero pulse accidentally becoming an infinite ambient animation.

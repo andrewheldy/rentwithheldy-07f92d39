@@ -63,6 +63,32 @@ const driverBody = {
   startedAt: Date.now() - 10_000,
 };
 
+const vehicleBody = {
+  leadType: "vehicle_supply",
+  vehicleYear: 2024,
+  vehicleMake: "Ford",
+  vehicleModel: "Transit 350 HD",
+  vehicleTrim: "XLT",
+  vehicleType: "passenger_van",
+  passengerCapacity: "12_14",
+  mileage: 18_000,
+  vehicleCondition: "excellent",
+  ownershipStatus: "financed",
+  vehicleAvailability: "most_of_month",
+  vin: "1FTBW3XG5RKA12345",
+  firstName: "Taylor",
+  lastName: "Owner",
+  phone: "5615550110",
+  email: "owner@example.com",
+  zipCode: "33101",
+  source: "direct",
+  campaign: null,
+  referrer: null,
+  landingPage: "/list-your-vehicle",
+  website: "",
+  startedAt: Date.now() - 10_000,
+};
+
 function request(body: unknown, ip: string): VercelRequest {
   return {
     method: "POST",
@@ -81,6 +107,7 @@ describe("acquisition lead API", () => {
     process.env.SUPABASE_URL = "https://example.supabase.co";
     process.env.SUPABASE_SECRET_KEY = "test-secret-key";
     process.env.RESEND_API_KEY = "test-resend-key";
+    delete process.env.RESEND_FROM_EMAIL;
     mocks.insert.mockReset().mockResolvedValue({ error: null });
     mocks.send.mockReset().mockResolvedValue({ error: null });
   });
@@ -100,6 +127,39 @@ describe("acquisition lead API", () => {
       }),
     );
     expect(mocks.send).toHaveBeenCalledTimes(1);
+    expect(mocks.send).toHaveBeenCalledWith(
+      expect.objectContaining({
+        from: "onboarding@resend.dev",
+        to: ["rentwithheldy@gmail.com"],
+        subject: "NEW DRIVER DEMAND — HOT",
+      }),
+    );
+  });
+
+  it("sends the vehicle funnel through the configured Resend sender without exposing the VIN", async () => {
+    process.env.RESEND_FROM_EMAIL = "Rent With Heldy <leads@rentwithheldy.com>";
+    const { response, result } = responseHarness();
+
+    await handler(request(vehicleBody, "192.0.2.17"), response);
+
+    expect(result.status).toBe(201);
+    expect(mocks.insert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        lead_type: "vehicle_supply",
+        vehicle_type: "passenger_van",
+        strategic_interest: true,
+        vin: "1FTBW3XG5RKA12345",
+      }),
+    );
+    expect(mocks.send).toHaveBeenCalledWith(
+      expect.objectContaining({
+        from: "Rent With Heldy <leads@rentwithheldy.com>",
+        to: ["rentwithheldy@gmail.com"],
+        subject: "NEW VEHICLE CONSIGNMENT LEAD",
+        html: expect.not.stringContaining("1FTBW3XG5RKA12345"),
+        text: expect.not.stringContaining("1FTBW3XG5RKA12345"),
+      }),
+    );
   });
 
   it("rejects honeypot submissions before database access", async () => {
@@ -121,14 +181,56 @@ describe("acquisition lead API", () => {
     expect(mocks.insert).not.toHaveBeenCalled();
   });
 
-  it("fails closed when the backend-only Supabase key is not configured", async () => {
+  it("delivers through Resend when the backend-only Supabase key is not configured", async () => {
     delete process.env.SUPABASE_SECRET_KEY;
     delete process.env.SUPABASE_SERVICE_ROLE_KEY;
     const { response, result } = responseHarness();
 
     await handler(request(driverBody, "192.0.2.13"), response);
 
-    expect(result.status).toBe(503);
+    expect(result.status).toBe(201);
+    expect(result.body).toEqual({ ok: true, stored: false, notificationSent: true });
     expect(mocks.insert).not.toHaveBeenCalled();
+    expect(mocks.send).toHaveBeenCalledTimes(1);
+  });
+
+  it("delivers through Resend when database storage fails", async () => {
+    mocks.insert.mockResolvedValueOnce({
+      error: { code: "42P01", message: "acquisition_leads does not exist" },
+    });
+    const { response, result } = responseHarness();
+
+    await handler(request(driverBody, "192.0.2.14"), response);
+
+    expect(result.status).toBe(201);
+    expect(result.body).toEqual({ ok: true, stored: false, notificationSent: true });
+    expect(mocks.send).toHaveBeenCalledTimes(1);
+  });
+
+  it("accepts a stored lead when Resend is temporarily unavailable", async () => {
+    mocks.send.mockResolvedValueOnce({ error: { message: "Resend unavailable" } });
+    const { response, result } = responseHarness();
+
+    await handler(request(driverBody, "192.0.2.15"), response);
+
+    expect(result.status).toBe(201);
+    expect(result.body).toEqual({ ok: true, stored: true, notificationSent: false });
+    expect(mocks.insert).toHaveBeenCalledTimes(1);
+  });
+
+  it("returns an actionable error only when both capture paths fail", async () => {
+    delete process.env.SUPABASE_SECRET_KEY;
+    delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+    delete process.env.RESEND_API_KEY;
+    const { response, result } = responseHarness();
+
+    await handler(request(driverBody, "192.0.2.16"), response);
+
+    expect(result.status).toBe(503);
+    expect(result.body).toEqual({
+      error: "We couldn't send your request. Please try again or call us directly.",
+    });
+    expect(mocks.insert).not.toHaveBeenCalled();
+    expect(mocks.send).not.toHaveBeenCalled();
   });
 });

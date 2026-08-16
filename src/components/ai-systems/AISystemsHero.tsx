@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { heroNodes } from "@/data/ai-systems";
+import { heroArchitecture, heroNodes } from "@/data/ai-systems";
 
 export function AISystemsHero() {
   const { t } = useTranslation("aiSystems");
@@ -35,16 +35,24 @@ export function AISystemsHero() {
 
         <figure className="ai-system-map" aria-labelledby="ai-system-map-caption">
           <div className="ai-map-field" aria-hidden="true">
-            {heroNodes.map((node, index) => (
-              <span key={node} className={`ai-map-node ai-map-node-${index + 1}`}>
-                {t(`hero.nodes.${node}`)}
-              </span>
-            ))}
             <span className="ai-map-core">
               <small>{t("hero.core.small")}</small>
               <strong>{t("hero.core.title")}</strong>
               <em>{t("hero.core.note")}</em>
             </span>
+            {heroArchitecture.map((layer) => (
+              <span className="ai-map-layer" data-layer={layer.id} key={layer.id}>
+                <small>{t(`hero.layers.${layer.id}`)}</small>
+                {layer.nodes.map((node) => {
+                  const position = heroNodes.indexOf(node) + 1;
+                  return (
+                    <span key={node} className={`ai-map-node ai-map-node-${position}`}>
+                      {t(`hero.nodes.${node}`)}
+                    </span>
+                  );
+                })}
+              </span>
+            ))}
             <i className="ai-map-line ai-map-line-a" />
             <i className="ai-map-line ai-map-line-b" />
             <i className="ai-map-line ai-map-line-c" />
@@ -60,4 +68,3 @@ export function AISystemsHero() {
     </section>
   );
 }
-

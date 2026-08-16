@@ -15,6 +15,28 @@ export const businessFunctions = [
   "growth",
 ] as const;
 
+export const journeyChapters = [
+  "business",
+  "system",
+  "workflows",
+  "transformation",
+  "pattern",
+  "opportunity",
+] as const;
+
+export const businessStoryBeats = [
+  "start",
+  "coordination",
+  "repetition",
+  "workflows",
+  "systems",
+  "intelligence",
+] as const;
+
+export const businessFunctionLevels = [
+  1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5,
+] as const;
+
 export const heroNodes = [
   "customers",
   "fleet",
@@ -144,3 +166,25 @@ export const opportunityMap: Record<OpportunityProblem, RecommendationId[]> = {
 
 export const processSteps = ["find", "build", "integrate", "improve"] as const;
 
+export const heroArchitecture = [
+  { id: "operations", nodes: ["fleet", "operations", "sales"] },
+  { id: "communication", nodes: ["customers", "marketing"] },
+  { id: "data", nodes: ["finance", "research", "knowledge"] },
+  { id: "decisions", nodes: ["automation"] },
+] as const;
+
+export const transformationStages = ["problem", "operation", "intelligence"] as const;
+
+export const transformationNodes = [
+  { id: "customer", level: 1 },
+  { id: "booking", level: 1 },
+  { id: "vehicle", level: 1 },
+  { id: "communication", level: 2 },
+  { id: "marketplace", level: 2 },
+  { id: "direct", level: 2 },
+  { id: "fleetOps", level: 2 },
+  { id: "calendar", level: 3 },
+  { id: "delivery", level: 3 },
+  { id: "analytics", level: 3 },
+  { id: "decisions", level: 3 },
+] as const;
