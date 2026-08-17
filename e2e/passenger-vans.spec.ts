@@ -84,8 +84,8 @@ test("submits renter and consignment inquiries through the existing lead flow", 
   await rental.getByRole("button", { name: "Send an Inquiry" }).click();
   await expect(page.getByRole("heading", { name: "We have your van request." })).toBeVisible();
 
-  await page.getByRole("button", { name: "Consign Your Van" }).click();
   const consignment = page.locator("#consignment-form form");
+  await expect(consignment).toBeVisible();
   await consignment.locator("#consign-name").fill("Test Owner");
   await consignment.locator("#consign-phone").fill("5615550100");
   await consignment.locator("#consign-email").fill("owner@example.com");

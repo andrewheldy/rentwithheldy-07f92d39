@@ -74,7 +74,6 @@ const PassengerVans = () => {
   const [selectedTrip, setSelectedTrip] = useState<TripKey>("cruise");
   const [inquiryTripType, setInquiryTripType] = useState("");
   const [inquiryVehicle, setInquiryVehicle] = useState("no_preference");
-  const [consignmentOpen, setConsignmentOpen] = useState(false);
 
   const faqs = t("faq.items", { returnObjects: true }) as FAQItem[];
   const selectedLocations = t(`tripSelector.options.${selectedTrip}.locations`, {
@@ -587,35 +586,15 @@ const PassengerVans = () => {
                   {t("consignment.body")}
                 </p>
                 <p className="mt-4 text-sm text-white/55">{t("consignment.microcopy")}</p>
-                <Button
-                  type="button"
-                  size="lg"
-                  variant="outline"
-                  className="mt-7 border-white/35 text-white hover:border-white/60 hover:bg-white/10"
-                  aria-expanded={consignmentOpen}
-                  aria-controls="consignment-form"
-                  onClick={() => {
-                    const next = !consignmentOpen;
-                    setConsignmentOpen(next);
-                    if (next) track("passenger_vans_consignment_cta");
-                  }}
-                >
-                  {consignmentOpen ? t("consignment.closeCta") : t("consignment.cta")}
-                </Button>
               </Reveal>
-              <div id="consignment-form">
-                {consignmentOpen ? (
-                  <Reveal className="rounded-card bg-card p-6 text-foreground shadow-elevated sm:p-8">
-                    <h3 className="text-heading font-bold text-ink">{t("forms.consignment.title")}</h3>
-                    <p className="mb-7 mt-3 text-muted-foreground">{t("forms.consignment.body")}</p>
-                    <ConsignmentInquiryForm />
-                  </Reveal>
-                ) : (
-                  <div className="hidden min-h-72 rounded-card border border-dashed border-white/20 lg:flex lg:items-center lg:justify-center">
-                    <BusFront className="h-20 w-20 text-white/10" aria-hidden="true" />
-                  </div>
-                )}
-              </div>
+              <Reveal
+                id="consignment-form"
+                className="rounded-card bg-card p-6 text-foreground shadow-elevated sm:p-8"
+              >
+                <h3 className="text-heading font-bold text-ink">{t("forms.consignment.title")}</h3>
+                <p className="mb-7 mt-3 text-muted-foreground">{t("forms.consignment.body")}</p>
+                <ConsignmentInquiryForm />
+              </Reveal>
             </div>
           </div>
         </section>
