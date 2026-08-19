@@ -11,6 +11,10 @@ import About from "./pages/About";
 import AddCar from "./pages/AddCar";
 import AdminLeads from "./pages/AdminLeads";
 import AdminPhotos from "./pages/AdminPhotos";
+import AdminAgreements from "./pages/AdminAgreements";
+import AdminAgreementNew from "./pages/AdminAgreementNew";
+import AdminAgreementDetail from "./pages/AdminAgreementDetail";
+import SignAgreement from "./pages/SignAgreement";
 import Auth from "./pages/Auth";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
@@ -86,6 +90,8 @@ const App = () => (
             />
             <Route path="/about" element={<About />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/sign/:token" element={<SignAgreement />} />
+            <Route path="/sign" element={<SignAgreement />} />
             {/* Redirect old routes */}
             <Route path="/categories" element={<Navigate to="/fleet" replace />} />
             <Route
@@ -99,6 +105,30 @@ const App = () => (
               element={
                 <ProtectedRoute requireAdmin>
                   <AddCar />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/agreements"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminAgreements />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/agreements/new"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminAgreementNew />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/agreements/:id"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminAgreementDetail />
                 </ProtectedRoute>
               }
             />
