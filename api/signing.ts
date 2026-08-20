@@ -7,6 +7,7 @@ import {
   createServerSupabase,
   hashSigningToken,
   loadAgreementDetail,
+  makeSigningToken,
   recordAgreementEvent,
 } from "../src/server/agreements/server.js";
 
@@ -36,7 +37,7 @@ async function loadSigningContext(
   if (new Date(token.expires_at).getTime() <= Date.now()) {
     return { state: "expired" as const, tokenHash, token, signer, agreement, version };
   }
-  if (token.revoked_at && signer.status !== "signed") {
+  if (token.revoked_at) {
     return { state: "invalid" as const, tokenHash, token, signer, agreement, version };
   }
   if (token.purpose === "download") {
@@ -232,13 +233,43 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
       }
       const detail = await loadAgreementDetail(supabase, context.agreement.id);
-      return res.status(200).json({ ...publicPayload(detail, detail.status === "executed" ? "executed" : "already_signed", context.signer.id), pdfPending });
+      let downloadToken: string | null = null;
+      if (detail.status === "executed") {
+        const generated = makeSigningToken();
+        const { error: tokenError } = await supabase.from("agreement_signing_tokens").insert({
+          agreement_id: detail.id,
+          agreement_version_id: detail.version.id,
+          signer_id: context.signer.id,
+          token_hash: generated.tokenHash,
+          purpose: "download",
+          expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+        });
+        if (tokenError) {
+          pdfPending = true;
+          await recordAgreementEvent(supabase, {
+            agreementId: detail.id,
+            versionId: detail.version.id,
+            signerId: context.signer.id,
+            eventType: "immediate_download_token_failed",
+            actorType: "system",
+            message: "The final signer download token could not be created",
+            metadata: { error: tokenError.message },
+          });
+        } else {
+          downloadToken = generated.token;
+        }
+      }
+      return res.status(200).json({
+        ...publicPayload(detail, detail.status === "executed" ? "executed" : "already_signed", context.signer.id),
+        pdfPending,
+        downloadToken,
+      });
     }
 
     if (action === "download") {
       if (
         context.state !== "executed"
-        || (context.token.purpose !== "download" && context.signer.status !== "signed")
+        || context.token.purpose !== "download"
       ) {
         return res.status(409).json({ error: "The executed agreement is not available from this link." });
       }

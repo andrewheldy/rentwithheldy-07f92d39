@@ -25,14 +25,19 @@ Sending resolves the selected template and structured data into a canonical snap
 
 - Admin list/create/read/update/send/remind/link/void/download operations validate the bearer session with Supabase Auth and verify the `admin` role server-side.
 - Public review and sign operations accept the token in a POST body, set `Cache-Control: no-store`, validate token/version/status/expiry, and return only the signer-permitted snapshot.
-- Signature completion is transactional in Postgres: it validates the token and frozen hash, records consent/signature metadata, revokes the signer's tokens, appends an event, and recalculates agreement status.
+- Signature completion is transactional in Postgres: it validates the token and frozen hash, records consent/signature metadata, revokes the signer's signing tokens, appends an event, and recalculates agreement status. A distinct download-only token is issued after execution; consumed signing credentials cannot regain access.
 - Draft edits update the structured document and signer rows in one database transaction, preventing partial saves.
 - The final required signature triggers PDF generation from the same structured snapshot, private Storage upload, and completion emails. Failures are recorded and can be retried without changing signatures.
 - Completion emails use download-only tokens, so every party can retrieve the executed PDF without reopening signature authority.
 
 ## Rendering
 
-The template is structured as numbered sections and typed blocks rather than editable HTML. One pure rendering layer resolves variables and repeated parties/vehicles into a normalized document model. Admin preview and public signing share the React document renderer; PDF generation consumes the same normalized model and signature records.
+Both canonical Google Drive agreements are represented as versioned, structured HTML templates:
+
+- Vehicle Consignment & Rental Management Agreement — operator, owners, vehicles, revenue split, payment cadence, and trial dates.
+- Long-Term Vehicle Rental Agreement — renter/license, vehicle, rental term/rates, insurance, permitted use, maintenance, return, and delivery-condition fields.
+
+Staff edit the variable legal fields through typed HTML controls while the source-preserved legal prose remains versioned template content. Calendar popovers use the project's existing `react-day-picker`, `date-fns`, and Radix primitives, including month/year dropdown navigation, dependent end-date rules, and calculated term/expiration shortcuts. One pure rendering layer resolves variables and repeated parties/vehicles into a normalized document model. Admin preview and public signing share the React HTML document renderer; PDF generation consumes the same normalized model and signature records.
 
 ## Existing infrastructure reused
 

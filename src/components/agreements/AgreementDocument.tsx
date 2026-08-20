@@ -26,6 +26,27 @@ export function AgreementDocument({
   signatures?: LiveSignature[];
   showSummary?: boolean;
 }) {
+  const counterparties = document.counterparties ?? document.owners;
+  const counterpartyLabel = document.counterpartyLabel ?? "Vehicle owner";
+  const summaryItems = document.summary.items ?? [
+    {
+      label: "Trial period",
+      value: document.summary.trialStartDate && document.summary.trialReviewDate
+        ? `${longDate(document.summary.trialStartDate)} – ${longDate(document.summary.trialReviewDate)}`
+        : "Not provided",
+    },
+    {
+      label: "Revenue split",
+      value: `${document.summary.operatorPercent ?? 0}% Rent With Heldy\n${document.summary.ownerPercent ?? 0}% Vehicle Owners`,
+    },
+    {
+      label: "Vehicles",
+      value: (document.summary.vehicles ?? [])
+        .map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`)
+        .join(" · "),
+    },
+  ];
+
   return (
     <article className="agreement-document mx-auto w-full max-w-4xl bg-white text-[hsl(var(--ink))] sm:border sm:border-border sm:shadow-sm">
       <header className="border-b border-border px-5 py-8 sm:px-10 sm:py-10">
@@ -42,18 +63,12 @@ export function AgreementDocument({
         <section aria-labelledby="agreement-summary" className="border-b border-border bg-secondary/45 px-5 py-7 sm:px-10">
           <h2 id="agreement-summary" className="text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">Key terms</h2>
           <dl className="mt-5 grid gap-5 sm:grid-cols-3">
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Trial period</dt>
-              <dd className="mt-1 text-sm font-semibold">{longDate(document.summary.trialStartDate)} – {longDate(document.summary.trialReviewDate)}</dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Revenue split</dt>
-              <dd className="mt-1 text-sm font-semibold">{document.summary.operatorPercent}% Rent With Heldy<br />{document.summary.ownerPercent}% Vehicle Owners</dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Vehicles</dt>
-              <dd className="mt-1 text-sm font-semibold">{document.summary.vehicles.map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`).join(" · ")}</dd>
-            </div>
+            {summaryItems.map((item) => (
+              <div key={item.label}>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{item.label}</dt>
+                <dd className="mt-1 whitespace-pre-line text-sm font-semibold">{item.value}</dd>
+              </div>
+            ))}
           </dl>
         </section>
       )}
@@ -69,8 +84,8 @@ export function AgreementDocument({
               <p className="mt-1 whitespace-pre-line text-sm leading-6 text-muted-foreground">{document.operator.address}<br />{document.operator.phone}<br />{document.operator.email}</p>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Vehicle owner{document.owners.length === 1 ? "" : "s"}</p>
-              {document.owners.map((owner) => (
+              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">{counterpartyLabel}{counterparties.length === 1 || counterpartyLabel === "Renter" ? "" : "s"}</p>
+              {counterparties.map((owner) => (
                 <div key={`${owner.email}-${owner.fullName}`} className="mt-1 first:mt-1 [&+&]:mt-4">
                   <p className="font-semibold">{owner.fullName}</p>
                   <p className="whitespace-pre-line text-sm leading-6 text-muted-foreground">{owner.address ? `${owner.address}\n` : ""}{owner.phone}<br />{owner.email}</p>
@@ -89,6 +104,18 @@ export function AgreementDocument({
               <div className="mt-4 space-y-4 text-[0.98rem] leading-7 text-[hsl(var(--foreground))]">
                 {section.blocks.map((block, index) => {
                   if (block.type === "paragraph") return <p key={index}>{block.text}</p>;
+                  if (block.type === "subheading") return <h3 key={index} className="pt-2 text-base font-bold uppercase tracking-[0.08em]">{block.text}</h3>;
+                  if (block.type === "bullet_list") return <ul key={index} className="list-disc space-y-2 ps-5">{block.items.map((item) => <li key={item}>{item}</li>)}</ul>;
+                  if (block.type === "fields") return (
+                    <dl key={index} className="grid gap-x-8 gap-y-3 border-s-2 border-primary/70 ps-4 sm:grid-cols-2">
+                      {block.fields.map((field) => (
+                        <div key={field.label}>
+                          <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{field.label}</dt>
+                          <dd className="mt-0.5 whitespace-pre-line text-sm font-medium">{field.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  );
                   if (block.type === "vehicles") return (
                     <div key={index} className="space-y-4">
                       {block.vehicles.map((vehicle, vehicleIndex) => (

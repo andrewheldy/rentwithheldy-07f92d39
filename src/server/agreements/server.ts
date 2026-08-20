@@ -3,10 +3,10 @@ import { createClient, type SupabaseClient, type User } from "@supabase/supabase
 import { createHash, randomBytes } from "node:crypto";
 import { isIP } from "node:net";
 import type {
+  AgreementData,
   AgreementDetail,
   DocumentSigner,
   TemplateDefinition,
-  VehicleConsignmentAgreementData,
 } from "../../lib/agreements/types.js";
 
 export type ServerSupabase = SupabaseClient;
@@ -183,7 +183,7 @@ export async function loadAgreementDetail(
     version: {
       id: version.id,
       number: version.version_number,
-      agreementData: version.agreement_data as VehicleConsignmentAgreementData,
+      agreementData: version.agreement_data as AgreementData,
       renderedContent: version.rendered_content,
       documentHash: version.document_hash,
       frozenAt: version.frozen_at,

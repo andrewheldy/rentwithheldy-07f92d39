@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { canonicalize, resolveAgreementDocument } from "./render";
 import {
+  SendableLongTermRentalDataSchema,
   SendableVehicleConsignmentDataSchema,
   SignatureSubmissionSchema,
 } from "./schema";
 import {
+  DEFAULT_LONG_TERM_RENTAL_DATA,
   DEFAULT_VEHICLE_CONSIGNMENT_DATA,
   type TemplateDefinition,
 } from "./types";
@@ -36,6 +38,30 @@ describe("agreement rendering", () => {
   it("canonicalizes object keys without changing array order", () => {
     expect(canonicalize({ b: 2, a: [{ z: 1, a: 2 }] })).toBe('{"a":[{"a":2,"z":1}],"b":2}');
   });
+
+  it("resolves the long-term rental source into editable HTML field blocks", () => {
+    const data = structuredClone(DEFAULT_LONG_TERM_RENTAL_DATA);
+    data.renter.fullName = "Test Renter";
+    data.renter.email = "renter@example.com";
+    data.rental.endDate = "2026-11-18";
+    data.rental.monthlyRate = 1_500;
+    const rentalTemplate: TemplateDefinition = {
+      schema_version: 2,
+      agreement_code: "LTR",
+      data_kind: "long_term_rental",
+      sections: [
+        { number: 1, title: "Renter Information", blocks: [{ type: "renter_information" }] },
+        { number: 2, title: "Rental Term", blocks: [{ type: "rental_term" }, { type: "rental_rate" }] },
+        { number: 3, title: "Signatures", blocks: [{ type: "signatures" }] },
+      ],
+    };
+    const document = resolveAgreementDocument("Long-Term Vehicle Rental Agreement", rentalTemplate, "RWH-LTR-2026-001", 1, data);
+
+    expect(document.counterpartyLabel).toBe("Renter");
+    expect(document.sections[0].blocks[0]).toMatchObject({ type: "fields" });
+    expect(document.sections[1].blocks[0]).toMatchObject({ type: "fields" });
+    expect(document.summary.items?.[0]).toEqual({ label: "Renter", value: "Test Renter" });
+  });
 });
 
 describe("agreement validation", () => {
@@ -48,6 +74,10 @@ describe("agreement validation", () => {
     const data = structuredClone(DEFAULT_VEHICLE_CONSIGNMENT_DATA);
     data.paymentCadence = "bi_weekly";
     expect(SendableVehicleConsignmentDataSchema.safeParse(data).success).toBe(true);
+  });
+
+  it("keeps a long-term rental editable as a draft but blocks sending incomplete data", () => {
+    expect(SendableLongTermRentalDataSchema.safeParse(DEFAULT_LONG_TERM_RENTAL_DATA).success).toBe(false);
   });
 
   it("requires explicit consent and a method-specific signature", () => {

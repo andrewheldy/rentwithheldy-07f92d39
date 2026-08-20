@@ -6,6 +6,8 @@
 - **Accepted:** preserve the existing Inter/Bricolage Grotesque type system and warm-white/navy/teal tokens. Source: project brand system overriding generic skill novelty. Decider: Design Director.
 - **Accepted:** use no decorative motion. Existing short control-state transitions are sufficient for a legal workflow. Source: project interaction principles and task requirements. Decider: Design Director.
 - **Accepted:** make the complete legal document, not a dashboard card arrangement, the dominant public signing surface. Source: agreement brief and Anti-Slop criteria. Decider: Design Director.
+- **Accepted:** represent both Drive agreements as structured, editable HTML with versioned legal prose and typed variable fields; do not introduce unrestricted rich-text editing that could silently alter legal language. Source: agreement architecture and immutability requirements. Decider: Design Director.
+- **Accepted:** use the existing React DayPicker/date-fns/Radix stack for calendar popovers, month/year dropdowns, and dependent date shortcuts. No new package or skill is justified. Source: Design Engineer dependency and accessibility review. Decider: Design Director.
 
 ## 2026-08-12 - AI Systems Pass 1
 

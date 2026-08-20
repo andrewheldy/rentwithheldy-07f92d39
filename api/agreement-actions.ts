@@ -1,8 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createHash } from "node:crypto";
-import { SendableVehicleConsignmentDataSchema } from "../src/lib/agreements/schema.js";
+import { parseAgreementData } from "../src/lib/agreements/schema.js";
 import { canonicalize, resolveAgreementDocument } from "../src/lib/agreements/render.js";
-import type { VehicleConsignmentAgreementData } from "../src/lib/agreements/types.js";
 import { sendAgreementInvitation } from "../src/server/agreements/email.js";
 import { finalizeExecutedAgreement } from "../src/server/agreements/finalize.js";
 import {
@@ -50,14 +49,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (detail.status !== "draft" || detail.version.frozenAt) {
         return res.status(409).json({ error: "Only an unfrozen draft can be sent." });
       }
-      const parsed = SendableVehicleConsignmentDataSchema.safeParse(detail.version.agreementData);
+      const parsed = parseAgreementData(detail.templateDefinition, detail.version.agreementData, true);
       if (!parsed.success) {
         return res.status(400).json({
           error: "Complete all required agreement fields before sending.",
           fields: parsed.error.flatten().fieldErrors,
         });
       }
-      const agreementData = parsed.data as VehicleConsignmentAgreementData;
+      const agreementData = parsed.data;
       const document = resolveAgreementDocument(
         detail.templateName,
         detail.templateDefinition,

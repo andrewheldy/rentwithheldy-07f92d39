@@ -56,6 +56,7 @@ async function mockSigningApi(page: Page) {
           agreement: { agreementNumber: document.agreementNumber, title: document.title, version: 1, status: "executed", documentHash: "a".repeat(64), document, executedAt: "2026-08-20T16:00:00Z", downloadAvailable: true },
           signer: { id: "gary", name: "Gary Heldenmuth", role: "Vehicle Owner", status: "signed", signedAt: "2026-08-20T16:00:00Z" },
           signatures: signatures.map((signer) => ({ ...signer, status: "signed", signedAt: "2026-08-20T16:00:00Z", signatureMethod: "typed", typedSignature: signer.name })),
+          downloadToken: "secure-download-token-that-is-separate-from-signing-123456789",
         }),
       });
     }

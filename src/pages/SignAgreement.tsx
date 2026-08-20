@@ -29,6 +29,7 @@ type SigningPayload = {
   signer: { id: string; name: string; role: string; status: string; signedAt: string | null };
   signatures: Array<{ id: string; name: string; role: string; status: "pending" | "signed" | "declined"; signedAt: string | null; signatureMethod?: "drawn" | "typed" | null; typedSignature?: string | null }>;
   pdfPending?: boolean;
+  downloadToken?: string | null;
 };
 
 const stateCopy: Record<string, { title: string; body: string }> = {
@@ -53,9 +54,11 @@ export default function SignAgreement() {
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [downloading, setDownloading] = useState(false);
+  const [accessToken, setAccessToken] = useState(token);
 
   useEffect(() => {
     let active = true;
+    setAccessToken(token);
     signingAction({ action: "view", token })
       .then((next) => { if (active) setPayload(next); })
       .catch((error) => { if (active) setLoadError((error as Error).message); });
@@ -86,6 +89,7 @@ export default function SignAgreement() {
         typedSignature: method === "typed" ? typedSignature : undefined,
       });
       setPayload(next);
+      setAccessToken(next.downloadToken ?? "");
       window.scrollTo({ top: 0, behavior: "auto" });
     } catch (error) { setFormError((error as Error).message); }
     finally { setSubmitting(false); }
@@ -93,7 +97,7 @@ export default function SignAgreement() {
 
   const download = async () => {
     setDownloading(true);
-    try { const result = await signingAction({ action: "download", token }); window.location.assign(result.url); }
+    try { const result = await signingAction({ action: "download", token: accessToken }); window.location.assign(result.url); }
     catch (error) { setFormError((error as Error).message); }
     finally { setDownloading(false); }
   };
@@ -108,7 +112,7 @@ export default function SignAgreement() {
     <Shell agreementNumber={payload.agreement.agreementNumber}>
       {complete && (
         <Card className="mb-6 border-emerald-300 bg-emerald-50 p-5 sm:p-6" role="status">
-          <div className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" /><div><h1 className="text-xl font-semibold">{payload.state === "executed" ? "Agreement complete" : "Your signature is complete"}</h1><p className="mt-1 text-sm text-emerald-950">{payload.state === "executed" ? "All required parties have signed this agreement." : "Your signature was recorded. Rent With Heldy will notify you when all required parties have signed."}</p>{payload.pdfPending && <p className="mt-2 text-sm font-medium">The executed PDF is being prepared. Please try the download again shortly.</p>}{payload.state === "executed" && <Button className="mt-4" onClick={download} disabled={downloading}><Download className="me-2 h-4 w-4" /> {downloading ? "Preparing download…" : "Download executed PDF"}</Button>}</div></div>
+          <div className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" /><div><h1 className="text-xl font-semibold">{payload.state === "executed" ? "Agreement complete" : "Your signature is complete"}</h1><p className="mt-1 text-sm text-emerald-950">{payload.state === "executed" ? "All required parties have signed this agreement." : "Your signature was recorded. Rent With Heldy will notify you when all required parties have signed."}</p>{payload.pdfPending && <p className="mt-2 text-sm font-medium">The executed PDF is being prepared. Please use the completed-agreement email if the download is not ready.</p>}{payload.state === "executed" && accessToken && <Button className="mt-4" onClick={download} disabled={downloading}><Download className="me-2 h-4 w-4" /> {downloading ? "Preparing download…" : "Download executed PDF"}</Button>}</div></div>
         </Card>
       )}
       <AgreementDocument document={payload.agreement.document} signatures={payload.signatures} />
