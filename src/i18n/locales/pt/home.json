@@ -15,8 +15,8 @@
       "cruisePorts": "Portos de cruzeiros",
       "repairShops": "Oficinas"
     },
-    "primaryCta": "Reservar agora",
-    "secondaryCta": "Ver a frota",
+    "primaryCta": "Planejar minha viagem",
+    "secondaryCta": "Explorar a frota",
     "trust": {
       "reviews": "Mais de 1.400 avaliações cinco estrelas",
       "allStar": "All-Star Host",
@@ -25,6 +25,16 @@
       "language": "Escreva para a gente no seu idioma preferido",
       "familyOwned": "Empresa familiar"
     }
+  },
+  "bookingWidget": {
+    "eyebrow": "Reserva por conta própria",
+    "title": "Quando você precisa de um carro?",
+    "description": "Escolha as datas para ver o que está disponível.",
+    "button": "Ver disponibilidade",
+    "reassurance": "Disponibilidade em tempo real • Suporte local • Entrega no Sul da Flórida",
+    "loading": "Carregando disponibilidade em tempo real",
+    "unavailable": "A busca por datas está temporariamente indisponível. Você ainda pode continuar para a reserva.",
+    "accessibleLabel": "Consultar a disponibilidade de carros por data"
   },
   "trustStrip": {
     "reviews": "Mais de 1.400 avaliações cinco estrelas",
@@ -118,12 +128,14 @@
     "description": "Algumas das coisas que os hóspedes mais perguntam. Tem mais na página de perguntas frequentes."
   },
   "quoteForm": {
-    "title": "Conte sobre a sua viagem"
+    "title": "Conte o que você precisa",
+    "subtitle": "Compartilhe suas datas, os detalhes de entrega e qualquer pedido especial. Ajudaremos a coordenar a melhor opção.",
+    "cta": "Pedir ajuda à equipe Heldy"
   },
   "contactClose": {
-    "eyebrow": "Comece",
-    "title": "Conte sobre a sua viagem.",
-    "description": "Compartilhe alguns detalhes e um membro da nossa equipe vai entrar em contato o quanto antes. Prefere conversar? Fale com uma pessoa de verdade abaixo.",
+    "eyebrow": "Ajuda personalizada",
+    "title": "Precisa de uma ajudinha?",
+    "description": "Conte o que você precisa—uma entrega especial, um aluguel mais longo, uma situação de oficina ou algo fora do comum—e uma pessoa de verdade da Rent With Heldy ajudará a coordenar tudo.",
     "phoneLabel": "Ligue ou mande mensagem, 7 dias por semana",
     "emailLabel": "Responderemos o quanto antes",
     "locationTitle": "Fort Lauderdale e Miami",

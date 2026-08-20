@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
+import { track } from "@/lib/analytics";
 
 // Permanent hero photograph. Licensed placeholder — swap for real Heldy
 // photography when available. Fully static: no crossfade, no zoom, no pan.
@@ -43,7 +44,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative isolate flex min-h-[74svh] items-end overflow-hidden bg-ink lg:min-h-[calc(100svh-4rem)]">
+    <section
+      className="relative isolate flex min-h-[74svh] items-end overflow-hidden bg-ink lg:min-h-[calc(100svh-4rem)]"
+      data-testid="home-hero"
+    >
       {/* Preload only the AVIF — the format the <picture> below will pick in
           any browser that supports it, so this never causes a second fetch. */}
       <Helmet>
@@ -57,7 +61,7 @@ const Hero = () => {
           src={heroSunset}
           alt={t("hero.imageAlt")}
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[68%_center] lg:object-center"
-          fetchPriority="high"
+          {...{ fetchpriority: "high" }}
           decoding="async"
           width={1915}
           height={821}
@@ -118,12 +122,20 @@ const Hero = () => {
           </motion.ul>
 
           <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link to="/book" className="sm:w-auto">
+            <Link
+              to="/trip-planner"
+              className="sm:w-auto"
+              onClick={() => track("home_plan_trip_click", { source: "homepage" })}
+            >
               <Button size="lg" className="w-full sm:w-auto">
                 {t("hero.primaryCta")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
               </Button>
             </Link>
-            <Link to="/fleet" className="sm:w-auto">
+            <Link
+              to="/fleet"
+              className="sm:w-auto"
+              onClick={() => track("home_browse_fleet_click", { source: "homepage" })}
+            >
               <Button
                 size="lg"
                 variant="outline"
