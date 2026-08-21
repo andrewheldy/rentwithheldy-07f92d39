@@ -63,6 +63,7 @@ const PROPER_NOUN_VALUES = new Set([
   "Fort Lauderdale · Miami",
   "All-Star Host", // Turo status/brand term — kept verbatim in every locale
   "you@email.com", // example email placeholder — identical in every locale by design
+  "+1 (555) 555-0100", // example phone placeholder — identical in every locale by design
 ]);
 
 function isEnglishOnly(ns, key) {

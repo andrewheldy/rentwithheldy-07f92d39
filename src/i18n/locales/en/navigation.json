@@ -9,7 +9,8 @@
     "rentalServices": "Rental Services",
     "workWithUs": "Work With Us",
     "browse": "Browse",
-    "more": "More"
+    "more": "More",
+    "account": "Account"
   },
   "services": {
     "passengerVans": { "label": "Passenger Vans", "desc": "Up to 14 passengers" },
@@ -27,6 +28,7 @@
     }
   },
   "aria": {
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "account": "Your account"
   }
 }

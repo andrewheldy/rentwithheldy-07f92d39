@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
+import { track } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -140,6 +141,7 @@ const Contact = () => {
                 <a
                   href={CONTACT_PHONE_HREF}
                   dir="ltr"
+                  onClick={() => track("call_cta_click", { placement: "contact_card" })}
                   className="text-primary font-medium hover:underline"
                 >
                   {CONTACT_PHONE_DISPLAY}
@@ -220,7 +222,7 @@ const Contact = () => {
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   {t("form.preferToTalk")}{" "}
-                  <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
+                  <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "contact_form_footer" })} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
                 </p>
               </form>
             </div>

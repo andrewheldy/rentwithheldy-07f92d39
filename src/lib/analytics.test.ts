@@ -32,4 +32,13 @@ describe("analytics privacy bridge", () => {
 
     window.removeEventListener("rentwithheldy:analytics", listener);
   });
+
+  it("carries call-funnel placement through to the dataLayer", () => {
+    track("call_cta_click", { placement: "header_desktop" });
+
+    expect(window.dataLayer?.[0]).toMatchObject({
+      event: "call_cta_click",
+      placement: "header_desktop",
+    });
+  });
 });
