@@ -7,6 +7,7 @@
 - Pass: explicit consent is required and the action remains disabled until identity, signature, and consent are complete.
 - Pass: keyboard-only test activates the typed mode, consent checkbox, and submit action.
 - Pass: status uses icon and text, never color alone; focus styling comes from the existing accessible primitives.
+- Pass: agreement dates use labeled, keyboard-operable calendar popovers with month/year dropdowns; related end dates cannot precede their start dates.
 
 ## Mobile UX
 
@@ -21,6 +22,7 @@
 - Pass: typography, warm paper surfaces, navy text, restrained teal rules, spacing, and controls extend the existing Rent With Heldy system.
 - Pass: no decorative gradients, glass effects, gratuitous pills, generated imagery, or unnecessary animation were introduced.
 - Pass: admin UI remains compact and operational, with state-valid actions and text-first status labels.
+- Pass: both Drive agreements use the same document-led HTML renderer; the long-term rental form adds no parallel design system or dependency.
 
 ## Security and legal workflow
 
@@ -31,8 +33,9 @@
 - Pass: signing is transactional, records identity confirmation, consent version/time, signature method, document hash, time, IP, and user agent, and revokes signing authority after use.
 - Pass: signature PNGs have byte, format, dimension, and pixel-count limits before private upload.
 - Pass: completed-document links are download-only and cannot be used to sign.
+- Pass: consumed or revoked signing links cannot be reused to view or download the agreement; execution issues a separate download credential.
 - Pass: executed PDFs and signatures use a private Supabase Storage bucket with short-lived signed downloads.
 
 ## Verification boundary
 
-The code, production build, pure document/PDF tests, mocked admin flow, and mocked public signing flow are verified locally. Applying the migration and exercising real Supabase Auth, Storage, Resend delivery, and production Vercel configuration require project credentials and remain deployment checks. Legal counsel should approve the canonical contract before production use.
+The agreement-specific TypeScript check, production build, pure document/PDF tests, mocked admin flow, date-picker flow, and mocked public signing flow are verified locally. The repository-wide TypeScript command remains blocked by the unrelated pre-existing `api/submit-acquisition-lead.ts` union-type error imported by its source-tree test. Applying the migrations and exercising real Supabase Auth, Storage, Resend delivery, and production Vercel configuration require project credentials and remain deployment checks. Legal counsel should approve both canonical contracts before production use.

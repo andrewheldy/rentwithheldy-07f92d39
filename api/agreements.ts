@@ -2,12 +2,14 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import {
   AgreementCreateSchema,
   AgreementUpdateSchema,
+  parseAgreementData,
 } from "../src/lib/agreements/schema.js";
 import type {
+  AgreementData,
   AgreementListItem,
   TemplateDefinition,
-  VehicleConsignmentAgreementData,
 } from "../src/lib/agreements/types.js";
+import { allAgreementParties } from "../src/lib/agreements/render.js";
 import {
   configurePrivateResponse,
   createServerSupabase,
@@ -28,7 +30,7 @@ type AgreementRow = {
   executed_at: string | null;
 };
 type TemplateRow = { id: string; name: string };
-type VersionRow = { id: string; agreement_data: VehicleConsignmentAgreementData };
+type VersionRow = { id: string; agreement_data: AgreementData };
 type SignerListRow = {
   agreement_id: string;
   agreement_version_id: string;
@@ -40,9 +42,9 @@ type SignerListRow = {
 function signerRows(
   agreementId: string,
   versionId: string,
-  data: VehicleConsignmentAgreementData,
+  data: AgreementData,
 ) {
-  return [data.operator.signer, ...data.owners].map((signer, index) => ({
+  return allAgreementParties(data).map((signer, index) => ({
     agreement_id: agreementId,
     agreement_version_id: versionId,
     signer_name: signer.fullName,
@@ -134,7 +136,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         if (!parsed.success) {
           return res.status(400).json({ error: "Review the agreement fields.", fields: parsed.error.flatten().fieldErrors });
         }
-        const agreementData = parsed.data.agreementData as VehicleConsignmentAgreementData;
         const { data: template, error: templateError } = await supabase
           .from("agreement_templates")
           .select("id,name,template_definition")
@@ -143,6 +144,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           .single();
         if (templateError || !template) return res.status(400).json({ error: "The selected template is unavailable." });
         const definition = template.template_definition as TemplateDefinition;
+        const agreementDataResult = parseAgreementData(definition, parsed.data.agreementData);
+        if (!agreementDataResult.success) {
+          return res.status(400).json({ error: "Review the agreement fields.", fields: agreementDataResult.error.flatten().fieldErrors });
+        }
+        const agreementData = agreementDataResult.data;
         const { data: agreementNumber, error: numberError } = await supabase.rpc(
           "generate_agreement_number",
           { template_code: definition.agreement_code },
@@ -203,11 +209,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         if (!parsed.success) {
           return res.status(400).json({ error: "Review the agreement fields.", fields: parsed.error.flatten().fieldErrors });
         }
-        const agreementData = parsed.data.agreementData as VehicleConsignmentAgreementData;
         const detail = await loadAgreementDetail(supabase, parsed.data.agreementId);
         if (detail.status !== "draft" || detail.version.frozenAt) {
           return res.status(409).json({ error: "Only an unfrozen draft can be edited." });
         }
+        const agreementDataResult = parseAgreementData(detail.templateDefinition, parsed.data.agreementData);
+        if (!agreementDataResult.success) {
+          return res.status(400).json({ error: "Review the agreement fields.", fields: agreementDataResult.error.flatten().fieldErrors });
+        }
+        const agreementData = agreementDataResult.data;
         const { error: updateError } = await supabase.rpc("update_agreement_draft", {
           p_agreement_id: detail.id,
           p_agreement_data: agreementData,

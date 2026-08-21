@@ -81,7 +81,7 @@ export async function generateExecutedAgreementPdf(
   drawWrapped(`Effective date: ${new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${document.effectiveDate}T00:00:00Z`))}`, { size: 9, gap: 16 });
   drawWrapped(document.preamble);
   drawWrapped(`${document.operator.legalName} d/b/a ${document.operator.tradeName}\n${document.operator.address}\n${document.operator.phone} | ${document.operator.email}`, { font: bold, size: 9 });
-  for (const owner of document.owners) {
+  for (const owner of document.counterparties ?? document.owners) {
     drawWrapped(`${owner.fullName}\n${owner.address ? `${owner.address}\n` : ""}${owner.phone} | ${owner.email}`, { size: 9 });
   }
 
@@ -90,6 +90,14 @@ export async function generateExecutedAgreementPdf(
     drawWrapped(`${section.number}. ${section.title.toUpperCase()}`, { font: bold, size: 11, gap: 7 });
     for (const block of section.blocks) {
       if (block.type === "paragraph") drawWrapped(block.text);
+      if (block.type === "subheading") drawWrapped(block.text.toUpperCase(), { font: bold, size: 10, gap: 6 });
+      if (block.type === "bullet_list") {
+        for (const item of block.items) drawWrapped(`• ${item}`, { indent: 10, gap: 4 });
+      }
+      if (block.type === "fields") {
+        for (const field of block.fields) drawWrapped(`${field.label}: ${field.value}`, { size: 9, gap: 4 });
+        y -= 4;
+      }
       if (block.type === "vehicles") {
         block.vehicles.forEach((vehicle, index) => {
           drawWrapped(

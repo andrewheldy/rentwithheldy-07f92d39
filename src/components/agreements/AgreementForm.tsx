@@ -6,15 +6,29 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Plus, Trash2 } from "lucide-react";
-import type { AgreementParty, AgreementVehicle, VehicleConsignmentAgreementData } from "@/lib/agreements/types";
+import { addDays, addMonths, format, parseISO } from "date-fns";
+import { AgreementDateField } from "@/components/agreements/AgreementDateField";
+import { LongTermRentalAgreementForm } from "@/components/agreements/LongTermRentalAgreementForm";
+import { isLongTermRentalData, type AgreementData, type AgreementParty, type AgreementVehicle, type VehicleConsignmentAgreementData } from "@/lib/agreements/types";
 
 type Props = {
-  value: VehicleConsignmentAgreementData;
-  onChange: (value: VehicleConsignmentAgreementData) => void;
+  value: AgreementData;
+  onChange: (value: AgreementData) => void;
   disabled?: boolean;
 };
 
 export function AgreementForm({ value, onChange, disabled = false }: Props) {
+  if (isLongTermRentalData(value)) {
+    return <LongTermRentalAgreementForm value={value} onChange={onChange} disabled={disabled} />;
+  }
+  return <VehicleConsignmentAgreementForm value={value} onChange={onChange} disabled={disabled} />;
+}
+
+function VehicleConsignmentAgreementForm({ value, onChange, disabled = false }: {
+  value: VehicleConsignmentAgreementData;
+  onChange: (value: AgreementData) => void;
+  disabled?: boolean;
+}) {
   const update = (recipe: (draft: VehicleConsignmentAgreementData) => void) => {
     const draft = structuredClone(value);
     recipe(draft);
@@ -29,9 +43,9 @@ export function AgreementForm({ value, onChange, disabled = false }: Props) {
       <Card className="p-5 sm:p-6">
         <h2 className="text-xl font-semibold">Agreement terms</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Field label="Effective date" htmlFor="effective-date"><Input id="effective-date" type="date" required value={value.effectiveDate} onChange={(event) => update((draft) => { draft.effectiveDate = event.target.value; })} /></Field>
-          <Field label="Trial start" htmlFor="trial-start"><Input id="trial-start" type="date" required value={value.trial.startDate} onChange={(event) => update((draft) => { draft.trial.startDate = event.target.value; })} /></Field>
-          <Field label="Review / end date" htmlFor="trial-review"><Input id="trial-review" type="date" required value={value.trial.reviewDate} onChange={(event) => update((draft) => { draft.trial.reviewDate = event.target.value; })} /></Field>
+          <AgreementDateField id="effective-date" label="Effective date" required value={value.effectiveDate} onChange={(next) => update((draft) => { draft.effectiveDate = next; })} presets={[{ label: "Today", value: format(new Date(), "yyyy-MM-dd") }]} />
+          <AgreementDateField id="trial-start" label="Trial start" required value={value.trial.startDate} onChange={(next) => update((draft) => { draft.trial.startDate = next; })} presets={[{ label: "Today", value: format(new Date(), "yyyy-MM-dd") }, { label: "+7 days", value: format(addDays(new Date(), 7), "yyyy-MM-dd") }]} />
+          <AgreementDateField id="trial-review" label="Review / end date" required value={value.trial.reviewDate} onChange={(next) => update((draft) => { draft.trial.reviewDate = next; })} disabledDates={{ before: addDays(parseISO(value.trial.startDate), 1) }} presets={[{ label: "3 months after start", value: format(addMonths(parseISO(value.trial.startDate), 3), "yyyy-MM-dd") }, { label: "90 days after start", value: format(addDays(parseISO(value.trial.startDate), 90), "yyyy-MM-dd") }]} helpText="Must be after the trial start date." />
           <div className="space-y-1.5"><Label htmlFor="payment-cadence">Payment schedule</Label><Select value={value.paymentCadence || undefined} onValueChange={(next: "bi_weekly" | "monthly") => update((draft) => { draft.paymentCadence = next; })}><SelectTrigger id="payment-cadence"><SelectValue placeholder="Choose before sending" /></SelectTrigger><SelectContent><SelectItem value="bi_weekly">Bi-weekly</SelectItem><SelectItem value="monthly">Monthly</SelectItem></SelectContent></Select></div>
           <Field label="Rent With Heldy share (%)" htmlFor="operator-share"><Input id="operator-share" type="number" inputMode="decimal" min="0" max="100" required value={value.economics.operatorPercent} onChange={(event) => update((draft) => { draft.economics.operatorPercent = Number(event.target.value); draft.economics.ownerPercent = 100 - Number(event.target.value); })} /></Field>
           <Field label="Vehicle Owners share (%)" htmlFor="owner-share"><Input id="owner-share" type="number" inputMode="decimal" min="0" max="100" required value={value.economics.ownerPercent} onChange={(event) => update((draft) => { draft.economics.ownerPercent = Number(event.target.value); draft.economics.operatorPercent = 100 - Number(event.target.value); })} /></Field>

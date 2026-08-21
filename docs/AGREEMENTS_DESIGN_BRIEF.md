@@ -16,6 +16,7 @@ This is product UI for a small internal operations team and a mobile-first legal
 - Admin: a compact agreement ledger with state labels, dates, parties, subjects, and only state-valid actions.
 - Signing: the agreement is the dominant artifact. A restrained terms ledger summarizes trial dates, revenue split, and vehicles before the complete frozen document.
 - Signature area: one bordered signing surface at the end of the document, with draw/type modes, explicit consent, and a single decisive action.
+- Editing: both canonical agreements remain complete HTML documents backed by typed fields. Date fields use the existing calendar/popover stack with month/year navigation and relationship-aware shortcuts, not browser-dependent native date inputs.
 - Signature element: a thin teal document rule that begins beside the agreement number and continues through the section rhythm; it recalls a physical contract tab without adding decorative cards.
 
 ## Acceptance criteria
@@ -26,9 +27,9 @@ This is product UI for a small internal operations team and a mobile-first legal
 4. Drawn signing works with pointer/touch without fighting page scroll, and typed signing is a complete accessible alternative.
 5. All forms have programmatic labels, text errors, visible focus, and appropriate input types/autocomplete.
 6. Rendered desktop and mobile surfaces pass Accessibility, Anti-Slop, and Mobile UX review.
-7. No analytics or third-party marketing scripts receive signing tokens or agreement PII.
+7. Both Drive agreements resolve through the same HTML/PDF renderer without changing their supplied legal substance, and no analytics or third-party marketing scripts receive signing tokens or agreement PII.
 
 ## Open questions
 
-- Legal counsel should validate the canonical agreement before production use; implementation preserves the supplied Google Doc language without offering legal advice.
+- Legal counsel should validate both canonical agreements before production use; implementation preserves the supplied Google Doc language without offering legal advice.
 - A second owner is supported but optional by default. Staff can mark additional signers required before sending.

@@ -48,9 +48,20 @@ async function mockAdmin(page: Page) {
     return route.fulfill({ status: 404, contentType: "application/json", body: "{}" });
   });
 
-  await page.route("**/api/agreements", (route) => route.fulfill({
-    contentType: "application/json",
-    body: JSON.stringify({ agreements: [
+  await page.route(/\/api\/agreements(?:\?.*)?$/, (route) => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get("resource") === "templates") {
+      return route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({ templates: [
+          { id: "11111111-1111-4111-8111-111111111111", name: "Vehicle Consignment & Rental Management Agreement", version: 1, template_definition: { schema_version: 1, agreement_code: "VAN", data_kind: "vehicle_consignment", sections: [] } },
+          { id: "22222222-2222-4222-8222-222222222222", name: "Long-Term Vehicle Rental Agreement", version: 1, template_definition: { schema_version: 2, agreement_code: "LTR", data_kind: "long_term_rental", sections: [] } },
+        ] }),
+      });
+    }
+    return route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ agreements: [
       {
         id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
         agreement_number: "RWH-VAN-2026-001",
@@ -75,8 +86,9 @@ async function mockAdmin(page: Page) {
         version: { id: "version-2", agreement_data: { vehicles: [vehicle(2024, "Ford", "Transit 350 HD", "1FBVU4XG6RKA04970")] } },
         signers: [{ fullName: "Alex Owner", role: "Vehicle Owner", status: "signed" }],
       },
-    ] }),
-  }));
+      ] }),
+    });
+  });
 }
 
 test("admin can search and filter the agreement index", async ({ page }) => {
@@ -104,4 +116,29 @@ test("admin can search and filter the agreement index", async ({ page }) => {
   await page.getByLabel("Search").fill("1FBAX2CM3JKA25303");
   await expect(page.getByRole("cell", { name: "RWH-VAN-2026-001" })).toBeVisible();
   await expect(page.getByRole("cell", { name: "RWH-MGT-2026-002" })).toHaveCount(0);
+});
+
+test("admin can switch to the long-term rental HTML editor and use intelligent date controls", async ({ page }) => {
+  await mockAdmin(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/admin/agreements/new");
+
+  await page.getByLabel("Agreement type").click();
+  await page.getByRole("option", { name: /Long-Term Vehicle Rental Agreement/ }).click();
+  await expect(page.getByRole("heading", { name: "Term and payment" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Renter" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Vehicle condition at delivery" })).toBeVisible();
+
+  const endDate = page.getByRole("button", { name: /Rental end date/ });
+  await endDate.click();
+  await page.getByRole("button", { name: "90 days" }).click();
+  await expect(endDate).toHaveAccessibleName(/Rental end date: (?!not selected).+/);
+
+  await page.getByRole("button", { name: /Date of birth/ }).click();
+  const datePicker = page.locator('[data-radix-popper-content-wrapper]');
+  await expect(datePicker.getByRole("combobox")).toHaveCount(2);
+  await page.keyboard.press("Escape");
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
 });

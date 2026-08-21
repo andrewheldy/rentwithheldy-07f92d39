@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import SEO from "@/components/SEO";
 import { getAgreements } from "@/lib/agreements/api";
-import type { AgreementListItem, AgreementStatus } from "@/lib/agreements/types";
+import { isLongTermRentalData, type AgreementData, type AgreementListItem, type AgreementStatus } from "@/lib/agreements/types";
 import { FileSignature, Plus, Search } from "lucide-react";
 
 const statusOptions: Array<{ value: "all" | AgreementStatus; label: string }> = [
@@ -23,6 +23,11 @@ const statusOptions: Array<{ value: "all" | AgreementStatus; label: string }> = 
   { value: "voided", label: "Voided" },
   { value: "expired", label: "Expired" },
 ];
+
+const agreementVehicles = (data: AgreementData | undefined) => {
+  if (!data) return [];
+  return isLongTermRentalData(data) ? [data.vehicle] : data.vehicles;
+};
 
 export default function AdminAgreements() {
   const [query, setQuery] = useState("");
@@ -49,7 +54,7 @@ export default function AdminAgreements() {
         agreement.agreement_number,
         agreement.template?.name,
         ...agreement.signers.flatMap((signer) => [signer.fullName, signer.role]),
-        ...(document?.vehicles ?? []).flatMap((vehicle) => [vehicle.vin, vehicle.make, vehicle.model, `${vehicle.year}`]),
+        ...agreementVehicles(document).flatMap((vehicle) => [vehicle.vin, vehicle.make, vehicle.model, `${vehicle.year}`]),
       ].filter(Boolean).some((value) => String(value).toLowerCase().includes(needle));
     });
   }, [agreementType, agreements, dateFrom, dateTo, query, status]);
@@ -80,11 +85,11 @@ export default function AdminAgreements() {
           <>
             <div className="hidden overflow-hidden rounded-xl border bg-card md:block">
               <Table><TableHeader><TableRow><TableHead>Agreement ID</TableHead><TableHead>Type</TableHead><TableHead>Parties</TableHead><TableHead>Vehicles / Subject</TableHead><TableHead>Status</TableHead><TableHead>Created</TableHead><TableHead>Sent</TableHead><TableHead>Last activity</TableHead><TableHead className="text-end">Actions</TableHead></TableRow></TableHeader><TableBody>
-                {filtered.map((agreement) => <TableRow key={agreement.id}><TableCell className="font-semibold">{agreement.agreement_number}</TableCell><TableCell className="max-w-48">{agreement.template?.name ?? "Agreement"}</TableCell><TableCell>{agreement.signers.map((signer) => signer.fullName).join(", ")}</TableCell><TableCell>{agreement.version?.agreement_data.vehicles.map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`).join(", ")}</TableCell><TableCell><AgreementStatusBadge status={agreement.status} /></TableCell><TableCell>{new Date(agreement.created_at).toLocaleDateString()}</TableCell><TableCell>{agreement.sent_at ? new Date(agreement.sent_at).toLocaleDateString() : "—"}</TableCell><TableCell>{new Date(agreement.updated_at).toLocaleString()}</TableCell><TableCell className="text-end"><Button asChild variant="outline" size="sm"><Link to={`/admin/agreements/${agreement.id}`}>View</Link></Button></TableCell></TableRow>)}
+                {filtered.map((agreement) => <TableRow key={agreement.id}><TableCell className="font-semibold">{agreement.agreement_number}</TableCell><TableCell className="max-w-48">{agreement.template?.name ?? "Agreement"}</TableCell><TableCell>{agreement.signers.map((signer) => signer.fullName).join(", ")}</TableCell><TableCell>{agreementVehicles(agreement.version?.agreement_data).map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`).join(", ")}</TableCell><TableCell><AgreementStatusBadge status={agreement.status} /></TableCell><TableCell>{new Date(agreement.created_at).toLocaleDateString()}</TableCell><TableCell>{agreement.sent_at ? new Date(agreement.sent_at).toLocaleDateString() : "—"}</TableCell><TableCell>{new Date(agreement.updated_at).toLocaleString()}</TableCell><TableCell className="text-end"><Button asChild variant="outline" size="sm"><Link to={`/admin/agreements/${agreement.id}`}>View</Link></Button></TableCell></TableRow>)}
               </TableBody></Table>
             </div>
             <div className="grid gap-3 md:hidden">
-              {filtered.map((agreement) => <Card key={agreement.id} className="p-4"><div className="flex items-start justify-between gap-3"><div><p className="font-semibold">{agreement.agreement_number}</p><p className="mt-1 text-sm text-muted-foreground">{agreement.template?.name}</p></div><AgreementStatusBadge status={agreement.status} /></div><dl className="mt-4 grid gap-3 text-sm"><div><dt className="text-muted-foreground">Parties</dt><dd className="font-medium">{agreement.signers.map((signer) => signer.fullName).join(", ")}</dd></div><div><dt className="text-muted-foreground">Vehicles</dt><dd className="font-medium">{agreement.version?.agreement_data.vehicles.map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`).join(", ")}</dd></div></dl><Button asChild variant="outline" className="mt-4 w-full"><Link to={`/admin/agreements/${agreement.id}`}>View agreement</Link></Button></Card>)}
+              {filtered.map((agreement) => <Card key={agreement.id} className="p-4"><div className="flex items-start justify-between gap-3"><div><p className="font-semibold">{agreement.agreement_number}</p><p className="mt-1 text-sm text-muted-foreground">{agreement.template?.name}</p></div><AgreementStatusBadge status={agreement.status} /></div><dl className="mt-4 grid gap-3 text-sm"><div><dt className="text-muted-foreground">Parties</dt><dd className="font-medium">{agreement.signers.map((signer) => signer.fullName).join(", ")}</dd></div><div><dt className="text-muted-foreground">Vehicles</dt><dd className="font-medium">{agreementVehicles(agreement.version?.agreement_data).map((vehicle) => `${vehicle.year} ${vehicle.make} ${vehicle.model}`).join(", ")}</dd></div></dl><Button asChild variant="outline" className="mt-4 w-full"><Link to={`/admin/agreements/${agreement.id}`}>View agreement</Link></Button></Card>)}
             </div>
           </>
         )}
