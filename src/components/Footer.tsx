@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import ConversionPaths from "@/components/ConversionPaths";
 import logo from "@/assets/rent-with-heldy-logo.png";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
+import { track } from "@/lib/analytics";
 
 const services = [
   { to: "/passenger-vans", key: "passengerVans" },
@@ -119,7 +120,7 @@ const Footer = () => {
             <h3 className="font-semibold text-ink mb-4">{t("columns.contact")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href={CONTACT_PHONE_HREF} dir="ltr" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "footer" })} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="h-4 w-4 text-primary shrink-0" /> {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>

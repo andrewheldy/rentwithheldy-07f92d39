@@ -55,7 +55,7 @@
     },
     "title": "Privacy Policy",
     "lastUpdated": "Effective date: {{date}}",
-    "effectiveDate": "July 10, 2026",
+    "effectiveDate": "August 21, 2026",
     "overview": {
       "heading": "Overview",
       "body": "Rent With Heldy (\"we\", \"us\") respects your privacy. This policy explains what information we collect when you visit rentwithheldy.com or book a vehicle with us, how we use it, and the choices you have."
@@ -69,6 +69,10 @@
       "verification": {
         "term": "Verification information",
         "desc": "required by our booking platform (driver's license, payment method) to complete a reservation."
+      },
+      "account": {
+        "term": "Account information",
+        "desc": "email, name, phone, language preference, and marketing choice you provide if you create an optional account, including when you sign in with Google."
       },
       "communication": {
         "term": "Communication",
@@ -91,7 +95,11 @@
     },
     "sharing": {
       "heading": "Sharing of information",
-      "body": "We do not sell your personal information. We share information only with the booking and payment platforms required to complete your reservation, and with service providers strictly as needed to operate the rental (for example, insurance verification)."
+      "body": "We do not sell your personal information. We share information only with the booking and payment platforms required to complete your reservation — reservations and payments are processed by Wheelbase, an Outdoorsy company, under its own terms and privacy policy, which you should review at checkout — and with service providers strictly as needed to operate the rental (for example, insurance verification)."
+    },
+    "accounts": {
+      "heading": "Accounts and Google sign-in",
+      "body": "Creating an account is optional and is never required to book a vehicle. If you sign in with Google, Google shares only your name and email address with us; we never see or store your Google password. You can view and update your account details on your account page at any time, and you can ask us to delete your account and its data by emailing us."
     },
     "cookies": {
       "heading": "Cookies and analytics",
@@ -100,6 +108,18 @@
     "choices": {
       "heading": "Your choices",
       "text": "You may request access to, correction of, or deletion of your personal information by contacting us at"
+    },
+    "rights": {
+      "heading": "Your data rights",
+      "intro": "Wherever you are located, we honor the following requests about your personal information:",
+      "items": [
+        "Access — receive a copy of the personal information we hold about you.",
+        "Correction — have inaccurate or incomplete information corrected.",
+        "Deletion — have your account and personal information deleted, except records we must keep for legal, tax, or safety reasons.",
+        "Portability — receive the information you provided to us in a commonly used format.",
+        "Objection and restriction — object to or limit certain processing, including opting out of marketing messages at any time."
+      ],
+      "gdprNote": "If you are visiting from the European Economic Area or the United Kingdom, these rights are provided under the GDPR / UK GDPR, and you also have the right to lodge a complaint with your local supervisory authority. We respond to all verified requests within the timelines required by applicable law."
     },
     "contact": {
       "heading": "Contact",
@@ -115,14 +135,18 @@
     },
     "title": "Terms of Service",
     "lastUpdated": "Effective date: {{date}}",
-    "effectiveDate": "July 10, 2026",
+    "effectiveDate": "August 21, 2026",
     "acceptance": {
       "heading": "Acceptance of terms",
       "body": "By accessing rentwithheldy.com or booking a vehicle with Rent With Heldy, you agree to these terms. If you do not agree, do not use the site or book a vehicle."
     },
     "reservations": {
       "heading": "Reservations",
-      "body": "Reservations are made through our booking platform. The terms, cancellation policies, insurance requirements, and protection plans of that platform apply to every booking in addition to these terms. You are responsible for reviewing them at checkout."
+      "body": "Reservations are made through our booking platform, Wheelbase (an Outdoorsy company). The terms, cancellation policies, insurance requirements, and protection plans of that platform apply to every booking in addition to these terms. You are responsible for reviewing them at checkout."
+    },
+    "accounts": {
+      "heading": "Accounts",
+      "body": "You may create an optional account (with an email and password, or by signing in with Google) to save your details. You agree to provide accurate information, keep your credentials confidential, and notify us of any unauthorized use of your account. You are responsible for activity under your account. We may suspend or close an account used in violation of these terms, and you may delete your account at any time by contacting us."
     },
     "eligibility": {
       "heading": "Driver eligibility",

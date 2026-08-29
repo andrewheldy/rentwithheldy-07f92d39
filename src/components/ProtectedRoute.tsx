@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Loader2 } from "lucide-react";
 
@@ -9,6 +9,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) => {
   const { user, isAdmin, isLoading } = useAuth();
+  const location = useLocation();
 
   if (isLoading) {
     return (
@@ -22,7 +23,8 @@ const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) 
   }
 
   if (!user) {
-    return <Navigate to="/auth" replace />;
+    // Auth page reads this to send the visitor back here after signing in.
+    return <Navigate to="/auth" replace state={{ from: location }} />;
   }
 
   if (requireAdmin && !isAdmin) {

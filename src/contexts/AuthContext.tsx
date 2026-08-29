@@ -13,6 +13,7 @@ interface AuthContextType {
   isLoading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signInWithGoogle: (redirectPath?: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -106,6 +107,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
+  // OAuth is a full-page redirect: Supabase sends the browser to Google and
+  // back to `redirectPath` on this origin, so no error surfaces here unless
+  // the redirect itself fails to start.
+  const signInWithGoogle = async (redirectPath: string = "/profile") => {
+    if (!isSupabaseConfigured) return { error: missingConfigurationError };
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}${redirectPath}`,
+      },
+    });
+    return { error: error as Error | null };
+  };
+
   const signOut = async () => {
     if (isSupabaseConfigured) await supabase.auth.signOut();
     setUser(null);
@@ -122,6 +138,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         isLoading,
         signIn,
         signUp,
+        signInWithGoogle,
         signOut,
       }}
     >

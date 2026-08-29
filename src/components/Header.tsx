@@ -13,6 +13,7 @@ import {
   Menu,
   Phone,
   Plane,
+  UserRound,
   Wrench,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import LanguageSelector from "@/components/LanguageSelector";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/rent-with-heldy-logo.png";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
 import { getDirection } from "@/i18n/direction";
@@ -64,6 +66,9 @@ const BROWSE_LINKS = [
 
 const Header = () => {
   const { t, i18n } = useTranslation(["navigation", "common"]);
+  const { user } = useAuth();
+  // Signed-in visitors go straight to their account; everyone else to sign-in.
+  const accountPath = user ? "/profile" : "/auth";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -202,11 +207,19 @@ const Header = () => {
             <a
               href={CONTACT_PHONE_HREF}
               dir="ltr"
+              onClick={() => track("call_cta_click", { placement: "header_desktop" })}
               className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4" />
               {CONTACT_PHONE_DISPLAY}
             </a>
+            <Link
+              to={accountPath}
+              aria-label={t("aria.account")}
+              className="hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-control text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+            >
+              <UserRound className="h-5 w-5" />
+            </Link>
             <Link
               to="/book"
               onClick={() =>
@@ -291,6 +304,15 @@ const Header = () => {
                       </Link>
                     </SheetClose>
                   ))}
+                  <SheetClose asChild>
+                    <Link
+                      to={accountPath}
+                      className="flex items-center gap-2 py-2.5 text-base font-medium text-foreground"
+                    >
+                      <UserRound className="h-4 w-4 text-primary" />
+                      {t("links.account")}
+                    </Link>
+                  </SheetClose>
 
                   <p className="mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {t("links.rentalServices")}
@@ -311,6 +333,7 @@ const Header = () => {
                 <div className="p-5 border-t border-border">
                   <a
                     href={CONTACT_PHONE_HREF}
+                    onClick={() => track("call_cta_click", { placement: "header_mobile_sheet" })}
                     className="flex min-h-11 items-center justify-center gap-2 rounded-control border border-border text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary"
                   >
                     <Phone className="h-4 w-4 text-primary" />

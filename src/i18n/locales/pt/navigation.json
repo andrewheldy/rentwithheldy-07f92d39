@@ -9,7 +9,8 @@
     "rentalServices": "Serviços de aluguel",
     "workWithUs": "Trabalhe conosco",
     "browse": "Explorar",
-    "more": "Mais"
+    "more": "Mais",
+    "account": "Conta"
   },
   "services": {
     "passengerVans": { "label": "Vans de passageiros", "desc": "Até 14 passageiros" },
@@ -27,6 +28,7 @@
     }
   },
   "aria": {
-    "openMenu": "Abrir menu"
+    "openMenu": "Abrir menu",
+    "account": "Sua conta"
   }
 }

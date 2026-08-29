@@ -29,7 +29,13 @@ export type AnalyticsEvent =
   | "home_plan_trip_click"
   | "home_browse_fleet_click"
   | "home_booking_widget_fallback"
-  | "wheelbase_widget_loaded";
+  | "wheelbase_widget_loaded"
+  | "call_cta_click"
+  | "auth_view"
+  | "auth_google_click"
+  | "auth_email_submit"
+  | "profile_view"
+  | "profile_saved";
 
 type AnalyticsValue = string | number | boolean | null | undefined;
 

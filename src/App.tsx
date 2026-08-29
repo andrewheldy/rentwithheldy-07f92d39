@@ -16,6 +16,7 @@ import AdminAgreementNew from "./pages/AdminAgreementNew";
 import AdminAgreementDetail from "./pages/AdminAgreementDetail";
 import SignAgreement from "./pages/SignAgreement";
 import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import Miami from "./pages/Miami";
@@ -90,6 +91,14 @@ const App = () => (
             />
             <Route path="/about" element={<About />} />
             <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute requireAdmin={false}>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/sign/:token" element={<SignAgreement />} />
             <Route path="/sign" element={<SignAgreement />} />
             {/* Redirect old routes */}

@@ -52,6 +52,9 @@ const Privacy = () => {
               <strong>{t("privacy.collect.verification.term")}</strong> — {t("privacy.collect.verification.desc")}
             </li>
             <li>
+              <strong>{t("privacy.collect.account.term")}</strong> — {t("privacy.collect.account.desc")}
+            </li>
+            <li>
               <strong>{t("privacy.collect.communication.term")}</strong> — {t("privacy.collect.communication.desc")}
             </li>
             <li>
@@ -82,6 +85,15 @@ const Privacy = () => {
 
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-2">
+            {t("privacy.accounts.heading")}
+          </h2>
+          <p>
+            {t("privacy.accounts.body")}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground mb-2">
             {t("privacy.cookies.heading")}
           </h2>
           <p>
@@ -104,6 +116,19 @@ const Privacy = () => {
             </a>
             .
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground mb-2">
+            {t("privacy.rights.heading")}
+          </h2>
+          <p className="mb-2">{t("privacy.rights.intro")}</p>
+          <ul className="list-disc ps-6 space-y-2">
+            {(t("privacy.rights.items", { returnObjects: true }) as string[]).map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+          <p className="mt-3">{t("privacy.rights.gdprNote")}</p>
         </section>
 
         <section>

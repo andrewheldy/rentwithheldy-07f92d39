@@ -53,6 +53,15 @@ const Terms = () => {
 
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-2">
+            {t("terms.accounts.heading")}
+          </h2>
+          <p>
+            {t("terms.accounts.body")}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground mb-2">
             {t("terms.eligibility.heading")}
           </h2>
           <ul className="list-disc ps-6 space-y-2">
