@@ -43,8 +43,6 @@ const BodyShopDelivery = () => {
         }
       }
       valueProps={valueProps}
-      partnerHeading={t("bodyShop.partnerHeading")}
-      partnerSubheading={t("bodyShop.partnerSubheading")}
       faqs={
         t("bodyShop.faqs", { returnObjects: true }) as {
           question: string;

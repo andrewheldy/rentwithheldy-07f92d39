@@ -51,6 +51,7 @@ interface ServicePageLayoutProps {
   defaultPassengerType?: QuickQuotePassengerType;
   valueProps: ValueProp[];
   coverageAreas?: string[];
+  /** Heading for the B2B partner intake form. Omit to hide the form. */
   partnerHeading?: string;
   partnerSubheading?: string;
   faqs: FAQItem[];
@@ -405,17 +406,19 @@ const ServicePageLayout = ({
           </section>
         )}
 
-        {/* Partner intake */}
-        <section className="container mx-auto px-4 py-12 md:py-16">
-          <div className="max-w-3xl mx-auto">
-            <PartnerIntakeForm
-              serviceContext={serviceContext}
-              verticalPath={verticalPath}
-              heading={partnerHeading}
-              subheading={partnerSubheading}
-            />
-          </div>
-        </section>
+        {/* Partner intake — only on pages that still take B2B referrals */}
+        {partnerHeading && (
+          <section className="container mx-auto px-4 py-12 md:py-16">
+            <div className="max-w-3xl mx-auto">
+              <PartnerIntakeForm
+                serviceContext={serviceContext}
+                verticalPath={verticalPath}
+                heading={partnerHeading}
+                subheading={partnerSubheading}
+              />
+            </div>
+          </section>
+        )}
 
         {/* Coverage matrix */}
         <section className="bg-secondary/40 border-y border-border">

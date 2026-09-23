@@ -7,7 +7,7 @@ import airportDelivery from "@/assets/categories/airport-delivery.jpg";
 const VP_ICONS = [Plane, Navigation, MessageCircle, Clock];
 
 const FLLAirport = () => {
-  const { t } = useTranslation("services");
+  const { t } = useTranslation(["services", "common"]);
   const valueProps = (
     t("airport.valueProps", { returnObjects: true }) as {
       title: string;
@@ -30,7 +30,7 @@ const FLLAirport = () => {
       formSlot={<AirportQuoteForm />}
       heroImage={airportDelivery}
       heroImageAlt={t("airport.heroImageAlt")}
-      primaryCta={{ label: t("airport.primaryCta"), href: "/fleet" }}
+      primaryCta={{ label: t("common:actions.bookNow"), href: "/book" }}
       secondaryCta={{ label: t("airport.secondaryCta"), href: "#how-it-works" }}
       highlights={t("airport.highlights", { returnObjects: true }) as string[]}
       steps={t("airport.steps", { returnObjects: true }) as string[]}
