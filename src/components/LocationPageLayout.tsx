@@ -205,6 +205,14 @@ const LocationPageLayout = ({
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/local-car-rentals"
+                  className="text-primary hover:underline"
+                >
+                  → {t("layout.exploreMore.links.local")}
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-primary hover:underline">
                   → {t("layout.exploreMore.links.contact")}
                 </Link>

@@ -7,7 +7,7 @@ import hotelDelivery from "@/assets/categories/hotel-delivery.jpg";
 const VP_ICONS = [BellRing, Sparkles, Bus, Receipt];
 
 const HotelConciergeRentals = () => {
-  const { t } = useTranslation("services");
+  const { t } = useTranslation(["services", "common"]);
   const valueProps = (
     t("hotel.valueProps", { returnObjects: true }) as {
       title: string;
@@ -30,8 +30,8 @@ const HotelConciergeRentals = () => {
       formSlot={<HotelQuoteForm />}
       heroImage={hotelDelivery}
       heroImageAlt={t("hotel.heroImageAlt")}
-      primaryCta={{ label: t("hotel.primaryCta"), href: "/fleet" }}
-      secondaryCta={{ label: t("hotel.secondaryCta"), href: "#how-it-works" }}
+      primaryCta={{ label: t("common:actions.bookNow"), href: "/book" }}
+      secondaryCta={{ label: t("hotel.secondaryCta"), href: "#quick-quote" }}
       highlights={t("hotel.highlights", { returnObjects: true }) as string[]}
       steps={t("hotel.steps", { returnObjects: true }) as string[]}
       testimonial={
@@ -42,8 +42,6 @@ const HotelConciergeRentals = () => {
         }
       }
       valueProps={valueProps}
-      partnerHeading={t("hotel.partnerHeading")}
-      partnerSubheading={t("hotel.partnerSubheading")}
       faqs={
         t("hotel.faqs", { returnObjects: true }) as {
           question: string;

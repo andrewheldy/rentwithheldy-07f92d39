@@ -11,7 +11,8 @@
     "whatToExpect": "À quoi s'attendre",
     "coverage": {
       "title": "Où nous livrons",
-      "subtitle": "Nos principales zones de livraison en Floride du Sud. La vôtre n'y est pas ? Demandez-nous, on vous fait un devis."
+      "subtitle": "Nos principales zones de livraison en Floride du Sud. La vôtre n'y est pas ? Demandez-nous, on vous fait un devis.",
+      "localLink": "Comparez la location de voiture locale en Floride du Sud avec les grands loueurs"
     },
     "faqHeading": "Questions fréquentes",
     "finalCta": {
@@ -29,7 +30,6 @@
     "h1": "Commencez votre séjour en Floride du Sud sans le comptoir de location",
     "intro": "Vous atterrissez à Miami ou à Fort Lauderdale ? Nous organisons l'option de prise en charge la plus pratique selon votre arrivée, votre destination et votre horaire — pour que vous preniez la route avec moins de tracas. La prise en charge sans contact est disponible.",
     "heroImageAlt": "Un crossover sombre roulant vers la silhouette de Miami tandis qu'un avion de ligne descend",
-    "primaryCta": "Voir les véhicules disponibles",
     "secondaryCta": "Comment fonctionne la livraison à l'aéroport",
     "highlights": [
       "Service pour les voyageurs de MIA et FLL",
@@ -110,7 +110,6 @@
     "h1": "Votre location, livrée à votre hôtel",
     "intro": "Vous séjournez dans un hôtel, un resort ou une location de vacances ? Nous organiserons la livraison directement à votre hôtel pour que vous passiez moins de temps à organiser vos déplacements. Les frais de livraison varient selon le lieu, et la prise en charge sans contact est disponible.",
     "heroImageAlt": "Un crossover sombre arrivant à un hôtel moderne de Floride du Sud au coucher du soleil",
-    "primaryCta": "Voir les véhicules disponibles",
     "secondaryCta": "Découvrir la livraison à l'hôtel",
     "highlights": [
       "Hôtels et resorts",
@@ -135,8 +134,6 @@
       { "title": "Évitez les navettes de l'aéroport", "description": "Atterrissez, rejoignez votre hôtel et ayez la voiture prête quand vous voulez explorer." },
       { "title": "Les péages, tout simplement", "description": "Les péages sont facturés à la fin du trajet, sans frais supplémentaires. Une facturation claire." }
     ],
-    "partnerHeading": "Concierge ou directeur d'hôtel ?",
-    "partnerSubheading": "Offrez à vos clients une option de location simple, sans les tracas de l'aéroport. Nous soutenons les partenariats récurrents.",
     "faqs": [
       { "question": "Comment fonctionne la livraison à l'hôtel ?", "answer": "Après la réservation, envoyez-nous le nom de l'hôtel, le nom du client et l'heure de prise en charge souhaitée. Nous organiserons la livraison directement à votre hôtel et confirmerons les détails avec vous. Les frais de livraison varient selon le lieu, et la prise en charge sans contact est disponible." },
       { "question": "À quels hôtels livrez-vous ?", "answer": "Nous livrons à la plupart des grands hôtels de Miami Beach, Brickell, Downtown Miami, Aventura, Sunny Isles, Hollywood, Fort Lauderdale Beach et Las Olas. Dites-nous où vous séjournez et nous confirmerons." },
@@ -181,8 +178,6 @@
       { "title": "Locations le jour même", "description": "Les locations le jour même sont possibles, selon la disponibilité des véhicules, dans Broward et Miami-Dade." },
       { "title": "Restitution flexible", "description": "Une fois les réparations terminées, restituez la location au même atelier — nous coordonnons la récupération." }
     ],
-    "partnerHeading": "Vous gérez un garage de carrosserie ou de mécanique ? Faites de nous votre partenaire de livraison.",
-    "partnerSubheading": "Nous livrons et récupérons à votre établissement pour que vos clients ne repartent jamais sans véhicule.",
     "faqs": [
       { "question": "Comment fonctionne concrètement la livraison au garage ou chez le mécanicien ?", "answer": "Vous nous indiquez l'atelier, le jour et l'heure approximative de dépôt. Nous coordonnons avec le conseiller service ou le mécanicien et vous retrouvons sur place avec les clés de la location lorsque vous déposez votre voiture." },
       { "question": "À quels ateliers livrez-vous ?", "answer": "À tout centre de carrosserie ou atelier de mécanique réputé de Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura et Pompano. Nous avons livré à la plupart des grandes chaînes et des ateliers indépendants de la région." },
@@ -201,7 +196,6 @@
     "h1": "Une liaison plus simple entre votre croisière et la Floride du Sud",
     "intro": "Vous partez de PortMiami ou de Port Everglades ? Nous organiserons la prise en charge ou la restitution la plus simple selon votre navire, votre horaire et votre terminal — que vous exploriez avant le départ ou restiez après votre retour. La prise en charge sans contact est disponible.",
     "heroImageAlt": "Un crossover sombre s'approchant de PortMiami avec un navire de croisière et la silhouette de la ville devant",
-    "primaryCta": "Voir les véhicules disponibles",
     "secondaryCta": "Planifier la livraison au port de croisière",
     "highlights": [
       "PortMiami",

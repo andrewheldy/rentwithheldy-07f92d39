@@ -11,7 +11,8 @@
         "fortLauderdale": "Aluguel de carros em Fort Lauderdale",
         "miami": "Aluguel de carros em Miami",
         "airport": "Aluguéis no Aeroporto de Fort Lauderdale (FLL)",
-        "contact": "Fale direto com nossa equipe"
+        "contact": "Fale direto com nossa equipe",
+        "local": "Uma alternativa local ao aluguel de carro tradicional no aeroporto"
       }
     },
     "faqHeading": "Perguntas frequentes",
@@ -195,88 +196,275 @@
     ]
   },
   "local": {
-    "metaTitle": "Aluguéis de carros locais no Sul da Flórida | Aluguéis para trabalho e reparo | Rent With Heldy",
-    "metaDescription": "Aluguéis de carros locais diários, semanais e mensais em Miami e Fort Lauderdale. Carros confiáveis para o trabalho, o deslocamento e enquanto seu carro está na oficina. Reserva fácil, atendimento simpático.",
-    "crumbLabel": "Aluguéis de carros locais",
-    "h1": "Aluguéis de carros locais para o trabalho e enquanto seu carro está na oficina",
-    "intro": "Um aluguel confiável para quem realmente precisa de um carro dia após dia — quem se desloca para o trabalho, prestadores de serviço, profissionais autônomos e motoristas esperando um reparo. Carros limpos, condições flexíveis e uma pessoa de verdade do outro lado de cada reserva.",
-    "sections": [
-      {
-        "heading": "Feito para os moradores do Sul da Flórida que precisam de um carro agora",
-        "paragraphs": [
-          "Nem todo aluguel é para férias. Muitos dos nossos clientes são moradores que simplesmente precisam de um carro — um prestador de serviço cuja van de trabalho está na oficina, um enfermeiro pegando turnos extras, um motorista de app entre carros ou uma família sem veículo depois de uma batidinha. Construímos nosso programa de aluguel local em torno dessas situações exatas.",
-          "Os preços são justos, os carros são limpos e não vamos prender você em regras rígidas de balcão corporativo. Diárias, semanas e meses disponíveis com um único ponto de contato direto do começo ao fim."
-        ]
-      },
-      {
-        "heading": "Quem reserva aluguéis locais com a gente",
-        "paragraphs": [
-          "Se você mora, trabalha ou ficou sem carro no Sul da Flórida, isto é para você."
-        ],
-        "bullets": [
-          "Motoristas cujo carro está na oficina de funilaria ou no mecânico após um acidente ou uma pane.",
-          "Trabalhadores que precisam de um carro confiável para o deslocamento enquanto o veículo do dia a dia está indisponível.",
-          "Prestadores de serviço, corretores de imóveis e profissionais de campo que precisam de um carro limpo e profissional para visitas a clientes.",
-          "Moradores entre carros — vendendo um, esperando o próximo.",
-          "Famílias que precisam de um segundo veículo temporário para levar os filhos à escola, fazer tarefas e cobrir turnos.",
-          "Motoristas de app e de entregas que precisam de um carro de curto prazo enquanto definem planos de mais longo prazo."
-        ]
-      },
-      {
-        "heading": "Diárias, semanas e meses locais",
-        "paragraphs": [
-          "Precisa de um carro por três dias enquanto consertam seu para-choque? Feito. Precisa de algo pelo próximo mês enquanto resolve um carro com perda total com o seguro? Feito também. Os aluguéis locais têm preços que fazem sentido para prazos da vida real, não só para viagens de fim de semana.",
-          "Reservas semanais e mensais têm as melhores tarifas. Se o seu seguro cobre perda de uso, também podemos faturar direto ou fornecer a documentação de que o seu regulador precisa."
-        ]
-      },
-      {
-        "heading": "Retirada, entrega e como funciona",
-        "paragraphs": [
-          "A maioria dos clientes locais encontra a gente em um ponto conveniente em Fort Lauderdale ou Miami. Se o seu carro está sendo consertado, muitas vezes conseguimos encontrar você na oficina para você sair de um carro e entrar em outro — sem Uber no meio.",
-          "Assim que sua reserva é confirmada, você terá uma linha direta para coordenar o horário e o local exatos. As devoluções são flexíveis, e as prorrogações costumam ser fáceis desde que a gente saiba com antecedência."
-        ]
-      },
-      {
-        "heading": "Por que os moradores escolhem a Rent With Heldy",
-        "paragraphs": [
-          "Os balcões das grandes marcas são feitos para turistas e volume. Os clientes locais acabam tratados como algo secundário. Nós somos o oposto."
-        ],
-        "bullets": [
-          "All-Star Host com mais de 1.400 avaliações cinco estrelas em todo o Sul da Flórida.",
-          "Uma pessoa de verdade no telefone — não um call center.",
-          "Amigável a oficinas e seguros: encontramos você, coordenamos e documentamos.",
-          "Tarifas semanais e mensais honestas para aluguéis mais longos.",
-          "Carros limpos e bem conservados — sedãs e SUVs prontos quando você estiver."
-        ]
-      },
-      {
-        "heading": "Como reservar seu aluguel local",
-        "paragraphs": [
-          "Escolha suas datas, selecione um veículo na disponibilidade em tempo real e confirme on-line. Fazemos o acompanhamento para acertar os detalhes da retirada. Se a sua situação é urgente — acidente hoje de manhã, carro guinchado ontem à noite — é só ligar que a gente resolve."
-        ]
+    "metaTitle": "Aluguel de carro local em Fort Lauderdale e Miami | Rent With Heldy",
+    "metaDescription": "Pule o balcão de aluguel tradicional. A Rent With Heldy é uma alternativa local à Enterprise, Hertz, SIXT, Avis e Budget, com entrega flexível de carros em Fort Lauderdale, Miami e no Sul da Flórida.",
+    "ogTitle": "Aluguel de carro local em Fort Lauderdale e Miami | Rent With Heldy",
+    "ogDescription": "Uma alternativa familiar do Sul da Flórida às locadoras tradicionais. Entrega flexível em aeroportos, hotéis, portos de cruzeiro e na região.",
+    "crumbLabel": "Aluguéis locais",
+    "hero": {
+      "eyebrow": "Aluguel de carro local • Fort Lauderdale e Miami",
+      "h1": "Uma alternativa local às grandes locadoras de carros",
+      "intro": "Sua viagem pelo Sul da Flórida não precisa começar em um balcão de aluguel. A Rent With Heldy é uma locadora familiar que oferece entrega flexível, retirada sem contato e atendimento pessoal em Fort Lauderdale, Miami e todo o Sul da Flórida.",
+      "tagline": "Seja nosso convidado.",
+      "primaryCta": "Ver carros disponíveis",
+      "secondaryCta": "Planejar minha viagem",
+      "talkToTeam": "Fale com nossa equipe local",
+      "imageAlt": "Pôr do sol em uma via elevada do Sul da Flórida rumo ao horizonte de Miami",
+      "trustLabel": "Por que os hóspedes escolhem a Rent With Heldy",
+      "trust": {
+        "reviews": "Mais de 1.400 avaliações cinco estrelas",
+        "familyOwned": "Empresa familiar",
+        "delivery": "Entrega em aeroportos e hotéis",
+        "contactless": "Retirada sem contato",
+        "localSupport": "Atendimento local"
       }
-    ],
-    "faqs": [
-      {
-        "question": "Vocês podem me encontrar na oficina ou na concessionária?",
-        "answer": "Sim. Encontramos clientes regularmente em centros de funilaria, concessionárias e mecânicos para você entregar as chaves e pegar seu aluguel na mesma parada."
-      },
-      {
-        "question": "Vocês oferecem tarifas locais semanais ou mensais?",
-        "answer": "Sim. Reservas semanais e mensais vêm com diárias reduzidas. É só mandar suas datas que enviamos o melhor preço para o período de que você precisa."
-      },
-      {
-        "question": "Meu seguro vai pagar o aluguel?",
-        "answer": "Muitas vezes sim — a maioria das apólices de perda de uso e de cobertura de aluguel reembolsa ou fatura direto. Fornecemos toda a documentação de que o seu regulador precisa."
-      },
-      {
-        "question": "Motoristas de app ou de entregas podem usar esses carros?",
-        "answer": "O uso de curto prazo para apps de transporte pode ser combinado em veículos selecionados — pergunte antes de reservar para combinarmos um carro compatível. Também estamos criando um programa dedicado de aluguel com opção de compra para motoristas de app."
-      },
-      {
-        "question": "Qual é a idade mínima para alugar?",
-        "answer": "Em geral, os motoristas precisam ter 21 anos ou mais. Alguns veículos exigem 25+. O sistema de reserva reflete as restrições de idade por veículo."
+    },
+    "difference": {
+      "eyebrow": "A diferença",
+      "title": "As grandes locadoras fazem você ir até elas. Nós vamos até você.",
+      "paragraphs": [
+        "As locadoras nacionais são organizadas em torno das suas lojas. Você pousa, vai até o centro de aluguel e começa a viagem no balcão delas. Isso funciona para muita gente.",
+        "Nós fazemos o contrário. Vai chegar ao Aeroporto Internacional de Fort Lauderdale-Hollywood (FLL) ou ao Aeroporto Internacional de Miami (MIA)? Conte quando você pousa e para onde vai. Coordenamos o carro em torno da sua viagem, em vez de pedir que você planeje a viagem em torno de um balcão."
+      ],
+      "cards": {
+        "comeToYou": {
+          "title": "Vamos até você",
+          "body": "Opções de entrega em aeroportos, hotéis, portos de cruzeiro e outros lugares do Sul da Flórida. As taxas de entrega variam conforme o local."
+        },
+        "localSupport": {
+          "title": "Atendimento local de verdade",
+          "body": "Ligue ou mande mensagem direto para a equipe da Rent With Heldy. Quem conversa com você é quem cuida do seu carro."
+        },
+        "flexibility": {
+          "title": "Flexibilidade",
+          "body": "Voo tarde, cruzeiro cedo ou um local de devolução diferente? Uma equipe local pequena pode ajudar a resolver."
+        },
+        "hospitality": {
+          "title": "Hospitalidade em primeiro lugar",
+          "body": "Você é nosso convidado, não um número de reserva. O atendimento é pessoal da primeira mensagem até a devolução."
+        }
       }
-    ]
+    },
+    "comparison": {
+      "eyebrow": "Lado a lado",
+      "title": "Rent With Heldy vs. locadoras de carros tradicionais",
+      "intro": "Nenhum modelo é ideal para todo mundo. Veja como eles se diferenciam para escolher o que combina com a sua viagem.",
+      "traditional": {
+        "title": "Experiência de aluguel tradicional",
+        "items": [
+          "Grande operação nacional",
+          "Processo tradicional no balcão",
+          "Atendimento ao cliente centralizado",
+          "Retirada organizada em torno das lojas",
+          "Normalmente você reserva uma categoria ou classe de veículo"
+        ]
+      },
+      "heldy": {
+        "title": "Rent With Heldy",
+        "items": [
+          "Empresa local do Sul da Flórida",
+          "Opções flexíveis de retirada e entrega",
+          "Comunicação direta com a equipe local",
+          "Entrega em aeroportos, hotéis, portos de cruzeiro e na região",
+          "Você vê os veículos reais disponíveis",
+          "Atendimento com foco em hospitalidade"
+        ]
+      },
+      "fleetLink": "Ver os veículos da nossa frota"
+    },
+    "alternatives": {
+      "eyebrow": "Compare suas opções",
+      "title": "Procurando uma alternativa à Enterprise, Hertz, SIXT, Avis ou Budget?",
+      "paragraphs": [
+        "Enterprise Rent-A-Car, Hertz, SIXT, Avis, Budget, Alamo e National Car Rental são locadoras nacionais consolidadas. Elas têm frotas grandes, centros de aluguel nos aeroportos e programas de fidelidade, e para muitos viajantes são uma boa escolha.",
+        "A Rent With Heldy funciona de outro jeito. Somos uma empresa pequena e familiar do Sul da Flórida. Em vez de mandar você para um balcão ou pátio de aluguel, coordenamos o veículo de acordo com os seus planos: retirada no aeroporto FLL ou MIA, entrega no seu hotel, entrega perto do terminal de cruzeiros ou um ponto de encontro perto de onde você está hospedado.",
+        "Você escolhe o carro real que vai dirigir, não só uma categoria. E se os planos mudarem, como um voo atrasado ou um check-out tardio, você fala com a mesma equipe local que cuida do seu aluguel.",
+        "Se você prefere uma operação local menor, com entrega e comunicação direta, vamos adorar receber você."
+      ],
+      "items": [
+        {
+          "heading": "Alternativa à Enterprise em Fort Lauderdale",
+          "body": "A Enterprise tem lojas de bairro em todo o condado de Broward. Se preferir não ir a nenhuma loja, podemos encontrar você no hotel, em casa ou em outro ponto combinado em Fort Lauderdale."
+        },
+        {
+          "heading": "Alternativa à Hertz perto de FLL",
+          "body": "Em FLL, a Hertz e as outras grandes marcas operam no centro de aluguel de carros do aeroporto. Nós planejamos a sua retirada de acordo com o seu voo. Dependendo do horário, pode ser em um estacionamento do aeroporto, onde podem ser cobradas taxas de estacionamento, ou em um ponto de retirada próximo, a um trajeto curto."
+        },
+        {
+          "heading": "Alternativa à SIXT em Fort Lauderdale",
+          "body": "A SIXT é conhecida pela linha premium. Se você tem um veículo específico em mente, veja nossa frota e reserve exatamente esse carro, de sedãs econômicos a SUVs premium mais novos."
+        },
+        {
+          "heading": "Alternativa à Avis e Budget no Sul da Flórida",
+          "body": "Avis e Budget atendem bem quem quer um processo nacional conhecido. Se você prefere falar com uma única equipe local antes, durante e depois da viagem, de Fort Lauderdale a Miami, é assim que trabalhamos todos os dias."
+        },
+        {
+          "heading": "Alternativa à Alamo e National perto de FLL",
+          "body": "Alamo e National são pensadas para o autoatendimento rápido no aeroporto. Nós oferecemos outro tipo de praticidade: o carro coordenado com a sua chegada, retirada sem contato com cofre de chaves no seu horário e uma pessoa de verdade para ligar se os planos mudarem."
+        }
+      ]
+    },
+    "destinations": {
+      "eyebrow": "Retirada e entrega",
+      "title": "Pule o balcão. Escolha onde sua viagem começa.",
+      "intro": "Diga onde você vai estar e quando. Confirmamos com antecedência o plano de retirada e qualquer taxa de entrega.",
+      "cards": {
+        "fll": {
+          "title": "Aeroporto FLL",
+          "body": "Vai chegar ao Aeroporto Internacional de Fort Lauderdale-Hollywood? Coordenamos a retirada conforme o seu horário de chegada.",
+          "cta": "Retirada no aeroporto FLL"
+        },
+        "mia": {
+          "title": "Aeroporto MIA",
+          "body": "Vai pousar no Aeroporto Internacional de Miami? Planejamos a retirada mais conveniente para o seu voo e para os seus planos em Miami.",
+          "cta": "Aluguel de carro em Miami"
+        },
+        "hotels": {
+          "title": "Hotéis e resorts",
+          "body": "Receba o carro no seu hotel, resort ou hospedagem de temporada. Confirmamos a taxa de entrega com antecedência.",
+          "cta": "Entrega em hotéis"
+        },
+        "portEverglades": {
+          "title": "Port Everglades",
+          "body": "Vai embarcar em Fort Lauderdale? Coordenamos a retirada ou a devolução de acordo com o seu navio e terminal.",
+          "cta": "Aluguéis para cruzeiros"
+        },
+        "portMiami": {
+          "title": "PortMiami",
+          "body": "Vai começar ou terminar um cruzeiro em Miami? Planejamos uma entrega que combine com o horário do seu embarque.",
+          "cta": "Aluguéis para cruzeiros"
+        },
+        "local": {
+          "title": "Entrega local no Sul da Flórida",
+          "body": "Está na casa da família, trabalhando na região ou precisa de um carro em casa? Entregamos em Broward e Miami-Dade.",
+          "cta": "Aluguel de carro em Fort Lauderdale"
+        }
+      }
+    },
+    "areas": {
+      "eyebrow": "Onde atendemos",
+      "title": "Aluguel de carro local em Fort Lauderdale, Miami e no Sul da Flórida",
+      "paragraphs": [
+        "A Rent With Heldy atende os condados de Broward e Miami-Dade, dos hotéis de praia em Fort Lauderdale às viagens de negócios em Doral. Envie o endereço e confirmamos com antecedência as opções de entrega e qualquer taxa.",
+        "Não sabe se atendemos a sua região? Mande uma mensagem. Se for no Sul da Flórida, há uma boa chance de darmos um jeito."
+      ],
+      "broward": {
+        "title": "Condado de Broward",
+        "body": "Fort Lauderdale é a nossa base. Também atendemos Hollywood, Dania Beach, Hallandale Beach e Pembroke Pines, além do Aeroporto Internacional de Fort Lauderdale-Hollywood (FLL) e de Port Everglades.",
+        "link": "Aluguel de carro em Fort Lauderdale"
+      },
+      "miamiDade": {
+        "title": "Condado de Miami-Dade",
+        "body": "Em Miami-Dade atendemos Miami, Aventura e Doral, além do Aeroporto Internacional de Miami (MIA) e do PortMiami. Aventura fica bem na divisa entre os condados, então a entrega é fácil dos dois lados.",
+        "link": "Aluguel de carro em Miami"
+      },
+      "imageAlt": "Um SUV estacionado sob a entrada coberta de um hotel ao anoitecer, com o horizonte de Miami do outro lado da água"
+    },
+    "whyLocal": {
+      "eyebrow": "Alugue local",
+      "title": "Por que alugar com uma empresa local?",
+      "intro": "Uma empresa pequena do Sul da Flórida consegue fazer coisas para as quais uma grande operação não está preparada. Veja como isso funciona na prática.",
+      "items": {
+        "direct": {
+          "title": "Comunicação direta",
+          "body": "Uma equipe, um número. Ninguém vai passar você de um departamento para outro."
+        },
+        "knowledge": {
+          "title": "Conhecimento local",
+          "body": "Conhecemos os aeroportos, os terminais de cruzeiro e o caminho entre Fort Lauderdale e Miami."
+        },
+        "delivery": {
+          "title": "Entrega flexível",
+          "body": "Aeroporto, hotel, porto de cruzeiro, casa ou escritório. Planejamos de acordo com onde você vai estar."
+        },
+        "personal": {
+          "title": "Atendimento personalizado",
+          "body": "Viajando em grupo ou com muita bagagem? Conte para a gente e ajudamos você a escolher o veículo certo."
+        },
+        "hospitality": {
+          "title": "Hospitalidade em primeiro lugar",
+          "body": "Tratamos cada aluguel como quem recebe um convidado. Carro limpo, plano claro e um acompanhamento atencioso."
+        },
+        "requests": {
+          "title": "Pedidos diferentes",
+          "body": "Devolver no aeroporto depois de um cruzeiro ou retirar depois de um check-out tardio? Pergunte e faremos o possível."
+        }
+      },
+      "form": {
+        "title": "Conte o que você precisa",
+        "subtitle": "Informe suas datas, onde vai chegar e onde vai se hospedar. Um membro da nossa equipe entrará em contato o quanto antes.",
+        "cta": "Enviar os detalhes da viagem"
+      }
+    },
+    "faq": {
+      "eyebrow": "Perguntas frequentes",
+      "title": "Perguntas sobre aluguel de carro local, respondidas.",
+      "items": [
+        {
+          "question": "Existe uma alternativa à Enterprise ou à Hertz em Fort Lauderdale?",
+          "answer": "Sim. A Rent With Heldy é uma locadora familiar em Fort Lauderdale que oferece entrega em aeroportos, hotéis, portos de cruzeiro e na região, em vez de um balcão de aluguel tradicional. Você reserva on-line, escolhe o veículo real e combina a retirada diretamente com a nossa equipe."
+        },
+        {
+          "question": "Existem locadoras locais perto do aeroporto de Fort Lauderdale?",
+          "answer": "Sim. A Rent With Heldy é uma empresa local e familiar que atende o Aeroporto Internacional de Fort Lauderdale-Hollywood (FLL). Coordenamos a retirada conforme a sua chegada, então você não precisa ir a um balcão de aluguel."
+        },
+        {
+          "question": "Um carro alugado pode ser entregue em FLL?",
+          "answer": "Sim. Coordenamos a retirada no aeroporto FLL de acordo com o seu voo e horário. Dependendo do momento, o carro pode estar em um estacionamento do aeroporto, onde podem ser cobradas as taxas normais de estacionamento, ou em um ponto de retirada próximo, a um trajeto curto. Confirmamos o plano com você com antecedência."
+        },
+        {
+          "question": "A Rent With Heldy pode entregar um carro no meu hotel?",
+          "answer": "Sim. Entregamos em hotéis, resorts e hospedagens de temporada em Fort Lauderdale, Miami e todo o Sul da Flórida. As taxas de entrega variam conforme o local, e confirmamos a taxa com antecedência quando sabemos qual é o seu hotel."
+        },
+        {
+          "question": "Posso alugar um carro perto de Port Everglades?",
+          "answer": "Sim. Coordenamos a retirada e a devolução de acordo com o seu cruzeiro em Port Everglades, em Fort Lauderdale. Dependendo do horário e das condições do porto, pode ser no terminal, em um estacionamento de cruzeiros ou em uma área de retirada designada."
+        },
+        {
+          "question": "Tenho que usar uma locadora localizada dentro do aeroporto?",
+          "answer": "Não. Locadoras locais e fora do aeroporto são uma opção tanto em FLL quanto em MIA. Com a Rent With Heldy, coordenamos a retirada mais conveniente para a sua chegada em vez de mandar você para um balcão de aluguel no aeroporto."
+        },
+        {
+          "question": "Qual é a diferença entre a Rent With Heldy e a Enterprise, a Hertz ou a SIXT?",
+          "answer": "A principal diferença é o modelo de negócio. Enterprise, Hertz e SIXT são grandes empresas nacionais organizadas em torno das suas lojas. A Rent With Heldy é uma empresa pequena do Sul da Flórida organizada em torno da entrega, da comunicação direta com a nossa equipe local e da possibilidade de escolher o veículo real que você vai dirigir."
+        },
+        {
+          "question": "Posso alugar um carro sem passar por um balcão de aluguel tradicional?",
+          "answer": "Sim. A Rent With Heldy não usa um balcão de aluguel tradicional. Você reserva on-line, combinamos o local de retirada com você, e a retirada sem contato com cofre de chaves está disponível em todos os aluguéis."
+        },
+        {
+          "question": "A Rent With Heldy atende Miami?",
+          "answer": "Sim. Atendemos Miami e o condado de Miami-Dade, incluindo o Aeroporto Internacional de Miami (MIA), o PortMiami, Aventura e Doral, além de Fort Lauderdale e do condado de Broward."
+        },
+        {
+          "question": "Um carro alugado pode ser entregue no PortMiami?",
+          "answer": "Sim. Coordenamos a retirada e a devolução no PortMiami de acordo com o seu navio e horário. Dependendo do horário e das condições do porto, pode ser no terminal, em um estacionamento de cruzeiros ou em uma área de retirada designada, e confirmamos o local com você com antecedência."
+        },
+        {
+          "question": "Posso escolher exatamente o carro que vou alugar?",
+          "answer": "Sim. Você vê os veículos reais disponíveis para as suas datas e reserva o que quiser. Você não recebe um carro qualquer de uma categoria genérica."
+        },
+        {
+          "question": "A Rent With Heldy é uma empresa local?",
+          "answer": "Sim. A Rent With Heldy é uma locadora familiar do Sul da Flórida que atende Fort Lauderdale, Miami, o condado de Broward e o condado de Miami-Dade. Quando você entra em contato, fala direto com a nossa equipe local."
+        }
+      ],
+      "moreTitle": "Ainda tem dúvidas?",
+      "links": {
+        "faq": "Leia todas as perguntas frequentes",
+        "howItWorks": "Veja como funciona a reserva",
+        "contact": "Fale com a nossa equipe"
+      }
+    },
+    "finalCta": {
+      "title": "Pule o balcão. Seja nosso convidado.",
+      "body": "Conte quando você chega, onde vai se hospedar e que tipo de veículo precisa. Nós ajudamos a coordenar o resto."
+    },
+    "schema": {
+      "serviceName": "Aluguel de carro local e entrega de veículos",
+      "serviceDescription": "Aluguel de carros local e familiar com entrega em aeroportos, hotéis, portos de cruzeiro e na região em Fort Lauderdale, Miami, no condado de Broward e no condado de Miami-Dade.",
+      "bookingChannel": "Reserva on-line",
+      "contactChannel": "Planejamento da viagem e contato"
+    }
   }
 }

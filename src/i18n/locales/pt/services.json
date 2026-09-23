@@ -11,7 +11,8 @@
     "whatToExpect": "O que esperar",
     "coverage": {
       "title": "Onde entregamos",
-      "subtitle": "Nossas principais regiões de entrega no Sul da Flórida. A sua não está na lista? É só perguntar que fazemos um orçamento."
+      "subtitle": "Nossas principais regiões de entrega no Sul da Flórida. A sua não está na lista? É só perguntar que fazemos um orçamento.",
+      "localLink": "Compare o aluguel de carro local no Sul da Flórida com as grandes locadoras"
     },
     "faqHeading": "Perguntas frequentes",
     "finalCta": {
@@ -29,7 +30,6 @@
     "h1": "Comece sua viagem pelo Sul da Flórida sem o balcão de aluguel",
     "intro": "Chegando em Miami ou Fort Lauderdale? Coordenamos a opção de retirada mais conveniente conforme sua chegada, destino e horário — para você pegar a estrada com menos dor de cabeça. A retirada sem contato está disponível.",
     "heroImageAlt": "Um crossover escuro dirigindo em direção ao horizonte de Miami enquanto um avião de passageiros desce",
-    "primaryCta": "Ver veículos disponíveis",
     "secondaryCta": "Como funciona a entrega no aeroporto",
     "highlights": [
       "Atendimento a viajantes de MIA e FLL",
@@ -110,7 +110,6 @@
     "h1": "Seu aluguel, entregue no seu hotel",
     "intro": "Hospedado em um hotel, resort ou hospedagem de temporada? Vamos coordenar a entrega direto no seu hotel para você gastar menos tempo organizando transporte. As taxas de entrega variam conforme o local, e a retirada sem contato está disponível.",
     "heroImageAlt": "Um crossover escuro chegando a um hotel moderno do Sul da Flórida ao pôr do sol",
-    "primaryCta": "Ver veículos disponíveis",
     "secondaryCta": "Conheça a entrega no hotel",
     "highlights": [
       "Hotéis e resorts",
@@ -135,8 +134,6 @@
       { "title": "Esqueça as vans do aeroporto", "description": "Pouse, chegue ao seu hotel e tenha o carro pronto quando quiser explorar." },
       { "title": "Pedágios sem complicação", "description": "Os pedágios são cobrados no fim da viagem, sem taxas adicionais. Faturamento limpo." }
     ],
-    "partnerHeading": "Concierge ou gerente de hotel?",
-    "partnerSubheading": "Ofereça aos seus hóspedes uma opção de aluguel fácil, sem a dor de cabeça do aeroporto. Apoiamos parcerias recorrentes.",
     "faqs": [
       { "question": "Como funciona a entrega no hotel?", "answer": "Depois de reservar, mande o nome do hotel, o nome do hóspede e o horário de retirada preferido. Vamos coordenar a entrega direto no seu hotel e confirmar os detalhes com você. As taxas de entrega variam conforme o local, e a retirada sem contato está disponível." },
       { "question": "Para quais hotéis vocês entregam?", "answer": "Entregamos na maioria dos grandes hotéis de Miami Beach, Brickell, Downtown Miami, Aventura, Sunny Isles, Hollywood, Fort Lauderdale Beach e Las Olas. Diga onde você está hospedado e confirmamos." },
@@ -181,8 +178,6 @@
       { "title": "Aluguéis para o mesmo dia", "description": "Aluguéis para o mesmo dia estão disponíveis, conforme a disponibilidade de veículos, em Broward e Miami-Dade." },
       { "title": "Devolução flexível", "description": "Quando o conserto terminar, devolva o aluguel na mesma oficina — a gente coordena a retirada." }
     ],
-    "partnerHeading": "Tem uma oficina de funilaria ou mecânica? Seja nosso parceiro de entrega.",
-    "partnerSubheading": "Entregamos e retiramos no seu estabelecimento para que seus clientes nunca saiam sem um carro.",
     "faqs": [
       { "question": "Como funciona de fato a entrega na oficina ou no mecânico?", "answer": "Você nos informa a oficina, o dia e o horário aproximado de entrega. Coordenamos com o consultor de serviço ou o mecânico e encontramos você no local com as chaves do aluguel quando você entregar seu carro." },
       { "question": "Para quais oficinas vocês entregam?", "answer": "Para qualquer centro de funilaria ou oficina mecânica de boa reputação em Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura e Pompano. Já entregamos na maioria das grandes redes e oficinas independentes da região." },
@@ -201,7 +196,6 @@
     "h1": "Uma conexão mais fácil entre o seu cruzeiro e o Sul da Flórida",
     "intro": "Navegando pelo PortMiami ou pelo Port Everglades? Vamos coordenar a retirada ou devolução mais fácil conforme seu navio, horário e terminal — seja para explorar antes de partir ou ficar depois de voltar. A retirada sem contato está disponível.",
     "heroImageAlt": "Um crossover escuro se aproximando do PortMiami com um navio de cruzeiro e o horizonte à frente",
-    "primaryCta": "Ver veículos disponíveis",
     "secondaryCta": "Planeje a entrega no porto de cruzeiros",
     "highlights": [
       "PortMiami",

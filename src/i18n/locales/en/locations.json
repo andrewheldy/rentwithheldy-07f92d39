@@ -11,7 +11,8 @@
         "fortLauderdale": "Car rental in Fort Lauderdale",
         "miami": "Car rental in Miami",
         "airport": "Fort Lauderdale Airport (FLL) rentals",
-        "contact": "Contact our team directly"
+        "contact": "Contact our team directly",
+        "local": "A local alternative to traditional airport car rental"
       }
     },
     "faqHeading": "Frequently asked questions",
@@ -195,88 +196,275 @@
     ]
   },
   "local": {
-    "metaTitle": "Local Car Rentals South Florida | Work & Repair Rentals | Rent With Heldy",
-    "metaDescription": "Daily, weekly, and monthly local car rentals in Miami & Fort Lauderdale. Reliable rides for work, commuting, and while your car is in the shop. Easy booking, friendly service.",
+    "metaTitle": "Local Car Rental Fort Lauderdale & Miami | Rent With Heldy",
+    "metaDescription": "Skip the traditional rental counter. Rent With Heldy is a local alternative to Enterprise, Hertz, SIXT, Avis and Budget with flexible car delivery across Fort Lauderdale, Miami and South Florida.",
+    "ogTitle": "Local Car Rental in Fort Lauderdale & Miami | Rent With Heldy",
+    "ogDescription": "A family-owned South Florida alternative to traditional rental car companies. Flexible airport, hotel, cruise port and local vehicle delivery.",
     "crumbLabel": "Local Car Rentals",
-    "h1": "Local Car Rentals for Work & While Your Car's in the Shop",
-    "intro": "A dependable rental for the people who actually need a car day in, day out — commuters, contractors, service pros, and drivers waiting on a repair. Clean vehicles, flexible terms, and a real human on the other end of every booking.",
-    "sections": [
-      {
-        "heading": "Built for South Floridians who need a car right now",
-        "paragraphs": [
-          "Not every rental is for a vacation. A lot of our renters are locals who simply need wheels — a contractor whose work van is in the shop, a nurse picking up extra shifts, a rideshare driver between cars, or a family stuck without a vehicle after a fender-bender. We built our local rental program around exactly those situations.",
-          "Pricing is fair, the cars are clean, and we won't lock you into rigid corporate-counter rules. Daily, weekly, and monthly rates available with one direct point of contact from start to finish."
-        ]
-      },
-      {
-        "heading": "Who books local rentals with us",
-        "paragraphs": [
-          "If you live, work, or are stuck without a car in South Florida, this is for you."
-        ],
-        "bullets": [
-          "Drivers whose car is in the body shop or mechanic after an accident or breakdown.",
-          "Workers who need a reliable commuter while their daily driver is unavailable.",
-          "Contractors, real-estate agents, and field service pros who need a clean professional car for client visits.",
-          "Locals between cars — selling one, waiting on the next.",
-          "Families needing a temporary second vehicle for school runs, errands, and shifts.",
-          "Rideshare and delivery drivers needing a short-term car while figuring out longer-term plans."
-        ]
-      },
-      {
-        "heading": "Daily, weekly, and monthly local rates",
-        "paragraphs": [
-          "Need a car for three days while your bumper gets fixed? Done. Need something for the next month while you sort out a totaled vehicle with insurance? Also done. Local rentals are priced to make sense for real-life timelines, not just weekend trips.",
-          "Weekly and monthly bookings get the best rates. If your insurance is covering loss-of-use, we can also bill direct or provide the documentation your adjuster needs."
-        ]
-      },
-      {
-        "heading": "Pickup, delivery, and how it works",
-        "paragraphs": [
-          "Most local renters meet us at a convenient point in Fort Lauderdale or Miami. If your car is being repaired, we can often meet you at the body shop so you walk out of one car and into another — no Uber in between.",
-          "Once your reservation is confirmed, you'll get a direct line to coordinate the exact time and place. Returns are flexible, and extensions are usually easy as long as we know in advance."
-        ]
-      },
-      {
-        "heading": "Why locals choose Rent With Heldy",
-        "paragraphs": [
-          "Big-name rental counters are built for tourists and volume. Local renters get treated like an afterthought. We're the opposite."
-        ],
-        "bullets": [
-          "All-Star Host with 1,400+ five-star reviews across South Florida.",
-          "Real human on the phone — not a call center.",
-          "Body shop and insurance-friendly: we'll meet you, coordinate, and document.",
-          "Honest weekly and monthly rates for longer rentals.",
-          "Clean, well-maintained cars — sedans and SUVs ready when you are."
-        ]
-      },
-      {
-        "heading": "How to book your local rental",
-        "paragraphs": [
-          "Pick your dates, choose a vehicle from live availability, and confirm online. We'll follow up to lock pickup specifics. If your situation is urgent — accident this morning, car towed last night — just call us and we'll get you handled."
-        ]
+    "hero": {
+      "eyebrow": "Local Car Rental • Fort Lauderdale & Miami",
+      "h1": "A Local Alternative to the Big Rental Car Companies",
+      "intro": "You don't have to start your South Florida trip at a rental counter. Rent With Heldy is a family-owned local car rental company offering flexible vehicle delivery, contactless pickup and personal service across Fort Lauderdale, Miami and South Florida.",
+      "tagline": "Be Our Guest.",
+      "primaryCta": "Browse Available Cars",
+      "secondaryCta": "Plan My Trip",
+      "talkToTeam": "Talk to our local team",
+      "imageAlt": "Sunset drive along a South Florida causeway toward the Miami skyline",
+      "trustLabel": "Why guests choose Rent With Heldy",
+      "trust": {
+        "reviews": "1,400+ Five-Star Reviews",
+        "familyOwned": "Family-Owned",
+        "delivery": "Airport & Hotel Delivery",
+        "contactless": "Contactless Pickup",
+        "localSupport": "Local Support"
       }
-    ],
-    "faqs": [
-      {
-        "question": "Can you meet me at the body shop or dealership?",
-        "answer": "Yes. We regularly meet renters at collision centers, dealerships, and mechanics so you can hand off keys and pick up your rental in the same stop."
-      },
-      {
-        "question": "Do you offer weekly or monthly local rates?",
-        "answer": "We do. Weekly and monthly bookings come with reduced daily rates. Just message us with your dates and we'll send the best price for the length you need."
-      },
-      {
-        "question": "Will my insurance pay for the rental?",
-        "answer": "Often yes — most loss-of-use and rental-coverage policies will reimburse or direct-bill. We provide all documentation your adjuster needs."
-      },
-      {
-        "question": "Can rideshare or delivery drivers use these cars?",
-        "answer": "Short-term rideshare use can be arranged on select vehicles — please ask before booking so we can match you with a compatible car. Drivers looking for longer-term work vehicles can join our Drive for Work availability list."
-      },
-      {
-        "question": "What's the minimum age to rent?",
-        "answer": "Renters typically need to be 21 or older. Some vehicles require 25+. The booking widget reflects age restrictions per vehicle."
+    },
+    "difference": {
+      "eyebrow": "The difference",
+      "title": "Big Rental Companies Make You Come to Them. We Come to You.",
+      "paragraphs": [
+        "National rental companies are built around their locations. You land, make your way to the rental center and start your trip from their counter. That works for a lot of people.",
+        "We work the other way around. Flying into Fort Lauderdale-Hollywood International Airport (FLL) or Miami International Airport (MIA)? Tell us when you land and where you're headed. We coordinate your car around your trip, instead of asking you to plan your trip around a rental counter."
+      ],
+      "cards": {
+        "comeToYou": {
+          "title": "We Come to You",
+          "body": "Delivery options for airports, hotels, cruise ports and other locations across South Florida. Delivery fees vary by location."
+        },
+        "localSupport": {
+          "title": "Real Local Support",
+          "body": "Call or text the Rent With Heldy team directly. The people you talk to are the people taking care of your car."
+        },
+        "flexibility": {
+          "title": "Flexibility",
+          "body": "Late flight, early sailing or an unusual drop-off spot? A small local team can help you work it out."
+        },
+        "hospitality": {
+          "title": "Hospitality First",
+          "body": "You're our guest, not a reservation number. We keep it personal from your first message to your return."
+        }
       }
-    ]
+    },
+    "comparison": {
+      "eyebrow": "Side by side",
+      "title": "Rent With Heldy vs. Traditional Rental Car Companies",
+      "intro": "Neither model is right for everyone. Here's how they differ, so you can choose what fits your trip.",
+      "traditional": {
+        "title": "Traditional Rental Experience",
+        "items": [
+          "Large national operation",
+          "Traditional rental-counter process",
+          "Centralized customer service",
+          "Pickup based around rental locations",
+          "You usually book a vehicle category or class"
+        ]
+      },
+      "heldy": {
+        "title": "Rent With Heldy",
+        "items": [
+          "Local South Florida company",
+          "Flexible pickup and delivery options",
+          "Direct local communication",
+          "Airport, hotel, cruise port and local delivery",
+          "Browse actual available vehicles",
+          "Hospitality-first service"
+        ]
+      },
+      "fleetLink": "See the vehicles in our fleet"
+    },
+    "alternatives": {
+      "eyebrow": "Comparing your options",
+      "title": "Looking for an Alternative to Enterprise, Hertz, SIXT, Avis or Budget?",
+      "paragraphs": [
+        "Enterprise Rent-A-Car, Hertz, SIXT, Avis, Budget, Alamo and National Car Rental are established national companies. They have large fleets, airport rental centers and loyalty programs, and for plenty of travelers they are a good fit.",
+        "Rent With Heldy is built differently. We're a small, family-owned company in South Florida. Instead of sending you to a counter or rental lot, we coordinate your vehicle around your plans: an airport pickup at FLL or MIA, delivery to your hotel, a handoff near your cruise terminal or a meeting point close to where you're staying.",
+        "You choose the actual car you'll drive, not just a category. And when plans change, like a delayed flight or a late checkout, you message the same local team that is handling your rental.",
+        "If you want a smaller local operation with delivery and direct communication, we'd love to host you."
+      ],
+      "items": [
+        {
+          "heading": "Enterprise Alternative in Fort Lauderdale",
+          "body": "Enterprise has neighborhood branches across Broward County. If you'd rather not visit a branch at all, we can meet you at your hotel, your home or another agreed spot in Fort Lauderdale."
+        },
+        {
+          "heading": "Hertz Alternative Near FLL",
+          "body": "At FLL, Hertz and the other major brands operate from the airport's rental car center. We plan your pickup around your flight instead. Depending on timing, that may be an airport parking area, where parking fees may apply, or a nearby pickup spot a short ride away."
+        },
+        {
+          "heading": "SIXT Alternative in Fort Lauderdale",
+          "body": "SIXT is known for its premium lineup. If you have a specific vehicle in mind, browse our fleet and book the exact car, from economy sedans to newer premium SUVs."
+        },
+        {
+          "heading": "Avis & Budget Alternative in South Florida",
+          "body": "Avis and Budget suit travelers who want a familiar national process. If you'd rather text one local team before, during and after your trip, from Fort Lauderdale to Miami, that's how we work every day."
+        },
+        {
+          "heading": "Alamo & National Alternative Near FLL",
+          "body": "Alamo and National are built for quick self-service at the airport. We offer a different kind of convenience: your car coordinated to your arrival, contactless lockbox pickup on your schedule and a real person to call if plans change."
+        }
+      ]
+    },
+    "destinations": {
+      "eyebrow": "Pickup & delivery",
+      "title": "Skip the Counter. Choose Where Your Trip Starts.",
+      "intro": "Tell us where you'll be and when. We'll confirm the pickup plan and any delivery fee with you in advance.",
+      "cards": {
+        "fll": {
+          "title": "FLL Airport",
+          "body": "Flying into Fort Lauderdale-Hollywood International Airport? We coordinate your pickup around your arrival time.",
+          "cta": "FLL airport pickup"
+        },
+        "mia": {
+          "title": "MIA Airport",
+          "body": "Landing at Miami International Airport? We plan the most convenient pickup for your flight and your plans in Miami.",
+          "cta": "Car rental in Miami"
+        },
+        "hotels": {
+          "title": "Hotels & Resorts",
+          "body": "Have your car delivered to your hotel, resort or vacation rental. We confirm the delivery fee up front.",
+          "cta": "Hotel delivery"
+        },
+        "portEverglades": {
+          "title": "Port Everglades",
+          "body": "Sailing from Fort Lauderdale? We coordinate pickup or drop-off around your ship and terminal.",
+          "cta": "Cruise port rentals"
+        },
+        "portMiami": {
+          "title": "PortMiami",
+          "body": "Starting or ending a cruise in Miami? We plan a handoff that fits your sailing schedule.",
+          "cta": "Cruise port rentals"
+        },
+        "local": {
+          "title": "Local South Florida Delivery",
+          "body": "Staying with family, working in town or need a car at home? We deliver across Broward and Miami-Dade.",
+          "cta": "Car rental in Fort Lauderdale"
+        }
+      }
+    },
+    "areas": {
+      "eyebrow": "Where we serve",
+      "title": "Local Car Rental in Fort Lauderdale, Miami & South Florida",
+      "paragraphs": [
+        "Rent With Heldy serves Broward County and Miami-Dade County, from beach hotels in Fort Lauderdale to business stays in Doral. Share the address and we'll confirm the delivery options and any delivery fee up front.",
+        "Not sure whether your location is covered? Send us a message. If it's in South Florida, there's a good chance we can make it work."
+      ],
+      "broward": {
+        "title": "Broward County",
+        "body": "Fort Lauderdale is home base. We also serve Hollywood, Dania Beach, Hallandale Beach and Pembroke Pines, along with Fort Lauderdale-Hollywood International Airport (FLL) and Port Everglades.",
+        "link": "Car rental in Fort Lauderdale"
+      },
+      "miamiDade": {
+        "title": "Miami-Dade County",
+        "body": "In Miami-Dade we serve Miami, Aventura and Doral, plus Miami International Airport (MIA) and PortMiami. Aventura sits right by the county line, so it's an easy handoff from either side.",
+        "link": "Car rental in Miami"
+      },
+      "imageAlt": "An SUV parked under a hotel porte-cochère at dusk with the Miami skyline across the water"
+    },
+    "whyLocal": {
+      "eyebrow": "Rent local",
+      "title": "Why Rent Local?",
+      "intro": "A smaller South Florida company can do things a large operation isn't set up to do. Here's what that looks like in practice.",
+      "items": {
+        "direct": {
+          "title": "Direct communication",
+          "body": "One team, one number. You won't be passed between departments."
+        },
+        "knowledge": {
+          "title": "Local knowledge",
+          "body": "We know the airports, the cruise terminals and the drive between Fort Lauderdale and Miami."
+        },
+        "delivery": {
+          "title": "Flexible delivery",
+          "body": "Airport, hotel, cruise port, home or office. We plan around where you'll be."
+        },
+        "personal": {
+          "title": "Personal assistance",
+          "body": "Traveling with a group or a lot of luggage? Tell us and we'll help you pick the right vehicle."
+        },
+        "hospitality": {
+          "title": "Hospitality first",
+          "body": "We treat every rental like hosting a guest. A clean car, a clear plan and a friendly follow-up."
+        },
+        "requests": {
+          "title": "Unusual requests",
+          "body": "Dropping off at the airport after a cruise or picking up after a late checkout? Ask us and we'll try to make it work."
+        }
+      },
+      "form": {
+        "title": "Tell Us What You Need",
+        "subtitle": "Share your dates, where you're arriving and where you're staying. A member of our team will reach out as soon as possible.",
+        "cta": "Send My Trip Details"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Local Car Rental Questions, Answered.",
+      "items": [
+        {
+          "question": "Is there an alternative to Enterprise or Hertz in Fort Lauderdale?",
+          "answer": "Yes. Rent With Heldy is a family-owned local car rental company in Fort Lauderdale that offers airport, hotel, cruise port and local delivery instead of a traditional rental counter. You book online, choose your actual vehicle and coordinate pickup directly with our team."
+        },
+        {
+          "question": "Are there local car rental companies near Fort Lauderdale Airport?",
+          "answer": "Yes. Rent With Heldy is a local, family-owned company serving Fort Lauderdale-Hollywood International Airport (FLL). We coordinate your pickup around your arrival, so you don't need to visit a rental counter."
+        },
+        {
+          "question": "Can a rental car be delivered to FLL?",
+          "answer": "Yes. We coordinate airport pickup at FLL based on your flight and schedule. Depending on timing, your car may be waiting in an airport parking area, where standard parking fees may apply, or at a nearby pickup location a short ride away. We confirm the plan with you in advance."
+        },
+        {
+          "question": "Can Rent With Heldy deliver a car to my hotel?",
+          "answer": "Yes. We deliver to hotels, resorts and vacation rentals across Fort Lauderdale, Miami and South Florida. Delivery fees vary by location, and we confirm the fee up front once we know your hotel."
+        },
+        {
+          "question": "Can I rent a car near Port Everglades?",
+          "answer": "Yes. We coordinate pickup and drop-off around your sailing at Port Everglades in Fort Lauderdale. Depending on timing and port conditions, that may be at the terminal, a cruise parking area or a designated pickup zone."
+        },
+        {
+          "question": "Do I have to use a rental company located inside the airport?",
+          "answer": "No. Local and off-airport rental companies are an option at both FLL and MIA. With Rent With Heldy, we coordinate the most convenient pickup for your arrival instead of sending you to an airport rental counter."
+        },
+        {
+          "question": "What is the difference between Rent With Heldy and Enterprise, Hertz or SIXT?",
+          "answer": "The main difference is the business model. Enterprise, Hertz and SIXT are large national companies built around rental locations. Rent With Heldy is a small South Florida company built around delivery, direct communication with our local team and letting you choose the actual vehicle you drive."
+        },
+        {
+          "question": "Can I rent a car without visiting a traditional rental counter?",
+          "answer": "Yes. Rent With Heldy doesn't use a traditional rental counter. You book online, we coordinate the pickup location with you, and contactless pickup with secure lockbox access is available on every rental."
+        },
+        {
+          "question": "Does Rent With Heldy serve Miami?",
+          "answer": "Yes. We serve Miami and Miami-Dade County, including Miami International Airport (MIA), PortMiami, Aventura and Doral, as well as Fort Lauderdale and Broward County."
+        },
+        {
+          "question": "Can a rental car be delivered to PortMiami?",
+          "answer": "Yes. We coordinate pickup and drop-off at PortMiami around your ship and schedule. Depending on timing and port conditions, that may be at the terminal, a cruise parking area or a designated pickup zone, and we confirm the spot with you in advance."
+        },
+        {
+          "question": "Can I choose the actual car I rent?",
+          "answer": "Yes. You browse the actual vehicles available for your dates and book the one you want. You aren't assigned a car from a general category."
+        },
+        {
+          "question": "Is Rent With Heldy a local company?",
+          "answer": "Yes. Rent With Heldy is a family-owned car rental company in South Florida serving Fort Lauderdale, Miami, Broward County and Miami-Dade County. When you reach out, you talk directly with our local team."
+        }
+      ],
+      "moreTitle": "Still have questions?",
+      "links": {
+        "faq": "Read the full FAQ",
+        "howItWorks": "See how booking works",
+        "contact": "Contact our team"
+      }
+    },
+    "finalCta": {
+      "title": "Skip the Counter. Be Our Guest.",
+      "body": "Tell us when you're arriving, where you're staying and what kind of vehicle you need. We'll help coordinate the rest."
+    },
+    "schema": {
+      "serviceName": "Local Car Rental and Vehicle Delivery",
+      "serviceDescription": "Family-owned local car rental with airport, hotel, cruise port and local vehicle delivery across Fort Lauderdale, Miami, Broward County and Miami-Dade County.",
+      "bookingChannel": "Online booking",
+      "contactChannel": "Trip planning and contact"
+    }
   }
 }

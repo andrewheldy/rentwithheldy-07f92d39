@@ -11,7 +11,8 @@
     "whatToExpect": "What to expect",
     "coverage": {
       "title": "Where we deliver",
-      "subtitle": "Our primary delivery corridors across South Florida. Not on the list? Ask — we'll quote it."
+      "subtitle": "Our primary delivery corridors across South Florida. Not on the list? Ask — we'll quote it.",
+      "localLink": "Compare local South Florida car rental with the big rental companies"
     },
     "faqHeading": "Frequently asked questions",
     "finalCta": {
@@ -29,7 +30,6 @@
     "h1": "Start your South Florida trip without the rental counter",
     "intro": "Flying into Miami or Fort Lauderdale? We'll coordinate the most convenient pickup option based on your arrival, destination, and schedule — so you can get on the road with less hassle. Contactless pickup is available.",
     "heroImageAlt": "Dark crossover driving toward the Miami skyline as a passenger jet descends",
-    "primaryCta": "View available vehicles",
     "secondaryCta": "How airport delivery works",
     "highlights": [
       "Service for MIA and FLL travelers",
@@ -110,7 +110,6 @@
     "h1": "Your rental, delivered to your hotel",
     "intro": "Staying at a hotel, resort, or vacation rental? We'll coordinate delivery directly to your hotel so you can spend less time arranging transportation. Delivery fees vary by location, and contactless pickup is available.",
     "heroImageAlt": "Dark crossover arriving at a modern South Florida hotel at sunset",
-    "primaryCta": "View available vehicles",
     "secondaryCta": "Explore hotel delivery",
     "highlights": [
       "Hotels and resorts",
@@ -135,8 +134,6 @@
       { "title": "Skip the Airport Shuttles", "description": "Land, get to your hotel, and have the car ready when you want to explore." },
       { "title": "Tolls Made Simple", "description": "Tolls are billed at the end of the trip with no additional fees. Clean invoicing." }
     ],
-    "partnerHeading": "Concierge or Hotel GM?",
-    "partnerSubheading": "Offer your guests an easy rental option without the airport hassle. We support recurring partnerships.",
     "faqs": [
       { "question": "How does hotel delivery work?", "answer": "After booking, send us your hotel name, guest name, and preferred pickup time. We'll coordinate delivery directly to your hotel and confirm the details with you. Delivery fees vary by location, and contactless pickup is available." },
       { "question": "Which hotels do you deliver to?", "answer": "We deliver to most major hotels across Miami Beach, Brickell, Downtown Miami, Aventura, Sunny Isles, Hollywood, Fort Lauderdale Beach, and Las Olas. Tell us where you're staying and we'll confirm." },
@@ -181,8 +178,6 @@
       { "title": "Same-Day Rentals", "description": "Same-day rentals are available, subject to vehicle availability, across Broward and Miami-Dade." },
       { "title": "Flexible Return", "description": "When repairs are done, return the rental at the same shop — we coordinate the pickup." }
     ],
-    "partnerHeading": "Run a body shop or mechanic shop? Make us your delivery partner.",
-    "partnerSubheading": "We deliver and pick up at your location so your customers never leave without a ride.",
     "faqs": [
       { "question": "How does body shop or mechanic delivery actually work?", "answer": "You tell us the shop, day, and approximate drop-off time. We coordinate with the service writer or mechanic and meet you on-site with the rental keys when your car is being handed in." },
       { "question": "Which shops do you deliver to?", "answer": "Any reputable collision center or mechanic shop across Fort Lauderdale, Hollywood, Dania Beach, Miami, Aventura, and Pompano. We've delivered to most of the major chains and independent shops in the region." },
@@ -201,7 +196,6 @@
     "h1": "An easier connection between your cruise and South Florida",
     "intro": "Sailing through PortMiami or Port Everglades? We'll coordinate the easiest pickup or drop-off based on your ship, timing, and terminal — whether you're exploring before departure or staying after you return. Contactless pickup is available.",
     "heroImageAlt": "Dark crossover approaching PortMiami with a cruise ship and skyline ahead",
-    "primaryCta": "View available vehicles",
     "secondaryCta": "Plan cruise port delivery",
     "highlights": [
       "PortMiami",

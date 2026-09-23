@@ -6,6 +6,9 @@ interface SEOProps {
   path: string; // e.g. "/fleet"
   image?: string;
   noIndex?: boolean;
+  /** Optional Open Graph / Twitter overrides; default to title/description */
+  ogTitle?: string;
+  ogDescription?: string;
   /** Optional JSON-LD structured data object(s) */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -14,8 +17,19 @@ const SITE_URL = "https://rentwithheldy.com";
 const DEFAULT_IMAGE =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/CSzZLopKzRX2s7Gn49LVhaLvLQH2/social-images/social-1770324920970-Share_image_website.PNG";
 
-const SEO = ({ title, description, path, image, noIndex, jsonLd }: SEOProps) => {
+const SEO = ({
+  title,
+  description,
+  path,
+  image,
+  noIndex,
+  ogTitle,
+  ogDescription,
+  jsonLd,
+}: SEOProps) => {
   const url = `${SITE_URL}${path}`;
+  const socialTitle = ogTitle ?? title;
+  const socialDescription = ogDescription ?? description;
   const ogImage = image
     ? image.startsWith("http")
       ? image
@@ -36,16 +50,16 @@ const SEO = ({ title, description, path, image, noIndex, jsonLd }: SEOProps) => 
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={socialTitle} />
+      <meta property="og:description" content={socialDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="Rent With Heldy" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={socialTitle} />
+      <meta name="twitter:description" content={socialDescription} />
       <meta name="twitter:image" content={ogImage} />
 
       {jsonLdArray.map((data, i) => (
