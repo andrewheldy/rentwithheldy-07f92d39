@@ -5,6 +5,7 @@ const routes = [
   ["fleet", "/fleet"],
   ["airport", "/fort-lauderdale-airport-car-rental"],
   ["hotel", "/hotel-concierge-rentals"],
+  ["local", "/local-car-rentals"],
   ["contact", "/contact"],
   ["faq", "/faq"],
   ["rent-to-own", "/rent-to-own"],

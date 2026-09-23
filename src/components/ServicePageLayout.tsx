@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ChevronRight, CheckCircle2, Phone, Star, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChevronRight, CheckCircle2, Phone, Star, type LucideIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -427,6 +427,13 @@ const ServicePageLayout = ({
               <p className="text-muted-foreground">
                 {t("layout.coverage.subtitle")}
               </p>
+              <Link
+                to="/local-car-rentals"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                {t("layout.coverage.localLink")}
+                <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
+              </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {coverageAreas.map((area) => (

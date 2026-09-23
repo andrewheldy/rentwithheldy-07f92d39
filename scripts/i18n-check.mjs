@@ -62,6 +62,9 @@ const PROPER_NOUN_VALUES = new Set([
   "Fort Lauderdale • Miami",
   "Fort Lauderdale · Miami",
   "All-Star Host", // Turo status/brand term — kept verbatim in every locale
+  "Rent With Heldy", // brand name — never translated (see locales/README.md)
+  "Port Everglades", // port proper nouns — kept verbatim in every locale
+  "PortMiami",
   "you@email.com", // example email placeholder — identical in every locale by design
   "+1 (555) 555-0100", // example phone placeholder — identical in every locale by design
 ]);
