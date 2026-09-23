@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Users, Briefcase } from "lucide-react";
 import type { Vehicle } from "@/hooks/useVehicles";
 import { localizeVehicle } from "@/i18n/vehicleCopy";
@@ -102,7 +101,7 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                   <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
                     {v.description}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Users className="h-3.5 w-3.5" /> {t("grid.seats", { seats: 5 })}
                     </span>
@@ -110,11 +109,6 @@ const FleetGrid = ({ vehicles, limit }: FleetGridProps) => {
                       <Briefcase className="h-3.5 w-3.5" /> {t("grid.bags")}
                     </span>
                   </div>
-                  <Link to="/book" className="mt-auto">
-                    <Button className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90">
-                      {t("common:actions.bookNow")}
-                    </Button>
-                  </Link>
                 </CardContent>
               </Card>
             </article>
