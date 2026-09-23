@@ -11,6 +11,9 @@ test.beforeEach(async ({ page }) => {
       analyticsEvents.push(event.detail.event);
     }) as EventListener);
   });
+  await page.route("https://widget.wheelbasepro.com/**", (route) =>
+    route.fulfill({ contentType: "text/html", body: "<main>Wheelbase store</main>" }),
+  );
   await page.route("**/rest/v1/leads*", async (route) => {
     await route.fulfill({ status: 201, contentType: "application/json", body: "[]" });
   });
@@ -20,8 +23,16 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("renders the specialty page, metadata, selector, gallery and Wheelbase handoff", async ({ page }) => {
-  await page.route("https://d3cuf6g1arkgx6.cloudfront.net/**", async (route) => {
-    await route.fulfill({ status: 200, contentType: "application/javascript", body: "" });
+  // "Book a Van" leaves the site for the hosted Wheelbase store, so record
+  // analytics events on the test side where they survive the navigation.
+  const events: string[] = [];
+  await page.exposeFunction("__rwhRecordEvent", (event: string) => events.push(event));
+  await page.addInitScript(() => {
+    window.addEventListener("rentwithheldy:analytics", ((event: CustomEvent) => {
+      (window as Window & { __rwhRecordEvent?: (name: string) => void }).__rwhRecordEvent?.(
+        event.detail.event,
+      );
+    }) as EventListener);
   });
   await page.goto("/passenger-vans");
 
@@ -56,12 +67,8 @@ test("renders the specialty page, metadata, selector, gallery and Wheelbase hand
   expect(documentWidth.scroll).toBeLessThanOrEqual(documentWidth.client + 1);
 
   await page.getByRole("link", { name: "Book a Van" }).click();
-  await expect(page).toHaveURL(/\/book$/);
-  await expect(page.getByTestId("wheelbase-widget")).toBeVisible();
+  await page.waitForURL(/widget\.wheelbasepro\.com\/\?dealer_id=4913818&store_type=auto/);
 
-  const events = await page.evaluate(() =>
-    (window as Window & { __rwhAnalyticsEvents: string[] }).__rwhAnalyticsEvents,
-  );
   expect(events).toContain("passenger_vans_page_view");
   expect(events).toContain("passenger_vans_use_case_select");
   expect(events).toContain("passenger_vans_wheelbase_launch");

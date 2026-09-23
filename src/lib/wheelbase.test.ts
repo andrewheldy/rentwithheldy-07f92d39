@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import {
   WHEELBASE_WIDGET_SRC,
+  buildWheelbaseStoreUrl,
   getTripLengthDays,
   getWheelbaseLocale,
   loadWheelbaseComponents,
@@ -21,6 +22,17 @@ describe("Wheelbase current SDK helpers", () => {
     ["he-IL", "en-us"],
   ])("maps %s to the safe Wheelbase locale", (siteLocale, wheelbaseLocale) => {
     expect(getWheelbaseLocale(siteLocale)).toBe(wheelbaseLocale);
+  });
+
+  it("builds the hosted store URL with locale and only Wheelbase trip params", () => {
+    expect(buildWheelbaseStoreUrl("es")).toBe(
+      "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=es-es",
+    );
+    expect(
+      buildWheelbaseStoreUrl("he", "?wb_from=2026-08-20&wb_to=2026-08-25&wb_from_time=10:00&utm_source=x"),
+    ).toBe(
+      "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=en-us&wb_from=2026-08-20&wb_to=2026-08-25&wb_from_time=10%3A00",
+    );
   });
 
   it("converts Wheelbase dates without shifting the selected local day", () => {

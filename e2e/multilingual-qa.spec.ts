@@ -5,7 +5,6 @@ const routes = [
   ["fleet", "/fleet"],
   ["airport", "/fort-lauderdale-airport-car-rental"],
   ["hotel", "/hotel-concierge-rentals"],
-  ["booking", "/book"],
   ["contact", "/contact"],
   ["faq", "/faq"],
   ["rent-to-own", "/rent-to-own"],
@@ -227,20 +226,6 @@ for (const [viewportName, viewport] of viewports) {
           await expect(page.getByTestId("trip-result")).toBeVisible();
         }
 
-        if (routeName === "booking") {
-          const widget = page.getByTestId("wheelbase-widget");
-          await expect(widget).toBeVisible();
-          await expect(widget).toHaveAttribute("dir", "ltr");
-          const expectedLocale = locale === "es" ? "es-es" : locale === "fr" ? "fr-fr" : "en-us";
-          await expect(widget.locator("#outdoorsy-book-now-container")).toHaveAttribute(
-            "data-locale",
-            expectedLocale,
-          );
-          const widgetBounds = await widget.boundingBox();
-          expect(widgetBounds?.x ?? -1).toBeGreaterThanOrEqual(0);
-          expect((widgetBounds?.x ?? 0) + (widgetBounds?.width ?? 0)).toBeLessThanOrEqual(viewport.width + 1);
-        }
-
         if (locale === "he") {
           if (["privacy", "terms"].includes(routeName)) {
             await expect(page.locator("main [lang='en'][dir='ltr']")).toBeVisible();
@@ -260,4 +245,26 @@ for (const [viewportName, viewport] of viewports) {
       expect(pageErrors, `${viewportName}/${locale}: uncaught page errors`).toEqual([]);
     });
   }
+}
+
+for (const locale of locales) {
+  test(`${locale}: /book hands off to the hosted Wheelbase store in the visitor's locale`, async ({ page }) => {
+    await page.route("https://widget.wheelbasepro.com/**", (route) =>
+      route.fulfill({ contentType: "text/html", body: "<main>Wheelbase store</main>" }),
+    );
+    await page.addInitScript((language) => {
+      localStorage.setItem("rwh.lang", language);
+    }, locale);
+
+    await page.goto("/book?wb_from=2026-08-20&wb_to=2026-08-25");
+    await page.waitForURL(/widget\.wheelbasepro\.com/);
+
+    const url = new URL(page.url());
+    const expectedLocale = locale === "es" ? "es-es" : locale === "fr" ? "fr-fr" : "en-us";
+    expect(url.searchParams.get("dealer_id")).toBe("4913818");
+    expect(url.searchParams.get("store_type")).toBe("auto");
+    expect(url.searchParams.get("locale")).toBe(expectedLocale);
+    expect(url.searchParams.get("wb_from")).toBe("2026-08-20");
+    expect(url.searchParams.get("wb_to")).toBe("2026-08-25");
+  });
 }

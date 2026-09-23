@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CalendarDays, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { normalizeLocale } from "@/i18n/config";
 import { track } from "@/lib/analytics";
 import {
+  buildWheelbaseStoreUrl,
   getTripLengthDays,
   getWheelbaseLocale,
   loadWheelbaseComponents,
@@ -16,14 +15,18 @@ import {
 
 type WidgetStatus = "loading" | "ready" | "failed";
 
+/**
+ * Homepage date picker (current Wheelbase <landing-widget>). Submitting sends
+ * the visitor straight to our hosted Wheelbase store with the dates prefilled.
+ */
 const HomeBookingWidget = () => {
   const { t, i18n } = useTranslation("home");
-  const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [status, setStatus] = useState<WidgetStatus>("loading");
   const trackedView = useRef(false);
   const locale = normalizeLocale(i18n.language);
   const wheelbaseLocale = getWheelbaseLocale(locale);
+  const storeUrl = buildWheelbaseStoreUrl(locale);
 
   useEffect(() => {
     let active = true;
@@ -73,7 +76,7 @@ const HomeBookingWidget = () => {
         pickup = toCanonicalWheelbaseDate(payload.pickup);
         returnDate = toCanonicalWheelbaseDate(payload.returnDate);
       } catch {
-        navigate("/book");
+        window.location.assign(storeUrl);
         return;
       }
 
@@ -83,13 +86,12 @@ const HomeBookingWidget = () => {
         trip_length_days: getTripLengthDays(pickup, returnDate),
       });
 
-      const search = new URLSearchParams({
-        "wb-from": pickup,
-        "wb-to": returnDate,
-      });
-      navigate(`/book?${search.toString()}`);
+      const search = new URLSearchParams({ wb_from: pickup, wb_to: returnDate });
+      if (payload.pickupTime) search.set("wb_from_time", payload.pickupTime);
+      if (payload.returnTime) search.set("wb_to_time", payload.returnTime);
+      window.location.assign(buildWheelbaseStoreUrl(locale, search.toString()));
     },
-    [locale, navigate],
+    [locale, storeUrl],
   );
 
   const setWidgetRef = useCallback(
@@ -100,84 +102,64 @@ const HomeBookingWidget = () => {
   );
 
   return (
-    <section
-      aria-labelledby="home-booking-title"
-      className="bg-background py-7 sm:py-9"
+    <div
+      className="min-w-0 rounded-card bg-white p-2 shadow-card sm:p-3"
       data-testid="home-booking-widget"
+      dir="ltr"
     >
-      <div className="container mx-auto">
-        <div className="rounded-card border border-border bg-card p-4 shadow-card sm:p-6 lg:grid lg:grid-cols-[minmax(12rem,0.32fr)_minmax(0,1fr)] lg:items-center lg:gap-8">
-          <div className="mb-5 lg:mb-0">
-            <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              <CalendarDays className="h-4 w-4" aria-hidden="true" />
-              {t("bookingWidget.eyebrow")}
-            </p>
-            <h2 id="home-booking-title" className="font-heading text-2xl font-bold text-ink sm:text-[1.7rem]">
-              {t("bookingWidget.title")}
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {t("bookingWidget.description")}
-            </p>
+      <div className="relative min-h-[10rem] w-full sm:min-h-[5.5rem]">
+        {status === "loading" ? (
+          <div
+            className="grid min-h-[10rem] animate-pulse grid-cols-2 grid-rows-2 gap-3 rounded-control bg-secondary/55 p-4 motion-reduce:animate-none sm:min-h-[5.5rem] sm:grid-cols-[1fr_1fr_0.9fr] sm:grid-rows-1 sm:items-center"
+            aria-label={t("bookingWidget.loading")}
+            role="status"
+          >
+            <span className="h-12 rounded-control bg-border/65" />
+            <span className="h-12 rounded-control bg-border/65" />
+            <span className="col-span-2 h-12 rounded-control bg-primary/25 sm:col-span-1" />
           </div>
+        ) : null}
 
-          <div className="min-w-0" dir="ltr">
-            <div className="relative min-h-[10rem] w-full sm:min-h-[6.75rem]">
-              {status === "loading" ? (
-                <div
-                  className="grid min-h-[10rem] animate-pulse grid-cols-2 grid-rows-2 gap-3 rounded-control bg-secondary/55 p-4 motion-reduce:animate-none sm:min-h-[6.75rem] sm:grid-cols-[1fr_1fr_0.9fr] sm:grid-rows-1 sm:items-center"
-                  aria-label={t("bookingWidget.loading")}
-                  role="status"
-                >
-                  <span className="h-12 rounded-control bg-border/65" />
-                  <span className="h-12 rounded-control bg-border/65" />
-                  <span className="col-span-2 h-12 rounded-control bg-primary/25 sm:col-span-1" />
-                </div>
-              ) : null}
+        {status === "ready" ? (
+          <landing-widget
+            ref={setWidgetRef}
+            style={{ display: "block", width: "100%", maxWidth: "100%" }}
+            layout={isMobile ? "full" : "horizontal"}
+            locale={wheelbaseLocale}
+            target-url={storeUrl}
+            title=""
+            subtitle=""
+            button-label={t("bookingWidget.button")}
+            primary-color="#11d4d4"
+            primary-hover-color="#0fa5a5"
+            primary-foreground-color="#12212e"
+            surface-color="#ffffff"
+            radius="soft"
+            aria-label={t("bookingWidget.accessibleLabel")}
+            data-testid="wheelbase-landing-widget"
+          >
+            <span slot="footer" aria-hidden="true" />
+          </landing-widget>
+        ) : null}
 
-              {status === "ready" ? (
-                <landing-widget
-                  ref={setWidgetRef}
-                  style={{ display: "block", width: "100%", maxWidth: "100%" }}
-                  layout={isMobile ? "full" : "horizontal"}
-                  locale={wheelbaseLocale}
-                  title=""
-                  subtitle=""
-                  button-label={t("bookingWidget.button")}
-                  primary-color="#11d4d4"
-                  primary-hover-color="#0fa5a5"
-                  primary-foreground-color="#12212e"
-                  surface-color="#ffffff"
-                  radius="soft"
-                  aria-label={t("bookingWidget.accessibleLabel")}
-                  data-testid="wheelbase-landing-widget"
-                >
-                  <span slot="footer" aria-hidden="true" />
-                </landing-widget>
-              ) : null}
-
-              {status === "failed" ? (
-                <div className="flex min-h-[10rem] flex-col items-center justify-center rounded-control border border-border bg-secondary/45 p-5 text-center sm:min-h-[6.75rem] sm:flex-row sm:justify-between sm:text-start">
-                  <p className="max-w-lg text-sm text-muted-foreground">
-                    {t("bookingWidget.unavailable")}
-                  </p>
-                  <Link
-                    to="/book"
-                    className="mt-4 inline-flex min-h-11 items-center justify-center rounded-control bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-[hsl(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:mt-0 sm:ms-5"
-                  >
-                    {t("bookingWidget.button")}
-                  </Link>
-                </div>
-              ) : null}
-            </div>
-
-            <p className="mt-3 flex items-center justify-center gap-2 text-center text-xs font-medium text-muted-foreground sm:justify-start sm:text-start" dir={i18n.dir()}>
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-              {t("bookingWidget.reassurance")}
+        {status === "failed" ? (
+          <div
+            className="flex min-h-[10rem] flex-col items-center justify-center rounded-control bg-secondary/45 p-5 text-center sm:min-h-[5.5rem] sm:flex-row sm:justify-between sm:text-start"
+            dir={i18n.dir()}
+          >
+            <p className="max-w-lg text-sm text-muted-foreground">
+              {t("bookingWidget.unavailable")}
             </p>
+            <a
+              href={storeUrl}
+              className="mt-4 inline-flex min-h-11 shrink-0 items-center justify-center rounded-control bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-[hsl(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:ms-5 sm:mt-0"
+            >
+              {t("bookingWidget.button")}
+            </a>
           </div>
-        </div>
+        ) : null}
       </div>
-    </section>
+    </div>
   );
 };
 

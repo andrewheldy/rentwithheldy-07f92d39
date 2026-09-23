@@ -1,15 +1,24 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WheelbaseWidget from "@/components/WheelbaseWidget";
 import SEO from "@/components/SEO";
 import {
   buildBreadcrumbSchema,
   localBusinessSchema,
 } from "@/lib/seo-schemas";
+import { buildWheelbaseStoreUrl } from "@/lib/wheelbase";
 
 const Book = () => {
-  const { t } = useTranslation(["booking", "common"]);
+  const { t, i18n } = useTranslation(["booking", "home"]);
+  const { search } = useLocation();
+  const storeUrl = buildWheelbaseStoreUrl(i18n.language, search);
+
+  // Booking lives on our hosted Wheelbase store; carry over locale and dates.
+  useEffect(() => {
+    window.location.replace(storeUrl);
+  }, [storeUrl]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,8 +46,14 @@ const Book = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <WheelbaseWidget />
+        <div className="flex justify-center">
+          <a
+            href={storeUrl}
+            data-testid="wheelbase-store-link"
+            className="inline-flex min-h-11 items-center justify-center rounded-control bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-[hsl(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {t("home:bookingWidget.button")}
+          </a>
         </div>
       </main>
 

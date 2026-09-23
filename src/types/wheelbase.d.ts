@@ -7,6 +7,7 @@ declare global {
         React.HTMLAttributes<HTMLElement> & {
           layout?: "full" | "horizontal" | "compact";
           locale?: string;
+          "target-url"?: string;
           title?: string;
           subtitle?: string;
           "button-label"?: string;

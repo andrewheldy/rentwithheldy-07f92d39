@@ -9,9 +9,6 @@ import Index from "./Index";
 vi.mock("@/components/Hero", () => ({
   default: () => <section data-testid="home-hero" />,
 }));
-vi.mock("@/components/HomeBookingWidget", () => ({
-  default: () => <section data-testid="home-booking-widget" />,
-}));
 vi.mock("@/components/Header", () => ({ default: () => <header /> }));
 vi.mock("@/components/Footer", () => ({ default: () => <footer /> }));
 vi.mock("@/hooks/useVehicles", () => ({
@@ -19,7 +16,7 @@ vi.mock("@/hooks/useVehicles", () => ({
 }));
 
 describe("Homepage booking hierarchy", () => {
-  it("renders booking immediately after Hero and before the trust strip", () => {
+  it("renders the trust strip immediately after the Hero (which holds booking)", () => {
     render(
       <HelmetProvider>
         <I18nextProvider i18n={i18n}>
@@ -31,11 +28,9 @@ describe("Homepage booking hierarchy", () => {
     );
 
     const hero = screen.getByTestId("home-hero");
-    const booking = screen.getByTestId("home-booking-widget");
     const trust = screen.getByTestId("home-trust-strip");
 
-    expect(hero.nextElementSibling).toBe(booking);
-    expect(booking.nextElementSibling).toBe(trust);
+    expect(hero.nextElementSibling).toBe(trust);
     expect(document.querySelector("#quote form")).toBeInTheDocument();
   });
 });

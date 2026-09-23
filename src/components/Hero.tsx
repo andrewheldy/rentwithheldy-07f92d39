@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Star, Phone, ArrowRight } from "lucide-react";
+import { Star, Phone } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import HomeBookingWidget from "@/components/HomeBookingWidget";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/contact";
-import { track } from "@/lib/analytics";
 
 // Permanent hero photograph. Licensed placeholder — swap for real Heldy
 // photography when available. Fully static: no crossfade, no zoom, no pan.
@@ -121,29 +119,8 @@ const Hero = () => {
             ))}
           </motion.ul>
 
-          <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
-              to="/trip-planner"
-              className="sm:w-auto"
-              onClick={() => track("home_plan_trip_click", { source: "homepage" })}
-            >
-              <Button size="lg" className="w-full sm:w-auto">
-                {t("hero.primaryCta")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-              </Button>
-            </Link>
-            <Link
-              to="/fleet"
-              className="sm:w-auto"
-              onClick={() => track("home_browse_fleet_click", { source: "homepage" })}
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full border-white/40 bg-white/5 text-white backdrop-blur-sm hover:bg-white/15 hover:text-white sm:w-auto"
-              >
-                {t("hero.secondaryCta")}
-              </Button>
-            </Link>
+          <motion.div variants={item} className="mt-9">
+            <HomeBookingWidget />
           </motion.div>
 
           <motion.a

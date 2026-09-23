@@ -15,42 +15,34 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/latest/wheelbase-widget.js", (route) =>
     route.fulfill({ contentType: "application/javascript", body: currentWheelbaseStub }),
   );
-  await page.route("**/sdk/wheelbase.min.js", (route) => route.abort());
+  await page.route("https://widget.wheelbasepro.com/**", (route) =>
+    route.fulfill({ contentType: "text/html", body: "<main>Wheelbase store</main>" }),
+  );
 });
 
-test("homepage presents the assisted, self-serve, and fleet paths in order", async ({ page }) => {
+test("hero leads with the booking date picker in place of the old CTAs", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
 
   const hero = page.getByTestId("home-hero");
-  await expect(hero.getByRole("link", { name: /Plan My Trip/i })).toHaveAttribute("href", "/trip-planner");
-  await expect(hero.getByRole("link", { name: /Browse the Fleet/i })).toHaveAttribute("href", "/fleet");
+  await expect(hero.getByTestId("home-booking-widget")).toBeVisible();
+  await expect(hero.getByRole("link", { name: /Plan My Trip/i })).toHaveCount(0);
+  await expect(hero.getByRole("link", { name: /Browse the Fleet/i })).toHaveCount(0);
 
-  const booking = page.getByTestId("home-booking-widget");
-  await expect(booking.getByRole("heading", { name: "When do you need a car?" })).toBeVisible();
-  await expect(page.getByTestId("wheelbase-landing-widget")).toHaveAttribute("layout", "horizontal");
-
-  const order = await page.evaluate(() => {
-    const heroElement = document.querySelector('[data-testid="home-hero"]');
-    const bookingElement = document.querySelector('[data-testid="home-booking-widget"]');
-    const trustElement = document.querySelector('[data-testid="home-trust-strip"]');
-    return Boolean(
-      heroElement &&
-        bookingElement &&
-        trustElement &&
-        heroElement.nextElementSibling === bookingElement &&
-        bookingElement.nextElementSibling === trustElement,
-    );
-  });
-  expect(order).toBe(true);
+  const widget = page.getByTestId("wheelbase-landing-widget");
+  await expect(widget).toHaveAttribute("layout", "horizontal");
+  await expect(widget).toHaveAttribute(
+    "target-url",
+    "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=en-us",
+  );
 });
 
-test("selected dates enter the existing /book flow through legacy filters", async ({ page }) => {
+test("selected dates go straight to the hosted Wheelbase store", async ({ page }) => {
   await page.goto("/");
   const widget = page.getByTestId("wheelbase-landing-widget");
   await expect(widget).toBeVisible();
 
-  await widget.evaluate((element) => {
+  const event = await widget.evaluate((element) => {
     const landing = element as HTMLElement & {
       onSubmit: (payload: {
         pickup: Date;
@@ -61,13 +53,12 @@ test("selected dates enter the existing /book flow through legacy filters", asyn
     landing.onSubmit({
       pickup: new Date(2026, 7, 20, 12),
       returnDate: new Date(2026, 7, 25, 12),
-      url: "/book?pickup=2026-08-20&return=2026-08-25",
+      url: "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&wb_from=2026-08-20&wb_to=2026-08-25",
     });
+    return window.dataLayer?.find((entry) => entry.event === "home_booking_widget_submit");
   });
-
-  await expect(page).toHaveURL(/\/book\?wb-from=2026-08-20&wb-to=2026-08-25$/);
-  const event = await page.evaluate(() =>
-    window.dataLayer?.find((entry) => entry.event === "home_booking_widget_submit"),
+  await page.waitForURL(
+    "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=en-us&wb_from=2026-08-20&wb_to=2026-08-25",
   );
   expect(event).toMatchObject({
     source: "homepage",
