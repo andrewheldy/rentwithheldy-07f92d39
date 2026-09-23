@@ -15,8 +15,6 @@
       "cruisePorts": "Cruise ports",
       "repairShops": "Repair shops"
     },
-    "primaryCta": "Plan My Trip",
-    "secondaryCta": "Browse the Fleet",
     "trust": {
       "reviews": "1,400+ Five-Star Reviews",
       "allStar": "All-Star Host",
@@ -27,11 +25,7 @@
     }
   },
   "bookingWidget": {
-    "eyebrow": "Self-serve booking",
-    "title": "When do you need a car?",
-    "description": "Choose your dates to see what's available.",
     "button": "Check Availability",
-    "reassurance": "Live availability • Local support • South Florida delivery",
     "loading": "Loading live availability",
     "unavailable": "Live date search is temporarily unavailable. You can still continue to booking.",
     "accessibleLabel": "Check rental availability by date"

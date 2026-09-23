@@ -9,6 +9,31 @@ const WHEELBASE_LOCALES: Partial<Record<Locale, string>> = {
   fr: "fr-fr",
 };
 
+/** Rent With Heldy's Wheelbase dealer (fleet owner) ID. */
+export const WHEELBASE_DEALER_ID = "4913818";
+
+/** Hosted Wheelbase store for our car fleet. /book redirects here. */
+export const WHEELBASE_STORE_URL = `https://widget.wheelbasepro.com/?dealer_id=${WHEELBASE_DEALER_ID}&store_type=auto`;
+
+/** Trip params the current Wheelbase widgets read to prefill the search. */
+const WHEELBASE_TRIP_PARAMS = ["wb_from", "wb_to", "wb_from_time", "wb_to_time"] as const;
+
+/**
+ * Builds the hosted store URL in the visitor's Wheelbase locale, carrying over
+ * any selected trip dates (e.g. from a /book?wb_from=...&wb_to=... link).
+ */
+export function buildWheelbaseStoreUrl(locale: string, search = ""): string {
+  const url = new URL(WHEELBASE_STORE_URL);
+  url.searchParams.set("locale", getWheelbaseLocale(locale));
+
+  const incoming = new URLSearchParams(search);
+  for (const key of WHEELBASE_TRIP_PARAMS) {
+    const value = incoming.get(key);
+    if (value) url.searchParams.set(key, value);
+  }
+  return url.toString();
+}
+
 const LANDING_WIDGET_TAG = "landing-widget";
 const LOAD_TIMEOUT_MS = 15_000;
 
@@ -48,10 +73,6 @@ function waitForLandingWidget(): Promise<void> {
  * Loads the current Wheelbase web-component module once per page lifecycle.
  * The promise is shared across mounts and route changes, including StrictMode.
  * A failed load is cleared so a later mount can retry.
- *
- * Future pass: migrate /book to current <wheelbase-store> after verified
- * date-prefill behavior. Do not reuse the legacy owner ID as dealer-id unless
- * Wheelbase verifies that mapping.
  */
 export function loadWheelbaseComponents(): Promise<void> {
   if (typeof window === "undefined" || typeof customElements === "undefined") {

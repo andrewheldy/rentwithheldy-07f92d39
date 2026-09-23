@@ -15,8 +15,6 @@
       "cruisePorts": "Ports de croisière",
       "repairShops": "Garages"
     },
-    "primaryCta": "Planifier mon voyage",
-    "secondaryCta": "Découvrir la flotte",
     "trust": {
       "reviews": "Plus de 1 400 avis cinq étoiles",
       "allStar": "All-Star Host",
@@ -27,11 +25,7 @@
     }
   },
   "bookingWidget": {
-    "eyebrow": "Réservation autonome",
-    "title": "Quand avez-vous besoin d'une voiture ?",
-    "description": "Choisissez vos dates pour voir les véhicules disponibles.",
     "button": "Vérifier la disponibilité",
-    "reassurance": "Disponibilité en direct • Assistance locale • Livraison en Floride du Sud",
     "loading": "Chargement des disponibilités",
     "unavailable": "La recherche par dates est temporairement indisponible. Vous pouvez tout de même poursuivre la réservation.",
     "accessibleLabel": "Vérifier la disponibilité des voitures par date"

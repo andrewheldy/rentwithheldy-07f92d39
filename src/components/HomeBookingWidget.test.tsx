@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { I18nextProvider } from "react-i18next";
-import { MemoryRouter, useLocation } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import i18n, { loadLocale } from "@/i18n";
 import { loadWheelbaseComponents } from "@/lib/wheelbase";
 import HomeBookingWidget from "./HomeBookingWidget";
@@ -16,17 +16,11 @@ vi.mock("@/lib/wheelbase", async (importOriginal) => {
 
 const mockedLoader = vi.mocked(loadWheelbaseComponents);
 
-function LocationProbe() {
-  const location = useLocation();
-  return <output data-testid="location">{`${location.pathname}${location.search}`}</output>;
-}
-
 function renderWidget() {
   return render(
     <I18nextProvider i18n={i18n}>
       <MemoryRouter initialEntries={["/"]}>
         <HomeBookingWidget />
-        <LocationProbe />
       </MemoryRouter>
     </I18nextProvider>,
   );
@@ -65,10 +59,16 @@ describe("HomeBookingWidget", () => {
     await i18n.changeLanguage(language);
     renderWidget();
 
-    expect(await screen.findByTestId("wheelbase-landing-widget")).toHaveAttribute("locale", expected);
+    const widget = await screen.findByTestId("wheelbase-landing-widget");
+    expect(widget).toHaveAttribute("locale", expected);
+    expect(widget).toHaveAttribute("target-url", expect.stringContaining("dealer_id=4913818"));
   });
 
-  it("hands canonical dates to the existing legacy booking filters and tracks trip length", async () => {
+  it("sends canonical dates to the hosted Wheelbase store and tracks trip length", async () => {
+    const assign = vi.fn();
+    const locationSpy = vi
+      .spyOn(window, "location", "get")
+      .mockReturnValue({ ...window.location, assign });
     renderWidget();
     const widget = (await screen.findByTestId("wheelbase-landing-widget")) as HTMLElement & {
       onSubmit: (payload: unknown) => void;
@@ -82,11 +82,10 @@ describe("HomeBookingWidget", () => {
       });
     });
 
-    await waitFor(() =>
-      expect(screen.getByTestId("location")).toHaveTextContent(
-        "/book?wb-from=2026-08-20&wb-to=2026-08-25",
-      ),
+    expect(assign).toHaveBeenCalledWith(
+      "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=en-us&wb_from=2026-08-20&wb_to=2026-08-25",
     );
+    locationSpy.mockRestore();
     expect(window.dataLayer).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -106,7 +105,10 @@ describe("HomeBookingWidget", () => {
     mockedLoader.mockRejectedValueOnce(new Error("network error"));
     renderWidget();
 
-    expect(await screen.findByRole("link", { name: "Check Availability" })).toHaveAttribute("href", "/book");
+    expect(await screen.findByRole("link", { name: "Check Availability" })).toHaveAttribute(
+      "href",
+      "https://widget.wheelbasepro.com/?dealer_id=4913818&store_type=auto&locale=en-us",
+    );
     expect(window.dataLayer).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ event: "home_booking_widget_fallback", locale: "en" }),

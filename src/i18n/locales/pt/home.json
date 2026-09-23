@@ -15,8 +15,6 @@
       "cruisePorts": "Portos de cruzeiros",
       "repairShops": "Oficinas"
     },
-    "primaryCta": "Planejar minha viagem",
-    "secondaryCta": "Explorar a frota",
     "trust": {
       "reviews": "Mais de 1.400 avaliações cinco estrelas",
       "allStar": "All-Star Host",
@@ -27,11 +25,7 @@
     }
   },
   "bookingWidget": {
-    "eyebrow": "Reserva por conta própria",
-    "title": "Quando você precisa de um carro?",
-    "description": "Escolha as datas para ver o que está disponível.",
     "button": "Ver disponibilidade",
-    "reassurance": "Disponibilidade em tempo real • Suporte local • Entrega no Sul da Flórida",
     "loading": "Carregando disponibilidade em tempo real",
     "unavailable": "A busca por datas está temporariamente indisponível. Você ainda pode continuar para a reserva.",
     "accessibleLabel": "Consultar a disponibilidade de carros por data"

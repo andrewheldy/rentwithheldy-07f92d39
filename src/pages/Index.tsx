@@ -6,7 +6,6 @@ import {
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import HomeBookingWidget from "@/components/HomeBookingWidget";
 import DeliveryDestinations from "@/components/DeliveryDestinations";
 import ConversionPaths from "@/components/ConversionPaths";
 import Footer from "@/components/Footer";
@@ -75,9 +74,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-
-        {/* Self-serve availability: selected dates hand off to the existing /book flow. */}
-        <HomeBookingWidget />
 
         {/* Trust strip */}
         <section className="border-y border-border bg-card" data-testid="home-trust-strip">
