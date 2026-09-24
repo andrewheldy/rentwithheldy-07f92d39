@@ -1,6 +1,6 @@
 # Supabase Migration Plan: Standalone Rent With Heldy Database
 
-*Drafted 2026-09-24. Status: **proposal for review**. No SQL has been written or applied yet.*
+*Drafted 2026-09-24; updated the same day with the Turo earnings export and fleet roster findings (sections 3.2, 4.2, 4.3, 8, Appendix A). Status: **proposal for review**. No SQL has been written or applied yet.*
 
 ## 0. Decisions already made
 
@@ -58,8 +58,12 @@ Conventions: money is stored as **integer cents** (Wheelbase already reports cen
 
 `vehicles` keeps its current columns (the public select must still exclude `vin`, `license_plate`, `initial_mileage`). New:
 
-- `vehicles.status` (`active`, `inactive`, `retired`), so ended consignments disappear from the public fleet without deleting history.
-- `vehicle_external_refs (vehicle_id, source, external_id, unique(source, external_id))`, where `source` is `wheelbase` or `turo`. This ties synced revenue to the right car. Wheelbase vehicle IDs come from its fleet report (39 vehicles today).
+- `vehicles.status` (`active`, `inactive`, `retired`), so ended consignments and totaled cars disappear from the public fleet without deleting history.
+- `vehicles.vin`: required, unique, and stored **uppercase only**. A rule rejects anything else (`vin ~ '^[A-HJ-NPR-Z0-9]{17}$'`). Every VIN from Wheelbase, Turo or manual entry is trimmed and uppercased before it's saved or compared, because both platforms export some VINs in lowercase (see 4.3).
+- `vehicle_external_refs (vehicle_id, source, external_id, unique(source, external_id))`, where `source` is `wheelbase` or `turo`. This ties synced revenue to the right car:
+  - Wheelbase: the Wheelbase vehicle ID from its fleet report.
+  - Turo: the Turo vehicle ID from the earnings export.
+- **Identity rule:** our own `vehicles.id` is the key everything references. The VIN is how a platform record gets matched to it. Platform IDs are attached to it as aliases. Names and plates are never used for matching (see 4.3 for why).
 
 `vehicle_images` and the public `vehicle-images` bucket are unchanged.
 
@@ -135,10 +139,75 @@ A consigner who ends a consignment still sees history for the period they were t
 
 ### 4.2 Turo (import)
 
-- Turo has no public host API. The admin downloads the **earnings CSV** from the Turo host dashboard and uploads it on an admin page.
-- The server parses the file and upserts `rental_bookings` and `rental_transactions` with `source = 'turo'`, keyed on the Turo reservation ID, so re-uploading overlapping date ranges doesn't double-count.
-- Turo's host fee is recorded as `platform_fee_cents`. Whether it reduces the consigner's Rental Revenue is a **contract question** (see section 8).
-- Each Turo vehicle is mapped once in `vehicle_external_refs`, using the Turo vehicle ID or the listing name as `external_id`.
+Turo has no public host API. The admin downloads the **trip earnings CSV** from the Turo host dashboard and uploads it on an admin page. The server parses it and upserts `rental_bookings` and `rental_transactions` with `source = 'turo'`.
+
+**What the export contains** (checked against `trip_earnings_export_20260924.csv`: 2,298 trips across 39 Turo vehicles, trip starts from Dec 2025 into Nov 2026):
+
+- **One row per reservation.** `Reservation ID` is unique and is the idempotency key, so re-uploading overlapping date ranges updates rows instead of duplicating them.
+- **Vehicle identity:**
+  - Every row has `Vehicle id` (Turo's vehicle ID) and `VIN`, and the two map one-to-one.
+  - `Vehicle name` is **not** unique: three cars are each "Volkswagen Jetta 2019" and three are "Chevrolet Equinox 2020".
+  - The plate appears only inside the free-text `Vehicle` column, e.g. `(FL #FKDA27)`.
+- **Trip status** is one of `Completed` (1,633), `Guest cancellation` (538), `Booked` (111), `In-progress` (9) or `Host cancellation` (7). Future trips appear too, so a row's status changes between uploads and each re-import updates it.
+- **Money** is formatted like `$1,039.50`, with negatives written as `- $6.06`. The parser converts these to integer cents.
+- **Turo's fee is already taken out.** On every completed trip, `Total earnings` equals the sum of the line-item columns exactly, and there is no Turo-fee column. So the export is already the **host's share after Turo's cut**; it totals $260,349.66 on completed trips.
+- **Sales tax is always $0.** Turo remits the tax, so nothing needs subtracting for it.
+- **Trip times have no timezone.** They're treated as America/New_York.
+- **The `Guest` column holds renter names.** The importer drops it and never stores it.
+
+**Proposed mapping of export columns to the contract's "Rental Revenue" (agreement section 5):**
+
+| Treatment | Columns |
+|---|---|
+| **Included** in Rental Revenue (payment for use of the vehicle) | Trip price, Boost price, all discount columns (these are negative), Non-refundable discount, Early bird discount, Host promotional credit, Excess distance, Additional usage, Late fee |
+| **Excluded**, pass-through or reimbursement (tolls, fuel, fines, damage) | Tolls & tickets, Gas reimbursement, Gas fee, On-trip EV charging, Post-trip EV charging, Fines (paid to host), Airport operations fee, Airport parking credit |
+| **Excluded**, kept by Rent With Heldy (delivery and separately provided services) | Delivery, Extras |
+| **Excluded**, covers cleaning and turnover cost | Cleaning, Smoking, Improper return fee |
+| **Needs a decision** (section 8) | Cancellation fee, Other fees |
+
+Each excluded amount is saved in `excluded_breakdown`, so an owner statement shows exactly what was left out. The importer also checks that included + excluded + needs-a-decision equals `Total earnings` for every row. If a row doesn't balance, or has a column the importer has never seen, the import stops instead of guessing.
+
+**Vehicle matching on import:**
+1. Look up `Vehicle id` in `vehicle_external_refs (source = 'turo')`.
+2. Confirm that the row's VIN, uppercased, equals the mapped vehicle's VIN.
+3. If the vehicle ID is unmapped, or the VIN disagrees, stop the import and list the vehicle for an admin to map. Never match by name or plate.
+
+### 4.3 Vehicle matching and fleet reconciliation
+
+The fleet roster (Appendix A) was checked against the Turo export and the Wheelbase fleet report.
+
+**Findings:**
+- **VIN is the right shared key.**
+  - All 39 Turo vehicles have a valid VIN.
+  - The 36 cars on both platforms match by VIN.
+  - Wheelbase's `internal_id` already holds the Turo vehicle ID for 34 of them.
+- **Case differs across platforms.**
+  - Turo exports five VINs in lowercase or mixed case (2014 Audi A4, 2017 Subaru Forester, 2018 Jeep Renegade, 2023 VW Taos, 2024 Audi Q5).
+  - Wheelbase stores the Subaru's VIN in lowercase.
+  - Normalizing to uppercase (3.2) makes this harmless.
+- **Plates can't be trusted as keys.**
+  - Plate `24FYRG` is on two Wheelbase records (the 2018 Honda Pilot and the archived 2020 Passat).
+  - Hand-typed plates differ between sources (see below).
+- **Names can't be trusted as keys.** Model names repeat within the fleet: three "Volkswagen Jetta 2019" and three "Chevrolet Equinox 2020".
+
+**Vehicle status at migration:**
+
+| Vehicle | Turo ID | Status | Note |
+|---|---|---|---|
+| 36 active vehicles in Appendix A | see table | `active` | |
+| 2020 Volkswagen Passat | 3562252 | `retired` | Totaled. Keep all 24 trips of history |
+| 2017 Mercedes-Benz GLE-Class | 3674313 | `retired` | Totaled. Keep all 19 trips of history |
+| 2021 BMW X3 | 3741006 | `retired` | One trip (May 28, 2026). Included so the Turo history imports cleanly |
+| 2016 BMW X3 (Wheelbase 544415), three Ford Transits (Wheelbase 553000, 552990, 552949) | none | `inactive` | In Wheelbase, unpublished, never on Turo. The Transits have no VIN yet, and one must be entered before they can go active |
+
+**Cleanup to do in Wheelbase before the first sync:**
+1. Add the white 2019 Volkswagen Jetta (VIN `3VWE57BU1KM119169`, plate `STLN58`, Turo `3906429`). It's active on Turo with trips into November, but it isn't in Wheelbase.
+2. Set the 2014 Honda Accord's (Wheelbase 529774) `internal_id` to `3270598`. It currently holds its own Wheelbase ID.
+3. Set the 2023 Chevrolet Equinox's (Wheelbase 510814) `internal_id` to `3582591`. It's currently `510814-3582591`.
+4. Uppercase the 2017 Subaru Forester's VIN.
+5. Resolve the two plate discrepancies listed under "Open reconciliation items" in Appendix A.
+
+With the Turo vehicle IDs on the roster, `vehicle_external_refs` can be seeded directly for every vehicle. The Wheelbase `internal_id` then becomes a cross-check, not a source of truth.
 
 ## 5. Data migration
 
@@ -150,6 +219,9 @@ A consigner who ends a consignment still sees history for the period they were t
 1. **Auth users**: use `pg_dump` of `auth.users` and `auth.identities` from the old project into the new one. This keeps user IDs, so every `created_by`, `user_roles` and `profiles` foreign key stays valid, and keeps password hashes, so users don't have to reset. Google sign-in keeps working once the Google provider is configured on the new project.
 2. `user_roles`, `profiles`.
 3. `vehicles`, `vehicle_images` (some images are base64 inside the row; they copy as data).
+   - **Vehicles are rebuilt from the reconciled roster (Appendix A plus the retired and inactive cars in 4.3), keyed by uppercase VIN.** Each existing website `vehicles` row is matched to the roster by VIN, so its photos and public description carry over.
+   - An old row with no VIN, or with a VIN that isn't on the roster, is listed for manual review instead of being copied blindly.
+   - `vehicle_external_refs` is seeded from the roster: the Turo vehicle ID for every vehicle, and the Wheelbase ID wherever the car exists in Wheelbase.
 4. Storage: copy every object in `vehicle-images` (public) and `agreements` (private) to the same paths.
 5. Agreements: templates, then agreements, versions, signers, signing tokens, events. Load with `session_replication_role = replica`, so the immutability triggers (which block edits to signed records) don't reject the bulk insert. Switch back to `origin` immediately after.
 6. **Verify agreements byte-for-byte**:
@@ -201,9 +273,62 @@ The old project stays untouched and read-only until the new one has run cleanly 
 ## 8. Open questions for Rent With Heldy
 
 1. Is `zggucizaopvjupfqfzhf` the database being replaced (section 2)?
-2. **Turo host fees:** does Turo's fee reduce the consigner's Rental Revenue before the split? The agreement's section 5 doesn't name platform fees. The same question applies to Wheelbase's service fee and owner fee.
+2. **Platform fees:** the Turo export is already net of Turo's fee (4.2), so the natural reading is that the owner's percentage applies to the **post-fee** amount. Please confirm. The same question applies to Wheelbase's service fee and owner fee, which do appear separately in its ledger.
+   - **Cancellation fees:** 538 guest cancellations appear in the export, and some of them earned a cancellation fee. Do those fees count as Rental Revenue that gets split with the owner?
+   - **"Other fees":** 16 distinct values appear in this column. Do they count as Rental Revenue, or are they excluded?
 3. **Expenses:** which categories are the owner's responsibility under section 8 of the agreement (insurance, maintenance, registration?), so `borne_by` defaults correctly?
 4. **Payout cadence:** the template supports a monthly payment schedule plus quarterly reports. Should statements be generated monthly?
 5. Should consigners see **per-booking** detail (dates and amounts, never renter identity) or only monthly totals?
 6. Which Wheelbase API credential or scope can read bookings (section 4.1)?
 7. Do any vehicles have multiple owners, or is it always one consigner per vehicle?
+8. **Roster items:** the two plate spellings listed under "Open reconciliation items" in Appendix A.
+
+## Appendix A. Active fleet roster (reconciled 2026-09-24)
+
+These are the 36 active vehicles as supplied by Rent With Heldy. Every row was checked against the Turo trip earnings export, and VIN and Turo vehicle ID agree on all 36. VINs are shown normalized to uppercase. Rows marked ⚠️ have an open item below. This table is the seed for `vehicles` and `vehicle_external_refs (source = 'turo')` at migration. A sold 2017 Subaru Forester that was on the source spreadsheet is intentionally left out.
+
+| # | Vehicle (roster label) | VIN | Plate | Turo vehicle ID |
+|---|---|---|---|---|
+| 1 | 2014 Audi A4 BLK | `WAUBFAFL9EN040664` | `88EUVM` | 3080125 |
+| 2 | 2014 Honda Accord SIL | `1HGCR3F83EA035670` | `EB41DB` | 3270598 |
+| 3 | 2015 Honda Fit SIL | `3HGGK5H80FM780122` | `DY18ZM` | 3224033 |
+| 4 | 2015 Kia Optima SIL | `5XXGN4A75FG492860` | `LD416T` | 3575002 |
+| 5 | 2015 Mazda CX-5 GRY 2835 | `JM3KE2CYXF0492835` | `07VCLL` | 3750194 |
+| 6 | 2015 Merc E350 GRY | `WDDHF8JB5FB088532` | `EB19IY` | 3269497 |
+| 7 | 2015 VW Jetta SIL | `3VW2K7AJ8FM409367` | `FKDA26` | 3296058 |
+| 8 | 2016 Toyota Camry GRY | `4T4BF1FK9GR545589` | `91VBGJ` | 3524535 |
+| 9 | 2017 Chevy Suburban BLK | `1GNSCGKC2HR377153` | `EB40DB` | 3295951 |
+| 10 | 2017 Ford Edge BRO | `2FMPK4J97HBB14256` | `78FCDC` | 3073716 |
+| 11 | 2017 Kia Optima SIL ⚠️ | `5XXGT4L30HG161266` | `XPQ946` | 3707283 |
+| 12 | 2017 Subaru Forester WHI ⚠️ | `JF2SJAAC8HH507036` | `DJ02ZS` | 3087797 |
+| 13 | 2018 Chevy Tahoe Beige | `1GNSCAKC1JR345278` | `17GCGT` | 3606751 |
+| 14 | 2018 GMC Yukon WHI | `1GKS1FKC7JR398793` | `92VBGJ` | 3527009 |
+| 15 | 2018 Honda Pilot WHI | `5FNYF5H11JB031725` | `24FYRG` | 3694394 |
+| 16 | 2018 Jeep Renegade ORG | `ZACCJABB0JPH13460` | `38FPIQ` | 3494909 |
+| 17 | 2019 Audi Q5 GRY | `WA1ANAFY4K2081157` | `DJ00ZS` | 3172654 |
+| 18 | 2019 Chevy Express WHI | `1GAZGMFP5K1356514` | `18GCGT` | 3609296 |
+| 19 | 2019 Honda CRV GRY | `7FARW1H81KE038335` | `32FVTU` | 3428775 |
+| 20 | 2019 VW Atlas BLU | `1V2WR2CA8KC567167` | `08VCLL` | 3633287 |
+| 21 | 2019 VW Jetta BLU | `3VWC57BU3KM109203` | `FGJS04` | 3271393 |
+| 22 | 2019 VW Jetta RED | `3VWC57BU8KM079101` | `FDMY01` | 3233670 |
+| 23 | 2019 VW Jetta WHI | `3VWE57BU1KM119169` | `STLN58` | 3906429 |
+| 24 | 2020 Chev Equinox WHI | `3GNAXKEV3LS661445` | `EB42DB` | 3271620 |
+| 25 | 2020 Chevy Equinox BLK | `2GNAXHEV3L6264271` | `FDDH36` | 3325188 |
+| 26 | 2020 Chevy Equinox SIL | `2GNAXKEV9L6122875` | `81GCGS` | 3599034 |
+| 27 | 2020 Infiniti QX60 BRO | `5N1DL0MN0LC500558` | `02FRST` | 3559928 |
+| 28 | 2020 Toyota Corolla BLK | `5YFEPRAE5LP096217` | `FDMY03` | 3282329 |
+| 29 | 2021 Kia Soul BLU | `KNDJ63AU8M7738907` | `DS17XA` | 3267675 |
+| 30 | 2022 Audi A4 BLK | `WAUABAF44NA015999` | `99ANCI` | 3179131 |
+| 31 | 2022 Honda Odyssey WHI | `5FNRL6H58NB049215` | `93VBGJ` | 3524513 |
+| 32 | 2022 Kia Soul RED | `KNDJ23AUXN7149998` | `51FPIQ` | 3518985 |
+| 33 | 2023 Chevy Equinox BLK | `3GNAXKEG8PL235090` | `49FRSS` | 3582591 |
+| 34 | 2023 VW Taos GRY | `3VVCX7B2XPM363964` | `FKDA27` | 3049985 |
+| 35 | 2023 VW Tiguan BLK | `3VVRB7AX4PM088288` | `65FRRZ` | 3596268 |
+| 36 | 2024 Audi Q5 GRY | `WA1EAAFY6R2013451` | `86EUVM` | 2995422 |
+
+**Open reconciliation items** (these don't block matching, because matching uses VIN and Turo ID, but the plate stored on the vehicle should be right):
+
+1. **2017 Subaru Forester (Turo 3087797):** the roster has plate `DJ02ZS` (digit zero), while Turo and Wheelbase both have `DJO2ZS` (letter O). Confirm which is correct, then fix the other source.
+2. **2017 Kia Optima (Turo 3707283):** the roster has plate `XPQ946`, while Turo and Wheelbase both have `XQP946`. Confirm which is correct, then fix the other source.
+
+Not on this roster, but carried into the new database (see 4.3): the 2020 Passat and 2017 GLE (`retired`, totaled), the 2021 BMW X3 (`retired`), and the 2016 BMW X3 and three Ford Transits (`inactive`).
