@@ -90,8 +90,6 @@
         ]
       }
     ],
-    "partnerHeading": "¿Agente de viajes o coordinador de viajes corporativos?",
-    "partnerSubheading": "Organiza la entrega en el aeropuerto para clientes o empleados que lleguen al sur de Florida. Coordinamos directamente contigo.",
     "faqs": [
       { "question": "¿Cómo funciona la recogida en el aeropuerto en FLL o MIA?", "answer": "Coordinaremos la recogida más conveniente según tu llegada. Según tu aeropuerto y tus horarios, puede ser una zona de estacionamiento del aeropuerto (donde pueden aplicar tarifas de estacionamiento) o un punto de recogida cercano a un viaje corto en transporte compartido. Después de reservar, comparte los datos de tu vuelo y confirmaremos el plan exacto y las instrucciones antes de que aterrices. La recogida sin contacto está disponible." },
       { "question": "¿Qué pasa si mi vuelo se retrasa?", "answer": "Solo escríbenos. Seguimos tu número de vuelo una vez que lo compartes y ajustamos el horario de recogida por retrasos, sin cargos adicionales por cambios normales de viaje." },
@@ -220,8 +218,6 @@
       { "title": "Recogida sin contacto", "description": "Recoge tu vehículo en tu horario con acceso seguro a una caja de seguridad, ajustado a tu navegación." },
       { "title": "Peajes sin complicaciones", "description": "Los peajes se facturan al final del viaje sin cargos adicionales. Solo pagas los peajes que uses." }
     ],
-    "partnerHeading": "¿Agente de viajes o conserje de cruceros?",
-    "partnerSubheading": "Suma un alquiler fácil junto al puerto al itinerario de tus clientes. Coordinamos directamente contigo.",
     "faqs": [
       { "question": "¿Cómo funciona la recogida en el puerto de cruceros?", "answer": "Después de reservar, envíanos el nombre de tu barco y la hora de llegada. Según los horarios y las condiciones del puerto, coordinaremos la opción más fácil —en la terminal, en una zona de estacionamiento de cruceros o en una zona de recogida designada en Port Everglades o PortMiami— y confirmaremos el plan contigo con anticipación." },
       { "question": "¿Puedo dejar el alquiler en el aeropuerto después de mi crucero?", "answer": "Sí, ofrecemos coordinación de devolución en FLL y MIA después de tu crucero para que puedas conducir directo del puerto a tu vuelo de regreso." },

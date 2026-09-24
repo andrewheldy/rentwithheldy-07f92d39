@@ -90,8 +90,6 @@
         ]
       }
     ],
-    "partnerHeading": "Agente de viagens ou coordenador de viagens corporativas?",
-    "partnerSubheading": "Organize a entrega no aeroporto para clientes ou funcionários que chegam ao Sul da Flórida. Coordenamos direto com você.",
     "faqs": [
       { "question": "Como funciona a retirada no aeroporto no FLL ou MIA?", "answer": "Vamos coordenar a retirada mais conveniente conforme sua chegada. Dependendo do aeroporto e do horário, pode ser uma área de estacionamento do aeroporto (onde podem se aplicar taxas de estacionamento) ou um ponto de retirada próximo a uma corrida curta de app. Depois de reservar, compartilhe os dados do seu voo e confirmaremos o plano exato e as instruções antes de você pousar. A retirada sem contato está disponível." },
       { "question": "E se o meu voo atrasar?", "answer": "É só mandar mensagem. Acompanhamos o número do seu voo assim que você compartilha e ajustamos o horário de retirada para atrasos — sem taxas extras para mudanças normais de viagem." },
@@ -220,8 +218,6 @@
       { "title": "Retirada sem contato", "description": "Retire seu veículo no seu horário com acesso seguro por cofre de chaves — no ritmo da sua viagem." },
       { "title": "Pedágios sem complicação", "description": "Os pedágios são cobrados no fim da viagem, sem taxas adicionais. Você paga apenas os pedágios que usar." }
     ],
-    "partnerHeading": "Agente de viagens ou concierge de cruzeiros?",
-    "partnerSubheading": "Adicione um aluguel fácil junto ao porto ao roteiro dos seus clientes. Coordenamos direto com você.",
     "faqs": [
       { "question": "Como funciona a retirada no porto de cruzeiros?", "answer": "Depois de reservar, mande o nome do seu navio e o horário de chegada. Dependendo do horário e das condições do porto, vamos coordenar a opção mais fácil — no terminal, em uma área de estacionamento de cruzeiros ou em uma zona de retirada designada no Port Everglades ou no PortMiami — e confirmar o plano com você com antecedência." },
       { "question": "Posso devolver o aluguel no aeroporto depois do meu cruzeiro?", "answer": "Sim — oferecemos coordenação de devolução no FLL e no MIA depois do seu cruzeiro para você dirigir direto do porto até o voo de volta." },

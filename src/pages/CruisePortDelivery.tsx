@@ -40,8 +40,6 @@ const CruisePortDelivery = () => {
         }
       }
       valueProps={valueProps}
-      partnerHeading={t("cruise.partnerHeading")}
-      partnerSubheading={t("cruise.partnerSubheading")}
       faqs={
         t("cruise.faqs", { returnObjects: true }) as {
           question: string;
