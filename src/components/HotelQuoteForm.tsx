@@ -15,7 +15,8 @@ const HotelQuoteForm = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
     const phone = String(fd.get("phone") || "").trim();
     const hotelName = String(fd.get("hotelName") || "").trim();
@@ -44,7 +45,12 @@ const HotelQuoteForm = () => {
       `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
+    const location = hotelAddress || hotelName;
+    const neededWhen = `Pickup: ${pickupDateTime} | Return: ${returnDateTime}`;
+
+    // Save to Supabase and email the team independently: the request only
+    // fails for the guest when neither path gets it to us.
+    const { error: insertError } = await supabase.from("leads").insert({
       form_type: "hotel_quote",
       vertical_path: "hotel",
       service_context: "Hotel Concierge Rental",
@@ -52,15 +58,39 @@ const HotelQuoteForm = () => {
       name,
       phone,
       company: hotelName,
-      location: hotelAddress || hotelName,
-      needed_when: `Pickup: ${pickupDateTime} | Return: ${returnDateTime}`,
+      location,
+      needed_when: neededWhen,
       referred_by: referredBy || null,
       notes: notesComposed,
       user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
     });
+    if (insertError) console.error("Lead insert failed", insertError);
 
-    if (error) {
-      console.error("Lead insert failed", error);
+    let emailed = false;
+    try {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "hotel-guest",
+          formType: "hotel_quote",
+          passengerType: "Hotel Guest",
+          name,
+          phone,
+          company: hotelName,
+          location,
+          when: neededWhen,
+          referredBy: referredBy || undefined,
+          notes: notesComposed,
+        }),
+      });
+      emailed = res.ok;
+      if (!res.ok) console.error("Email send failed", await res.text());
+    } catch (err) {
+      console.error("Email send failed", err);
+    }
+
+    if (insertError && !emailed) {
       toast({
         title: t("shared.saveErrorTitle"),
         description: t("shared.saveErrorDesc", { phone: CONTACT_PHONE_DISPLAY }),
@@ -70,14 +100,12 @@ const HotelQuoteForm = () => {
       return;
     }
 
-    const subject = `Hotel Delivery Quote — ${hotelName}`;
-    const body = `Source: hotel-concierge-rentals\nLead Type: Hotel Guest\nName: ${name}\nPhone: ${phone}\nHotel: ${hotelName}\nHotel Address: ${hotelAddress}\nPickup: ${pickupDateTime}\nReturn: ${returnDateTime}\nReferred By: ${referredBy}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     toast({
       title: t("shared.savedTitle"),
       description: t("shared.savedDesc"),
     });
-    setTimeout(() => setSubmitting(false), 1500);
+    form.reset();
+    setSubmitting(false);
   };
 
   return (
