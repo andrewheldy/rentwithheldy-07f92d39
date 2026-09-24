@@ -87,6 +87,7 @@ const VERTICALS = [
   "hotel",
   "loss-of-use",
   "airport",
+  "local-car-rentals",
   "vehicle-inquiry",
   "direct",
 ];
