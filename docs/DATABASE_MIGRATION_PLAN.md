@@ -1,6 +1,44 @@
 # Supabase Migration Plan: Standalone Rent With Heldy Database
 
-*Drafted 2026-09-24; updated the same day with the Turo earnings export and fleet roster findings (sections 3.2, 4.2, 4.3, 8, Appendix A). Status: **proposal for review**. No SQL has been written or applied yet.*
+*Drafted 2026-09-24; updated the same day with the Turo earnings export and fleet roster findings (sections 3.2, 4.2, 4.3, 8, Appendix A). Schema and seed data applied to the new project on 2026-09-25; see "Implementation status" below.*
+
+## Implementation status (2026-09-25)
+
+New project: `damcyhiznlpykxskndes` ("Rent with Heldy"). `supabase/config.toml` points at it.
+
+**Applied** (`supabase/migrations/`, which now holds only these six files; the previous project's migrations were deleted and remain in git history):
+
+| Migration | Contents |
+|---|---|
+| `20260925003851_baseline_core` | Roles (`admin`, `consigner`, `user`), `vehicles`, `vehicle_images` + public bucket, `leads` (widened `form_type` CHECK), `acquisition_leads`, `profiles` |
+| `20260925004751_agreements_esignature` | Agreement tables, RPCs, private `agreements` bucket, consignment template (unchanged from the old project) |
+| `20260925004826_agreements_security_hardening` | Unchanged from the old project |
+| `20260925004903_long_term_rental_template` | Unchanged from the old project |
+| `20260925005546_consigners_and_profitability` | Sections 3.2 to 3.6: `vehicle_external_refs`, `consigners`, `consignments`, `rental_bookings`, `rental_transactions`, `vehicle_expenses`, `vehicle_unavailable_periods`, `owner_statements`, `owner_statement_lines`, `sync_runs`, `agreements.consigner_id`, RLS and dashboard views |
+| `20260925024804_revoke_trigger_function_execute` | Removes API access to trigger functions (security advisor) |
+
+**Data loaded:**
+- **Fleet** (`supabase/seed/fleet_roster.sql`, idempotent): 43 vehicles (36 active, 3 retired, 4 inactive), 39 Turo IDs and 41 Wheelbase IDs. Seeded vehicles have `show_on_site = false`, so the public fleet pages keep their static fallback until photos and descriptions are added in `/admin`.
+- **Turo history** from `trip_earnings_export_20260924.csv`: 2,298 `rental_bookings`, and 1,712 `rental_transactions` for completed trips and for cancellations that earned money. Guest names and pickup/return addresses were not stored. Completed trips total $260,349.66, which matches the export. Across all transactions: Rental Revenue $233,943.06, excluded $31,571.70, and $1,075.38 of cancellation fees and "Other fees" held as `unclassified` until question 2 in section 8 is answered.
+
+**Differences from the proposal:**
+- The lifecycle state is `vehicles.fleet_status` (`active`, `inactive`, `retired`), because the existing `vehicles.status` (`available`, `rented`, `maintenance`) is still used by the admin vehicle tools.
+- `vehicles.show_on_site` controls public listing. `vin` is nullable only for non-active vehicles, since the three Ford Transits have no VIN yet.
+- Anonymous visitors get column-level SELECT on `vehicles`, so `vin`, `license_plate` and mileage are not readable without an admin login.
+- `rental_transactions` gains `rental_revenue_cents`, `unclassified_cents` and `unclassified_breakdown`.
+- Turo transactions are dated on the trip end date for completed trips, and on the start date for cancellations.
+- A consigner's login is linked automatically when an admin-created `consigners` row has the same email and the login's email is confirmed. The `consigner` role is granted at that point.
+
+**Verified:**
+- Anonymous visitors: no listed vehicles yet; cannot read VIN, plates, revenue, consigners or dashboards; can insert leads.
+- A simulated consigner (rolled back) is linked and gets the role. They see only their own vehicle, and only transactions from their consignment start date (38 of 56 for the test car). They see nothing from `v_fleet_profitability` or `leads`.
+
+**Not done yet** (sections 5 and 6):
+- Auth users, user roles and profiles.
+- Existing agreements and storage objects.
+- Old website `vehicles` rows and photos.
+
+The old project isn't reachable from this tooling. These need a `pg_dump` from the old project, or its connection string.
 
 ## 0. Decisions already made
 
@@ -253,7 +291,7 @@ The old project stays untouched and read-only until the new one has run cleanly 
   - `src/components/BookingDialog.tsx`, `src/hooks/useCategories.ts`, `src/components/CategoryCard.tsx`
   - the inquiries and events tabs in `AdminLeads`
   - `supabase/functions/*`
-- **Replace migrations:** a new baseline migration set for the new project replaces the 12 historical files. The old files move to `supabase/migrations_legacy/` for reference.
+- **Replace migrations:** done. A new baseline migration set replaces the 12 historical files. The old files were deleted and remain in git history.
 - **Add:**
   - Consigner role handling in `AuthContext` and `ProtectedRoute`
   - Consigner dashboard pages
