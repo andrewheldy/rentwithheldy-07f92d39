@@ -187,7 +187,7 @@ The fleet roster (Appendix A) was checked against the Turo export and the Wheelb
   - Normalizing to uppercase (3.2) makes this harmless.
 - **Plates can't be trusted as keys.**
   - Plate `24FYRG` is on two Wheelbase records (the 2018 Honda Pilot and the archived 2020 Passat).
-  - Hand-typed plates differ between sources (see below).
+  - The internal fleet spreadsheet had two mistyped plates (2017 Subaru Forester, 2017 Kia Optima). Turo and Wheelbase were correct, and the spreadsheet has been fixed.
 - **Names can't be trusted as keys.** Model names repeat within the fleet: three "Volkswagen Jetta 2019" and three "Chevrolet Equinox 2020".
 
 **Vehicle status at migration:**
@@ -205,7 +205,6 @@ The fleet roster (Appendix A) was checked against the Turo export and the Wheelb
 2. Set the 2014 Honda Accord's (Wheelbase 529774) `internal_id` to `3270598`. It currently holds its own Wheelbase ID.
 3. Set the 2023 Chevrolet Equinox's (Wheelbase 510814) `internal_id` to `3582591`. It's currently `510814-3582591`.
 4. Uppercase the 2017 Subaru Forester's VIN.
-5. Resolve the two plate discrepancies listed under "Open reconciliation items" in Appendix A.
 
 With the Turo vehicle IDs on the roster, `vehicle_external_refs` can be seeded directly for every vehicle. The Wheelbase `internal_id` then becomes a cross-check, not a source of truth.
 
@@ -281,11 +280,10 @@ The old project stays untouched and read-only until the new one has run cleanly 
 5. Should consigners see **per-booking** detail (dates and amounts, never renter identity) or only monthly totals?
 6. Which Wheelbase API credential or scope can read bookings (section 4.1)?
 7. Do any vehicles have multiple owners, or is it always one consigner per vehicle?
-8. **Roster items:** the two plate spellings listed under "Open reconciliation items" in Appendix A.
 
 ## Appendix A. Active fleet roster (reconciled 2026-09-24)
 
-These are the 36 active vehicles as supplied by Rent With Heldy. Every row was checked against the Turo trip earnings export, and VIN and Turo vehicle ID agree on all 36. VINs are shown normalized to uppercase. Rows marked ⚠️ have an open item below. This table is the seed for `vehicles` and `vehicle_external_refs (source = 'turo')` at migration. A sold 2017 Subaru Forester that was on the source spreadsheet is intentionally left out.
+These are the 36 active vehicles as supplied by Rent With Heldy. Every row was checked against the Turo trip earnings export, and VIN and Turo vehicle ID agree on all 36. VINs are shown normalized to uppercase. Plates match Turo and Wheelbase for every vehicle. This table is the seed for `vehicles` and `vehicle_external_refs (source = 'turo')` at migration. A sold 2017 Subaru Forester that was on the source spreadsheet is intentionally left out.
 
 | # | Vehicle (roster label) | VIN | Plate | Turo vehicle ID |
 |---|---|---|---|---|
@@ -299,8 +297,8 @@ These are the 36 active vehicles as supplied by Rent With Heldy. Every row was c
 | 8 | 2016 Toyota Camry GRY | `4T4BF1FK9GR545589` | `91VBGJ` | 3524535 |
 | 9 | 2017 Chevy Suburban BLK | `1GNSCGKC2HR377153` | `EB40DB` | 3295951 |
 | 10 | 2017 Ford Edge BRO | `2FMPK4J97HBB14256` | `78FCDC` | 3073716 |
-| 11 | 2017 Kia Optima SIL ⚠️ | `5XXGT4L30HG161266` | `XPQ946` | 3707283 |
-| 12 | 2017 Subaru Forester WHI ⚠️ | `JF2SJAAC8HH507036` | `DJ02ZS` | 3087797 |
+| 11 | 2017 Kia Optima SIL | `5XXGT4L30HG161266` | `XQP946` | 3707283 |
+| 12 | 2017 Subaru Forester WHI | `JF2SJAAC8HH507036` | `DJO2ZS` | 3087797 |
 | 13 | 2018 Chevy Tahoe Beige | `1GNSCAKC1JR345278` | `17GCGT` | 3606751 |
 | 14 | 2018 GMC Yukon WHI | `1GKS1FKC7JR398793` | `92VBGJ` | 3527009 |
 | 15 | 2018 Honda Pilot WHI | `5FNYF5H11JB031725` | `24FYRG` | 3694394 |
@@ -326,9 +324,6 @@ These are the 36 active vehicles as supplied by Rent With Heldy. Every row was c
 | 35 | 2023 VW Tiguan BLK | `3VVRB7AX4PM088288` | `65FRRZ` | 3596268 |
 | 36 | 2024 Audi Q5 GRY | `WA1EAAFY6R2013451` | `86EUVM` | 2995422 |
 
-**Open reconciliation items** (these don't block matching, because matching uses VIN and Turo ID, but the plate stored on the vehicle should be right):
-
-1. **2017 Subaru Forester (Turo 3087797):** the roster has plate `DJ02ZS` (digit zero), while Turo and Wheelbase both have `DJO2ZS` (letter O). Confirm which is correct, then fix the other source.
-2. **2017 Kia Optima (Turo 3707283):** the roster has plate `XPQ946`, while Turo and Wheelbase both have `XQP946`. Confirm which is correct, then fix the other source.
+**Reconciliation status:** complete. VIN, plate and Turo vehicle ID agree across the roster, Turo and Wheelbase for all 36 active vehicles.
 
 Not on this roster, but carried into the new database (see 4.3): the 2020 Passat and 2017 GLE (`retired`, totaled), the 2021 BMW X3 (`retired`), and the 2016 BMW X3 and three Ford Transits (`inactive`).
