@@ -272,7 +272,7 @@ With the Turo vehicle IDs on the roster, `vehicle_external_refs` can be seeded d
 ### 5.3 Application config at cutover
 - **Vercel env vars** (Production and Preview): `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, and later `WHEELBASE_API_KEY`.
   - Today production has **none of the Supabase variables**, which is why every database save from the site currently fails (see PR #20).
-- Update `supabase/config.toml` `project_id`, and regenerate `src/integrations/supabase/types.ts` from the new project.
+- Update `supabase/config.toml` `project_id`, and regenerate `src/integrations/supabase/types.ts` from the new project. (Both done.)
 - Redeploy. Smoke test:
   - login (email and Google) and admin routes
   - fleet photos
@@ -286,18 +286,14 @@ The old project stays untouched and read-only until the new one has run cleanly 
 
 ## 6. Code changes this plan implies (for the build phase)
 
-- **Remove:**
-  - `src/pages/Confirmation.tsx` and its route (redirect to `/book`)
-  - `src/components/BookingDialog.tsx`, `src/hooks/useCategories.ts`, `src/components/CategoryCard.tsx`
-  - the inquiries and events tabs in `AdminLeads`
-  - `supabase/functions/*`
+- **Remove:** done. `Confirmation.tsx` (its route now redirects to `/book`), `BookingDialog`, `useCategories`, `CategoryCard`, the AdminLeads inquiries and events tabs, and `supabase/functions/*` are deleted. Their `booking.confirmation` locale keys are removed in all five locales.
 - **Replace migrations:** done. A new baseline migration set replaces the 12 historical files. The old files were deleted and remain in git history.
 - **Add:**
   - Consigner role handling in `AuthContext` and `ProtectedRoute`
   - Consigner dashboard pages
   - Admin screens for consigners, expenses, unavailable periods, the Turo upload and statements
   - The Wheelbase sync function
-- **Fix:** AdminLeads' `body-shop` filter option (real rows use `body-shop-delivery`).
+- **Fix:** done. AdminLeads' vertical filter is built from the `vertical_path` values in the loaded leads, so it no longer offers a `body-shop` option that matched no rows.
 
 ## 7. Suggested build order after approval
 
