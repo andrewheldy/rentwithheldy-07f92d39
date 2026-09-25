@@ -112,11 +112,6 @@ const LocationPageLayout = ({
                       {t("common:actions.bookNow")}
                     </Button>
                   </Link>
-                  <Link to="/fleet">
-                    <Button size="lg" variant="outline">
-                      {t("layout.viewFleet")}
-                    </Button>
-                  </Link>
                 </div>
               </div>
               {heroForm && (
@@ -168,7 +163,7 @@ const LocationPageLayout = ({
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <li>
-                <Link to="/fleet" className="text-primary hover:underline">
+                <Link to="/book" className="text-primary hover:underline">
                   → {t("layout.exploreMore.links.fleet")}
                 </Link>
               </li>

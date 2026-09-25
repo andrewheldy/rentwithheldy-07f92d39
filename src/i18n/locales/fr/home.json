@@ -104,12 +104,6 @@
     "title": "De la recherche aux clés en quatre étapes simples.",
     "description": "Pas de comptoir, pas de surprises — juste une remise rapide et conviviale là où cela vous arrange le mieux."
   },
-  "fleet": {
-    "eyebrow": "La flotte",
-    "title": "Des voitures propres et fiables pour tous vos projets en Floride du Sud.",
-    "description": "Un aperçu de nos véhicules les plus réservés — des options économiques pratiques et d'autres premium plus récentes, toutes soigneusement entretenues. Consultez les disponibilités en temps réel et toute la flotte à tout moment.",
-    "tripPlannerPrompt": "Vous ne savez pas quoi choisir pour votre trajet ? Essayez le planificateur de trajet"
-  },
   "reviews": {
     "eyebrow": "Ce que disent les clients",
     "title": "Plus de 1 400 avis cinq étoiles de clients Turo dans toute la Floride du Sud.",

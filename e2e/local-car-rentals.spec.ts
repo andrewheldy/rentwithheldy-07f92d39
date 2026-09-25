@@ -6,7 +6,6 @@ const CANONICAL = "https://rentwithheldy.com/local-car-rentals";
 // Every route this page links to must be a real route (not the 404 page).
 const EXPECTED_INTERNAL_LINKS = [
   "/book",
-  "/fleet",
   "/fort-lauderdale-airport-car-rental",
   "/car-rental-miami",
   "/car-rental-fort-lauderdale",

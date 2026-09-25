@@ -104,12 +104,6 @@
     "title": "Da busca às chaves em quatro passos simples.",
     "description": "Sem balcão, sem surpresas — só uma entrega rápida e simpática onde for melhor para você."
   },
-  "fleet": {
-    "eyebrow": "A frota",
-    "title": "Carros limpos e confiáveis para cada plano no Sul da Flórida.",
-    "description": "Uma prévia dos nossos carros mais reservados — opções econômicas práticas e outras premium mais novas, todas cuidadosamente mantidas. Veja a disponibilidade em tempo real e a frota completa quando quiser.",
-    "tripPlannerPrompt": "Não sabe o que combina com sua viagem? Experimente o Planejador de Viagem"
-  },
   "reviews": {
     "eyebrow": "O que os hóspedes dizem",
     "title": "Mais de 1.400 avaliações cinco estrelas de hóspedes do Turo em todo o Sul da Flórida.",

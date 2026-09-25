@@ -8,7 +8,6 @@
     "checkAvailability": "Ver disponibilidade",
     "findMyMatch": "Encontre sua opção ideal",
     "callOrText": "Ligue ou mande mensagem",
-    "viewFullFleet": "Ver toda a frota",
     "viewFleet": "Ver a frota",
     "seeAllFaqs": "Ver todas as perguntas",
     "seeHowItWorks": "Ver como funciona",
@@ -41,9 +40,7 @@
       "cta": "Ver se é adequado"
     }
   },
-  "states": {
-    "loadingFleet": "Carregando a frota…"
-  },
+  "states": {},
   "notFound": {
     "title": "404",
     "message": "Ops! Página não encontrada",

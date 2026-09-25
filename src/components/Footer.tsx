@@ -29,7 +29,6 @@ const locations = [
 ] as const;
 
 const company = [
-  { to: "/fleet", key: "fleet" },
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/about", key: "about" },
   { to: "/faq", key: "faq" },

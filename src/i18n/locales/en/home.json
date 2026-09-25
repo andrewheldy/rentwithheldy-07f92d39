@@ -104,12 +104,6 @@
     "title": "From search to keys in four simple steps.",
     "description": "No counter, no surprises — just a quick, friendly handoff wherever works best for you."
   },
-  "fleet": {
-    "eyebrow": "The fleet",
-    "title": "Clean, reliable cars for every South Florida plan.",
-    "description": "A peek at our most-booked rides — practical economy options and newer premium ones, all carefully maintained. See live availability and the full fleet anytime.",
-    "tripPlannerPrompt": "Not sure what fits your trip? Try the Trip Planner"
-  },
   "reviews": {
     "eyebrow": "What guests say",
     "title": "1,400+ five-star reviews from Turo guests across South Florida.",

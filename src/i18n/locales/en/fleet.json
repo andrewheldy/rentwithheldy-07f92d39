@@ -1,32 +1,4 @@
 {
-  "meta": {
-    "title": "Our Fleet | Car & SUV Rentals in Fort Lauderdale & Miami",
-    "description": "Browse economy through newer premium cars and SUVs for rent in Fort Lauderdale, Miami, and South Florida. Every vehicle cleaned and inspected before your trip. Book online."
-  },
-  "hero": {
-    "title": "Our South Florida rental fleet",
-    "subtitle": "Choose from practical economy vehicles and newer premium options — every one privately owned, professionally cleaned, detailed, and inspected before your trip, and chosen for real South Florida driving.",
-    "checkAvailability": "Check live availability",
-    "howBookingWorks": "How booking works"
-  },
-  "areaLinks": {
-    "title": "Renting in a specific area?",
-    "subtitle": "See location-specific pickup details, vehicle suggestions, and local trip ideas.",
-    "fortLauderdale": "Fort Lauderdale rentals",
-    "miami": "Miami rentals",
-    "fllAirport": "FLL airport trips"
-  },
-  "faqSection": {
-    "title": "Fleet & booking questions"
-  },
-  "grid": {
-    "empty": "We're refreshing our live availability. Please check back soon or",
-    "emptySearchLink": "search availability",
-    "photoComingSoon": "Photo on the way",
-    "imageAlt": "{{title}} available for rent in South Florida",
-    "seats": "{{seats}} seats",
-    "bags": "Bags"
-  },
   "vehicleCopy": {
     "fallbackDescription": "A clean, well-maintained vehicle ready for your South Florida trip.",
     "colors": {
@@ -80,9 +52,5 @@
       "2016-toyota-camry-silver": "Reliable mid-size sedan with smooth ride and great fuel economy.",
       "2018-gmc-yukon-white": "Premium full-size SUV with 3 rows and ample cargo space."
     }
-  },
-  "card": {
-    "pricePerDay": "${{price}}/day",
-    "viewDetails": "View Details"
   }
 }

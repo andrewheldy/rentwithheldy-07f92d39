@@ -370,7 +370,7 @@ const DriverDemandFunnel = () => {
         </dl>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link to="/fleet">{t("driver.confirmation.explore")}</Link>
+            <Link to="/">{t("driver.confirmation.explore")}</Link>
           </Button>
           {draft.platforms.includes("empower") && draft.empowerStatus === "no" && EMPOWER_REFERRAL_URL && (
             <Button asChild variant="outline" size="lg">

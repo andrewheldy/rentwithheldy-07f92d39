@@ -8,7 +8,6 @@
     "checkAvailability": "בדיקת זמינות",
     "findMyMatch": "מצאו את ההתאמה שלכם",
     "callOrText": "התקשרו או שלחו הודעה",
-    "viewFullFleet": "לצפייה בכל הצי",
     "viewFleet": "לצפייה בצי",
     "seeAllFaqs": "לכל השאלות הנפוצות",
     "seeHowItWorks": "איך זה עובד",
@@ -41,9 +40,7 @@
       "cta": "בדיקת התאמה"
     }
   },
-  "states": {
-    "loadingFleet": "טוען את הצי…"
-  },
+  "states": {},
   "notFound": {
     "title": "404",
     "message": "אופס! העמוד לא נמצא",

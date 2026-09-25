@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   Phone, Mail, ArrowRight, MapPin, Truck, MessageCircle, Users,
-  Sparkles, Star, Award, KeyRound,
+  Star, Award, KeyRound,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
@@ -9,7 +9,6 @@ import Hero from "@/components/Hero";
 import DeliveryDestinations from "@/components/DeliveryDestinations";
 import ConversionPaths from "@/components/ConversionPaths";
 import Footer from "@/components/Footer";
-import FleetGrid from "@/components/FleetGrid";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
 import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
@@ -17,7 +16,6 @@ import SEO from "@/components/SEO";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { useVehicles } from "@/hooks/useVehicles";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -41,22 +39,8 @@ const TRUST_STRIP = [
   { icon: Users, key: "familyOwned" },
 ] as const;
 
-// Hand-picked vehicle IDs to showcase on the homepage
-const FEATURED_VEHICLE_IDS = [
-  "044005d2-bb28-488d-95c9-53eedcfa53d3", // 2024 Audi Q5
-  "048ae247-6ce5-4d2a-bfc8-cf106afe78d5", // 2022 Audi A4
-  "673e22bd-8c1a-4885-bced-b767c95a8f26", // 2019 Audi Q5
-  "5e6b4878-8651-4e13-92db-3a49935c5f30", // 2017 Chevrolet Suburban
-  "a07cc53e-c6ba-4a96-9c1b-3bab668cbb5c", // 2015 Mercedes-Benz E350
-  "508c69ca-e2e7-4816-915b-45ea2a573bff", // 2019 Volkswagen Jetta (Red)
-];
-
 const Index = () => {
   const { t } = useTranslation(["home", "common", "faq"]);
-  const { data: vehicles = [], isLoading } = useVehicles();
-  const featuredVehicles = FEATURED_VEHICLE_IDS
-    .map((id) => vehicles.find((v) => v.id === id))
-    .filter((v): v is NonNullable<typeof v> => Boolean(v));
   const faqPreview = (t("faq:items", { returnObjects: true }) as FAQItem[]).slice(0, 5);
 
   return (
@@ -157,48 +141,6 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Fleet preview */}
-        <section className="py-16 sm:py-24 bg-secondary">
-          <div className="container mx-auto">
-            <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-              <div className="max-w-xl">
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                  {t("fleet.eyebrow")}
-                </p>
-                <h2 className="text-heading font-bold text-ink mb-4">
-                  {t("fleet.title")}
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  {t("fleet.description")}
-                </p>
-              </div>
-              <Link to="/fleet">
-                <Button variant="outline">{t("common:actions.viewFullFleet")}</Button>
-              </Link>
-            </Reveal>
-
-            {isLoading ? (
-              <div className="text-center text-muted-foreground py-12">{t("common:states.loadingFleet")}</div>
-            ) : (
-              <>
-                <FleetGrid vehicles={featuredVehicles} limit={6} />
-                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-                  <Link to="/fleet">
-                    <Button size="lg">{t("common:actions.viewFullFleet")}</Button>
-                  </Link>
-                  <Link
-                    to="/trip-planner"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                  >
-                    <Sparkles className="h-4 w-4 text-primary" />
-                    {t("fleet.tripPlannerPrompt")}
-                  </Link>
-                </div>
-              </>
-            )}
           </div>
         </section>
 

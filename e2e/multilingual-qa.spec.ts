@@ -2,7 +2,6 @@ import { expect, test, type Page } from "@playwright/test";
 
 const routes = [
   ["home", "/"],
-  ["fleet", "/fleet"],
   ["airport", "/fort-lauderdale-airport-car-rental"],
   ["hotel", "/hotel-concierge-rentals"],
   ["local", "/local-car-rentals"],
@@ -230,10 +229,6 @@ for (const [viewportName, viewport] of viewports) {
         if (locale === "he") {
           if (["privacy", "terms"].includes(routeName)) {
             await expect(page.locator("main [lang='en'][dir='ltr']")).toBeVisible();
-          }
-          if (routeName === "fleet") {
-            const vehicleName = page.locator("main bdi[dir='ltr']").first();
-            if ((await vehicleName.count()) > 0) await expect(vehicleName).toBeVisible();
           }
           if (["airport", "hotel"].includes(routeName)) {
             await expect(page.locator("main p[lang='en'][dir='ltr']")).toBeVisible();
