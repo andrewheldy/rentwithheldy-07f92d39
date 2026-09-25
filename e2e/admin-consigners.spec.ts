@@ -71,6 +71,41 @@ test.describe("admin sidebar", () => {
     await expect(page.getByRole("link", { name: "Leads" })).toBeHidden();
   });
 
+  test("account settings live in the admin menu, not on a profile page", async ({ page }) => {
+    const backend = await openAsAdmin(page, "/profile");
+    // Admins never land on the customer profile page.
+    await expect(page).toHaveURL(/\/admin\/consigners$/);
+    await expect(page.getByRole("heading", { name: "Your account" })).toHaveCount(0);
+
+    const settings = page.getByRole("link", { name: "Account settings" });
+    await settings.click();
+    await expect(page).toHaveURL(/\/admin\/settings$/);
+    await expect(settings).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("heading", { level: 1, name: "Account settings" })).toBeVisible();
+    await expect(page.getByLabel("Full name")).toHaveValue("Admin Person");
+    await page.getByLabel("Phone").fill("954-555-0100");
+    await page.getByRole("button", { name: "Save changes" }).click();
+    await expect.poll(() => backend.profileSaves.length).toBe(1);
+    expect(backend.profileSaves[0]).toMatchObject({ full_name: "Admin Person", phone: "954-555-0100" });
+    await expectCleanLayout(page, "admin settings");
+
+    // The site header's account icon also leads admins to the admin area.
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/about");
+    await expect(page.getByRole("link", { name: "Your account" })).toHaveAttribute("href", "/admin");
+  });
+
+  test("customers still get their profile page", async ({ page }) => {
+    const backend = new ConsignerBackend();
+    await backend.install(page, { asAdmin: false, asCustomer: true });
+    await page.goto("/profile");
+    await expect(page).toHaveURL(/\/profile$/);
+    await expect(page.getByRole("heading", { level: 1, name: "Your account" })).toBeVisible();
+    await expect(page.getByLabel("Full name")).toHaveValue("Guest Person");
+    await expect(page.getByText("Admin tools")).toHaveCount(0);
+    await expect(page.getByRole("navigation", { name: "Admin sections" })).toHaveCount(0);
+  });
+
   test("blog preview keeps the reader view without admin chrome", async ({ page }) => {
     await openAsAdmin(page, "/admin/blog/some-id/preview");
     await expect(page.getByRole("navigation", { name: "Admin sections" })).toHaveCount(0);

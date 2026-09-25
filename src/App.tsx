@@ -49,6 +49,7 @@ const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminBlogEditor = lazy(() => import("./pages/AdminBlogEditor"));
 const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
 const AdminConsigners = lazy(() => import("./pages/AdminConsigners"));
+const AdminSettings = lazy(() => import("./pages/AdminSettings"));
 
 const adminFallback = <div className="min-h-screen bg-background" aria-busy="true" />;
 const adminBlogRoute = (element: JSX.Element) => (
@@ -146,6 +147,7 @@ const App = () => (
               <Route path="/admin/agreements/new" element={<AdminAgreementNew />} />
               <Route path="/admin/agreements/:id" element={<AdminAgreementDetail />} />
               <Route path="/addcars" element={<AddCar />} />
+              <Route path="/admin/settings" element={<AdminSettings />} />
             </Route>
             {/* The saved preview shows the article as readers see it, without admin chrome. */}
             <Route path="/admin/blog/:id/preview" element={adminBlogRoute(<AdminBlogPreview />)} />

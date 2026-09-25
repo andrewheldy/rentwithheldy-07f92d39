@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { Car, ExternalLink, FilePlus2, FileSignature, Images, Inbox, LogOut, Newspaper, UsersRound } from "lucide-react";
+import { Car, ExternalLink, FilePlus2, FileSignature, Images, Inbox, LogOut, Newspaper, Settings, UsersRound } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -126,6 +126,14 @@ export function AdminSidebar({ side }: { side: "left" | "right" }) {
 
       <SidebarFooter className="border-t border-sidebar-border">
         <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={pathname === "/admin/settings"} tooltip="Account settings" className="h-10">
+              <Link to="/admin/settings" aria-current={pathname === "/admin/settings" ? "page" : undefined}>
+                <Settings aria-hidden="true" />
+                <span className={collapsedLabel}>Account settings</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="View website" className="h-10">
               <Link to="/">

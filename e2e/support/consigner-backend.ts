@@ -11,6 +11,13 @@ import { SUPABASE, adminUser } from "./blog-backend";
  */
 
 const ADMIN_TOKEN = "playwright-admin-token";
+const CUSTOMER_TOKEN = "playwright-customer-token";
+
+export const customerUser = {
+  ...adminUser,
+  id: "44444444-4444-4444-8444-444444444444",
+  email: "guest@example.com",
+};
 
 type Row = Record<string, unknown>;
 
@@ -80,6 +87,7 @@ export class ConsignerBackend {
   consignments: Row[] = [];
   consignerRoles = new Set<string>();
   assignCalls: Row[] = [];
+  profileSaves: Row[] = [];
 
   private consignerFor(userId: string) {
     return this.consigners.find((c) => c.user_id === userId);
@@ -160,7 +168,9 @@ export class ConsignerBackend {
     const url = new URL(request.url());
     const path = url.pathname;
     const method = request.method();
-    const admin = (request.headers()["authorization"] ?? "").includes(ADMIN_TOKEN);
+    const authorization = request.headers()["authorization"] ?? "";
+    const admin = authorization.includes(ADMIN_TOKEN);
+    const customer = authorization.includes(CUSTOMER_TOKEN);
     const json = (body: unknown, status = 200) =>
       route.fulfill({ status, contentType: "application/json", headers: { "content-range": "0-0/*" }, body: JSON.stringify(body) });
     const body = () => {
@@ -169,7 +179,11 @@ export class ConsignerBackend {
     };
     const params = url.searchParams;
 
-    if (path === "/auth/v1/user") return admin ? json(adminUser) : json({ message: "no session" }, 401);
+    if (path === "/auth/v1/user") {
+      if (admin) return json(adminUser);
+      if (customer) return json(customerUser);
+      return json({ message: "no session" }, 401);
+    }
     if (path === "/auth/v1/logout") return route.fulfill({ status: 204 });
 
     if (path === "/rest/v1/user_roles") {
@@ -203,6 +217,17 @@ export class ConsignerBackend {
       return json(this.vehicles.map((v) => (embedImages ? { ...v, vehicle_images: [] } : v)));
     }
     if (path === "/rest/v1/agreements") return json([]);
+    if (path === "/rest/v1/profiles") {
+      if (!admin && !customer) return json([]);
+      if (method === "GET") {
+        return json([{ full_name: admin ? "Admin Person" : "Guest Person", phone: null, preferred_language: "en", marketing_opt_in: false }]);
+      }
+      if (method === "POST") {
+        const row = body() as Row;
+        this.profileSaves.push(row);
+        return json([row], 201);
+      }
+    }
     if (path === "/rest/v1/consignments" && method === "PATCH") {
       const id = String(params.get("id")).replace(/^eq\./, "");
       const patch = body() as Row;
@@ -216,15 +241,15 @@ export class ConsignerBackend {
     return json({}, 404);
   }
 
-  async install(page: Page, { asAdmin }: { asAdmin: boolean }) {
-    if (asAdmin) {
+  async install(page: Page, { asAdmin, asCustomer = false }: { asAdmin: boolean; asCustomer?: boolean }) {
+    if (asAdmin || asCustomer) {
       await page.addInitScript(({ user, token }) => {
         const expiresAt = Math.floor(Date.now() / 1000) + 3_600;
         localStorage.setItem(
           "sb-example-auth-token",
           JSON.stringify({ access_token: token, refresh_token: "refresh", token_type: "bearer", expires_in: 3_600, expires_at: expiresAt, user }),
         );
-      }, { user: adminUser, token: ADMIN_TOKEN });
+      }, asAdmin ? { user: adminUser, token: ADMIN_TOKEN } : { user: customerUser, token: CUSTOMER_TOKEN });
     }
     await page.route(`${SUPABASE}/**`, (route) => this.handle(route));
   }

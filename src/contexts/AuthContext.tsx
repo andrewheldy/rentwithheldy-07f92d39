@@ -11,6 +11,8 @@ interface AuthContextType {
   session: Session | null;
   isAdmin: boolean;
   isLoading: boolean;
+  /** True once isAdmin reflects the current user (false while their roles load after sign-in). */
+  rolesLoaded: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
   signInWithGoogle: (redirectPath?: string) => Promise<{ error: Error | null }>;
@@ -24,6 +26,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(isSupabaseConfigured);
+  // Which user isAdmin was last resolved for. Sign-in sets `user` right away,
+  // but the role check finishes a moment later.
+  const [rolesUserId, setRolesUserId] = useState<string | null>(null);
 
   const checkAdminRole = async (userId: string) => {
     try {
@@ -60,10 +65,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           setTimeout(async () => {
             const adminStatus = await checkAdminRole(session.user.id);
             setIsAdmin(adminStatus);
+            setRolesUserId(session.user.id);
             setIsLoading(false);
           }, 0);
         } else {
           setIsAdmin(false);
+          setRolesUserId(null);
           setIsLoading(false);
         }
       }
@@ -77,6 +84,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (session?.user) {
         const adminStatus = await checkAdminRole(session.user.id);
         setIsAdmin(adminStatus);
+        setRolesUserId(session.user.id);
       }
       setIsLoading(false);
     });
@@ -127,6 +135,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     setSession(null);
     setIsAdmin(false);
+    setRolesUserId(null);
   };
 
   return (
@@ -136,6 +145,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         session,
         isAdmin,
         isLoading,
+        rolesLoaded: !user || rolesUserId === user.id,
         signIn,
         signUp,
         signInWithGoogle,
