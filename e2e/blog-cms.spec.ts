@@ -205,6 +205,8 @@ test.describe("admin blog CMS", () => {
     await page.goto(`/admin/blog/${saved.id}/preview`);
     await expect(page.getByRole("heading", { level: 1, name: /Port Everglades Easily/ })).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex,nofollow");
+    // Admin screens omit the visitor "What brings you to Rent With Heldy?" strip.
+    await expect(page.getByTestId("conversion-paths-footer")).toHaveCount(0);
     await page.getByRole("link", { name: "Edit" }).click();
 
     // Publish.

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MapPin, Phone, Mail, Star, LogIn, LogOut, Settings } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -39,6 +39,9 @@ const company = [
 const Footer = () => {
   const { t } = useTranslation(["footer", "common"]);
   const navigate = useNavigate();
+  // The visitor decision strip is marketing; admin screens (e.g. the blog
+  // preview) render the footer without it.
+  const isAdminRoute = useLocation().pathname.startsWith("/admin");
   const { user, isAdmin, signOut } = useAuth();
 
   const handleSignOut = async () => {
@@ -51,9 +54,11 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-card">
       {/* Closing decision point mirrors the same three intents used in the header and homepage. */}
-      <div className="border-b border-border">
-        <ConversionPaths variant="footer" />
-      </div>
+      {!isAdminRoute && (
+        <div className="border-b border-border">
+          <ConversionPaths variant="footer" />
+        </div>
+      )}
 
       <div className="container mx-auto py-14">
         <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 xl:grid-cols-[2fr_repeat(5,minmax(0,1fr))]">
