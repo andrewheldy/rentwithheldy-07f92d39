@@ -90,8 +90,6 @@
         ]
       }
     ],
-    "partnerHeading": "Travel agent or corporate travel coordinator?",
-    "partnerSubheading": "Arrange airport delivery for clients or employees flying into South Florida. We coordinate directly with you.",
     "faqs": [
       { "question": "How does airport pickup work at FLL or MIA?", "answer": "We'll coordinate the most convenient pickup based on your arrival. Depending on your airport and timing, that may be an airport parking area (where airport parking fees may apply) or a nearby pickup location a short rideshare away. After booking, share your flight details and we'll confirm the exact plan and instructions before you land. Contactless pickup is available." },
       { "question": "What if my flight is delayed?", "answer": "Just text us. We track your flight number once you share it and adjust pickup timing for delays — no extra fees for normal travel changes." },
@@ -220,8 +218,6 @@
       { "title": "Contactless Pickup", "description": "Pick up your vehicle on your schedule with secure lockbox access — timed around your sailing." },
       { "title": "Tolls Made Simple", "description": "Tolls are billed at the end of the trip with no additional fees. You'll only pay for the tolls you use." }
     ],
-    "partnerHeading": "Travel Agent or Cruise Concierge?",
-    "partnerSubheading": "Add an easy port-side rental to your clients' itinerary. We coordinate directly with you.",
     "faqs": [
       { "question": "How does cruise port pickup work?", "answer": "After you book, send us your ship name and arrival time. Depending on timing and port conditions, we'll coordinate the easiest option — at the terminal, a cruise parking area, or a designated pickup zone at Port Everglades or PortMiami — and confirm the plan with you in advance." },
       { "question": "Can I drop the rental off at the airport after my cruise?", "answer": "Yes — we offer drop-off coordination at FLL and MIA after your cruise so you can drive straight from the port to your flight home." },

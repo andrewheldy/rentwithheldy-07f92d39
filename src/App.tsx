@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Book from "./pages/Book";
-import Confirmation from "./pages/Confirmation";
 import About from "./pages/About";
 import AddCar from "./pages/AddCar";
 import AdminLeads from "./pages/AdminLeads";
@@ -87,7 +86,7 @@ const App = () => (
             <Route path="/loss-of-use-claims" element={<LossOfUseClaims />} />
             <Route
               path="/confirmation/:reservationId"
-              element={<Confirmation />}
+              element={<Navigate to="/book" replace />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/auth" element={<Auth />} />

@@ -30,7 +30,7 @@ test("hotel: Explore hotel delivery scrolls to the guest booking form", async ({
   await expect(page.locator("#quick-quote form")).toBeInViewport();
 });
 
-test("hotel and body shop pages no longer show the partner intake form", async ({ page }) => {
+test("guest service pages no longer show the partner intake form", async ({ page }) => {
   await page.goto("/hotel-concierge-rentals");
   await expect(page.getByText("Concierge or Hotel GM?")).toHaveCount(0);
   await expect(page.locator("#pi-company")).toHaveCount(0);
@@ -40,4 +40,14 @@ test("hotel and body shop pages no longer show the partner intake form", async (
   await expect(page.locator("#pi-company")).toHaveCount(0);
   // The guest replacement-rental form stays.
   await expect(page.locator("#quick-quote form")).toBeAttached();
+
+  for (const path of ["/fort-lauderdale-airport-car-rental", "/cruise-port-delivery"]) {
+    await page.goto(path);
+    await expect(page.locator("#pi-company"), path).toHaveCount(0);
+    await expect(page.locator("#quick-quote form"), path).toBeAttached();
+  }
+
+  // Loss-of-use is a B2B attorney page and keeps its partner form.
+  await page.goto("/loss-of-use-claims");
+  await expect(page.locator("#pi-company")).toBeAttached();
 });

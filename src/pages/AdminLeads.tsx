@@ -54,43 +54,6 @@ type Lead = {
   created_at: string;
 };
 
-type Inquiry = {
-  id: string;
-  vehicle_id: string;
-  customer_name: string;
-  customer_email: string;
-  customer_phone: string;
-  start_date: string;
-  end_date: string;
-  message: string | null;
-  status: string | null;
-  vertical_path: string | null;
-  created_at: string;
-};
-
-type EventLog = {
-  id: string;
-  event_type: string;
-  entity_type: string | null;
-  entity_id: string | null;
-  vertical_path: string | null;
-  severity: string;
-  message: string | null;
-  metadata: Record<string, unknown>;
-  created_at: string;
-};
-
-const VERTICALS = [
-  "all",
-  "body-shop",
-  "cruise-port",
-  "hotel",
-  "loss-of-use",
-  "airport",
-  "vehicle-inquiry",
-  "direct",
-];
-
 function toCSV(rows: Record<string, unknown>[]): string {
   if (rows.length === 0) return "";
   const headers = Array.from(
@@ -121,17 +84,8 @@ function downloadCSV(filename: string, csv: string) {
   URL.revokeObjectURL(url);
 }
 
-const severityVariant: Record<string, "default" | "secondary" | "destructive"> =
-  {
-    info: "secondary",
-    warn: "default",
-    error: "destructive",
-  };
-
 const AdminLeads = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
-  const [inquiries, setInquiries] = useState<Inquiry[]>([]);
-  const [events, setEvents] = useState<EventLog[]>([]);
   const [acquisitionLeads, setAcquisitionLeads] = useState<AcquisitionLead[]>([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
@@ -140,19 +94,9 @@ const AdminLeads = () => {
 
   const load = async () => {
     setLoading(true);
-    const [leadsRes, inqRes, evRes, acquisitionRes] = await Promise.all([
+    const [leadsRes, acquisitionRes] = await Promise.all([
       supabase
         .from("leads")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(500),
-      supabase
-        .from("booking_inquiries")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(500),
-      supabase
-        .from("event_logs")
         .select("*")
         .order("created_at", { ascending: false })
         .limit(500),
@@ -169,19 +113,7 @@ const AdminLeads = () => {
         description: leadsRes.error.message,
         variant: "destructive",
       });
-    if (inqRes.error)
-      toast({
-        title: "Inquiries load failed",
-        description: inqRes.error.message,
-        variant: "destructive",
-      });
-    if (evRes.error)
-      toast({
-        title: "Event logs load failed",
-        description: evRes.error.message,
-        variant: "destructive",
-      });
-    if (acquisitionRes.error)
+
       toast({
         title: "Acquisition leads load failed",
         description: acquisitionRes.error.message,
@@ -189,8 +121,6 @@ const AdminLeads = () => {
       });
 
     setLeads((leadsRes.data as Lead[]) ?? []);
-    setInquiries((inqRes.data as Inquiry[]) ?? []);
-    setEvents((evRes.data as EventLog[]) ?? []);
     setAcquisitionLeads((acquisitionRes.data as AcquisitionLead[]) ?? []);
     setLoading(false);
   };
@@ -220,28 +150,15 @@ const AdminLeads = () => {
     });
   }, [leads, query, vertical, formType]);
 
-  const filteredInquiries = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return inquiries.filter((i) => {
-      if (vertical !== "all" && (i.vertical_path ?? "vehicle-inquiry") !== vertical)
-        return false;
-      if (!q) return true;
-      return [i.customer_name, i.customer_email, i.customer_phone, i.message]
-        .filter(Boolean)
-        .some((v) => String(v).toLowerCase().includes(q));
-    });
-  }, [inquiries, query, vertical]);
-
-  const filteredEvents = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return events.filter((e) => {
-      if (vertical !== "all" && e.vertical_path !== vertical) return false;
-      if (!q) return true;
-      return [e.event_type, e.message, e.entity_id, JSON.stringify(e.metadata)]
-        .filter(Boolean)
-        .some((v) => String(v).toLowerCase().includes(q));
-    });
-  }, [events, query, vertical]);
+  // Build the filter from the vertical paths the leads actually carry, so the
+  // options can't drift from the values the forms submit.
+  const verticals = useMemo(
+    () =>
+      Array.from(
+        new Set(leads.map((l) => l.vertical_path).filter((v): v is string => !!v))
+      ).sort(),
+    [leads]
+  );
 
   const filteredAcquisitionLeads = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -267,7 +184,7 @@ const AdminLeads = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Admin · Leads & Inquiries" description="Internal admin dashboard for leads, booking inquiries, and event logs." path="/admin/leads" />
+      <SEO title="Admin · Leads" description="Internal admin dashboard for driver, vehicle, and quote leads." path="/admin/leads" />
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -277,7 +194,7 @@ const AdminLeads = () => {
               </Button>
             </Link>
             <h1 className="text-xl font-bold text-foreground">
-              Leads & Inquiries
+              Leads
             </h1>
           </div>
           <Button onClick={load} variant="outline" size="sm" disabled={loading}>
@@ -312,7 +229,8 @@ const AdminLeads = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {VERTICALS.map((v) => (
+                  <SelectItem value="all">all</SelectItem>
+                  {verticals.map((v) => (
                     <SelectItem key={v} value={v}>
                       {v}
                     </SelectItem>
@@ -343,12 +261,6 @@ const AdminLeads = () => {
             </TabsTrigger>
             <TabsTrigger value="leads">
               Leads ({filteredLeads.length})
-            </TabsTrigger>
-            <TabsTrigger value="inquiries">
-              Booking Inquiries ({filteredInquiries.length})
-            </TabsTrigger>
-            <TabsTrigger value="events">
-              Event Log ({filteredEvents.length})
             </TabsTrigger>
           </TabsList>
 
@@ -520,171 +432,6 @@ const AdminLeads = () => {
                           className="text-center text-muted-foreground py-8"
                         >
                           No leads match the current filters.
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </div>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="inquiries">
-            <Card>
-              <div className="p-3 flex justify-end border-b border-border">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() =>
-                    downloadCSV(
-                      `inquiries-${format(new Date(), "yyyy-MM-dd")}.csv`,
-                      toCSV(
-                        filteredInquiries as unknown as Record<
-                          string,
-                          unknown
-                        >[]
-                      )
-                    )
-                  }
-                >
-                  <Download className="h-4 w-4 mr-2" /> Export CSV
-                </Button>
-              </div>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Created</TableHead>
-                      <TableHead>Vertical</TableHead>
-                      <TableHead>Customer</TableHead>
-                      <TableHead>Phone</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Dates</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Message</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredInquiries.map((i) => (
-                      <TableRow key={i.id}>
-                        <TableCell className="text-xs whitespace-nowrap">
-                          {format(new Date(i.created_at), "MMM d, HH:mm")}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="outline">
-                            {i.vertical_path ?? "vehicle-inquiry"}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="font-medium">
-                          {i.customer_name}
-                        </TableCell>
-                        <TableCell>
-                          <a
-                            href={`tel:${i.customer_phone}`}
-                            className="text-primary hover:underline"
-                          >
-                            {i.customer_phone}
-                          </a>
-                        </TableCell>
-                        <TableCell className="text-xs">{i.customer_email}</TableCell>
-                        <TableCell className="whitespace-nowrap text-xs">
-                          {i.start_date} → {i.end_date}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="secondary">{i.status ?? "pending"}</Badge>
-                        </TableCell>
-                        <TableCell className="max-w-[260px] truncate">
-                          {i.message ?? "—"}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                    {filteredInquiries.length === 0 && (
-                      <TableRow>
-                        <TableCell
-                          colSpan={8}
-                          className="text-center text-muted-foreground py-8"
-                        >
-                          No inquiries match the current filters.
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </div>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="events">
-            <Card>
-              <div className="p-3 flex justify-end border-b border-border">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() =>
-                    downloadCSV(
-                      `events-${format(new Date(), "yyyy-MM-dd")}.csv`,
-                      toCSV(
-                        filteredEvents as unknown as Record<string, unknown>[]
-                      )
-                    )
-                  }
-                >
-                  <Download className="h-4 w-4 mr-2" /> Export CSV
-                </Button>
-              </div>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Created</TableHead>
-                      <TableHead>Severity</TableHead>
-                      <TableHead>Event</TableHead>
-                      <TableHead>Vertical</TableHead>
-                      <TableHead>Entity</TableHead>
-                      <TableHead>Message</TableHead>
-                      <TableHead>Metadata</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredEvents.map((e) => (
-                      <TableRow key={e.id}>
-                        <TableCell className="text-xs whitespace-nowrap">
-                          {format(new Date(e.created_at), "MMM d, HH:mm:ss")}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant={severityVariant[e.severity] ?? "secondary"}>
-                            {e.severity}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">
-                          {e.event_type}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="outline">
-                            {e.vertical_path ?? "—"}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="text-xs">
-                          {e.entity_type ?? "—"}
-                          {e.entity_id ? ` · ${e.entity_id.slice(0, 8)}` : ""}
-                        </TableCell>
-                        <TableCell className="max-w-[280px] truncate text-xs">
-                          {e.message ?? "—"}
-                        </TableCell>
-                        <TableCell className="max-w-[280px] truncate text-xs font-mono text-muted-foreground">
-                          {Object.keys(e.metadata ?? {}).length > 0
-                            ? JSON.stringify(e.metadata)
-                            : "—"}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                    {filteredEvents.length === 0 && (
-                      <TableRow>
-                        <TableCell
-                          colSpan={7}
-                          className="text-center text-muted-foreground py-8"
-                        >
-                          No events match the current filters.
                         </TableCell>
                       </TableRow>
                     )}

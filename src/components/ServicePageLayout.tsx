@@ -51,7 +51,7 @@ interface ServicePageLayoutProps {
   defaultPassengerType?: QuickQuotePassengerType;
   valueProps: ValueProp[];
   coverageAreas?: string[];
-  /** Heading for the B2B partner intake form. Omit to hide the form. */
+  /** Heading for the B2B partner intake form (loss-of-use only). Omit to hide the form. */
   partnerHeading?: string;
   partnerSubheading?: string;
   faqs: FAQItem[];

@@ -49,8 +49,6 @@ const FLLAirport = () => {
           bullets?: string[];
         }[]
       }
-      partnerHeading={t("airport.partnerHeading")}
-      partnerSubheading={t("airport.partnerSubheading")}
       faqs={
         t("airport.faqs", { returnObjects: true }) as {
           question: string;

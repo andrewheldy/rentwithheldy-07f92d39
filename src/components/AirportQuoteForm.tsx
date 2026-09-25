@@ -31,7 +31,8 @@ const AirportQuoteForm = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
     const phone = String(fd.get("phone") || "").trim();
     const airline = String(fd.get("airline") || "").trim();
@@ -63,7 +64,11 @@ const AirportQuoteForm = () => {
       `[Submitted: ${new Date().toISOString()}]`,
     ].filter(Boolean).join(" | ");
 
-    const { error } = await supabase.from("leads").insert({
+    const neededWhen = `Arrival: ${arrivalDateTime} | Return: ${returnDateTime}`;
+
+    // Save to Supabase and email the team independently: the request only
+    // fails for the guest when neither path gets it to us.
+    const { error: insertError } = await supabase.from("leads").insert({
       form_type: "airport_quote",
       vertical_path: "airport",
       service_context: "Airport Rental",
@@ -71,13 +76,35 @@ const AirportQuoteForm = () => {
       name,
       phone,
       location: airport,
-      needed_when: `Arrival: ${arrivalDateTime} | Return: ${returnDateTime}`,
+      needed_when: neededWhen,
       notes: notesComposed,
       user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
     });
+    if (insertError) console.error("Lead insert failed", insertError);
 
-    if (error) {
-      console.error("Lead insert failed", error);
+    let emailed = false;
+    try {
+      const res = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "airport-trip",
+          formType: "airport_quote",
+          passengerType: "Airport Traveler",
+          name,
+          phone,
+          location: airport,
+          when: neededWhen,
+          notes: notesComposed,
+        }),
+      });
+      emailed = res.ok;
+      if (!res.ok) console.error("Email send failed", await res.text());
+    } catch (err) {
+      console.error("Email send failed", err);
+    }
+
+    if (insertError && !emailed) {
       toast({
         title: t("shared.saveErrorTitle"),
         description: t("shared.saveErrorDesc", { phone: CONTACT_PHONE_DISPLAY }),
@@ -87,14 +114,13 @@ const AirportQuoteForm = () => {
       return;
     }
 
-    const subject = `Airport Quote — ${airport}${airline ? ` / ${airline} ${flightNumber}` : ""}`;
-    const body = `Source: airport-trips\nLead Type: Airport Traveler\nName: ${name}\nPhone: ${phone}\nAirport: ${airport}\nAirline: ${airline}\nFlight #: ${flightNumber}\nArrival: ${arrivalDateTime}\nReturn: ${returnDateTime}\nPickup Notes: ${pickupNotes}\nNotes: ${notes}\nSubmitted: ${new Date().toISOString()}`;
-    window.location.href = `mailto:rentwithheldy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     toast({
       title: t("shared.savedTitle"),
       description: t("shared.savedDesc"),
     });
-    setTimeout(() => setSubmitting(false), 1500);
+    form.reset();
+    setAirport("");
+    setSubmitting(false);
   };
 
   return (

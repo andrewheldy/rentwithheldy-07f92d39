@@ -90,8 +90,6 @@
         ]
       }
     ],
-    "partnerHeading": "Agent de voyages ou coordinateur de voyages d'affaires ?",
-    "partnerSubheading": "Organisez la livraison à l'aéroport pour des clients ou des employés qui arrivent en Floride du Sud. Nous coordonnons directement avec vous.",
     "faqs": [
       { "question": "Comment fonctionne la prise en charge à l'aéroport à FLL ou MIA ?", "answer": "Nous organiserons la prise en charge la plus pratique selon votre arrivée. Selon votre aéroport et vos horaires, ce peut être une zone de stationnement de l'aéroport (où des frais de stationnement peuvent s'appliquer) ou un point de prise en charge proche, à un court trajet en VTC. Après la réservation, partagez les détails de votre vol et nous confirmerons le plan exact et les instructions avant votre atterrissage. La prise en charge sans contact est disponible." },
       { "question": "Que se passe-t-il si mon vol est retardé ?", "answer": "Écrivez-nous simplement. Nous suivons votre numéro de vol une fois que vous le partagez et adaptons l'heure de prise en charge aux retards — sans frais supplémentaires pour les aléas de voyage habituels." },
@@ -220,8 +218,6 @@
       { "title": "Prise en charge sans contact", "description": "Récupérez votre véhicule à votre rythme avec un accès sécurisé par boîte à clés — calé sur votre traversée." },
       { "title": "Les péages, tout simplement", "description": "Les péages sont facturés à la fin du trajet, sans frais supplémentaires. Vous ne payez que les péages que vous utilisez." }
     ],
-    "partnerHeading": "Agent de voyages ou concierge de croisière ?",
-    "partnerSubheading": "Ajoutez une location facile côté port à l'itinéraire de vos clients. Nous coordonnons directement avec vous.",
     "faqs": [
       { "question": "Comment fonctionne la prise en charge au port de croisière ?", "answer": "Après votre réservation, envoyez-nous le nom de votre navire et l'heure d'arrivée. Selon les horaires et les conditions du port, nous organiserons l'option la plus simple — au terminal, dans une zone de stationnement de croisière ou dans une zone de prise en charge désignée à Port Everglades ou PortMiami — et confirmerons le plan avec vous à l'avance." },
       { "question": "Puis-je déposer la location à l'aéroport après ma croisière ?", "answer": "Oui — nous proposons une coordination de restitution à FLL et MIA après votre croisière pour que vous puissiez rouler directement du port à votre vol de retour." },
