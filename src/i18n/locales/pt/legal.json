@@ -1,42 +1,68 @@
 {
   "about": {
     "meta": {
-      "title": "Sobre a Rent With Heldy | Aluguel de carros no Sul da Flórida",
-      "description": "Conheça a Rent With Heldy, uma empresa familiar de aluguel de carros do Sul da Flórida construída em torno de uma ideia: alugar um carro deveria ser fácil. Mais de 1.400 avaliações cinco estrelas, pessoas de verdade para ajudar."
+      "title": "Sobre a Rent With Heldy | Aluguel de carros local no sul da Flórida",
+      "description": "Conheça a Rent With Heldy, uma empresa familiar de aluguel de carros do sul da Flórida focada em hospitalidade, entrega flexível de veículos e atendimento pessoal."
     },
+    "breadcrumbLabel": "Trilha de navegação",
+    "breadcrumbHome": "Início",
+    "crumb": "Sobre",
     "hero": {
-      "title": "Um aluguel de carros familiar construído em torno do fácil",
-      "subtitle": "A Rent With Heldy é uma empresa familiar de aluguel de carros do Sul da Flórida construída em torno de uma ideia simples: alugar um carro deveria ser fácil. Ajudamos os hóspedes a organizar o veículo certo, a retirada mais fácil e o suporte de que precisam ao longo da viagem."
+      "eyebrow": "Sobre a Rent With Heldy",
+      "title": "Aluguel de carros com um pouco mais de hospitalidade.",
+      "intro": "A Rent With Heldy é uma empresa familiar de aluguel de carros do sul da Flórida criada em torno de uma ideia: se locomover deve ser a parte mais fácil da sua viagem.",
+      "imageAlt": "Um SUV alugado esperando na entrada de um hotel ao pôr do sol no sul da Flórida",
+      "primaryCta": "Ver carros disponíveis",
+      "secondaryCta": "Ler o blog"
     },
-    "values": {
-      "trusted": {
-        "title": "Mais de 1.400 avaliações cinco estrelas",
-        "description": "Um All-Star Host no Turo, conquistado viagem após viagem com carros limpos e comunicação clara."
-      },
-      "quality": {
-        "title": "Cuidados com esmero",
-        "description": "Cada veículo é limpo, detalhado e inspecionado por profissionais antes de cada aluguel, do econômico às opções premium mais novas."
-      },
-      "local": {
-        "title": "Familiar e local",
-        "description": "Uma família do Sul da Flórida que coordena sua retirada pessoalmente: hotel, aeroporto ou porto de cruzeiros."
-      }
+    "facts": {
+      "label": "Por que os hóspedes nos escolhem",
+      "reviews": "Mais de 1.400 avaliações cinco estrelas",
+      "allStar": "All-Star Host na Turo",
+      "family": "Familiar e local"
+    },
+    "philosophy": {
+      "quote": "Nossos clientes são hóspedes, não números de reserva.",
+      "body": "Essa ideia orienta tudo o que fazemos. Você fala com uma família local, não com uma central de atendimento. Suas perguntas recebem respostas de verdade, seus planos podem mudar e o carro vai até você."
     },
     "story": {
-      "heading": "Nossa história",
-      "p1": "Somos um aluguel de carros familiar com sede no Sul da Flórida, construído em torno de uma crença simples: alugar um carro deveria ser fácil, pessoal e genuinamente útil. Tratamos cada locatário como um hóspede, não como uma transação.",
-      "p2": "Em vez de balcões, filas e ofertas insistentes, levamos a experiência até você. Organizamos o veículo certo para a sua viagem, a retirada mais fácil — hotel, aeroporto, porto de cruzeiros ou oficina — e acesso sem contato para você seguir viagem no seu horário. Sempre há uma pessoa de verdade para atender quando você precisa de ajuda.",
-      "p3": "Nossa frota vai de carros econômicos práticos às opções premium mais novas, e cada veículo é limpo, detalhado e inspecionado por profissionais antes de cada aluguel. É por isso que conquistamos mais de 1.400 avaliações cinco estrelas e o status de All-Star Host em todo o Sul da Flórida."
+      "eyebrow": "Como recebemos você",
+      "heading": "Levamos o carro até você.",
+      "p1": "Administramos a Rent With Heldy do jeito que gostaríamos de ser atendidos em nossas próprias viagens. Sem balcão de aluguel, sem fila longa, sem pressão para vender. Só o carro certo, onde e quando você precisar.",
+      "p2": "Coordenamos a entrega no aeroporto, em hotéis de Broward e Miami-Dade e nos portos de cruzeiro de Port Everglades e PortMiami. Se algo mudar, como um voo atrasado ou uma estadia mais longa, você fala com uma pessoa de verdade que pode ajudar."
     },
-    "getInTouch": {
-      "heading": "Entre em contato",
-      "phoneNote": "Ligue ou mande mensagem, 7 dias por semana",
-      "emailNote": "Responderemos o quanto antes",
-      "hoursLabel": "Horário de atendimento",
-      "hoursValue": "Seg-Dom: 8h00 - 20h00"
+    "services": {
+      "heading": "Na prática",
+      "learnMore": "Saiba mais",
+      "items": {
+        "airport": {
+          "title": "Entrega no aeroporto",
+          "body": "Coordenamos a retirada mais fácil no aeroporto, para você evitar o balcão de aluguel e o ônibus de traslado."
+        },
+        "hotel": {
+          "title": "Entrega no hotel",
+          "body": "Vai ficar em Fort Lauderdale ou Miami? Podemos levar o carro até o seu hotel."
+        },
+        "cruise": {
+          "title": "Entrega no porto de cruzeiros",
+          "body": "Começando ou terminando um cruzeiro? Coordenamos a retirada em Port Everglades e PortMiami."
+        },
+        "contactless": {
+          "title": "Retirada sem contato",
+          "body": "A retirada sem contato está disponível em todos os aluguéis, para você sair no seu próprio ritmo."
+        },
+        "direct": {
+          "title": "Comunicação direta",
+          "body": "Ligue ou mande mensagem para a família que administra o negócio. Planos mudam, e somos flexíveis."
+        },
+        "local": {
+          "title": "Conhecimento local",
+          "body": "Moramos aqui. Pergunte sobre estacionamento, pedágios, trânsito ou o caminho mais fácil até a praia."
+        }
+      }
     },
     "serviceAreas": {
-      "heading": "Áreas de atendimento",
+      "heading": "Onde atendemos",
       "miamiDade": {
         "title": "Condado de Miami-Dade",
         "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura e regiões próximas"
@@ -44,8 +70,21 @@
       "broward": {
         "title": "Condado de Broward",
         "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie e regiões próximas"
-      },
-      "cta": "Reservar agora"
+      }
+    },
+    "blog": {
+      "eyebrow": "Do blog da Rent With Heldy",
+      "heading": "Muito mais do que as chaves",
+      "body": "Compartilhamos guias de viagem locais, dicas de aluguel de carros, notícias do setor e informações úteis para se locomover pelo sul da Flórida.",
+      "cta": "Ler o blog"
+    },
+    "finalCta": {
+      "eyebrow": "Seja nosso convidado.",
+      "heading": "Seu carro, onde você precisar.",
+      "body": "Veja os carros disponíveis e reserve on-line em minutos, ou fale com uma pessoa de verdade 7 dias por semana.",
+      "primary": "Ver carros disponíveis",
+      "callOrText": "Ligue ou mande mensagem",
+      "emailLabel": "Envie um e-mail"
     }
   },
   "privacy": {

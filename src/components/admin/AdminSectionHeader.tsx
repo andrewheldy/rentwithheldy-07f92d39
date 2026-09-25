@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, FileSignature, Inbox, Images } from "lucide-react";
+import { ArrowLeft, FileSignature, Inbox, Images, Newspaper } from "lucide-react";
 
 export function AdminSectionHeader({ title }: { title: string }) {
   const navClass = ({ isActive }: { isActive: boolean }) =>
@@ -13,10 +13,11 @@ export function AdminSectionHeader({ title }: { title: string }) {
           <span className="hidden h-6 w-px bg-border sm:block" aria-hidden="true" />
           <h1 className="text-xl font-semibold">{title}</h1>
         </div>
-        <nav aria-label="Admin sections" className="flex items-center gap-3">
+        <nav aria-label="Admin sections" className="flex flex-wrap items-center gap-3">
           <NavLink to="/admin/agreements" className={navClass}><FileSignature className="h-4 w-4" /> Agreements</NavLink>
           <NavLink to="/admin/leads" className={navClass}><Inbox className="h-4 w-4" /> Leads</NavLink>
           <NavLink to="/admin/photos" className={navClass}><Images className="h-4 w-4" /> Photos</NavLink>
+          <NavLink to="/admin/blog" className={navClass}><Newspaper className="h-4 w-4" /> Blog</NavLink>
         </nav>
       </div>
     </header>

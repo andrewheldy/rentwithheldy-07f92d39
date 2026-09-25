@@ -57,11 +57,17 @@ const MOBILE_CONVERSION_PATHS = [
   ...WORK_WITH_US,
 ] as const;
 
+// Blog is intentionally NOT in the primary header: it is reached via About
+// (and the footer).
 const BROWSE_LINKS = [
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/faq", key: "faq" },
+  { to: "/about", key: "about" },
   { to: "/contact", key: "contact" },
 ] as const;
+
+// Desktop shows every browse link except Contact (phone + account sit beside it).
+const DESKTOP_BROWSE_LINKS = BROWSE_LINKS.filter((item) => item.key !== "contact");
 
 const Header = () => {
   const { t, i18n } = useTranslation(["navigation", "common"]);
@@ -190,7 +196,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {BROWSE_LINKS.slice(0, 2).map((item) => (
+            {DESKTOP_BROWSE_LINKS.map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClass}>
                 {t(`links.${item.key}`)}
               </NavLink>

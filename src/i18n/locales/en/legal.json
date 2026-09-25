@@ -1,42 +1,68 @@
 {
   "about": {
     "meta": {
-      "title": "About Rent With Heldy | South Florida Car Rentals",
-      "description": "Meet Rent With Heldy — a family-owned South Florida car rental company built around one idea: renting a car should feel easy. 1,400+ five-star reviews, real people to help."
+      "title": "About Rent With Heldy | Local South Florida Car Rental",
+      "description": "Meet Rent With Heldy, a family-owned South Florida car rental company focused on hospitality, flexible vehicle delivery and personal service."
     },
+    "breadcrumbLabel": "Breadcrumb",
+    "breadcrumbHome": "Home",
+    "crumb": "About",
     "hero": {
-      "title": "A family-owned car rental built around easy",
-      "subtitle": "Rent With Heldy is a family-owned South Florida car rental company built around one simple idea: renting a car should feel easy. We help guests coordinate the right vehicle, the easiest pickup, and the support they need throughout the trip."
+      "eyebrow": "About Rent With Heldy",
+      "title": "Car Rental With a Little More Hospitality.",
+      "intro": "Rent With Heldy is a family-owned South Florida car rental company built around one idea: getting around should be the easiest part of your trip.",
+      "imageAlt": "A rental SUV waiting under a hotel entrance at sunset in South Florida",
+      "primaryCta": "Browse Available Cars",
+      "secondaryCta": "Read the Blog"
     },
-    "values": {
-      "trusted": {
-        "title": "1,400+ Five-Star Reviews",
-        "description": "An All-Star Host on Turo, earned trip after trip with clean cars and clear communication."
-      },
-      "quality": {
-        "title": "Meticulously Maintained",
-        "description": "Every vehicle is professionally cleaned, detailed, and inspected before each rental — economy through newer premium options."
-      },
-      "local": {
-        "title": "Family-Owned & Local",
-        "description": "A South Florida family that coordinates your pickup personally — hotel, airport, or cruise port."
-      }
+    "facts": {
+      "label": "Why guests choose us",
+      "reviews": "1,400+ five-star reviews",
+      "allStar": "All-Star Host on Turo",
+      "family": "Family-owned and local"
+    },
+    "philosophy": {
+      "quote": "Customers are guests, not reservation numbers.",
+      "body": "That idea shapes everything we do. You deal with a local family, not a call center. Your questions get real answers, your plans can change, and the car comes to you."
     },
     "story": {
-      "heading": "Our Story",
-      "p1": "We're a family-owned car rental based in South Florida, built around a simple belief: renting a car should feel easy, personal, and genuinely helpful. We treat every renter like a guest — not a transaction.",
-      "p2": "Instead of counters, lines, and upsells, we bring the experience to you. We coordinate the right vehicle for your trip, the easiest pickup — hotel, airport, cruise port, or body shop — and contactless access so you can get moving on your schedule. There's always a real person to reach when you need help.",
-      "p3": "Our fleet runs from practical economy cars to newer premium options, and every vehicle is professionally cleaned, detailed, and inspected before each rental. It's the reason we've earned 1,400+ five-star reviews and All-Star Host status across South Florida."
+      "eyebrow": "How we host",
+      "heading": "We bring the car to you.",
+      "p1": "We run Rent With Heldy the way we would want to be looked after on a trip of our own. No rental counter, no long line, no hard sell. Just the right car, where and when you need it.",
+      "p2": "We coordinate delivery to the airport, to hotels across Broward and Miami-Dade, and to the cruise ports at Port Everglades and PortMiami. When something changes, like a delayed flight or a longer stay, you message a real person who can help."
     },
-    "getInTouch": {
-      "heading": "Get in Touch",
-      "phoneNote": "Call or text, 7 days a week",
-      "emailNote": "We'll reply as soon as possible",
-      "hoursLabel": "Business Hours",
-      "hoursValue": "Mon-Sun: 8:00 AM - 8:00 PM"
+    "services": {
+      "heading": "What that looks like",
+      "learnMore": "Learn more",
+      "items": {
+        "airport": {
+          "title": "Airport delivery",
+          "body": "We coordinate the easiest pickup at the airport, so you can skip the rental counter and the shuttle bus."
+        },
+        "hotel": {
+          "title": "Hotel delivery",
+          "body": "Staying in Fort Lauderdale or Miami? We can bring the car to your hotel."
+        },
+        "cruise": {
+          "title": "Cruise port delivery",
+          "body": "Starting or ending a cruise? We coordinate pickup at Port Everglades and PortMiami."
+        },
+        "contactless": {
+          "title": "Contactless pickup",
+          "body": "Contactless pickup is available on every rental, so you can get moving on your own schedule."
+        },
+        "direct": {
+          "title": "Direct communication",
+          "body": "Call or text the family that runs the business. Plans change, and we are flexible."
+        },
+        "local": {
+          "title": "Local knowledge",
+          "body": "We live here. Ask us about parking, tolls, traffic or the easiest way to the beach."
+        }
+      }
     },
     "serviceAreas": {
-      "heading": "Service Areas",
+      "heading": "Where we serve",
       "miamiDade": {
         "title": "Miami-Dade County",
         "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura, and surrounding areas"
@@ -44,8 +70,21 @@
       "broward": {
         "title": "Broward County",
         "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie, and surrounding areas"
-      },
-      "cta": "Book Now"
+      }
+    },
+    "blog": {
+      "eyebrow": "From the Rent With Heldy Blog",
+      "heading": "More Than Just the Keys",
+      "body": "We share local travel guides, car rental advice, industry news and helpful information for getting around South Florida.",
+      "cta": "Read the Blog"
+    },
+    "finalCta": {
+      "eyebrow": "Be Our Guest.",
+      "heading": "Your car, where you need it.",
+      "body": "Browse available cars and book online in minutes, or reach a real person 7 days a week.",
+      "primary": "Browse Available Cars",
+      "callOrText": "Call or text",
+      "emailLabel": "Email us"
     }
   },
   "privacy": {

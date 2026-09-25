@@ -13,9 +13,22 @@
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
+    },
+    {
+      "source": "/admin(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
     }
   ],
+  "functions": {
+    "api/blog-page.ts": { "includeFiles": "dist/index.html" }
+  },
   "rewrites": [
+    { "source": "/sitemap-blog.xml", "destination": "/api/blog-sitemap" },
+    { "source": "/blog", "destination": "/api/blog-page?view=index" },
+    { "source": "/blog/:slug", "destination": "/api/blog-page?post=:slug" },
     { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ]
 }

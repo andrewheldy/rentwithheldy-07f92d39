@@ -31,6 +31,7 @@ const locations = [
 const company = [
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/about", key: "about" },
+  { to: "/blog", key: "blog" },
   { to: "/faq", key: "faq" },
   { to: "/contact", key: "contact" },
 ] as const;
