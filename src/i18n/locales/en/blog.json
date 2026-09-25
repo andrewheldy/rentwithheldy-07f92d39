@@ -1,0 +1,70 @@
+{
+  "index": {
+    "meta": {
+      "title": "Car Rental Guides & South Florida Travel Blog | Rent With Heldy",
+      "description": "Car rental guides, South Florida travel advice, airport and cruise tips, P2P car-sharing news and rental industry insights from Rent With Heldy."
+    },
+    "eyebrow": "Local guides from a local team",
+    "title": "Rent With Heldy Blog",
+    "intro": "Local guides, rental advice, industry news and everything you need to get around South Florida.",
+    "filterLabel": "Browse by topic",
+    "allTopics": "All topics",
+    "latest": "Latest",
+    "readArticle": "Read article",
+    "readArticleAria": "Read article: {{title}}",
+    "minRead": "{{count}} min read",
+    "loading": "Loading articles…",
+    "error": "We couldn't load the blog right now. Please refresh the page or try again in a moment.",
+    "empty": {
+      "title": "Our first stories are on the way.",
+      "body": "We're writing local guides and rental advice for getting around South Florida. In the meantime, our team is happy to help plan your trip.",
+      "cta": "Browse Available Cars"
+    },
+    "emptyCategory": "There are no articles in this topic yet.",
+    "showAll": "Show all articles"
+  },
+  "categories": {
+    "car-rental-guides": "Car Rental Guides",
+    "airport-cruise-travel": "Airport & Cruise Travel",
+    "south-florida-travel": "South Florida Travel",
+    "industry-news": "Industry News",
+    "p2p-car-sharing": "P2P Car Sharing",
+    "rental-comparisons": "Rental Comparisons"
+  },
+  "article": {
+    "breadcrumbLabel": "Breadcrumb",
+    "blog": "Blog",
+    "by": "By",
+    "published": "Published",
+    "updated": "Updated",
+    "sourcesHeading": "Sources",
+    "sourcesNote": "External links open in a new tab.",
+    "tagsLabel": "Tags",
+    "relatedHeading": "More from the blog",
+    "allArticles": "All articles",
+    "englishNotice": {
+      "heading": "This article is written in English",
+      "body": "Our blog articles are published in English. If you have a question about anything here, our team is happy to help in your language."
+    },
+    "cta": {
+      "eyebrow": "Be Our Guest.",
+      "heading": "Let us take care of the car.",
+      "body": "A family-owned South Florida team, with delivery to your airport, hotel or cruise port and a real person to talk to."
+    },
+    "ctaPresets": {
+      "browse": "Browse Available Cars",
+      "plan": "Plan My Trip",
+      "airport": "See Airport Rental Options",
+      "delivered": "Have a Car Delivered",
+      "contact": "Contact Rent With Heldy",
+      "guest": "Be Our Guest"
+    },
+    "notFound": {
+      "metaTitle": "Article not found | Rent With Heldy",
+      "title": "We couldn't find that article.",
+      "body": "It may have moved or is no longer available. The rest of the blog is just a click away.",
+      "cta": "Browse the blog"
+    },
+    "error": "We couldn't load this article right now. Please refresh the page or try again in a moment."
+  }
+}

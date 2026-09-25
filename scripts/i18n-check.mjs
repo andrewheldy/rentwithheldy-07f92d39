@@ -65,6 +65,7 @@ const PROPER_NOUN_VALUES = new Set([
   "Rent With Heldy", // brand name — never translated (see locales/README.md)
   "Port Everglades", // port proper nouns — kept verbatim in every locale
   "PortMiami",
+  "Blog", // loanword used verbatim in Spanish, French and Portuguese
   "you@email.com", // example email placeholder — identical in every locale by design
   "+1 (555) 555-0100", // example phone placeholder — identical in every locale by design
 ]);

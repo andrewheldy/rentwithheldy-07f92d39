@@ -1,0 +1,70 @@
+{
+  "index": {
+    "meta": {
+      "title": "Guías de alquiler de autos y blog de viajes del sur de Florida | Rent With Heldy",
+      "description": "Guías de alquiler de autos, consejos para viajar por el sur de Florida, recomendaciones para aeropuertos y cruceros, novedades de P2P car sharing y la industria del alquiler, de Rent With Heldy."
+    },
+    "eyebrow": "Guías locales de un equipo local",
+    "title": "Blog de Rent With Heldy",
+    "intro": "Guías locales, consejos de alquiler, noticias de la industria y todo lo que necesitas para moverte por el sur de Florida.",
+    "filterLabel": "Explorar por tema",
+    "allTopics": "Todos los temas",
+    "latest": "Lo más reciente",
+    "readArticle": "Leer artículo",
+    "readArticleAria": "Leer artículo: {{title}}",
+    "minRead": "{{count}} min de lectura",
+    "loading": "Cargando artículos…",
+    "error": "No pudimos cargar el blog en este momento. Actualiza la página o inténtalo de nuevo en un momento.",
+    "empty": {
+      "title": "Nuestras primeras historias están en camino.",
+      "body": "Estamos escribiendo guías locales y consejos de alquiler para moverte por el sur de Florida. Mientras tanto, nuestro equipo con gusto te ayuda a planear tu viaje.",
+      "cta": "Ver autos disponibles"
+    },
+    "emptyCategory": "Todavía no hay artículos en este tema.",
+    "showAll": "Ver todos los artículos"
+  },
+  "categories": {
+    "car-rental-guides": "Guías de alquiler de autos",
+    "airport-cruise-travel": "Aeropuertos y cruceros",
+    "south-florida-travel": "Viajes por el sur de Florida",
+    "industry-news": "Noticias de la industria",
+    "p2p-car-sharing": "P2P car sharing",
+    "rental-comparisons": "Comparativas de alquiler"
+  },
+  "article": {
+    "breadcrumbLabel": "Ruta de navegación",
+    "blog": "Blog",
+    "by": "Por",
+    "published": "Publicado",
+    "updated": "Actualizado",
+    "sourcesHeading": "Fuentes",
+    "sourcesNote": "Los enlaces externos se abren en una pestaña nueva.",
+    "tagsLabel": "Etiquetas",
+    "relatedHeading": "Más del blog",
+    "allArticles": "Todos los artículos",
+    "englishNotice": {
+      "heading": "Este artículo está escrito en inglés",
+      "body": "Publicamos los artículos del blog en inglés. Si tienes alguna pregunta sobre su contenido, nuestro equipo con gusto te ayuda en tu idioma."
+    },
+    "cta": {
+      "eyebrow": "Sé nuestro invitado.",
+      "heading": "Nosotros nos encargamos del auto.",
+      "body": "Un equipo familiar del sur de Florida, con entrega en tu aeropuerto, hotel o puerto de cruceros y una persona real con quien hablar."
+    },
+    "ctaPresets": {
+      "browse": "Ver autos disponibles",
+      "plan": "Planear mi viaje",
+      "airport": "Ver opciones en el aeropuerto",
+      "delivered": "Recibir un auto a domicilio",
+      "contact": "Contactar a Rent With Heldy",
+      "guest": "Sé nuestro invitado"
+    },
+    "notFound": {
+      "metaTitle": "Artículo no encontrado | Rent With Heldy",
+      "title": "No encontramos ese artículo.",
+      "body": "Es posible que se haya movido o que ya no esté disponible. El resto del blog está a un clic.",
+      "cta": "Ver el blog"
+    },
+    "error": "No pudimos cargar este artículo en este momento. Actualiza la página o inténtalo de nuevo en un momento."
+  }
+}

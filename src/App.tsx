@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -35,9 +36,23 @@ import BodyShopDelivery from "./pages/BodyShopDelivery";
 import CruisePortDelivery from "./pages/CruisePortDelivery";
 import HotelConciergeRentals from "./pages/HotelConciergeRentals";
 import LossOfUseClaims from "./pages/LossOfUseClaims";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
+
+// The blog admin (and its rich-text editor) loads only for admins who open it.
+const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const AdminBlogEditor = lazy(() => import("./pages/AdminBlogEditor"));
+const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
+
+const adminFallback = <div className="min-h-screen bg-background" aria-busy="true" />;
+const adminBlogRoute = (element: JSX.Element) => (
+  <ProtectedRoute requireAdmin>
+    <Suspense fallback={adminFallback}>{element}</Suspense>
+  </ProtectedRoute>
+);
 
 const queryClient = new QueryClient();
 
@@ -88,6 +103,8 @@ const App = () => (
               element={<Navigate to="/book" replace />}
             />
             <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/auth" element={<Auth />} />
             <Route
               path="/profile"
@@ -155,6 +172,10 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
+            <Route path="/admin/blog" element={adminBlogRoute(<AdminBlog />)} />
+            <Route path="/admin/blog/new" element={adminBlogRoute(<AdminBlogEditor />)} />
+            <Route path="/admin/blog/:id" element={adminBlogRoute(<AdminBlogEditor />)} />
+            <Route path="/admin/blog/:id/preview" element={adminBlogRoute(<AdminBlogPreview />)} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

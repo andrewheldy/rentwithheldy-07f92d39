@@ -32,7 +32,11 @@ export type AnalyticsEvent =
   | "auth_google_click"
   | "auth_email_submit"
   | "profile_view"
-  | "profile_saved";
+  | "profile_saved"
+  | "blog_article_view"
+  | "blog_category_filter"
+  | "blog_cta_click"
+  | "about_blog_cta_click";
 
 type AnalyticsValue = string | number | boolean | null | undefined;
 
