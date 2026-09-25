@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Upload, X, Car, Plus } from "lucide-react";
-import Header from "@/components/Header";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -166,15 +166,15 @@ const AddCar = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <AdminSectionHeader title="Vehicles" />
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
+            <h2 className="text-3xl font-bold text-foreground flex items-center gap-3">
               <Car className="h-8 w-8 text-primary" />
               Vehicle Manager
-            </h1>
+            </h2>
             <p className="text-muted-foreground mt-2">
               Edit, remove, or add vehicles to the Rent With Heldy fleet.
             </p>

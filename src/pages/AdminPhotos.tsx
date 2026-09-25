@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Upload, ImageIcon, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
-import Header from "@/components/Header";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -186,14 +186,14 @@ const AdminPhotos = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <AdminSectionHeader title="Photos" />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-6">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-3">
+            <h2 className="text-3xl font-bold flex items-center gap-3">
               <ImageIcon className="h-8 w-8 text-primary" />
               Vehicle Photos
-            </h1>
+            </h2>
             <p className="text-muted-foreground mt-2">
               Upload real photos to replace placeholder images. Uploads automatically become the primary photo.
             </p>

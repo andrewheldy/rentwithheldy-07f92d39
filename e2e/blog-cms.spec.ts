@@ -135,7 +135,7 @@ test.describe("admin blog CMS", () => {
     await page.goto("/admin/blog");
     await expect(page.getByRole("heading", { name: "Blog posts", exact: true })).toBeVisible();
     await expect(page.getByText("No blog posts yet")).toBeVisible();
-    await page.getByRole("link", { name: "New Post" }).click();
+    await page.getByRole("link", { name: "New Post", exact: true }).click();
 
     // Title generates the slug.
     await page.getByLabel("Title", { exact: true }).fill("Cruise Day: Getting to Port Everglades");

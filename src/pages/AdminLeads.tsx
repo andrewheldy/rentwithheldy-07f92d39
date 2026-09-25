@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import { Download, RefreshCw, Search, ArrowLeft } from "lucide-react";
+import { Download, RefreshCw, Search } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,6 +30,7 @@ import {
 } from "@/components/ui/table";
 import { toast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import type { Database } from "@/integrations/supabase/types";
 
 type AcquisitionLead = Database["public"]["Tables"]["acquisition_leads"]["Row"];
@@ -185,26 +185,17 @@ const AdminLeads = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO title="Admin · Leads" description="Internal admin dashboard for driver, vehicle, and quote leads." path="/admin/leads" />
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <Link to="/">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-4 w-4 mr-2" /> Site
-              </Button>
-            </Link>
-            <h1 className="text-xl font-bold text-foreground">
-              Leads
-            </h1>
-          </div>
+      <AdminSectionHeader
+        title="Leads"
+        actions={
           <Button onClick={load} variant="outline" size="sm" disabled={loading}>
             <RefreshCw
-              className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
+              className={`h-4 w-4 me-2 ${loading ? "animate-spin" : ""}`}
             />
             Refresh
           </Button>
-        </div>
-      </header>
+        }
+      />
 
       <main className="container mx-auto px-4 py-6 space-y-6">
         <Card className="p-4">

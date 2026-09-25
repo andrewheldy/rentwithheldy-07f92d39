@@ -1805,6 +1805,33 @@ export type Database = {
       }
     }
     Functions: {
+      admin_assign_vehicle: {
+        Args: {
+          p_agreement_id?: string
+          p_effective_from: string
+          p_legal_name: string
+          p_owner_percent: number
+          p_phone?: string
+          p_user_id: string
+          p_vehicle_id: string
+        }
+        Returns: string
+      }
+      admin_list_users: {
+        Args: never
+        Returns: {
+          consigner_id: string | null
+          created_at: string
+          email: string
+          email_confirmed: boolean
+          full_name: string | null
+          is_admin: boolean
+          is_consigner: boolean
+          last_sign_in_at: string | null
+          providers: string[]
+          user_id: string
+        }[]
+      }
       complete_agreement_signature: {
         Args: {
           p_consent_version: string

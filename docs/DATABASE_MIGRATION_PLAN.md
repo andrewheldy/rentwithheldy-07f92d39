@@ -6,7 +6,7 @@
 
 New project: `damcyhiznlpykxskndes` ("Rent with Heldy"). `supabase/config.toml` points at it.
 
-**Applied** (`supabase/migrations/`, which now holds only these six files; the previous project's migrations were deleted and remain in git history):
+**Applied** (`supabase/migrations/`; the blog tables are in `20260925081538_blog_cms`, see `docs/BLOG_CMS.md`; the previous project's migrations were deleted and remain in git history):
 
 | Migration | Contents |
 |---|---|
@@ -16,6 +16,7 @@ New project: `damcyhiznlpykxskndes` ("Rent with Heldy"). `supabase/config.toml` 
 | `20260925004903_long_term_rental_template` | Unchanged from the old project |
 | `20260925005546_consigners_and_profitability` | Sections 3.2 to 3.6: `vehicle_external_refs`, `consigners`, `consignments`, `rental_bookings`, `rental_transactions`, `vehicle_expenses`, `vehicle_unavailable_periods`, `owner_statements`, `owner_statement_lines`, `sync_runs`, `agreements.consigner_id`, RLS and dashboard views |
 | `20260925024804_revoke_trigger_function_execute` | Removes API access to trigger functions (security advisor) |
+| `20260925155439_admin_consigner_access` | Admin-only `admin_list_users()` (signed-up accounts for the picker) and `admin_assign_vehicle(...)` (links an account, creates the consignment with the owner's share, grants the `consigner` role) used by `/admin/consigners` |
 
 **Data loaded:**
 - **Fleet** (`supabase/seed/fleet_roster.sql`, idempotent): 43 vehicles (36 active, 3 retired, 4 inactive), 39 Turo IDs and 41 Wheelbase IDs. Seeded vehicles have `show_on_site = false`, so the public fleet pages keep their static fallback until photos and descriptions are added in `/admin`.

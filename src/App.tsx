@@ -39,13 +39,16 @@ import LossOfUseClaims from "./pages/LossOfUseClaims";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { AdminLayout } from "./components/admin/AdminLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
 
-// The blog admin (and its rich-text editor) loads only for admins who open it.
+// The blog admin (and its rich-text editor) and the consigner admin load only
+// for admins who open them.
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminBlogEditor = lazy(() => import("./pages/AdminBlogEditor"));
 const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
+const AdminConsigners = lazy(() => import("./pages/AdminConsigners"));
 
 const adminFallback = <div className="min-h-screen bg-background" aria-busy="true" />;
 const adminBlogRoute = (element: JSX.Element) => (
@@ -124,57 +127,27 @@ const App = () => (
             />
             <Route path="/vehicles" element={<Navigate to="/book" replace />} />
             <Route path="/vehicle/:id" element={<Navigate to="/book" replace />} />
+            {/* Every admin screen shares the sidebar layout. */}
             <Route
-              path="/addcars"
               element={
                 <ProtectedRoute requireAdmin>
-                  <AddCar />
+                  <AdminLayout />
                 </ProtectedRoute>
               }
-            />
-            <Route
-              path="/admin/agreements"
-              element={
-                <ProtectedRoute requireAdmin>
-                  <AdminAgreements />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/agreements/new"
-              element={
-                <ProtectedRoute requireAdmin>
-                  <AdminAgreementNew />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/agreements/:id"
-              element={
-                <ProtectedRoute requireAdmin>
-                  <AdminAgreementDetail />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/leads"
-              element={
-                <ProtectedRoute requireAdmin>
-                  <AdminLeads />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/photos"
-              element={
-                <ProtectedRoute requireAdmin>
-                  <AdminPhotos />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/admin/blog" element={adminBlogRoute(<AdminBlog />)} />
-            <Route path="/admin/blog/new" element={adminBlogRoute(<AdminBlogEditor />)} />
-            <Route path="/admin/blog/:id" element={adminBlogRoute(<AdminBlogEditor />)} />
+            >
+              <Route path="/admin" element={<Navigate to="/admin/consigners" replace />} />
+              <Route path="/admin/consigners" element={<AdminConsigners />} />
+              <Route path="/admin/blog" element={<AdminBlog />} />
+              <Route path="/admin/blog/new" element={<AdminBlogEditor />} />
+              <Route path="/admin/blog/:id" element={<AdminBlogEditor />} />
+              <Route path="/admin/photos" element={<AdminPhotos />} />
+              <Route path="/admin/leads" element={<AdminLeads />} />
+              <Route path="/admin/agreements" element={<AdminAgreements />} />
+              <Route path="/admin/agreements/new" element={<AdminAgreementNew />} />
+              <Route path="/admin/agreements/:id" element={<AdminAgreementDetail />} />
+              <Route path="/addcars" element={<AddCar />} />
+            </Route>
+            {/* The saved preview shows the article as readers see it, without admin chrome. */}
             <Route path="/admin/blog/:id/preview" element={adminBlogRoute(<AdminBlogPreview />)} />
             <Route path="*" element={<NotFound />} />
           </Routes>
