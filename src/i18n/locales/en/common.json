@@ -8,7 +8,6 @@
     "checkAvailability": "Check Availability",
     "findMyMatch": "Find My Match",
     "callOrText": "Call or Text",
-    "viewFullFleet": "View Full Fleet",
     "viewFleet": "View the Fleet",
     "seeAllFaqs": "See all FAQs",
     "seeHowItWorks": "See How It Works",
@@ -41,9 +40,7 @@
       "cta": "See if it qualifies"
     }
   },
-  "states": {
-    "loadingFleet": "Loading fleet…"
-  },
+  "states": {},
   "notFound": {
     "title": "404",
     "message": "Oops! Page not found",

@@ -1,32 +1,4 @@
 {
-  "meta": {
-    "title": "Nuestra flota | Alquiler de autos y SUV en Fort Lauderdale y Miami",
-    "description": "Explora autos económicos hasta opciones premium más nuevas y SUV para alquilar en Fort Lauderdale, Miami y el sur de Florida. Cada vehículo se limpia e inspecciona antes de tu viaje. Reserva en línea."
-  },
-  "hero": {
-    "title": "Nuestra flota de alquiler en el sur de Florida",
-    "subtitle": "Elige entre vehículos económicos prácticos y opciones premium más nuevas: todos de propiedad privada, limpiados, detallados e inspeccionados profesionalmente antes de tu viaje, y pensados para la conducción real en el sur de Florida.",
-    "checkAvailability": "Ver disponibilidad en tiempo real",
-    "howBookingWorks": "Cómo funciona la reserva"
-  },
-  "areaLinks": {
-    "title": "¿Alquilas en una zona específica?",
-    "subtitle": "Consulta detalles de recogida por ubicación, sugerencias de vehículos e ideas para viajes locales.",
-    "fortLauderdale": "Alquileres en Fort Lauderdale",
-    "miami": "Alquileres en Miami",
-    "fllAirport": "Viajes desde el aeropuerto FLL"
-  },
-  "faqSection": {
-    "title": "Preguntas sobre la flota y las reservas"
-  },
-  "grid": {
-    "empty": "Estamos actualizando nuestra disponibilidad en tiempo real. Vuelve pronto o",
-    "emptySearchLink": "busca disponibilidad",
-    "photoComingSoon": "Foto en camino",
-    "imageAlt": "{{title}} disponible para alquilar en el sur de Florida",
-    "seats": "{{seats}} asientos",
-    "bags": "Maletas"
-  },
   "vehicleCopy": {
     "fallbackDescription": "Un vehículo limpio y bien mantenido, listo para tu viaje por el sur de Florida.",
     "colors": {
@@ -80,9 +52,5 @@
       "2016-toyota-camry-silver": "Sedán mediano confiable, con conducción suave y gran eficiencia de combustible.",
       "2018-gmc-yukon-white": "SUV grande premium con tres filas y amplio espacio de carga."
     }
-  },
-  "card": {
-    "pricePerDay": "${{price}}/día",
-    "viewDetails": "Ver detalles"
   }
 }

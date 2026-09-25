@@ -74,7 +74,6 @@
     "vehicleImageAlt": "{{title}} disponível na frota da Rent With Heldy",
     "priceFrom": "a partir de",
     "pricePerDay": "/dia",
-    "checkAvailability": "Ver disponibilidade",
-    "seeFullFleet": "Ver frota completa"
+    "checkAvailability": "Ver disponibilidade"
   }
 }

@@ -303,11 +303,6 @@ const VacationQuiz = () => {
                   {t("result.checkAvailability")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
                 </Button>
               </Link>
-              <Link to="/fleet" className="flex-1">
-                <Button size="lg" variant="outline" className="w-full">
-                  {t("result.seeFullFleet")}
-                </Button>
-              </Link>
             </div>
           </div>
         )}

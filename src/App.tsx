@@ -16,7 +16,6 @@ import AdminAgreementDetail from "./pages/AdminAgreementDetail";
 import SignAgreement from "./pages/SignAgreement";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
-import Fleet from "./pages/Fleet";
 import FortLauderdale from "./pages/FortLauderdale";
 import Miami from "./pages/Miami";
 import LocalCarRentals from "./pages/LocalCarRentals";
@@ -53,7 +52,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/book" element={<Book />} />
-            <Route path="/fleet" element={<Fleet />} />
+            <Route path="/fleet" element={<Navigate to="/book" replace />} />
             <Route
               path="/car-rental-fort-lauderdale"
               element={<FortLauderdale />}
@@ -101,13 +100,13 @@ const App = () => (
             <Route path="/sign/:token" element={<SignAgreement />} />
             <Route path="/sign" element={<SignAgreement />} />
             {/* Redirect old routes */}
-            <Route path="/categories" element={<Navigate to="/fleet" replace />} />
+            <Route path="/categories" element={<Navigate to="/book" replace />} />
             <Route
               path="/reserve/:categorySlug"
               element={<Navigate to="/book" replace />}
             />
-            <Route path="/vehicles" element={<Navigate to="/fleet" replace />} />
-            <Route path="/vehicle/:id" element={<Navigate to="/fleet" replace />} />
+            <Route path="/vehicles" element={<Navigate to="/book" replace />} />
+            <Route path="/vehicle/:id" element={<Navigate to="/book" replace />} />
             <Route
               path="/addcars"
               element={

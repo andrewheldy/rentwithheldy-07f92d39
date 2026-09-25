@@ -14,7 +14,7 @@ describe("i18n runtime", () => {
   it("defaults to English and resolves real copy", () => {
     expect(i18n.language).toMatch(/^en/);
     expect(i18n.t("actions.bookNow", { ns: "common" })).toBe("Book Now");
-    expect(i18n.t("links.fleet", { ns: "navigation" })).toBe("Fleet");
+    expect(i18n.t("links.howItWorks", { ns: "navigation" })).toBe("How It Works");
   });
 
   it("falls back to English for an English-only legal key (never a raw key)", async () => {

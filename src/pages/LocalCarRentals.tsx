@@ -387,7 +387,7 @@ const LocalCarRentals = () => {
 
             <div className="mt-10 text-center">
               <Link
-                to="/fleet"
+                to="/book"
                 className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
               >
                 {t("local.comparison.fleetLink")}

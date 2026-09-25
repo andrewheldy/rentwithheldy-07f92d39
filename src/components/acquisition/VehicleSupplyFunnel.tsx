@@ -261,7 +261,7 @@ const VehicleSupplyFunnel = () => {
           </div>
         </dl>
         <Button asChild size="lg" className="mt-8">
-          <Link to="/fleet">{t("supply.confirmation.explore")}</Link>
+          <Link to="/">{t("supply.confirmation.explore")}</Link>
         </Button>
       </section>
     );

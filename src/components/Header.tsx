@@ -58,7 +58,6 @@ const MOBILE_CONVERSION_PATHS = [
 ] as const;
 
 const BROWSE_LINKS = [
-  { to: "/fleet", key: "fleet" },
   { to: "/how-it-works", key: "howItWorks" },
   { to: "/faq", key: "faq" },
   { to: "/contact", key: "contact" },
@@ -124,10 +123,6 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            <NavLink to="/fleet" className={linkClass}>
-              {t("links.fleet")}
-            </NavLink>
-
             {/* Rental services dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger
@@ -195,7 +190,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {BROWSE_LINKS.slice(1, 3).map((item) => (
+            {BROWSE_LINKS.slice(0, 2).map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClass}>
                 {t(`links.${item.key}`)}
               </NavLink>

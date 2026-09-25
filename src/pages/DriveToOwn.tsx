@@ -470,7 +470,7 @@ const DriveToOwn = () => {
             </div>
             <p className="mt-6 text-sm opacity-80">
               {t("finalCta.browsePrompt")}{" "}
-              <Link to="/fleet" className="underline">
+              <Link to="/book" className="underline">
                 {t("finalCta.seeFleet")}
               </Link>
               .

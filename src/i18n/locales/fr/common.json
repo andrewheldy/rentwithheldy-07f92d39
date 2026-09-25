@@ -8,7 +8,6 @@
     "checkAvailability": "Voir les disponibilités",
     "findMyMatch": "Trouver mon option",
     "callOrText": "Appeler ou écrire",
-    "viewFullFleet": "Voir toute la flotte",
     "viewFleet": "Voir la flotte",
     "seeAllFaqs": "Voir toutes les questions",
     "seeHowItWorks": "Voir comment ça marche",
@@ -41,9 +40,7 @@
       "cta": "Voir s’il convient"
     }
   },
-  "states": {
-    "loadingFleet": "Chargement de la flotte…"
-  },
+  "states": {},
   "notFound": {
     "title": "404",
     "message": "Oups ! Page introuvable",
