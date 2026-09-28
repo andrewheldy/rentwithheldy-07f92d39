@@ -196,14 +196,14 @@ const QuickQuoteForm = ({
     return (
       <div className={cardClassName}>
         <div className={headerClassName}>
-          <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary" : "h-5 w-5 text-primary-foreground"} />
+          <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary-text" : "h-5 w-5 text-primary-foreground"} />
           <h3 className={headerTextClassName}>{heading}</h3>
         </div>
         <div className="p-6 text-center">
           <p className="text-destructive font-medium">
             {t("quickQuote.errorRetry")}
           </p>
-          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline text-sm mt-2 block">
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary-text hover:underline text-sm mt-2 block">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
@@ -214,7 +214,7 @@ const QuickQuoteForm = ({
   return (
     <div className={cardClassName}>
       <div className={headerClassName}>
-        <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary" : "h-5 w-5 text-primary-foreground"} />
+        <HeaderIcon className={isConcierge ? "h-5 w-5 text-primary-text" : "h-5 w-5 text-primary-foreground"} />
         <h3 className={headerTextClassName}>{heading}</h3>
       </div>
       <form onSubmit={onSubmit} className="p-6 space-y-4">
@@ -304,7 +304,7 @@ const QuickQuoteForm = ({
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           {t("quickQuote.preferToTalk")}{" "}
-          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary-text hover:underline">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </p>

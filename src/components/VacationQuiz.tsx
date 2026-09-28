@@ -126,7 +126,7 @@ const VacationQuiz = () => {
     <Card data-testid="trip-planner" className="border-none shadow-card-hover overflow-hidden">
       <CardContent className="p-6 md:p-10">
         <div className="flex items-center justify-between mb-2">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary-text">
             <Sparkles className="h-3.5 w-3.5" /> {t("quiz.eyebrow")}
           </div>
           {step > 0 && step < 3 && (
@@ -295,14 +295,15 @@ const VacationQuiz = () => {
             )}
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/book" className="flex-1">
-                <Button
-                  size="lg"
-                  className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                >
+              <Button
+                size="lg"
+                className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                asChild
+              >
+                <Link to="/book" className="flex-1">
                   {t("result.checkAvailability")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         )}

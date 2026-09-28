@@ -112,7 +112,7 @@ const AREA_SERVED = [
 ];
 
 const sectionEyebrow =
-  "mb-3 text-sm font-semibold uppercase tracking-wider text-primary";
+  "mb-3 text-sm font-semibold uppercase tracking-wider text-primary-text";
 const ctaButton = "h-auto min-h-12 w-full whitespace-normal py-3 sm:w-auto";
 
 const LocalCarRentals = () => {
@@ -314,7 +314,7 @@ const LocalCarRentals = () => {
                   <Reveal key={key} delay={i * 70} className="h-full">
                     <div className="h-full rounded-card border border-border bg-card p-6 shadow-card">
                       <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                        <Icon className="h-5 w-5 text-primary" aria-hidden />
+                        <Icon className="h-5 w-5 text-primary-text" aria-hidden />
                       </div>
                       <h3 className="mb-2 font-heading text-xl font-semibold text-ink">
                         {t(`local.difference.cards.${key}.title`)}
@@ -367,7 +367,7 @@ const LocalCarRentals = () => {
                 <div className="h-full rounded-card border-2 border-primary/50 bg-card p-6 shadow-card sm:p-8">
                   <div className="mb-6 flex items-center gap-3">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                      <KeyRound className="h-5 w-5 text-primary" aria-hidden />
+                      <KeyRound className="h-5 w-5 text-primary-text" aria-hidden />
                     </span>
                     <h3 className="font-heading text-xl font-semibold text-ink">
                       {t("local.comparison.heldy.title")}
@@ -376,7 +376,7 @@ const LocalCarRentals = () => {
                   <ul className="space-y-4">
                     {heldyItems.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-foreground">
-                        <CheckCircle2 aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                        <CheckCircle2 aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-primary-text" />
                         <span className="leading-relaxed">{item}</span>
                       </li>
                     ))}
@@ -388,7 +388,7 @@ const LocalCarRentals = () => {
             <div className="mt-10 text-center">
               <Link
                 to="/book"
-                className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
+                className="inline-flex items-center gap-1.5 font-semibold text-primary-text hover:underline"
               >
                 {t("local.comparison.fleetLink")}
                 <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
@@ -448,7 +448,7 @@ const LocalCarRentals = () => {
                     className="group flex h-full flex-col rounded-card border border-border bg-card p-6 shadow-card transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
                     <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                      <Icon className="h-5 w-5 text-primary" aria-hidden />
+                      <Icon className="h-5 w-5 text-primary-text" aria-hidden />
                     </span>
                     <h3 className="mb-2 font-heading text-xl font-semibold text-ink">
                       {t(`local.destinations.cards.${key}.title`)}
@@ -456,7 +456,7 @@ const LocalCarRentals = () => {
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {t(`local.destinations.cards.${key}.body`)}
                     </p>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary">
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary-text">
                       {t(`local.destinations.cards.${key}.cta`)}
                       <ArrowRight
                         aria-hidden
@@ -508,7 +508,7 @@ const LocalCarRentals = () => {
                   ).map(({ key, href }) => (
                     <div key={key} className="flex flex-col rounded-card border border-border bg-card p-5">
                       <h3 className="mb-2 flex items-center gap-2 font-heading text-lg font-semibold text-ink">
-                        <MapPin className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                        <MapPin className="h-4 w-4 shrink-0 text-primary-text" aria-hidden />
                         {t(`local.areas.${key}.title`)}
                       </h3>
                       <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
@@ -516,7 +516,7 @@ const LocalCarRentals = () => {
                       </p>
                       <Link
                         to={href}
-                        className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                        className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary-text hover:underline"
                       >
                         {t(`local.areas.${key}.link`)}
                         <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
@@ -543,7 +543,7 @@ const LocalCarRentals = () => {
                   {WHY_LOCAL.map(({ key, icon: Icon }) => (
                     <li key={key} className="flex gap-4">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                        <Icon className="h-5 w-5 text-primary" aria-hidden />
+                        <Icon className="h-5 w-5 text-primary-text" aria-hidden />
                       </span>
                       <div>
                         <h3 className="mb-1 font-semibold text-ink">
@@ -603,7 +603,7 @@ const LocalCarRentals = () => {
                 <Link
                   key={key}
                   to={href}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-text hover:underline"
                 >
                   {t(`local.faq.links.${key}`)}
                   <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />

@@ -18,7 +18,7 @@ const HowItWorksSteps = () => {
           className="bg-card border border-border rounded-card p-6 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
         >
           <div className="bg-primary/10 w-11 h-11 rounded-control flex items-center justify-center mb-4">
-            <s.icon className="h-5 w-5 text-primary" />
+            <s.icon className="h-5 w-5 text-primary-text" />
           </div>
           <h3 className="text-lg font-semibold text-foreground mb-2">
             {t(`steps.${s.key}.title`)}

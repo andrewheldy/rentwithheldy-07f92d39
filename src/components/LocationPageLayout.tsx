@@ -88,7 +88,7 @@ const LocationPageLayout = ({
               aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
-              <Link to="/" className="hover:text-primary">
+              <Link to="/" className="hover:text-primary-text">
                 {t("layout.breadcrumbHome")}
               </Link>
               <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
@@ -104,14 +104,15 @@ const LocationPageLayout = ({
                   {intro}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/book">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                    >
+                  <Button
+                    size="lg"
+                    className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                    asChild
+                  >
+                    <Link to="/book">
                       {t("common:actions.bookNow")}
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </div>
               {heroForm && (
@@ -163,14 +164,14 @@ const LocationPageLayout = ({
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <li>
-                <Link to="/book" className="text-primary hover:underline">
+                <Link to="/book" className="text-primary-text hover:underline">
                   → {t("layout.exploreMore.links.fleet")}
                 </Link>
               </li>
               <li>
                 <Link
                   to="/how-it-works"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.howItWorks")}
                 </Link>
@@ -178,7 +179,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/car-rental-fort-lauderdale"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.fortLauderdale")}
                 </Link>
@@ -186,7 +187,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/car-rental-miami"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.miami")}
                 </Link>
@@ -194,7 +195,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/fort-lauderdale-airport-car-rental"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.airport")}
                 </Link>
@@ -202,13 +203,13 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/local-car-rentals"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.local")}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-primary hover:underline">
+                <Link to="/contact" className="text-primary-text hover:underline">
                   → {t("layout.exploreMore.links.contact")}
                 </Link>
               </li>
@@ -234,24 +235,26 @@ const LocationPageLayout = ({
               {ctaSubheadText}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/book">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="font-semibold"
-                >
+              <Button
+                size="lg"
+                variant="secondary"
+                className="font-semibold"
+                asChild
+              >
+                <Link to="/book">
                   {t("common:actions.bookNow")}
-                </Button>
-              </Link>
-              <a href={CONTACT_PHONE_HREF}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
-                >
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
+                asChild
+              >
+                <a href={CONTACT_PHONE_HREF}>
                   {t("layout.callCta")} <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
           </div>
         </section>

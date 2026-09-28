@@ -210,7 +210,7 @@ const Auth = () => {
                     <button
                       type="button"
                       onClick={() => setIsSignUp(!isSignUp)}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      className="text-sm text-muted-foreground hover:text-primary-text transition-colors"
                     >
                       {isSignUp ? t("auth.toSignIn") : t("auth.toSignUp")}
                     </button>

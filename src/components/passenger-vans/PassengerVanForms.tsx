@@ -39,7 +39,7 @@ const FormResult = ({ type }: { type: "rental" | "consignment" }) => {
       className="flex min-h-72 flex-col items-center justify-center rounded-card border border-primary/25 bg-primary/[0.06] p-8 text-center"
       role="status"
     >
-      <CheckCircle2 className="h-10 w-10 text-primary" aria-hidden="true" />
+      <CheckCircle2 className="h-10 w-10 text-primary-text" aria-hidden="true" />
       <h3 className="mt-4 text-subheading font-bold text-ink">
         {t(`forms.${type}.successTitle`)}
       </h3>

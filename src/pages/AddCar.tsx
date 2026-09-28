@@ -172,7 +172,7 @@ const AddCar = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           <div>
             <h2 className="text-3xl font-bold text-foreground flex items-center gap-3">
-              <Car className="h-8 w-8 text-primary" />
+              <Car className="h-8 w-8 text-primary-text" />
               Vehicle Manager
             </h2>
             <p className="text-muted-foreground mt-2">

@@ -74,7 +74,7 @@ const Blog = () => {
         <section className="border-b border-border bg-gradient-subtle">
           <div className="container mx-auto pb-12 pt-14 sm:pb-16 sm:pt-20">
             <div className="max-w-3xl">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">{t("index.eyebrow")}</p>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-text">{t("index.eyebrow")}</p>
               <h1 className="font-heading text-display-lg font-bold text-ink">{t("index.title")}</h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
                 {t("index.intro")}

@@ -11,7 +11,7 @@ export const SITE_URL = "https://rentwithheldy.com";
 export const SITE_NAME = "Rent With Heldy";
 export const BLOG_PATH = "/blog";
 export const BLOG_URL = `${SITE_URL}${BLOG_PATH}`;
-export const DEFAULT_SHARE_IMAGE = `${SITE_URL}/share-image.png`;
+export const DEFAULT_SHARE_IMAGE = `${SITE_URL}/share-image.jpg`;
 export const PUBLISHER_LOGO = `${SITE_URL}/favicon.png`;
 
 /** Suggested lengths shown in the editor. Guidance only — never enforced. */

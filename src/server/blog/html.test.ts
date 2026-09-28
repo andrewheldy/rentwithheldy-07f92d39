@@ -44,6 +44,11 @@ describe("server-rendered blog head", () => {
     expect(html.match(/name="description"/g)).toHaveLength(1);
     expect(html.match(/property="og:title"/g)).toHaveLength(1);
     expect(html.match(/property="og:image"/g)).toHaveLength(1);
+    expect(html.match(/property="og:site_name"/g)).toHaveLength(1);
+    expect(html.match(/property="og:image:alt"/g)).toHaveLength(1);
+    expect(html.match(/name="twitter:image:alt"/g)).toHaveLength(1);
+    // The shell's default-image dimensions must not describe a post's image.
+    expect(html).not.toMatch(/property="og:image:(?:width|height|type)"/);
     expect(html.match(/rel="canonical"/g)).toHaveLength(1);
     expect(html).toContain('<link data-rh="true" rel="canonical" href="https://rentwithheldy.com/blog/airport-delivery">');
     expect(html).toContain('property="og:type" content="article"');

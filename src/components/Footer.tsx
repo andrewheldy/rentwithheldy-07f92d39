@@ -49,7 +49,7 @@ const Footer = () => {
     navigate("/");
   };
 
-  const linkCls = "text-sm text-muted-foreground hover:text-primary transition-colors";
+  const linkCls = "text-sm text-muted-foreground hover:text-primary-text transition-colors";
 
   return (
     <footer className="border-t border-border bg-card">
@@ -72,7 +72,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1 text-sm mb-4">
-              <Star className="h-4 w-4 fill-primary text-primary" />
+              <Star className="h-4 w-4 fill-primary-text text-primary-text" />
               <span className="font-medium text-foreground/80">{t("brand.badge")}</span>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground max-w-xs">
@@ -125,17 +125,17 @@ const Footer = () => {
             <h3 className="font-semibold text-ink mb-4">{t("columns.contact")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "footer" })} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Phone className="h-4 w-4 text-primary shrink-0" /> {CONTACT_PHONE_DISPLAY}
+                <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "footer" })} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary-text transition-colors">
+                  <Phone className="h-4 w-4 text-primary-text shrink-0" /> {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
-                <a href="mailto:rentwithheldy@gmail.com" dir="ltr" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
-                  <Mail className="h-4 w-4 text-primary shrink-0" /> rentwithheldy@gmail.com
+                <a href="mailto:rentwithheldy@gmail.com" dir="ltr" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary-text transition-colors">
+                  <Mail className="h-4 w-4 text-primary-text shrink-0" /> rentwithheldy@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-primary-text shrink-0 mt-0.5" />
                 {t("contact.location")}
               </li>
             </ul>
@@ -154,19 +154,19 @@ const Footer = () => {
             {t("legal.rights", { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
-            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary">{t("legal.privacy")}</Link>
-            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary">{t("legal.terms")}</Link>
+            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary-text">{t("legal.privacy")}</Link>
+            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary-text">{t("legal.terms")}</Link>
             {isAdmin && (
-              <Link to="/addcars" className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
+              <Link to="/addcars" className="text-xs text-muted-foreground hover:text-primary-text flex items-center gap-1">
                 <Settings className="h-3 w-3" /> {t("legal.manageFleet")}
               </Link>
             )}
             {user ? (
-              <button onClick={handleSignOut} className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
+              <button onClick={handleSignOut} className="text-xs text-muted-foreground hover:text-primary-text flex items-center gap-1">
                 <LogOut className="h-3 w-3" /> {t("legal.signOut")}
               </button>
             ) : (
-              <Link to="/auth" className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
+              <Link to="/auth" className="text-xs text-muted-foreground hover:text-primary-text flex items-center gap-1">
                 <LogIn className="h-3 w-3" /> {t("legal.admin")}
               </Link>
             )}

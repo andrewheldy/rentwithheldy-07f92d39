@@ -92,8 +92,8 @@ const Header = () => {
   useEffect(() => setMobileOpen(false), [location.pathname]);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium transition-colors hover:text-primary ${
-      isActive ? "text-primary" : "text-foreground/80"
+    `text-sm font-medium transition-colors hover:text-primary-text ${
+      isActive ? "text-primary-text" : "text-foreground/80"
     }`;
   const rentalServicesActive = RENTAL_SERVICES.some(({ to }) => location.pathname.startsWith(to));
   const workWithUsActive = WORK_WITH_US.some(({ to }) => location.pathname.startsWith(to));
@@ -133,8 +133,8 @@ const Header = () => {
             {/* Rental services dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger
-                className={`group inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary ${
-                  rentalServicesActive ? "text-primary" : "text-foreground/80"
+                className={`group inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary-text focus-visible:outline-none focus-visible:text-primary-text ${
+                  rentalServicesActive ? "text-primary-text" : "text-foreground/80"
                 }`}
               >
                 {t("links.rentalServices")}
@@ -145,7 +145,7 @@ const Header = () => {
                   <DropdownMenuItem key={s.to} asChild>
                     <Link to={s.to} className="flex items-start gap-3 rounded-control p-2.5 cursor-pointer">
                       <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                        <s.icon className="h-4 w-4 text-primary" />
+                        <s.icon className="h-4 w-4 text-primary-text" />
                       </span>
                       <span className="leading-tight">
                         <span className="block text-sm font-medium text-foreground">{t(`services.${s.key}.label`)}</span>
@@ -160,8 +160,8 @@ const Header = () => {
             {/* The two acquisition funnels stay together as one clear business intent. */}
             <DropdownMenu>
               <DropdownMenuTrigger
-                className={`group inline-flex items-center gap-1 text-sm font-semibold transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary ${
-                  workWithUsActive ? "text-primary" : "text-foreground/90"
+                className={`group inline-flex items-center gap-1 text-sm font-semibold transition-colors hover:text-primary-text focus-visible:outline-none focus-visible:text-primary-text ${
+                  workWithUsActive ? "text-primary-text" : "text-foreground/90"
                 }`}
               >
                 {t("links.workWithUs")}
@@ -181,7 +181,7 @@ const Header = () => {
                       className="flex items-start gap-3 rounded-control p-3 cursor-pointer"
                     >
                       <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                        <item.icon className="h-4 w-4 text-primary" />
+                        <item.icon className="h-4 w-4 text-primary-text" />
                       </span>
                       <span className="leading-tight">
                         <span className="block text-sm font-semibold text-foreground">
@@ -210,7 +210,7 @@ const Header = () => {
               href={CONTACT_PHONE_HREF}
               dir="ltr"
               onClick={() => track("call_cta_click", { placement: "header_desktop" })}
-              className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary-text transition-colors"
             >
               <Phone className="h-4 w-4" />
               {CONTACT_PHONE_DISPLAY}
@@ -218,22 +218,24 @@ const Header = () => {
             <Link
               to={accountPath}
               aria-label={t("aria.account")}
-              className="hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-control text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+              className="hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-control text-foreground/80 transition-colors hover:bg-secondary hover:text-primary-text"
             >
               <UserRound className="h-5 w-5" />
             </Link>
-            <Link
-              to="/book"
-              onClick={() =>
-                track("conversion_path_selected", {
-                  conversion_intent: "rental",
-                  placement: "desktop_navigation",
-                })
-              }
-              className="hidden sm:inline-flex"
-            >
-              <Button size="sm">{t("common:actions.bookNow")}</Button>
-            </Link>
+            <Button size="sm" asChild>
+              <Link
+                to="/book"
+                onClick={() =>
+                  track("conversion_path_selected", {
+                    conversion_intent: "rental",
+                    placement: "desktop_navigation",
+                  })
+                }
+                className="hidden sm:inline-flex"
+              >
+                {t("common:actions.bookNow")}
+              </Link>
+            </Button>
 
             {/* Mobile trigger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -281,7 +283,7 @@ const Header = () => {
                         >
                           <span
                             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-control ${
-                              index === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
+                              index === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary-text"
                             }`}
                           >
                             <item.icon className="h-4 w-4" />
@@ -311,7 +313,7 @@ const Header = () => {
                       to={accountPath}
                       className="flex items-center gap-2 py-2.5 text-base font-medium text-foreground"
                     >
-                      <UserRound className="h-4 w-4 text-primary" />
+                      <UserRound className="h-4 w-4 text-primary-text" />
                       {t("links.account")}
                     </Link>
                   </SheetClose>
@@ -323,7 +325,7 @@ const Header = () => {
                     <SheetClose asChild key={s.to}>
                       <Link to={s.to} className="flex items-center gap-3 py-2.5 text-[15px] text-foreground/90">
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                          <s.icon className="h-4 w-4 text-primary" />
+                          <s.icon className="h-4 w-4 text-primary-text" />
                         </span>
                         {t(`services.${s.key}.label`)}
                       </Link>
@@ -338,7 +340,7 @@ const Header = () => {
                     onClick={() => track("call_cta_click", { placement: "header_mobile_sheet" })}
                     className="flex min-h-11 items-center justify-center gap-2 rounded-control border border-border text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary"
                   >
-                    <Phone className="h-4 w-4 text-primary" />
+                    <Phone className="h-4 w-4 text-primary-text" />
                     <span>{t("common:actions.callOrText")}</span>
                     <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
                   </a>

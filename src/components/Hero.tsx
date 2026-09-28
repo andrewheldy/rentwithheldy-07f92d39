@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Star, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import HomeBookingWidget from "@/components/HomeBookingWidget";
@@ -14,30 +14,24 @@ import heroSunsetAvif from "@/assets/hero_sunset.avif";
 import heroSunsetWebp from "@/assets/hero_sunset.webp";
 
 const DESTINATION_KEYS = ["airports", "hotels", "cruisePorts", "repairShops"] as const;
-const TRUST_KEYS = [
-  "reviews",
-  "allStar",
-  "delivery",
-  "contactless",
-  "language",
-  "familyOwned",
-] as const;
 
 const Hero = () => {
   const reduce = useReducedMotion();
   const { t } = useTranslation(["home", "common"]);
 
-  const rise = reduce ? 0 : 18;
+  // Copy settles in reading order within the interaction spec's reveal range
+  // (200-350ms, <=24px travel); the photograph itself never moves.
+  const rise = reduce ? 0 : 12;
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.09, delayChildren: 0.12 } },
+    show: { transition: { staggerChildren: 0.06, delayChildren: 0.04 } },
   };
   const item = {
     hidden: { opacity: 0, y: rise },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+      transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
@@ -52,13 +46,18 @@ const Hero = () => {
         <link rel="preload" as="image" href={heroSunsetAvif} type="image/avif" fetchPriority="high" />
       </Helmet>
 
+      {/* Crop per breakpoint (source 1915x821, SUV at x~1335-1625):
+          phones show the skyline behind the copy with no car fragment; tablets
+          show water and skyline clear of the booking card; from lg up the whole
+          SUV sits in frame to the right of the copy column. Same crop in RTL:
+          mirroring the photo would misrepresent the real skyline. */}
       <picture>
         <source srcSet={heroSunsetAvif} type="image/avif" />
         <source srcSet={heroSunsetWebp} type="image/webp" />
         <img
           src={heroSunset}
           alt={t("hero.imageAlt")}
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-[68%_center] lg:object-center"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center] md:object-[40%_center] lg:object-[72%_center]"
           {...{ fetchpriority: "high" }}
           decoding="async"
           width={1915}
@@ -126,28 +125,12 @@ const Hero = () => {
           <motion.a
             variants={item}
             href={CONTACT_PHONE_HREF}
-            className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+            className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
             <span>{t("common:actions.callOrText")}</span>
             <span dir="ltr">{CONTACT_PHONE_DISPLAY}</span>
           </motion.a>
-
-          <motion.ul
-            variants={item}
-            className="mt-9 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/15 pt-6"
-          >
-            {TRUST_KEYS.map((key, i) => (
-              <li key={key} className="flex items-center gap-1.5 text-sm text-white/75">
-                {i === 0 ? (
-                  <Star className="h-3.5 w-3.5 fill-primary text-primary" />
-                ) : (
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary" />
-                )}
-                {t(`hero.trust.${key}`)}
-              </li>
-            ))}
-          </motion.ul>
         </motion.div>
       </div>
     </section>

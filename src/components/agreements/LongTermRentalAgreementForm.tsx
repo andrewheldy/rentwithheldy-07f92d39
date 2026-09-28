@@ -33,7 +33,7 @@ export function LongTermRentalAgreementForm({ value, onChange, disabled = false 
 
       <Card className="p-5 sm:p-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Agreement setup</p>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary-text">Agreement setup</p>
           <h2 className="mt-1 text-xl font-semibold">Term and payment</h2>
           <p className="mt-1 text-sm text-muted-foreground">Date shortcuts calculate from the selected start date and remain fully editable.</p>
         </div>

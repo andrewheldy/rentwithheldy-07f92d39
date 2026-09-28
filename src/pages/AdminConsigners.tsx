@@ -140,7 +140,7 @@ export default function AdminConsigners() {
       <main className="mx-auto w-full max-w-5xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Owner access</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-text">Owner access</p>
             <h2 className="mt-1 text-3xl font-semibold">Consigners</h2>
             <p className="mt-2 text-muted-foreground">
               Owners create their own account with email or Google. Assign their vehicle here to link the account,
@@ -208,7 +208,7 @@ export default function AdminConsigners() {
                           return (
                             <li key={assignment.id} className="flex flex-wrap items-center justify-between gap-3 p-3 sm:p-4">
                               <div className="flex min-w-0 items-start gap-3">
-                                <Car className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                                <Car className="mt-0.5 h-5 w-5 shrink-0 text-primary-text" aria-hidden="true" />
                                 <div className="min-w-0">
                                   <p className="font-medium">
                                     {assignment.vehicle ? vehicleName(assignment.vehicle) : "Vehicle"}

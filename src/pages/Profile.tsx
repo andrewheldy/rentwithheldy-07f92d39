@@ -20,7 +20,7 @@ const Profile = () => {
   if (!rolesLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background" aria-busy="true">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" aria-hidden="true" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary-text" aria-hidden="true" />
       </div>
     );
   }
@@ -66,13 +66,13 @@ const CustomerProfile = () => {
               </CardTitle>
               <CardDescription className="leading-relaxed">
                 {t("profile.privacyBody")}{" "}
-                <Link to="/privacy" className="text-primary underline">
+                <Link to="/privacy" className="text-primary-text underline">
                   {t("profile.privacyLink")}
                 </Link>
                 . {t("profile.dataRequestBody")}{" "}
                 <a
                   href={`mailto:${SUPPORT_EMAIL}`}
-                  className="text-primary underline"
+                  className="text-primary-text underline"
                   dir="ltr"
                 >
                   {SUPPORT_EMAIL}

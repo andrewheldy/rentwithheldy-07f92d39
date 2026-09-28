@@ -244,8 +244,8 @@ const VehicleSupplyFunnel = () => {
   if (submitted) {
     return (
       <section className="rounded-card border border-border bg-card px-6 py-12 text-center shadow-card sm:px-10" aria-live="polite">
-        <CheckCircle2 className="mx-auto h-11 w-11 text-primary" />
-        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+        <CheckCircle2 className="mx-auto h-11 w-11 text-primary-text" />
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-text">
           {t("supply.confirmation.eyebrow")}
         </p>
         <h2 className="mt-3 text-heading font-semibold text-ink">{t("supply.confirmation.title")}</h2>
@@ -348,7 +348,7 @@ const VehicleSupplyFunnel = () => {
       case "photos":
         return (
           <div className="max-w-2xl border-s-2 border-primary bg-primary/[0.06] px-5 py-5">
-            <Camera className="h-6 w-6 text-primary" />
+            <Camera className="h-6 w-6 text-primary-text" />
             <p className="mt-3 font-semibold text-ink">{t("supply.photos.title")}</p>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{t("supply.photos.body")}</p>
           </div>

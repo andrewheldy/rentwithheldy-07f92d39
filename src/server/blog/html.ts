@@ -55,8 +55,10 @@ function renderTag(tag: Tag): string {
 const REPLACED_HEAD_PATTERNS = [
   /<title>[\s\S]*?<\/title>\s*/i,
   /<meta[^>]+name="description"[^>]*>\s*/gi,
-  /<meta[^>]+property="og:(?:type|title|description|image|url)"[^>]*>\s*/gi,
-  /<meta[^>]+name="twitter:(?:card|title|description|image)"[^>]*>\s*/gi,
+  // og:image:* (type/width/height/alt) describe index.html's default image and
+  // would contradict a post's featured image, so they are replaced too.
+  /<meta[^>]+property="og:(?:type|title|description|image(?::[a-z_]+)?|url|site_name)"[^>]*>\s*/gi,
+  /<meta[^>]+name="twitter:(?:card|title|description|image(?::alt)?)"[^>]*>\s*/gi,
   /<link[^>]+rel="canonical"[^>]*>\s*/gi,
   /<meta[^>]+name="robots"[^>]*>\s*/gi,
 ];

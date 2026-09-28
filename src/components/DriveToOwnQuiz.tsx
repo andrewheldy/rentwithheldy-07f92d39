@@ -281,7 +281,7 @@ const DriveToOwnQuiz = () => {
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
-                    <opt.icon className={`h-6 w-6 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
+                    <opt.icon className={`h-6 w-6 mb-2 ${active ? "text-primary-text" : "text-muted-foreground"}`} />
                     <div className="font-semibold text-foreground">{t(`quiz.gig.options.${opt.key}.label`)}</div>
                     <div className="text-xs text-muted-foreground mt-1">{t(`quiz.gig.options.${opt.key}.desc`)}</div>
                   </button>
@@ -313,7 +313,7 @@ const DriveToOwnQuiz = () => {
                     onClick={() => togglePlatform(p)}
                     className={`flex items-center justify-between rounded-md border-2 px-3 py-2.5 text-sm font-medium transition-all ${
                       active
-                        ? "border-primary bg-primary/5 text-primary"
+                        ? "border-primary bg-primary/5 text-primary-text"
                         : "border-border bg-card text-foreground hover:border-primary/40"
                     }`}
                   >
@@ -353,7 +353,7 @@ const DriveToOwnQuiz = () => {
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
-                    <Clock className={`h-5 w-5 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
+                    <Clock className={`h-5 w-5 mb-2 ${active ? "text-primary-text" : "text-muted-foreground"}`} />
                     <div className="font-semibold text-foreground">{t(`quiz.hours.options.${opt.key}.label`)}</div>
                     <div className="text-xs text-muted-foreground mt-1">{t(`quiz.hours.options.${opt.key}.desc`)}</div>
                   </button>
@@ -390,7 +390,7 @@ const DriveToOwnQuiz = () => {
                         : "border-border bg-card hover:border-primary/40"
                     }`}
                   >
-                    <DollarSign className={`h-5 w-5 mb-2 ${active ? "text-primary" : "text-muted-foreground"}`} />
+                    <DollarSign className={`h-5 w-5 mb-2 ${active ? "text-primary-text" : "text-muted-foreground"}`} />
                     <div className="font-semibold text-foreground">{t(`quiz.rideTier.options.${opt.key}.label`)}</div>
                     <div className="text-xs text-muted-foreground mt-1">{t(`quiz.rideTier.options.${opt.key}.desc`)}</div>
                   </button>
@@ -406,7 +406,7 @@ const DriveToOwnQuiz = () => {
             {!submitted ? (
               <>
                 <div className="text-center mb-6">
-                  <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
+                  <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary-text px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
                     <Sparkles className="h-3.5 w-3.5" /> {t("quiz.result.yourMatch")}
                   </span>
                   <h4 className="text-2xl font-bold text-foreground">
@@ -477,7 +477,7 @@ const DriveToOwnQuiz = () => {
             ) : (
               <div className="text-center py-6">
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="h-8 w-8 text-primary" />
+                  <CheckCircle2 className="h-8 w-8 text-primary-text" />
                 </div>
                 <h4 className="text-xl font-bold text-foreground mb-2">
                   {t("quiz.submitted.title")}

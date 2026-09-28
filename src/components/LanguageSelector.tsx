@@ -47,7 +47,7 @@ const LanguageSelector = ({
         aria-label={t("languageSelector.label")}
         title={t("languageSelector.label")}
         className={cn(
-          "group inline-flex items-center gap-1.5 rounded-control border border-border/70 font-medium text-foreground/80 transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "group inline-flex items-center gap-1.5 rounded-control border border-border/70 font-medium text-foreground/80 transition-colors hover:border-primary/40 hover:text-primary-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           variant === "compact"
             ? "h-9 px-2.5 text-sm"
             : "h-11 w-full justify-center px-4 text-base",
@@ -81,7 +81,7 @@ const LanguageSelector = ({
                 {l.nativeName}
               </span>
               {isActive && (
-                <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                <Check className="h-4 w-4 shrink-0 text-primary-text" aria-hidden="true" />
               )}
             </DropdownMenuItem>
           );

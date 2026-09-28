@@ -218,7 +218,7 @@ const BodyShopForm = () => {
         </Button>
         <p className="text-xs text-muted-foreground text-center">
           {t("shared.preferToTalk")}{" "}
-          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline">
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary-text hover:underline">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </p>

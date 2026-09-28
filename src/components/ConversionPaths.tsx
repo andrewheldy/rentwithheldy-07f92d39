@@ -26,7 +26,7 @@ const ConversionPaths = ({ variant = "page" }: ConversionPathsProps) => {
     >
       <div className={isFooter ? "container mx-auto py-10 sm:py-12" : "container mx-auto"}>
         <div className="mb-7 max-w-2xl sm:mb-9">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary-text">
             {t("conversionPaths.eyebrow")}
           </p>
           <h2 id={headingId} className="text-heading font-bold text-ink">
@@ -54,7 +54,7 @@ const ConversionPaths = ({ variant = "page" }: ConversionPathsProps) => {
             >
               <span
                 className={`flex h-11 w-11 items-center justify-center rounded-control ${
-                  index === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
+                  index === 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary-text"
                 }`}
                 aria-hidden="true"
               >

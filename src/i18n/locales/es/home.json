@@ -14,14 +14,6 @@
       "hotels": "Hoteles",
       "cruisePorts": "Puertos de cruceros",
       "repairShops": "Talleres"
-    },
-    "trust": {
-      "reviews": "Más de 1,400 reseñas de cinco estrellas",
-      "allStar": "All-Star Host",
-      "delivery": "Entrega en hoteles y aeropuertos",
-      "contactless": "Recogida sin contacto",
-      "language": "Escríbenos en tu idioma preferido",
-      "familyOwned": "Empresa familiar"
     }
   },
   "bookingWidget": {

@@ -44,14 +44,15 @@ const HowItWorks = () => {
             <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
               {t("hero.subtitle")}
             </p>
-            <Link to="/book">
-              <Button
-                size="lg"
-                className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-              >
+            <Button
+              size="lg"
+              className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+              asChild
+            >
+              <Link to="/book">
                 {t("hero.cta")}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </section>
 
@@ -143,11 +144,11 @@ const HowItWorks = () => {
             <p className="text-primary-foreground/90 mb-6 max-w-xl mx-auto">
               {t("finalCta.subtitle")}
             </p>
-            <Link to="/book">
-              <Button size="lg" variant="secondary" className="font-semibold">
+            <Button size="lg" variant="secondary" className="font-semibold" asChild>
+              <Link to="/book">
                 {t("common:actions.bookNow")}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </section>
       </main>

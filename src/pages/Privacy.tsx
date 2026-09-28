@@ -109,7 +109,7 @@ const Privacy = () => {
             {t("privacy.choices.text")}{" "}
             <a
               href="mailto:rentwithheldy@gmail.com"
-              className="text-primary underline"
+              className="text-primary-text underline"
               dir="ltr"
             >
               rentwithheldy@gmail.com
@@ -139,14 +139,14 @@ const Privacy = () => {
             Rent With Heldy<br />
             {t("privacy.contact.address")}<br />
             {t("privacy.contact.phoneLabel")}{" "}
-            <a href={CONTACT_PHONE_HREF} className="text-primary underline" dir="ltr">
+            <a href={CONTACT_PHONE_HREF} className="text-primary-text underline" dir="ltr">
               {CONTACT_PHONE_DISPLAY}
             </a>
             <br />
             {t("privacy.contact.emailLabel")}{" "}
             <a
               href="mailto:rentwithheldy@gmail.com"
-              className="text-primary underline"
+              className="text-primary-text underline"
               dir="ltr"
             >
               rentwithheldy@gmail.com

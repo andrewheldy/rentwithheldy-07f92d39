@@ -15,6 +15,8 @@
 // WARNINGS (never fail unless --strict) — likely-untranslated copy:
 //   • a translated value byte-identical to English in a non-legal namespace,
 //     excluding whitelisted proper nouns and intentional English-only keys.
+// …and, for RTL locales, embedded Latin text that the Unicode bidi algorithm
+// will display in the wrong order or wrap badly (see bidiIssues below).
 //
 // Missing keys are NOT a hard error: they intentionally fall back to English.
 // With --strict, any missing key also fails (use for a "100% translated" gate).
@@ -69,6 +71,45 @@ const PROPER_NOUN_VALUES = new Set([
   "you@email.com", // example email placeholder — identical in every locale by design
   "+1 (555) 555-0100", // example phone placeholder — identical in every locale by design
 ]);
+
+// ---- RTL bidi hygiene ---------------------------------------------------------
+// In an RTL paragraph, Latin items joined by a separator ("Uber, Lyft",
+// "UberX / Lyft", "Miami | Rent With Heldy") merge into one left-to-right run,
+// so the items read in reverse order and a preceding Hebrew prefix lands next
+// to the wrong word. An RLM (U+200F) before the next Latin item keeps each item
+// in RTL order — the convention these locale files already use. Separately, a
+// Hebrew prefix before Latin or digits ("ב-Miami", "מ-1,400") may be stranded at
+// a line end because browsers break after "-"; a WORD JOINER (U+2060) after the
+// hyphen keeps it attached. Both marks are invisible.
+const RTL_LOCALES = new Set(["he"]);
+const HEBREW = /[\u05d0-\u05ea]/;
+const BIDI_MARKS = /[\u200e\u200f\u061c\u2066-\u2069]/;
+const LATIN_LIST_SEPARATOR = /(,\s+|\s+\/\s+|\s*[|•·]\s*)(?=[A-Za-z])/g;
+const UNJOINED_PREFIX = /(?<![\u05d0-\u05eaA-Za-z])[בהוכלמש]{1,3}-(?=[A-Za-z0-9])/g;
+// {{placeholders}}, <markup>, URLs and emails are never inspected.
+const PROTECTED = /\{\{[^}]*\}\}|<[^>]+>|https?:\/\/\S+|\S+@\S+/g;
+
+function lastStrongIsLatin(text) {
+  for (let i = text.length - 1; i >= 0; i--) {
+    const ch = text[i];
+    if (BIDI_MARKS.test(ch) || HEBREW.test(ch)) return false;
+    if (/[A-Za-z]/.test(ch)) return true;
+  }
+  return false;
+}
+
+function bidiIssues(value) {
+  if (typeof value !== "string" || !HEBREW.test(value)) return [];
+  const text = value.replace(PROTECTED, (m) => "\u0000".repeat(m.length));
+  const issues = [];
+  for (const m of text.matchAll(LATIN_LIST_SEPARATOR)) {
+    if (lastStrongIsLatin(text.slice(0, m.index)))
+      issues.push(`Latin list "${value.slice(Math.max(0, m.index - 12), m.index + m[0].length + 8)}" needs an RLM (U+200F) before the next item`);
+  }
+  for (const m of text.matchAll(UNJOINED_PREFIX))
+    issues.push(`prefix "${m[0]}${value.slice(m.index + m[0].length, m.index + m[0].length + 10)}" needs a WORD JOINER (U+2060) after the hyphen`);
+  return issues;
+}
 
 function isEnglishOnly(ns, key) {
   return (ENGLISH_ONLY[ns] ?? []).some(
@@ -218,6 +259,12 @@ for (const target of TARGETS) {
             `✗ ${target}/${ns}: original-language testimonial changed at "${k}"`,
           );
         }
+        if (RTL_LOCALES.has(target) && !isEnglishOnly(nsBase, k)) {
+          for (const issue of bidiIssues(flat[k])) {
+            localeWarnings.push(`${ns} → "${k}" bidi: ${issue}`);
+            warnings++;
+          }
+        }
         // English-identical warning (skip legal + proper nouns).
         if (
           typeof flat[k] === "string" &&
@@ -262,7 +309,7 @@ for (const target of TARGETS) {
     for (const w of localeWarnings.slice(0, 40))
       console.log(`  ⚠ ${target}/${w}`);
     if (localeWarnings.length > 40)
-      console.log(`  ⚠ …and ${localeWarnings.length - 40} more identical value(s)`);
+      console.log(`  ⚠ …and ${localeWarnings.length - 40} more warning(s)`);
   }
 }
 
@@ -274,13 +321,13 @@ if (hardErrors) {
 if (STRICT && (strictFailures || warnings)) {
   console.error(
     `i18n:check --strict FAILED — ${strictFailures} untranslated key(s), ` +
-      `${warnings} English-identical value(s).`,
+      `${warnings} warning(s) (English-identical values or RTL bidi marks).`,
   );
   process.exit(1);
 }
 console.log(
   warnings
-    ? `i18n:check passed with ${warnings} warning(s) (English-identical values — review above).`
+    ? `i18n:check passed with ${warnings} warning(s) (English-identical values or RTL bidi marks — review above).`
     : "i18n:check passed.",
 );
 process.exit(0);

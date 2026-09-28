@@ -139,26 +139,21 @@ const ServicePageLayout = ({
     <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
   );
 
-  const renderCta = (cta: CtaLink, variant: "default" | "outline") => {
-    const button = (
-      <Button
-        size="lg"
-        variant={variant}
-        className="h-auto min-h-12 w-full whitespace-normal py-3"
-      >
-        {cta.label}
-      </Button>
-    );
-    return cta.href.startsWith("#") ? (
-      <a href={cta.href} className="w-full min-w-0">
-        {button}
-      </a>
-    ) : (
-      <Link to={cta.href} className="w-full min-w-0">
-        {button}
-      </Link>
-    );
-  };
+  // One focusable element per CTA: the button styling is applied to the link.
+  const renderCta = (cta: CtaLink, variant: "default" | "outline") => (
+    <Button
+      size="lg"
+      variant={variant}
+      className="h-auto min-h-12 w-full min-w-0 whitespace-normal py-3"
+      asChild
+    >
+      {cta.href.startsWith("#") ? (
+        <a href={cta.href}>{cta.label}</a>
+      ) : (
+        <Link to={cta.href}>{cta.label}</Link>
+      )}
+    </Button>
+  );
 
   const bodyMarkup = body?.map((s) => (
     <div key={s.heading}>
@@ -205,7 +200,7 @@ const ServicePageLayout = ({
               aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
-              <Link to="/" className="hover:text-primary">
+              <Link to="/" className="hover:text-primary-text">
                 {t("layout.breadcrumbHome")}
               </Link>
               <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
@@ -215,7 +210,7 @@ const ServicePageLayout = ({
             {heroImage ? (
               <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
                 <div>
-                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary-text bg-primary/10 px-3 py-1 rounded-full mb-4">
                     {eyebrow}
                   </span>
                   <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
@@ -230,7 +225,7 @@ const ServicePageLayout = ({
                   </div>
                   <a
                     href={CONTACT_PHONE_HREF}
-                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary-text"
                   >
                     <Phone className="h-4 w-4" />
                     <span>{t("layout.talkToPerson")}</span>
@@ -257,7 +252,7 @@ const ServicePageLayout = ({
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                 <div>
-                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+                  <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary-text bg-primary/10 px-3 py-1 rounded-full mb-4">
                     {eyebrow}
                   </span>
                   <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
@@ -267,27 +262,29 @@ const ServicePageLayout = ({
                     {intro}
                   </p>
                   <div className="flex max-w-sm flex-col gap-3">
-                    <Link to="/book" className="w-full min-w-0">
-                      <Button
-                        size="lg"
-                        className="h-auto min-h-12 w-full whitespace-normal py-3 bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                      >
+                    <Button
+                      size="lg"
+                      className="h-auto min-h-12 w-full whitespace-normal py-3 bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                      asChild
+                    >
+                      <Link to="/book" className="w-full min-w-0">
                         {t("common:actions.bookNow")}
-                      </Button>
-                    </Link>
-                    <a href="#quick-quote" className="w-full min-w-0">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="h-auto min-h-12 w-full whitespace-normal py-3"
-                      >
+                      </Link>
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="h-auto min-h-12 w-full whitespace-normal py-3"
+                      asChild
+                    >
+                      <a href="#quick-quote" className="w-full min-w-0">
                         {t("common:actions.requestDirectDelivery")}
-                      </Button>
-                    </a>
+                      </a>
+                    </Button>
                   </div>
                   <a
                     href={CONTACT_PHONE_HREF}
-                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary-text"
                   >
                     <Phone className="h-4 w-4" />
                     <span>{t("layout.talkToPerson")}</span>
@@ -353,7 +350,7 @@ const ServicePageLayout = ({
               <ol className="space-y-5">
                 {steps.map((s, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 font-heading font-bold text-primary">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 font-heading font-bold text-primary-text">
                       {i + 1}
                     </span>
                     <p className="pt-1.5 text-base text-muted-foreground leading-relaxed">
@@ -380,7 +377,7 @@ const ServicePageLayout = ({
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {highlights.map((h, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-primary-text shrink-0 mt-0.5" />
                   <span className="text-muted-foreground leading-relaxed">{h}</span>
                 </li>
               ))}
@@ -432,7 +429,7 @@ const ServicePageLayout = ({
               </p>
               <Link
                 to="/local-car-rentals"
-                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-text hover:underline"
               >
                 {t("layout.coverage.localLink")}
                 <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
@@ -444,7 +441,7 @@ const ServicePageLayout = ({
                   key={area}
                   className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-3 transition-colors hover:border-primary/40"
                 >
-                  <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-primary-text flex-shrink-0" />
                   <span className="text-sm font-medium text-foreground">
                     {area}
                   </span>
@@ -460,7 +457,7 @@ const ServicePageLayout = ({
             <div className="rounded-card border border-border bg-card p-6 md:p-8 shadow-card text-center">
               <div className="mb-3 flex justify-center gap-1" aria-hidden>
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  <Star key={i} className="h-4 w-4 fill-primary-text text-primary-text" />
                 ))}
               </div>
               <p
@@ -503,24 +500,26 @@ const ServicePageLayout = ({
               {t("layout.finalCta.subtitle")}
             </p>
             <div className="mx-auto flex max-w-sm flex-col gap-3">
-              <Link to="/book" className="w-full min-w-0">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="h-auto min-h-12 w-full whitespace-normal py-3 font-semibold"
-                >
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-auto min-h-12 w-full whitespace-normal py-3 font-semibold"
+                asChild
+              >
+                <Link to="/book" className="w-full min-w-0">
                   {t("common:actions.bookNow")}
-                </Button>
-              </Link>
-              <a href="#quick-quote" className="w-full min-w-0">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-auto min-h-12 w-full whitespace-normal py-3 bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
-                >
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-auto min-h-12 w-full whitespace-normal py-3 bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
+                asChild
+              >
+                <a href="#quick-quote" className="w-full min-w-0">
                   {t("common:actions.requestDelivery")}
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
           </div>
         </section>

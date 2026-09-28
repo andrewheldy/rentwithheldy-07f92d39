@@ -127,7 +127,7 @@ const PartnerIntakeForm = ({
       <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
         <div className="px-6 py-5 border-b border-border flex items-start gap-3">
           <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <Briefcase className="h-5 w-5 text-primary" />
+            <Briefcase className="h-5 w-5 text-primary-text" />
           </div>
           <div>
             <h3 className="text-lg md:text-xl font-bold text-foreground">{title}</h3>
@@ -137,7 +137,7 @@ const PartnerIntakeForm = ({
           <p className="text-destructive font-medium">
             {t("partnerIntake.errorRetry")}
           </p>
-          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary hover:underline text-sm mt-2 block">
+          <a href={CONTACT_PHONE_HREF} dir="ltr" className="text-primary-text hover:underline text-sm mt-2 block">
             {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
@@ -149,7 +149,7 @@ const PartnerIntakeForm = ({
     <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-card-hover">
       <div className="px-6 py-5 border-b border-border flex items-start gap-3">
         <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <Briefcase className="h-5 w-5 text-primary" />
+          <Briefcase className="h-5 w-5 text-primary-text" />
         </div>
         <div>
           <h3 className="text-lg md:text-xl font-bold text-foreground">
