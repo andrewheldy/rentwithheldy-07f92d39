@@ -148,20 +148,21 @@ const DriveToOwn = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                  <a href="#quiz" className="w-full sm:w-auto">
-                    <Button
-                      size="lg"
-                      className="w-full sm:w-auto bg-ink text-white hover:bg-ink/90 px-8"
-                    >
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto bg-ink text-white hover:bg-ink/90 px-8"
+                    asChild
+                  >
+                    <a href="#quiz" className="w-full sm:w-auto">
                       {t("hero.findMatch")}
                       <ArrowRight className="h-4 w-4 ms-1 rtl:-scale-x-100" />
-                    </Button>
-                  </a>
-                  <a href="#how-it-works" className="w-full sm:w-auto">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                    </a>
+                  </Button>
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+                    <a href="#how-it-works" className="w-full sm:w-auto">
                       {t("hero.seeHowItWorks")}
-                    </Button>
-                  </a>
+                    </a>
+                  </Button>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -450,23 +451,25 @@ const DriveToOwn = () => {
               {t("finalCta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a href="#apply">
-                <Button
-                  size="lg"
-                  className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
-                >
+              <Button
+                size="lg"
+                className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
+                asChild
+              >
+                <a href="#apply">
                   {t("finalCta.apply")}
-                </Button>
-              </a>
-              <a href={CONTACT_PHONE_HREF}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                >
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                asChild
+              >
+                <a href={CONTACT_PHONE_HREF}>
                   <Phone className="h-5 w-5 me-2" /> {t("finalCta.scheduleCall")}
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
             <p className="mt-6 text-sm opacity-80">
               {t("finalCta.browsePrompt")}{" "}

@@ -46,11 +46,11 @@ const FAQ = () => {
           <div className="container mx-auto px-4 max-w-3xl">
             <FAQAccordion items={items} />
             <div className="text-center mt-10">
-              <Link to="/book">
-                <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical">
+              <Button className="bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical" asChild>
+                <Link to="/book">
                   {t("common:actions.bookNow")}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

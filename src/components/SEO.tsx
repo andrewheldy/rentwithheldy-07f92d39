@@ -120,4 +120,4 @@ const SEO = ({
 };
 
 export default SEO;
-export { SITE_URL, DEFAULT_IMAGE };
+export { SITE_URL };

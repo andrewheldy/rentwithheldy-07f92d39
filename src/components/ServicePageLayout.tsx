@@ -139,26 +139,21 @@ const ServicePageLayout = ({
     <QuickQuoteForm serviceContext={serviceContext} verticalPath={verticalPath} defaultPassengerType={defaultPassengerType} />
   );
 
-  const renderCta = (cta: CtaLink, variant: "default" | "outline") => {
-    const button = (
-      <Button
-        size="lg"
-        variant={variant}
-        className="h-auto min-h-12 w-full whitespace-normal py-3"
-      >
-        {cta.label}
-      </Button>
-    );
-    return cta.href.startsWith("#") ? (
-      <a href={cta.href} className="w-full min-w-0">
-        {button}
-      </a>
-    ) : (
-      <Link to={cta.href} className="w-full min-w-0">
-        {button}
-      </Link>
-    );
-  };
+  // One focusable element per CTA: the button styling is applied to the link.
+  const renderCta = (cta: CtaLink, variant: "default" | "outline") => (
+    <Button
+      size="lg"
+      variant={variant}
+      className="h-auto min-h-12 w-full min-w-0 whitespace-normal py-3"
+      asChild
+    >
+      {cta.href.startsWith("#") ? (
+        <a href={cta.href}>{cta.label}</a>
+      ) : (
+        <Link to={cta.href}>{cta.label}</Link>
+      )}
+    </Button>
+  );
 
   const bodyMarkup = body?.map((s) => (
     <div key={s.heading}>
@@ -267,23 +262,25 @@ const ServicePageLayout = ({
                     {intro}
                   </p>
                   <div className="flex max-w-sm flex-col gap-3">
-                    <Link to="/book" className="w-full min-w-0">
-                      <Button
-                        size="lg"
-                        className="h-auto min-h-12 w-full whitespace-normal py-3 bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                      >
+                    <Button
+                      size="lg"
+                      className="h-auto min-h-12 w-full whitespace-normal py-3 bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                      asChild
+                    >
+                      <Link to="/book" className="w-full min-w-0">
                         {t("common:actions.bookNow")}
-                      </Button>
-                    </Link>
-                    <a href="#quick-quote" className="w-full min-w-0">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="h-auto min-h-12 w-full whitespace-normal py-3"
-                      >
+                      </Link>
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="h-auto min-h-12 w-full whitespace-normal py-3"
+                      asChild
+                    >
+                      <a href="#quick-quote" className="w-full min-w-0">
                         {t("common:actions.requestDirectDelivery")}
-                      </Button>
-                    </a>
+                      </a>
+                    </Button>
                   </div>
                   <a
                     href={CONTACT_PHONE_HREF}
@@ -503,24 +500,26 @@ const ServicePageLayout = ({
               {t("layout.finalCta.subtitle")}
             </p>
             <div className="mx-auto flex max-w-sm flex-col gap-3">
-              <Link to="/book" className="w-full min-w-0">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="h-auto min-h-12 w-full whitespace-normal py-3 font-semibold"
-                >
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-auto min-h-12 w-full whitespace-normal py-3 font-semibold"
+                asChild
+              >
+                <Link to="/book" className="w-full min-w-0">
                   {t("common:actions.bookNow")}
-                </Button>
-              </Link>
-              <a href="#quick-quote" className="w-full min-w-0">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-auto min-h-12 w-full whitespace-normal py-3 bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
-                >
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-auto min-h-12 w-full whitespace-normal py-3 bg-transparent text-primary-foreground border-primary-foreground/40 hover:bg-primary-foreground/10"
+                asChild
+              >
+                <a href="#quick-quote" className="w-full min-w-0">
                   {t("common:actions.requestDelivery")}
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
           </div>
         </section>

@@ -295,14 +295,15 @@ const VacationQuiz = () => {
             )}
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/book" className="flex-1">
-                <Button
-                  size="lg"
-                  className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
-                >
+              <Button
+                size="lg"
+                className="w-full bg-gradient-tropical text-primary-foreground hover:opacity-90 shadow-tropical"
+                asChild
+              >
+                <Link to="/book" className="flex-1">
                   {t("result.checkAvailability")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         )}

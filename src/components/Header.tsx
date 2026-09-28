@@ -222,18 +222,20 @@ const Header = () => {
             >
               <UserRound className="h-5 w-5" />
             </Link>
-            <Link
-              to="/book"
-              onClick={() =>
-                track("conversion_path_selected", {
-                  conversion_intent: "rental",
-                  placement: "desktop_navigation",
-                })
-              }
-              className="hidden sm:inline-flex"
-            >
-              <Button size="sm">{t("common:actions.bookNow")}</Button>
-            </Link>
+            <Button size="sm" asChild>
+              <Link
+                to="/book"
+                onClick={() =>
+                  track("conversion_path_selected", {
+                    conversion_intent: "rental",
+                    placement: "desktop_navigation",
+                  })
+                }
+                className="hidden sm:inline-flex"
+              >
+                {t("common:actions.bookNow")}
+              </Link>
+            </Button>
 
             {/* Mobile trigger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>

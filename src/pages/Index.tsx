@@ -93,11 +93,11 @@ const Index = () => {
                 <p className="text-lg text-muted-foreground mb-6">
                   {t("why.description")}
                 </p>
-                <Link to="/book">
-                  <Button size="lg">
+                <Button size="lg" asChild>
+                  <Link to="/book">
                     {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </Reveal>
 
               <div className="space-y-4">
@@ -135,11 +135,11 @@ const Index = () => {
             </Reveal>
             <HowItWorksSteps />
             <div className="mt-10">
-              <Link to="/book">
-                <Button size="lg">
+              <Button size="lg" asChild>
+                <Link to="/book">
                   {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -177,9 +177,9 @@ const Index = () => {
               <FAQAccordion items={faqPreview} />
             </Reveal>
             <div className="text-center mt-8">
-              <Link to="/faq">
-                <Button variant="outline">{t("common:actions.seeAllFaqs")}</Button>
-              </Link>
+              <Button variant="outline" asChild>
+                <Link to="/faq">{t("common:actions.seeAllFaqs")}</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -234,11 +234,11 @@ const Index = () => {
                 </div>
 
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                  <Link to="/book">
-                    <Button size="lg" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto" asChild>
+                    <Link to="/book">
                       {t("common:actions.bookNow")} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </Reveal>
 

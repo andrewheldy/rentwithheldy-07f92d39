@@ -37,7 +37,9 @@
     --popover-foreground: 210 30% 14%;
 
     --primary: 180 85% 45%;
-    --primary-foreground: 0 0% 100%;
+    /* Ink, not white: white on this teal is 1.84:1 (fails WCAG AA); ink is
+       9.05:1 (6.45:1 on hover). Matches the Wheelbase widget's teal button. */
+    --primary-foreground: 210 30% 12%;
     /* Darker teal for solid-button hover — replaces cheap opacity fades */
     --primary-hover: 180 85% 38%;
 
@@ -48,7 +50,7 @@
     --muted-foreground: 210 15% 42%;
 
     --accent: 180 85% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 210 30% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -96,7 +98,7 @@
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     --dur-fast: 150ms;
     --dur-base: 220ms;
-    --dur-reveal: 520ms;
+    --dur-reveal: 320ms; /* interaction spec: reveals 200–350ms */
 
     /* Admin sidebar — warm surface a step below the page, teal-tinted active item */
     --sidebar-background: 42 50% 94%;
