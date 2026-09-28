@@ -9,6 +9,18 @@ meta_description: Rent a car in Fort Lauderdale or Miami with a debit card, pay 
 primary_keyword: local car rental Fort Lauderdale
 cta: browse
 sources:
+  - Forms of payment (debit cards) | https://www.enterprise.com/en/car-rental-faqs/us-deposits-and-payments/forms-of-payment.html | Enterprise
+  - Renting with debit cards | https://www.alamo.com/en/customer-support/car-rental-faqs/renting-with-debit-cards.html | Alamo
+  - Payment methods | https://www.nationalcar.com/en/support/car-rental-faqs/payment-methods.html | National
+  - Credit and debit cards | https://www.hertz.com/us/en/about-us/credit-debit-cards | Hertz
+  - Fort Lauderdale-Hollywood Intl. Airport location and rental terms | https://www.avis.com/en/locations/us/fl/fort-lauderdale/fll | Avis
+  - Rent with a debit card | https://www.budget.com/en/help/usa-faqs/rent-with-debit-card | Budget
+  - Debit card policy | https://www.dollar.com/travelcenter/traveltools/debitcardpolicy.aspx | Dollar
+  - Debit card policy | https://www.thrifty.com/travelcenter/traveltools/debitcardpolicy.aspx | Thrifty
+  - Renting a car under 25 | https://www.enterprise.com/en/car-rental-faqs/us-renter-requirements/car-rental-under-25.html | Enterprise
+  - Taxes, surcharges and fees | https://www.alamo.com/en/customer-support/car-rental-faqs/taxes-surcharges-fees.html | Alamo
+  - Rental cars at FLL | https://www.broward.org/airport/Passengers/Transportation/rentalcars | Broward County
+  - How Affirm works | https://www.affirm.com/how-it-works | Affirm
 ---
 
 When most people book a rental car, they go straight to the names they already know: Enterprise, Hertz, Alamo, Avis, Budget, National, Sixt, Dollar, Thrifty. Those companies are everywhere, and that's exactly why they come to mind first.
@@ -21,7 +33,13 @@ We're Rent With Heldy. We've put together an honest look at how renting local co
 
 A lot of travelers don't use credit cards. Some prefer to keep their spending on a debit card. Some are younger and haven't built credit yet. Some simply don't want another hold sitting on their card for a week.
 
-At the big rental counters, a debit card can be complicated. Policies vary by company and location, and at airport counters they often come with extra requirements, such as showing a return flight, passing a credit check, or leaving a larger hold. It's worth reading the fine print before you get to the counter.
+At the big rental counters, a debit card can be complicated, especially at the airport. Here's what their own policies say for U.S. airport locations:
+
+- **Enterprise, Alamo and National** accept a debit card at the airport only if you also show a ticketed return travel itinerary.
+- **Hertz, Avis and Budget** ask for proof of a return flight, usually run a credit check, and generally require debit card renters to be 25 or older.
+- **Dollar and Thrifty** ask for a return ticket and two forms of ID, usually run a credit check, and place an extra hold of up to $500 on a debit card.
+
+Policies change and vary by location, so read the fine print before you get to the counter.
 
 **At Rent With Heldy, we accept debit cards.** No guessing whether the counter will say yes when you land.
 
@@ -29,11 +47,11 @@ At the big rental counters, a debit card can be complicated. Policies vary by co
 
 Family vacations, long stays and cruise trips add up quickly. We offer **Affirm**, so you can split the cost of your rental into payments instead of paying it all at once.
 
-Affirm shows you what you'll owe before you commit, and you can check your options at checkout. It's one less thing to stretch your budget on a trip that should feel relaxing.
+Affirm shows you exactly what you'll pay before you agree, with no hidden fees. Your payment options depend on your purchase and eligibility, and you'll see them at checkout. It's one less thing to stretch your budget on a trip that should feel relaxing.
 
 ## Bring your own insurance
 
-If you already have car insurance, you may not need to buy extra coverage at the counter. With us, you can **bring your own insurance**. Just show proof of coverage when you book.
+If you already have car insurance, you may not need to buy extra coverage at the counter. With us, you can **bring your own insurance**. You'll just need proof of coverage.
 
 Prefer not to use your own policy? You can choose a protection plan through our booking platform instead. Either way, you'll know what you're covered by before you drive away.
 
@@ -60,7 +78,7 @@ Contactless pickup is available too, so you can pick up the car on your own sche
 
 ## Clear, simple pricing
 
-Rental prices at big airport counters often grow once taxes, airport fees, add-ons and young-driver charges are added. Those charges are real, but they can be hard to see until checkout.
+The price you see at a big airport counter usually isn't the whole price. Companies that rent at the airport pass on airport charges, like concession recovery fees and customer facility charges. Drivers under 25 usually pay a young renter fee too; Enterprise says theirs averages about $25 a day. Add-ons at the counter can push the total higher.
 
 We keep it simple. You see your price when you book. Tolls are billed at cost at the end of your trip, with no extra toll fees on top.
 
@@ -82,9 +100,9 @@ For trips in and around Fort Lauderdale, Miami, Hollywood and Aventura, a local 
 
 | | Rent With Heldy | Big rental companies |
 | --- | --- | --- |
-| Debit cards | Accepted | Varies; often extra requirements at airports |
-| Pay over time | Affirm available | Rarely offered |
-| Your own insurance | Welcome | Usually accepted, with upsells at the counter |
+| Debit cards | Accepted | Extra requirements at most airport counters |
+| Pay over time | Affirm available | Varies by company |
+| Your own insurance | Welcome | Usually accepted; coverage offered at the counter |
 | Vehicle | The exact car you booked | A class of car, "or similar" |
 | Pickup | Airport, hotel, cruise port or delivery | Counter or shuttle to the lot |
 | Who you talk to | Our local team | A national call center |

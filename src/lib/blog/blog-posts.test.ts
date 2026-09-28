@@ -1,7 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-// @ts-expect-error -- plain Node script shared with the content pipeline
 import { buildSql, CTA_BY_ID, loadPosts, markdownToDoc, SQL_FILE } from "../../../scripts/blog-posts.mjs";
 import { collectLinks, docToPlainText } from "./content";
 import { CTA_PRESETS } from "./presets";
