@@ -17,8 +17,8 @@
     },
     "facts": {
       "label": "למה האורחים בוחרים בנו",
-      "reviews": "יותר מ-1,400 ביקורות חמישה כוכבים",
-      "allStar": "All-Star Host ב-Turo",
+      "reviews": "יותר מ-⁠1,400 ביקורות חמישה כוכבים",
+      "allStar": "All-Star Host ב-⁠Turo",
       "family": "משפחתי ומקומי"
     },
     "philosophy": {
@@ -29,7 +29,7 @@
       "eyebrow": "איך אנחנו מארחים",
       "heading": "אנחנו מביאים את הרכב אליכם.",
       "p1": "אנחנו מנהלים את Rent With Heldy כמו שהיינו רוצים שיטפלו בנו בנסיעה משלנו. בלי דלפק השכרה, בלי תור ארוך, בלי לחץ מכירתי. רק הרכב המתאים, איפה ומתי שצריך.",
-      "p2": "אנחנו מתאמים מסירה בשדה התעופה, במלונות ברחבי Broward ו-Miami-Dade, ובנמלי השייט Port Everglades ו-PortMiami. כשמשהו משתנה, כמו טיסה מתעכבת או שהייה ארוכה יותר, אתם שולחים הודעה לאדם אמיתי שיכול לעזור."
+      "p2": "אנחנו מתאמים מסירה בשדה התעופה, במלונות ברחבי Broward ו-⁠Miami-Dade, ובנמלי השייט Port Everglades ו-⁠PortMiami. כשמשהו משתנה, כמו טיסה מתעכבת או שהייה ארוכה יותר, אתם שולחים הודעה לאדם אמיתי שיכול לעזור."
     },
     "services": {
       "heading": "איך זה נראה בפועל",
@@ -41,11 +41,11 @@
         },
         "hotel": {
           "title": "מסירה במלון",
-          "body": "מתארחים ב-Fort Lauderdale או ב-Miami? נוכל להביא את הרכב למלון שלכם."
+          "body": "מתארחים ב-⁠Fort Lauderdale או ב-⁠Miami? נוכל להביא את הרכב למלון שלכם."
         },
         "cruise": {
           "title": "מסירה בנמל השייט",
-          "body": "מתחילים או מסיימים שייט? אנחנו מתאמים איסוף ב-Port Everglades וב-PortMiami."
+          "body": "מתחילים או מסיימים שייט? אנחנו מתאמים איסוף ב-⁠Port Everglades וב-⁠PortMiami."
         },
         "contactless": {
           "title": "איסוף ללא מגע",
@@ -65,11 +65,11 @@
       "heading": "איפה אנחנו פועלים",
       "miamiDade": {
         "title": "מחוז Miami-Dade",
-        "description": "Miami Beach, Downtown Miami, Coral Gables, Aventura והאזורים הסמוכים"
+        "description": "Miami Beach, ‏Downtown Miami, ‏Coral Gables, ‏Aventura והאזורים הסמוכים"
       },
       "broward": {
         "title": "מחוז Broward",
-        "description": "Fort Lauderdale, Hollywood, Pompano Beach, Davie והאזורים הסמוכים"
+        "description": "Fort Lauderdale, ‏Hollywood, ‏Pompano Beach, ‏Davie והאזורים הסמוכים"
       }
     },
     "blog": {
@@ -90,7 +90,7 @@
   "privacy": {
     "meta": {
       "title": "מדיניות פרטיות | Rent With Heldy",
-      "description": "כיצד Rent With Heldy אוספת, משתמשת ומגנה על המידע האישי שלכם כשאתם מזמינים השכרת רכב ב-Fort Lauderdale, ב-Miami או בדרום פלורידה."
+      "description": "כיצד Rent With Heldy אוספת, משתמשת ומגנה על המידע האישי שלכם כשאתם מזמינים השכרת רכב ב-⁠Fort Lauderdale, ב-⁠Miami או בדרום פלורידה."
     },
     "title": "מדיניות פרטיות",
     "lastUpdated": "תאריך כניסה לתוקף: {{date}}",
@@ -99,7 +99,7 @@
   "terms": {
     "meta": {
       "title": "תנאי שירות | Rent With Heldy",
-      "description": "התנאים החלים על הזמנות, השכרות ושימוש באתר ובשירות השכרת הרכב של Rent With Heldy ב-Fort Lauderdale, ב-Miami ובדרום פלורידה."
+      "description": "התנאים החלים על הזמנות, השכרות ושימוש באתר ובשירות השכרת הרכב של Rent With Heldy ב-⁠Fort Lauderdale, ב-⁠Miami ובדרום פלורידה."
     },
     "title": "תנאי שירות",
     "lastUpdated": "תאריך כניסה לתוקף: {{date}}",

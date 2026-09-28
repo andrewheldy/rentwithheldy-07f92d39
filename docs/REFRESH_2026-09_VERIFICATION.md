@@ -97,7 +97,15 @@ The pinned `@playwright/test` expects Chromium build 1228, and this sandbox ship
 ## Open findings (not changed in this refresh)
 
 1. **Teal text contrast.** `text-primary` (eyebrows, text links, icons) is 1.84:1 on white and 1.77:1 on cream, across roughly 60 files. Fixing it needs a brand decision on the teal's lightness. `hsl(180 85% 26%)`, already used for blog links, reaches 5.08:1 on white and 4.88:1 on cream.
-2. **Hebrew brand-name bidi.** Sentences with a Hebrew prefix or trailing punctuation around "Rent With Heldy" reorder visibly — e.g. the home heading "What brings you to Rent With Heldy?" renders as `Rent With-ל Heldy?`. This is a locale-wide pattern (isolate the brand with U+2066…U+2069 or `<bdi>`), so it was left for a dedicated pass.
+2. ~~Hebrew brand-name bidi~~ — **corrected and fixed in a follow-up commit.** The example originally cited here was misread: the home heading "מה מביא אתכם ל-Rent With Heldy?" renders in correct RTL order. At 390px it only wraps inside the brand name. The real defects were two other patterns:
+   - **Latin items joined by `,` `/` `|` `•`** merged into one left-to-right run. Lists read in reverse order, and a Hebrew prefix landed next to the wrong word. For example, the city `<h1>` rendered `Fort Lauderdale, FL-ב`, and the page titles rendered `Miami | Rent With Heldy-וב`.
+   - **Hebrew prefixes before Latin text or digits** (`ו-Pembroke`) could be stranded at a line end.
+
+   Fixed in 202 Hebrew values with invisible marks:
+   - an RLM (U+200F) before the next Latin item, which is the convention the Hebrew files already used;
+   - a WORD JOINER (U+2060) after a prefix hyphen.
+
+   Values identical to English were not touched. `i18n:check` now warns on either pattern in RTL locales: 165 warnings on the old files, 0 now.
 3. **Heading-level skips.** `<h1>` goes straight to `<h3>` on service pages (quote-form card title), How It Works (step cards) and FAQ (Radix accordion questions default to `<h3>`). This is best practice rather than a WCAG failure, and it touches lead-form components.
 4. **320×640 booking card.** On very short phones the booking card starts at 667px, below the fold. This is unchanged from the baseline, since it sits above the removed trust list.
 5. **Business items already open in `COPY_DECISIONS_REQUIRED.md`**, untouched: B4 (JSON-LD `aggregateRating` 4.9/120 vs the on-page "1,400+" claim) and B1 (legal "last updated" date).
