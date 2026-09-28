@@ -42,9 +42,8 @@ const VIEWPORTS = [
   { name: "mobile", width: 390, height: 844 },
   { name: "tablet", width: 768, height: 1024 },
   { name: "laptop", width: 1024, height: 768 },
-  // 1440, not 1280: the shared footer overflows by 4px at exactly 1280 on
-  // every page (pre-existing, unrelated to blog content).
-  { name: "desktop", width: 1440, height: 900 },
+  { name: "desktop", width: 1280, height: 900 },
+  { name: "wide", width: 1440, height: 900 },
 ];
 
 test("the blog index lists every post", async ({ page }) => {
@@ -106,7 +105,7 @@ test("posts keep the English body readable inside RTL Hebrew chrome", async ({ p
   seed(backend);
   await backend.install(page, { asAdmin: false });
   await page.addInitScript(() => localStorage.setItem("rwh.lang", "he"));
-  for (const vp of [VIEWPORTS[0], VIEWPORTS[3]]) {
+  for (const vp of [VIEWPORTS[0], VIEWPORTS[3], VIEWPORTS[4]]) {
     await page.setViewportSize({ width: vp.width, height: vp.height });
     for (const post of posts) {
       await page.goto(`/blog/${post.slug}`);

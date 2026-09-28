@@ -9,7 +9,8 @@ const locales = ["en", "es", "fr", "pt", "he"] as const;
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
   { name: "tablet", width: 768, height: 1024 },
-  { name: "desktop", width: 1440, height: 900 },
+  { name: "desktop", width: 1280, height: 900 },
+  { name: "wide", width: 1440, height: 900 },
 ];
 
 const load = (locale: string, ns: string) =>
