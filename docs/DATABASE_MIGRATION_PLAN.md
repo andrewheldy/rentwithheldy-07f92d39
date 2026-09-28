@@ -206,6 +206,8 @@ Turo has no public host API. The admin downloads the **trip earnings CSV** from 
 
 Each excluded amount is saved in `excluded_breakdown`, so an owner statement shows exactly what was left out. The importer also checks that included + excluded + needs-a-decision equals `Total earnings` for every row. If a row doesn't balance, or has a column the importer has never seen, the import stops instead of guessing.
 
+**Built (admin → Turo import, `/admin/turo-import`):** the page sends the CSV to `api/turo-import.ts`, which checks it first (nothing written) and imports only on request. Parsing and the column rules live in `src/lib/turo/parse.ts`, the database plan in `src/lib/turo/plan.ts`, and the writes in `src/server/turo/import.ts`. Each import is logged in `sync_runs`. An existing earnings row is found through its booking, so re-importing updates it in place whatever `external_id` it was stored under; new rows use the Reservation ID. Trip start and end are read from `Trip start` / `Trip end` (a few similar names are accepted) in `YYYY-MM-DD HH:MM`, ISO, or `M/D/YYYY h:mm AM` form; anything else is reported, not guessed.
+
 **Vehicle matching on import:**
 1. Look up `Vehicle id` in `vehicle_external_refs (source = 'turo')`.
 2. Confirm that the row's VIN, uppercased, equals the mapped vehicle's VIN.

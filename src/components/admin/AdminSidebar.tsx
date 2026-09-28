@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { Car, ExternalLink, FilePlus2, FileSignature, Images, Inbox, LogOut, Newspaper, Settings, UsersRound } from "lucide-react";
+import { Car, ExternalLink, FilePlus2, FileSignature, FileUp, Images, Inbox, LogOut, Newspaper, Settings, UsersRound } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -31,7 +31,10 @@ type AdminNavGroup = { label: string; items: AdminNavItem[] };
 const adminNavGroups: AdminNavGroup[] = [
   {
     label: "Owners",
-    items: [{ label: "Consigners", to: "/admin/consigners", icon: UsersRound }],
+    items: [
+      { label: "Consigners", to: "/admin/consigners", icon: UsersRound },
+      { label: "Turo import", to: "/admin/turo-import", icon: FileUp },
+    ],
   },
   {
     label: "Content",

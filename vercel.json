@@ -23,7 +23,8 @@
     }
   ],
   "functions": {
-    "api/blog-page.ts": { "includeFiles": "dist/index.html" }
+    "api/blog-page.ts": { "includeFiles": "dist/index.html" },
+    "api/turo-import.ts": { "maxDuration": 60 }
   },
   "rewrites": [
     { "source": "/sitemap-blog.xml", "destination": "/api/blog-sitemap" },

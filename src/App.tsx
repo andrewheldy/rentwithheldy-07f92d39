@@ -50,6 +50,7 @@ const AdminBlogEditor = lazy(() => import("./pages/AdminBlogEditor"));
 const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
 const AdminConsigners = lazy(() => import("./pages/AdminConsigners"));
 const AdminSettings = lazy(() => import("./pages/AdminSettings"));
+const AdminTuroImport = lazy(() => import("./pages/AdminTuroImport"));
 
 const adminFallback = <div className="min-h-screen bg-background" aria-busy="true" />;
 const adminBlogRoute = (element: JSX.Element) => (
@@ -138,6 +139,7 @@ const App = () => (
             >
               <Route path="/admin" element={<Navigate to="/admin/consigners" replace />} />
               <Route path="/admin/consigners" element={<AdminConsigners />} />
+              <Route path="/admin/turo-import" element={<AdminTuroImport />} />
               <Route path="/admin/blog" element={<AdminBlog />} />
               <Route path="/admin/blog/new" element={<AdminBlogEditor />} />
               <Route path="/admin/blog/:id" element={<AdminBlogEditor />} />
