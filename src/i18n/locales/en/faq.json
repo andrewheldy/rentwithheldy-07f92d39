@@ -30,7 +30,15 @@
     },
     {
       "question": "What documents do I need?",
-      "answer": "A valid driver's license, a credit card in the renter's name, and proof of insurance or an active protection plan through the booking platform. International renters are welcome with a valid license and passport."
+      "answer": "A valid driver's license, a credit or debit card in the renter's name, and proof of your own insurance or an active protection plan through the booking platform. International renters are welcome with a valid license and passport."
+    },
+    {
+      "question": "What forms of payment do you accept?",
+      "answer": "We accept credit and debit cards in the renter's name. You can also pay over time with Affirm, subject to eligibility. You'll see your payment options at checkout."
+    },
+    {
+      "question": "Can I use my own car insurance?",
+      "answer": "Yes. Bring proof of your own auto insurance, or choose a protection plan through our booking platform instead. It's worth calling your insurer before your trip to confirm your policy covers rental cars."
     },
     {
       "question": "How do tolls work?",

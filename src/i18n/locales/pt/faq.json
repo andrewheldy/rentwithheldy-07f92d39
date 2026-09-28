@@ -30,7 +30,15 @@
     },
     {
       "question": "Quais documentos eu preciso?",
-      "answer": "Uma carteira de motorista válida, um cartão de crédito no nome do locatário e um comprovante de seguro ou um plano de proteção ativo pela plataforma de reserva. Motoristas internacionais são bem-vindos com uma carteira válida e passaporte."
+      "answer": "Uma carteira de motorista válida, um cartão de crédito ou débito no nome do locatário e um comprovante do seu próprio seguro ou um plano de proteção ativo pela plataforma de reserva. Motoristas internacionais são bem-vindos com uma carteira válida e passaporte."
+    },
+    {
+      "question": "Quais formas de pagamento vocês aceitam?",
+      "answer": "Aceitamos cartões de crédito e débito no nome do locatário. Você também pode parcelar o pagamento com a Affirm, sujeito a aprovação. Você verá suas opções de pagamento ao finalizar a reserva."
+    },
+    {
+      "question": "Posso usar meu próprio seguro de carro?",
+      "answer": "Sim. Traga o comprovante do seu próprio seguro de carro ou, se preferir, escolha um plano de proteção pela nossa plataforma de reserva. Vale a pena ligar para a sua seguradora antes da viagem para confirmar que a apólice cobre carros alugados."
     },
     {
       "question": "Como funcionam os pedágios?",

@@ -33,7 +33,7 @@
     },
     "step2": {
       "heading": "2. Reserve em minutos",
-      "body": "Escolha o carro que você quer e conclua o pagamento. As reservas são confirmadas na hora — você recebe um e-mail com os detalhes da reserva na mesma hora. O veículo fica reservado exclusivamente para as suas datas."
+      "body": "Escolha o carro que você quer e conclua o pagamento. As reservas são confirmadas na hora — você recebe um e-mail com os detalhes da reserva na mesma hora. O veículo fica reservado exclusivamente para as suas datas. Pague com cartão de crédito ou débito, ou divida o valor em parcelas com a Affirm."
     },
     "step3": {
       "heading": "3. Combine a retirada com nossa equipe",
@@ -52,8 +52,8 @@
     "heading": "O que você vai precisar na retirada",
     "items": [
       "Uma carteira de motorista válida (carteiras internacionais são aceitas com passaporte).",
-      "Um cartão de crédito no nome do locatário.",
-      "Comprovante de seguro ou um plano de proteção ativo pela plataforma de reserva.",
+      "Um cartão de crédito ou débito no nome do locatário.",
+      "Comprovante do seu próprio seguro ou um plano de proteção ativo pela plataforma de reserva.",
       "Idade mínima de 21 anos (alguns veículos premium exigem 25+)."
     ]
   },
