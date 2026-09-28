@@ -118,7 +118,7 @@ const QuestionnaireShell = ({
 
           <div className="flex flex-1 flex-col px-5 py-8 sm:px-9 sm:py-10 lg:px-14 lg:py-12">
             <div key={step} className="animate-fade-in">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-text">
                 {eyebrow}
               </p>
               <h2

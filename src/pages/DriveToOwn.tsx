@@ -279,7 +279,7 @@ const DriveToOwn = () => {
 
               <Card className="border-none shadow-tropical ring-2 ring-primary/20">
                 <CardContent className="p-6 md:p-8">
-                  <h3 className="text-lg font-semibold mb-4 text-primary">
+                  <h3 className="text-lg font-semibold mb-4 text-primary-text">
                     {t("comparison.rentToOwn.title")}
                   </h3>
                   <ul className="space-y-3">
@@ -289,7 +289,7 @@ const DriveToOwn = () => {
                       }) as string[]
                     ).map((item) => (
                       <li key={item} className="flex items-start gap-3 text-sm">
-                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary-text flex-shrink-0 mt-0.5" />
                         <span className="text-foreground">{item}</span>
                       </li>
                     ))}
@@ -453,7 +453,7 @@ const DriveToOwn = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 size="lg"
-                className="bg-card text-primary hover:bg-card/90 shadow-tropical px-8"
+                className="bg-card text-primary-text hover:bg-card/90 shadow-tropical px-8"
                 asChild
               >
                 <a href="#apply">
@@ -463,7 +463,7 @@ const DriveToOwn = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary-text"
                 asChild
               >
                 <a href={CONTACT_PHONE_HREF}>

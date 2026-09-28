@@ -39,7 +39,9 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					// Accessible teal for text/icons on light surfaces (see --primary-text)
+					text: 'hsl(var(--primary-text))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',

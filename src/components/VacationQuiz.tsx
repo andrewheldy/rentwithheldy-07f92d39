@@ -126,7 +126,7 @@ const VacationQuiz = () => {
     <Card data-testid="trip-planner" className="border-none shadow-card-hover overflow-hidden">
       <CardContent className="p-6 md:p-10">
         <div className="flex items-center justify-between mb-2">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary-text">
             <Sparkles className="h-3.5 w-3.5" /> {t("quiz.eyebrow")}
           </div>
           {step > 0 && step < 3 && (

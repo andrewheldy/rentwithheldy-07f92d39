@@ -99,7 +99,7 @@ export function AgreementDocument({
           {document.sections.map((section) => (
             <section key={section.number} aria-labelledby={`agreement-section-${section.number}`}>
               <h2 id={`agreement-section-${section.number}`} className="border-t border-border pt-5 text-lg font-semibold">
-                <span className="me-2 text-primary">{section.number}.</span>{section.title}
+                <span className="me-2 text-primary-text">{section.number}.</span>{section.title}
               </h2>
               <div className="mt-4 space-y-4 text-[0.98rem] leading-7 text-[hsl(var(--foreground))]">
                 {section.blocks.map((block, index) => {

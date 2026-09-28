@@ -136,13 +136,13 @@ const Contact = () => {
           <div className="container mx-auto px-4 max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
-                <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
+                <Phone className="h-8 w-8 text-primary-text mx-auto mb-3" />
                 <h2 className="text-lg font-semibold mb-1">{t("cards.call.title")}</h2>
                 <a
                   href={CONTACT_PHONE_HREF}
                   dir="ltr"
                   onClick={() => track("call_cta_click", { placement: "contact_card" })}
-                  className="text-primary font-medium hover:underline"
+                  className="text-primary-text font-medium hover:underline"
                 >
                   {CONTACT_PHONE_DISPLAY}
                 </a>
@@ -151,12 +151,12 @@ const Contact = () => {
             </Card>
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
-                <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                <Mail className="h-8 w-8 text-primary-text mx-auto mb-3" />
                 <h2 className="text-lg font-semibold mb-1">{t("cards.email.title")}</h2>
                 <a
                   href="mailto:rentwithheldy@gmail.com"
                   dir="ltr"
-                  className="text-primary font-medium hover:underline break-all"
+                  className="text-primary-text font-medium hover:underline break-all"
                 >
                   rentwithheldy@gmail.com
                 </a>
@@ -165,7 +165,7 @@ const Contact = () => {
             </Card>
             <Card className="border-none shadow-card-hover">
               <CardContent className="p-6 text-center">
-                <MapPin className="h-8 w-8 text-primary mx-auto mb-3" />
+                <MapPin className="h-8 w-8 text-primary-text mx-auto mb-3" />
                 <h2 className="text-lg font-semibold mb-1">{t("cards.serviceArea.title")}</h2>
                 <p className="text-sm text-muted-foreground">
                   {t("cards.serviceArea.value")}
@@ -222,7 +222,7 @@ const Contact = () => {
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
                   {t("form.preferToTalk")}{" "}
-                  <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "contact_form_footer" })} className="text-primary hover:underline">{CONTACT_PHONE_DISPLAY}</a>
+                  <a href={CONTACT_PHONE_HREF} dir="ltr" onClick={() => track("call_cta_click", { placement: "contact_form_footer" })} className="text-primary-text hover:underline">{CONTACT_PHONE_DISPLAY}</a>
                 </p>
               </form>
             </div>

@@ -42,6 +42,12 @@
     --primary-foreground: 210 30% 12%;
     /* Darker teal for solid-button hover — replaces cheap opacity fades */
     --primary-hover: 180 85% 38%;
+    /* Brand teal as a FOREGROUND on light surfaces (text, links, icons).
+       --primary is 1.84:1 on white; this is 5.81:1 on white, 5.59:1 on cream,
+       5.03:1 on sand, >=4.72:1 on every light surface in use. On dark ink keep
+       text-primary (9.05:1). Fills, rings, the logo and the Wheelbase widget
+       stay on --primary. */
+    --primary-text: 180 85% 24%;
 
     --secondary: 42 45% 92%;
     --secondary-foreground: 210 30% 14%;
@@ -225,8 +231,7 @@
     margin-top: 0.75em;
   }
   .blog-prose a {
-    /* Darker teal than --primary: brand teal fails AA as body-text link color. */
-    color: hsl(180 85% 26%);
+    color: hsl(var(--primary-text));
     @apply font-medium underline decoration-primary/40 underline-offset-[3px] transition-colors hover:decoration-primary;
   }
   .blog-prose strong {
@@ -249,7 +254,7 @@
     margin-top: 0.5em;
   }
   .blog-prose li::marker {
-    @apply text-primary;
+    @apply text-primary-text;
   }
   .blog-prose li > p {
     margin: 0;

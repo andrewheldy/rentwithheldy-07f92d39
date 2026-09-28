@@ -65,7 +65,7 @@ export default function AdminAgreements() {
       <AdminSectionHeader title="Agreements" />
       <main className="container mx-auto space-y-6 px-4 py-6 sm:py-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Document operations</p><h2 className="mt-1 text-3xl font-semibold">Agreements</h2><p className="mt-2 text-muted-foreground">Create, send, track, and download executed agreements.</p></div>
+          <div><p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-text">Document operations</p><h2 className="mt-1 text-3xl font-semibold">Agreements</h2><p className="mt-2 text-muted-foreground">Create, send, track, and download executed agreements.</p></div>
           <Button asChild size="lg"><Link to="/admin/agreements/new"><Plus className="me-2 h-4 w-4" /> New Agreement</Link></Button>
         </div>
 

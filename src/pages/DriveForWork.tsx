@@ -28,7 +28,7 @@ const DriveForWork = () => {
           <div className="container mx-auto grid min-h-[560px] grid-cols-1 items-stretch lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.72fr)]">
             <div className="flex items-center py-16 pe-0 lg:py-24 lg:pe-16">
               <div className="max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-text">
                   {t("driver.hero.eyebrow")}
                 </p>
                 <h1 className="mt-5 text-display-lg font-semibold text-ink">
@@ -47,7 +47,7 @@ const DriveForWork = () => {
                     </a>
                   </Button>
                   <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock3 className="h-4 w-4 text-primary" /> {t("driver.hero.microcopy")}
+                    <Clock3 className="h-4 w-4 text-primary-text" /> {t("driver.hero.microcopy")}
                   </span>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const DriveForWork = () => {
           <div className="container mx-auto grid gap-4 py-6 sm:grid-cols-3">
             {["honest", "local", "flexible"].map((key) => (
               <div key={key} className="flex items-center gap-3 text-sm font-medium text-foreground">
-                <Check className="h-4 w-4 shrink-0 text-primary" /> {t(`driver.trust.${key}`)}
+                <Check className="h-4 w-4 shrink-0 text-primary-text" /> {t(`driver.trust.${key}`)}
               </div>
             ))}
           </div>

@@ -96,7 +96,19 @@ The pinned `@playwright/test` expects Chromium build 1228, and this sandbox ship
 
 ## Open findings (not changed in this refresh)
 
-1. **Teal text contrast.** `text-primary` (eyebrows, text links, icons) is 1.84:1 on white and 1.77:1 on cream, across roughly 60 files. Fixing it needs a brand decision on the teal's lightness. `hsl(180 85% 26%)`, already used for blog links, reaches 5.08:1 on white and 4.88:1 on cream.
+1. ~~Teal text contrast~~ — **fixed in a follow-up commit.**
+   - **Decision:** the owner chose `--primary-text: 180 85% 24%` (#097171) for teal text and icons on light surfaces. The candidates are compared in `refresh-evidence/text-teal-candidates.png`.
+   - **Scope:** `text-primary` and `fill-primary` on light surfaces now use `text-primary-text`. So do the ghost button's hover, the blog link color and the blog list markers.
+   - **Unchanged:**
+     - teal on dark ink keeps the brand teal: the conversion card, the Passenger Vans dark panels, the funnel "What we'll ask" panels, the Local Car Rentals hero, the About quote marks and the blog call-to-action;
+     - `bg-primary`, rings and borders;
+     - the logo and the Wheelbase widget.
+   - **Measured in Chromium:** 3,183 rendered teal elements across 22 public routes, en and he, at 390/768/1440px.
+     - All pass WCAG AA: 4.5:1 for normal text, 3:1 for large text and icons.
+     - Worst deep-teal text is 5.03:1 on sand; worst icon is 4.72:1 on a teal-tinted chip.
+     - Brand teal on ink is 9.05:1.
+     - No brand-teal text remains on a light surface, and no deep teal is used on a dark one.
+   - **Not measured:** admin and blog screens can't render here without a backend. They were reviewed in source; all their uses sit on light cards or pages, except the blog call-to-action on ink, which keeps the brand teal.
 2. ~~Hebrew brand-name bidi~~ — **corrected and fixed in a follow-up commit.** The example originally cited here was misread: the home heading "מה מביא אתכם ל-Rent With Heldy?" renders in correct RTL order. At 390px it only wraps inside the brand name. The real defects were two other patterns:
    - **Latin items joined by `,` `/` `|` `•`** merged into one left-to-right run. Lists read in reverse order, and a Hebrew prefix landed next to the wrong word. For example, the city `<h1>` rendered `Fort Lauderdale, FL-ב`, and the page titles rendered `Miami | Rent With Heldy-וב`.
    - **Hebrew prefixes before Latin text or digits** (`ו-Pembroke`) could be stranded at a line end.

@@ -308,7 +308,7 @@ const AdminLeads = () => {
                           {lead.first_name} {lead.last_name}
                         </TableCell>
                         <TableCell>
-                          <a href={`tel:${lead.phone}`} className="text-primary hover:underline">
+                          <a href={`tel:${lead.phone}`} className="text-primary-text hover:underline">
                             {lead.phone}
                           </a>
                         </TableCell>
@@ -400,7 +400,7 @@ const AdminLeads = () => {
                         <TableCell>
                           <a
                             href={`tel:${l.phone}`}
-                            className="text-primary hover:underline"
+                            className="text-primary-text hover:underline"
                           >
                             {l.phone}
                           </a>

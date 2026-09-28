@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) 
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+          <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary-text" />
           <p className="text-muted-foreground">Checking authorization...</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const ProtectedRoute = ({ children, requireAdmin = true }: ProtectedRouteProps) 
           </p>
           <a 
             href="/" 
-            className="inline-block text-primary hover:underline"
+            className="inline-block text-primary-text hover:underline"
           >
             Return to Home
           </a>

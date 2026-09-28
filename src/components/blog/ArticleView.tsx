@@ -57,7 +57,7 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
                         {crumb.name}
                       </span>
                     ) : (
-                      <Link to={crumb.path} className="transition-colors hover:text-primary">
+                      <Link to={crumb.path} className="transition-colors hover:text-primary-text">
                         {crumb.name}
                       </Link>
                     )}
@@ -70,7 +70,7 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
           {post.category && (
             <Link
               to={crumbs[1].path}
-              className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary hover:underline"
+              className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary-text hover:underline"
             >
               {categoryLabel(post.category)}
             </Link>
@@ -132,7 +132,7 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
           {locale !== "en" && (
             <aside role="note" className="mb-10 rounded-card border border-border bg-secondary/50 p-4 sm:p-5">
               <div className="flex items-start gap-3">
-                <Info className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                <Info className="mt-0.5 h-5 w-5 shrink-0 text-primary-text" aria-hidden />
                 <div>
                   <p className="font-semibold text-foreground">{t("article.englishNotice.heading")}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t("article.englishNotice.body")}</p>
@@ -174,7 +174,7 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
                         href={source.url}
                         target="_blank"
                         rel="noopener noreferrer nofollow"
-                        className="font-medium text-ink underline decoration-border underline-offset-[3px] transition-colors hover:text-primary hover:decoration-primary"
+                        className="font-medium text-ink underline decoration-border underline-offset-[3px] transition-colors hover:text-primary-text hover:decoration-primary"
                       >
                         {source.name}
                         <ExternalLink className="ms-1 inline h-3.5 w-3.5 align-[-2px]" aria-hidden />
@@ -233,7 +233,7 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
             <h2 id="related-articles" className="font-heading text-heading font-bold text-ink">
               {t("article.relatedHeading")}
             </h2>
-            <Link to="/blog" className="inline-flex items-center gap-1.5 font-semibold text-ink hover:text-primary">
+            <Link to="/blog" className="inline-flex items-center gap-1.5 font-semibold text-ink hover:text-primary-text">
               {t("article.allArticles")}
               <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
             </Link>

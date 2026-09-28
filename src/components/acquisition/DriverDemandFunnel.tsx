@@ -340,8 +340,8 @@ const DriverDemandFunnel = () => {
   if (submitted) {
     return (
       <section className="rounded-card border border-border bg-card px-6 py-12 text-center shadow-card sm:px-10" aria-live="polite">
-        <CheckCircle2 className="mx-auto h-11 w-11 text-primary" />
-        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+        <CheckCircle2 className="mx-auto h-11 w-11 text-primary-text" />
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-text">
           {t("driver.confirmation.eyebrow")}
         </p>
         <h2 className="mt-3 text-heading font-semibold text-ink">
@@ -448,7 +448,7 @@ const DriverDemandFunnel = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleEmpowerClick}
-                    className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline"
+                    className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-primary-text hover:underline"
                   >
                     {t("driver.empower.cta")} <ExternalLink className="h-4 w-4" />
                   </a>

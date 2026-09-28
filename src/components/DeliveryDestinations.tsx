@@ -41,7 +41,7 @@ const DeliveryDestinations = () => {
     <section className="py-20 sm:py-28">
       <div className="container mx-auto">
         <Reveal className="mb-12 max-w-2xl sm:mb-14">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary-text">
             {t("destinations.eyebrow")}
           </p>
           <h2 className="mb-4 text-heading font-bold text-ink">
@@ -98,7 +98,7 @@ const DeliveryDestinations = () => {
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {t(`destinations.cards.${d.key}.description`)}
                     </p>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-primary">
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-primary-text">
                       {ctaLabel}
                       <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 rtl:-scale-x-100" />
                     </span>
@@ -112,13 +112,13 @@ const DeliveryDestinations = () => {
         {/* Locations — preserve internal links for SEO */}
         <Reveal className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
           <span className="flex items-center gap-1.5 font-medium text-foreground/70">
-            <MapPin className="h-4 w-4 text-primary" /> {t("destinations.serving")}
+            <MapPin className="h-4 w-4 text-primary-text" /> {t("destinations.serving")}
           </span>
           {LOCATIONS.map((l, i) => (
             <span key={l.to} className="flex items-center gap-3">
               <Link
                 to={l.to}
-                className="font-medium text-foreground/80 transition-colors hover:text-primary"
+                className="font-medium text-foreground/80 transition-colors hover:text-primary-text"
               >
                 {t(`destinations.locations.${l.key}`)}
               </Link>

@@ -152,7 +152,7 @@ export default function AdminBlog() {
       <main className="container mx-auto space-y-6 px-4 py-6 sm:py-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Content</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-text">Content</p>
             <h2 className="mt-1 text-3xl font-semibold">Blog posts</h2>
             <p className="mt-2 text-muted-foreground">Write, preview, schedule and publish articles for rentwithheldy.com/blog.</p>
           </div>
@@ -231,7 +231,7 @@ export default function AdminBlog() {
                   {filtered.map((post) => (
                     <TableRow key={post.id}>
                       <TableCell className="max-w-sm">
-                        <Link to={`/admin/blog/${post.id}`} className="font-semibold hover:text-primary">{post.title}</Link>
+                        <Link to={`/admin/blog/${post.id}`} className="font-semibold hover:text-primary-text">{post.title}</Link>
                         <p className="mt-0.5 truncate font-mono text-xs text-muted-foreground">/blog/{post.slug}</p>
                       </TableCell>
                       <TableCell>{post.category?.name ?? "—"}</TableCell>

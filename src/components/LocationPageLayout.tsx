@@ -88,7 +88,7 @@ const LocationPageLayout = ({
               aria-label={t("layout.breadcrumbLabel")}
               className="text-xs text-muted-foreground mb-4 flex items-center gap-1"
             >
-              <Link to="/" className="hover:text-primary">
+              <Link to="/" className="hover:text-primary-text">
                 {t("layout.breadcrumbHome")}
               </Link>
               <ChevronRight className="h-3 w-3 rtl:-scale-x-100" />
@@ -164,14 +164,14 @@ const LocationPageLayout = ({
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <li>
-                <Link to="/book" className="text-primary hover:underline">
+                <Link to="/book" className="text-primary-text hover:underline">
                   → {t("layout.exploreMore.links.fleet")}
                 </Link>
               </li>
               <li>
                 <Link
                   to="/how-it-works"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.howItWorks")}
                 </Link>
@@ -179,7 +179,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/car-rental-fort-lauderdale"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.fortLauderdale")}
                 </Link>
@@ -187,7 +187,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/car-rental-miami"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.miami")}
                 </Link>
@@ -195,7 +195,7 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/fort-lauderdale-airport-car-rental"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.airport")}
                 </Link>
@@ -203,13 +203,13 @@ const LocationPageLayout = ({
               <li>
                 <Link
                   to="/local-car-rentals"
-                  className="text-primary hover:underline"
+                  className="text-primary-text hover:underline"
                 >
                   → {t("layout.exploreMore.links.local")}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-primary hover:underline">
+                <Link to="/contact" className="text-primary-text hover:underline">
                   → {t("layout.exploreMore.links.contact")}
                 </Link>
               </li>

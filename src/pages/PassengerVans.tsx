@@ -216,7 +216,7 @@ const PassengerVans = () => {
           <div className="container mx-auto">
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
               <Reveal className="lg:sticky lg:top-28 lg:self-start">
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary-text">
                   {t("story.eyebrow")}
                 </p>
                 <h2 id="travel-together-title" className="mt-3 text-display font-bold text-ink">
@@ -247,7 +247,7 @@ const PassengerVans = () => {
         <section id="vans" className="scroll-mt-24 bg-secondary py-16 sm:py-24" aria-labelledby="meet-vans-title">
           <div className="container mx-auto">
             <Reveal className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-text">
                 {t("vehicles.eyebrow")}
               </p>
               <h2 id="meet-vans-title" className="mt-3 text-display font-bold text-ink">
@@ -282,7 +282,7 @@ const PassengerVans = () => {
                       className={cn("min-w-0 lg:col-span-5", index % 2 === 1 && "lg:order-1")}
                     >
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+                        <span className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-text">
                           {van.year}
                         </span>
                         {van.premium && (
@@ -295,7 +295,7 @@ const PassengerVans = () => {
                         {van.name}
                       </h3>
                       <p className="mt-3 flex items-center gap-2 font-semibold text-foreground">
-                        <Users className="h-5 w-5 text-primary" aria-hidden="true" />
+                        <Users className="h-5 w-5 text-primary-text" aria-hidden="true" />
                         {t("vehicles.capacity", { count: van.capacity })}
                       </p>
                       <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -304,7 +304,7 @@ const PassengerVans = () => {
                       <ul className="mt-6 space-y-3">
                         {highlights.map((highlight) => (
                           <li key={highlight} className="flex items-start gap-3 text-sm text-foreground/85">
-                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary-text" aria-hidden="true" />
                             {highlight}
                           </li>
                         ))}
@@ -395,7 +395,7 @@ const PassengerVans = () => {
         <section className="py-16 sm:py-24" aria-labelledby="trip-selector-title">
           <div className="container mx-auto">
             <Reveal className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-text">
                 {t("tripSelector.eyebrow")}
               </p>
               <h2 id="trip-selector-title" className="mt-3 text-display font-bold text-ink">
@@ -425,7 +425,7 @@ const PassengerVans = () => {
                         : "border-border bg-card text-muted-foreground hover:border-ink/25 hover:text-foreground",
                     )}
                   >
-                    <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                    <Icon className="h-5 w-5 text-primary-text" aria-hidden="true" />
                     <span className="mt-4 text-sm font-semibold">
                       {t(`tripSelector.options.${key}.label`)}
                     </span>
@@ -440,7 +440,7 @@ const PassengerVans = () => {
                 className="flex min-h-80 flex-col justify-between rounded-card border border-border bg-card p-7 shadow-card sm:p-10"
               >
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-primary-text">
                     {t(`tripSelector.options.${selectedTrip}.label`)}
                   </p>
                   <h3 className="mt-3 text-heading font-bold text-ink">
@@ -486,7 +486,7 @@ const PassengerVans = () => {
             <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
               <Reveal>
                 <div className="flex h-12 w-12 items-center justify-center rounded-control bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" aria-hidden="true" />
+                  <MapPin className="h-6 w-6 text-primary-text" aria-hidden="true" />
                 </div>
                 <h2 id="coverage-title" className="mt-5 text-display font-bold text-ink">
                   {t("coverage.title")}
@@ -521,7 +521,7 @@ const PassengerVans = () => {
                   ))}
                 </ul>
                 <div className="mt-8 flex items-center gap-3 border-t border-border pt-5 text-xs text-muted-foreground">
-                  <Plane className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <Plane className="h-4 w-4 text-primary-text" aria-hidden="true" />
                   {t("coverage.note")}
                 </div>
               </Reveal>
@@ -532,7 +532,7 @@ const PassengerVans = () => {
         <section id="passenger-van-inquiry" className="scroll-mt-20 py-16 sm:py-24" aria-labelledby="inquiry-title">
           <div className="container mx-auto">
             <Reveal className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-text">
                 {t("conversion.eyebrow")}
               </p>
               <h2 id="inquiry-title" className="mt-3 text-display font-bold text-ink">
@@ -602,7 +602,7 @@ const PassengerVans = () => {
         <section className="py-16 sm:py-24" aria-labelledby="passenger-vans-faq-title">
           <div className="container mx-auto max-w-3xl">
             <Reveal>
-              <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary">
+              <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-text">
                 {t("faq.eyebrow")}
               </p>
               <h2 id="passenger-vans-faq-title" className="mt-3 text-center text-display font-bold text-ink">

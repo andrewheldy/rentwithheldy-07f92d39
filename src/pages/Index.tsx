@@ -65,7 +65,7 @@ const Index = () => {
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
               {TRUST_STRIP.map(({ icon: Icon, key }) => (
                 <li key={key} className="flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-primary" />
+                  <Icon className="h-4 w-4 text-primary-text" />
                   <span className="font-medium text-foreground/80">{t(`trustStrip.${key}`)}</span>
                 </li>
               ))}
@@ -84,7 +84,7 @@ const Index = () => {
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <Reveal>
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary-text mb-3">
                   {t("why.eyebrow")}
                 </p>
                 <h2 className="text-heading font-bold text-ink mb-5">
@@ -105,7 +105,7 @@ const Index = () => {
                   <Reveal key={w.key} delay={i * 70}>
                     <div className="flex gap-4 rounded-card border border-border bg-card p-5 shadow-card">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                        <w.icon className="h-5 w-5 text-primary" />
+                        <w.icon className="h-5 w-5 text-primary-text" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-ink mb-1">{t(`why.cards.${w.key}.title`)}</h3>
@@ -123,7 +123,7 @@ const Index = () => {
         <section className="py-16 sm:py-24">
           <div className="container mx-auto">
             <Reveal className="max-w-2xl mb-12">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-text mb-3">
                 {t("howItWorks.eyebrow")}
               </p>
               <h2 className="text-heading font-bold text-ink mb-4">
@@ -148,7 +148,7 @@ const Index = () => {
         <section className="py-16 sm:py-24">
           <div className="container mx-auto">
             <Reveal className="max-w-2xl mb-10">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-text mb-3">
                 {t("reviews.eyebrow")}
               </p>
               <h2 className="text-heading font-bold text-ink mb-4">
@@ -189,7 +189,7 @@ const Index = () => {
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
               <Reveal className="min-w-0">
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary-text mb-3">
                   {t("contactClose.eyebrow")}
                 </p>
                 <h2 className="text-heading font-bold text-ink mb-4">
@@ -202,10 +202,10 @@ const Index = () => {
                 <div className="space-y-4">
                   <a href={CONTACT_PHONE_HREF} className="flex items-center gap-3 group">
                     <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                      <Phone className="h-5 w-5 text-primary" />
+                      <Phone className="h-5 w-5 text-primary-text" />
                     </span>
                     <span className="leading-tight">
-                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary-text transition-colors">
                         {CONTACT_PHONE_DISPLAY}
                       </span>
                       <span className="block text-sm text-muted-foreground">{t("contactClose.phoneLabel")}</span>
@@ -213,10 +213,10 @@ const Index = () => {
                   </a>
                   <a href="mailto:rentwithheldy@gmail.com" className="flex items-center gap-3 group">
                     <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                      <Mail className="h-5 w-5 text-primary" />
+                      <Mail className="h-5 w-5 text-primary-text" />
                     </span>
                     <span className="leading-tight">
-                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary transition-colors">
+                      <span dir="ltr" className="block font-semibold text-ink group-hover:text-primary-text transition-colors">
                         rentwithheldy@gmail.com
                       </span>
                       <span className="block text-sm text-muted-foreground">{t("contactClose.emailLabel")}</span>
@@ -224,7 +224,7 @@ const Index = () => {
                   </a>
                   <div className="flex items-center gap-3">
                     <span className="flex h-11 w-11 items-center justify-center rounded-control bg-primary/10">
-                      <MapPin className="h-5 w-5 text-primary" />
+                      <MapPin className="h-5 w-5 text-primary-text" />
                     </span>
                     <span className="leading-tight">
                       <span className="block font-semibold text-ink">{t("contactClose.locationTitle")}</span>

@@ -124,13 +124,13 @@ const Terms = () => {
             {t("terms.contact.text")}{" "}
             <a
               href="mailto:rentwithheldy@gmail.com"
-              className="text-primary underline"
+              className="text-primary-text underline"
               dir="ltr"
             >
               rentwithheldy@gmail.com
             </a>{" "}
             {t("terms.contact.or")}{" "}
-            <a href={CONTACT_PHONE_HREF} className="text-primary underline" dir="ltr">
+            <a href={CONTACT_PHONE_HREF} className="text-primary-text underline" dir="ltr">
               {CONTACT_PHONE_DISPLAY}
             </a>
             .

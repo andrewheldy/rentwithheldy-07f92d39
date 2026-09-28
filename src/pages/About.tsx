@@ -55,7 +55,7 @@ const FACTS: { key: string; icon: LucideIcon }[] = [
   { key: "family", icon: Users },
 ];
 
-const eyebrow = "mb-3 text-sm font-semibold uppercase tracking-wider text-primary";
+const eyebrow = "mb-3 text-sm font-semibold uppercase tracking-wider text-primary-text";
 const ctaButton = "h-auto min-h-12 w-full whitespace-normal py-3 sm:w-auto";
 
 const About = () => {
@@ -100,7 +100,7 @@ const About = () => {
             <nav aria-label={t("about.breadcrumbLabel")} className="mb-10 sm:mb-14">
               <ol className="flex items-center gap-1 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/" className="hover:text-primary">{t("about.breadcrumbHome")}</Link>
+                  <Link to="/" className="hover:text-primary-text">{t("about.breadcrumbHome")}</Link>
                 </li>
                 <li className="flex items-center gap-1">
                   <ChevronRight className="h-3.5 w-3.5 rtl:-scale-x-100" aria-hidden />
@@ -130,7 +130,7 @@ const About = () => {
                 <ul aria-label={t("about.facts.label")} className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-6">
                   {FACTS.map(({ key, icon: Icon }) => (
                     <li key={key} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-                      <Icon aria-hidden className={`h-4 w-4 text-primary ${key === "reviews" ? "fill-primary" : ""}`} />
+                      <Icon aria-hidden className={`h-4 w-4 text-primary-text ${key === "reviews" ? "fill-primary-text" : ""}`} />
                       {t(`about.facts.${key}`)}
                     </li>
                   ))}
@@ -186,7 +186,7 @@ const About = () => {
                   <dl className="mt-4 space-y-4 text-sm">
                     {(["miamiDade", "broward"] as const).map((area) => (
                       <div key={area} className="flex items-start gap-3">
-                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-text" aria-hidden />
                         <div>
                           <dt className="font-semibold text-foreground">{t(`about.serviceAreas.${area}.title`)}</dt>
                           <dd className="mt-0.5 text-muted-foreground">{t(`about.serviceAreas.${area}.description`)}</dd>
@@ -203,12 +203,12 @@ const About = () => {
                   {SERVICES.map(({ key, icon: Icon, href }, index) => (
                     <Reveal as="li" key={key} delay={index * 50} className="group relative flex gap-5 py-6 sm:py-7">
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary/10">
-                        <Icon className="h-5 w-5 text-primary" aria-hidden />
+                        <Icon className="h-5 w-5 text-primary-text" aria-hidden />
                       </span>
                       <div className="min-w-0 flex-1">
                         <h3 className="font-heading text-xl font-semibold text-ink">
                           {href ? (
-                            <Link to={href} className="after:absolute after:inset-0 after:content-[''] hover:text-primary focus-visible:outline-none">
+                            <Link to={href} className="after:absolute after:inset-0 after:content-[''] hover:text-primary-text focus-visible:outline-none">
                               {t(`about.services.items.${key}.title`)}
                             </Link>
                           ) : (
@@ -218,7 +218,7 @@ const About = () => {
                         <p className="mt-1.5 leading-relaxed text-muted-foreground">{t(`about.services.items.${key}.body`)}</p>
                       </div>
                       {href && (
-                        <ArrowRight aria-hidden className="mt-3 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                        <ArrowRight aria-hidden className="mt-3 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary-text rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
                       )}
                     </Reveal>
                   ))}
@@ -265,13 +265,13 @@ const About = () => {
                       {latestPosts.map((post) => (
                         <li key={post.id} className="group relative py-5 first:pt-0 last:pb-0">
                           {post.category && (
-                            <p className="text-xs font-semibold uppercase tracking-wider text-primary">{categoryLabel(post.category)}</p>
+                            <p className="text-xs font-semibold uppercase tracking-wider text-primary-text">{categoryLabel(post.category)}</p>
                           )}
                           <h3 lang="en" dir="ltr" className="mt-1.5 text-start font-heading text-xl font-semibold leading-snug text-ink">
                             <Link
                               to={postPath(post.slug)}
                               onClick={blogCta("latest_post")}
-                              className="after:absolute after:inset-0 after:content-[''] group-hover:text-primary focus-visible:outline-none"
+                              className="after:absolute after:inset-0 after:content-[''] group-hover:text-primary-text focus-visible:outline-none"
                             >
                               {post.title}
                             </Link>
@@ -295,7 +295,7 @@ const About = () => {
         <section className="border-t border-border bg-card py-16 sm:py-24">
           <div className="container mx-auto">
             <Reveal className="mx-auto max-w-3xl text-center">
-              <p className="font-heading text-2xl font-semibold italic text-primary sm:text-3xl">{t("about.finalCta.eyebrow")}</p>
+              <p className="font-heading text-2xl font-semibold italic text-primary-text sm:text-3xl">{t("about.finalCta.eyebrow")}</p>
               <h2 className="mt-3 font-heading text-display font-bold text-ink">{t("about.finalCta.heading")}</h2>
               <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("about.finalCta.body")}</p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -313,7 +313,7 @@ const About = () => {
                   </a>
                 </Button>
               </div>
-              <a href={`mailto:${EMAIL}`} className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary">
+              <a href={`mailto:${EMAIL}`} className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary-text">
                 <Mail className="h-4 w-4" aria-hidden />
                 <span className="sr-only">{t("about.finalCta.emailLabel")}: </span>
                 <span dir="ltr">{EMAIL}</span>

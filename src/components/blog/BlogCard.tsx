@@ -55,7 +55,7 @@ export function BlogCard({ post, featured = false, headingLevel = "h3" }: BlogCa
 
       <div className={`flex flex-1 flex-col p-6 ${featured ? "sm:p-8 lg:col-span-5 lg:justify-center lg:p-10" : ""}`}>
         {post.category && (
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary-text">
             {categoryLabel(post.category)}
           </p>
         )}
@@ -92,7 +92,7 @@ export function BlogCard({ post, featured = false, headingLevel = "h3" }: BlogCa
               {formatDate(post.published_at)}
             </time>
           )}
-          <span aria-hidden className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink transition-colors group-hover:text-primary">
+          <span aria-hidden className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink transition-colors group-hover:text-primary-text">
             {t("index.readArticle")}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
           </span>
