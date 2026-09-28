@@ -33,7 +33,7 @@
     },
     "step2": {
       "heading": "2. Réservez en quelques minutes",
-      "body": "Choisissez la voiture que vous voulez et finalisez le paiement. Les réservations sont confirmées instantanément — vous recevrez tout de suite un e-mail avec les détails de votre réservation. Le véhicule est alors réservé exclusivement pour vos dates."
+      "body": "Choisissez la voiture que vous voulez et finalisez le paiement. Les réservations sont confirmées instantanément — vous recevrez tout de suite un e-mail avec les détails de votre réservation. Le véhicule est alors réservé exclusivement pour vos dates. Payez par carte de crédit ou de débit, ou étalez le paiement avec Affirm."
     },
     "step3": {
       "heading": "3. Organisez la prise en charge avec notre équipe",
@@ -52,8 +52,8 @@
     "heading": "Ce qu'il vous faut à la prise en charge",
     "items": [
       "Un permis de conduire valide (les permis internationaux sont acceptés avec un passeport).",
-      "Une carte de crédit au nom du conducteur.",
-      "Une preuve d'assurance ou un plan de protection actif via la plateforme de réservation.",
+      "Une carte de crédit ou de débit au nom du conducteur.",
+      "Une preuve de votre propre assurance ou un plan de protection actif via la plateforme de réservation.",
       "Âge minimum de 21 ans (certains véhicules premium exigent 25 ans et plus)."
     ]
   },

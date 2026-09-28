@@ -30,7 +30,15 @@
     },
     {
       "question": "¿Qué documentos necesito?",
-      "answer": "Una licencia de conducir válida, una tarjeta de crédito a nombre del conductor y comprobante de seguro o un plan de protección activo a través de la plataforma de reserva. Los conductores internacionales son bienvenidos con una licencia válida y pasaporte."
+      "answer": "Una licencia de conducir válida, una tarjeta de crédito o débito a nombre del conductor y comprobante de tu propio seguro o un plan de protección activo a través de la plataforma de reserva. Los conductores internacionales son bienvenidos con una licencia válida y pasaporte."
+    },
+    {
+      "question": "¿Qué formas de pago aceptan?",
+      "answer": "Aceptamos tarjetas de crédito y débito a nombre del conductor. También puedes pagar a plazos con Affirm, sujeto a aprobación. Verás tus opciones de pago al finalizar la reserva."
+    },
+    {
+      "question": "¿Puedo usar mi propio seguro de auto?",
+      "answer": "Sí. Trae el comprobante de tu propio seguro de auto o, si lo prefieres, elige un plan de protección a través de nuestra plataforma de reserva. Te recomendamos llamar a tu aseguradora antes del viaje para confirmar que tu póliza cubre autos de alquiler."
     },
     {
       "question": "¿Cómo funcionan los peajes?",

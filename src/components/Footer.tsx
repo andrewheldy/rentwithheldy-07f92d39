@@ -61,7 +61,8 @@ const Footer = () => {
       )}
 
       <div className="container mx-auto py-14">
-        <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 xl:grid-cols-[2fr_repeat(5,minmax(0,1fr))]">
+        {/* Contact is wider at xl so the email address fits on one line. */}
+        <div className="grid grid-cols-2 gap-8 gap-y-10 md:grid-cols-3 xl:grid-cols-[2fr_repeat(4,minmax(0,1fr))_minmax(0,1.25fr)]">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 xl:col-span-1">
             <div className="flex items-center gap-3 mb-4">

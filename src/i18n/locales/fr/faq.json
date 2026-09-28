@@ -30,7 +30,15 @@
     },
     {
       "question": "Quels documents me faut-il ?",
-      "answer": "Un permis de conduire valide, une carte de crédit au nom du conducteur et une preuve d'assurance ou un plan de protection actif via la plateforme de réservation. Les conducteurs internationaux sont les bienvenus avec un permis valide et un passeport."
+      "answer": "Un permis de conduire valide, une carte de crédit ou de débit au nom du conducteur et une preuve de votre propre assurance ou un plan de protection actif via la plateforme de réservation. Les conducteurs internationaux sont les bienvenus avec un permis valide et un passeport."
+    },
+    {
+      "question": "Quels moyens de paiement acceptez-vous ?",
+      "answer": "Nous acceptons les cartes de crédit et de débit au nom du conducteur. Vous pouvez aussi payer en plusieurs fois avec Affirm, sous réserve d'éligibilité. Vos options de paiement s'affichent au moment de régler la réservation."
+    },
+    {
+      "question": "Puis-je utiliser ma propre assurance auto ?",
+      "answer": "Oui. Présentez une preuve de votre propre assurance auto, ou choisissez plutôt un plan de protection via notre plateforme de réservation. Pensez à appeler votre assureur avant votre voyage pour vérifier que votre contrat couvre les voitures de location."
     },
     {
       "question": "Comment fonctionnent les péages ?",

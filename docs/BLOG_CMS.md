@@ -56,6 +56,7 @@ Blog is intentionally not in the primary header.
 | Server-rendered `<head>`, 404s and 301s for `/blog*` | `api/blog-page.ts`, `src/server/blog/*` |
 | Live blog sitemap | `api/blog-sitemap.ts` → `/sitemap-blog.xml` (listed in `/sitemap.xml`) |
 | UI copy (5 locales) | `src/i18n/locales/*/blog.json` |
+| Posts drafted in Markdown → draft-import SQL | `content/blog/` (see its README), `scripts/blog-posts.mjs` |
 
 - **Content format.** Article bodies are Tiptap/ProseMirror JSON (`blog_posts.content`).
   They are never stored or injected as HTML; the renderer only emits allow-listed

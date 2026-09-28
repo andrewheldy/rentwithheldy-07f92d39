@@ -33,7 +33,7 @@
     },
     "step2": {
       "heading": "2. Reserve in minutes",
-      "body": "Pick the car you want and complete checkout. Reservations are confirmed instantly — you'll get an email with your booking details right away. The vehicle is then held exclusively for your dates."
+      "body": "Pick the car you want and complete checkout. Reservations are confirmed instantly — you'll get an email with your booking details right away. The vehicle is then held exclusively for your dates. Pay with a credit or debit card, or split the cost into payments with Affirm."
     },
     "step3": {
       "heading": "3. Coordinate pickup with our team",
@@ -52,8 +52,8 @@
     "heading": "What you'll need at pickup",
     "items": [
       "A valid driver's license (international licenses welcome with passport).",
-      "A credit card in the renter's name.",
-      "Proof of insurance or an active protection plan through the booking platform.",
+      "A credit or debit card in the renter's name.",
+      "Proof of your own insurance or an active protection plan through the booking platform.",
       "Minimum age 21 (some premium vehicles require 25+)."
     ]
   },
