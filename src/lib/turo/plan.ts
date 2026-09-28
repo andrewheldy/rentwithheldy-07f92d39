@@ -45,8 +45,9 @@ export type BookingWrite = {
 
 export type TransactionWrite = {
   id: string;
-  /** Filled in by the server from the upserted booking. */
   reservationId: string;
+  /** The stored booking's id when the trip was already imported; otherwise the server fills it in from the booking it saves. */
+  bookingId: string | null;
   row: {
     id: string;
     source: "turo";
@@ -178,17 +179,19 @@ export function planTuroImport(
     if (!ref) continue;
 
     const existing = bookingByReservation.get(trip.reservationId);
-    if (!existing) newTrips += 1;
-    else if (
+    const bookingUnchanged =
+      !!existing &&
       existing.status === trip.status &&
       Number(existing.gross_cents) === trip.totalCents &&
       existing.vehicle_id === ref.vehicleId &&
       sameInstant(existing.start_at, trip.startAt) &&
-      sameInstant(existing.end_at, trip.endAt)
-    ) unchangedTrips += 1;
+      sameInstant(existing.end_at, trip.endAt);
+    if (!existing) newTrips += 1;
+    else if (bookingUnchanged) unchangedTrips += 1;
     else updatedTrips += 1;
 
-    bookings.push({
+    // Only new and changed trips are written.
+    if (!bookingUnchanged) bookings.push({
       source: "turo",
       external_booking_id: trip.reservationId,
       vehicle_id: ref.vehicleId,
@@ -243,14 +246,18 @@ export function planTuroImport(
       Number(previous.rental_revenue_cents) === trip.includedCents &&
       Number(previous.excluded_cents) === trip.excludedCents &&
       Number(previous.unclassified_cents) === trip.unclassifiedCents &&
-      previous.collected_on === day
-    ) earningsRows.unchanged += 1;
-    else earningsRows.updated += 1;
+      previous.collected_on === day &&
+      (previous.booking_id === existing?.id || !existing)
+    ) {
+      earningsRows.unchanged += 1;
+      continue;
+    } else earningsRows.updated += 1;
 
     const id = previous?.id ?? newId();
     transactions.push({
       id,
       reservationId: trip.reservationId,
+      bookingId: existing?.id ?? null,
       row: {
         id,
         source: "turo",

@@ -61,6 +61,36 @@ test.describe("Turo import", () => {
     await expect(page.getByText(/No imports from this page yet/)).toBeVisible();
   });
 
+  test("says what date range to export next", async ({ page }) => {
+    const backend = new ConsignerBackend();
+    await backend.install(page, { asAdmin: true });
+    await page.goto("/admin/turo-import");
+    // Before any import from this page: 60 days before the Sep 24 history load.
+    await expect(page.getByText(/Trip history exported from Turo on Sep 24, 2026 was loaded directly/)).toBeVisible();
+    await expect(page.getByText("Jul 26, 2026", { exact: true })).toBeVisible();
+
+    await page.route("**/rest/v1/sync_runs*", (route) =>
+      route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify([
+          {
+            id: "run-1",
+            started_at: "2026-09-28T15:00:00.000Z",
+            finished_at: "2026-09-28T15:00:05.000Z",
+            status: "succeeded",
+            rows_upserted: 14,
+            error: null,
+            metadata: { file_name: "trips-sep.csv", trips: 12, new_trips: 3, updated_trips: 2, totals: { earningsCents: 184250 }, first_trip_start: "2026-08-01", last_trip_start: "2026-11-08" },
+          },
+        ]),
+      }),
+    );
+    await page.reload();
+    await expect(page.getByText(/Last import on Sep 28, 2026 \(trips-sep\.csv\), trips starting Aug 1, 2026 – Nov 8, 2026\./)).toBeVisible();
+    await expect(page.getByText("Jul 30, 2026", { exact: true })).toBeVisible();
+    await expect(page.getByText(/12 trips · 3 new, 2 updated · \$1,842\.50/)).toBeVisible();
+  });
+
   test("checks the file first, then imports on request", async ({ page }) => {
     const calls = await open(page, (mode) => ({ body: okResult(mode) }));
     await upload(page);

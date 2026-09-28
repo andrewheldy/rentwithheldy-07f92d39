@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { parseCsv } from "./csv";
 import { newYorkToUtc, parseMoney, parseTuroDateTime, parseTuroExport } from "./parse";
 import { planTuroImport, type ExistingBooking, type ExistingTransaction, type TuroVehicleRef } from "./plan";
+import { turoCoverage } from "./coverage";
 
 const HEADER = [
   "Reservation ID",
@@ -272,8 +273,47 @@ describe("planTuroImport", () => {
     };
     const plan = planTuroImport(trips({ "Reservation ID": "1" }, { "Reservation ID": "2" }), [jettaRef], [booking, unchangedBooking], [txn], newId);
     expect(plan.summary).toMatchObject({ newTrips: 0, updatedTrips: 1, unchangedTrips: 1, earningsRows: { new: 1, updated: 0, unchanged: 1 } });
-    const reused = plan.transactions.find((t) => t.reservationId === "2")!;
-    expect(reused.row).toMatchObject({ id: "t2", external_id: "turo-2" });
+    // Only what changed is written: trip 1 (and its new earnings row), not trip 2.
+    expect(plan.bookings.map((b) => b.external_booking_id)).toEqual(["1"]);
+    expect(plan.transactions.map((t) => [t.reservationId, t.bookingId])).toEqual([["1", "b1"]]);
+
+    // A late fee changes trip 2's earnings: its row is updated in place under its original key.
+    const withLateFee = planTuroImport(
+      trips({ "Reservation ID": "2", "Trip price": "$175.00", "Total earnings": "$206.25" }),
+      [jettaRef],
+      [unchangedBooking],
+      [txn],
+      newId,
+    );
+    expect(withLateFee.summary).toMatchObject({ updatedTrips: 1, earningsRows: { new: 0, updated: 1, unchanged: 0 } });
+    expect(withLateFee.transactions[0]).toMatchObject({ bookingId: "b2", row: { id: "t2", external_id: "turo-2", amount_cents: 20625 } });
+  });
+
+  it("writes nothing when the file matches what is stored", () => {
+    const booking: ExistingBooking = {
+      id: "b1",
+      external_booking_id: "5001",
+      status: "completed",
+      gross_cents: 18125,
+      start_at: "2026-09-19T14:00:00Z",
+      end_at: "2026-09-22T14:00:00Z",
+      vehicle_id: "veh-jetta",
+    };
+    const txn: ExistingTransaction = {
+      id: "t1",
+      external_id: "5001",
+      booking_id: "b1",
+      amount_cents: 18125,
+      rental_revenue_cents: 13500,
+      excluded_cents: 4625,
+      unclassified_cents: 0,
+      collected_on: "2026-09-22",
+    };
+    const plan = planTuroImport(trips({}), [jettaRef], [booking], [txn], newId);
+    expect(plan.bookings).toEqual([]);
+    expect(plan.transactions).toEqual([]);
+    expect(plan.deleteTransactionIds).toEqual([]);
+    expect(plan.summary).toMatchObject({ unchangedTrips: 1, earningsRows: { unchanged: 1 } });
   });
 
   it("removes the earnings row when a paid trip becomes an unpaid cancellation", () => {
@@ -342,5 +382,34 @@ describe("planTuroImport", () => {
     const duplicated = planTuroImport(trips({}), [jettaRef], [booking], [t("a"), t("b")], newId);
     expect(duplicated.problems[0].message).toMatch(/more than one earnings row/);
     expect(duplicated.transactions).toEqual([]);
+  });
+});
+
+describe("turoCoverage", () => {
+  it("falls back to the direct history load before any page import", () => {
+    expect(turoCoverage([])).toEqual({
+      importedOn: "2026-09-24",
+      fileName: null,
+      firstTripStart: null,
+      lastTripStart: null,
+      initialLoad: true,
+      exportFrom: "2026-07-26",
+    });
+  });
+
+  it("uses the latest successful import and ignores failed ones", () => {
+    const coverage = turoCoverage([
+      { status: "succeeded", started_at: "2026-09-28T15:00:00", metadata: { file_name: "a.csv", first_trip_start: "2026-08-01", last_trip_start: "2026-11-08" } },
+      { status: "failed", started_at: "2026-10-05T15:00:00", metadata: { file_name: "bad.csv" } },
+      { status: "succeeded", started_at: "2026-09-01T15:00:00", metadata: { file_name: "old.csv" } },
+    ]);
+    expect(coverage).toEqual({
+      importedOn: "2026-09-28",
+      fileName: "a.csv",
+      firstTripStart: "2026-08-01",
+      lastTripStart: "2026-11-08",
+      initialLoad: false,
+      exportFrom: "2026-07-30",
+    });
   });
 });

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { AlertTriangle, CheckCircle2, FileSpreadsheet, Loader2, RotateCcw, Upload } from "lucide-react";
+import { AlertTriangle, CalendarRange, CheckCircle2, FileSpreadsheet, Loader2, RotateCcw, Upload } from "lucide-react";
 import SEO from "@/components/SEO";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/hooks/use-toast";
 import { formatDay } from "@/lib/consigners/format";
 import { listTuroImports, MAX_TURO_FILE_BYTES, submitTuroExport, type TuroImportRun } from "@/lib/turo/api";
+import { turoCoverage } from "@/lib/turo/coverage";
 import type { TuroImportResult } from "@/lib/turo/result";
 
 const money = (cents: number) =>
@@ -78,6 +79,7 @@ export default function AdminTuroImport() {
   });
 
   const busy = check.isPending || commit.isPending;
+  const coverage = runsQuery.data ? turoCoverage(runsQuery.data) : null;
 
   const chooseFile = async (selected: File | undefined) => {
     setResult(null);
@@ -129,6 +131,45 @@ export default function AdminTuroImport() {
             stored.
           </p>
         </div>
+
+        {coverage && (
+          <Card className="p-4 sm:p-5">
+            <div className="flex items-start gap-3">
+              <CalendarRange className="mt-0.5 h-5 w-5 shrink-0 text-primary-text" aria-hidden="true" />
+              <div className="min-w-0 space-y-1.5 text-sm">
+                <h3 id="turo-coverage-heading" className="text-base font-semibold">
+                  What to export next
+                </h3>
+                <p className="text-muted-foreground">
+                  {coverage.initialLoad ? (
+                    <>Trip history exported from Turo on {formatDay(coverage.importedOn)} was loaded directly.</>
+                  ) : (
+                    <>
+                      Last import on {formatDay(coverage.importedOn)}
+                      {coverage.fileName && (
+                        <>
+                          {" "}
+                          (<span dir="ltr">{coverage.fileName}</span>)
+                        </>
+                      )}
+                      {coverage.firstTripStart && coverage.lastTripStart && (
+                        <>
+                          , trips starting {formatDay(coverage.firstTripStart)} – {formatDay(coverage.lastTripStart)}
+                        </>
+                      )}
+                      .
+                    </>
+                  )}
+                </p>
+                <p>
+                  Export trips starting <strong className="font-semibold">{formatDay(coverage.exportFrom)}</strong> or
+                  earlier, through today. The overlap picks up late fees, tolls, completions and cancellations on recent
+                  trips; trips that haven't changed are skipped.
+                </p>
+              </div>
+            </div>
+          </Card>
+        )}
 
         <Card className="p-4 sm:p-5">
           <Label htmlFor="turo-file" className="text-base">

@@ -116,6 +116,16 @@ describe("runTuroImport", () => {
     expect(tables.rental_bookings).toHaveLength(2);
     expect(tables.rental_transactions).toHaveLength(2);
     expect(tables.sync_runs).toHaveLength(2);
+    // Only the changed trip and its new earnings row were written.
+    expect(tables.sync_runs[1]).toMatchObject({ status: "succeeded", rows_upserted: 2 });
+    const unchangedTrip = tables.rental_bookings.find((b) => b.external_booking_id === "7001")!;
+    const syncedAt = unchangedTrip.synced_at;
+
+    // Same file again: nothing is written.
+    const third = await runTuroImport(supabase, { csv: exportCsv(completed, nowCompleted), fileName: "trips-2.csv", mode: "import", userId: "admin" });
+    expect(third.summary).toMatchObject({ newTrips: 0, updatedTrips: 0, unchangedTrips: 2 });
+    expect(tables.sync_runs[2]).toMatchObject({ rows_upserted: 0 });
+    expect(unchangedTrip.synced_at).toBe(syncedAt);
   });
 
   it("writes nothing when the file has a problem", async () => {

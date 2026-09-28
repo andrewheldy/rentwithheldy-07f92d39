@@ -109,7 +109,7 @@ export async function runTuroImport(
     }
 
     const rows = plan.transactions.map((t) => {
-      const bookingId = bookingIds.get(t.reservationId);
+      const bookingId = t.bookingId ?? bookingIds.get(t.reservationId);
       if (!bookingId) throw new Error(`Booking for reservation ${t.reservationId} was not saved.`);
       return { ...t.row, booking_id: bookingId, synced_at: new Date().toISOString() };
     });
