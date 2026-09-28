@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 interface SEOProps {
   title: string;
@@ -28,8 +29,11 @@ interface SEOProps {
 }
 
 const SITE_URL = "https://rentwithheldy.com";
-const DEFAULT_IMAGE =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/CSzZLopKzRX2s7Gn49LVhaLvLQH2/social-images/social-1770324920970-Share_image_website.PNG";
+// Self-hosted default share image: a 1200x630 crop of the homepage hero
+// photograph with no baked-in text (public/share-image.jpg).
+const DEFAULT_IMAGE = `${SITE_URL}/share-image.jpg`;
+const DEFAULT_IMAGE_WIDTH = "1200";
+const DEFAULT_IMAGE_HEIGHT = "630";
 
 const SEO = ({
   title,
@@ -46,6 +50,7 @@ const SEO = ({
   imageAlt,
   article,
 }: SEOProps) => {
+  const { t } = useTranslation("home");
   const url = canonicalUrl ?? `${SITE_URL}${path}`;
   const socialTitle = ogTitle ?? title;
   const socialDescription = ogDescription ?? description;
@@ -54,6 +59,10 @@ const SEO = ({
       ? image
       : `${SITE_URL}${image}`
     : DEFAULT_IMAGE;
+  const usesDefaultImage = ogImage === DEFAULT_IMAGE;
+  // The default image is a crop of the hero photograph, so it shares its
+  // translated description.
+  const socialImageAlt = imageAlt ?? (usesDefaultImage ? t("hero.imageAlt") : undefined);
   const jsonLdArray = jsonLd
     ? Array.isArray(jsonLd)
       ? jsonLd
@@ -77,8 +86,11 @@ const SEO = ({
       <meta property="og:description" content={socialDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={ogImage} />
+      {usesDefaultImage && <meta property="og:image:type" content="image/jpeg" />}
+      {usesDefaultImage && <meta property="og:image:width" content={DEFAULT_IMAGE_WIDTH} />}
+      {usesDefaultImage && <meta property="og:image:height" content={DEFAULT_IMAGE_HEIGHT} />}
+      {socialImageAlt && <meta property="og:image:alt" content={socialImageAlt} />}
       <meta property="og:site_name" content="Rent With Heldy" />
-      {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
       {ogType === "article" && article?.publishedTime && (
         <meta property="article:published_time" content={article.publishedTime} />
       )}
@@ -96,7 +108,7 @@ const SEO = ({
       <meta name="twitter:title" content={socialTitle} />
       <meta name="twitter:description" content={socialDescription} />
       <meta name="twitter:image" content={ogImage} />
-      {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
+      {socialImageAlt && <meta name="twitter:image:alt" content={socialImageAlt} />}
 
       {jsonLdArray.map((data, i) => (
         <script key={i} type="application/ld+json">
@@ -108,4 +120,4 @@ const SEO = ({
 };
 
 export default SEO;
-export { SITE_URL };
+export { SITE_URL, DEFAULT_IMAGE };

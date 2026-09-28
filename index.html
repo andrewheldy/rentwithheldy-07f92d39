@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Private Car Rental Fort Lauderdale &amp; Miami | Rent With Heldy</title>
+    <title>Car Rental Fort Lauderdale &amp; Miami | Rent With Heldy</title>
     <!-- data-rh="true" on this and the og/twitter tags below: marks them
          as replaceable by react-helmet-async once a route's <SEO> (src/components/SEO.tsx)
          mounts, so each page's real title/description wins instead of leaving this fallback
-         duplicated alongside it. Non-JS crawlers still see this generic copy as a fallback. -->
-    <meta name="description" content="Book a private car rental in Fort Lauderdale, Miami, and South Florida. All-Star Host, premium fleet, FLL airport pickup. Easy online booking with Rent With Heldy." data-rh="true">
+         duplicated alongside it. Non-JS crawlers and social scrapers only ever see these
+         static tags, so they mirror the English home page's meta (home.json → meta). -->
+    <meta name="description" content="Family-owned car rental in Fort Lauderdale, Miami, and South Florida. 1,400+ five-star reviews, contactless pickup, hotel and airport delivery. Book online in minutes." data-rh="true">
     <meta name="keywords" content="car rental Fort Lauderdale, car rental Miami, Fort Lauderdale airport car rental, South Florida car rental, SUV rental Fort Lauderdale, luxury car rental Miami, private car rental Fort Lauderdale">
     <meta name="author" content="Rent With Heldy" />
 
@@ -16,17 +17,30 @@
     <link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/bricolage-latin-var.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- Icons: the logo's palm on an ink tile for small sizes (the full badge is
+         illegible below ~64px); the full badge for the 180px Apple touch icon. -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta property="og:type" content="website" data-rh="true" />
-    <meta property="og:image" content="/share-image.png" data-rh="true">
+    <meta property="og:site_name" content="Rent With Heldy" data-rh="true" />
+    <meta property="og:url" content="https://rentwithheldy.com/" data-rh="true" />
+    <meta property="og:title" content="Car Rental Fort Lauderdale &amp; Miami | Rent With Heldy" data-rh="true">
+    <meta property="og:description" content="Family-owned car rental in Fort Lauderdale, Miami, and South Florida. 1,400+ five-star reviews, contactless pickup, hotel and airport delivery. Book online in minutes." data-rh="true">
+    <meta property="og:image" content="https://rentwithheldy.com/share-image.jpg" data-rh="true">
+    <meta property="og:image:type" content="image/jpeg" data-rh="true" />
+    <meta property="og:image:width" content="1200" data-rh="true" />
+    <meta property="og:image:height" content="630" data-rh="true" />
+    <meta property="og:image:alt" content="Sunset drive along a South Florida causeway toward the Miami skyline" data-rh="true" />
 
     <meta name="twitter:card" content="summary_large_image" data-rh="true" />
     <meta name="twitter:site" content="@rentwithheldy" />
-    <meta name="twitter:image" content="/share-image.png" data-rh="true">
-    <meta property="og:title" content="Rent with Heldy - Premium Car Rentals in Miami &amp; Fort Lauderdale" data-rh="true">
-  <meta name="twitter:title" content="Rent with Heldy - Premium Car Rentals in Miami &amp; Fort Lauderdale" data-rh="true">
-  <meta property="og:description" content="Rent premium vehicles in Miami and Fort Lauderdale with Rent with Heldy. All-Star Host with 25 quality cars, SUVs, and luxury vehicles. Book your perfect ride today!" data-rh="true">
-  <meta name="twitter:description" content="Rent premium vehicles in Miami and Fort Lauderdale with Rent with Heldy. All-Star Host with 25 quality cars, SUVs, and luxury vehicles. Book your perfect ride today!" data-rh="true">
-  <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="twitter:title" content="Car Rental Fort Lauderdale &amp; Miami | Rent With Heldy" data-rh="true">
+    <meta name="twitter:description" content="Family-owned car rental in Fort Lauderdale, Miami, and South Florida. 1,400+ five-star reviews, contactless pickup, hotel and airport delivery. Book online in minutes." data-rh="true">
+    <meta name="twitter:image" content="https://rentwithheldy.com/share-image.jpg" data-rh="true">
+    <meta name="twitter:image:alt" content="Sunset drive along a South Florida causeway toward the Miami skyline" data-rh="true" />
 
   <script type="application/ld+json">
     {
