@@ -14,14 +14,6 @@
       "hotels": "מלונות",
       "cruisePorts": "נמלי שיוט",
       "repairShops": "מוסכים"
-    },
-    "trust": {
-      "reviews": "יותר מ-1,400 ביקורות חמישה כוכבים",
-      "allStar": "All-Star Host",
-      "delivery": "מסירה למלון ולשדה התעופה",
-      "contactless": "איסוף ללא מגע",
-      "language": "כתבו לנו בשפה המועדפת עליכם",
-      "familyOwned": "עסק משפחתי"
     }
   },
   "bookingWidget": {
