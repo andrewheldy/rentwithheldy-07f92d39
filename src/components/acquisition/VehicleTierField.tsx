@@ -54,18 +54,9 @@ const VehicleTierField = ({ selected, recommended, onChange }: VehicleTierFieldP
                   <span className="block text-sm leading-5 text-muted-foreground">
                     {t(tier.description)}
                   </span>
-                  <span className="block space-y-1.5 text-sm leading-5">
-                    <span className="block font-medium text-foreground">
-                      {t("driver.steps.vehicleCategory.examples")}
-                    </span>
-                    <span className="flex flex-wrap gap-1.5">
-                      {tier.exampleVehicles.map((vehicle) => (
-                        <bdi key={vehicle} className="rounded-full border border-border bg-card px-2.5 py-0.5 text-foreground">
-                          {vehicle}
-                        </bdi>
-                      ))}
-                    </span>
-                    <span className="block text-muted-foreground">{t(tier.similarVehicles)}</span>
+                  <span className="block text-sm leading-5 text-foreground">
+                    <span className="font-medium">{t("driver.steps.vehicleCategory.examples")}: </span>
+                    {t(tier.similarVehicles)}
                   </span>
                   <span className="block space-y-1.5 text-sm leading-5">
                     <span className="block font-medium text-foreground">

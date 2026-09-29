@@ -72,7 +72,7 @@
         "title": "Which vehicle tier fits your work?",
         "help": "Pick the tier closest to how you plan to earn. You can change it any time before you submit.",
         "recommended": "Recommended for you",
-        "examples": "Example vehicles",
+        "examples": "Vehicle types",
         "bestFor": "Best for",
         "eligibility": "Vehicle eligibility is determined by Uber, Lyft, and other platforms and may vary by model, model year, location, and driver account. We’ll help you identify vehicles that fit your intended type of work.",
         "premiumPrefix": "Looking for a premium vehicle?",
@@ -168,23 +168,23 @@
         "delivery": {
           "label": "Delivery Vehicle",
           "description": "Fuel-efficient transportation for delivery apps",
-          "similar": "similar fuel-efficient compact sedans and hatchbacks"
+          "similar": "Fuel-efficient compact sedans and hatchbacks"
         },
         "standard": {
           "label": "Standard Rideshare",
           "description": "UberX, Lyft and everyday rideshare driving",
-          "similar": "similar 4-door sedans and eligible crossovers"
+          "similar": "4-door sedans and eligible crossovers"
         },
         "comfort": {
           "label": "Comfort Rideshare",
           "description": "Newer, roomier vehicles with additional earning-category potential",
-          "similar": "newer model years, larger sedans and eligible midsize crossovers",
+          "similar": "Newer model years, larger sedans and eligible midsize crossovers",
           "disclaimer": "Comfort-category eligibility varies by vehicle, model year, driver status, and rideshare platform."
         },
         "xl": {
           "label": "XL Rideshare",
           "description": "3-row SUVs and minivans for larger passenger groups",
-          "similar": "similar eligible 3-row SUVs and minivans",
+          "similar": "Eligible 3-row SUVs and minivans",
           "disclaimer": "Typically seats 6 passengers plus the driver. Not every 7-seat vehicle qualifies for UberXL or Lyft XL; it varies by platform, model, model year, and market."
         }
       },
