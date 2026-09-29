@@ -24,7 +24,7 @@
   },
   "trustStrip": {
     "reviews": "Más de 1,400 reseñas de cinco estrellas",
-    "allStar": "All-Star Host",
+    "allStar": "Power Host",
     "delivery": "Entrega en hoteles y aeropuertos",
     "contactless": "Recogida sin contacto",
     "language": "Escríbenos en tu idioma preferido",
@@ -99,7 +99,7 @@
   "reviews": {
     "eyebrow": "Lo que dicen los huéspedes",
     "title": "Más de 1,400 reseñas de cinco estrellas de huéspedes de Turo en todo el sur de Florida.",
-    "description": "La razón por la que ganamos el estatus de All-Star Host: autos limpios, comunicación clara y una entrega fácil, viaje tras viaje.",
+    "description": "La razón por la que ganamos el estatus de Power Host: autos limpios, comunicación clara y una entrega fácil, viaje tras viaje.",
     "ariaLabel": "Reseñas de cinco estrellas de huéspedes de Turo",
     "altPattern": "Reseña de cinco estrellas en Turo de {{name}} por el {{vehicle}}"
   },

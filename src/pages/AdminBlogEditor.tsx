@@ -733,7 +733,8 @@ export default function AdminBlogEditor() {
               {!form.authorId && (
                 <div className="space-y-1.5">
                   <Label htmlFor="post-author">Author name</Label>
-                  <Input id="post-author" value={form.author} maxLength={120} onChange={(e) => set("author", e.target.value)} />
+                  <Input id="post-author" value={form.author} maxLength={120} onChange={(e) => set("author", e.target.value)} aria-describedby="post-author-help" />
+                  <p id="post-author-help" className="text-xs text-muted-foreground">Posts by {DEFAULT_AUTHOR} show no byline to readers.</p>
                 </div>
               )}
             </Card>

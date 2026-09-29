@@ -63,7 +63,7 @@ const PROPER_NOUN_VALUES = new Set([
   "Fort Lauderdale",
   "Fort Lauderdale • Miami",
   "Fort Lauderdale · Miami",
-  "All-Star Host", // Turo status/brand term — kept verbatim in every locale
+  "Power Host", // Turo status/brand term — kept verbatim in every locale
   "Rent With Heldy", // brand name — never translated (see locales/README.md)
   "Port Everglades", // port proper nouns — kept verbatim in every locale
   "PortMiami",

@@ -24,7 +24,7 @@
   },
   "trustStrip": {
     "reviews": "1,400+ Five-Star Reviews",
-    "allStar": "All-Star Host",
+    "allStar": "Power Host",
     "delivery": "Hotel & Airport Delivery",
     "contactless": "Contactless Pickup",
     "language": "Message Us in Your Preferred Language",
@@ -99,7 +99,7 @@
   "reviews": {
     "eyebrow": "What guests say",
     "title": "1,400+ five-star reviews from Turo guests across South Florida.",
-    "description": "The reason we earned All-Star Host status — clean cars, clear communication, and an easy handoff, trip after trip.",
+    "description": "The reason we earned Power Host status — clean cars, clear communication, and an easy handoff, trip after trip.",
     "ariaLabel": "Five-star guest reviews from Turo",
     "altPattern": "Five-star Turo review from {{name}} for the {{vehicle}}"
   },

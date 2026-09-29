@@ -40,8 +40,6 @@ const PNG = Buffer.from(
   "base64",
 );
 
-export const HOUSE_AUTHOR_ID = "author-rwh";
-
 export function paragraph(text: string) {
   return { type: "paragraph", content: [{ type: "text", text }] };
 }
@@ -90,7 +88,8 @@ export class BlogBackend {
   sources: Row[] = [];
   redirects: Row[] = [];
   uploads: string[] = [];
-  authors: Row[] = [{ id: HOUSE_AUTHOR_ID, slug: "rent-with-heldy", name: "Rent With Heldy", role: null, bio: null, photo_url: null }];
+  // Posts by the business itself have no author profile (it shows no byline).
+  authors: Row[] = [];
 
   isLive(post: Row) {
     return (

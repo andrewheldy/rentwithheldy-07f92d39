@@ -18,6 +18,11 @@ requests before they go into the CMS (see `docs/BLOG_CMS.md`).
 After a post is in the CMS, the admin editor is the source of truth. Only use
 this folder again for new posts.
 
+`updates/` holds one-off SQL edits to posts that are already in the CMS (for
+example, adding photos that live in `public/images/blog/`). Each one only
+applies if the post hasn't been edited since, and it's run in the Supabase SQL
+editor after the code it depends on is deployed.
+
 ## Format
 
 ```md

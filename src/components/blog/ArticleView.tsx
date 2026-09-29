@@ -7,6 +7,7 @@ import { AuthorCard, ShareLinks, TableOfContents } from "@/components/blog/Artic
 import { BlogCard } from "@/components/blog/BlogCard";
 import { useBlogFormat } from "@/components/blog/useBlogFormat";
 import { hasAuthorDetails, headingAnchors, internalPath, readingMinutes, safeHref } from "@/lib/blog/content";
+import { DEFAULT_AUTHOR } from "@/lib/blog/presets";
 import { articleCrumbs } from "@/lib/blog/seo";
 import { hasMeaningfulUpdate } from "@/lib/blog/status";
 import type { BlogPost, BlogPostSummary } from "@/lib/blog/types";
@@ -46,6 +47,8 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
   const sources = post.sources.filter((source) => safeHref(source.url));
   const anchors = useMemo(() => headingAnchors(post.content, RESERVED_IDS), [post.content]);
   const byline = post.author_profile?.name ?? post.author;
+  // Posts by the business itself carry no "By Rent With Heldy" line; named authors keep theirs.
+  const showByline = Boolean(byline.trim()) && byline.trim() !== DEFAULT_AUTHOR;
   // Overlay needs a photo; without one, the title stands on its own.
   const layout = !post.featured_image ? "text" : post.header_layout ?? "stacked";
   const focus: CSSProperties = { objectPosition: `${post.featured_image_focus_x ?? 50}% ${post.featured_image_focus_y ?? 50}%` };
@@ -100,9 +103,11 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
 
   const metaLine = (className: string) => (
     <div className={`flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-5 text-sm text-muted-foreground ${className}`}>
-      <span>
-        {t("article.by")} <span className="font-semibold text-foreground">{byline}</span>
-      </span>
+      {showByline && (
+        <span>
+          {t("article.by")} <span className="font-semibold text-foreground">{byline}</span>
+        </span>
+      )}
       {post.published_at && (
         <span>
           {t("article.published")}{" "}

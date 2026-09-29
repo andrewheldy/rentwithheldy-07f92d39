@@ -60,7 +60,7 @@ These are stated as fact to customers and will be enshrined in four languages. C
 
 | ID | Namespace / source | Key | Current English (excerpt) | Confirm |
 |---|---|---|---|---|
-| **C7** | home / footer / legal / locations / services | `hero.trust.allStar`, `brand.badge`, `about.values.trusted.description`, … | "All‑Star Host on Turo" | Is All‑Star Host status **currently active**? |
+| **C7** | home / footer / legal / locations / services | `hero.trust.allStar`, `brand.badge`, `about.values.trusted.description`, … | "Power Host on Turo" (was "All‑Star Host on Turo") | Is Power Host status **currently active**? |
 | **C7** | locations | `fortLauderdale.sections[…]`, `miami.sections[…]`, `local.sections[…]` | "hundreds of completed trips", "hundreds of five‑star trips" | Is the volume accurate? Prefer a verifiable range or drop the number |
 | **C1** | ReviewsMarquee | `PLACEHOLDER_REVIEWS[…]` | "**Gary** was an excellent host!…" (const literally named `PLACEHOLDER_REVIEWS`) | Are these **real RwH reviews** with permission to publish? The "Gary" quote names a different host |
 | **C1** | services | `airport/hotel/bodyShop/cruise.testimonial` | Reinah, Monique, Madisol, Christopher quotes | Same pool as the home marquee — confirm authenticity/permission |
