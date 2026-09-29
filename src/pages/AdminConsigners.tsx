@@ -1,6 +1,7 @@
 import { useMemo, useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Car, CheckCircle2, CircleSlash, Loader2, Plus, UserRoundX, UsersRound } from "lucide-react";
+import { Link } from "react-router-dom";
+import { BarChart3, Car, CheckCircle2, CircleSlash, Loader2, Plus, UserRoundX, UsersRound } from "lucide-react";
 import SEO from "@/components/SEO";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { AssignVehicleDialog } from "@/components/admin/consigners/AssignVehicleDialog";
@@ -246,6 +247,13 @@ export default function AdminConsigners() {
                     )}
 
                     <div className="mt-4 flex flex-wrap gap-2">
+                      {consigner.assignments.length > 0 && (
+                        <Button asChild variant="outline" size="sm">
+                          <Link to={`/owner?as=${consigner.id}`}>
+                            <BarChart3 className="me-1.5 h-4 w-4" aria-hidden="true" /> View dashboard
+                          </Link>
+                        </Button>
+                      )}
                       {consigner.user_id && (
                         <Button variant="outline" size="sm" onClick={() => openAssign(consigner.user_id ?? undefined)} disabled={!canAssign}>
                           <Plus className="me-1.5 h-4 w-4" aria-hidden="true" /> Assign another vehicle

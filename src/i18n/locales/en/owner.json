@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Owner Dashboard | Rent With Heldy",
+    "description": "Your vehicle's earnings and performance with Rent With Heldy."
+  },
+  "role": "Vehicle Owner",
+  "tagline": "Be our guest",
+  "nav": {
+    "label": "Owner dashboard",
+    "analytics": "Analytics",
+    "vehicle": "Vehicle Details",
+    "documents": "Documents",
+    "settings": "Account settings",
+    "website": "View website",
+    "signOut": "Sign out",
+    "toggle": "Toggle menu",
+    "account": "Account menu"
+  },
+  "preview": {
+    "banner": "Admin preview of {{name}}'s dashboard. This is exactly what they see.",
+    "back": "Back to consigners"
+  },
+  "loading": "Loading your dashboard…",
+  "error": {
+    "title": "We couldn't load your dashboard",
+    "body": "Please try again. If it keeps happening, contact us.",
+    "retry": "Try again"
+  },
+  "notLinked": {
+    "title": "Your account isn't linked to a vehicle yet",
+    "body": "Once your consignment agreement is in place, we'll link your vehicle to this account and your dashboard will appear here.",
+    "contact": "Contact us"
+  },
+  "vehiclePicker": {
+    "label": "Vehicle",
+    "all": "All vehicles"
+  },
+  "activeOn": {
+    "both": "Active on Turo and Wheelbase",
+    "turo": "Active on Turo",
+    "wheelbase": "Active on Wheelbase",
+    "none": "Getting ready for its first trip"
+  },
+  "range": {
+    "label": "Date range",
+    "thisYear": "This year",
+    "last12Months": "Last 12 months",
+    "last90Days": "Last 90 days",
+    "lastYear": "Last year",
+    "allTime": "All time"
+  },
+  "shareNote": "Amounts shown are your {{percent}} share of rental revenue.",
+  "kpi": {
+    "total": "Total Revenue",
+    "wheelbase": "Wheelbase Revenue",
+    "turo": "Turo Revenue",
+    "utilization": "Utilization Rate",
+    "vsPrevious": "vs. previous period",
+    "ofTotal": "{{percent}} of total",
+    "noComparison": "No earlier period to compare",
+    "points": "{{value}} pts"
+  },
+  "channels": {
+    "wheelbase": "Wheelbase (Ride + Direct)",
+    "turo": "Turo"
+  },
+  "chart": {
+    "title": "Monthly Revenue",
+    "subtitle": "Total earnings and platform breakdown",
+    "empty": "No earnings in this period yet.",
+    "tableCaption": "Monthly revenue by platform",
+    "month": "Month"
+  },
+  "byPlatform": {
+    "title": "Revenue by Platform"
+  },
+  "summary": {
+    "title": "Revenue Summary",
+    "averageMonthly": "Average Monthly Revenue"
+  },
+  "metrics": {
+    "title": "Key Metrics",
+    "utilization": "Utilization Rate",
+    "available": "Total Days Available",
+    "booked": "Booked Days",
+    "adr": "Average Daily Rate",
+    "tripLength": "Average Trip Length",
+    "tripDays": "{{value}} days"
+  },
+  "vehicle": {
+    "title": "Vehicle Details",
+    "subtitle": "The vehicle you've consigned with Rent With Heldy.",
+    "year": "Year",
+    "make": "Make",
+    "model": "Model",
+    "color": "Color",
+    "plate": "License plate",
+    "vin": "VIN",
+    "inService": "In service since",
+    "share": "Your share",
+    "shareStarted": "Share started",
+    "shareEnded": "Share ended"
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Your signed agreements with Rent With Heldy.",
+    "agreement": "Agreement {{number}}",
+    "signed": "Signed {{date}}",
+    "download": "Download PDF",
+    "downloadError": "The download couldn't start. Please try again.",
+    "empty": "No signed documents yet. Your consignment agreement will appear here once everyone has signed it."
+  },
+  "settings": {
+    "title": "Account settings",
+    "subtitle": "Your name, phone, language and sign-in email."
+  }
+}

@@ -16,7 +16,7 @@ const SUPPORT_EMAIL = "rentwithheldy@gmail.com";
 // Admin → Account settings. Wait for the role check so they never see this
 // page flash first.
 const Profile = () => {
-  const { isAdmin, rolesLoaded } = useAuth();
+  const { isAdmin, isConsigner, rolesLoaded } = useAuth();
   if (!rolesLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background" aria-busy="true">
@@ -25,6 +25,8 @@ const Profile = () => {
     );
   }
   if (isAdmin) return <Navigate to="/admin" replace />;
+  // Vehicle owners get their own dashboard, with account settings in its menu.
+  if (isConsigner) return <Navigate to="/owner" replace />;
   return <CustomerProfile />;
 };
 

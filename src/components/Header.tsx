@@ -71,10 +71,10 @@ const DESKTOP_BROWSE_LINKS = BROWSE_LINKS.filter((item) => item.key !== "contact
 
 const Header = () => {
   const { t, i18n } = useTranslation(["navigation", "common"]);
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, isConsigner } = useAuth();
   // Signed-in visitors go straight to their account (admins to the admin
   // area); everyone else to sign-in.
-  const accountPath = user ? (isAdmin ? "/admin" : "/profile") : "/auth";
+  const accountPath = user ? (isAdmin ? "/admin" : isConsigner ? "/owner" : "/profile") : "/auth";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();

@@ -40,6 +40,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AdminLayout } from "./components/admin/AdminLayout";
+import { OwnerLayout } from "./components/owner/OwnerLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import NotFound from "./pages/NotFound";
 
@@ -51,6 +52,11 @@ const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
 const AdminConsigners = lazy(() => import("./pages/AdminConsigners"));
 const AdminSettings = lazy(() => import("./pages/AdminSettings"));
 const AdminTuroImport = lazy(() => import("./pages/AdminTuroImport"));
+// The owner dashboard (charts included) loads only for owners who open it.
+const OwnerAnalytics = lazy(() => import("./pages/owner/OwnerAnalytics"));
+const OwnerVehicle = lazy(() => import("./pages/owner/OwnerVehicle"));
+const OwnerDocuments = lazy(() => import("./pages/owner/OwnerDocuments"));
+const OwnerSettings = lazy(() => import("./pages/owner/OwnerSettings"));
 
 const adminFallback = <div className="min-h-screen bg-background" aria-busy="true" />;
 const adminBlogRoute = (element: JSX.Element) => (
@@ -153,6 +159,13 @@ const App = () => (
             </Route>
             {/* The saved preview shows the article as readers see it, without admin chrome. */}
             <Route path="/admin/blog/:id/preview" element={adminBlogRoute(<AdminBlogPreview />)} />
+            {/* Owner (consigner) dashboard; admins preview it with ?as=<consigner id>. */}
+            <Route element={<OwnerLayout />}>
+              <Route path="/owner" element={<Suspense fallback={adminFallback}><OwnerAnalytics /></Suspense>} />
+              <Route path="/owner/vehicle" element={<Suspense fallback={adminFallback}><OwnerVehicle /></Suspense>} />
+              <Route path="/owner/documents" element={<Suspense fallback={adminFallback}><OwnerDocuments /></Suspense>} />
+              <Route path="/owner/settings" element={<Suspense fallback={adminFallback}><OwnerSettings /></Suspense>} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

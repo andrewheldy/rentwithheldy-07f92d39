@@ -162,6 +162,7 @@ test.describe("consigners", () => {
     await expect(card.getByText("2019 Volkswagen Jetta")).toBeVisible();
     await expect(card.getByText("Owner 60% · Rent With Heldy 40% · Since Sep 17, 2026")).toBeVisible();
     await expect(card.getByText("Current", { exact: true })).toBeVisible();
+    await expect(card.getByRole("link", { name: "View dashboard" })).toHaveAttribute("href", "/owner?as=con-1");
   });
 
   test("won't offer a vehicle that already has an owner", async ({ page }) => {

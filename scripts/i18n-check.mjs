@@ -70,6 +70,8 @@ const PROPER_NOUN_VALUES = new Set([
   "Blog", // loanword used verbatim in Spanish, French and Portuguese
   "you@email.com", // example email placeholder — identical in every locale by design
   "+1 (555) 555-0100", // example phone placeholder — identical in every locale by design
+  "Turo", // platform name — kept verbatim in every locale
+  "VIN", // vehicle identification number abbreviation, used as-is in Spanish and Portuguese
 ]);
 
 // ---- RTL bidi hygiene ---------------------------------------------------------

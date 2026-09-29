@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Painel do proprietário | Rent With Heldy",
+    "description": "Os ganhos e o desempenho do seu veículo com a Rent With Heldy."
+  },
+  "role": "Proprietário do veículo",
+  "tagline": "Seja nosso convidado",
+  "nav": {
+    "label": "Painel do proprietário",
+    "analytics": "Análises",
+    "vehicle": "Detalhes do veículo",
+    "documents": "Documentos",
+    "settings": "Configurações da conta",
+    "website": "Ver site",
+    "signOut": "Sair",
+    "toggle": "Mostrar ou ocultar menu",
+    "account": "Menu da conta"
+  },
+  "preview": {
+    "banner": "Pré-visualização de administrador do painel de {{name}}. É exatamente o que essa pessoa vê.",
+    "back": "Voltar aos consignantes"
+  },
+  "loading": "Carregando seu painel…",
+  "error": {
+    "title": "Não foi possível carregar seu painel",
+    "body": "Tente novamente. Se continuar acontecendo, fale conosco.",
+    "retry": "Tentar novamente"
+  },
+  "notLinked": {
+    "title": "Sua conta ainda não está vinculada a um veículo",
+    "body": "Quando seu contrato de consignação estiver pronto, vincularemos seu veículo a esta conta e seu painel aparecerá aqui.",
+    "contact": "Fale conosco"
+  },
+  "vehiclePicker": {
+    "label": "Veículo",
+    "all": "Todos os veículos"
+  },
+  "activeOn": {
+    "both": "Ativo na Turo e na Wheelbase",
+    "turo": "Ativo na Turo",
+    "wheelbase": "Ativo na Wheelbase",
+    "none": "Preparando-se para a primeira viagem"
+  },
+  "range": {
+    "label": "Período",
+    "thisYear": "Este ano",
+    "last12Months": "Últimos 12 meses",
+    "last90Days": "Últimos 90 dias",
+    "lastYear": "Ano passado",
+    "allTime": "Todo o histórico"
+  },
+  "shareNote": "Os valores mostrados são a sua parte de {{percent}} da receita de aluguel.",
+  "kpi": {
+    "total": "Receita total",
+    "wheelbase": "Receita Wheelbase",
+    "turo": "Receita Turo",
+    "utilization": "Taxa de utilização",
+    "vsPrevious": "vs. período anterior",
+    "ofTotal": "{{percent}} do total",
+    "noComparison": "Não há período anterior para comparar",
+    "points": "{{value}} p.p."
+  },
+  "channels": {
+    "wheelbase": "Wheelbase (Ride + Direto)",
+    "turo": "Turo"
+  },
+  "chart": {
+    "title": "Receita mensal",
+    "subtitle": "Ganhos totais e divisão por plataforma",
+    "empty": "Ainda não há ganhos neste período.",
+    "tableCaption": "Receita mensal por plataforma",
+    "month": "Mês"
+  },
+  "byPlatform": {
+    "title": "Receita por plataforma"
+  },
+  "summary": {
+    "title": "Resumo da receita",
+    "averageMonthly": "Receita mensal média"
+  },
+  "metrics": {
+    "title": "Indicadores principais",
+    "utilization": "Taxa de utilização",
+    "available": "Dias disponíveis",
+    "booked": "Dias reservados",
+    "adr": "Diária média",
+    "tripLength": "Duração média da viagem",
+    "tripDays": "{{value}} dias"
+  },
+  "vehicle": {
+    "title": "Detalhes do veículo",
+    "subtitle": "O veículo que você consignou com a Rent With Heldy.",
+    "year": "Ano",
+    "make": "Marca",
+    "model": "Modelo",
+    "color": "Cor",
+    "plate": "Placa",
+    "vin": "VIN",
+    "inService": "Em serviço desde",
+    "share": "Sua parte",
+    "shareStarted": "Início da sua parte",
+    "shareEnded": "Fim da sua parte"
+  },
+  "documents": {
+    "title": "Documentos",
+    "subtitle": "Seus contratos assinados com a Rent With Heldy.",
+    "agreement": "Contrato {{number}}",
+    "signed": "Assinado em {{date}}",
+    "download": "Baixar PDF",
+    "downloadError": "Não foi possível iniciar o download. Tente novamente.",
+    "empty": "Ainda não há documentos assinados. Seu contrato de consignação aparecerá aqui quando todos tiverem assinado."
+  },
+  "settings": {
+    "title": "Configurações da conta",
+    "subtitle": "Seu nome, telefone, idioma e e-mail de acesso."
+  }
+}

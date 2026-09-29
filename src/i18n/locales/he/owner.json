@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "לוח הבעלים | Rent With Heldy",
+    "description": "ההכנסות והביצועים של הרכב שלך עם Rent With Heldy."
+  },
+  "role": "בעל/ת הרכב",
+  "tagline": "היו האורחים שלנו",
+  "nav": {
+    "label": "לוח הבעלים",
+    "analytics": "ניתוח נתונים",
+    "vehicle": "פרטי הרכב",
+    "documents": "מסמכים",
+    "settings": "הגדרות החשבון",
+    "website": "מעבר לאתר",
+    "signOut": "התנתקות",
+    "toggle": "הצגה או הסתרה של התפריט",
+    "account": "תפריט החשבון"
+  },
+  "preview": {
+    "banner": "תצוגה מקדימה למנהל של הלוח של {{name}}. זה בדיוק מה שהם רואים.",
+    "back": "חזרה למפקידים"
+  },
+  "loading": "טוען את הלוח שלך…",
+  "error": {
+    "title": "לא הצלחנו לטעון את הלוח שלך",
+    "body": "נסו שוב. אם זה חוזר על עצמו, צרו איתנו קשר.",
+    "retry": "ניסיון חוזר"
+  },
+  "notLinked": {
+    "title": "החשבון שלך עדיין לא מקושר לרכב",
+    "body": "ברגע שהסכם ההפקדה שלך ייכנס לתוקף, נקשר את הרכב שלך לחשבון הזה והלוח שלך יופיע כאן.",
+    "contact": "צרו קשר"
+  },
+  "vehiclePicker": {
+    "label": "רכב",
+    "all": "כל הרכבים"
+  },
+  "activeOn": {
+    "both": "פעיל ב־Turo וב־Wheelbase",
+    "turo": "פעיל ב־Turo",
+    "wheelbase": "פעיל ב־Wheelbase",
+    "none": "מתכונן לנסיעה הראשונה"
+  },
+  "range": {
+    "label": "טווח תאריכים",
+    "thisYear": "השנה",
+    "last12Months": "12 החודשים האחרונים",
+    "last90Days": "90 הימים האחרונים",
+    "lastYear": "השנה שעברה",
+    "allTime": "כל ההיסטוריה"
+  },
+  "shareNote": "הסכומים המוצגים הם החלק שלך, {{percent}}, מהכנסות ההשכרה.",
+  "kpi": {
+    "total": "סך ההכנסות",
+    "wheelbase": "הכנסות Wheelbase",
+    "turo": "הכנסות Turo",
+    "utilization": "שיעור ניצול",
+    "vsPrevious": "לעומת התקופה הקודמת",
+    "ofTotal": "{{percent}} מהסך",
+    "noComparison": "אין תקופה קודמת להשוואה",
+    "points": "{{value}} נק׳"
+  },
+  "channels": {
+    "wheelbase": "Wheelbase (Ride + ישיר)",
+    "turo": "Turo"
+  },
+  "chart": {
+    "title": "הכנסות חודשיות",
+    "subtitle": "סך ההכנסות ופילוח לפי פלטפורמה",
+    "empty": "עדיין אין הכנסות בתקופה הזו.",
+    "tableCaption": "הכנסות חודשיות לפי פלטפורמה",
+    "month": "חודש"
+  },
+  "byPlatform": {
+    "title": "הכנסות לפי פלטפורמה"
+  },
+  "summary": {
+    "title": "סיכום הכנסות",
+    "averageMonthly": "הכנסה חודשית ממוצעת"
+  },
+  "metrics": {
+    "title": "מדדים עיקריים",
+    "utilization": "שיעור ניצול",
+    "available": "ימים זמינים",
+    "booked": "ימים מוזמנים",
+    "adr": "תעריף יומי ממוצע",
+    "tripLength": "משך נסיעה ממוצע",
+    "tripDays": "{{value}} ימים"
+  },
+  "vehicle": {
+    "title": "פרטי הרכב",
+    "subtitle": "הרכב שהפקדת אצל Rent With Heldy.",
+    "year": "שנה",
+    "make": "יצרן",
+    "model": "דגם",
+    "color": "צבע",
+    "plate": "לוחית רישוי",
+    "vin": "מספר שלדה (VIN)",
+    "inService": "בשירות מאז",
+    "share": "החלק שלך",
+    "shareStarted": "תחילת החלק שלך",
+    "shareEnded": "סיום החלק שלך"
+  },
+  "documents": {
+    "title": "מסמכים",
+    "subtitle": "ההסכמים החתומים שלך עם Rent With Heldy.",
+    "agreement": "הסכם {{number}}",
+    "signed": "נחתם ב־{{date}}",
+    "download": "הורדת PDF",
+    "downloadError": "לא הצלחנו להתחיל את ההורדה. נסו שוב.",
+    "empty": "עדיין אין מסמכים חתומים. הסכם ההפקדה שלך יופיע כאן לאחר שכל הצדדים יחתמו."
+  },
+  "settings": {
+    "title": "הגדרות החשבון",
+    "subtitle": "השם, הטלפון, השפה והאימייל להתחברות שלך."
+  }
+}
