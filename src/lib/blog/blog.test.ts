@@ -2,7 +2,21 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import enBlog from "@/i18n/locales/en/blog.json";
-import { collectLinks, docToPlainText, hasContent, internalPath, isHttpUrl, normalizeDoc, readingMinutes, safeHref, safeImageSrc } from "./content";
+import {
+  collectLinks,
+  ctaButton,
+  docToPlainText,
+  galleryImages,
+  hasAuthorDetails,
+  hasContent,
+  headingAnchors,
+  internalPath,
+  isHttpUrl,
+  normalizeDoc,
+  readingMinutes,
+  safeHref,
+  safeImageSrc,
+} from "./content";
 import { CTA_PRESETS, INTERNAL_LINKS } from "./presets";
 import {
   BLOG_INDEX_META,
@@ -44,6 +58,13 @@ const post: BlogPost = {
   category_id: "c1",
   category: { id: "c1", slug: "airport-cruise-travel", name: "Airport & Cruise Travel" },
   author: "Rent With Heldy",
+  header_layout: "stacked",
+  featured_image_caption: null,
+  featured_image_credit: null,
+  featured_image_focus_x: 50,
+  featured_image_focus_y: 50,
+  author_id: null,
+  author_profile: null,
   status: "published",
   published_at: "2026-09-01T14:00:00.000Z",
   last_updated_at: "2026-09-20T14:00:00.000Z",
@@ -142,6 +163,53 @@ describe("document helpers", () => {
     expect(normalizeDoc(null)).toEqual({ type: "doc", content: [] });
     expect(normalizeDoc({ type: "paragraph" })).toEqual({ type: "doc", content: [] });
     expect(normalizeDoc(doc)).toEqual(doc);
+  });
+});
+
+describe("article blocks", () => {
+  it("builds unique heading anchors that avoid the page's own ids", () => {
+    const anchors = headingAnchors(
+      {
+        type: "doc",
+        content: [
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "Sources" }] },
+          { type: "heading", attrs: { level: 3 }, content: [{ type: "text", text: "Café & Tolls" }] },
+          { type: "heading", attrs: { level: 2 }, content: [{ type: "text", text: "¿?" }] },
+        ],
+      },
+      ["sources"],
+    );
+    expect(anchors).toEqual([
+      { id: "sources-2", text: "Sources", level: 2 },
+      { id: "cafe-and-tolls", text: "Café & Tolls", level: 3 },
+      { id: "section", text: "¿?", level: 2 },
+    ]);
+  });
+
+  it("keeps only safe gallery images, capped at twelve", () => {
+    const many = Array.from({ length: 15 }, (_, i) => ({ src: `/p${i}.jpg`, alt: `P${i}` }));
+    expect(galleryImages(many)).toHaveLength(12);
+    expect(galleryImages([{ src: "data:image/png;base64,x" }, "nope", null, { src: "/ok.jpg", width: "640" }])).toEqual([
+      { src: "/ok.jpg", alt: "", width: 640, height: null },
+    ]);
+    expect(galleryImages("not an array")).toEqual([]);
+    expect(hasContent({ type: "doc", content: [{ type: "gallery", attrs: { images: [{ src: "/a.jpg" }] } }] })).toBe(true);
+  });
+
+  it("only makes buttons that link to our pages or https:// addresses", () => {
+    expect(ctaButton({ label: " Book ", href: "/book" })).toEqual({ label: "Book", href: "/book" });
+    expect(ctaButton({ label: "Go", href: "https://example.com" })).toEqual({ label: "Go", href: "https://example.com" });
+    expect(ctaButton({ label: "Go", href: "//evil.com" })).toBeNull();
+    expect(ctaButton({ label: "Go", href: "mailto:a@b.com" })).toBeNull();
+    expect(ctaButton({ label: "", href: "/book" })).toBeNull();
+  });
+
+  it("shows an author card only when the profile has details", () => {
+    const base = { id: "a", slug: "a", name: "Heldy", role: null, bio: null, photo_url: null };
+    expect(hasAuthorDetails(null)).toBe(false);
+    expect(hasAuthorDetails(base)).toBe(false);
+    expect(hasAuthorDetails({ ...base, bio: "Family-owned since 2019." })).toBe(true);
+    expect(hasAuthorDetails({ ...base, photo_url: "javascript:x" })).toBe(false);
   });
 });
 

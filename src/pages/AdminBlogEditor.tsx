@@ -9,6 +9,7 @@ import { RichTextEditor } from "@/components/admin/blog/RichTextEditor";
 import {
   CharacterGuide,
   FeaturedImageField,
+  HeaderLayoutField,
   PublishingChecklist,
   SourcesField,
   TagInput,
@@ -24,6 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import {
   adminGetPost,
+  adminListAuthors,
   adminListTags,
   adminSavePost,
   fetchCategories,
@@ -41,7 +43,17 @@ import {
 } from "@/lib/blog/seo";
 import { isValidSlug, slugify } from "@/lib/blog/slug";
 import { effectiveStatus, isLive } from "@/lib/blog/status";
-import { EMPTY_DOC, type BlogCategory, type BlogPost, type BlogSource, type BlogStatus, type RichTextDoc } from "@/lib/blog/types";
+import {
+  EMPTY_DOC,
+  type BlogAuthor,
+  type BlogCategory,
+  type BlogPost,
+  type BlogSource,
+  type BlogStatus,
+  type HeaderLayout,
+  type RichTextDoc,
+} from "@/lib/blog/types";
+import type { FeaturedImageValue } from "@/components/admin/blog/EditorFields";
 
 // ---------------------------------------------------------------------------
 // Form model
@@ -52,10 +64,12 @@ interface FormState {
   slug: string;
   excerpt: string;
   content: RichTextDoc;
-  featured: { url: string | null; alt: string; width: number | null; height: number | null };
+  featured: FeaturedImageValue;
+  headerLayout: HeaderLayout;
   categoryId: string;
   tags: string[];
   author: string;
+  authorId: string; // "" = no linked profile
   status: BlogStatus;
   publishedAt: string; // datetime-local (editor's time zone)
   lastUpdatedAt: string; // datetime-local
@@ -76,10 +90,12 @@ const EMPTY_FORM: FormState = {
   slug: "",
   excerpt: "",
   content: EMPTY_DOC,
-  featured: { url: null, alt: "", width: null, height: null },
+  featured: { url: null, alt: "", width: null, height: null, caption: "", credit: "", focusX: 50, focusY: 50 },
+  headerLayout: "stacked",
   categoryId: "",
   tags: [],
   author: DEFAULT_AUTHOR,
+  authorId: "",
   status: "draft",
   publishedAt: "",
   lastUpdatedAt: "",
@@ -121,10 +137,16 @@ function formFromPost(post: BlogPost): FormState {
       alt: post.featured_image_alt ?? "",
       width: post.featured_image_width,
       height: post.featured_image_height,
+      caption: post.featured_image_caption ?? "",
+      credit: post.featured_image_credit ?? "",
+      focusX: post.featured_image_focus_x ?? 50,
+      focusY: post.featured_image_focus_y ?? 50,
     },
+    headerLayout: post.header_layout ?? "stacked",
     categoryId: post.category_id ?? "",
     tags: post.tags.map((t) => t.name),
     author: post.author,
+    authorId: post.author_id ?? "",
     // A scheduled post whose time has come is simply published.
     status: effectiveStatus(post),
     publishedAt: toLocalInput(post.published_at),
@@ -153,8 +175,14 @@ function toInput(form: FormState, status: BlogStatus, publishedAt: string | null
     featured_image_alt: form.featured.url ? nullIfBlank(form.featured.alt) : null,
     featured_image_width: form.featured.url ? form.featured.width : null,
     featured_image_height: form.featured.url ? form.featured.height : null,
+    featured_image_caption: form.featured.url ? nullIfBlank(form.featured.caption) : null,
+    featured_image_credit: form.featured.url ? nullIfBlank(form.featured.credit) : null,
+    featured_image_focus_x: form.featured.url ? form.featured.focusX : 50,
+    featured_image_focus_y: form.featured.url ? form.featured.focusY : 50,
+    header_layout: form.headerLayout,
     category_id: form.categoryId || null,
     author: form.author.trim() || DEFAULT_AUTHOR,
+    author_id: form.authorId || null,
     status,
     published_at: publishedAt,
     last_updated_at: lastUpdatedAt,
@@ -172,7 +200,7 @@ function toInput(form: FormState, status: BlogStatus, publishedAt: string | null
 }
 
 /** Assemble an in-memory post (for the live preview) from unsaved form state. */
-function previewPost(form: FormState, categories: BlogCategory[], id?: string): BlogPost {
+function previewPost(form: FormState, categories: BlogCategory[], authors: BlogAuthor[], id?: string): BlogPost {
   const input = toInput(form, form.status, fromLocalInput(form.publishedAt) ?? new Date().toISOString(), fromLocalInput(form.lastUpdatedAt));
   const category = categories.find((c) => c.id === input.category_id) ?? null;
   const now = new Date().toISOString();
@@ -181,6 +209,7 @@ function previewPost(form: FormState, categories: BlogCategory[], id?: string): 
     id: id ?? "preview",
     slug: input.slug || "preview",
     category: category ? { id: category.id, slug: category.slug, name: category.name } : null,
+    author_profile: authors.find((a) => a.id === input.author_id) ?? null,
     tags: input.tags.map((name) => ({ id: name, slug: slugify(name), name })),
     sources: input.sources.filter((s) => s.name.trim() && isHttpUrl(s.url)),
     created_at: now,
@@ -199,6 +228,8 @@ export default function AdminBlogEditor() {
   const postQuery = useQuery({ queryKey: ["admin", "blog", "post", id], queryFn: () => adminGetPost(id!), enabled: !isNew });
   const categoriesQuery = useQuery({ queryKey: ["blog", "categories"], queryFn: fetchCategories });
   const tagsQuery = useQuery({ queryKey: ["admin", "blog", "tags"], queryFn: adminListTags });
+  const authorsQuery = useQuery({ queryKey: ["admin", "blog", "authors"], queryFn: adminListAuthors });
+  const authors = useMemo(() => authorsQuery.data ?? [], [authorsQuery.data]);
   const categories = useMemo(() => categoriesQuery.data ?? [], [categoriesQuery.data]);
 
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
@@ -588,8 +619,10 @@ export default function AdminBlogEditor() {
             </Card>
           </div>
 
-          {/* ================= Sidebar ================= */}
-          <aside className="order-1 space-y-6 lg:sticky lg:top-4 lg:order-2">
+          {/* ================= Sidebar =================
+              Taller than most screens, so on desktop it scrolls on its own
+              and every card stays reachable while it sticks. */}
+          <aside className="order-1 space-y-6 lg:sticky lg:top-4 lg:order-2 lg:max-h-[calc(100dvh-2rem)] lg:overflow-y-auto lg:overscroll-contain lg:p-1">
             <Card className="space-y-4 p-5">
               <h3 className={sectionTitle}>Publishing</h3>
               <div className="space-y-1.5">
@@ -677,14 +710,39 @@ export default function AdminBlogEditor() {
                 <TagInput tags={form.tags} onChange={(t) => set("tags", t)} suggestions={tagsQuery.data ?? []} />
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="post-author">Author</Label>
-                <Input id="post-author" value={form.author} maxLength={120} onChange={(e) => set("author", e.target.value)} />
+                <Label htmlFor="post-author-profile">Author</Label>
+                <Select
+                  value={form.authorId || "none"}
+                  onValueChange={(v) => {
+                    const profile = authors.find((a) => a.id === v);
+                    // A profile sets the byline too; "No profile" keeps the name as typed.
+                    setForm((f) => ({ ...f, authorId: profile ? profile.id : "", author: profile ? profile.name : f.author }));
+                  }}
+                >
+                  <SelectTrigger id="post-author-profile"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">No profile (name only)</SelectItem>
+                    {authors.map((a) => <SelectItem key={a.id} value={a.id}>{a.name}{a.role ? ` · ${a.role}` : ""}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  A profile adds an author card under the article.{" "}
+                  <Link to="/admin/blog/authors" className="font-medium text-primary-text hover:underline">Manage authors</Link>
+                </p>
               </div>
+              {!form.authorId && (
+                <div className="space-y-1.5">
+                  <Label htmlFor="post-author">Author name</Label>
+                  <Input id="post-author" value={form.author} maxLength={120} onChange={(e) => set("author", e.target.value)} aria-describedby="post-author-help" />
+                  <p id="post-author-help" className="text-xs text-muted-foreground">Posts by {DEFAULT_AUTHOR} show no byline to readers.</p>
+                </div>
+              )}
             </Card>
 
-            <Card className="space-y-3 p-5">
+            <Card className="space-y-4 p-5">
               <h3 className={sectionTitle}>Featured image</h3>
               <FeaturedImageField value={form.featured} onChange={(v) => set("featured", v)} />
+              <HeaderLayoutField value={form.headerLayout} onChange={(v) => set("headerLayout", v)} hasImage={Boolean(form.featured.url)} />
             </Card>
           </aside>
         </div>
@@ -697,7 +755,7 @@ export default function AdminBlogEditor() {
             <DialogTitle className="text-sm font-semibold">Preview — this is how the article will look. Unsaved changes are included.</DialogTitle>
           </div>
           <div className="flex-1 overflow-y-auto bg-background">
-            <ArticleView post={previewPost(form, categories, loadedPost?.id)} preview />
+            <ArticleView post={previewPost(form, categories, authors, loadedPost?.id)} preview />
           </div>
         </DialogContent>
       </Dialog>

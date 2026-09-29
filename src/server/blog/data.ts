@@ -27,7 +27,7 @@ export async function loadLivePost(
   const { data, error } = await supabase
     .from("blog_posts")
     .select(
-      "*,category:blog_categories(id,slug,name),post_tags:blog_post_tags(tag:blog_tags(id,slug,name)),sources:blog_post_sources(id,name,url,publisher,position)",
+      "*,category:blog_categories(id,slug,name),post_tags:blog_post_tags(tag:blog_tags(id,slug,name)),sources:blog_post_sources(id,name,url,publisher,position),author_profile:blog_authors(id,slug,name,role,bio,photo_url)",
     )
     .eq("slug", slug)
     .in("status", LIVE)

@@ -40,6 +40,18 @@
     "sourcesHeading": "מקורות",
     "sourcesNote": "קישורים חיצוניים נפתחים בלשונית חדשה.",
     "tagsLabel": "תגיות",
+    "toc": "במאמר זה",
+    "photoCredit": "צילום:",
+    "aboutAuthor": "על הכותב",
+    "share": {
+      "heading": "שתפו את המאמר",
+      "copy": "העתקת קישור",
+      "copied": "הקישור הועתק",
+      "copyFailed": "לא הצלחנו להעתיק את הקישור",
+      "on": "שיתוף ב-{{network}}",
+      "email": "שיתוף במייל",
+      "more": "דרכים נוספות לשתף"
+    },
     "relatedHeading": "עוד מהבלוג",
     "allArticles": "כל המאמרים",
     "englishNotice": {

@@ -308,6 +308,109 @@
     margin: 0;
   }
 
+  /* Section headings are link targets (table of contents); keep them clear
+     of the sticky site header and below any floated image. */
+  .blog-prose h2,
+  .blog-prose h3 {
+    scroll-margin-top: 6rem;
+    clear: both;
+  }
+  .blog-prose hr,
+  .blog-prose .blog-gallery,
+  .blog-prose .blog-table-scroll,
+  .blog-prose .tableWrapper {
+    clear: both;
+  }
+  .blog-prose::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  /* Image layouts. Article text is always left-to-right (English), so
+     left/right are physical sides. Below sm every image is full width. */
+  @media (min-width: 640px) {
+    .blog-prose figure[data-layout="left"],
+    .blog-prose img[data-layout="left"] {
+      float: left;
+      width: 45%;
+      margin: 0.35em 1.5em 0.75em 0;
+    }
+    .blog-prose figure[data-layout="right"],
+    .blog-prose img[data-layout="right"] {
+      float: right;
+      width: 45%;
+      margin: 0.35em 0 0.75em 1.5em;
+    }
+    .blog-prose figure[data-layout="left"] figcaption,
+    .blog-prose figure[data-layout="right"] figcaption {
+      @apply text-start;
+    }
+  }
+  /* Wide: breaks out of the reading column on large screens (reader only). */
+  @media (min-width: 1024px) {
+    .blog-prose figure[data-layout="wide"] {
+      width: min(56rem, calc(100vw - 6rem));
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Gallery: a grid of photos with one shared caption. */
+  .blog-prose .blog-gallery ul {
+    @apply grid list-none grid-cols-2 gap-2 p-0 sm:gap-3;
+  }
+  .blog-prose .blog-gallery[data-count="1"] ul {
+    @apply grid-cols-1;
+  }
+  @media (min-width: 640px) {
+    .blog-prose .blog-gallery[data-count="3"] ul {
+      @apply grid-cols-3;
+    }
+  }
+  .blog-prose .blog-gallery li {
+    @apply m-0 p-0;
+  }
+  .blog-prose .blog-gallery img {
+    @apply aspect-[4/3] h-full object-cover;
+  }
+
+  /* Callouts: tip / note / warning. */
+  .blog-prose .blog-callout {
+    @apply relative rounded-card border-s-4 py-4 pe-5 ps-12 text-base leading-relaxed text-foreground sm:text-[1.0625rem];
+  }
+  .blog-prose .blog-callout[data-tone="tip"] {
+    @apply border-primary bg-primary/10;
+  }
+  .blog-prose .blog-callout[data-tone="note"] {
+    @apply border-ink/30 bg-secondary;
+  }
+  .blog-prose .blog-callout[data-tone="warning"] {
+    @apply border-amber-500 bg-amber-50;
+  }
+  .blog-prose .blog-callout-icon {
+    @apply absolute start-4 top-[1.15rem] h-5 w-5;
+  }
+  .blog-prose .blog-callout[data-tone="tip"] .blog-callout-icon {
+    @apply text-primary-text;
+  }
+  .blog-prose .blog-callout[data-tone="warning"] .blog-callout-icon {
+    @apply text-amber-700;
+  }
+  .blog-prose .blog-callout p + p,
+  .blog-prose .blog-callout > div > * + * {
+    margin-top: 0.75em;
+  }
+
+  /* A button inside the article. */
+  .blog-prose .blog-inline-cta {
+    @apply text-center;
+  }
+  .blog-prose a.blog-cta-button,
+  .blog-prose .blog-cta-button {
+    @apply text-primary-foreground no-underline;
+  }
+
   /* Admin editor (Tiptap) affordances */
   .blog-prose p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
@@ -318,6 +421,17 @@
   }
   .blog-prose .selectedCell {
     @apply bg-primary/10;
+  }
+  /* The editor names each callout's tone (readers see an icon instead). */
+  .ProseMirror .blog-callout {
+    @apply ps-5;
+  }
+  .ProseMirror .blog-callout::before {
+    content: attr(data-tone);
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+  .ProseMirror img[data-layout="wide"] {
+    @apply outline-dashed outline-1 outline-offset-4 outline-border;
   }
 }
 

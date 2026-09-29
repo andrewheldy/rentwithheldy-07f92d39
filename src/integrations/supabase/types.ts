@@ -584,6 +584,39 @@ export type Database = {
           },
         ]
       }
+      blog_authors: {
+        Row: {
+          bio: string | null
+          created_at: string
+          id: string
+          name: string
+          photo_url: string | null
+          role: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          photo_url?: string | null
+          role?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          photo_url?: string | null
+          role?: string | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       blog_categories: {
         Row: {
           created_at: string
@@ -685,6 +718,7 @@ export type Database = {
       blog_posts: {
         Row: {
           author: string
+          author_id: string | null
           canonical_url: string | null
           category_id: string | null
           content: Json
@@ -694,8 +728,13 @@ export type Database = {
           excerpt: string
           featured_image: string | null
           featured_image_alt: string | null
+          featured_image_caption: string | null
+          featured_image_credit: string | null
+          featured_image_focus_x: number
+          featured_image_focus_y: number
           featured_image_height: number | null
           featured_image_width: number | null
+          header_layout: string
           id: string
           last_updated_at: string | null
           meta_description: string | null
@@ -711,6 +750,7 @@ export type Database = {
         }
         Insert: {
           author?: string
+          author_id?: string | null
           canonical_url?: string | null
           category_id?: string | null
           content?: Json
@@ -720,8 +760,13 @@ export type Database = {
           excerpt?: string
           featured_image?: string | null
           featured_image_alt?: string | null
+          featured_image_caption?: string | null
+          featured_image_credit?: string | null
+          featured_image_focus_x?: number
+          featured_image_focus_y?: number
           featured_image_height?: number | null
           featured_image_width?: number | null
+          header_layout?: string
           id?: string
           last_updated_at?: string | null
           meta_description?: string | null
@@ -737,6 +782,7 @@ export type Database = {
         }
         Update: {
           author?: string
+          author_id?: string | null
           canonical_url?: string | null
           category_id?: string | null
           content?: Json
@@ -746,8 +792,13 @@ export type Database = {
           excerpt?: string
           featured_image?: string | null
           featured_image_alt?: string | null
+          featured_image_caption?: string | null
+          featured_image_credit?: string | null
+          featured_image_focus_x?: number
+          featured_image_focus_y?: number
           featured_image_height?: number | null
           featured_image_width?: number | null
+          header_layout?: string
           id?: string
           last_updated_at?: string | null
           meta_description?: string | null
@@ -762,6 +813,13 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "blog_posts_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "blog_authors"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "blog_posts_category_id_fkey"
             columns: ["category_id"]

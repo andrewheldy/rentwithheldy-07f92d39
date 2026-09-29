@@ -24,7 +24,7 @@
   },
   "trustStrip": {
     "reviews": "Mais de 1.400 avaliações cinco estrelas",
-    "allStar": "All-Star Host",
+    "allStar": "Power Host",
     "delivery": "Entrega em hotéis e aeroportos",
     "contactless": "Retirada sem contato",
     "language": "Escreva para a gente no seu idioma preferido",
@@ -99,7 +99,7 @@
   "reviews": {
     "eyebrow": "O que os hóspedes dizem",
     "title": "Mais de 1.400 avaliações cinco estrelas de hóspedes do Turo em todo o Sul da Flórida.",
-    "description": "O motivo de termos conquistado o status de All-Star Host — carros limpos, comunicação clara e uma entrega fácil, viagem após viagem.",
+    "description": "O motivo de termos conquistado o status de Power Host — carros limpos, comunicação clara e uma entrega fácil, viagem após viagem.",
     "ariaLabel": "Avaliações cinco estrelas de hóspedes do Turo",
     "altPattern": "Avaliação cinco estrelas no Turo de {{name}} pelo {{vehicle}}"
   },

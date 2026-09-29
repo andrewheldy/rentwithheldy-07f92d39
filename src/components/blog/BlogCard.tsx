@@ -46,6 +46,7 @@ export function BlogCard({ post, featured = false, headingLevel = "h3" }: BlogCa
             loading={featured ? "eager" : "lazy"}
             decoding="async"
             {...(featured ? { fetchpriority: "high" } : {})}
+            style={{ objectPosition: `${post.featured_image_focus_x ?? 50}% ${post.featured_image_focus_y ?? 50}%` }}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
           />
         ) : (

@@ -18,7 +18,7 @@ Turo and airport rules change. Live trip details and current Turo instructions o
 
 Owner verification required before public use:
 
-- All-Star Host status
+- Power Host status
 - “1,400+ five-star reviews” claim
 - contactless pickup on every vehicle
 - tolls passed through without Rent With Heldy markup

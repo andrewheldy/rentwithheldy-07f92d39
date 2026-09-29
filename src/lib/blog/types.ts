@@ -35,6 +35,20 @@ export interface BlogTag {
   name: string;
 }
 
+/** A public author profile, shown in the author card under an article. */
+export interface BlogAuthor {
+  id: string;
+  slug: string;
+  name: string;
+  role: string | null;
+  bio: string | null;
+  photo_url: string | null;
+}
+
+export const HEADER_LAYOUTS = ["stacked", "overlay", "text"] as const;
+/** stacked: title then image · overlay: full-width image with the title over it · text: no image in the header. */
+export type HeaderLayout = (typeof HEADER_LAYOUTS)[number];
+
 export interface BlogSource {
   id?: string;
   name: string;
@@ -53,6 +67,9 @@ export interface BlogPostSummary {
   featured_image_alt: string | null;
   featured_image_width: number | null;
   featured_image_height: number | null;
+  /** Focal point (0–100 %) kept in frame when the image is cropped. */
+  featured_image_focus_x: number;
+  featured_image_focus_y: number;
   author: string;
   status: BlogStatus;
   published_at: string | null;
@@ -63,6 +80,12 @@ export interface BlogPostSummary {
 export interface BlogPost extends BlogPostSummary {
   content: RichTextDoc;
   category_id: string | null;
+  header_layout: HeaderLayout;
+  featured_image_caption: string | null;
+  featured_image_credit: string | null;
+  author_id: string | null;
+  /** The linked author profile, when there is one. */
+  author_profile: BlogAuthor | null;
   seo_title: string | null;
   meta_description: string | null;
   primary_keyword: string | null;

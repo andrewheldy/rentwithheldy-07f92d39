@@ -36,6 +36,7 @@ export type AnalyticsEvent =
   | "blog_article_view"
   | "blog_category_filter"
   | "blog_cta_click"
+  | "blog_share"
   | "about_blog_cta_click";
 
 type AnalyticsValue = string | number | boolean | null | undefined;

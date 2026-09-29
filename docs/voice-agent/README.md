@@ -26,7 +26,7 @@ Reading Turo policies into a microphone does not teach the agent those policies.
 
 Replace or confirm these facts before the agent takes live calls:
 
-- All-Star Host status is currently active.
+- Power Host status is currently active.
 - “1,400+ five-star reviews” is current and defensible.
 - The current customer phone number is `+1 (786) 505-9330`.
 - The current customer email is `rentwithheldy@gmail.com`.

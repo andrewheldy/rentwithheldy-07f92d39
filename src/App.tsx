@@ -49,6 +49,7 @@ import NotFound from "./pages/NotFound";
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminBlogEditor = lazy(() => import("./pages/AdminBlogEditor"));
 const AdminBlogPreview = lazy(() => import("./pages/AdminBlogPreview"));
+const AdminBlogAuthors = lazy(() => import("./pages/AdminBlogAuthors"));
 const AdminConsigners = lazy(() => import("./pages/AdminConsigners"));
 const AdminSettings = lazy(() => import("./pages/AdminSettings"));
 const AdminTuroImport = lazy(() => import("./pages/AdminTuroImport"));
@@ -148,6 +149,7 @@ const App = () => (
               <Route path="/admin/turo-import" element={<AdminTuroImport />} />
               <Route path="/admin/blog" element={<AdminBlog />} />
               <Route path="/admin/blog/new" element={<AdminBlogEditor />} />
+              <Route path="/admin/blog/authors" element={<AdminBlogAuthors />} />
               <Route path="/admin/blog/:id" element={<AdminBlogEditor />} />
               <Route path="/admin/photos" element={<AdminPhotos />} />
               <Route path="/admin/leads" element={<AdminLeads />} />

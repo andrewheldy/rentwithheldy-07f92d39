@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, type CSSProperties } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, ChevronRight, ExternalLink, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleContent } from "@/components/blog/ArticleContent";
+import { AuthorCard, ShareLinks, TableOfContents } from "@/components/blog/ArticleExtras";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { useBlogFormat } from "@/components/blog/useBlogFormat";
-import { internalPath, readingMinutes, safeHref } from "@/lib/blog/content";
+import { hasAuthorDetails, headingAnchors, internalPath, readingMinutes, safeHref } from "@/lib/blog/content";
+import { DEFAULT_AUTHOR } from "@/lib/blog/presets";
 import { articleCrumbs } from "@/lib/blog/seo";
 import { hasMeaningfulUpdate } from "@/lib/blog/status";
 import type { BlogPost, BlogPostSummary } from "@/lib/blog/types";
@@ -25,6 +28,9 @@ function hostOf(url: string): string {
   }
 }
 
+// Ids used by the page itself; article headings never take them.
+const RESERVED_IDS = ["article-toc", "article-share", "article-author", "article-sources", "related-articles"];
+
 /**
  * The public article template. The admin preview renders this exact
  * component, so a preview is a faithful picture of the published page.
@@ -39,91 +45,172 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
   const ctaHref = post.cta_url ? safeHref(post.cta_url) : null;
   const ctaInternal = ctaHref ? internalPath(ctaHref) : null;
   const sources = post.sources.filter((source) => safeHref(source.url));
+  const anchors = useMemo(() => headingAnchors(post.content, RESERVED_IDS), [post.content]);
+  const byline = post.author_profile?.name ?? post.author;
+  // Posts by the business itself carry no "By Rent With Heldy" line; named authors keep theirs.
+  const showByline = Boolean(byline.trim()) && byline.trim() !== DEFAULT_AUTHOR;
+  // Overlay needs a photo; without one, the title stands on its own.
+  const layout = !post.featured_image ? "text" : post.header_layout ?? "stacked";
+  const focus: CSSProperties = { objectPosition: `${post.featured_image_focus_x ?? 50}% ${post.featured_image_focus_y ?? 50}%` };
+  const { hash } = useLocation();
+
+  // Opening a link to a section (/blog/post#section) lands on it once the article is on the page.
+  useEffect(() => {
+    if (!hash || preview) return;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    target?.scrollIntoView();
+  }, [hash, preview, post.id]);
+
+  const photoNote = (post.featured_image_caption || post.featured_image_credit) && (
+    <>
+      {post.featured_image_caption && (
+        <span lang="en" dir="ltr">
+          {post.featured_image_caption}
+        </span>
+      )}
+      {post.featured_image_caption && post.featured_image_credit && " "}
+      {post.featured_image_credit && (
+        <span className="whitespace-nowrap text-muted-foreground/80">
+          {t("article.photoCredit")} <bdi>{post.featured_image_credit}</bdi>
+        </span>
+      )}
+    </>
+  );
+
+  const breadcrumb = (className: string) => (
+    <nav aria-label={t("article.breadcrumbLabel")} className={className}>
+      <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+        {crumbs.map((crumb, index) => {
+          const last = index === crumbs.length - 1;
+          return (
+            <li key={crumb.path} className="flex min-w-0 items-center gap-1">
+              {index > 0 && <ChevronRight className="h-3.5 w-3.5 shrink-0 rtl:-scale-x-100" aria-hidden />}
+              {last ? (
+                <span aria-current="page" lang="en" dir="ltr" className="line-clamp-1 max-w-[16rem] text-foreground/80 sm:max-w-md">
+                  {crumb.name}
+                </span>
+              ) : (
+                <Link to={crumb.path} className="transition-colors hover:text-primary-text">
+                  {crumb.name}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+
+  const metaLine = (className: string) => (
+    <div className={`flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-5 text-sm text-muted-foreground ${className}`}>
+      {showByline && (
+        <span>
+          {t("article.by")} <span className="font-semibold text-foreground">{byline}</span>
+        </span>
+      )}
+      {post.published_at && (
+        <span>
+          {t("article.published")}{" "}
+          <time dateTime={post.published_at} className="text-foreground/80">
+            {formatDate(post.published_at)}
+          </time>
+        </span>
+      )}
+      {showUpdated && post.last_updated_at && (
+        <span>
+          {t("article.updated")}{" "}
+          <time dateTime={post.last_updated_at} className="text-foreground/80">
+            {formatDate(post.last_updated_at)}
+          </time>
+        </span>
+      )}
+      <span>{t("index.minRead", { count: readingMinutes(post.content) })}</span>
+    </div>
+  );
 
   return (
     <article className="pb-16 sm:pb-24">
       {/* ===== Header ===== */}
-      <header className="container mx-auto pt-8 sm:pt-12">
-        <div className="mx-auto max-w-3xl">
-          <nav aria-label={t("article.breadcrumbLabel")} className="mb-8 sm:mb-10">
-            <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
-              {crumbs.map((crumb, index) => {
-                const last = index === crumbs.length - 1;
-                return (
-                  <li key={crumb.path} className="flex min-w-0 items-center gap-1">
-                    {index > 0 && <ChevronRight className="h-3.5 w-3.5 shrink-0 rtl:-scale-x-100" aria-hidden />}
-                    {last ? (
-                      <span aria-current="page" lang="en" dir="ltr" className="line-clamp-1 max-w-[16rem] text-foreground/80 sm:max-w-md">
-                        {crumb.name}
-                      </span>
-                    ) : (
-                      <Link to={crumb.path} className="transition-colors hover:text-primary-text">
-                        {crumb.name}
-                      </Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ol>
-          </nav>
-
-          {post.category && (
-            <Link
-              to={crumbs[1].path}
-              className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary-text hover:underline"
-            >
-              {categoryLabel(post.category)}
-            </Link>
-          )}
-
-          <h1 lang="en" dir="ltr" className="text-start font-heading text-display font-bold text-ink">
-            {post.title}
-          </h1>
-
-          {post.excerpt && (
-            <p lang="en" dir="ltr" className="mt-6 text-start text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              {post.excerpt}
-            </p>
-          )}
-
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-5 text-sm text-muted-foreground">
-            <span>
-              {t("article.by")} <span className="font-semibold text-foreground">{post.author}</span>
-            </span>
-            {post.published_at && (
-              <span>
-                {t("article.published")}{" "}
-                <time dateTime={post.published_at} className="text-foreground/80">
-                  {formatDate(post.published_at)}
-                </time>
-              </span>
-            )}
-            {showUpdated && post.last_updated_at && (
-              <span>
-                {t("article.updated")}{" "}
-                <time dateTime={post.last_updated_at} className="text-foreground/80">
-                  {formatDate(post.last_updated_at)}
-                </time>
-              </span>
-            )}
-            <span>{t("index.minRead", { count: readingMinutes(post.content) })}</span>
+      {layout === "overlay" ? (
+        <header className="container mx-auto pt-8 sm:pt-12">
+          <div className="mx-auto max-w-3xl">{breadcrumb("mb-6")}</div>
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-card bg-ink">
+            <img
+              src={post.featured_image!}
+              alt={post.featured_image_alt ?? ""}
+              width={post.featured_image_width ?? undefined}
+              height={post.featured_image_height ?? undefined}
+              decoding="async"
+              {...{ fetchpriority: "high" }}
+              style={focus}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10" />
+            <div className="relative flex min-h-[24rem] flex-col justify-end px-5 pb-8 pt-40 sm:min-h-[30rem] sm:px-10 sm:pb-12 lg:min-h-[34rem] lg:px-14 lg:pb-14">
+              <div className="max-w-3xl">
+                {post.category && (
+                  <Link to={crumbs[1].path} className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary hover:underline">
+                    {categoryLabel(post.category)}
+                  </Link>
+                )}
+                <h1 lang="en" dir="ltr" className="text-start font-heading text-display font-bold text-white">
+                  {post.title}
+                </h1>
+                {post.excerpt && (
+                  <p lang="en" dir="ltr" className="mt-5 text-start text-lg leading-relaxed text-white/85 sm:text-xl">
+                    {post.excerpt}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
+          {photoNote && <p className="mx-auto mt-3 max-w-6xl text-sm text-muted-foreground">{photoNote}</p>}
+          <div className="mx-auto max-w-3xl">{metaLine("mt-6")}</div>
+        </header>
+      ) : (
+        <header className="container mx-auto pt-8 sm:pt-12">
+          <div className="mx-auto max-w-3xl">
+            {breadcrumb("mb-8 sm:mb-10")}
 
-      {/* ===== Featured image ===== */}
-      {post.featured_image && (
-        <figure className="container mx-auto mt-10 sm:mt-12">
-          <img
-            src={post.featured_image}
-            alt={post.featured_image_alt ?? ""}
-            width={post.featured_image_width ?? undefined}
-            height={post.featured_image_height ?? undefined}
-            decoding="async"
-            {...{ fetchpriority: "high" }}
-            className="mx-auto h-auto max-h-[36rem] w-full max-w-5xl rounded-card bg-secondary object-cover"
-          />
-        </figure>
+            {post.category && (
+              <Link
+                to={crumbs[1].path}
+                className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary-text hover:underline"
+              >
+                {categoryLabel(post.category)}
+              </Link>
+            )}
+
+            <h1 lang="en" dir="ltr" className="text-start font-heading text-display font-bold text-ink">
+              {post.title}
+            </h1>
+
+            {post.excerpt && (
+              <p lang="en" dir="ltr" className="mt-6 text-start text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                {post.excerpt}
+              </p>
+            )}
+
+            {metaLine("mt-8")}
+          </div>
+
+          {/* ===== Featured image ===== */}
+          {layout === "stacked" && (
+            <figure className="mt-10 sm:mt-12">
+              <img
+                src={post.featured_image!}
+                alt={post.featured_image_alt ?? ""}
+                width={post.featured_image_width ?? undefined}
+                height={post.featured_image_height ?? undefined}
+                decoding="async"
+                {...{ fetchpriority: "high" }}
+                style={focus}
+                className="mx-auto h-auto max-h-[36rem] w-full max-w-5xl rounded-card bg-secondary object-cover"
+              />
+              {photoNote && <figcaption className="mx-auto mt-3 max-w-5xl text-sm text-muted-foreground">{photoNote}</figcaption>}
+            </figure>
+          )}
+        </header>
       )}
 
       {/* ===== Body ===== */}
@@ -141,8 +228,15 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
             </aside>
           )}
 
+          <TableOfContents anchors={anchors} />
+
           <div lang="en" dir="ltr">
-            <ArticleContent doc={post.content} />
+            <ArticleContent
+              doc={post.content}
+              anchors={anchors}
+              ctaLabel={ctaLabel}
+              onCtaClick={(href) => !preview && track("blog_cta_click", { post_slug: post.slug, cta_url: href, placement: "inline" })}
+            />
           </div>
 
           {post.tags.length > 0 && (
@@ -157,6 +251,10 @@ export function ArticleView({ post, related = [], preview = false }: ArticleView
               </ul>
             </div>
           )}
+
+          <ShareLinks slug={post.slug} title={post.title} preview={preview} />
+
+          {hasAuthorDetails(post.author_profile) && <AuthorCard author={post.author_profile} />}
 
           {/* ===== Sources ===== */}
           {sources.length > 0 && (

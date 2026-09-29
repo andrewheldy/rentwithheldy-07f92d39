@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { isHttpUrl } from "@/lib/blog/content";
 import { ACCEPTED_IMAGE_TYPES, uploadBlogImage, type UploadedImage } from "@/lib/blog/images";
-import type { BlogSource, BlogTag } from "@/lib/blog/types";
+import type { BlogSource, BlogTag, HeaderLayout } from "@/lib/blog/types";
 
 /* Building blocks for the post editor (pages/AdminBlogEditor.tsx). */
 
@@ -32,11 +32,75 @@ export function CharacterGuide({ id, length, min, max }: { id: string; length: n
 // Featured image
 // ---------------------------------------------------------------------------
 
-interface FeaturedImageValue {
+export interface FeaturedImageValue {
   url: string | null;
   alt: string;
   width: number | null;
   height: number | null;
+  caption: string;
+  credit: string;
+  /** Focal point, 0–100 % from the left and from the top. */
+  focusX: number;
+  focusY: number;
+}
+
+const clampPercent = (value: number) => Math.min(100, Math.max(0, Math.round(value)));
+
+/**
+ * Click (or use the arrow keys on) the photo to mark its subject. Wherever
+ * the photo is cropped — blog cards, the wide header — that point stays in
+ * frame.
+ */
+function FocalPointPicker({ value, onChange }: { value: FeaturedImageValue; onChange: (next: FeaturedImageValue) => void }) {
+  const setFocus = (x: number, y: number) => onChange({ ...value, focusX: clampPercent(x), focusY: clampPercent(y) });
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const step = event.shiftKey ? 10 : 5;
+    const moves: Record<string, [number, number]> = {
+      ArrowLeft: [-step, 0],
+      ArrowRight: [step, 0],
+      ArrowUp: [0, -step],
+      ArrowDown: [0, step],
+    };
+    const move = moves[event.key];
+    if (!move) return;
+    event.preventDefault();
+    setFocus(value.focusX + move[0], value.focusY + move[1]);
+  };
+  const position = `${value.focusX}% ${value.focusY}%`;
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        className="relative block w-full cursor-crosshair overflow-hidden rounded-control border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-label={`Focal point: ${value.focusX}% from the left, ${value.focusY}% from the top. Click the subject of the photo, or use the arrow keys.`}
+        onClick={(event) => {
+          const box = event.currentTarget.getBoundingClientRect();
+          // Keyboard "clicks" (Enter/Space) report 0,0 — ignore them.
+          if (event.detail === 0) return;
+          setFocus(((event.clientX - box.left) / box.width) * 100, ((event.clientY - box.top) / box.height) * 100);
+        }}
+        onKeyDown={onKeyDown}
+      >
+        <img src={value.url!} alt="" className="block h-auto w-full" draggable={false} />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-primary/40 shadow-[0_0_0_2px_rgba(0,0,0,0.45)]"
+          style={{ left: `${value.focusX}%`, top: `${value.focusY}%` }}
+        />
+      </button>
+      <p className="text-xs text-muted-foreground">Click the subject of the photo to keep it in frame when the photo is cropped.</p>
+      <div className="grid grid-cols-[3fr_2fr] gap-2" aria-hidden>
+        <div>
+          <img src={value.url!} alt="" className="aspect-[21/9] w-full rounded-control object-cover" style={{ objectPosition: position }} />
+          <p className="mt-1 text-[0.6875rem] text-muted-foreground">Wide header</p>
+        </div>
+        <div>
+          <img src={value.url!} alt="" className="aspect-[16/10] w-full rounded-control object-cover" style={{ objectPosition: position }} />
+          <p className="mt-1 text-[0.6875rem] text-muted-foreground">Blog card</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function FeaturedImageField({
@@ -56,7 +120,8 @@ export function FeaturedImageField({
     setError("");
     try {
       const uploaded: UploadedImage = await uploadBlogImage(file);
-      onChange({ ...value, url: uploaded.url, width: uploaded.width, height: uploaded.height });
+      // A new photo starts centered.
+      onChange({ ...value, url: uploaded.url, width: uploaded.width, height: uploaded.height, focusX: 50, focusY: 50 });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed.");
     } finally {
@@ -68,22 +133,22 @@ export function FeaturedImageField({
   return (
     <div className="space-y-3">
       {value.url ? (
-        <div className="relative overflow-hidden rounded-control border border-border">
-          <img src={value.url} alt="" className="aspect-[16/10] w-full object-cover" />
-          <div className="absolute end-2 top-2 flex gap-2">
-            <Button type="button" size="sm" variant="secondary" onClick={() => fileRef.current?.click()} disabled={uploading}>
+        <div className="space-y-2">
+          <div className="flex justify-end gap-2">
+            <Button type="button" size="sm" variant="outline" onClick={() => fileRef.current?.click()} disabled={uploading}>
               {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Replace"}
             </Button>
             <Button
               type="button"
               size="sm"
-              variant="secondary"
+              variant="outline"
               aria-label="Remove featured image"
-              onClick={() => onChange({ url: null, alt: value.alt, width: null, height: null })}
+              onClick={() => onChange({ ...value, url: null, width: null, height: null, focusX: 50, focusY: 50 })}
             >
               <X className="h-4 w-4" />
             </Button>
           </div>
+          <FocalPointPicker value={value} onChange={onChange} />
         </div>
       ) : (
         <button
@@ -117,7 +182,86 @@ export function FeaturedImageField({
         />
         <p className="text-xs text-muted-foreground">Read aloud by screen readers and used for social previews.</p>
       </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="featured-caption">Caption (optional)</Label>
+        <Input
+          id="featured-caption"
+          value={value.caption}
+          maxLength={300}
+          onChange={(event) => onChange({ ...value, caption: event.target.value })}
+        />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="featured-credit">Photo credit (optional)</Label>
+        <Input
+          id="featured-credit"
+          value={value.credit}
+          maxLength={120}
+          placeholder="e.g. Rent With Heldy"
+          onChange={(event) => onChange({ ...value, credit: event.target.value })}
+        />
+        <p className="text-xs text-muted-foreground">Shown under the header photo as “Photo: …”.</p>
+      </div>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Article header layout
+// ---------------------------------------------------------------------------
+
+const HEADER_OPTIONS: { value: HeaderLayout; label: string; description: string }[] = [
+  { value: "stacked", label: "Title, then photo", description: "The headline first, with the featured photo below it." },
+  { value: "overlay", label: "Photo behind the title", description: "A full-width photo with the headline on top. Needs a featured image." },
+  { value: "text", label: "Title only", description: "No photo in the header. The featured image is still used on cards and when shared." },
+];
+
+export function HeaderLayoutField({
+  value,
+  onChange,
+  hasImage,
+}: {
+  value: HeaderLayout;
+  onChange: (next: HeaderLayout) => void;
+  hasImage: boolean;
+}) {
+  return (
+    <fieldset className="space-y-2">
+      <legend className="mb-2 text-sm font-medium leading-none">Article header</legend>
+      {HEADER_OPTIONS.map((option) => {
+        const id = `header-layout-${option.value}`;
+        const checked = value === option.value;
+        return (
+          <label
+            key={option.value}
+            htmlFor={id}
+            className={`flex cursor-pointer gap-3 rounded-control border p-3 transition-colors focus-within:ring-2 focus-within:ring-primary ${
+              checked ? "border-ink bg-secondary/60" : "border-border hover:border-ink/40"
+            }`}
+          >
+            <input
+              id={id}
+              type="radio"
+              name="header-layout"
+              value={option.value}
+              checked={checked}
+              onChange={() => onChange(option.value)}
+              className="mt-1 h-4 w-4 shrink-0 accent-[hsl(var(--ink))]"
+              aria-describedby={`${id}-help`}
+            />
+            <span className="min-w-0">
+              <span className="block text-sm font-semibold">{option.label}</span>
+              <span id={`${id}-help`} className="block text-xs text-muted-foreground">
+                {option.description}
+              </span>
+            </span>
+          </label>
+        );
+      })}
+      {value === "overlay" && !hasImage && (
+        <p className="text-xs text-amber-700">Add a featured image to use this header. Until then, the title is shown on its own.</p>
+      )}
+    </fieldset>
   );
 }
 

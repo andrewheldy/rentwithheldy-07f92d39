@@ -40,6 +40,18 @@
     "sourcesHeading": "Sources",
     "sourcesNote": "Les liens externes s'ouvrent dans un nouvel onglet.",
     "tagsLabel": "Mots-clés",
+    "toc": "Dans cet article",
+    "photoCredit": "Photo :",
+    "aboutAuthor": "À propos de l'auteur",
+    "share": {
+      "heading": "Partager cet article",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "copyFailed": "Impossible de copier le lien",
+      "on": "Partager sur {{network}}",
+      "email": "Partager par e-mail",
+      "more": "Autres façons de partager"
+    },
     "relatedHeading": "À lire aussi",
     "allArticles": "Tous les articles",
     "englishNotice": {

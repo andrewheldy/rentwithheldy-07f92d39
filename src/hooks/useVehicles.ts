@@ -45,7 +45,7 @@ const transformDatabaseVehicle = (dbVehicle: DatabaseVehicle): Vehicle => ({
   color: dbVehicle.color,
   rating: dbVehicle.rating ?? 4.9,
   trips: dbVehicle.trips ?? 0,
-  hostType: dbVehicle.host_type ?? "All-Star Host",
+  hostType: dbVehicle.host_type ?? "Power Host",
   dailyRate: dbVehicle.daily_rate,
   description: dbVehicle.description,
   features: dbVehicle.features ?? [],
