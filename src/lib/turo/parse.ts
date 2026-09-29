@@ -28,8 +28,13 @@ export type TuroTrip = {
   excludedBreakdown: Record<string, number>;
   unclassifiedCents: number;
   unclassifiedBreakdown: Record<string, number>;
-  /** The source row without renter identity or addresses. */
-  raw: Record<string, string>;
+  /**
+   * What is kept from the source row, in the same shape as the Sep 24 history
+   * load: turo_vehicle_id, line_items_cents (non-zero money columns) and the
+   * other informational columns (trip_days, distance_traveled, odometers…) under
+   * snake_case keys. Renter identity, addresses and the plate are not kept.
+   */
+  raw: Record<string, unknown>;
 };
 
 export type TuroProblem = { message: string; reservationIds?: string[] };
@@ -44,6 +49,21 @@ export type TuroParseResult = {
 };
 
 const norm = (header: string) => header.trim().toLowerCase().replace(/\s+/g, " ");
+
+/** "Tolls & tickets" → "tolls_and_tickets", "Fines (paid to host)" → "fines_paid_to_host". */
+export const snakeKey = (header: string) =>
+  header
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+
+/** "85,120" → 85120, "4" → 4; anything else stays text. */
+const infoValue = (value: string): string | number => {
+  const plain = value.replace(/,/g, "");
+  return /^-?\d+(\.\d+)?$/.test(plain) ? Number(plain) : value;
+};
 
 const INCLUDED = [
   "Trip price",
@@ -319,28 +339,33 @@ export function parseTuroExport(text: string): TuroParseResult {
     let unclassifiedCents = 0;
     const excludedBreakdown: Record<string, number> = {};
     const unclassifiedBreakdown: Record<string, number> = {};
-    const raw: Record<string, string> = {};
+    const lineItems: Record<string, number> = {};
+    const info: Record<string, string | number> = {};
 
     headers.forEach((header, index) => {
       const role = roles[index];
       if (role === "private") return;
       const value = cell(index);
-      raw[header] = value;
-      if (role !== "included" && role !== "excluded" && role !== "unclassified") return;
+      if (role === "extra") {
+        if (!structural.has(index) && value !== "") info[snakeKey(header)] = infoValue(value);
+        return;
+      }
       const cents = parseMoney(value);
       if (cents === null) {
         push(bad.money, header, label);
         return;
       }
       if (cents === 0) return;
+      const key = snakeKey(header);
+      lineItems[key] = cents;
       if (role === "included") includedCents += cents;
       if (role === "excluded") {
         excludedCents += cents;
-        excludedBreakdown[header] = cents;
+        excludedBreakdown[key] = cents;
       }
       if (role === "unclassified") {
         unclassifiedCents += cents;
-        unclassifiedBreakdown[header] = cents;
+        unclassifiedBreakdown[key] = cents;
       }
     });
 
@@ -350,6 +375,13 @@ export function parseTuroExport(text: string): TuroParseResult {
     if (!status || !start || !end || totalCents === null) return;
 
     const hours = (end.utc - start.utc) / 3_600_000;
+    // Turo's own day count when the export has it; otherwise started 24-hour periods.
+    const tripDays =
+      typeof info.trip_days === "number" && Number.isInteger(info.trip_days) && info.trip_days >= 0
+        ? info.trip_days
+        : hours <= 0
+          ? 0
+          : Math.max(1, Math.ceil(hours / 24 - 1e-9));
     trips.push({
       reservationId,
       turoVehicleId,
@@ -360,14 +392,14 @@ export function parseTuroExport(text: string): TuroParseResult {
       endAt: new Date(end.utc).toISOString(),
       startDay: start.day,
       endDay: end.day,
-      rentalDays: hours <= 0 ? 0 : Math.max(1, Math.ceil(hours / 24 - 1e-9)),
+      rentalDays: tripDays,
       totalCents,
       includedCents,
       excludedCents,
       excludedBreakdown,
       unclassifiedCents,
       unclassifiedBreakdown,
-      raw,
+      raw: { turo_vehicle_id: turoVehicleId, line_items_cents: lineItems, ...info },
     });
   });
 

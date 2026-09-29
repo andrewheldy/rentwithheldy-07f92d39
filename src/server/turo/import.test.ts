@@ -103,7 +103,7 @@ describe("runTuroImport", () => {
       amount_cents: 19000,
       rental_revenue_cents: 15000,
       excluded_cents: 4000,
-      excluded_breakdown: { Delivery: 4000 },
+      excluded_breakdown: { delivery: 4000 },
       collected_on: "2026-09-22",
     });
     expect(JSON.stringify(tables)).not.toContain("Renter");

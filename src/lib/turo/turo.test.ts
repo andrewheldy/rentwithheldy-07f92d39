@@ -137,7 +137,7 @@ describe("parseTuroExport", () => {
       totalCents: 18125,
       includedCents: 13500,
       excludedCents: 4625,
-      excludedBreakdown: { Delivery: 4000, "Tolls & tickets": 625 },
+      excludedBreakdown: { delivery: 4000, tolls_and_tickets: 625 },
       unclassifiedCents: 0,
     });
   });
@@ -148,7 +148,13 @@ describe("parseTuroExport", () => {
     const stored = JSON.stringify(result.trips[0].raw);
     expect(stored).not.toContain("Jane Renter");
     expect(stored).not.toContain("123 Main St");
-    expect(result.trips[0].raw["Check-in odometer"]).toBe("85,120");
+    expect(stored).not.toContain("STLN58");
+    // Same shape as the Sep 24 history load.
+    expect(result.trips[0].raw).toEqual({
+      turo_vehicle_id: "3906429",
+      line_items_cents: { trip_price: 15000, "3_day_discount": -1500, delivery: 4000, tolls_and_tickets: 625 },
+      check_in_odometer: 85120,
+    });
     expect(result.extraColumns).toEqual(["Check-in odometer"]);
   });
 
@@ -172,7 +178,12 @@ describe("parseTuroExport", () => {
     );
     expect(result.problems).toEqual([]);
     expect(result.trips.map((t) => t.status)).toEqual(["booked", "in_progress", "cancelled_by_guest", "cancelled_by_host"]);
-    expect(result.trips[2]).toMatchObject({ unclassifiedCents: 3500, unclassifiedBreakdown: { "Cancellation fee": 3500 }, includedCents: 0 });
+    expect(result.trips[2]).toMatchObject({ unclassifiedCents: 3500, unclassifiedBreakdown: { cancellation_fee: 3500 }, includedCents: 0 });
+  });
+
+  it("uses Turo's Trip days when the export has it", () => {
+    const text = csv({ "Check-in odometer": "8" }).replace("Check-in odometer", "Trip days");
+    expect(parseTuroExport(text).trips[0]).toMatchObject({ rentalDays: 8, raw: { trip_days: 8 } });
   });
 
   it("stops when line items don't add up to Total earnings", () => {
