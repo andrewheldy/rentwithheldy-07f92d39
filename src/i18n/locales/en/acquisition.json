@@ -69,8 +69,19 @@
         "help": "Choose the answer that best matches where you are today."
       },
       "vehicleCategory": {
-        "title": "What are you looking for?",
-        "help": "Choose the type of vehicle you want us to keep in mind."
+        "title": "Which vehicle tier fits your work?",
+        "help": "Pick the tier closest to how you plan to earn. You can change it any time before you submit.",
+        "recommended": "Recommended for you",
+        "examples": "Example vehicles",
+        "bestFor": "Best for",
+        "eligibility": "Vehicle eligibility is determined by Uber, Lyft, and other platforms and may vary by model, model year, location, and driver account. We’ll help you identify vehicles that fit your intended type of work.",
+        "premiumPrefix": "Looking for a premium vehicle?",
+        "premiumLink": "Premium Vehicles – Contact Us",
+        "platformLabels": {
+          "otherDelivery": "Other delivery apps",
+          "deliveryApps": "Delivery apps",
+          "standardRideshare": "Standard rideshare"
+        }
       },
       "timeline": {
         "title": "How soon do you need it?",
@@ -104,7 +115,7 @@
     "options": {
       "platforms": {
         "uber": { "label": "Uber", "description": "Rideshare or delivery interest" },
-        "lyft": { "label": "Lyft", "description": "Standard, XL or premium interest" },
+        "lyft": { "label": "Lyft", "description": "Standard, Comfort or XL interest" },
         "empower": { "label": "Empower", "description": "Current or prospective driver" },
         "delivery_apps": { "label": "Delivery Apps", "description": "Food, grocery or package delivery" },
         "professional_driving": { "label": "Other Professional Driving", "description": "Other qualified driving work" },
@@ -118,18 +129,35 @@
         "other_delivery": { "label": "Other" }
       },
       "uberOpportunities": {
-        "uberx": { "label": "UberX" },
-        "uberxl": { "label": "UberXL" },
-        "black_premium": { "label": "Black / Premium" },
-        "large_passenger": { "label": "Large Passenger / Max-type" },
-        "delivery": { "label": "Delivery" },
-        "not_sure": { "label": "Not Sure" }
+        "uberx": {
+          "label": "UberX"
+        },
+        "uber_comfort": {
+          "label": "Uber Comfort"
+        },
+        "uberxl": {
+          "label": "UberXL"
+        },
+        "delivery": {
+          "label": "Delivery"
+        },
+        "not_sure": {
+          "label": "Not Sure"
+        }
       },
       "lyftOpportunities": {
-        "standard": { "label": "Standard" },
-        "xl": { "label": "XL" },
-        "premium": { "label": "Premium" },
-        "not_sure": { "label": "Not Sure" }
+        "standard": {
+          "label": "Standard"
+        },
+        "extra_comfort": {
+          "label": "Lyft Extra Comfort"
+        },
+        "xl": {
+          "label": "XL"
+        },
+        "not_sure": {
+          "label": "Not Sure"
+        }
       },
       "empowerStatuses": {
         "yes": { "label": "Yes" },
@@ -137,12 +165,28 @@
         "no": { "label": "No" }
       },
       "vehicleCategories": {
-        "everyday": { "label": "Everyday", "description": "UberX / Lyft / delivery-type vehicle" },
-        "xl": { "label": "XL", "description": "Larger SUV or minivan" },
-        "premium": { "label": "Premium", "description": "Premium / Black-type vehicle interest" },
-        "large_passenger": { "label": "Large Passenger", "description": "Large passenger van / Max-type opportunities" },
-        "delivery": { "label": "Delivery", "description": "Affordable, fuel-efficient vehicle" },
-        "not_sure": { "label": "Not Sure", "description": "Help me figure it out" }
+        "delivery": {
+          "label": "Delivery Vehicle",
+          "description": "Fuel-efficient transportation for delivery apps",
+          "similar": "similar fuel-efficient compact sedans and hatchbacks"
+        },
+        "standard": {
+          "label": "Standard Rideshare",
+          "description": "UberX, Lyft and everyday rideshare driving",
+          "similar": "similar 4-door sedans and eligible crossovers"
+        },
+        "comfort": {
+          "label": "Comfort Rideshare",
+          "description": "Newer, roomier vehicles with additional earning-category potential",
+          "similar": "newer model years, larger sedans and eligible midsize crossovers",
+          "disclaimer": "Comfort-category eligibility varies by vehicle, model year, driver status, and rideshare platform."
+        },
+        "xl": {
+          "label": "XL Rideshare",
+          "description": "3-row SUVs and minivans for larger passenger groups",
+          "similar": "similar eligible 3-row SUVs and minivans",
+          "disclaimer": "Typically seats 6 passengers plus the driver. Not every 7-seat vehicle qualifies for UberXL or Lyft XL; it varies by platform, model, model year, and market."
+        }
       },
       "timelines": {
         "asap": { "label": "ASAP" },

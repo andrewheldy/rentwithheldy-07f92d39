@@ -58,6 +58,11 @@ test("driver funnel handles conditional branches, persistence, submission and sa
   await popup.close();
   await next(page);
 
+  for (const tier of ["Delivery Vehicle", "Standard Rideshare", "Comfort Rideshare", "XL Rideshare"]) {
+    await expect(page.getByText(tier, { exact: true })).toBeVisible();
+  }
+  await expect(page.getByText("Recommended for you")).toHaveCount(1);
+  await expect(page.getByText("Premium Vehicles – Contact Us")).toBeVisible();
   await page.locator('input[value="xl"]').check();
   await next(page);
   await page.locator('input[value="asap"]').check();

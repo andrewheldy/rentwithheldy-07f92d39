@@ -4,6 +4,7 @@ import { CheckCircle2, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ChoiceField, { type ChoiceOption } from "./ChoiceField";
 import QuestionnaireShell from "./QuestionnaireShell";
+import VehicleTierField from "./VehicleTierField";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,9 +21,9 @@ import {
   RENTAL_DURATIONS,
   scoreDriverLead,
   UBER_OPPORTUNITIES,
-  VEHICLE_CATEGORIES,
   WEEKLY_BUDGETS,
 } from "@/lib/acquisition-leads";
+import { normalizeStoredVehicleCategory, recommendVehicleTier } from "@/config/vehicle-tiers";
 import {
   clearFunnelDraft,
   getLeadAttribution,
@@ -102,7 +103,23 @@ const persistedDriverData = (draft: DriverDraft) => ({
 
 const DriverDemandFunnel = () => {
   const { t } = useTranslation(["acquisition", "common"]);
-  const loaded = useMemo(() => loadFunnelDraft(DRAFT_KEY, initialDraft), []);
+  const loaded = useMemo(() => {
+    const stored = loadFunnelDraft(DRAFT_KEY, initialDraft);
+    // Older drafts may hold retired tier / opportunity values; drop them so the driver re-picks.
+    const validSubtypes = new Set<string>([
+      ...DELIVERY_PLATFORMS.map((value) => `delivery:${value}`),
+      ...UBER_OPPORTUNITIES.map((value) => `uber:${value}`),
+      ...LYFT_OPPORTUNITIES.map((value) => `lyft:${value}`),
+    ]);
+    return {
+      ...stored,
+      data: {
+        ...stored.data,
+        vehicleCategory: normalizeStoredVehicleCategory(stored.data.vehicleCategory),
+        platformSubtypes: stored.data.platformSubtypes.filter((item) => validSubtypes.has(item)),
+      },
+    };
+  }, []);
   const [draft, setDraft] = useState<DriverDraft>(loaded.data);
   const [stepIndex, setStepIndex] = useState(loaded.step);
   const [startedAt] = useState(() => Date.now());
@@ -461,11 +478,9 @@ const DriverDemandFunnel = () => {
         );
       case "vehicleCategory":
         return (
-          <ChoiceField
-            legend={t("driver.steps.vehicleCategory.title")}
-            name="vehicle-category"
-            options={VEHICLE_CATEGORIES.map((value) => option("vehicleCategories", value))}
-            selected={[draft.vehicleCategory].filter(Boolean)}
+          <VehicleTierField
+            selected={draft.vehicleCategory}
+            recommended={recommendVehicleTier(draft.platforms, draft.platformSubtypes)}
             onChange={(value) => {
               setSingle("vehicleCategory", value);
               track("driver_vehicle_category_selected", { step_number: stepIndex + 1, vehicle_category: value });
