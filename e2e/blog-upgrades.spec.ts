@@ -360,6 +360,8 @@ test.describe("editor upgrades", () => {
     await page.getByRole("button", { name: "Add author" }).first().click();
     await expectCleanLayout(page, "author dialog mobile", '[role="dialog"]');
     await page.keyboard.press("Escape");
+    // Let the closing dialog leave the page before opening it again.
+    await expect(page.getByRole("dialog")).toHaveCount(0);
     await page.setViewportSize({ width: 1280, height: 800 });
 
     // Add an author.

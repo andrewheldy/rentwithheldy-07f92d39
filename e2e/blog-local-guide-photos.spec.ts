@@ -4,7 +4,7 @@ import { BlogBackend, makePost } from "./support/blog-backend";
 import { expectCleanLayout } from "./support/layout-audit";
 
 // The "Places to Go" guide after content/blog/updates/2026-09-29-places-to-go-photos.sql:
-// section emojis, 13 local photos with captions and credits, and no business byline.
+// section emojis, 9 local photos with captions and credits, and no business byline.
 
 const SQL = readFileSync(new URL("../content/blog/updates/2026-09-29-places-to-go-photos.sql", import.meta.url), "utf8");
 const CONTENT = JSON.parse(/\$json\$([\s\S]*?)\$json\$/.exec(SQL)![1]);
@@ -36,7 +36,7 @@ async function open(page: Page, language?: string) {
 /** Scrolls every article image into view and waits for it to load. */
 async function expectPhotosLoaded(page: Page) {
   const images = page.locator(".blog-prose img");
-  await expect(images).toHaveCount(13);
+  await expect(images).toHaveCount(9);
   for (const image of await images.all()) {
     await image.scrollIntoViewIfNeeded();
     await expect.poll(() => image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
@@ -66,15 +66,17 @@ test("the local guide has section emojis, captioned photos and credits, and no b
 
   await expectPhotosLoaded(page);
   await expect(page.locator(".blog-gallery")).toHaveCount(3);
-  await expect(page.locator("figure[data-layout='right']")).toHaveCount(4);
-  await expect(page.getByRole("img", { name: /Giraffes at the Samburu feeding station/ }).locator("xpath=..")).toContainText("Photo: Jedi94.");
+  await expect(page.locator("figure[data-layout='right']")).toHaveCount(2);
+  await expect(page.getByRole("img", { name: /airboat/ }).locator("xpath=..")).toHaveAttribute("data-layout", "default");
+  await expect(page.getByRole("img", { name: /South Pointe Pier stretching into the water/ }).locator("xpath=..")).toContainText("Photo: Leandro's World Tour.");
+  await expect(page.locator(".blog-gallery").last()).toContainText("A sundae at Jaxson's and the entrance to Le Tub.");
 
   // Every photo is credited with its source and license.
-  const credits = page.locator("ul").filter({ hasText: "Hollywood Beach Broadwalk: Richard Mc Neil" });
-  await expect(credits.getByRole("listitem")).toHaveCount(13);
-  await expect(credits.getByRole("link", { name: "Richard Mc Neil" })).toHaveAttribute("href", "https://commons.wikimedia.org/w/index.php?curid=52905372");
-  await expect(credits.getByRole("link", { name: "CC BY 3.0" }).first()).toHaveAttribute("href", "https://creativecommons.org/licenses/by/3.0/");
-  await expect(credits.getByRole("link", { name: "Richard Mc Neil" })).toHaveAttribute("target", "_blank");
+  const credits = page.locator("ul").filter({ hasText: "South Pointe Pier: Leandro's World Tour" });
+  await expect(credits.getByRole("listitem")).toHaveCount(9);
+  await expect(credits.getByRole("link", { name: "Leandro's World Tour" })).toHaveAttribute("href", "https://www.flickr.com/photos/18115835@N00/49353786776");
+  await expect(credits.getByRole("link", { name: "CC BY 2.0" }).first()).toHaveAttribute("href", "https://creativecommons.org/licenses/by/2.0/");
+  await expect(credits.getByRole("link", { name: "Leandro's World Tour" })).toHaveAttribute("target", "_blank");
   await expectCleanLayout(page, "local guide desktop");
 });
 
