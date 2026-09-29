@@ -42,7 +42,7 @@ const driverBody = {
   leadType: "driver_demand",
   platforms: ["uber"],
   platformSubtypes: ["uber:uberx"],
-  vehicleCategory: "everyday",
+  vehicleCategory: "standard",
   needTimeline: "within_7_days",
   weeklyBudget: "350_399",
   driverStatus: "approved_need_vehicle",
@@ -120,7 +120,7 @@ describe("acquisition lead API", () => {
     expect(mocks.insert).toHaveBeenCalledWith(
       expect.objectContaining({
         lead_type: "driver_demand",
-        vehicle_category: "everyday",
+        vehicle_category: "standard",
         weekly_budget_min: 350,
         weekly_budget_max: 399,
         lead_priority: "hot",

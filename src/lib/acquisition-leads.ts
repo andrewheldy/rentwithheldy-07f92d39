@@ -9,14 +9,11 @@ export const DRIVER_PLATFORMS = [
   "not_sure",
 ] as const;
 
-export const VEHICLE_CATEGORIES = [
-  "everyday",
-  "xl",
-  "premium",
-  "large_passenger",
-  "delivery",
-  "not_sure",
-] as const;
+/** Selectable Drive for Work tiers; see src/config/vehicle-tiers.ts. */
+export const VEHICLE_CATEGORIES = ["delivery", "standard", "comfort", "xl"] as const;
+
+/** Retired values still accepted so older saved drafts and stored rows remain valid. */
+const LEGACY_VEHICLE_CATEGORIES = ["everyday", "premium", "large_passenger", "not_sure"] as const;
 
 export const NEED_TIMELINES = [
   "asap",
@@ -106,18 +103,23 @@ export const DELIVERY_PLATFORMS = [
 
 export const UBER_OPPORTUNITIES = [
   "uberx",
+  "uber_comfort",
   "uberxl",
-  "black_premium",
-  "large_passenger",
   "delivery",
   "not_sure",
 ] as const;
 
 export const LYFT_OPPORTUNITIES = [
   "standard",
+  "extra_comfort",
   "xl",
-  "premium",
   "not_sure",
+] as const;
+
+const LEGACY_PLATFORM_SUBTYPES = [
+  "uber:black_premium",
+  "uber:large_passenger",
+  "lyft:premium",
 ] as const;
 
 export const CURRENT_DRIVER_PLATFORMS = [
@@ -132,6 +134,7 @@ const PLATFORM_SUBTYPES = [
   ...DELIVERY_PLATFORMS.map((value) => `delivery:${value}` as const),
   ...UBER_OPPORTUNITIES.map((value) => `uber:${value}` as const),
   ...LYFT_OPPORTUNITIES.map((value) => `lyft:${value}` as const),
+  ...LEGACY_PLATFORM_SUBTYPES,
 ] as const;
 const PLATFORM_SUBTYPE_SET = new Set<string>(PLATFORM_SUBTYPES);
 
@@ -171,7 +174,7 @@ export const DriverDemandSubmissionSchema = z
         }),
       )
       .max(20),
-    vehicleCategory: z.enum(VEHICLE_CATEGORIES),
+    vehicleCategory: z.enum([...VEHICLE_CATEGORIES, ...LEGACY_VEHICLE_CATEGORIES]),
     needTimeline: z.enum(NEED_TIMELINES),
     weeklyBudget: z.enum(WEEKLY_BUDGETS),
     driverStatus: z.enum(DRIVER_STATUSES),
