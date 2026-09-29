@@ -2,7 +2,8 @@
  * Single source of truth for the Drive for Work vehicle tiers.
  * Ids are stable stored values (form payloads, database, analytics).
  * name / description / disclaimer are translation keys in the `acquisition`
- * namespace; vehicle and platform names are proper nouns and stay as-is.
+ * namespace; platform names are proper nouns and stay as-is. Do not list specific
+ * vehicle models here: we do not guarantee a particular car.
  */
 export const VEHICLE_TIER_IDS = ["delivery", "standard", "comfort", "xl"] as const;
 export type VehicleTierId = (typeof VEHICLE_TIER_IDS)[number];
@@ -14,9 +15,8 @@ export interface VehicleTier {
   id: VehicleTierId;
   name: string;
   description: string;
-  /** Translated "similar vehicles" line shown beneath the example vehicles. */
+  /** Translated description of the vehicle types in this tier (no specific models). */
   similarVehicles: string;
-  exampleVehicles: string[];
   intendedPlatforms: TierLabel[];
   intendedRideCategories: TierLabel[];
   disclaimer?: string;
@@ -34,7 +34,6 @@ export const VEHICLE_TIERS: readonly VehicleTier[] = [
     name: key("delivery", "label"),
     description: key("delivery", "description"),
     similarVehicles: key("delivery", "similar"),
-    exampleVehicles: ["Toyota Corolla", "Volkswagen Jetta", "Honda Fit"],
     intendedPlatforms: ["Uber Eats", "DoorDash", "Instacart", "Spark", OTHER_DELIVERY],
     intendedRideCategories: [],
     sortOrder: 1,
@@ -44,7 +43,6 @@ export const VEHICLE_TIERS: readonly VehicleTier[] = [
     name: key("standard", "label"),
     description: key("standard", "description"),
     similarVehicles: key("standard", "similar"),
-    exampleVehicles: ["Toyota Corolla", "Volkswagen Jetta", "Toyota Camry", "Honda Accord"],
     intendedPlatforms: ["Uber", "Lyft", DELIVERY_APPS],
     intendedRideCategories: ["UberX", "Lyft Standard"],
     sortOrder: 2,
@@ -54,7 +52,6 @@ export const VEHICLE_TIERS: readonly VehicleTier[] = [
     name: key("comfort", "label"),
     description: key("comfort", "description"),
     similarVehicles: key("comfort", "similar"),
-    exampleVehicles: ["Toyota Camry", "Honda Accord"],
     intendedPlatforms: ["Uber", "Lyft"],
     intendedRideCategories: ["UberX", "Lyft Standard", "Uber Comfort", "Lyft Extra Comfort"],
     disclaimer: key("comfort", "disclaimer"),
@@ -65,7 +62,6 @@ export const VEHICLE_TIERS: readonly VehicleTier[] = [
     name: key("xl", "label"),
     description: key("xl", "description"),
     similarVehicles: key("xl", "similar"),
-    exampleVehicles: ["Toyota Highlander", "Honda Pilot", "Toyota Sienna", "Kia Carnival", "Kia Sorento"],
     intendedPlatforms: ["Uber", "Lyft", DELIVERY_APPS],
     intendedRideCategories: ["UberXL", "Lyft XL", STANDARD_RIDESHARE],
     disclaimer: key("xl", "disclaimer"),

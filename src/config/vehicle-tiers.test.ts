@@ -17,6 +17,11 @@ describe("vehicle tiers", () => {
     expect(text).not.toMatch(/black|premier|luxury|chauffeur/);
   });
 
+  it("does not name specific vehicle models", () => {
+    const text = JSON.stringify(SORTED_VEHICLE_TIERS);
+    expect(text).not.toMatch(/Toyota|Honda|Kia|Volkswagen|Corolla|Camry|Accord|Jetta|Highlander|Pilot|Sienna|Carnival|Sorento|exampleVehicles/);
+  });
+
   it("only comfort and xl carry eligibility disclaimers", () => {
     expect(SORTED_VEHICLE_TIERS.filter((tier) => tier.disclaimer).map((tier) => tier.id)).toEqual(["comfort", "xl"]);
   });
