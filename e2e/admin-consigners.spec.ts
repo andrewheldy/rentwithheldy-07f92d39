@@ -35,6 +35,7 @@ test.describe("admin sidebar", () => {
       ["Consigners", /\/admin\/consigners$/],
       ["Blog posts", /\/admin\/blog$/],
       ["New post", /\/admin\/blog\/new$/],
+      ["Authors", /\/admin\/blog\/authors$/],
       ["Photos", /\/admin\/photos$/],
       ["Leads", /\/admin\/leads$/],
       ["Agreements", /\/admin\/agreements$/],

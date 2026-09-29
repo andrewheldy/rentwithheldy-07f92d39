@@ -40,6 +40,18 @@
     "sourcesHeading": "Fontes",
     "sourcesNote": "Links externos abrem em uma nova aba.",
     "tagsLabel": "Etiquetas",
+    "toc": "Neste artigo",
+    "photoCredit": "Foto:",
+    "aboutAuthor": "Sobre o autor",
+    "share": {
+      "heading": "Compartilhe este artigo",
+      "copy": "Copiar link",
+      "copied": "Link copiado",
+      "copyFailed": "Não foi possível copiar o link",
+      "on": "Compartilhar no {{network}}",
+      "email": "Compartilhar por e-mail",
+      "more": "Mais formas de compartilhar"
+    },
     "relatedHeading": "Mais do blog",
     "allArticles": "Todos os artigos",
     "englishNotice": {

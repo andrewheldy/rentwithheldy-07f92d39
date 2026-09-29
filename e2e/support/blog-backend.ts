@@ -6,7 +6,7 @@ import type { Page, Route } from "@playwright/test";
  *   • RLS: requests without the admin token only ever see LIVE posts
  *     (published/scheduled with published_at <= now) and their child rows.
  *   • PostgREST filters used by the app (eq, neq, in, lte, order, limit).
- *   • Embedded selects: category, post_tags(tag), sources.
+ *   • Embedded selects: category, post_tags(tag), sources, author_profile.
  *   • The slug-change redirect trigger and the unique-slug constraint.
  */
 
@@ -40,6 +40,8 @@ const PNG = Buffer.from(
   "base64",
 );
 
+export const HOUSE_AUTHOR_ID = "author-rwh";
+
 export function paragraph(text: string) {
   return { type: "paragraph", content: [{ type: "text", text }] };
 }
@@ -56,8 +58,14 @@ export function makePost(overrides: Row = {}): Row {
     featured_image_alt: null,
     featured_image_width: null,
     featured_image_height: null,
+    featured_image_caption: null,
+    featured_image_credit: null,
+    featured_image_focus_x: 50,
+    featured_image_focus_y: 50,
+    header_layout: "stacked",
     category_id: null,
     author: "Rent With Heldy",
+    author_id: null,
     status: "draft",
     published_at: null,
     last_updated_at: null,
@@ -82,6 +90,7 @@ export class BlogBackend {
   sources: Row[] = [];
   redirects: Row[] = [];
   uploads: string[] = [];
+  authors: Row[] = [{ id: HOUSE_AUTHOR_ID, slug: "rent-with-heldy", name: "Rent With Heldy", role: null, bio: null, photo_url: null }];
 
   isLive(post: Row) {
     return (
@@ -108,6 +117,9 @@ export class BlogBackend {
     }
     if (select.includes("sources:blog_post_sources")) {
       out.sources = this.sources.filter((s) => s.post_id === post.id);
+    }
+    if (select.includes("author_profile:blog_authors")) {
+      out.author_profile = this.authors.find((a) => a.id === post.author_id) ?? null;
     }
     return out;
   }
@@ -251,6 +263,34 @@ export class BlogBackend {
         const rows = (body() as Row[]).map((r) => ({ id: crypto.randomUUID(), ...r }));
         this[key].push(...rows);
         return json(rows, 201);
+      }
+    }
+
+    if (table === "blog_authors") {
+      if (method === "GET") return json(this.applyFilters(this.authors, params));
+      if (!admin) return forbidden();
+      if (method === "POST") {
+        const input = body() as Row;
+        if (this.authors.some((a) => a.slug === input.slug)) {
+          return json({ code: "23505", message: 'duplicate key value violates unique constraint "blog_authors_slug_key"' }, 409);
+        }
+        const author = { id: crypto.randomUUID(), role: null, bio: null, photo_url: null, ...input };
+        this.authors.push(author);
+        return json(wantsObject ? author : [author], 201);
+      }
+      if (method === "PATCH") {
+        const targets = this.applyFilters(this.authors, params);
+        targets.forEach((author) => Object.assign(author, body() as Row));
+        return json(wantsObject ? targets[0] : targets);
+      }
+      if (method === "DELETE") {
+        const ids = new Set(this.applyFilters(this.authors, params).map((a) => a.id));
+        this.authors = this.authors.filter((a) => !ids.has(a.id));
+        // ON DELETE SET NULL
+        this.posts.forEach((p) => {
+          if (ids.has(p.author_id)) p.author_id = null;
+        });
+        return route.fulfill({ status: 204 });
       }
     }
 

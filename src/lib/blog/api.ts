@@ -3,12 +3,14 @@ import type { Json } from "@/integrations/supabase/types";
 import { normalizeDoc } from "./content";
 import { slugify } from "./slug";
 import type {
+  BlogAuthor,
   BlogCategory,
   BlogPost,
   BlogPostSummary,
   BlogSource,
   BlogStatus,
   BlogTag,
+  HeaderLayout,
   RichTextDoc,
 } from "./types";
 
@@ -19,10 +21,10 @@ import type {
 // authorization, the same model as the existing leads/fleet admin tools.
 
 const SUMMARY_COLUMNS =
-  "id,title,slug,excerpt,featured_image,featured_image_alt,featured_image_width,featured_image_height,author,status,published_at,last_updated_at,category:blog_categories(id,slug,name)";
+  "id,title,slug,excerpt,featured_image,featured_image_alt,featured_image_width,featured_image_height,featured_image_focus_x,featured_image_focus_y,author,status,published_at,last_updated_at,category:blog_categories(id,slug,name)";
 
 const FULL_COLUMNS =
-  "*,category:blog_categories(id,slug,name),post_tags:blog_post_tags(tag:blog_tags(id,slug,name)),sources:blog_post_sources(id,name,url,publisher,position)";
+  "*,category:blog_categories(id,slug,name),post_tags:blog_post_tags(tag:blog_tags(id,slug,name)),sources:blog_post_sources(id,name,url,publisher,position),author_profile:blog_authors(id,slug,name,role,bio,photo_url)";
 
 const LIVE_STATUSES: BlogStatus[] = ["published", "scheduled"];
 
@@ -133,6 +135,38 @@ export async function adminGetPost(id: string): Promise<BlogPost | null> {
   return data ? toPost(data as unknown as FullRow) : null;
 }
 
+const AUTHOR_COLUMNS = "id,slug,name,role,bio,photo_url";
+
+export async function adminListAuthors(): Promise<BlogAuthor[]> {
+  const { data, error } = await supabase.from("blog_authors").select(AUTHOR_COLUMNS).order("name");
+  fail(error);
+  return (data ?? []) as BlogAuthor[];
+}
+
+export type AuthorInput = Omit<BlogAuthor, "id">;
+
+/** Creates or updates an author profile. Returns the saved profile. */
+export async function adminSaveAuthor(input: AuthorInput, id?: string): Promise<BlogAuthor> {
+  const query = id
+    ? supabase.from("blog_authors").update(input).eq("id", id)
+    : supabase.from("blog_authors").insert(input);
+  const { data, error } = await query.select(AUTHOR_COLUMNS).single();
+  fail(error);
+  const saved = data as BlogAuthor;
+  if (id) {
+    // Keep linked posts' byline (used in metadata and search results) in step.
+    const { error: bylineError } = await supabase.from("blog_posts").update({ author: saved.name }).eq("author_id", id);
+    fail(bylineError);
+  }
+  return saved;
+}
+
+/** Posts keep their author name; their link to the profile is cleared (ON DELETE SET NULL). */
+export async function adminDeleteAuthor(id: string): Promise<void> {
+  const { error } = await supabase.from("blog_authors").delete().eq("id", id);
+  fail(error);
+}
+
 export async function adminListTags(): Promise<BlogTag[]> {
   const { data, error } = await supabase.from("blog_tags").select("id,slug,name").order("name");
   fail(error);
@@ -157,8 +191,14 @@ export interface PostInput {
   featured_image_alt: string | null;
   featured_image_width: number | null;
   featured_image_height: number | null;
+  featured_image_caption: string | null;
+  featured_image_credit: string | null;
+  featured_image_focus_x: number;
+  featured_image_focus_y: number;
+  header_layout: HeaderLayout;
   category_id: string | null;
   author: string;
+  author_id: string | null;
   status: BlogStatus;
   published_at: string | null;
   last_updated_at: string | null;

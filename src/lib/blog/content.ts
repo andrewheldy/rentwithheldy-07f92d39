@@ -1,4 +1,5 @@
-import type { RichTextDoc, RichTextNode } from "./types.js";
+import { slugify } from "./slug.js";
+import type { BlogAuthor, RichTextDoc, RichTextNode } from "./types.js";
 
 // Pure helpers for the Tiptap JSON article body. Shared by the public
 // renderer, the admin checklist and the server-side metadata function.
@@ -101,7 +102,7 @@ export function hasContent(doc: RichTextNode | null | undefined): boolean {
   // An article with only images still counts as content.
   let found = false;
   const walk = (node: RichTextNode) => {
-    if (node.type === "image") found = true;
+    if (node.type === "image" || (node.type === "gallery" && galleryImages(node.attrs?.images).length > 0)) found = true;
     node.content?.forEach(walk);
   };
   walk(doc);
@@ -132,4 +133,105 @@ export function normalizeDoc(value: unknown): RichTextDoc {
     return { type: "doc", content: (value as RichTextNode).content ?? [] };
   }
   return { type: "doc", content: [] };
+}
+
+// ---------------------------------------------------------------------------
+// Block attributes. Stored JSON is untrusted: every attribute is checked
+// against an allow-list before it reaches the page.
+// ---------------------------------------------------------------------------
+
+/** default: column width · wide: wider than the text on large screens · left/right: beside the text. */
+export const IMAGE_LAYOUTS = ["default", "wide", "left", "right"] as const;
+export type ImageLayout = (typeof IMAGE_LAYOUTS)[number];
+
+export function imageLayout(raw: unknown): ImageLayout {
+  return IMAGE_LAYOUTS.includes(raw as ImageLayout) ? (raw as ImageLayout) : "default";
+}
+
+export const CALLOUT_TONES = ["tip", "note", "warning"] as const;
+export type CalloutTone = (typeof CALLOUT_TONES)[number];
+
+export function calloutTone(raw: unknown): CalloutTone {
+  return CALLOUT_TONES.includes(raw as CalloutTone) ? (raw as CalloutTone) : "note";
+}
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  width: number | null;
+  height: number | null;
+}
+
+export const GALLERY_MAX_IMAGES = 12;
+
+function positiveInt(value: unknown): number | null {
+  const n = typeof value === "string" ? Number(value) : value;
+  return typeof n === "number" && Number.isFinite(n) && n > 0 ? Math.round(n) : null;
+}
+
+/** The gallery's images that are safe to show, in order. */
+export function galleryImages(raw: unknown): GalleryImage[] {
+  if (!Array.isArray(raw)) return [];
+  const images: GalleryImage[] = [];
+  for (const item of raw) {
+    if (!item || typeof item !== "object") continue;
+    const record = item as Record<string, unknown>;
+    const src = safeImageSrc(record.src);
+    if (!src) continue;
+    images.push({
+      src,
+      alt: typeof record.alt === "string" ? record.alt.slice(0, 300) : "",
+      width: positiveInt(record.width),
+      height: positiveInt(record.height),
+    });
+    if (images.length === GALLERY_MAX_IMAGES) break;
+  }
+  return images;
+}
+
+/**
+ * A button inside the article. The link must be a page on this site or an
+ * https:// address (the same rule as the end-of-article call to action).
+ */
+export function ctaButton(attrs: Record<string, unknown> | undefined): { label: string; href: string } | null {
+  const label = typeof attrs?.label === "string" ? attrs.label.trim().slice(0, 80) : "";
+  const raw = typeof attrs?.href === "string" ? attrs.href.trim() : "";
+  if (!label || !/^(\/(?!\/)|https:\/\/)/.test(raw)) return null;
+  const href = safeHref(raw);
+  return href ? { label, href } : null;
+}
+
+export interface HeadingAnchor {
+  id: string;
+  text: string;
+  level: 2 | 3;
+}
+
+/**
+ * Every section heading in document order, with a unique id for in-page
+ * links. The renderer assigns ids in the same order, so a table of contents
+ * built from this list always points at the right heading.
+ */
+export function headingAnchors(doc: RichTextNode | null | undefined, reserved: Iterable<string> = []): HeadingAnchor[] {
+  const used = new Set(reserved);
+  const anchors: HeadingAnchor[] = [];
+  const walk = (node: RichTextNode) => {
+    if (node.type === "heading") {
+      const text = docToPlainText(node);
+      const base = slugify(text, 60) || "section";
+      let id = base;
+      for (let n = 2; used.has(id); n += 1) id = `${base}-${n}`;
+      used.add(id);
+      anchors.push({ id, text, level: Number(node.attrs?.level) >= 3 ? 3 : 2 });
+      return;
+    }
+    node.content?.forEach(walk);
+  };
+  if (doc) walk(doc);
+  return anchors;
+}
+
+/** True when an author profile has something to say beyond the byline. */
+export function hasAuthorDetails(author: BlogAuthor | null | undefined): author is BlogAuthor {
+  return Boolean(author && (author.bio?.trim() || author.role?.trim() || safeImageSrc(author.photo_url)));
 }

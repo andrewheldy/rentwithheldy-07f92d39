@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Image from "@tiptap/extension-image";
 import { TableKit } from "@tiptap/extension-table";
 import { Placeholder } from "@tiptap/extensions";
 import {
@@ -10,20 +9,28 @@ import {
   Heading2,
   Heading3,
   ImagePlus,
+  Images,
   Italic,
+  Lightbulb,
   Link2,
   Link2Off,
   List,
   ListOrdered,
   Loader2,
   Minus,
+  MousePointerClick,
+  PanelLeft,
+  PanelRight,
+  Pencil,
   Pilcrow,
+  RectangleHorizontal,
   Quote,
   Redo2,
   Rows3,
   Table as TableIcon,
   Trash2,
   Undo2,
+  UnfoldHorizontal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,10 +45,12 @@ import {
 } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "@/hooks/use-toast";
-import { safeHref, safeImageSrc } from "@/lib/blog/content";
+import { CALLOUT_TONES, calloutTone, imageLayout, safeHref, safeImageSrc, type ImageLayout } from "@/lib/blog/content";
 import { ACCEPTED_IMAGE_TYPES, uploadBlogImage } from "@/lib/blog/images";
 import { INTERNAL_LINKS } from "@/lib/blog/presets";
 import type { RichTextDoc } from "@/lib/blog/types";
+import { CtaButtonDialog, GalleryDialog } from "./BlockDialogs";
+import { BlogImage, Callout, CtaButton, Gallery } from "./editorExtensions";
 
 /*
  * Article body editor. Tiptap (ProseMirror) stores the document as JSON; the
@@ -203,7 +212,18 @@ function LinkDialog({ editor, open, onOpenChange }: { editor: Editor; open: bool
   );
 }
 
-function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boolean; onOpenChange: (open: boolean) => void }) {
+function ImageDialog({
+  editor,
+  open,
+  onOpenChange,
+  editing,
+}: {
+  editor: Editor;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  /** Edit the selected image instead of inserting a new one. */
+  editing: boolean;
+}) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [src, setSrc] = useState("");
   const [size, setSize] = useState<{ width: number | null; height: number | null }>({ width: null, height: null });
@@ -214,13 +234,14 @@ function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boo
 
   useEffect(() => {
     if (open) {
-      setSrc("");
-      setAlt("");
-      setCaption("");
+      const attrs = editing ? editor.getAttributes("image") : {};
+      setSrc(typeof attrs.src === "string" ? attrs.src : "");
+      setAlt(typeof attrs.alt === "string" ? attrs.alt : "");
+      setCaption(typeof attrs.title === "string" ? attrs.title : "");
       setError("");
-      setSize({ width: null, height: null });
+      setSize({ width: attrs.width ?? null, height: attrs.height ?? null });
     }
-  }, [open]);
+  }, [open, editing, editor]);
 
   const upload = async (file: File | undefined) => {
     if (!file) return;
@@ -248,17 +269,15 @@ function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boo
       setError("Describe the image in the alt text — it's read aloud to visitors using screen readers.");
       return;
     }
-    editor
-      .chain()
-      .focus()
-      .setImage({
-        src: safe,
-        alt: alt.trim(),
-        title: caption.trim() || undefined,
-        width: size.width ?? undefined,
-        height: size.height ?? undefined,
-      })
-      .run();
+    const attrs = {
+      src: safe,
+      alt: alt.trim(),
+      title: caption.trim() || undefined,
+      width: size.width ?? undefined,
+      height: size.height ?? undefined,
+    };
+    if (editing) editor.chain().focus().updateAttributes("image", { ...attrs, title: attrs.title ?? null }).run();
+    else editor.chain().focus().setImage(attrs).run();
     onOpenChange(false);
   };
 
@@ -266,12 +285,17 @@ function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Add an image</DialogTitle>
+          <DialogTitle>{editing ? "Edit image" : "Add an image"}</DialogTitle>
           <DialogDescription>Photos are resized automatically for fast loading.</DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           {src ? (
-            <img src={src} alt="" className="max-h-56 w-full rounded-control border object-contain" />
+            <div className="relative">
+              <img src={src} alt="" className="max-h-56 w-full rounded-control border object-contain" />
+              <Button type="button" size="sm" variant="secondary" className="absolute end-2 top-2" onClick={() => fileRef.current?.click()} disabled={uploading}>
+                {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Replace"}
+              </Button>
+            </div>
           ) : (
             <button
               type="button"
@@ -313,7 +337,7 @@ function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boo
         </div>
         <DialogFooter>
           <Button type="button" onClick={insert} disabled={uploading}>
-            Insert image
+            {editing ? "Save image" : "Insert image"}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -324,6 +348,14 @@ function ImageDialog({ editor, open, onOpenChange }: { editor: Editor; open: boo
 export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorProps) {
   const [linkOpen, setLinkOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [ctaOpen, setCtaOpen] = useState(false);
+  // Dialogs opened from a selected block edit it; toolbar buttons insert.
+  const [editingBlock, setEditingBlock] = useState(false);
+  const openDialog = (open: (value: boolean) => void, editing: boolean) => {
+    setEditingBlock(editing);
+    open(true);
+  };
 
   // Tiptap re-applies options whenever they change identity, so everything
   // passed to useEditor is kept referentially stable across renders. The
@@ -348,8 +380,11 @@ export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorPr
           isAllowedUri: (url, ctx) => Boolean(safeHref(url)) && ctx.defaultValidate(url),
         },
       }),
-      Image.configure({ allowBase64: false }),
+      BlogImage.configure({ allowBase64: false }),
       TableKit.configure({ table: { resizable: false } }),
+      Callout,
+      Gallery,
+      CtaButton,
       Placeholder.configure({ placeholder: "Start writing your article…" }),
     ],
     [],
@@ -393,9 +428,22 @@ export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorPr
   if (!editor) return <div className="min-h-[28rem] rounded-card border border-border bg-card" />;
 
   const inTable = editor.isActive("table");
+  const imageSelected = editor.isActive("image");
+  const gallerySelected = editor.isActive("gallery");
+  const ctaSelected = editor.isActive("ctaButton");
+  const inCallout = editor.isActive("callout");
+  const currentLayout = imageLayout(editor.getAttributes("image").layout);
+  const currentTone = calloutTone(editor.getAttributes("callout").tone);
+  const keepSelection = (event: { preventDefault: () => void }) => event.preventDefault();
+  const layoutOptions: { value: ImageLayout; label: string; icon: typeof Pilcrow }[] = [
+    { value: "default", label: "Column width", icon: RectangleHorizontal },
+    { value: "wide", label: "Wide", icon: UnfoldHorizontal },
+    { value: "left", label: "Left, text beside", icon: PanelLeft },
+    { value: "right", label: "Right, text beside", icon: PanelRight },
+  ];
 
   return (
-    <div className="overflow-hidden rounded-card border border-input bg-card focus-within:ring-2 focus-within:ring-primary">
+    <div className="overflow-clip rounded-card border border-input bg-card focus-within:ring-2 focus-within:ring-primary">
       <div
         role="toolbar"
         aria-label="Formatting"
@@ -436,8 +484,23 @@ export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorPr
           <Quote className="h-4 w-4" />
         </ToolButton>
         <Divider />
-        <ToolButton label="Add image" onClick={() => setImageOpen(true)}>
+        <ToolButton label="Add image" onClick={() => openDialog(setImageOpen, false)}>
           <ImagePlus className="h-4 w-4" />
+        </ToolButton>
+        <ToolButton label="Add photo gallery" onClick={() => openDialog(setGalleryOpen, false)}>
+          <Images className="h-4 w-4" />
+        </ToolButton>
+        <ToolButton
+          label="Callout box"
+          active={inCallout}
+          onClick={() =>
+            inCallout ? editor.chain().focus().lift("callout").run() : editor.chain().focus().wrapIn("callout", { tone: "tip" }).run()
+          }
+        >
+          <Lightbulb className="h-4 w-4" />
+        </ToolButton>
+        <ToolButton label="Add button" onClick={() => openDialog(setCtaOpen, false)}>
+          <MousePointerClick className="h-4 w-4" />
         </ToolButton>
         <ToolButton
           label="Insert table"
@@ -457,6 +520,73 @@ export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorPr
           <Redo2 className="h-4 w-4" />
         </ToolButton>
 
+        {imageSelected && (
+          <div className="flex w-full flex-wrap items-center gap-1 border-t border-border pt-1.5 text-xs">
+            <span className="px-1 font-medium text-muted-foreground">Image:</span>
+            {layoutOptions.map((option) => (
+              <Button
+                key={option.value}
+                type="button"
+                variant={currentLayout === option.value ? "secondary" : "ghost"}
+                size="sm"
+                aria-pressed={currentLayout === option.value}
+                onMouseDown={keepSelection}
+                onClick={() => editor.chain().focus().updateAttributes("image", { layout: option.value }).run()}
+              >
+                <option.icon className="me-1 h-3.5 w-3.5" /> {option.label}
+              </Button>
+            ))}
+            <Button type="button" variant="ghost" size="sm" onMouseDown={keepSelection} onClick={() => openDialog(setImageOpen, true)}>
+              <Pencil className="me-1 h-3.5 w-3.5" /> Alt text &amp; caption
+            </Button>
+            <Button type="button" variant="ghost" size="sm" className="text-destructive" onMouseDown={keepSelection} onClick={() => editor.chain().focus().deleteSelection().run()}>
+              <Trash2 className="me-1 h-3.5 w-3.5" /> Remove image
+            </Button>
+          </div>
+        )}
+        {gallerySelected && (
+          <div className="flex w-full flex-wrap items-center gap-1 border-t border-border pt-1.5 text-xs">
+            <span className="px-1 font-medium text-muted-foreground">Gallery:</span>
+            <Button type="button" variant="ghost" size="sm" onMouseDown={keepSelection} onClick={() => openDialog(setGalleryOpen, true)}>
+              <Pencil className="me-1 h-3.5 w-3.5" /> Edit gallery
+            </Button>
+            <Button type="button" variant="ghost" size="sm" className="text-destructive" onMouseDown={keepSelection} onClick={() => editor.chain().focus().deleteSelection().run()}>
+              <Trash2 className="me-1 h-3.5 w-3.5" /> Remove gallery
+            </Button>
+          </div>
+        )}
+        {ctaSelected && (
+          <div className="flex w-full flex-wrap items-center gap-1 border-t border-border pt-1.5 text-xs">
+            <span className="px-1 font-medium text-muted-foreground">Button:</span>
+            <Button type="button" variant="ghost" size="sm" onMouseDown={keepSelection} onClick={() => openDialog(setCtaOpen, true)}>
+              <Pencil className="me-1 h-3.5 w-3.5" /> Edit button
+            </Button>
+            <Button type="button" variant="ghost" size="sm" className="text-destructive" onMouseDown={keepSelection} onClick={() => editor.chain().focus().deleteSelection().run()}>
+              <Trash2 className="me-1 h-3.5 w-3.5" /> Remove button
+            </Button>
+          </div>
+        )}
+        {inCallout && (
+          <div className="flex w-full flex-wrap items-center gap-1 border-t border-border pt-1.5 text-xs">
+            <span className="px-1 font-medium text-muted-foreground">Callout:</span>
+            {CALLOUT_TONES.map((tone) => (
+              <Button
+                key={tone}
+                type="button"
+                variant={currentTone === tone ? "secondary" : "ghost"}
+                size="sm"
+                aria-pressed={currentTone === tone}
+                onMouseDown={keepSelection}
+                onClick={() => editor.chain().focus().updateAttributes("callout", { tone }).run()}
+              >
+                {{ tip: "Tip", note: "Note", warning: "Warning" }[tone]}
+              </Button>
+            ))}
+            <Button type="button" variant="ghost" size="sm" onMouseDown={keepSelection} onClick={() => editor.chain().focus().lift("callout").run()}>
+              Remove callout
+            </Button>
+          </div>
+        )}
         {inTable && (
           <div className="flex w-full flex-wrap items-center gap-1 border-t border-border pt-1.5 text-xs">
             <span className="px-1 font-medium text-muted-foreground">Table:</span>
@@ -484,7 +614,9 @@ export function RichTextEditor({ value, onChange, labelledBy }: RichTextEditorPr
       </div>
 
       <LinkDialog editor={editor} open={linkOpen} onOpenChange={setLinkOpen} />
-      <ImageDialog editor={editor} open={imageOpen} onOpenChange={setImageOpen} />
+      <ImageDialog editor={editor} open={imageOpen} onOpenChange={setImageOpen} editing={editingBlock} />
+      <GalleryDialog editor={editor} open={galleryOpen} onOpenChange={setGalleryOpen} editing={editingBlock} />
+      <CtaButtonDialog editor={editor} open={ctaOpen} onOpenChange={setCtaOpen} editing={editingBlock} />
     </div>
   );
 }

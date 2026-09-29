@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { Car, ExternalLink, FilePlus2, FileSignature, FileUp, Images, Inbox, LogOut, Newspaper, Settings, UsersRound } from "lucide-react";
+import { Car, ExternalLink, FilePlus2, FileSignature, FileUp, Images, Inbox, LogOut, Newspaper, Settings, UserPen, UsersRound } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -43,9 +43,10 @@ const adminNavGroups: AdminNavGroup[] = [
         label: "Blog posts",
         to: "/admin/blog",
         icon: Newspaper,
-        matches: (pathname) => pathname.startsWith("/admin/blog") && pathname !== "/admin/blog/new",
+        matches: (pathname) => pathname.startsWith("/admin/blog") && !["/admin/blog/new", "/admin/blog/authors"].includes(pathname),
       },
       { label: "New post", to: "/admin/blog/new", icon: FilePlus2 },
+      { label: "Authors", to: "/admin/blog/authors", icon: UserPen },
       { label: "Photos", to: "/admin/photos", icon: Images },
     ],
   },
