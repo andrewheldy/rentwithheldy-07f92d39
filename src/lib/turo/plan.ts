@@ -40,7 +40,7 @@ export type BookingWrite = {
   rental_days: number;
   status: TuroStatus;
   gross_cents: number;
-  raw: Record<string, string>;
+  raw: Record<string, unknown>;
 };
 
 export type TransactionWrite = {
@@ -274,7 +274,7 @@ export function planTuroImport(
         unclassified_cents: trip.unclassifiedCents,
         unclassified_breakdown: trip.unclassifiedBreakdown,
         collected_on: day,
-        raw: { "Reservation ID": trip.reservationId },
+        raw: { note: "Turo trip earnings export; amounts are host earnings after the Turo fee" },
       },
     });
   }

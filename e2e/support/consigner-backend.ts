@@ -187,7 +187,11 @@ export class ConsignerBackend {
     if (path === "/auth/v1/logout") return route.fulfill({ status: 204 });
 
     if (path === "/rest/v1/user_roles") {
-      if (method === "GET") return json(admin && params.get("role") === "eq.admin" ? [{ role: "admin" }] : []);
+      if (method === "GET") {
+        if (admin) return json([{ role: "admin" }]);
+        if (customer) return json(this.consignerRoles.has(customerUser.id) ? [{ role: "consigner" }] : []);
+        return json([]);
+      }
       if (!admin) return json({ code: "42501", message: "permission denied" }, 403);
       if (method === "POST") {
         const rows = [body()].flat() as Row[];

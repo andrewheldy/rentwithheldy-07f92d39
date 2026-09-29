@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Espace propriétaire | Rent With Heldy",
+    "description": "Les revenus et les performances de votre véhicule avec Rent With Heldy."
+  },
+  "role": "Propriétaire du véhicule",
+  "tagline": "Soyez notre invité",
+  "nav": {
+    "label": "Espace propriétaire",
+    "analytics": "Analyses",
+    "vehicle": "Détails du véhicule",
+    "documents": "Documents",
+    "settings": "Paramètres du compte",
+    "website": "Voir le site",
+    "signOut": "Se déconnecter",
+    "toggle": "Afficher ou masquer le menu",
+    "account": "Menu du compte"
+  },
+  "preview": {
+    "banner": "Aperçu administrateur de l'espace de {{name}}. C'est exactement ce qu'il ou elle voit.",
+    "back": "Retour aux dépositaires"
+  },
+  "loading": "Chargement de votre espace…",
+  "error": {
+    "title": "Impossible de charger votre espace",
+    "body": "Veuillez réessayer. Si le problème persiste, contactez-nous.",
+    "retry": "Réessayer"
+  },
+  "notLinked": {
+    "title": "Votre compte n'est pas encore lié à un véhicule",
+    "body": "Une fois votre contrat de dépôt en place, nous lierons votre véhicule à ce compte et votre espace apparaîtra ici.",
+    "contact": "Nous contacter"
+  },
+  "vehiclePicker": {
+    "label": "Véhicule",
+    "all": "Tous les véhicules"
+  },
+  "activeOn": {
+    "both": "Actif sur Turo et Wheelbase",
+    "turo": "Actif sur Turo",
+    "wheelbase": "Actif sur Wheelbase",
+    "none": "En préparation pour sa première location"
+  },
+  "range": {
+    "label": "Période",
+    "thisYear": "Cette année",
+    "last12Months": "12 derniers mois",
+    "last90Days": "90 derniers jours",
+    "lastYear": "Année dernière",
+    "allTime": "Tout l'historique"
+  },
+  "shareNote": "Les montants affichés correspondent à votre part de {{percent}} des revenus de location.",
+  "kpi": {
+    "total": "Revenu total",
+    "wheelbase": "Revenu Wheelbase",
+    "turo": "Revenu Turo",
+    "utilization": "Taux d'utilisation",
+    "vsPrevious": "vs période précédente",
+    "ofTotal": "{{percent}} du total",
+    "noComparison": "Aucune période précédente à comparer",
+    "points": "{{value}} pts"
+  },
+  "channels": {
+    "wheelbase": "Wheelbase (Ride + Direct)",
+    "turo": "Turo"
+  },
+  "chart": {
+    "title": "Revenus mensuels",
+    "subtitle": "Revenus totaux et répartition par plateforme",
+    "empty": "Aucun revenu sur cette période pour l'instant.",
+    "tableCaption": "Revenus mensuels par plateforme",
+    "month": "Mois"
+  },
+  "byPlatform": {
+    "title": "Revenus par plateforme"
+  },
+  "summary": {
+    "title": "Récapitulatif des revenus",
+    "averageMonthly": "Revenu mensuel moyen"
+  },
+  "metrics": {
+    "title": "Indicateurs clés",
+    "utilization": "Taux d'utilisation",
+    "available": "Jours disponibles",
+    "booked": "Jours réservés",
+    "adr": "Tarif journalier moyen",
+    "tripLength": "Durée moyenne des locations",
+    "tripDays": "{{value}} jours"
+  },
+  "vehicle": {
+    "title": "Détails du véhicule",
+    "subtitle": "Le véhicule que vous avez confié à Rent With Heldy.",
+    "year": "Année",
+    "make": "Marque",
+    "model": "Modèle",
+    "color": "Couleur",
+    "plate": "Plaque d'immatriculation",
+    "vin": "NIV",
+    "inService": "En service depuis",
+    "share": "Votre part",
+    "shareStarted": "Début de votre part",
+    "shareEnded": "Fin de votre part"
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Vos contrats signés avec Rent With Heldy.",
+    "agreement": "Contrat {{number}}",
+    "signed": "Signé le {{date}}",
+    "download": "Télécharger le PDF",
+    "downloadError": "Le téléchargement n'a pas pu démarrer. Veuillez réessayer.",
+    "empty": "Aucun document signé pour l'instant. Votre contrat de dépôt apparaîtra ici une fois signé par toutes les parties."
+  },
+  "settings": {
+    "title": "Paramètres du compte",
+    "subtitle": "Votre nom, téléphone, langue et e-mail de connexion."
+  }
+}

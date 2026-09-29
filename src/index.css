@@ -106,6 +106,10 @@
     --dur-base: 220ms;
     --dur-reveal: 320ms; /* interaction spec: reveals 200–350ms */
 
+    /* Owner dashboard series (validated for CVD separation, chroma and contrast on white) */
+    --chart-wheelbase: 154 63% 33%;
+    --chart-turo: 216 66% 53%;
+
     /* Admin sidebar — warm surface a step below the page, teal-tinted active item */
     --sidebar-background: 42 50% 94%;
     --sidebar-foreground: 210 30% 14%;

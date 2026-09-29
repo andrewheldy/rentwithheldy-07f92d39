@@ -10,6 +10,8 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   isAdmin: boolean;
+  /** Has the consigner role: a vehicle owner an admin linked to a car. */
+  isConsigner: boolean;
   isLoading: boolean;
   /** True once isAdmin reflects the current user (false while their roles load after sign-in). */
   rolesLoaded: boolean;
@@ -21,34 +23,38 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const noRoles = { admin: false, consigner: false };
+const checkRoles = async (userId: string) => {
+  try {
+    const { data, error } = await supabase.from("user_roles").select("role").eq("user_id", userId);
+
+    if (error) {
+      console.error("Error checking roles:", error);
+      return noRoles;
+    }
+
+    const roles = new Set((data ?? []).map((row) => row.role));
+    return { admin: roles.has("admin"), consigner: roles.has("consigner") };
+  } catch (error) {
+    console.error("Error checking roles:", error);
+    return noRoles;
+  }
+};
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isConsigner, setIsConsigner] = useState(false);
   const [isLoading, setIsLoading] = useState(isSupabaseConfigured);
   // Which user isAdmin was last resolved for. Sign-in sets `user` right away,
   // but the role check finishes a moment later.
   const [rolesUserId, setRolesUserId] = useState<string | null>(null);
 
-  const checkAdminRole = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .maybeSingle();
-
-      if (error) {
-        console.error("Error checking admin role:", error);
-        return false;
-      }
-
-      return !!data;
-    } catch (error) {
-      console.error("Error checking admin role:", error);
-      return false;
-    }
+  const applyRoles = (userId: string, roles: { admin: boolean; consigner: boolean }) => {
+    setIsAdmin(roles.admin);
+    setIsConsigner(roles.consigner);
+    setRolesUserId(userId);
   };
 
   useEffect(() => {
@@ -63,13 +69,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (session?.user) {
           // Use setTimeout to avoid potential Supabase deadlock
           setTimeout(async () => {
-            const adminStatus = await checkAdminRole(session.user.id);
-            setIsAdmin(adminStatus);
-            setRolesUserId(session.user.id);
+            applyRoles(session.user.id, await checkRoles(session.user.id));
             setIsLoading(false);
           }, 0);
         } else {
           setIsAdmin(false);
+          setIsConsigner(false);
           setRolesUserId(null);
           setIsLoading(false);
         }
@@ -82,9 +87,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(session?.user ?? null);
 
       if (session?.user) {
-        const adminStatus = await checkAdminRole(session.user.id);
-        setIsAdmin(adminStatus);
-        setRolesUserId(session.user.id);
+        applyRoles(session.user.id, await checkRoles(session.user.id));
       }
       setIsLoading(false);
     });
@@ -135,6 +138,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     setSession(null);
     setIsAdmin(false);
+    setIsConsigner(false);
     setRolesUserId(null);
   };
 
@@ -144,6 +148,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         user,
         session,
         isAdmin,
+        isConsigner,
         isLoading,
         rolesLoaded: !user || rolesUserId === user.id,
         signIn,
