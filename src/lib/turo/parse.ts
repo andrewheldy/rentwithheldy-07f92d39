@@ -85,6 +85,7 @@ const EXCLUDED = [
   "Fines (paid to host)",
   "Airport operations fee",
   "Airport parking credit",
+  "Sales tax", // Turo collects and remits it; $0 on every row seen so far
   // Kept by Rent With Heldy
   "Delivery",
   "Extras",

@@ -199,7 +199,7 @@ Turo has no public host API. The admin downloads the **trip earnings CSV** from 
 | Treatment | Columns |
 |---|---|
 | **Included** in Rental Revenue (payment for use of the vehicle) | Trip price, Boost price, all discount columns (these are negative), Non-refundable discount, Early bird discount, Host promotional credit, Excess distance, Additional usage, Late fee |
-| **Excluded**, pass-through or reimbursement (tolls, fuel, fines, damage) | Tolls & tickets, Gas reimbursement, Gas fee, On-trip EV charging, Post-trip EV charging, Fines (paid to host), Airport operations fee, Airport parking credit |
+| **Excluded**, pass-through or reimbursement (tolls, fuel, fines, damage) | Tolls & tickets, Gas reimbursement, Gas fee, On-trip EV charging, Post-trip EV charging, Fines (paid to host), Airport operations fee, Airport parking credit, Sales tax |
 | **Excluded**, kept by Rent With Heldy (delivery and separately provided services) | Delivery, Extras |
 | **Excluded**, covers cleaning and turnover cost | Cleaning, Smoking, Improper return fee |
 | **Needs a decision** (section 8) | Cancellation fee, Other fees |
