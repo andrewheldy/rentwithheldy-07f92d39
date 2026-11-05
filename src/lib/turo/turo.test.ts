@@ -200,6 +200,13 @@ describe("parseTuroExport", () => {
     );
   });
 
+  it("accepts Turo's Sales tax column as a pass-through", () => {
+    const text = csv({ "Check-in odometer": "$2.00", "Total earnings": "$183.25" }).replace("Check-in odometer", "Sales tax");
+    const result = parseTuroExport(text);
+    expect(result.problems).toEqual([]);
+    expect(result.trips[0]).toMatchObject({ excludedBreakdown: { sales_tax: 200 }, includedCents: 13500 });
+  });
+
   it("stops on an unknown status, bad dates, bad money, bad VINs and duplicate reservations", () => {
     const result = parseTuroExport(
       csv(
