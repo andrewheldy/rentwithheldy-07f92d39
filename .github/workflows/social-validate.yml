@@ -1,0 +1,35 @@
+name: Social validate
+
+# PR check for post files and the pipeline code. Uses no secrets, so it is
+# safe on pull requests from forks.
+
+on:
+  pull_request:
+    paths:
+      - "social/**"
+      - "public/social-media/**"
+      - "api/meta-webhook.ts"
+      - "supabase/migrations/*social*"
+      - ".github/workflows/social-*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Validate post files
+        run: npm run -s social:validate
+      - name: Typecheck pipeline
+        run: npm run -s social:typecheck
+      - name: Pipeline tests
+        run: npx vitest run social/test

@@ -23,7 +23,9 @@ if (typeof window !== "undefined" && !window.ResizeObserver) {
 }
 
 // Unmount React trees and reset locale-related global state between tests.
+// Server-side suites (social/test) run in the node environment, without a DOM.
 afterEach(() => {
+  if (typeof document === "undefined") return;
   cleanup();
   localStorage.clear();
   document.documentElement.removeAttribute("dir");

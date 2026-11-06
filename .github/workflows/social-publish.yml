@@ -1,0 +1,70 @@
+name: Social publish
+
+# Publishes approved, due posts from social/posts/. Nothing goes live unless
+# the repository variable DRY_RUN is exactly "false" AND the run is on the
+# default branch AND (for manual runs) the dry_run input is unchecked.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: log payloads only (a live run also needs the DRY_RUN variable set to false)"
+        type: boolean
+        default: true
+      post_id:
+        description: "Only this post id (also lifts the 48h stale window)"
+        type: string
+        required: false
+
+concurrency:
+  group: social-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Publish due posts
+        run: npm run -s social:publish
+        env:
+          DRY_RUN: ${{ vars.DRY_RUN }}
+          DISPATCH_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && (inputs.dry_run && 'true' || 'false') || '' }}
+          POST_ID: ${{ inputs.post_id }}
+          # Scheduled runs always use the default branch.
+          DEFAULT_BRANCH: ${{ github.event_name == 'schedule' && github.ref_name || github.event.repository.default_branch }}
+          SOCIAL_TIMEZONE: ${{ vars.SOCIAL_TIMEZONE }}
+          SOCIAL_MEDIA_BASE_URL: ${{ vars.SOCIAL_MEDIA_BASE_URL }}
+          META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+          TIKTOK_AUDITED: ${{ vars.TIKTOK_AUDITED }}
+          TIKTOK_PULL_FROM_URL: ${{ vars.TIKTOK_PULL_FROM_URL }}
+          GBP_ENABLED: ${{ vars.GBP_ENABLED }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+          GBP_ACCOUNT_ID: ${{ secrets.GBP_ACCOUNT_ID }}
+          GBP_LOCATION_ID: ${{ secrets.GBP_LOCATION_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rentwithheldy.com/social/post.schema.json",
+  "title": "Rent With Heldy social post frontmatter",
+  "description": "Editor aid for social/posts/*.md frontmatter. The pipeline enforces social/src/schema.ts plus the platform rules in social/src/load-posts.ts (media counts, caption limits, aspect ratios).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "status", "scheduled_at"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 120, "description": "Must match the file name." },
+    "status": { "enum": ["draft", "approved", "cancelled"] },
+    "scheduled_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2}(\\.\\d{1,3})?)?(Z|[+-]\\d{2}:\\d{2})$",
+      "description": "ISO 8601 with a timezone offset, e.g. 2026-10-25T10:00:00-04:00"
+    },
+    "platforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instagram": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "enum": ["feed", "reel", "story", "carousel"] },
+            "share_to_feed": { "type": "boolean" }
+          }
+        },
+        "facebook": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": { "type": { "enum": ["photo", "video", "link", "text"] } }
+        },
+        "tiktok": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "video" },
+            "privacy": { "enum": ["SELF_ONLY", "PUBLIC_TO_EVERYONE", "MUTUAL_FOLLOW_FRIENDS", "FOLLOWER_OF_CREATOR"] },
+            "disable_comment": { "type": "boolean" },
+            "disable_duet": { "type": "boolean" },
+            "disable_stitch": { "type": "boolean" }
+          }
+        },
+        "gbp": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "enum": ["STANDARD", "EVENT", "OFFER"] },
+            "cta": { "enum": ["BOOK", "ORDER", "SHOP", "LEARN_MORE", "SIGN_UP", "CALL"] },
+            "event": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["title", "start", "end"],
+              "properties": {
+                "title": { "type": "string", "minLength": 1, "maxLength": 58 },
+                "start": { "type": "string" },
+                "end": { "type": "string" }
+              }
+            },
+            "offer": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "coupon_code": { "type": "string", "maxLength": 58 },
+                "redeem_url": { "type": "string", "pattern": "^https://" },
+                "terms": { "type": "string", "maxLength": 5000 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(public/social-media/|https://)" },
+      "description": "Repo paths under public/social-media/ or https:// URLs."
+    },
+    "link": { "type": "string", "pattern": "^https://" },
+    "utm_campaign": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 100 },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instagram": { "type": "string", "minLength": 1 },
+        "facebook": { "type": "string", "minLength": 1 },
+        "tiktok": { "type": "string", "minLength": 1 },
+        "gbp": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
